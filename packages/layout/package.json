@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/layout",
-  "version": "0.0.0",
+  "version": "0.0.0-test-prerelease",
   "description": "reaqtive layout components",
   "keywords": [
     "reaqtive",
@@ -13,25 +13,15 @@
   "license": "MIT",
   "private": false,
   "files": [
-    "/dist/*"
+    "lib"
   ],
   "main": "/dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "access": "public"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +31,10 @@
     "transpile": "rm -rf dist&&SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
     "watch": "watch \"npm run transpile\" src",
     "scss": "node-sass src/scss-dev/sass_dev.scss src/scss-dev/sass_dev.css"
+  },
+  "peerDependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "babel": {
     "presets": [

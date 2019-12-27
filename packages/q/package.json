@@ -1,13 +1,13 @@
 {
   "name": "@reaqtive/q",
-  "version": "0.0.0",
+  "version": "0.0.0-test-prerelease",
   "description": "interfaces vs qlik with no layout components",
   "keywords": [
     "qlik",
     "react",
     "mashup"
   ],
-  "private":false,
+  "private": false,
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
   "homepage": "",
   "license": "MIT",
@@ -23,24 +23,21 @@
     "access": "public"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "@reaqtive/layout": "^0.0.0"
-  },
-  "dependencies": {
-    "lodash":"4.17.15",
-    "enigma.js": "^2.4.0"
-  },
-  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "transpile": "SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
-    "watch":"watch \"npm run transpile\" src"
+    "watch": "watch \"npm run transpile\" src"
+  },
+  "peerDependencies": {
+    "@reaqtive/layout": "^0.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "dependencies": {
+    "enigma.js": "^2.4.0",
+    "lodash": "4.17.15"
   },
   "babel": {
     "presets": [
@@ -59,7 +56,7 @@
     ]
   },
   "eslintConfig": {
-  "extends": "react-app"
+    "extends": "react-app"
   },
   "browserslist": {
     "production": [

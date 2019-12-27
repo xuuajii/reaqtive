@@ -1,38 +1,38 @@
 {
-  "name": "@reaqtive/components",
-  "version": "0.0.0",
-  "description": "reaqtive components connected to qlik engine and capability APIs\u001b[D\u001b[D\u001b[D\u001b[D\u001b[ies API",
-  "keywords": [
-    "reaqtive",
-    "qlik",
-    "mashup"
-  ],
-  "author": "paolo deregibus <paolo.deregibus@gmail.com>",
-  "homepage": "",
-  "license": "MIT",
+	"name": "@reaqtive/components",
+	"version": "0.0.0-test-prerelease",
+	"description": "reaqtive components connected to qlik engine and capability APIs\u001b[D\u001b[D\u001b[D\u001b[D\u001b[ies API",
+	"keywords": [
+		"reaqtive",
+		"qlik",
+		"mashup"
+	],
+	"author": "paolo deregibus <paolo.deregibus@gmail.com>",
+	"homepage": "",
+	"license": "MIT",
 	"private": false,
 	"files": [
 		"/dist/*"
 	],
 	"main": "/dist/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "transpile": "rm -rf dist&&SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
-    "watch": "watch \"npm run transpile\" src"
-  },
-  "peerDependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "@reaqtive/layout": "^0.0.0",
-    "@reaqtive/q": "^0.0.0"
-  },
+	"directories": {
+		"lib": "lib",
+		"test": "__tests__"
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"transpile": "rm -rf dist&&SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
+		"watch": "watch \"npm run transpile\" src"
+	},
+	"peerDependencies": {
+		"@reaqtive/layout": "^0.0.0",
+		"@reaqtive/q": "^0.0.0",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0"
+	},
 	"babel": {
 		"presets": [
 			[
@@ -75,12 +75,12 @@
 		"babel-preset-react-app": "^8.0.0",
 		"watch": "^1.0.2"
 	},
-  "dependencies": {
-    "bootstrap": "^4.4.1",
+	"dependencies": {
+		"bootstrap": "^4.4.1",
+		"lodash": "4.17.15",
 		"node-sass": "^4.13.0",
 		"react-router-dom": "^5.1.2",
-    "react-spring": "^8.0.27",
-		"use-debounce": "^3.3.0",
-    "lodash":"4.17.15"
-  }
+		"react-spring": "^8.0.27",
+		"use-debounce": "^3.3.0"
+	}
 }
