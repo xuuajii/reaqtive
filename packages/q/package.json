@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/q",
-  "version": "0.0.2-test-prerelease",
+  "version": "0.0.1-test-prerelease",
   "description": "interfaces vs qlik with no layout components",
   "keywords": [
     "qlik",
