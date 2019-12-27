@@ -5,6 +5,9 @@
     "lerna": "^3.19.0",
     "concurrently":"5.0.2"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "watch:q": "npx lerna run watch --scope=\"@reaqtive/q\"",
     "watch:components": "npx lerna run watch --scope=\"@reaqtive/components\"",

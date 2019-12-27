@@ -1,6 +1,6 @@
 {
 	"name": "@reaqtive/components",
-	"version": "0.0.1-test-pre0.0.2-test-prerelaserelease",
+	"version": "0.0.2-test-prerelease",
 	"description": "reaqtive components connected to qlik engine and capability APIs\u001b[D\u001b[D\u001b[D\u001b[D\u001b[ies API",
 	"keywords": [
 		"reaqtive",
@@ -82,5 +82,6 @@
 		"react-router-dom": "^5.1.2",
 		"react-spring": "^8.0.27",
 		"use-debounce": "^3.3.0"
-	}
+	},
+	"gitHead": "416292b65cfdad26e992f6b7d2f3177681b9fb92"
 }

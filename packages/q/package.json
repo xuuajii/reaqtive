@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/q",
-  "version": "0.0.1-test-pre0.0.2-test-prerelaserelease",
+  "version": "0.0.2-test-prerelease",
   "description": "interfaces vs qlik with no layout components",
   "keywords": [
     "qlik",
@@ -80,5 +80,6 @@
     "@babel/runtime": "^7.4.4",
     "babel-preset-react-app": "^8.0.0",
     "watch": "^1.0.2"
-  }
+  },
+  "gitHead": "416292b65cfdad26e992f6b7d2f3177681b9fb92"
 }
