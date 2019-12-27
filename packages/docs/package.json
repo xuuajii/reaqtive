@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/docs",
-  "version": "0.0.0-test-prerelease",
+  "version": "0.0.1-test-prerelease",
   "description": "docs and demo\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[Dreaqtive usage docs and demo",
   "keywords": [
     "reaqtive",
@@ -43,9 +43,9 @@
     ]
   },
   "dependencies": {
-    "@reaqtive/components": "^0.0.0-test-prerelease",
-    "@reaqtive/layout": "^0.0.0-test-prerelease",
-    "@reaqtive/q": "^0.0.0-test-prerelease",
+    "@reaqtive/components": "^0.0.1-test-prerelease",
+    "@reaqtive/layout": "^0.0.1-test-prerelease",
+    "@reaqtive/q": "^0.0.1-test-prerelease",
     "bootstrap": "^4.4.1",
     "enigma.js": "^2.4.0",
     "node-sass": "^4.13.0",
