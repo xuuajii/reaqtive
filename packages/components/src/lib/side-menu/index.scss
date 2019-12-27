@@ -1,0 +1,85 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-side-menu{
+  background-color:$side-menu-bg;
+  overflow-y: auto;
+  .page-list{
+    background-color: transparent;
+    .active{
+      color: $page-link-color-active;
+      background-color:$page-link-bg-active;
+    }
+    a:hover:not(.active){
+      background-color: $page-link-bg-hover;
+      color:$page-link-color;
+    }
+    li{
+      border:0;
+      border-radius: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
+    li,a{
+      color:$page-link-color;
+      text-transform: uppercase;
+      font-weight: $page-link-font-weight;
+      text-decoration:none;
+    }
+  }
+  .tabs{
+    background-color: $side-menu-tabs-bg;
+    .tab-list{
+      display: flex;
+      justify-content: space-between;
+      background-color: $side-menu-tabs-bg;
+      //height:63px;
+      overflow-y: hidden;
+      .tab{
+        font-size: 0.75rem;
+        flex-grow: 1;
+        text-transform: uppercase;
+        text-align: center;
+        border-radius: 0 0 0 0;
+        color:$side-menu-tab-color;
+        .tab-icon{
+          margin-bottom: 0.5rem;
+          background-color: $side-menu-tab-icon-bg;
+          color:$side-menu-tab-color;
+          .lui-icon{
+            color:$side-menu-tab-icon-color
+
+          }
+        }
+        &.active{
+          background-color: $side-menu-tab-active-bg;
+          background: $side-menu-active-tab-gradient;
+          color:$side-menu-tab-active-color;
+          font-weight: 600;
+          .tab-icon{
+            color:$side-menu-tab-icon-active-color;
+            background-color: $side-menu-tab-icon-active-bg;
+            .lui-icon{
+               color:$side-menu-tab-icon-active-color;
+             }
+          }
+        }
+      }
+      .tab-indicator{
+        background-color: $side-menu-tab-indicator-bg;//darken($side-menu-bg, 25%);
+      }
+    }
+  }
+  .hide-scrollbar{
+    scrollbar-width: none;
+    overflow: auto;
+    -ms-overflow-style: none;
+
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+    width: 0 !important
+  }
+
+}

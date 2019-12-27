@@ -1,0 +1,57 @@
+{
+  "name": "@reaqtive/docs",
+  "version": "0.0.0",
+  "description": "docs and demo\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[Dreaqtive usage docs and demo",
+  "keywords": [
+    "reaqtive",
+    "docs",
+    "react",
+    "qlik",
+    "mashup"
+  ],
+  "author": "paolo deregibus <paolo.deregibus@gmail.com>",
+  "homepage": "",
+  "license": "MIT",
+  "main": "src/index.js",
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-scripts": "^3.3.0",
+    "bootstrap": "^4.4.1",
+    "node-sass": "^4.13.0",    
+    "enigma.js": "^2.4.0",
+    "react-spring": "^8.0.27",
+    "react-syntax-highlighter": "^12.2.1",
+    "@reaqtive/components": "^0.0.0",
+    "@reaqtive/q": "^0.0.0",
+    "@reaqtive/layout": "^0.0.0"
+  }
+}

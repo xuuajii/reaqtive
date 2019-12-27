@@ -1,0 +1,22 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.navbar.page-header{
+  border-bottom: $page-header-border-weight solid $page-header-border-color;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: $page-header-padding-bottom;
+  .navbar-brand{
+    h3{
+      color:$page-title-color;
+      font-size: $page-header-font-size;
+      font-weight: $page-header-font-weight;
+      line-height: 2rem;
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

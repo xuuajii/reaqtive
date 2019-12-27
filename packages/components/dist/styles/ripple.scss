@@ -1,0 +1,130 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+
+$ripple-bg-hover-darken-percentage: 5%!default;
+@function ripple-bg-hover-color($color, $amount: $ripple-bg-hover-darken-percentage) {
+  //@debug $color;
+  $ripple-bg-hover-color: darken($color, $amount);
+  @return mix($ripple-bg-hover-color, $color, $amount);
+}
+
+// @function ripple-hover-gradient($color) {
+//   @debug $color;
+//   $ripple-hover-gradient: $color radial-gradient(circle, transparent 1%, $color 1%) center/15000%;
+//   @return mix($ripple-hover-gradient,$color);
+// }
+@mixin ripple-hover($color) {
+    //@debug $color;
+    &:hover {
+      //background: #BBB radial-gradient(circle, transparent 1%, #BBB 1%) center/15000%;
+      background:ripple-bg-hover-color($color) radial-gradient(circle, transparent 1%, ripple-bg-hover-color($color )1%) center/15000%;
+    }
+}
+
+$ripple-bg-active-darken-percentage: 30%!default;
+@function ripple-bg-active-color($color, $amount: $ripple-bg-active-darken-percentage) {
+  $ripple-bg-active-color: darken($color, $amount);
+  @return mix($ripple-bg-active-color, $color, $amount);
+}
+//$ripple-bg-hover-color: ripple-bg-hover-color($primary, $ripple-bg-hover-darken-percentage);
+//$ripple-bg-active-color: ripple-bg-active-color($primary, $ripple-bg-active-darken-percentage);
+$theme-ripple-hover-colors: map-merge(
+  (
+    "primary":    ripple-bg-hover-color($primary, $ripple-bg-hover-darken-percentage),
+    "secondary":  ripple-bg-hover-color($secondary, $ripple-bg-hover-darken-percentage),
+    "success":    ripple-bg-hover-color($success, $ripple-bg-hover-darken-percentage),
+    "info":       ripple-bg-hover-color($info, $ripple-bg-hover-darken-percentage),
+    "warning":    ripple-bg-hover-color($warning, $ripple-bg-hover-darken-percentage),
+    "danger":     ripple-bg-hover-color($danger, $ripple-bg-hover-darken-percentage),
+    "light":      ripple-bg-hover-color($light, $ripple-bg-hover-darken-percentage),
+    "dark":       ripple-bg-hover-color($dark, $ripple-bg-hover-darken-percentage),
+  ),
+  $theme-colors
+);
+$theme-ripple-active-colors: map-merge(
+  (
+    "primary":    ripple-bg-active-color($primary, $ripple-bg-active-darken-percentage),
+    "secondary":  ripple-bg-active-color($secondary, $ripple-bg-active-darken-percentage),
+    "success":    ripple-bg-active-color($success, $ripple-bg-active-darken-percentage),
+    "info":       ripple-bg-active-color($info, $ripple-bg-active-darken-percentage),
+    "warning":    ripple-bg-active-color($warning, $ripple-bg-active-darken-percentage),
+    "danger":     ripple-bg-active-color($danger, $ripple-bg-active-darken-percentage),
+    "light":      ripple-bg-active-color($light, $ripple-bg-active-darken-percentage),
+    "dark":       ripple-bg-active-color($dark, $ripple-bg-active-darken-percentage),
+  ),
+  $theme-colors
+);
+
+@mixin ripple-variant($color) {
+    //@debug $color;
+    background-position: center;
+    transition: background 0.8s;
+    &:hover {
+      background-color: darken($color, 10%) !important;
+      //background: #BBB radial-gradient(circle, transparent 1%, #BBB 1%) center/15000%;
+      background:ripple-bg-hover-color($color) radial-gradient(circle, transparent 1%, ripple-bg-hover-color($color )1%) center/15000%;
+    }
+    &:active {
+      //background-color: #AAA;
+      background-size: 100%;
+      transition: background 0s;
+      background-color: ripple-bg-active-color($color, $ripple-bg-active-darken-percentage);
+    }
+}
+
+@mixin ripple-btn-outline($color){
+  //@debug(color);
+  &:hover{
+    color:$color;
+  }
+}
+
+.ripple{
+  @include ripple-variant($white);
+}
+.ripple-dark{
+  @include ripple-variant($gray-300);
+}
+@each $color, $theme-color in $theme-colors {
+  .bg-#{$color}.ripple {
+    @include ripple-variant($theme-color);
+  }
+  .btn.btn-#{$color}.ripple {
+    @include ripple-variant($theme-color);
+  }
+  .btn.btn-outline-#{$color}.ripple {
+    @include ripple-btn-outline($theme-color);
+  }
+  .text-#{$color} {
+    color:$theme-color;
+  }
+  .#{$color}.ripple {
+    @include ripple-variant($theme-color);
+  }
+  .#{$color} {
+    background-color:$theme-color;
+  }
+}
+
+@each $color, $value in $colors {
+  .#{$color} {
+    background-color:$value;
+  }
+  .text-#{$color} {
+    color:$value;
+  }
+  .#{$color}.ripple {
+    @include ripple-variant($value);
+  }
+}
+
+// @each $color, $color-name in $colors {
+//   .{
+//     background-color:$color;
+//   }
+//   $color-name.ripple {
+//     @include ripple-btn-outline($color);
+//   }
+// }

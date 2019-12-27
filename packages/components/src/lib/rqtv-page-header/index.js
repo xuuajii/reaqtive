@@ -1,0 +1,23 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+import React, {useContext} from 'react'
+import {RqtvPageContext} from '../contexts/rqtv-page-context'
+import { Navbar, NavbarNav } from '@reaqtive/layout'
+
+
+const RqtvPageHeader = props => {
+  const rqtvPage=useContext(RqtvPageContext)
+  const {pageData} = rqtvPage
+  return(
+    <Navbar className={`page-header`}>
+      <div className={`navbar-brand`}>
+        <h3>{pageData.title}</h3>
+      </div>
+      {props.children}
+    </Navbar>
+  )
+}
+
+export {RqtvPageHeader}

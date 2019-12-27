@@ -1,0 +1,77 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.viz-container{
+  border-radius: 3px;
+  border: 1px solid $viz-container-border;
+  background-color: $viz-container-bg;
+  // height:100%;
+  width:100%;
+  .viz-container-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    h3,.dropdown-toggle{text-transform: uppercase;}
+    .dropdown{
+      margin-left:0.4rem;
+    }
+    .dropdown.chart-list{
+      .dropdown-menu{
+        min-width: 175px;
+      }
+    }
+    .dropdown-toggle{
+      background-color:$viz-container-bg;
+      color:$viz-container-color;
+      border-top-left-radius: $viz-container-btn-radius;
+      border-top-right-radius: $viz-container-btn-radius;
+      border-bottom-left-radius: $viz-container-btn-radius;
+      border-bottom-right-radius: $viz-container-btn-radius;
+      padding: $viz-container-btn-padding-v $viz-container-btn-padding-h + 0.2;
+      font-size: $viz-container-btn-font-size;
+      &:hover,&:active,&:focus{
+        background-color:$viz-container-bg-hover;
+        color:$viz-container-color-hover;
+      }
+    }
+    .dropdown-item{
+      &:active{
+        background-color: $viz-container-dropdown-item-bg;
+        color:$viz-container-dropdown-item-color;
+      }
+    }
+  }
+  .viz-container-title{
+    margin:auto 0.8rem;
+    font-size: 1.4rem;
+    color:$viz-container-color;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+  .rqtv-viz-container-toolbar{
+    display:inline;
+    .btn-group{
+      .btn, .btn:nth-child(n){
+        background-color:$viz-container-bg;
+        color:$viz-container-color;
+        border-top-left-radius: $viz-container-btn-radius;
+        border-top-right-radius: $viz-container-btn-radius;
+        border-bottom-left-radius: $viz-container-btn-radius;
+        border-bottom-right-radius: $viz-container-btn-radius;
+      	padding: $viz-container-btn-padding-v $viz-container-btn-padding-h;
+      	font-size: $viz-container-btn-font-size;
+        &:hover{
+          background-color:$viz-container-bg-hover;
+          color:$viz-container-color-hover;
+        }
+      }
+    }
+  }
+  .rqtv-viz-container-toolbar,.viz-container-title{
+    margin-right:0.8rem;
+  }
+  .viz-container-body{
+    padding:0.4rem
+  }
+}

@@ -1,0 +1,217 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+//------------------------------------------------------------
+// Global
+//------------------------------------------------------------
+
+$rqtv-base-font-size:14px !default;
+$body-font-size:1rem !default;
+
+$enable-gradients:false !default;
+$enable-shadows:true !default;
+
+//------------------------------------------------------------
+// Breakpoints
+//------------------------------------------------------------
+$break-point-lg: 992px;
+$break-point-md: 768px;
+$break-point-sm: 576px;
+$break-point-xs: 350px;
+//------------------------------------------------------------
+
+//------------------------------------------------------------
+// Qlik states
+//------------------------------------------------------------
+$selected-background:#00FF00 !default;
+$selected-color:set-selected-font-color($selected-background) !default;
+$excluded-background:$gray-700 !default;
+$excluded-color:$white !default;
+$option-background:transparentize(#000000, 1) !default;
+$locked-background:#006FC2 !default;
+$locked-color:set-selected-font-color($locked-background) !default;
+
+$color-map-selected: (
+    selected-background-000:lighten($selected-background, 50%),
+    selected-background-100:lighten($selected-background, 40%),
+    selected-background-200:lighten($selected-background, 30%),
+    selected-background-300:lighten($selected-background, 20%),
+    selected-background-400:lighten($selected-background, 10%),
+    selected-background-500:darken($selected-background, 10%),
+    selected-background-600:darken($selected-background, 20%),
+    selected-background-700:darken($selected-background, 30%),
+    selected-background-800:darken($selected-background, 40%),
+    selected-background-900:darken($selected-background, 50%),
+);
+
+$color-map-excluded: (
+    excluded-background-000:lighten($excluded-background, 50%),
+    excluded-background-100:lighten($excluded-background, 40%),
+    excluded-background-200:lighten($excluded-background, 30%),
+    excluded-background-300:lighten($excluded-background, 20%),
+    excluded-background-400:lighten($excluded-background, 10%),
+    excluded-background-500:darken($excluded-background, 10%),
+    excluded-background-600:darken($excluded-background, 20%),
+    excluded-background-700:darken($excluded-background, 30%),
+    excluded-background-800:darken($excluded-background, 40%),
+    excluded-background-900:darken($excluded-background, 50%),
+);
+
+//------------------------------------------------------------
+
+//------------------------------------------------------------
+// theme
+//------------------------------------------------------------
+
+$color-map-excluded: (
+    primary-000:lighten($primary, 50%),
+    primary-050:lighten($primary, 55%),
+    primary-100:lighten($primary, 40%),
+    primary-150:lighten($primary, 45%),
+    primary-200:lighten($primary, 30%),
+    primary-250:lighten($primary, 35%),
+    primary-300:lighten($primary, 20%),
+    primary-350:lighten($primary, 25%),
+    primary-400:lighten($primary, 10%),
+    primary-450:lighten($primary, 15%),
+    primary-500:darken($primary, 10%),
+    primary-550:darken($primary, 15%),
+    primary-600:darken($primary, 20%),
+    primary-650:darken($primary, 25%),
+    primary-700:darken($primary, 30%),
+    primary-750:darken($primary, 35%),
+    primary-800:darken($primary, 40%),
+    primary-850:darken($primary, 45%),
+    primary-900:darken($primary, 50%),
+    primary-950:darken($primary, 55%),
+);
+
+
+//------------------------------------------------------------
+// Components
+//------------------------------------------------------------
+
+// layout tabs
+$active-color: #00FF00 !default;
+$active-tab-color: $active-color !default;
+
+//navbar
+$navbar-bg:$primary !default;
+$navbar-color:$white !default;
+
+$title-font-size:1.5rem !default;
+
+$navbar-btn-color-hover:darken($navbar-color,2%) !default;
+$navbar-btn-bg-hover:lighten($navbar-bg,10%) !default;
+$navbar-search-backdrop-bg:transparentize($modal-backdrop-bg, $modal-backdrop-opacity) !default;
+
+// side-menu
+$side-menu-bg:darken($primary, 5%) !default;
+$side-expaneded-collapse-bg:darken($side-menu-bg, 5%) !default;
+$side-menu-color:$white !default;
+
+$collapse-icon-width: 25px !default;
+$side-menu-z-index:100 !default;
+
+$page-link-color: darken($side-menu-color, 10%) !default;
+$page-link-color-active: $side-menu-color !default;
+$page-link-bg-hover:rgba(0,0,0,0.1) !default;
+$page-link-bg-active:rgba(0,0,0,0.15) !default;
+$page-link-font-weight:600 !default;
+$side-menu-tabs-bg:$side-menu-bg !default;
+$side-menu-tab-color:darken($side-menu-color, 10%) !default;
+$side-menu-tab-icon-bg:darken($side-menu-bg, 5%) !default;
+$side-menu-tab-icon-color:darken($side-menu-color, 15%) !default;
+$side-menu-tab-active-bg:$side-menu-bg !default;
+$side-menu-tab-active-gradient-perc:20% !default;
+$side-menu-tab-active-gradient-end:lighten($side-menu-tab-active-bg, 1%) !default;
+$side-menu-active-tab-gradient:linear-gradient(to top, $side-menu-tab-active-bg, $side-menu-tab-active-gradient-perc, $side-menu-tab-active-gradient-end) !default;
+$side-menu-tab-indicator-bg:$side-menu-color !default;
+$side-menu-tab-active-color:$side-menu-color !default;
+$side-menu-tab-icon-active-bg:$side-menu-color !default;
+$side-menu-tab-icon-active-color:$side-menu-bg !default;
+
+$side-menu-field-list-listbox-header-bg:transparentize($white, 1) !default;
+$side-menu-field-list-border-color:darken($side-menu-color, 10%) !default;
+$side-menu-field-list-bg:transparentize($side-menu-bg, 1) !default;
+$side-menu-field-list-color:$side-menu-color !default;
+$side-menu-field-list-listbox-menu-toggle:$side-expaneded-collapse-bg !default;
+$side-menu-field-list-listbox-bg:$white !default;
+$side-menu-field-list-collapse-expanded-bg:$side-expaneded-collapse-bg !default;
+$side-menu-field-list-color:$side-menu-color !default;
+$side-menu-field-list-selection-indicator-bg:$selected-background !default;
+
+//current selections
+$cs-box-footer-btn-bg:$primary !default;
+$cs-toolbar-bg:#FFF !default;
+$cs-toolbar-bg-hover:darken($cs-toolbar-bg, 5%) !default;
+$cs-toolbar-badge-color:$gray-800 !default;
+$cs-toolbar-badge-bg:$selected-background !default;
+$cs-toolbar-btn-bg-hover:$cs-toolbar-bg-hover !default;
+$cs-toolbar-btn-bg:transparentize($cs-toolbar-bg-hover, 1)  !default;
+
+$cs-toolbar-btn-bg-in-navbar:$navbar-bg !default;
+$cs-toolbar-btn-color-in-navbar:$navbar-color !default;
+$cs-toolbar-btn-bg-in-navbar-hover:lighten($navbar-bg, 10%) !default;
+
+$cs-listbox-back-btn-color:$white !default;
+$cs-selection-item-bg:#FFFFFF !default;
+$cs-selection-item-color:#666666 !default;
+$cs-selection-item-border:#DDDDDD !default;
+$cs-selection-item-btn-radius:3rem !default;
+$cs-selection-item-btn-padding:0.4rem !default;
+$cs-selection-item-btn-padding-v:0.4rem !default;
+$cs-selection-item-btn-padding-h:0.7rem !default;
+$cs-selection-item-btn-size:45px !default;
+$cs-selection-item-btn-bg-hover:darken($cs-selection-item-bg, 10%) !default;
+$cs-selection-item-btn-color-hover:lighten($cs-selection-item-color, 10%) !default;
+
+//btn bar
+$btn-bar-border-width:$list-group-border-width !default;
+$btn-bar-border-color:$list-group-border-color !default;
+
+//listbox
+$listbox-title-color:$gray-700 !default;
+$listbox-icons:$gray-700 !default;
+$listbox-dropdown-menu:$gray-100 !default;
+$listbox-dropdown-menu-hover:darken($gray-100,10%) !default;
+$listbox-dropdown-toggle:#EEEEEE !default;
+
+// dropdonw & searchfield
+$dropdown-search-input-border-color:#DDDDDD !default;
+
+// loading and spinners
+$loading-color:$primary !default;
+$loading-bg: #FFFFFF !default;
+$scrolling-bg:trasnparentize($loading-bg, 0.8) !default;
+$loading-font-size:80px !default;
+
+//page header
+$page-title-color: #4C4C4C !default;
+$page-header-border-color:#ddd !default;
+$page-header-border-weight:1px !default;
+$page-header-font-size:1.5rem !default;
+$page-header-font-weight:600 !default;
+$page-header-padding-bottom:0.5rem !default;
+
+// search object
+$search-item-border-color:$gray-400 !default;
+
+// viz container
+$viz-container-bg:#FFFFFF !default;
+$viz-container-bg-hover:darken($viz-container-bg, 10%) !default;
+$viz-container-color:#666666 !default;
+$viz-container-color-hover:lighten($viz-container-color, 10%) !default;
+$viz-container-border:#DDDDDD !default;
+$viz-container-btn-radius:3rem !default;
+$viz-container-btn-padding-v:0.4rem !default;
+$viz-container-btn-padding-h:0.5rem !default;
+$viz-container-btn-font-size:1rem !default;
+$viz-container-dropdown-item-bg:#F8F9Fa !default;
+$viz-container-dropdown-item-color:#16181B !default;
+
+// breadcrumb
+$breadcrumb-bg: #FFFFFF;
+$breadcrumb-color: $primary;
+$breadcrumb-active-color: $secondary;

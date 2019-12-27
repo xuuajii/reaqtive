@@ -1,0 +1,45 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.show-case-container{
+    .row{
+      margin-bottom:1rem;
+    }
+}
+
+html {
+    font-size:$rqtv-base-font-size;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+body {
+    font-size:$body-font-size;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+.form-control:focus{
+  box-shadow: none;
+}
+
+.btn{
+  .caret{
+    padding-left:1rem;
+  }
+}
+
+.X{
+  background-color: $excluded-background;
+  color:$excluded-color;
+}
+.S{
+  background-color: $selected-background;
+  color:$selected-color;
+}
+.O{
+  background-color: $option-background;
+}
+.L{
+  background-color: $locked-background;
+  color:$locked-color;
+}

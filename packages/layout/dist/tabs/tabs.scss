@@ -1,0 +1,41 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.tabs{
+  .tab-list{
+    padding-bottom:0;
+    overflow: hidden;
+    .tab{
+      cursor: pointer;
+      font-size: 1rem;
+      border: 0;
+      :hover{
+        border: 0;
+      }
+      .tab-icon{
+        border-radius: 1rem;
+        color:white;
+        background-color:#555555;
+        height:2rem;
+        width:2rem;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 2rem;
+        text-transform: uppercase;
+        margin: auto;
+      }
+      .active{
+        background-color:$active-tab-color;
+        color:#555555;
+      }
+    }
+    .active{
+      border: 0;
+      color:$active-tab-color;
+    }
+  }
+}
+.tab-indicator{
+  background-color:$active-tab-color;
+}

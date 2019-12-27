@@ -1,0 +1,112 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-multibox{
+  height:100%;
+  //overflow-y: auto;
+  .collapse-header{
+    line-height: 2rem;
+    font-size: 1.2rem;
+    padding:0 0 0 0.2rem;
+  }
+  .selection-indicator{
+    position: absolute;
+    height: 100%;
+    max-height: 3rem;
+    width: 5px;
+    background-color:$side-menu-field-list-selection-indicator-bg;
+    top:0;
+    left:0;
+    padding:0;
+    margin:auto 0;
+  }
+  .collapse-body{
+    //margin-top: -33px;
+    .rqtv-listbox-header{
+      margin: 0 1rem;
+      background-color: $side-menu-field-list-listbox-header-bg;
+      .end-selections-buttons{
+        position: relative;
+      }
+    }
+  }
+}
+.side-menu{
+  .rqtv-multibox{
+    .accordion-list>.list-group-item{
+      padding: 0;
+      border-radius: 0 0 0 0;
+      border-bottom-color:$side-menu-field-list-border-color;
+      background-color: $side-menu-field-list-bg;
+      .collapse-header,.collapse-title, .collapse-icon, .dropdown-toggle>span{
+        color:$side-menu-field-list-color;
+      }
+      .rqtv-listbox-header{
+        margin-right:1.5rem;
+      }
+      .dropdown-toggle{
+        border:0;
+        &:active,&:hover,&:focus{
+          background-color: $side-menu-field-list-listbox-menu-toggle;
+          outline: none;
+          border:0 solid $side-menu-field-list-listbox-menu-toggle;
+          box-shadow: none;
+        }
+      }
+    }
+    .rqtv-listbox-body{
+      background-color: $side-menu-field-list-listbox-bg;
+      border-radius: 0.2rem;
+    }
+    li{
+      .collapse{
+        padding: 0.5rem 0.5rem;
+      }
+      .expanded{
+        background-color:$side-menu-field-list-collapse-expanded-bg;
+      }
+    }
+    .collapse-header{
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+      .icon-animation-container{
+      	position: absolute;
+      	flex-grow: 1;
+      }
+    }
+    .collapse-body{
+      padding:0!important;
+    }
+    .collapse-header,.collapse-title{font-size: 1.1rem;}
+    .rqtv-listbox-header{
+      //overflow-y: hidden;
+      margin-left:0;
+      h4{
+        line-height: 2rem;
+        font-size: 1.1rem;
+	      margin: auto 0;
+        color:$side-menu-field-list-color;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+      .rqtv-listbox-toolbar{
+        height:31px;
+        margin-top:0.1rem;
+        flex: 1 1 94px;
+      }
+    }
+    .search-container{
+      margin:0.1rem;
+    }
+    .rqtv-listbox-body{
+      li{
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-breadcrumb{
+  ol{
+    background-color: $breadcrumb-bg;
+    .breadcrumb-item{
+      color:$breadcrumb-color;
+      cursor:pointer;
+      text-transform: uppercase;
+      &.active{
+        color:$breadcrumb-active-color;
+        cursor:auto;
+      }
+      &:not(.active):hover{
+        text-decoration: underline;
+      }
+    }
+  }
+}

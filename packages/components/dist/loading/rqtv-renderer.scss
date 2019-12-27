@@ -1,0 +1,44 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.spinner-border.rqtv-spinner-color{
+    color:$loading-color
+}
+.rqtv-loading-container{
+    background-color:$loading-bg;
+}
+
+.btn.rqtv-error-refresh{
+  border-radius: 30px ;
+  border:1px solid $gray-500 ;
+  padding: 0.25rem 0.5rem;
+  margin: 0.75rem;
+}
+
+.rqtv-listbox-body,.rqtv-dropdown .dropdown-menu{
+  .rqtv-loading-container{
+    position: absolute;
+    background-color: $scrolling-bg;
+    z-index:100;
+    opacity:0.9;
+  }
+}
+
+.rqtv-app-loading{
+  color:$loading-color;
+  font-size: $loading-font-size;
+  background-color:$loading-bg;
+}
+
+// $button-color: crimson;
+//
+// 	button {
+// 	background-color: $button-color;
+//
+// 	@if (lightness($button-color) < 50) {
+// 	color: white;
+// 	} @else {
+// 	color: black;
+// 	}
+// 	}

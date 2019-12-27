@@ -1,0 +1,28 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.collapse{
+  .collapse-header{
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  .icon-animation-container{
+    //transform-origin: center center;
+    float: right;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .icon-animation{
+    transform-origin: center center;
+  }
+  .collapse-icon{
+    width:$collapse-icon-width;
+    min-width: $collapse-icon-width;
+    text-align: right;
+    transform-origin: center center;
+    height:24px;
+    text-align: center;
+  }
+}
+}

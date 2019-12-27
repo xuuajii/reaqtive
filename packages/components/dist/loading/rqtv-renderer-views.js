@@ -1,0 +1,169 @@
+"use strict";
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.RqtvError = exports.RqtvSpinner = exports.RqtvNoData = void 0;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _index = require("../index");
+
+var _layout = require("@reaqtive/layout");
+
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-renderer-views.js";
+
+const RqtvRendererContainer = props => {
+  const loadingContainer = (0, _react.useRef)();
+  const loadingContainerEl = loadingContainer.current;
+  const loadingContainerHeight = loadingContainerEl && loadingContainerEl.parentNode.offsetHeight;
+  const fixedStyles = props.isFixed ? {
+    position: 'fixed',
+    height: '100%',
+    width: '100%'
+  } : {};
+  const stickyStyles = props.isSticky === true ? {
+    position: 'sticky',
+    top: 0
+  } : {};
+  const height = props.top ? '100%' : loadingContainerHeight;
+  return _react.default.createElement("div", {
+    className: "rqtv-loading-container",
+    style: (0, _objectSpread2.default)({
+      display: 'flex',
+      height: height,
+      width: '100%'
+    }, stickyStyles, fixedStyles),
+    ref: loadingContainer,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 17
+    },
+    __self: void 0
+  }, _react.default.createElement("div", {
+    style: {
+      display: 'flex',
+      justifyContent: 'center',
+      flexGrow: 1,
+      alignItems: 'center',
+      height: '90%'
+    },
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: void 0
+  }, _react.default.cloneElement(props.children, {
+    height: loadingContainerHeight
+  })));
+};
+
+const RqtvSpinner = props => {
+  const color = props.color ? "text-".concat(props.color) : 'rqtv-spinner-color';
+  return _react.default.createElement(RqtvRendererContainer, {
+    isFixed: props.isFixed,
+    isSticky: props.isSticky,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 28
+    },
+    __self: void 0
+  }, _react.default.createElement("div", {
+    className: "spinner-border ".concat(color),
+    role: "status",
+    style: props.style,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: void 0
+  }, _react.default.createElement("span", {
+    className: "sr-only",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 30
+    },
+    __self: void 0
+  }, "Loading...")));
+};
+
+exports.RqtvSpinner = RqtvSpinner;
+
+const RqtvNoData = props => _react.default.createElement(RqtvRendererContainer, {
+  isFixed: props.isFixed,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 37
+  },
+  __self: void 0
+}, _react.default.createElement("div", {
+  className: "rqtv-no-data",
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 38
+  },
+  __self: void 0
+}, _react.default.createElement("span", {
+  className: "lui-icon lui-icon--minus",
+  style: {
+    margin: '0.5rem'
+  },
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 39
+  },
+  __self: void 0
+}), _react.default.createElement("span", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 40
+  },
+  __self: void 0
+}, "No data available")));
+
+exports.RqtvNoData = RqtvNoData;
+
+const RqtvError = props => _react.default.createElement(RqtvRendererContainer, {
+  isFixed: props.isFixed,
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 47
+  },
+  __self: void 0
+}, _react.default.createElement("div", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 48
+  },
+  __self: void 0
+}, _react.default.createElement(_index.RqtvButton, {
+  className: "rqtv-error-refresh",
+  onClick: props.reload,
+  label: _react.default.createElement(_layout.LuiIcon, {
+    iconType: "reload",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 49
+    },
+    __self: void 0
+  }),
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 49
+  },
+  __self: void 0
+}), _react.default.createElement("span", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 50
+  },
+  __self: void 0
+}, "Error Loading Content")));
+
+exports.RqtvError = RqtvError;

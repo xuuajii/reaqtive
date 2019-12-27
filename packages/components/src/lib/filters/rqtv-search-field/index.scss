@@ -1,0 +1,24 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-search-field{
+  .rqtv-search-field-header{
+    display:flex;
+    justify-content:space-between;
+    .search-container{
+      margin:0;
+      padding:0;
+      flex-grow:1;
+    }
+  }
+  li{
+    font-size:1rem;
+  }
+  .dropdown-menu.show{
+    width:100%;
+    ul{
+      width:100%;
+    }
+  }
+}

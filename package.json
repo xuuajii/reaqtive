@@ -1,0 +1,15 @@
+{
+  "name": "reaqtive",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.19.0",
+    "concurrently":"5.0.2"
+  },
+  "scripts": {
+    "watch:q": "npx lerna run watch --scope=\"@reaqtive/q\"",
+    "watch:components": "npx lerna run watch --scope=\"@reaqtive/components\"",
+    "watch:layout": "npx lerna run watch --scope=\"@reaqtive/layout\"",
+    "start": "npx lerna run start --scope=\"@reaqtive/docs\"",
+    "watch-all": "concurrently --kill-others \"npm run watch:q\" \"npm run watch:components\" \"npm run watch:layout\""
+  }
+}

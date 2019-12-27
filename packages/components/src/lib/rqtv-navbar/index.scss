@@ -1,0 +1,75 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-navbar{
+  background-color: $navbar-bg;
+  .navbar-brand-container{
+    font-size: $title-font-size;
+  }
+  .navbar-brand, a:not([href]):not([tabindex]),a:not([href]):not([tabindex]):hover{
+    color: $navbar-color;
+    line-height: 2.8rem;
+    font-size: $title-font-size;
+    img{
+      margin-right:0.2rem;
+    }
+  }
+
+  .hamburger-menu{
+    float: left;
+    svg{
+      fill:$navbar-color;
+    }
+  }
+  .rqtv-search-toggler{
+    color:$navbar-color;
+    border-radius: $title-font-size;
+    padding:0.375rem 0.8rem;
+    &:hover{
+      color:$navbar-btn-color-hover;
+      background-color:$navbar-btn-bg-hover;
+    }
+    .lui-icon--search{
+      font-size:$title-font-size - 0.2;
+    }
+  }
+  .rqtv-search-animated-container{
+    position:fixed;
+    width:100%;
+    left:0;
+    top:0;
+    line-height: 2.8rem;
+    margin:1rem 0;
+    &.show{
+      height:100%;
+    }
+    .backdrop-search{
+      position:absolute;
+      top:49px;
+      left:0;
+      height:100%;
+      width:100%;
+      background-color: $navbar-search-backdrop-bg;
+    }
+    .rqtv-search-input-group{
+      padding-left: 0.3rem;
+      padding-right: 0.5rem;
+      .hide-search{
+        top:0.7rem;
+        right:1rem;
+      }
+    }
+    input{
+      height:2.75rem;
+    }
+  }
+  .dropdown-menu{
+    &.search-results-container{
+      position: fixed;
+      top:60px;
+      left:0;
+      max-height:100%;
+    }
+  }
+}

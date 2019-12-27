@@ -1,0 +1,35 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-dropdown{
+  .dropdown-menu{
+    ul{
+      position: relative;
+    }
+  }
+  .dropdown-toolbar{
+    display: flex;
+    justify-content: space-between;
+    padding:0 1rem 1rem 1rem;
+      input{
+        height: 100%;
+        border:1px solid #DDDDDD;
+      }
+      textarea:hover, input:hover, textarea:active, input:active, textarea:focus, input:focus {
+      outline: 0px !important;
+      -webkit-appearance:none;
+      box-shadow: none !important;
+      border:1px solid #DDDDDD;
+    }
+    .rqtv-search-container{
+      flex-grow: 1;
+    }
+    .end-selections-buttons{
+      flex-grow: 0.5;
+    }
+    .btn{
+      margin: 0px;
+    }
+  }
+}

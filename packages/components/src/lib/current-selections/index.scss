@@ -1,0 +1,174 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.rqtv-current-selections{
+  .rqtv-listbox-header{
+    .btn,.btn-group>.btn:nth-child(n){
+      padding:$cs-selection-item-btn-padding;
+    }
+  }
+  .selection-item-toolbar,.rqtv-listbox-header{
+    .btn,.btn-group>.btn:nth-child(n){
+      border-radius: $cs-selection-item-btn-radius;
+      color:$cs-selection-item-color;
+      border-top-left-radius: $cs-selection-item-btn-radius;
+      border-top-right-radius: $cs-selection-item-btn-radius;
+      border-bottom-left-radius: $cs-selection-item-btn-radius;
+      border-bottom-right-radius: $cs-selection-item-btn-radius;
+      max-height:$cs-selection-item-btn-size;
+      &:not(first-child){
+        margin-left: 0.2rem;
+      }
+      &:hover,&:active{
+        color:$cs-selection-item-btn-color-hover;
+        background-color:$cs-selection-item-btn-bg-hover;
+      }
+    }
+  }
+  .list-group-item{
+    padding-right: 0;
+    border:0;
+    border-top:1px solid #DEE2E6;
+    font-size:0.75rem;
+    &:first-child{
+      border-top: 0px;
+    }
+  }
+  .selection-item-toolbar{
+    display: flex;
+    justify-content: flex-end;
+    button{
+      border: 0;
+      border-radius: 0;
+      box-shadow: none !important;
+    }
+  }
+  .modal-body{
+    min-height: 350px;
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x:hidden;
+    .btn{
+      border-radius: $cs-selection-item-btn-radius;
+      .list-group-item{
+        padding:$cs-selection-item-btn-padding-v $cs-selection-item-btn-padding-h;
+      }
+    }
+    .badge{
+      font-size:1rem;
+      margin-bottom: 0.3rem;
+    }
+    .current-selections-listbox{
+      .btn.back{
+        color:$cs-listbox-back-btn-color;
+        padding:$cs-selection-item-btn-padding-v;
+      }
+      .rqtv-listbox{
+        height:100%;
+      }
+    }
+    //min-height:400px;
+    .value{
+      font-size: 0.9rem;
+    }
+    .current-selections-animation{
+      flex-grow: 1;
+    }
+  }
+  .modal-footer{
+     justify-content: center;
+    .rqtv-current-selections-toolbar{
+      flex-grow: 0.5;
+      display: flex;
+      justify-content: space-around;
+      .btn{
+        border-radius: 3px;
+        text-transform: capitalize;
+        background-color: $cs-box-footer-btn-bg;
+      }
+      .lui-icon{
+        margin:0 0.5rem;
+      }
+    }
+  }
+}
+
+.rqtv-current-selections-toolbar{
+  .btn{
+    @media screen and (min-width: $break-point-md) {
+      padding-right:1.1rem;
+    }
+    .badge{
+      font-size: 0.9rem;
+      color:$cs-toolbar-badge-color;
+      background-color: $cs-toolbar-badge-bg;
+      padding:0.3rem 0.5rem;
+      border-radius: 10px;
+      margin:0;
+      position: absolute;
+      top: -1px;
+      right: -5px;
+      @media screen and (min-width: $break-point-md) {
+      	margin: 0 0.5rem;
+      	top: 1px;
+      	right: -7px;
+      	padding: 0.31em 0.4em;
+      	font-size: 0.8rem;
+      	line-height: 0.8rem;
+      	min-width: 18px;
+        z-index: 2;
+      }
+    }
+  }
+  .btn-group{
+    margin:0 0.375rem;
+  }
+  .btn{
+    border-radius: 32px;
+    line-height: 2;
+    //padding:0.5rem;
+    background-color: $cs-toolbar-btn-bg-hover;
+    @media screen and (min-width: $break-point-md) {
+      &:active,&:focus,&:hover{
+        background-color: $cs-toolbar-btn-bg-hover;
+        //-webkit-appearance: none !important;
+      }
+      background-color: $cs-toolbar-btn-bg;
+    }
+  }
+}
+.rqtv-navbar{
+  .rqtv-loading-container{
+    opacity:0;
+  }
+  .rqtv-current-selections{
+    margin:auto;
+  }
+  .rqtv-current-selections-toolbar:not(.in-modal){
+    @media screen and (max-width: $break-point-md) {
+      .btn{
+        background-color: $cs-toolbar-btn-bg-in-navbar;
+      }
+    }
+    @media screen and (max-width: $break-point-md) {
+      .btn{
+        position: fixed;
+        bottom:5%;
+        right:5%;
+        font-size: 1.5rem;
+        padding:0.5rem 0.75rem;
+        box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2),0px 6px 10px 0px rgba(0,0,0,0.14),0px 1px 18px 0px rgba(0,0,0,0.12);
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        }
+    }
+  }
+  .rqtv-current-selections-toolbar{
+    .btn{
+      color: $cs-toolbar-btn-color-in-navbar;
+      &:hover,&:active,&:focus{
+        background-color: $cs-toolbar-btn-bg-in-navbar-hover;
+      }
+    }
+  }
+}
