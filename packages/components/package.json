@@ -1,7 +1,7 @@
 {
 	"name": "@reaqtive/components",
-	"version": "0.0.0-test-prerelease",
-	"description": "reaqtive components connected to qlik engine and capability APIs\u001b[D\u001b[D\u001b[D\u001b[D\u001b[ies API",
+	"version": "0.0.0",
+	"description": "reaqtive components connected to qlik engine and capability APIs",
 	"keywords": [
 		"reaqtive",
 		"qlik",
@@ -28,8 +28,6 @@
 		"watch": "watch \"npm run transpile\" src"
 	},
 	"peerDependencies": {
-		"@reaqtive/layout": "^0.0.0",
-		"@reaqtive/q": "^0.0.0",
 		"react": "^16.12.0",
 		"react-dom": "^16.12.0"
 	},
@@ -81,7 +79,9 @@
 		"node-sass": "^4.13.0",
 		"react-router-dom": "^5.1.2",
 		"react-spring": "^8.0.27",
-		"use-debounce": "^3.3.0"
+		"use-debounce": "^3.3.0",
+		"@reaqtive/layout": "^0.0.0",
+		"@reaqtive/q": "^0.0.0"
 	},
 	"gitHead": "c42de11aba0bf03cc5002be6dc2b73327e56a497"
 }
