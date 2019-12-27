@@ -35,9 +35,9 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
+    "@reaqtive/layout": "0.0.0",
     "enigma.js": "^2.4.0",
-    "lodash": "4.17.15",
-    "@reaqtive/layout": "^0.0.0"
+    "lodash": "4.17.15"
   },
   "babel": {
     "presets": [
