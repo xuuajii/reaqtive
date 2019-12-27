@@ -12,6 +12,7 @@
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
   "homepage": "",
   "license": "MIT",
+	"private": true,
   "main": "src/index.js",
   "directories": {
     "lib": "src",
@@ -46,7 +47,7 @@
     "react-dom": "^16.12.0",
     "react-scripts": "^3.3.0",
     "bootstrap": "^4.4.1",
-    "node-sass": "^4.13.0",    
+    "node-sass": "^4.13.0",
     "enigma.js": "^2.4.0",
     "react-spring": "^8.0.27",
     "react-syntax-highlighter": "^12.2.1",

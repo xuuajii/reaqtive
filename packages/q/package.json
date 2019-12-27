@@ -7,7 +7,7 @@
     "react",
     "mashup"
   ],
-  "private":true,
+  "private":false,
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
   "homepage": "",
   "license": "MIT",

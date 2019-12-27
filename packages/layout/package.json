@@ -11,7 +11,7 @@
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
   "homepage": "",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "files": [
     "/dist/*"
   ],
