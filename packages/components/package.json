@@ -1,6 +1,6 @@
 {
 	"name": "@reaqtive/components",
-	"version": "0.0.0",
+	"version": "0.0.0-patch",
 	"description": "reaqtive components connected to qlik engine and capability APIs",
 	"keywords": [
 		"reaqtive",
@@ -74,8 +74,8 @@
 		"watch": "^1.0.2"
 	},
 	"dependencies": {
-		"@reaqtive/layout": "^0.0.0",
-		"@reaqtive/q": "0.0.0",
+		"@reaqtive/layout": "^0.0.0-patch",
+		"@reaqtive/q": "^0.0.0-patch",
 		"bootstrap": "^4.4.1",
 		"lodash": "4.17.15",
 		"node-sass": "^4.13.0",

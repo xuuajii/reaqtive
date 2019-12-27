@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/q",
-  "version": "0.0.0",
+  "version": "0.0.0-patch",
   "description": "interfaces vs qlik with no layout components",
   "keywords": [
     "qlik",
@@ -35,7 +35,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@reaqtive/layout": "0.0.0",
+    "@reaqtive/layout": "^0.0.0-patch",
     "enigma.js": "^2.4.0",
     "lodash": "4.17.15"
   },

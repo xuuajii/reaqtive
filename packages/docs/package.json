@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/docs",
-  "version": "0.0.0",
+  "version": "0.0.0-patch",
   "description": "docs and demo",
   "keywords": [
     "reaqtive",
@@ -43,9 +43,9 @@
     ]
   },
   "dependencies": {
-    "@reaqtive/components": "^0.0.0",
-    "@reaqtive/layout": "^0.0.0",
-    "@reaqtive/q": "^0.0.0",
+    "@reaqtive/components": "^0.0.0-patch",
+    "@reaqtive/layout": "^0.0.0-patch",
+    "@reaqtive/q": "^0.0.0-patch",
     "bootstrap": "^4.4.1",
     "enigma.js": "^2.4.0",
     "node-sass": "^4.13.0",
