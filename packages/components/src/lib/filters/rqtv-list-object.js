@@ -105,10 +105,10 @@ const RqtvListObject = props => {
     endSelections : (qAccept, callback) => {
 			//console.log(callback)
 			const isQAccepting=qAccept==='1'||qAccept===true?true:false
+      setIsSelecting(false)
       qObject.endSelections(isQAccepting)
       .then(qRes=>{
         //console.log(1)
-        setIsSelecting(false)
         callback&&callback();
       })
       .catch(qErr=>callback(qErr))

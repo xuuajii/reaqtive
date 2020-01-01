@@ -34,11 +34,13 @@ const Layout = forwardRef((props, ref) => {
     const callback = qAccept==='1'?()=>bodyEl.current.scrollTop=0:()=>true;
     rqtvListObject.endSelections(qAccept, callback)
   }
+
+  const title = qLayout?!(rqtvListObject.isSelecting)?qLayout.label:qLayout.qListObject.qDimensionInfo.qFallbackTitle:'';
   return(
     <div className="rqtv-listbox" ref={listboxEl} style={{minHeight:props.height, height:props.height, maxHeight:props.height}}>
       {props.showHeader&&
         <Header
-          title = {qLayout&&qLayout.label}
+          title = {title}
           endSelections={endSelections}
           clearSelections={rqtvListObject.clearSelections}
           selectExcluded={rqtvListObject.selectExcluded}

@@ -58,6 +58,7 @@ const Layout = (0, _react.forwardRef)((props, ref) => {
     rqtvListObject.endSelections(qAccept, callback);
   };
 
+  const title = qLayout ? !rqtvListObject.isSelecting ? qLayout.label : qLayout.qListObject.qDimensionInfo.qFallbackTitle : '';
   return _react.default.createElement("div", {
     className: "rqtv-listbox",
     ref: listboxEl,
@@ -68,11 +69,11 @@ const Layout = (0, _react.forwardRef)((props, ref) => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 40
     },
     __self: void 0
   }, props.showHeader && _react.default.createElement(_header.default, {
-    title: qLayout && qLayout.label,
+    title: title,
     endSelections: endSelections,
     clearSelections: rqtvListObject.clearSelections,
     selectExcluded: rqtvListObject.selectExcluded,
@@ -87,14 +88,14 @@ const Layout = (0, _react.forwardRef)((props, ref) => {
     headerEl: headerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 42
     },
     __self: void 0
   }), _react.default.createElement("div", {
     ref: searchEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 58
     },
     __self: void 0
   }, (showSearch || props.alwaysShowSearch) && _react.default.createElement(_search.default, {
@@ -108,13 +109,13 @@ const Layout = (0, _react.forwardRef)((props, ref) => {
     focus: props.focus,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 60
     },
     __self: void 0
   })), _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 70
     },
     __self: void 0
   }), _react.default.createElement(_body.default, {
@@ -131,7 +132,7 @@ const Layout = (0, _react.forwardRef)((props, ref) => {
     itemStyle: props.itemStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 71
     },
     __self: void 0
   })));

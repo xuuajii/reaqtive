@@ -24,7 +24,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"transpile": "rm -rf dist&&SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
+		"transpile": "SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
 		"watch": "watch \"npm run transpile\" src"
 	},
 	"peerDependencies": {
