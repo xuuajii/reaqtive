@@ -65,6 +65,18 @@ Object.defineProperty(exports, "useTriggers", {
     return _useTriggers.default;
   }
 });
+Object.defineProperty(exports, "useQObjectReducer", {
+  enumerable: true,
+  get: function () {
+    return _useQObjectReducer.default;
+  }
+});
+Object.defineProperty(exports, "useQLayoutReducer", {
+  enumerable: true,
+  get: function () {
+    return _useQLayoutReducer.default;
+  }
+});
 
 var _useQObjectHandler = _interopRequireDefault(require("./use-q-object-handler"));
 
@@ -85,3 +97,7 @@ var _useListObjectNxProperties = _interopRequireDefault(require("./use-list-obje
 var _useEnhancedFieldList = _interopRequireDefault(require("./use-enhanced-field-list"));
 
 var _useTriggers = _interopRequireDefault(require("./use-triggers"));
+
+var _useQObjectReducer = _interopRequireDefault(require("./use-q-object-reducer"));
+
+var _useQLayoutReducer = _interopRequireDefault(require("./use-q-layout-reducer"));
