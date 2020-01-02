@@ -16,7 +16,9 @@ var _react = require("react");
 var _layout = require("@reaqtive/layout");
 
 var _helpers = require("../helpers/helpers");
-
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
 const getLayout = async qObject => {
   try {
     const qLayout = await qObject.getLayout();
