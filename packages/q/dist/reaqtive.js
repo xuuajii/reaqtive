@@ -15,7 +15,7 @@ var _index = require("./index");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
 
 const Reaqtive = props => {
   const qConfig = props.qConfig,

@@ -16,6 +16,7 @@ var _react = require("react");
 var _layout = require("@reaqtive/layout");
 
 var _helpers = require("../helpers/helpers");
+
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //

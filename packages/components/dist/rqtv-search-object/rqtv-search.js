@@ -19,17 +19,17 @@ var _reactSpring = require("react-spring");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _layout = _interopRequireDefault(require("@reaqtive/layout"));
+var _layout = require("@reaqtive/layout");
 
 var _searchResults = _interopRequireDefault(require("./search-results"));
 
 var _useDebounce3 = require("use-debounce");
 
-var _q = _interopRequireDefault(require("@reaqtive/q"));
+var _q = require("@reaqtive/q");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\rqtv-search.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\rqtv-search.js";
 
 const AnimatedInput = props => {
   const expandFrom = props.expandFrom,
@@ -62,7 +62,7 @@ const AnimatedInput = props => {
       lineNumber: 34
     },
     __self: void 0
-  }, _react.default.createElement(_layout.default, Object.assign({}, props, {
+  }, _react.default.createElement(_layout.SearchInput, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 35
@@ -87,11 +87,11 @@ const RqtvSearch = props => {
         searchOffset = _useState6[0],
         setSearchOffset = _useState6[1];
 
-  const qSearchResultsHandler = (0, _q.default)(props.searchFields, searchString, searchOffset, 10);
+  const qSearchResultsHandler = (0, _q.useQGlobalSearch)(props.searchFields, searchString, searchOffset, 10);
   const qSearchResults = qSearchResultsHandler.qSearchResults; //console.log(qSearchResults)
 
   const searchResultsEl = (0, _react.useRef)();
-  (0, _layout.default)(searchResultsEl, () => clearSearch(), showResults);
+  (0, _layout.useOutsideEventListener)(searchResultsEl, () => clearSearch(), showResults);
 
   const _useState7 = (0, _react.useState)({
     top: 0,
@@ -118,7 +118,7 @@ const RqtvSearch = props => {
     setSearchOffset(qDisplayArea.qTop); //searchResultsEl.current.scrollTop=debouncedScrollPosition.top;
   };
 
-  const scrollHandler = (0, _q.default)(debouncedScrollPosition, {
+  const scrollHandler = (0, _q.useScrollHandler)(debouncedScrollPosition, {
     qTop: searchOffset,
     qLeft: 0,
     qHeight: 10,
