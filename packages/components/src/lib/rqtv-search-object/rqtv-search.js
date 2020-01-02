@@ -5,12 +5,12 @@
 import React, {useState, useRef, useEffect} from 'react'
 import {useSpring, animated} from 'react-spring'
 import PropTypes from 'prop-types'
-import SeachInput from '@reaqtive/layout'
+import {SearchInput} from '@reaqtive/layout'
 import SearchResults from './search-results'
-import useOutsideEventListener from '@reaqtive/layout'
+import {useOutsideEventListener} from '@reaqtive/layout'
 import { useDebounce } from 'use-debounce';
-import useQGlobalSearch from '@reaqtive/q'
-import useScrollHandler from '@reaqtive/q'
+import {useQGlobalSearch} from '@reaqtive/q'
+import {useScrollHandler} from '@reaqtive/q'
 import {RqtvRenderer} from '../index'
 
 const AnimatedInput = props => {
@@ -32,7 +32,7 @@ const AnimatedInput = props => {
   //console.log(focus)
   return (
     <animated.div style={{...wrapperStyles, ...animatedProps}}>
-      <SeachInput
+      <SearchInput
         {...props}
       />
     </animated.div>
