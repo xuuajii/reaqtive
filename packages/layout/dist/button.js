@@ -11,7 +11,7 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/
 
 var _react = _interopRequireDefault(require("react"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\button.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\button.js";
 
 const Button = props => {
   const className = "btn ".concat(props.className ? props.className : 'btn-default', " ").concat(props.ripple ? 'ripple' : ''); //const [className, setClassName] = useState(classNameInitial)

@@ -13,8 +13,6 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/
 
 var _react = require("react");
 
-var _layout = require("@reaqtive/layout");
-
 var _helpers = require("../helpers/helpers");
 
 //
@@ -67,7 +65,7 @@ const qLayoutReducer = (state, action) => {
   }
 };
 
-const useQLayoutReducer = qObjectHandler => {
+const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   const _useReducer = (0, _react.useReducer)(qLayoutReducer, initialState),
         _useReducer2 = (0, _slicedToArray2.default)(_useReducer, 2),
         qPromiseHandler = _useReducer2[0],
@@ -81,11 +79,10 @@ const useQLayoutReducer = qObjectHandler => {
         onUpdate = _useState2[0],
         setOnUpdate = _useState2[1];
 
-  const qObjectHandlerMemo = (0, _layout.useDeepCompareMemo)(qObjectHandler);
-  const qObject = qObjectHandlerMemo.qObject,
-        shouldUpdate = qObjectHandlerMemo.shouldUpdate,
-        setShouldUpdate = qObjectHandlerMemo.setShouldUpdate,
-        isSelecting = qObjectHandlerMemo.isSelecting; //console.log({qObject, shouldUpdate, isSelecting})
+  const qObject = qObjectHandler.qObject,
+        shouldUpdate = qObjectHandler.shouldUpdate,
+        setShouldUpdate = qObjectHandler.setShouldUpdate;
+  const isSelecting = qSelectionHandler.isSelecting; // console.log({qObject, shouldUpdate, isSelecting})
 
   (0, _react.useEffect)(() => {
     const runEffect = async qObject => {
@@ -99,7 +96,7 @@ const useQLayoutReducer = qObjectHandler => {
       });
     };
 
-    if (qLoading === true || qObject !== null) {
+    if (qLoading === true && qObject !== null) {
       qObject && runEffect(qObject);
     }
   }, [qLoading, qObject]);
@@ -116,10 +113,10 @@ const useQLayoutReducer = qObjectHandler => {
     };
 
     if (qObject !== null && isSelecting === true && typeof onUpdate.fn === 'function') {
-      console.log('custom update');
+      //console.log('custom update');
       onUpdate.fn();
     } else {
-      console.log('standard update');
+      //console.log('standard update');
       qObject !== null && standardUpdate();
     }
   }, [qObject, onUpdate, isSelecting]);

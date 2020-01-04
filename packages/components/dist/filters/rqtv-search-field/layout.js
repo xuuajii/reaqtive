@@ -25,7 +25,7 @@ var _index = require("../../loading/index");
 
 var _index2 = require("../helpers/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\layout.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\layout.js";
 
 const Layout = props => {
   const rqtvListObject = props.rqtvListObject;

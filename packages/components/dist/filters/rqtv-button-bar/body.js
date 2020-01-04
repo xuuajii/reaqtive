@@ -15,7 +15,7 @@ var _q = require("@reaqtive/q");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\body.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\body.js";
 
 const Body = props => {
   const qArea = props.data && (0, _objectSpread2.default)({}, props.data.qArea, {
