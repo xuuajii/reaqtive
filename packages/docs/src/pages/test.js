@@ -1,5 +1,5 @@
-import React, {useEffect, useCallback, useRef} from 'react'
-import {useQObjectReducer, useQLayoutReducer} from '@reaqtive/q'
+import React, {useState, useEffect, useCallback, useRef} from 'react'
+import {useQObjectReducer, useQLayoutReducer, QGenericObject} from '@reaqtive/q'
 import {useOutsideEventListener} from '@reaqtive/layout'
 
 const qObjectDef = {
@@ -22,17 +22,55 @@ const qObjectDef = {
 }
 
 const Test = props =>{
-  const qObjectHandler = useQObjectReducer(qObjectDef)
-  const qLayoutHandler = useQLayoutReducer(qObjectHandler)
-  const qLayout = qLayoutHandler.qLayout
+  const [mounted, setMounted] = useState(true)
+  return(
+    <div>
+      <div>Test</div>
+      {
+        mounted
+        ?<Listbox unMount={()=>setMounted(false)} mount={()=>setMounted(true)} mounted={mounted}/>
+        :<button className="btn btn-primary" onClick={()=>setMounted(true)}>MOUNT</button>
+      }
+    </div>
+  )
+}
+
+const QListObject = props => {
+  const {qObject} = props.qObjectHandler
+  const {handleSelections} = props.qSelectionHandler
+
+  const qListObject={
+    selectValue: (value) => {
+      handleSelections(() => {
+        //console.log('select')
+        qObject.selectListObjectValues('/qListObjectDef',[value], true)
+      } )
+    }
+  }
+  return React.cloneElement(props.children, {...props, qListObject})
+}
+
+const Listbox = props =>{
+  return(
+    <QGenericObject qObjectDef={qObjectDef}>
+      <QListObject>
+        <Layout {...props}/>
+      </QListObject>
+    </QGenericObject>
+  )
+}
+
+const Layout = props => {
+  const qLayout = props.qLayoutHandler&&props.qLayoutHandler.qLayout
   const qMatrix = qLayout&&qLayout.qListObject.qDataPages[0].qMatrix
   const qArea = qLayout&&qLayout.qListObject.qDataPages[0].qArea
   // console.log(qLayout,qMatrix)
-  const {qObject, isSelecting, beginSelections, endSelections} = qObjectHandler
-  const {setOnUpdate, applyQLayoutPatch} = qLayoutHandler
+  const {qObject} = props.qObjectHandler
+  const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
+  const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
   const listboxEl=useRef();
 
-  useOutsideEventListener(listboxEl, ()=>endSelections(1,()=>console.log('demo')), isSelecting)
+  useOutsideEventListener(listboxEl, ()=>endSelections(0), isSelecting)
 
   const getDataPage = useCallback((qDisplayArea) => {
     qObject&&qObject.getListObjectData('/qListObjectDef',[qDisplayArea])
@@ -55,27 +93,58 @@ const Test = props =>{
   }
 
   const select = (value) => {
-    if(isSelecting){
-      qObject.selectListObjectValues('/qListObjectDef',[value], true)
-    } else {
-      beginSelections(() => qObject.selectListObjectValues('/qListObjectDef',[value], true))
-    }
+    //console.log('click')
+    props.qListObject.selectValue(value)
+    // if(isSelecting){
+    //   qObject.selectListObjectValues('/qListObjectDef',[value], true)
+    // } else {
+    //   beginSelections(() => qObject.selectListObjectValues('/qListObjectDef',[value], true))
+    // }
+  }
+
+  const accept = () => {
+    endSelections(1)
+    props.unMount()
+  }
+
+  const reject = () => {
+    endSelections(0)
+    props.unMount()
+  }
+
+  const toggle = () => {
+    props.mounted?props.unMount():props.moount()
   }
 
   return(
-    <div>
-      <div>Test</div>
+    <>
       <div ref={listboxEl} className="container-fluid" style={{maxHeight:200, height:200, overflowY:'auto'}}>
-        {qLayoutHandler.qLoading===false&&qLayoutHandler.qError===false&&qMatrix&&
+        <div style={{display:'flex', justifyContent:"space-between"}}>
+          <h5>Customer</h5>
+          <div>
+            {isSelecting&&
+              <>
+                <button className="btn btn-success" onClick={accept}>ACCEPT</button>
+                <button className="btn btn-danger" onClick={reject}>REJECT</button>
+              </>
+            }
+            <button className="btn btn-primary" onClick={toggle}>{props.mounted?'UNMOUNT':'MOUNT'}</button>
+          </div>
+        </div>
+        <div>
+        {props.qLayoutHandler.qLoading===false&&props.qLayoutHandler.qError===false&&qMatrix&&
           <ul className="list-group">
             {qMatrix.map((item, index)=>{
               return <li className={`list-group-item ${item[0].qState}`} key={item[0].qElemNumber} onClick={()=>select(item[0].qElemNumber)}>{item[0].qText}</li>
             })}
           </ul>
         }
+        </div>
       </div>
-    <button className="btn btn-primary" onClick={askDataPage}>New Data Page</button>
-    </div>
+      <div className="btn-group">
+        <button className="btn btn-primary" onClick={askDataPage}>New Data Page</button>
+      </div>
+    </>
   )
 }
 

@@ -3,7 +3,6 @@
 //
 
 import {useState, useEffect, useReducer, useCallback} from 'react'
-import {useDeepCompareMemo} from '@reaqtive/layout'
 import {getPatchedObject} from '../helpers/helpers'
 
 const getLayout = async(qObject) => {
@@ -41,21 +40,22 @@ const qLayoutReducer = (state, action) => {
   }
 }
 
-const useQLayoutReducer = (qObjectHandler) => {
+const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const [qPromiseHandler, dispatch] = useReducer(qLayoutReducer, initialState);
   const {qLoading, qLayout} = qPromiseHandler
   const [onUpdate, setOnUpdate]=useState(null)
-  const qObjectHandlerMemo = useDeepCompareMemo(qObjectHandler)
-  const {qObject, shouldUpdate, setShouldUpdate, isSelecting} = qObjectHandlerMemo
-  //console.log({qObject, shouldUpdate, isSelecting})
+
+  const {qObject, shouldUpdate, setShouldUpdate, } = qObjectHandler
+  const { isSelecting } = qSelectionHandler
+  // console.log({qObject, shouldUpdate, isSelecting})
 
   useEffect(()=>{
     const runEffect = async (qObject) => {
       const result = await getLayout(qObject)
       return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qPromiseResult:result})
     }
-    if(qLoading===true || qObject!==null){
+    if(qLoading===true && qObject!==null){
       qObject&&runEffect(qObject)
     }
   }, [qLoading, qObject])
@@ -67,10 +67,10 @@ const useQLayoutReducer = (qObjectHandler) => {
     }
 
     if(qObject!==null && isSelecting===true && (typeof onUpdate.fn ==='function')){
-      console.log('custom update');
+      //console.log('custom update');
       onUpdate.fn()
     } else {
-      console.log('standard update');
+      //console.log('standard update');
       (qObject!==null)&&standardUpdate()
     }
   },[qObject, onUpdate, isSelecting])

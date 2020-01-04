@@ -16,25 +16,6 @@ const getQObject = async(qDoc, qObjectDef) => {
   }
 }
 
-const qBeginSelections = async (qObject) => {
-  try{
-    const result = qObject.beginSelections(['/qListObjectDef'])
-    return result
-  } catch(err){
-    return err
-  }
-}
-
-const qEndSelections = async (qObject, qAccept) => {
-  try{
-    const isQAccepting=qAccept==='1'||qAccept===1||qAccept===true?true:false
-    const result = qObject.endSelections(isQAccepting)
-    return result
-  } catch(err){
-    return err
-  }
-}
-
 const initialState = {
   qObject:null,
   qError:false,
@@ -78,6 +59,7 @@ const useQObjectReducer = (qObjectDef) => {
     if(qLoading){
       runEffect()
     }
+    return ()=> qDoc&&qDoc.abortModal(false)
   }, [qObjectDefMemo, qDoc, errorCounter, qLoading])
 
   useEffect(()=>{
@@ -87,28 +69,12 @@ const useQObjectReducer = (qObjectDef) => {
     return () => qObject&&qObject.removeAllListeners()
   },[qLoading, qObject])
 
-  const beginSelections = (callback) => {
-    setIsSelecting(true)
-    const result = qBeginSelections(qObject)
-    result instanceof Error?setIsSelecting(false):callback()
-  }
-
-  const endSelections = (qAccept, callback) => {
-    const result = qEndSelections(qObject, qAccept)
-    if(!(result instanceof Error)){
-      setIsSelecting(false);
-      (typeof callback==='function')&&callback();
-    }
-  }
 
   return {
       ...qPromiseHandler,
       reloadObject:()=>dispatch({type:'reloadObject'}),
       shouldUpdate,
-      setShouldUpdate,
-      isSelecting,
-      beginSelections,
-      endSelections
+      setShouldUpdate
     }
 }
 
