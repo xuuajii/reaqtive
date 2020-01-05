@@ -30,6 +30,8 @@ export * from './modal/index'
 
 export * from './navbar/index'
 
+export * from './list-group/index'
+
 export * from './side-menu/index'
 
 export * from './tabs/index';
