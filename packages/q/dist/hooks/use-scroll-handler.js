@@ -29,14 +29,16 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
   const bufferSize = buffer * currentDisplayArea.qHeight;
   const visibleStart = Math.floor(scrollPosition.top / listItemHeight); //const visibleEnd = Math.min((visibleStart + numOfViewportItems) - 1, size.qcy);
   //const newQTop = Math.floor(Math.max(0, Math.min(visibleStart - bufferSize, listItemsCount - currentDisplayArea.qHeight)));
+  //console.log(scrollPosition, currentDisplayArea, size, visibleListHeight, listItemHeight, 0.2, getScrollData)
 
   const newQTop = Math.min(Math.max(Math.ceil(scrollPosition.top / listItemHeight) - bufferSize, 0), size.qcy - currentDisplayArea.qHeight);
-  const topHeight = Math.max(0, newQTop * listItemHeight);
+  const topHeight = Math.max(0, newQTop * listItemHeight); //console.log(topHeight)
+
   const bottomHeight = newQTop >= lastQTop ? 0 : Math.max(0, listHeight - (topHeight + displayAreaHeight)); //const fillers={top:topHeight, bottom:bottomHeight}
 
   const newDisplayArea = (0, _objectSpread2.default)({}, currentDisplayArea, {
     qHeight: currentDisplayArea.qHeight === 0 ? 30 : currentDisplayArea.qHeight,
-    qTop: newQTop
+    qTop: isNaN(newQTop) ? 0 : newQTop
   });
 
   const _useState3 = (0, _react.useState)(currentDisplayArea),
@@ -59,8 +61,7 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
     const fetchMore = newDisplayArea.qTop + bufferSize > currentDisplayArea.qTop + 2 * bufferSize || newDisplayArea.qTop >= size.qcy - currentDisplayArea.qHeight && newDisplayArea.qTop !== currentDisplayArea.qTop;
     const fetchLess = newDisplayArea.qTop < currentDisplayArea.qTop - bufferSize || newDisplayArea.qTop === 0 && currentDisplayArea.qTop !== 0; // console.log(fetchLess)
 
-    if (fetchMore || fetchLess || size.qcy !== memoizedSize.qcy || size.qcx !== memoizedSize.qcx) {
-      //console.log(memoizedSize, size)
+    if (fetchMore || fetchLess || size.qcy !== memoizedSize.qcy || size.qcx !== memoizedSize.qcx || isNaN(fillers.top)) {
       setFillers({
         top: topHeight,
         bottom: bottomHeight,
@@ -71,7 +72,7 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
       getScrollData(newDisplayArea);
       setMemoizedSize(size);
     }
-  }, [scrollPosition, size]);
+  }, [scrollPosition, size, topHeight]);
   return {
     qDisplayArea,
     fillers
