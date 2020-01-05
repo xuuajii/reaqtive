@@ -33,7 +33,7 @@ const qEndSelections = async (qObject, qAccept) => {
   }
 };
 
-const useQSelectionHandler = (qObject, quickSelectionMode = false) => {
+const useQSelectionHandler = qObject => {
   const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         isSelecting = _useState2[0],
@@ -43,11 +43,11 @@ const useQSelectionHandler = (qObject, quickSelectionMode = false) => {
     const fn = async () => {
       try {
         const result = await qBeginSelections(qObject); //console.log('res',result)
-
-        callback();
       } catch (err) {
         console.log(err);
         setIsSelecting(false);
+      } finally {
+        callback();
       }
     }; //console.log('begin')
     //console.log(qObject)
@@ -65,14 +65,14 @@ const useQSelectionHandler = (qObject, quickSelectionMode = false) => {
       typeof callback === 'function' && callback();
     }
   }, [qObject]);
-  const handleSelections = (0, _react.useCallback)(callback => {
+  const handleSelections = (0, _react.useCallback)((callback, quickSelectionMode = false) => {
     if (quickSelectionMode === false && isSelecting === false) {
       beginSelections(callback);
     } else {
       //console.log('else')
       callback();
     }
-  }, [quickSelectionMode, isSelecting, qObject]);
+  }, [isSelecting, qObject]);
   return {
     isSelecting,
     handleSelections,

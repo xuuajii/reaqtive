@@ -19,14 +19,23 @@ var _index = require("../index");
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 const QGenericObject = props => {
-  const qObjectHandler = (0, _index.useQObjectReducer)(props.qObjectDef);
-  const qSelectionHandler = (0, _index.useQSelectionHandler)(qObjectHandler.qObject, false);
+  const qObjectDef = props.qObjectDef,
+        quickSelectionMode = props.quickSelectionMode;
+  const qObjectHandler = (0, _index.useQObjectReducer)(qObjectDef);
+  const qSelectionHandler = (0, _index.useQSelectionHandler)(qObjectHandler.qObject);
   const qLayoutHandler = (0, _index.useQLayoutReducer)(qObjectHandler, qSelectionHandler);
+  const moreThanOneChild = Array.isArray(props.children);
+
+  if (moreThanOneChild) {
+    throw "QGenericObject must have  only one child, wrap the content inside a React element";
+  }
+
   return _react.default.cloneElement(props.children, {
     qObjectHandler,
     qLayoutHandler,
     qSelectionHandler,
-    qObjectDef: props.qObjectDef
+    qObjectDef,
+    quickSelectionMode
   });
 };
 
