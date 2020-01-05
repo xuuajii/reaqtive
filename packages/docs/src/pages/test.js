@@ -3,8 +3,10 @@
 //
 import React, {useState, useEffect, useCallback, useRef, useMemo} from 'react'
 import {useQObjectReducer, useQLayoutReducer, QGenericObject, QListObject} from '@reaqtive/q'
+import { Button } from '@reaqtive/layout'
+import { RqtvPageHeader } from '@reaqtive/components'
 import {useOutsideEventListener} from '@reaqtive/layout'
-import Listbox from '../example-components/test-listbox/index'
+import Listbox from '../example-components/filters/test-listbox/index'
 
 const qObjectDef = {
   "qInfo": { "qId": `TestProvaRemake`, "qType": "ListObject" },
@@ -29,12 +31,22 @@ const Test = props =>{
   const [mounted, setMounted] = useState(true)
   return(
     <div>
-      <div>Test</div>
+      <RqtvPageHeader>
+        <div>
+          <Button className="btn-primary" onClick={()=>setMounted(true)}>
+            MOUNT
+          </Button>
+          <Button className="btn-primary" onClick={()=>setMounted(false)}>
+            UNMOUNT
+          </Button>
+        </div>
+      </RqtvPageHeader>
+      <div style={{marginTop:20, marginBottom:20}}>
       {
-        mounted
-        ?<Listbox unMount={()=>setMounted(false)} mount={()=>setMounted(true)} mounted={mounted} qObjectDef={qObjectDef}/>
-        :<button className="btn btn-primary" onClick={()=>setMounted(true)}>MOUNT</button>
+        mounted&&
+        <Listbox unMount={()=>setMounted(false)} mount={()=>setMounted(true)} mounted={mounted} qObjectDef={qObjectDef}/>
       }
+      </div>
     </div>
   )
 }

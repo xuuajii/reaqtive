@@ -72,7 +72,11 @@ const ExampleApp = props => {
             //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
             // ]}
           >
-            <RqtvStandardTemplate searchFieldsMatch={{method:'include', mask:['Cust*']}} useContainerFluid={false}>
+            <RqtvStandardTemplate
+              searchFieldsMatch={{method:'include', mask:['Cust*']}}
+              useContainerFluid={false}
+              usePageHeader={false}
+            >
               <Test/>
             </RqtvStandardTemplate>
           </RqtvPage>
