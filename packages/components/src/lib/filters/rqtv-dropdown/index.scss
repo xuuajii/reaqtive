@@ -6,6 +6,20 @@
   .dropdown-menu{
     ul{
       position: relative;
+      max-width: 100%;
+      overflow: hidden;
+    }
+    .dropdown-item{
+      max-width: 100%;
+    }
+    .dropdown-item.S{
+      &:hover{background-color: $selected-background-hover;}
+    }
+    .dropdown-item.X{
+      &:hover{
+        background-color: $excluded-background-hover;
+        color:$excluded-color;
+      }
     }
   }
   .dropdown-toolbar{

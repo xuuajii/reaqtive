@@ -4,6 +4,7 @@
 
 import RqtvApp from './rqtv-app'
 import RqtvButton from './buttons/rqtv-button'
+import RqtvDropdownButton from './buttons/rqtv-dropdown-button'
 import {RqtvListbox, RqtvDropdownFilter, RqtvSearchField, RqtvModalListbox, RqtvButtonBar} from './filters/index'
 import RqtvMultibox from './multibox/index'
 import RqtvVizContainer from './rqtv-viz-container/index'
@@ -19,9 +20,11 @@ import { RqtvBreadcrumb } from './rqtv-breadcrumb/index'
 import RqtvMaximizePortalEl from './rqtv-maximize-portal-el'
 import {RqtvAppContext,RqtvPageContext} from './contexts/index'
 
+
 export {
   RqtvApp,
   RqtvPage,
+  RqtvDropdownButton,
   RqtvBlankTemplate,
   RqtvStandardTemplate,
   RqtvButton,
