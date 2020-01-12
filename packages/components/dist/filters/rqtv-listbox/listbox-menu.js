@@ -59,7 +59,7 @@ const ListboxMenu = props => {
       lineNumber: 20
     },
     __self: void 0
-  }, items.map(item => _react.default.createElement(_layout.DropdonMenuItem, {
+  }, items.map(item => _react.default.createElement(_layout.DropdownMenuItem, {
     key: item.id,
     action: () => item.action(),
     label: item.label,

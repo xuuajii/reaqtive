@@ -38,24 +38,23 @@ const initialState = {
 };
 
 const qLayoutReducer = (state, action) => {
-  const promiseResultName = 'qLayout';
-
   switch (action.type) {
     case 'error':
-      return state.maxErrorCounter < state.qErrorCounter ? (0, _objectSpread2.default)({}, initialState, {
-        qErrorCounter: state.qErrorCounter + 1
+      const newErrorCounter = state.qErrorCounter + 1;
+      return state.maxErrorCounter >= state.qErrorCounter ? (0, _objectSpread2.default)({}, initialState, {
+        qErrorCounter: newErrorCounter
       }) : (0, _objectSpread2.default)({}, initialState, {
+        qLoading: false,
         qError: true,
         qErrorObject: action.qErrorObject,
         rqtvMessage: 'error getting layout'
       });
 
     case 'success':
-      const newState = (0, _objectSpread2.default)({}, initialState, {
-        qLoading: false
+      return (0, _objectSpread2.default)({}, initialState, {
+        qLoading: false,
+        qLayout: action.qLayout
       });
-      newState[promiseResultName] = action.qPromiseResult;
-      return newState;
 
     case 'reloadObject':
       return (0, _objectSpread2.default)({}, initialState);
@@ -72,7 +71,9 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
         dispatch = _useReducer2[1];
 
   const qLoading = qPromiseHandler.qLoading,
-        qLayout = qPromiseHandler.qLayout;
+        qLayout = qPromiseHandler.qLayout,
+        qErrorCounter = qPromiseHandler.qErrorCounter,
+        qError = qPromiseHandler.qError;
 
   const _useState = (0, _react.useState)(null),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -92,14 +93,14 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
         qError: result
       }) : dispatch({
         type: 'success',
-        qPromiseResult: result
+        qLayout: result
       });
     };
 
     if (qLoading === true && qObject !== null) {
       qObject && runEffect(qObject);
     }
-  }, [qLoading, qObject]);
+  }, [qLoading, qObject, qErrorCounter]);
   const updateLayout = (0, _react.useCallback)(() => {
     const standardUpdate = async qObject => {
       const result = await getLayout(qObject);
@@ -108,7 +109,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
         qError: result
       }) : dispatch({
         type: 'success',
-        qPromiseResult: result
+        qLayout: result
       });
     };
 
@@ -125,12 +126,12 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       updateLayout();
       setShouldUpdate(false);
     }
-  }, [shouldUpdate]);
+  }, [shouldUpdate, updateLayout]);
   const applyQLayoutPatch = (0, _react.useCallback)((path, patch) => {
     const qLayoutPatched = (0, _helpers.getPatchedObject)(qLayout, path, patch);
     dispatch({
       type: 'success',
-      qPromiseResult: qLayoutPatched
+      qLayout: qLayoutPatched
     });
   }, [qLayout]);
   return (0, _objectSpread2.default)({}, qPromiseHandler, {

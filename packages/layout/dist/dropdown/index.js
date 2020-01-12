@@ -7,7 +7,9 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DropdonMenuItem = exports.DropdownMenu = exports.DropdownButton = exports.Dropdown = void 0;
+exports.DropdownMenuItem = exports.DropdownMenu = exports.DropdownButton = exports.Dropdown = void 0;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
@@ -89,9 +91,11 @@ DropdownButton.defaultProps = {
   hideCaret: false
 };
 
-const DropdownMenu = props => {
+const DropdownMenu = _react.default.forwardRef((props, ref) => {
   return _react.default.createElement("div", {
     className: "dropdown-menu ".concat(props.show ? 'show' : '', " dropdown-menu-").concat(props.align),
+    style: (0, _objectSpread2.default)({}, props.style),
+    ref: ref,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 60
@@ -103,10 +107,10 @@ const DropdownMenu = props => {
       lineNumber: 61
     },
     __self: void 0
-  }, props.children.map(child => _react.default.cloneElement(child, {
+  }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
     toggleMenu: props.itemToggleMenu
   }))));
-};
+});
 
 exports.DropdownMenu = DropdownMenu;
 DropdownMenu.propTypes = {
@@ -117,22 +121,24 @@ DropdownMenu.defaultProps = {
   showCaret: true
 };
 
-const DropdonMenuItem = props => {
+const DropdownMenuItem = props => {
   const handleClick = () => {
-    props.action();
+    typeof props.action === 'function' && props.action();
+    typeof props.onClick === 'function' && props.onClick();
     props.toggleMenu();
   };
 
   return _react.default.createElement("li", {
-    className: "dropdown-item",
+    className: "dropdown-item ".concat(props.className),
     key: props.label,
     onClick: handleClick,
+    style: props.style,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 85
     },
     __self: void 0
-  }, props.label);
+  }, props.label ? props.label : props.children);
 };
 
-exports.DropdonMenuItem = DropdonMenuItem;
+exports.DropdownMenuItem = DropdownMenuItem;

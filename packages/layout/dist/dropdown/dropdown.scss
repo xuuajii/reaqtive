@@ -1,5 +1,12 @@
-.dropdown-toggle.hide-caret {
-  &:after{
-    content: none
+.dropdown{
+  .dropdown-toggle.hide-caret {
+    &:after{
+      content: none
+    }
+  }
+  .dropdown-menu{
+    .dropdown-item{
+      cursor: pointer;
+    }
   }
 }

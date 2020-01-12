@@ -71,6 +71,12 @@ Object.defineProperty(exports, "useQObjectReducer", {
     return _useQObjectReducer.default;
   }
 });
+Object.defineProperty(exports, "useQFieldReducer", {
+  enumerable: true,
+  get: function () {
+    return _useQFieldReducer.default;
+  }
+});
 Object.defineProperty(exports, "useQLayoutReducer", {
   enumerable: true,
   get: function () {
@@ -105,6 +111,8 @@ var _useEnhancedFieldList = _interopRequireDefault(require("./use-enhanced-field
 var _useTriggers = _interopRequireDefault(require("./use-triggers"));
 
 var _useQObjectReducer = _interopRequireDefault(require("./use-q-object-reducer"));
+
+var _useQFieldReducer = _interopRequireDefault(require("./use-q-field-reducer"));
 
 var _useQLayoutReducer = _interopRequireDefault(require("./use-q-layout-reducer"));
 

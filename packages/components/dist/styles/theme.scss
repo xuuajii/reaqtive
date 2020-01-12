@@ -25,8 +25,10 @@ $break-point-xs: 350px;
 // Qlik states
 //------------------------------------------------------------
 $selected-background:#00FF00 !default;
+$selected-background-hover:transparentize($selected-background, 0.5) !default;
 $selected-color:set-selected-font-color($selected-background) !default;
 $excluded-background:$gray-700 !default;
+$excluded-background-hover:transparentize($excluded-background, 0.3s) !default;
 $excluded-color:$white !default;
 $option-background:transparentize(#000000, 1) !default;
 $locked-background:#006FC2 !default;
