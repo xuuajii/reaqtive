@@ -55,15 +55,15 @@ DropdownButton.defaultProps = {
   hideCaret:false
 }
 
-const DropdownMenu = props => {
+const DropdownMenu = React.forwardRef((props, ref) => {
   return(
-    <div className={`dropdown-menu ${props.show?'show':''} dropdown-menu-${props.align}`} >
+    <div className={`dropdown-menu ${props.show?'show':''} dropdown-menu-${props.align}`} style={{...props.style}} ref={ref}>
       <ul>
-        {props.children.map(child => React.cloneElement(child, {toggleMenu:props.itemToggleMenu}))}
+        {React.Children.toArray(props.children).map(child => React.cloneElement(child, {toggleMenu:props.itemToggleMenu}))}
       </ul>
     </div>
   )
-}
+})
 DropdownMenu.propTypes = {
   align:PropTypes.string
 }
@@ -73,14 +73,19 @@ DropdownMenu.defaultProps = {
   showCaret:true
 }
 
-const DropdonMenuItem = props => {
+const DropdownMenuItem = props => {
 
   const handleClick = () => {
-    props.action()
-    props.toggleMenu()
+    (typeof props.action==='function')&&props.action();
+    (typeof props.onClick==='function')&&props.onClick();
+    props.toggleMenu();
   }
 
-  return <li className="dropdown-item" key={props.label} onClick={handleClick}>{props.label}</li>
+  return (
+    <li className={`dropdown-item ${props.className}`} key={props.label} onClick={handleClick} style={props.style}>
+      {props.label?props.label:props.children}
+    </li>
+  )
 }
 
-export {Dropdown, DropdownButton, DropdownMenu, DropdonMenuItem}
+export {Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem}
