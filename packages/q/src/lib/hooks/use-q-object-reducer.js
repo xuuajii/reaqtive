@@ -29,7 +29,7 @@ const initialState = {
 const qObjectReducer = (state, action) => {
   switch (action.type) {
     case 'error':
-      return state.maxErrorCounter<state.qErrorCounter ? {...initialState, qErrorCounter: state.qErrorCounter + 1} : {...initialState, qError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting object'};
+      return state.maxErrorCounter>=state.qErrorCounter ? {...initialState, qErrorCounter: state.qErrorCounter + 1} : {...initialState, qError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting object'};
     case 'success':
       return {...initialState, qErrorCounter: 0, qLoading:false, qObject:action.qObject};
     case 'reloadObject':

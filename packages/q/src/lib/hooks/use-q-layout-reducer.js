@@ -25,14 +25,12 @@ const initialState = {
 }
 
 const qLayoutReducer = (state, action) => {
-  const promiseResultName = 'qLayout'
   switch (action.type) {
     case 'error':
-      return state.maxErrorCounter<state.qErrorCounter ? {...initialState, qErrorCounter: state.qErrorCounter + 1} : {...initialState, qError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting layout'};
+      const newErrorCounter = state.qErrorCounter + 1;
+      return state.maxErrorCounter>=state.qErrorCounter ? {...initialState, qErrorCounter: newErrorCounter} : {...initialState, qLoading:false, qError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting layout'};
     case 'success':
-      const newState={...initialState, qLoading:false}
-      newState[promiseResultName]=action.qPromiseResult;
-      return newState;
+      return {...initialState, qLoading:false, qLayout:action.qLayout};
     case 'reloadObject':
       return {...initialState}
     default:
@@ -43,7 +41,7 @@ const qLayoutReducer = (state, action) => {
 const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const [qPromiseHandler, dispatch] = useReducer(qLayoutReducer, initialState);
-  const {qLoading, qLayout} = qPromiseHandler
+  const {qLoading, qLayout, qErrorCounter, qError} = qPromiseHandler
   const [onUpdate, setOnUpdate]=useState(null)
 
   const {qObject, shouldUpdate, setShouldUpdate, } = qObjectHandler
@@ -53,17 +51,17 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   useEffect(()=>{
     const runEffect = async (qObject) => {
       const result = await getLayout(qObject)
-      return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qPromiseResult:result})
+      return (result instanceof Error)?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
     if(qLoading===true && qObject!==null){
       qObject&&runEffect(qObject)
     }
-  }, [qLoading, qObject])
+  }, [qLoading, qObject, qErrorCounter])
 
   const updateLayout = useCallback(()=>{
     const standardUpdate = async (qObject) => {
       const result = await getLayout(qObject)
-      return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qPromiseResult:result})
+      return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
 
     if(qObject!==null && isSelecting===true && (typeof onUpdate.fn ==='function')){
@@ -80,11 +78,11 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       updateLayout()
       setShouldUpdate(false)
     }
-  },[shouldUpdate])
+  },[shouldUpdate, updateLayout])
 
   const applyQLayoutPatch = useCallback((path, patch) => {
     const qLayoutPatched = getPatchedObject(qLayout, path, patch)
-    dispatch({type:'success', qPromiseResult:qLayoutPatched})
+    dispatch({type:'success', qLayout:qLayoutPatched})
   },[qLayout])
 
   return {...qPromiseHandler, setOnUpdate, applyQLayoutPatch}

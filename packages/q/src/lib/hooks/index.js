@@ -13,5 +13,6 @@ export {default as useListObjectNxProperties} from './use-list-object-nx-propert
 export {default as useEnhancedFieldList} from './use-enhanced-field-list'
 export {default as useTriggers} from './use-triggers'
 export {default as useQObjectReducer} from './use-q-object-reducer'
+export {default as useQFieldReducer} from './use-q-field-reducer'
 export {default as useQLayoutReducer} from './use-q-layout-reducer'
 export {default as useQSelectionHandler} from './use-q-selection-handler'
