@@ -3,22 +3,28 @@
 //
 import React from 'react'
 import PropTypes from 'prop-types'
-import { QGenericObject, QListObject } from '@reaqtive/q'
+import { QGenericObject } from '@reaqtive/q'
+import RqtvListObject from '../rqtv-list-object'
 import Layout from './layout'
+import {useMapPropsToDef} from '../helpers/index'
 
-
-const Listbox = props =>{
+const RqtvListbox = props =>{
+  const {qFieldExpr, qSortObject, qId, qLabelExpr} = props
+  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject, qId, qLabelExpr})
   return(
-    <QGenericObject qObjectDef={props.qObjectDef}>
-      <QListObject>
+    <QGenericObject
+      qObjectDef={qObjectDef}
+      quickSelectionMode={props.quickSelectionMode}
+    >
+      <RqtvListObject {...props}>
         <Layout {...props}/>
-      </QListObject>
+      </RqtvListObject>
     </QGenericObject>
   )
 }
 
-Listbox.propTypes={
-  //qFieldExpr:PropTypes.string.isRequired,
+RqtvListbox.propTypes={
+  qFieldExpr:PropTypes.string.isRequired,
   qFieldLabelExpr:PropTypes.string,
   qSortObject:PropTypes.object,
   showHeader:PropTypes.bool,
@@ -33,9 +39,10 @@ Listbox.propTypes={
   listStyle:PropTypes.object,
   itemStyle:PropTypes.object,
   focus:PropTypes.bool,
+  quickSelectionMode:PropTypes.bool
 }
 
-Listbox.defaultProps={
+RqtvListbox.defaultProps={
   showHeader:true,
   showHeaderButtonbar:false,
   showListboxDropdownMenu:true,
@@ -48,7 +55,8 @@ Listbox.defaultProps={
   headerStyle:{},
   titleStyle:{},
   listStyle:{},
-  itemStyle:{}
+  itemStyle:{},
+  quickSelectionMode:false
 }
 
-export default Listbox
+export default RqtvListbox

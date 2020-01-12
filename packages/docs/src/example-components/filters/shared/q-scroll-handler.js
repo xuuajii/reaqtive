@@ -20,11 +20,11 @@ const QScrollHandler = props => {
   const scrollHandler = useScrollHandler(scrollPosition, qDataPages[0].qArea, qSize, visibleHeight, listItemHeight, 0.2, getDataPage)
 
   return(
-    <div style={{height:visibleHeight, minHeight:visibleHeight, maxHeight:visibleHeight, overflowY:'auto'}} onScroll={(e)=>updateScrollPosition(e)}>
+    <div style={{height:visibleHeight, minHeight:visibleHeight, maxHeight:visibleHeight, overflowY:'auto', ...props.style}} onScroll={(e)=>updateScrollPosition(e)}>
       <div style={{height:scrollHandler.fillers.top||0}}/>
-        <div ref={loadedEl}>
-          {props.children}
-        </div>
+      <div ref={loadedEl}>
+        {props.children}
+      </div>
       <div style={{height:scrollHandler.fillers.bottom||0}}/>
     </div>
   )

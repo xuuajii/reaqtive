@@ -3,7 +3,7 @@
 //
 
 import React from 'react'
-import {Dropdown, DropdownButton, DropdownMenu, DropdonMenuItem} from '@reaqtive/layout'
+import {Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem} from '@reaqtive/layout'
 import {LuiIcon} from '@reaqtive/layout'
 
 
@@ -18,7 +18,7 @@ const ListboxMenu = props => {
     <Dropdown>
       <DropdownButton hideCaret={true} label={<LuiIcon iconType="more"/>}/>
       <DropdownMenu align="right">
-        {items.map(item=><DropdonMenuItem key={item.id} action={()=>item.action()} label={item.label}/>)}
+        {items.map(item=><DropdownMenuItem key={item.id} action={()=>item.action()} label={item.label}/>)}
       </DropdownMenu>
     </Dropdown>
   )

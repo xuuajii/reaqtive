@@ -6,26 +6,7 @@ import {useQObjectReducer, useQLayoutReducer, QGenericObject, QListObject} from 
 import { Button } from '@reaqtive/layout'
 import { RqtvPageHeader } from '@reaqtive/components'
 import {useOutsideEventListener} from '@reaqtive/layout'
-import Listbox from '../example-components/filters/test-listbox/index'
-
-const qObjectDef = {
-  "qInfo": { "qId": `TestProvaRemake`, "qType": "ListObject" },
-  "qListObjectDef": {
-    "qDef":{
-        "qFieldDefs": [ 'Customer' ],
-        "qFieldLabels": ['Customer' ],
-        "qSortCriterias": [{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 }],
-        "qAutoSortByState": { qDisplayNumberOfRows:1 },
-        "qLabelExpression": `Test}`,
-      },
-  "qInitialDataFetch": [ {qTop:0,qLeft:0,qHeight:30,qWidth:1} ],
-},
-  "label":{
-    qStringExpression:{
-      qExpr:'=count(distinct Customer)'
-    }
-  }
-}
+import {RqtvListbox, RqtvDropdownFilter, RqtvSearchField} from '../example-components/filters/index'
 
 const Test = props =>{
   const [mounted, setMounted] = useState(true)
@@ -44,9 +25,32 @@ const Test = props =>{
       <div style={{marginTop:20, marginBottom:20}}>
       {
         mounted&&
-        <Listbox unMount={()=>setMounted(false)} mount={()=>setMounted(true)} mounted={mounted} qObjectDef={qObjectDef}/>
+        <RqtvListbox
+          qFieldExpr="Customer"
+          qId="1"
+          Key="1"
+        />
       }
       </div>
+      <br></br>
+      <RqtvDropdownFilter
+        qFieldExpr='Line Desc 1'
+        hideHorizontalScrollbar={true}
+        quickSelectionMode={true}
+        qId="2"
+        Key="2"
+      />
+      <br></br>
+      <RqtvListbox
+        qFieldExpr="Sales Rep Name"
+        qId="2"
+        Key="2"
+      />
+      <RqtvListbox
+        qFieldExpr="Line Desc 1"
+        qId="3"
+        Key="3"
+      />
     </div>
   )
 }

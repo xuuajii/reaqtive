@@ -8,7 +8,7 @@ import QScrollHandler from '../shared/q-scroll-handler'
 
 const Body = props => {
   const {selectValue, qDataPages, qSize, getDataPage, height}=props
-  console.log(height)
+  //console.log(height)
   return(
     <QScrollHandler qDataPages={qDataPages} qSize={qSize} visibleHeight={height} getDataPage={getDataPage}>
       <ListGroup>

@@ -6,15 +6,17 @@ import {useOutsideEventListener} from '@reaqtive/layout'
 import Header from './header'
 import Body from './body'
 import Search from '../shared/search'
+import {useListObjectRendererMap} from '../helpers/index'
+import useRqtvListObject from '../use-rqtv-list-object'
 
 const Layout = props => {
   const qLayout = props.qLayoutHandler&&props.qLayoutHandler.qLayout
   const qDataPages = qLayout&&qLayout.qListObject.qDataPages
   const qSize = qLayout&&qLayout.qListObject.qSize
   const qArea = qLayout&&qLayout.qListObject.qDataPages[0].qArea
-  // console.log(qLayout,qMatrix)
-  const {qObject} = props.qObjectHandler
-  const {qListObject} = props
+  const rendererProps = useListObjectRendererMap(props.qLayoutHandler, props.qObjectHandler)
+  const {rqtvListObject} = props//useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
+
   const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
   const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
   const [showSearch, setShowSearch] = useState();
@@ -32,17 +34,8 @@ const Layout = props => {
 
   useEffect(()=>{
     const qDisplayArea = qArea
-    setOnUpdate({fn:()=>qListObject.getDataPage(qDisplayArea)})
+    setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
   },[qArea])
-
-  const askDataPage = () => {
-    qListObject.getDataPage({qTop:57, qLeft:0, qHeight:10, qWidth:1})
-  }
-
-
-  const toggle = () => {
-    props.mounted?props.unMount():props.moount()
-  }
 
   return(
     <>
@@ -50,9 +43,9 @@ const Layout = props => {
         <Header
           title = {'Customer'}
           endSelections={endSelections}
-          clearSelections={qListObject.clearSelections}
-          selectExcluded={qListObject.selectExcluded}
-          selectPossible={qListObject.selectPossible}
+          clearSelections={rqtvListObject.clearSelections}
+          selectExcluded={rqtvListObject.selectExcluded}
+          selectPossible={rqtvListObject.selectPossible}
           isSelecting={isSelecting}
           setShowSearch={setShowSearch}
           showHeaderButtonbar={props.showHeaderButtonbar}
@@ -66,12 +59,12 @@ const Layout = props => {
         <div ref={searchEl} style={{overflowY:'auto'}}>
           {(showSearch||props.alwaysShowSearch)&&
             <Search
-              searchAction={qListObject.searchListObjectFor}
-              clearSearchAction={qListObject.abortListObjectSearch}
-              acceptSearchAction={qListObject.acceptListObjectSearch}
+              searchAction={rqtvListObject.searchListObjectFor}
+              clearSearchAction={rqtvListObject.abortListObjectSearch}
+              acceptSearchAction={rqtvListObject.acceptListObjectSearch}
               hideSearch={()=>{setShowSearch(false)}}
               alwaysShowSearch={props.alwaysShowSearch}
-              focus={props.focus}
+              focus={props.alwaysShowSearch?false:props.focus}
             />
           }
         </div>
@@ -79,8 +72,8 @@ const Layout = props => {
           <Body
             qDataPages={qDataPages}
             qSize={qSize}
-            selectValue={qListObject.selectValue}
-            getDataPage={qListObject.getDataPage}
+            selectValue={rqtvListObject.selectValue}
+            getDataPage={rqtvListObject.getDataPage}
             height={bodyHeight}
           />
         }
