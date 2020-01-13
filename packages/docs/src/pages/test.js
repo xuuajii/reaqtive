@@ -41,7 +41,7 @@ const Test = props =>{
         Key="2"
       />
       <br></br>
-      <RqtvListbox
+      <RqtvSearchField
         qFieldExpr="Sales Rep Name"
         qId="2"
         Key="2"

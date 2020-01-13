@@ -31,31 +31,32 @@ const Layout = props => {
 
   const onSearch = (e) => {
     rqtvListObject.searchListObjectFor(e)
-    console.log(dropdownMenuHeight, dropdownMenuWidth, hideHorizontalScrollbar)
   }
-  console.log(qDataPages)
   return(
-    props.qLayoutHandler.qLoading===false&&props.qLayoutHandler.qError===false&&qSize.qcy>0&&
-    <Dropdown className="rqtv-search-field" show={true}>
+    rqtvListObject&&
+    <div className={`dropdown ${rqtvListObject.isSearching ? 'show' : ''} rqtv-search-field`}>
       <Search
-        searchAction={rqtvListObject.searchListObjectFor}
+        searchAction={onSearch}
         clearSearchAction={rqtvListObject.abortListObjectSearch}
         acceptSearchAction={rqtvListObject.acceptListObjectSearch}
         isSearching={rqtvListObject.isSearching}
         focus={false}
       />
-      <DropdownMenu show={true}>
-        <DropdownMenuBody
-            qDataPages={qDataPages}
-            qSize={qSize}
-            selectValue={onSearch}
-            getDataPage={rqtvListObject.getDataPage}
-            height={dropdownMenuHeight}
-            width={dropdownMenuWidth}
-            hideHorizontalScrollbar={hideHorizontalScrollbar}
-        />
+      <DropdownMenu show={rqtvListObject.isSearching}>
+        {rqtvListObject.isSearching&&qDataPages
+          ?<DropdownMenuBody
+              qDataPages={qDataPages}
+              qSize={qSize}
+              selectValue={onSearch}
+              getDataPage={rqtvListObject.getDataPage}
+              height={dropdownMenuHeight}
+              width={dropdownMenuWidth}
+              hideHorizontalScrollbar={hideHorizontalScrollbar}
+            />
+          :<></>
+        }
       </DropdownMenu>
-    </Dropdown>
+    </div>
   )
 }
 
