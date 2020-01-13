@@ -69,7 +69,7 @@ const initialState = {
 const qFieldReducer = (state, action) => {
   switch (action.type) {
     case 'error':
-      return state.maxErrorCounter < state.qErrorCounter ? (0, _objectSpread2.default)({}, initialState, {
+      return state.maxErrorCounter > state.qErrorCounter ? (0, _objectSpread2.default)({}, initialState, {
         qErrorCounter: state.qErrorCounter + 1
       }) : (0, _objectSpread2.default)({}, initialState, {
         qError: true,

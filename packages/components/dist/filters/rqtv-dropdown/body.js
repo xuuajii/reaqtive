@@ -27,7 +27,7 @@ var _dropdownToolbar = _interopRequireDefault(require("./dropdown-toolbar"));
 
 var _index = require("../../loading/index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\body.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\body.js";
 
 const Body = props => {
   const data = props.data,

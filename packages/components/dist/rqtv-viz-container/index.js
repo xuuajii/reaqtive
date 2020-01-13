@@ -23,7 +23,7 @@ var _toolbar = _interopRequireDefault(require("./toolbar"));
 
 var _header = _interopRequireDefault(require("./header"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-viz-container\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-viz-container\\index.js";
 
 // import { useDebounce } from 'use-debounce';
 const RqtvVizContainer = props => {

@@ -4,10 +4,12 @@
 
 .rqtv-dropdown{
   .dropdown-menu{
+    overflow: auto;
     ul{
       position: relative;
       max-width: 100%;
-      overflow: hidden;
+      max-height: 100%;
+      overflow-x: hidden;
     }
     .dropdown-item{
       max-width: 100%;
