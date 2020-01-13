@@ -26,7 +26,7 @@ const Layout = props => {
   const endSelectionsAndHide = (qAccept) => {
     endSelections(qAccept, props.hideDropdownMenu)
   }
-  
+
   useEffect(()=>{
     const qDisplayArea = qArea
     setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
@@ -37,14 +37,16 @@ const Layout = props => {
   const toolbarRef = useCallback(toolbarEl => {
    if (toolbarEl !== null) {
      const toolbarHeight=toolbarEl.getBoundingClientRect().height;
-     setListHeight(((1-(toolbarHeight||0)/dropdownMenuHeight)*100)+'%')
+     const restHeight=(1-((toolbarHeight)/dropdownMenuHeight))*dropdownMenuHeight
+     //console.log(restHeight)
+     setListHeight(restHeight-16)
    }
  }, [isSelecting]);
 
  const [listHeight, setListHeight] = useState('100%')
 
   return(
-    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{height:dropdownMenuHeight}}>
+    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{height:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
     {showToolbar&&
       <DropdownToolbar
         searchListObjectFor={rqtvListObject.searchListObjectFor}
