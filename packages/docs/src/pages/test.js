@@ -36,7 +36,7 @@ const Test = props =>{
       <RqtvDropdownFilter
         qFieldExpr='Line Desc 1'
         hideHorizontalScrollbar={true}
-        quickSelectionMode={true}
+        quickSelectionMode={false}
         qId="2"
         Key="2"
       />

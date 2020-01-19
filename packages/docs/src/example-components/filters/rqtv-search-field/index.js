@@ -1,7 +1,7 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-import React from 'react'
+import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { QGenericObject } from '@reaqtive/q'
 import RqtvListObject from '../rqtv-list-object'
@@ -11,15 +11,18 @@ import {useMapPropsToDef} from '../helpers/index'
 const RqtvSearchField = props =>{
   const {qFieldExpr, qSortObject, qId, qLabelExpr} = props
   const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject, qId, qLabelExpr})
+  const [show, setShow] = useState()
   return(
-    <QGenericObject
-      qObjectDef={qObjectDef}
-      quickSelectionMode={props.quickSelectionMode}
-    >
-      <RqtvListObject {...props}>
-        <Layout {...props}/>
-      </RqtvListObject>
-    </QGenericObject>
+    <div className={`dropdown ${true ? 'show' : ''} rqtv-dropdown`}>
+      <QGenericObject
+        qObjectDef={qObjectDef}
+        quickSelectionMode={props.quickSelectionMode}
+      >
+        <RqtvListObject {...props}>
+          <Layout {...props} show={show} setShow={setShow}/>
+        </RqtvListObject>
+      </QGenericObject>
+    </div>
   )
 }
 

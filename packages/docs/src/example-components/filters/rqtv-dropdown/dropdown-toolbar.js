@@ -15,6 +15,7 @@ const DropdownToolbar = props =>
           clearSearchAction={props.abortListObjectSearch}
           acceptSearchAction={props.acceptListObjectSearch}
           focus={false}
+          onFocus={props.onFocus}
         />
     }
   </div>
