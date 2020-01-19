@@ -42,7 +42,7 @@ const Layout = props => {
      props.setShow(false)
      rqtvListObject.acceptListObjectSearch()
    }
-   console.log(props.show, isSearching)
+   //console.log(props.show, isSearching)
 
    useEffect(()=>{
      if(props.show!==true && isSearching===true){
@@ -51,7 +51,7 @@ const Layout = props => {
    },[isSearching])
 
    return(
-      <div ref={dropdownMenuEl}>
+      <div ref={dropdownMenuEl} className="rqtv-search-field">
         <DropdownToolbar
           searchListObjectFor={rqtvListObject.searchListObjectFor}
           abortListObjectSearch={abort}

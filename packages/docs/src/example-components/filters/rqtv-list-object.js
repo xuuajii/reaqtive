@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import {useQFieldReducer} from '@reaqtive/q'
 
 const RqtvListObject = props => {
-  const rqtvListObject = useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
+  const rqtvListObject = useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode, props.toggle)
   const qLayout=props.qLayoutHandler&&props.qLayoutHandler.qLayout
   //console.log(qLayout, props.qId)
   const qDimensionInfo = qLayout&&qLayout.qListObject.qDimensionInfo
@@ -27,13 +27,15 @@ RqtvListObject.propTypes = {
   qLayoutHandler:PropTypes.object,
   alwaysOneSelected:PropTypes.bool,
   defaultValue:PropTypes.string,
-  resetOnUnmount:PropTypes.bool
+  resetOnUnmount:PropTypes.bool,
+  toggle:PropTypes.bool
 }
 
 RqtvListObject.defualtProps = {
   alwaysOneSelected:false,
   defaultValue:'',
-  resetOnUnmount:true
+  resetOnUnmount:true,
+  toggle:true
 }
 
 export default RqtvListObject

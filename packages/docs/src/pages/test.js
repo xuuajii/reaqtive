@@ -6,7 +6,7 @@ import {useQObjectReducer, useQLayoutReducer, QGenericObject, QListObject} from 
 import { Button } from '@reaqtive/layout'
 import { RqtvPageHeader } from '@reaqtive/components'
 import {useOutsideEventListener} from '@reaqtive/layout'
-import {RqtvListbox, RqtvDropdownFilter, RqtvSearchField} from '../example-components/filters/index'
+import {RqtvListbox, RqtvDropdownFilter, RqtvSearchField, RqtvButtonBar} from '../example-components/filters/index'
 
 const Test = props =>{
   const [mounted, setMounted] = useState(true)
@@ -29,6 +29,7 @@ const Test = props =>{
           qFieldExpr="Customer"
           qId="1"
           Key="1"
+          height={300}
         />
       }
       </div>
@@ -36,7 +37,8 @@ const Test = props =>{
       <RqtvDropdownFilter
         qFieldExpr='Line Desc 1'
         hideHorizontalScrollbar={true}
-        quickSelectionMode={false}
+        quickSelectionMode={true}
+        toggle={false}
         qId="2"
         Key="2"
       />
@@ -46,7 +48,7 @@ const Test = props =>{
         qId="2"
         Key="2"
       />
-      <RqtvListbox
+      <RqtvButtonBar
         qFieldExpr="Line Desc 1"
         qId="3"
         Key="3"

@@ -36,6 +36,8 @@ export * from './side-menu/index'
 
 export * from './tabs/index';
 
+export * from './button-group/index';
+
 export * from './icons/index'
 
 export * from './contexts/index'

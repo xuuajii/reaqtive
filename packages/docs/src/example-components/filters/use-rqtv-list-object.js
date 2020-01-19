@@ -3,13 +3,13 @@
 //
 import React, {useState, useMemo} from 'react'
 
-const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, quickSelectionMode=false) => {
+const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, quickSelectionMode=false, _toggle=true) => {
 
   const {qObject} = qObjectHandler
   const {handleSelections} = qSelectionHandler
   const {qLayout, applyQLayoutPatch} = qLayoutHandler
   const qIsOneAndOnlyOne = qLayout&&qLayout.qListObject.qDimensionInfo.qIsOneAndOnlyOne
-  const toggle = qIsOneAndOnlyOne||quickSelectionMode?false:true
+  const toggle = qIsOneAndOnlyOne?false:_toggle
 
   const [isSearching, setIsSearching] = useState()
   const [waitingDataPage, setWaitingDataPage] = useState()
@@ -26,7 +26,7 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
         } catch(err) {
           console.log(err)
         }
-      }, !toggle )
+      }, qIsOneAndOnlyOne||quickSelectionMode )
     },
 
     getDataPage: async (qDisplayArea) => {
