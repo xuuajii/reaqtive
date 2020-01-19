@@ -93,6 +93,7 @@ const SearchInput = props => {
     placeholder: props.placeholder,
     onKeyUp: e => handleKeyUp(e),
     onBlur: () => handleBlur(),
+    onFocus: () => props.onFocus && props.onFocus(),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 69
@@ -103,14 +104,14 @@ const SearchInput = props => {
     onClick: hideSearch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 78
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "lui-icon lui-icon--small lui-icon--close",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 79
     },
     __self: void 0
   })));

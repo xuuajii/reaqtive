@@ -72,6 +72,7 @@ const SearchInput = (props) =>{
         placeholder={props.placeholder}
         onKeyUp={(e)=>handleKeyUp(e)}
         onBlur={()=>handleBlur()}
+        onFocus={()=>props.onFocus&&props.onFocus()}
       />
       {(props.hideSearch && (!props.alwaysShowSearch || props.isSearching))&&
         <button className="hide-search" onClick={hideSearch}>
