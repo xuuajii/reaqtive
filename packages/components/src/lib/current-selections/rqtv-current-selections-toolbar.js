@@ -11,7 +11,7 @@ import { Icon, currentSelections} from '@reaqtive/layout'
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()
   const system = useContext(System)
-  const isMinimized = props.isResponsive&&system.windowWidth<system.breakPoints['lg']
+  const isMinimized = props.isResponsive&&system.windowWidth<=system.breakPoints['lg']
   //console.log(system.windowWidth, system.breakPoints['md'])
   const showBack = (props.qBackCount>0&&!isMinimized)||props.inModal
   const showForward = (props.qForwardCount>0&&!isMinimized)||props.inModal
