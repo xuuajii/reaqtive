@@ -69,7 +69,7 @@ const initialState = {
 const qFieldReducer = (state, action) => {
   switch (action.type) {
     case 'error':
-      return state.maxErrorCounter > state.qErrorCounter ? (0, _objectSpread2.default)({}, initialState, {
+      return state.maxErrorCounter >= state.qErrorCounter ? (0, _objectSpread2.default)({}, initialState, {
         qErrorCounter: state.qErrorCounter + 1
       }) : (0, _objectSpread2.default)({}, initialState, {
         qError: true,
@@ -118,7 +118,7 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
   (0, _react.useEffect)(() => {
     const runEffect = async () => {
       const result = await getQField(qDoc, qFieldName);
-      result instanceof Error ? dispatch({
+      return result instanceof Error ? dispatch({
         type: 'error',
         qError: result
       }) : dispatch({
@@ -138,16 +138,16 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
 
       qField && qField.removeAllListeners();
 
-      if (resetOnUnmount && qField) {
+      if (resetOnUnmount && qField && isAlwaysOneSelected === true) {
         onUnmount();
       }
     };
   }, [qField, qLoading, qError, errorCounter]);
   (0, _react.useEffect)(() => {
     const runEffect = async () => {
-      if (qField && isAlwaysOneSelected) {
+      if (qField !== null && isAlwaysOneSelected === true) {
         const result = await setAlwaysOneSelected(qField, defaultValue);
-        result instanceof Error ? dispatch({
+        return result instanceof Error ? dispatch({
           type: 'error',
           qError: result
         }) : dispatch({

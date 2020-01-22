@@ -17,7 +17,7 @@ var _headerButtonbar = _interopRequireDefault(require("../shared/header-buttonba
 
 var _listboxMenu = _interopRequireDefault(require("./listbox-menu"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\header.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\header.js";
 
 const Header = props => {
   const titleCursor = props.titleAction ? 'pointer' : 'auto';
@@ -62,7 +62,7 @@ const HeaderToolbar = props => _react.default.createElement("div", {
   className: "rqtv-listbox-toolbar",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 24
+    lineNumber: 25
   },
   __self: void 0
 }, props.showHeaderButtonbar === true && _react.default.createElement(_headerButtonbar.default, {
@@ -71,7 +71,7 @@ const HeaderToolbar = props => _react.default.createElement("div", {
   selectPossible: props.selectPossible,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 26
+    lineNumber: 27
   },
   __self: void 0
 }), _react.default.createElement(_endSelectionsButtons.default, {
@@ -79,7 +79,7 @@ const HeaderToolbar = props => _react.default.createElement("div", {
   isSelecting: props.isSelecting,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 32
+    lineNumber: 33
   },
   __self: void 0
 }), !(props.showHeaderButtonbar === true) && props.showListboxDropdownMenu && _react.default.createElement(_listboxMenu.default, {
@@ -90,7 +90,7 @@ const HeaderToolbar = props => _react.default.createElement("div", {
   hideCaret: true,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 34
+    lineNumber: 35
   },
   __self: void 0
 }));

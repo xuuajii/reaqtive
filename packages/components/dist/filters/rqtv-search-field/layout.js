@@ -1,136 +1,148 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _layout = require("@reaqtive/layout");
 
-var _body = _interopRequireDefault(require("../rqtv-dropdown/body"));
+var _dropdownToolbar = _interopRequireDefault(require("../rqtv-dropdown/dropdown-toolbar"));
+
+var _dropdownMenuBody = _interopRequireDefault(require("../rqtv-dropdown/dropdown-menu-body.js"));
 
 var _search = _interopRequireDefault(require("../shared/search"));
-
-var _endSelectionsButtons = _interopRequireDefault(require("../shared/end-selections-buttons"));
 
 var _index = require("../../loading/index");
 
 var _index2 = require("../helpers/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\layout.js";
+var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
+
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\layout.js";
 
 const Layout = props => {
-  const rqtvListObject = props.rqtvListObject;
-  const qLayout = props.qLayoutHandler.qLayout;
-  const searchFieldEl = (0, _react.useRef)();
-  const bodyEl = (0, _react.useRef)();
-  const clickAway = (0, _layout.useOutsideEventListener)(searchFieldEl, () => endSelections('0'), rqtvListObject.isSelecting);
-  const clickAwayAbort = (0, _layout.useOutsideEventListener)(searchFieldEl, rqtvListObject.abortListObjectSearch, rqtvListObject.isSearching);
-
-  const onSearch = e => {
-    rqtvListObject.searchListObjectFor(e);
-  };
-
-  const endSelections = qAccept => {
-    rqtvListObject.endSelections(qAccept);
-    rqtvListObject.setIsSearching(false);
-  };
-
+  const dropdownMenuHeight = props.dropdownMenuHeight,
+        dropdownMenuWidth = props.dropdownMenuWidth,
+        hideHorizontalScrollbar = props.hideHorizontalScrollbar;
+  const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
+  const qDataPages = qLayout && qLayout.qListObject.qDataPages;
+  const qSize = qLayout && qLayout.qListObject.qSize;
+  const qArea = qLayout && qLayout.qListObject.qDataPages[0].qArea;
   const rendererProps = (0, _index2.useListObjectRendererMap)(props.qLayoutHandler, props.qObjectHandler);
+  const rqtvListObject = props.rqtvListObject;
+  const isSearching = rqtvListObject.isSearching;
+  const _props$qSelectionHand = props.qSelectionHandler,
+        isSelecting = _props$qSelectionHand.isSelecting,
+        beginSelections = _props$qSelectionHand.beginSelections,
+        endSelections = _props$qSelectionHand.endSelections;
+  const _props$qLayoutHandler = props.qLayoutHandler,
+        setOnUpdate = _props$qLayoutHandler.setOnUpdate,
+        applyQLayoutPatch = _props$qLayoutHandler.applyQLayoutPatch;
+  const dropdownMenuEl = (0, _react.useRef)();
+  (0, _layout.useOutsideEventListener)(dropdownMenuEl, () => endSelectionsAndHide(0), props.show);
+
+  const endSelectionsAndHide = qAccept => {
+    endSelections(qAccept, () => props.setShow(false));
+  };
+
+  (0, _react.useEffect)(() => {
+    const qDisplayArea = qArea;
+    setOnUpdate({
+      fn: () => rqtvListObject.getDataPage(qDisplayArea)
+    });
+  }, [qArea]);
+
+  const _useState = (0, _react.useState)('100%'),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        listHeight = _useState2[0],
+        setListHeight = _useState2[1];
+
+  const abort = () => {
+    props.setShow(false);
+    rqtvListObject.abortListObjectSearch();
+  };
+
+  const accept = () => {
+    props.setShow(false);
+    rqtvListObject.acceptListObjectSearch();
+  }; //console.log(props.show, isSearching)
+
+
+  (0, _react.useEffect)(() => {
+    if (props.show !== true && isSearching === true) {
+      setTimeout(() => props.setShow(true), 200);
+    }
+  }, [isSearching]);
   return _react.default.createElement("div", {
-    className: "dropdown rqtv-search-field",
-    ref: searchFieldEl,
-    style: {
-      width: '100%'
-    },
+    ref: dropdownMenuEl,
+    className: "rqtv-search-field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
-    },
-    __self: void 0
-  }, _react.default.createElement(_index.RqtvRenderer, {
-    loading: props.qLayoutHandler.qLoading,
-    error: props.qLayoutHandler.qError,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 55
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "rqtv-search-field-header",
-    style: {
-      width: '100%'
-    },
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 38
-    },
-    __self: void 0
-  }, _react.default.createElement(_search.default, {
-    searchAction: onSearch,
-    clearSearchAction: rqtvListObject.abortListObjectSearch,
-    acceptSearchAction: rqtvListObject.acceptListObjectSearch,
-    hideSearch: rqtvListObject.abortListObjectSearch,
-    alwaysShowSearch: props.alwaysShowSearch,
-    focus: false,
-    isSearching: rqtvListObject.isSearching,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 39
-    },
-    __self: void 0
-  }), rqtvListObject.isSelecting && _react.default.createElement(_endSelectionsButtons.default, {
-    endSelections: endSelections,
-    isSelecting: rqtvListObject.isSelecting,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49
-    },
-    __self: void 0
-  })), rqtvListObject.isSearching && _react.default.createElement("div", {
-    className: "dropdown-menu show",
-    style: {
-      width: '100%'
-    },
     __source: {
       fileName: _jsxFileName,
       lineNumber: 56
     },
     __self: void 0
-  }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
+  }, _react.default.createElement(_dropdownToolbar.default, {
+    searchListObjectFor: rqtvListObject.searchListObjectFor,
+    abortListObjectSearch: abort,
+    acceptListObjectSearch: accept,
+    endSelections: endSelectionsAndHide,
+    isSelecting: isSelecting,
+    quickSelectionMode: props.quickSelectionMode,
+    showSearch: true,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 57
     },
     __self: void 0
-  }), _react.default.createElement(_body.default, {
-    data: qLayout.qListObject.qDataPages[0],
-    size: qLayout.qListObject.qSize,
-    qObject: props.qObject,
-    width: '100%' //updateLayout={updateLayout}
-    //setQLayoutPatcher={props.setQLayoutPatcher}
-    ,
-    rqtvListObject: props.rqtvListObject,
-    bodyEl: bodyEl,
-    dropdownMenuHeight: props.height,
-    showToolbar: false,
-    dropdownMenuItemHeight: props.listItemHeight,
-    bodyStyle: props.bodyStyle,
-    itemStyle: props.itemStyle,
+  })), _react.default.createElement(_layout.DropdownMenu, {
+    show: props.show,
+    style: {
+      minHeight: 120,
+      maxHeight: dropdownMenuHeight,
+      overflowY: 'auto',
+      width: '100%'
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 67
     },
     __self: void 0
-  })))));
+  }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 68
+    },
+    __self: void 0
+  }), qDataPages && _react.default.createElement(_dropdownMenuBody.default, {
+    qDataPages: qDataPages,
+    qSize: qSize,
+    selectValue: rqtvListObject.selectValue,
+    getDataPage: rqtvListObject.getDataPage,
+    height: listHeight,
+    width: dropdownMenuWidth,
+    hideHorizontalScrollbar: hideHorizontalScrollbar,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 70
+    },
+    __self: void 0
+  }))));
 };
 
 var _default = Layout;

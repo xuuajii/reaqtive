@@ -19,7 +19,7 @@ var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
 
 const RqtvStandardTemplate = props => {
   const _useState = (0, _react.useState)(false),

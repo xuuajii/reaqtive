@@ -13,10 +13,11 @@ var _search = _interopRequireDefault(require("../shared/search"));
 
 var _endSelectionsButtons = _interopRequireDefault(require("../shared/end-selections-buttons"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\dropdown-toolbar.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\dropdown-toolbar.js";
 
 const DropdownToolbar = props => _react.default.createElement("div", {
   className: "btn-group dropdown-toolbar",
+  ref: props.toolbarRef,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 10
@@ -33,6 +34,8 @@ const DropdownToolbar = props => _react.default.createElement("div", {
   searchAction: props.searchListObjectFor,
   clearSearchAction: props.abortListObjectSearch,
   acceptSearchAction: props.acceptListObjectSearch,
+  focus: false,
+  onFocus: props.onFocus,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 13
@@ -43,7 +46,7 @@ const DropdownToolbar = props => _react.default.createElement("div", {
   isSelecting: props.isSelecting,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 21
+    lineNumber: 23
   },
   __self: void 0
 }));

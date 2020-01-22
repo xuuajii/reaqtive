@@ -17,12 +17,12 @@ var _layout = require("@reaqtive/layout");
 
 var _currentSelectionsButtons = require("./current-selections-buttons");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\rqtv-current-selections-toolbar.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\rqtv-current-selections-toolbar.js";
 
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()
   const system = (0, _react.useContext)(_layout.System);
-  const isMinimized = props.isResponsive && system.windowWidth < system.breakPoints['lg']; //console.log(system.windowWidth, system.breakPoints['md'])
+  const isMinimized = props.isResponsive && system.windowWidth <= system.breakPoints['lg']; //console.log(system.windowWidth, system.breakPoints['md'])
 
   const showBack = props.qBackCount > 0 && !isMinimized || props.inModal;
   const showForward = props.qForwardCount > 0 && !isMinimized || props.inModal;

@@ -17,15 +17,15 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _q = require("@reaqtive/q");
 
-var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
-
 var _layout = _interopRequireDefault(require("./layout"));
 
 var _index = require("../helpers/index");
 
 var _rqtvDropdownButton = _interopRequireDefault(require("../../buttons/rqtv-dropdown-button"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
+var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
+
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
 
 const RqtvDropdown = props => {
   const _useState = (0, _react.useState)(false),
@@ -72,7 +72,7 @@ const RqtvDropdown = props => {
     ref: dropdownEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 36
     },
     __self: void 0
   }, _react.default.createElement(_rqtvDropdownButton.default, {
@@ -82,46 +82,32 @@ const RqtvDropdown = props => {
     showCaret: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 37
     },
     __self: void 0
-  }), show && _react.default.createElement(_q.QComponent, {
+  }), show && _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qObjectDef,
+    quickSelectionMode: props.quickSelectionMode,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 44
+    },
+    __self: void 0
+  }, _react.default.createElement(_rqtvListObject.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 45
     },
     __self: void 0
-  }, _react.default.createElement(_rqtvListObject.default, {
-    quickSelectMode: props.quickSelectMode,
+  }), _react.default.createElement(_layout.default, Object.assign({}, props, {
+    show: show,
+    hideDropdownMenu: hideDropdownMenu,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 46
     },
     __self: void 0
-  }, _react.default.createElement(_layout.default, {
-    hasCustomLabel: props.qLabelExpr ? true : false,
-    dropdownEl: dropdownEl,
-    hideDropdownMenu: hideDropdownMenu,
-    show: show //rqtvListObject={rqtvListObject}
-    ,
-    title: props.title //qLayoutHandler={props.qLayoutHandler}
-    //setQLayoutPatcher={props.setQLayoutPatcher}
-    //qObject={props.qObject}
-    ,
-    height: 500,
-    showSearch: props.showSearch,
-    quickSelectMode: props.quickSelectMode,
-    dropdownMenuHeight: props.dropdownMenuHeight,
-    dropdownMenuItemHeight: props.dropdownMenuItemHeight,
-    dropdownMenuStyle: props.dropdownMenuStyle,
-    dropdownMenuItemStyle: props.dropdownMenuItemStyle,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 47
-    },
-    __self: void 0
-  }))));
+  })))));
 };
 
 RqtvDropdown.propTypes = {
@@ -130,13 +116,15 @@ RqtvDropdown.propTypes = {
   qSortObject: _propTypes.default.object,
   showSearch: _propTypes.default.bool,
   dropdownMenuHeight: _propTypes.default.number,
-  dropdownMenuItemHeight: _propTypes.default.number,
+  dropdownMenuWidth: _propTypes.default.number,
   showCaret: _propTypes.default.bool,
   buttonColor: _propTypes.default.string,
   buttonFontColor: _propTypes.default.string,
   buttonStyle: _propTypes.default.object,
   dropdownMenuStyle: _propTypes.default.object,
-  dropdownMenuItemStyle: _propTypes.default.object
+  dropdownMenuItemStyle: _propTypes.default.object,
+  hideHorizontalScrollbar: _propTypes.default.bool,
+  quickSelectionMode: _propTypes.default.bool
 };
 RqtvDropdown.defaultProps = {
   qSortObject: {
@@ -149,13 +137,15 @@ RqtvDropdown.defaultProps = {
   },
   showSearch: true,
   dropdownMenuHeight: 300,
-  dropdownMenuItemHeight: 32,
+  dropdownMenuWidth: 265,
   showCaret: true,
   buttonColor: 'primary',
   buttonFontColor: 'light',
   buttonStyle: {},
   dropdownMenuStyle: {},
-  dropdownMenuItemStyle: {}
+  dropdownMenuItemStyle: {},
+  hideHorizontalScrollbar: false,
+  quickSelectionMode: false
 };
 var _default = RqtvDropdown;
 exports.default = _default;

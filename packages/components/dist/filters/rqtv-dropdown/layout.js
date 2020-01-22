@@ -9,68 +9,118 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _body = _interopRequireDefault(require("./body"));
+var _layout = require("@reaqtive/layout");
+
+var _dropdownToolbar = _interopRequireDefault(require("./dropdown-toolbar"));
+
+var _dropdownMenuHeader = _interopRequireDefault(require("./dropdown-menu-header.js"));
+
+var _dropdownMenuBody = _interopRequireDefault(require("./dropdown-menu-body.js"));
+
+var _search = _interopRequireDefault(require("../shared/search"));
 
 var _index = require("../../loading/index");
 
 var _index2 = require("../helpers/index");
 
-var _layout = require("@reaqtive/layout");
+var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
 
 const Layout = props => {
+  const dropdownMenuHeight = props.dropdownMenuHeight,
+        dropdownMenuWidth = props.dropdownMenuWidth,
+        hideHorizontalScrollbar = props.hideHorizontalScrollbar;
+  const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
+  const qDataPages = qLayout && qLayout.qListObject.qDataPages;
+  const qSize = qLayout && qLayout.qListObject.qSize;
+  const qArea = qLayout && qLayout.qListObject.qDataPages[0].qArea;
   const rqtvListObject = props.rqtvListObject;
-  const qLayout = props.qLayoutHandler.qLayout;
+  const _props$qSelectionHand = props.qSelectionHandler,
+        isSelecting = _props$qSelectionHand.isSelecting,
+        beginSelections = _props$qSelectionHand.beginSelections,
+        endSelections = _props$qSelectionHand.endSelections;
+  const _props$qLayoutHandler = props.qLayoutHandler,
+        setOnUpdate = _props$qLayoutHandler.setOnUpdate,
+        applyQLayoutPatch = _props$qLayoutHandler.applyQLayoutPatch;
   const dropdownMenuEl = (0, _react.useRef)();
-  const dropdownMenuStyle = !qLayout ? {
-    minHeight: props.dropdownMenuHeight
-  } : (0, _objectSpread2.default)({}, props.dropdownMenuStyle); // console.log(props.qLayouthandler)
+  (0, _layout.useOutsideEventListener)(dropdownMenuEl, () => endSelectionsAndHide(0), props.show);
 
-  const rendererProps = (0, _index2.useListObjectRendererMap)(props.qLayoutHandler, props.qObjectHandler); //const noData= qLayout&&qLayout.qListObject.qDataPages[0].qMatrix.length===0;
-  //const endSelections = () =>
+  const endSelectionsAndHide = qAccept => {
+    endSelections(qAccept, props.hideDropdownMenu);
+  };
 
-  const clickAwayCallback = rqtvListObject.isSelecting === false ? () => props.hideDropdownMenu() : () => props.hideDropdownMenu(); //props.rqtvListObject.endSelections(false)
+  (0, _react.useEffect)(() => {
+    const qDisplayArea = qArea;
+    setOnUpdate({
+      fn: () => rqtvListObject.getDataPage(qDisplayArea)
+    });
+  }, [qArea]);
+  const showToolbar = props.quickSelectionMode === false || props.showSearch;
+  const toolbarRef = (0, _react.useCallback)(toolbarEl => {
+    if (toolbarEl !== null) {
+      const toolbarHeight = toolbarEl.getBoundingClientRect().height;
+      const restHeight = (1 - toolbarHeight / dropdownMenuHeight) * dropdownMenuHeight; //console.log(restHeight)
 
-  (0, _layout.useOutsideEventListener)(dropdownMenuEl, clickAwayCallback, props.show);
-  return _react.default.createElement("div", {
-    className: "dropdown-menu ".concat(props.show ? 'show' : ''),
+      setListHeight(restHeight - 16);
+    }
+  }, [isSelecting]);
+  const rendererProps = (0, _index2.useListObjectRendererMap)(props.qLayoutHandler, props.qObjectHandler);
+
+  const _useState = (0, _react.useState)('100%'),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        listHeight = _useState2[0],
+        setListHeight = _useState2[1];
+
+  return _react.default.createElement(_layout.DropdownMenu, {
+    show: props.show,
     ref: dropdownMenuEl,
     style: {
-      dropdownMenuStyle
+      minHeight: 120,
+      maxHeight: dropdownMenuHeight,
+      overflowY: 'hidden',
+      width: dropdownMenuWidth
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 50
     },
     __self: void 0
-  }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 26
-    },
-    __self: void 0
-  }), qLayout && _react.default.createElement(_body.default, {
-    show: props.show,
-    data: qLayout.qListObject.qDataPages[0],
-    qUpdating: props.qLayoutHandler && props.qLayoutHandler.qUpdating,
-    size: qLayout.qListObject.qSize,
-    qObjectHandler: props.qObjectHandler,
-    rqtvListObject: props.rqtvListObject,
-    dropdownMenuEl: dropdownMenuEl,
-    hideDropdownMenu: props.hideDropdownMenu,
+  }, showToolbar && _react.default.createElement(_dropdownToolbar.default, {
+    searchListObjectFor: rqtvListObject.searchListObjectFor,
+    abortListObjectSearch: rqtvListObject.abortListObjectSearch,
+    acceptListObjectSearch: rqtvListObject.acceptListObjectSearch,
+    endSelections: endSelectionsAndHide,
+    isSelecting: isSelecting,
+    quickSelectionMode: props.quickSelectionMode,
     showSearch: props.showSearch,
-    quickSelectMode: props.quickSelectMode,
-    dropdownMenuHeight: props.dropdownMenuHeight,
-    dropdownMenuItemHeight: props.dropdownMenuItemHeight,
-    dropdownMenuItemStyle: props.dropdownMenuItemStyle,
+    toolbarRef: toolbarRef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 52
+    },
+    __self: void 0
+  }), _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 63
+    },
+    __self: void 0
+  }), qLayout && _react.default.createElement(_dropdownMenuBody.default, {
+    qDataPages: qDataPages,
+    qSize: qSize,
+    selectValue: rqtvListObject.selectValue,
+    getDataPage: rqtvListObject.getDataPage,
+    height: listHeight,
+    width: dropdownMenuWidth,
+    hideHorizontalScrollbar: hideHorizontalScrollbar,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 67
     },
     __self: void 0
   })));

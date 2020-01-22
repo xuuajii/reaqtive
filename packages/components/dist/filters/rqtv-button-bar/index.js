@@ -13,56 +13,49 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _q = require("@reaqtive/q");
 
-var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
-
 var _layout = _interopRequireDefault(require("./layout"));
 
 var _index = require("../helpers/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\index.js";
+var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
+
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\index.js";
 
 const RqtvButtonBar = props => {
   const qFieldExpr = props.qFieldExpr,
-        qDataPageHeight = props.qDataPageHeight,
-        qId = props.qId;
-  const qSortObject = props.qSortObject; //{qSortByNumeric: 1, qSortByAscii: 1 }
-
+        qSortObject = props.qSortObject,
+        qLabelExpr = props.qLabelExpr,
+        qId = props.qId,
+        qDataPageHeight = props.qDataPageHeight;
   const qObjectDef = (0, _index.useMapPropsToDef)({
     qFieldExpr,
     qSortObject,
-    qDataPageHeight,
-    qId
+    qLabelExpr,
+    qId,
+    qDataPageHeight
   });
-  return _react.default.createElement(_q.QComponent, {
+  return _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qObjectDef,
+    quickSelectionMode: true,
+    toggle: props.toggle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 12
     },
     __self: void 0
-  }, _react.default.createElement(_rqtvListObject.default, {
-    quickSelectMode: true,
+  }, _react.default.createElement(_rqtvListObject.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 13
     },
     __self: void 0
-  }, _react.default.createElement(_layout.default //rqtvListObject={rqtvListObject}
-  , {
-    title: props.title //qLayoutHandler={props.qLayoutHandler}
-    //setQLayoutPatcher={props.setQLayoutPatcher}
-    //qObject={props.qObject}
-    ,
-    qObjectDef: props.qObjectDef //height={500}
-    ,
-    buttonSize: props.buttonSize,
-    qDataPageHeight: qDataPageHeight,
+  }), _react.default.createElement(_layout.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 14
     },
     __self: void 0
-  })));
+  }))));
 };
 
 RqtvButtonBar.propTypes = {
@@ -74,7 +67,7 @@ RqtvButtonBar.propTypes = {
 };
 RqtvButtonBar.defaultProps = {
   qSortObject: {
-    qSortByState: 0,
+    qSortByState: 1,
     qSortByFrequency: 0,
     qSortByNumeric: 0,
     qSortByAscii: 1,
@@ -82,7 +75,8 @@ RqtvButtonBar.defaultProps = {
     qSortByExpression: 0
   },
   buttonSize: 'btn-sm',
-  qDataPageHeight: 5
+  qDataPageHeight: 5,
+  toggle: true
 };
 var _default = RqtvButtonBar;
 exports.default = _default;
