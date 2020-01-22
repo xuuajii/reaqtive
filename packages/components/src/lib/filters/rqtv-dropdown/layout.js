@@ -1,48 +1,81 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
-import React, { useRef } from 'react'
-import Body from './body'
+import React, {useState, useRef, useEffect, useCallback} from 'react'
+import {useOutsideEventListener} from '@reaqtive/layout'
+import DropdownToolbar from './dropdown-toolbar'
+import DropdownMenuHeader from './dropdown-menu-header.js'
+import DropdownMenuBody from './dropdown-menu-body.js'
+import Search from '../shared/search'
 import {RqtvRenderer} from '../../loading/index'
 import {useListObjectRendererMap} from '../helpers/index'
-import {useOutsideEventListener} from '@reaqtive/layout'
+import useRqtvListObject from '../use-rqtv-list-object'
+import {DropdownMenu} from '@reaqtive/layout'
 
-const Layout = props =>{
-  const {rqtvListObject}=props
-  const qLayout = props.qLayoutHandler.qLayout;
-  const dropdownMenuEl = useRef();
-  const dropdownMenuStyle = !(qLayout)?{minHeight:props.dropdownMenuHeight}:{...props.dropdownMenuStyle}
-  // console.log(props.qLayouthandler)
-  const rendererProps = useListObjectRendererMap(props.qLayoutHandler, props.qObjectHandler)
-  //const noData= qLayout&&qLayout.qListObject.qDataPages[0].qMatrix.length===0;
+const Layout = props => {
+  const{dropdownMenuHeight, dropdownMenuWidth, hideHorizontalScrollbar}=props
+  const qLayout = props.qLayoutHandler&&props.qLayoutHandler.qLayout
+  const qDataPages = qLayout&&qLayout.qListObject.qDataPages
+  const qSize = qLayout&&qLayout.qListObject.qSize
+  const qArea = qLayout&&qLayout.qListObject.qDataPages[0].qArea
 
-  //const endSelections = () =>
-  const clickAwayCallback = (rqtvListObject.isSelecting===false)?()=>props.hideDropdownMenu():()=>props.hideDropdownMenu()//props.rqtvListObject.endSelections(false)
-  useOutsideEventListener(dropdownMenuEl, clickAwayCallback, props.show)
+  const {rqtvListObject} = props
+  const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
+  const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
+  const dropdownMenuEl=useRef();
+
+  useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(0), props.show)
+
+  const endSelectionsAndHide = (qAccept) => {
+    endSelections(qAccept, props.hideDropdownMenu)
+  }
+
+  useEffect(()=>{
+    const qDisplayArea = qArea
+    setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
+  },[qArea])
+
+  const showToolbar = props.quickSelectionMode===false||props.showSearch
+
+  const toolbarRef = useCallback(toolbarEl => {
+   if (toolbarEl !== null) {
+     const toolbarHeight=toolbarEl.getBoundingClientRect().height;
+     const restHeight=(1-((toolbarHeight)/dropdownMenuHeight))*dropdownMenuHeight
+     //console.log(restHeight)
+     setListHeight(restHeight-16)
+   }
+ }, [isSelecting]);
+ const rendererProps = useListObjectRendererMap(props.qLayoutHandler, props.qObjectHandler)
+
+ const [listHeight, setListHeight] = useState('100%')
 
   return(
-    <div className={`dropdown-menu ${props.show?'show':''}`} ref={dropdownMenuEl} style={{dropdownMenuStyle}}>
-    <RqtvRenderer
+    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
+    {showToolbar&&
+      <DropdownToolbar
+        searchListObjectFor={rqtvListObject.searchListObjectFor}
+        abortListObjectSearch={rqtvListObject.abortListObjectSearch}
+        acceptListObjectSearch={rqtvListObject.acceptListObjectSearch}
+        endSelections={endSelectionsAndHide}
+        isSelecting={isSelecting}
+        quickSelectionMode={props.quickSelectionMode}
+        showSearch={props.showSearch}
+        toolbarRef={toolbarRef}
+      />
+    }
+      <RqtvRenderer
       {...rendererProps}
-    >
-      {qLayout&&<Body
-          show={props.show}
-          data={qLayout.qListObject.qDataPages[0]}
-          qUpdating={props.qLayoutHandler&&props.qLayoutHandler.qUpdating}
-          size={qLayout.qListObject.qSize}
-          qObjectHandler={props.qObjectHandler}
-          rqtvListObject={props.rqtvListObject}
-          dropdownMenuEl={dropdownMenuEl}
-          hideDropdownMenu={props.hideDropdownMenu}
-          showSearch={props.showSearch}
-          quickSelectMode={props.quickSelectMode}
-          dropdownMenuHeight={props.dropdownMenuHeight}
-          dropdownMenuItemHeight={props.dropdownMenuItemHeight}
-          dropdownMenuItemStyle={props.dropdownMenuItemStyle}
-        />}
+      >
+        {qLayout&&
+          <DropdownMenuBody
+              qDataPages={qDataPages}
+              qSize={qSize}
+              selectValue={rqtvListObject.selectValue}
+              getDataPage={rqtvListObject.getDataPage}
+              height={listHeight}
+              width={dropdownMenuWidth}
+              hideHorizontalScrollbar={hideHorizontalScrollbar}
+          />
+        }
       </RqtvRenderer>
-    </div>
+    </DropdownMenu>
   )
 }
 

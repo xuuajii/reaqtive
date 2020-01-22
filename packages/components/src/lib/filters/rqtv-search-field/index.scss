@@ -3,14 +3,13 @@
 //
 
 .rqtv-search-field{
-  .rqtv-search-field-header{
+  .dropdown-toolbar{
+    width:100%;
     display:flex;
     justify-content:space-between;
-    .search-container{
-      margin:0;
-      padding:0;
-      flex-grow:1;
-    }
+    margin:0;
+    padding:0;
+    flex-grow:1;
   }
   li{
     font-size:1rem;

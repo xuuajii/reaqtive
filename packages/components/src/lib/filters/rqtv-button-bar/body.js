@@ -1,48 +1,44 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react'
 import {usePagination} from '@reaqtive/q'
-import {Button} from '@reaqtive/layout'
+import {Button, ButtonGroup} from '@reaqtive/layout'
 
-const Body = props =>
-{
-  const qArea = props.data&&{...props.data.qArea, qHeight:props.qDataPageHeight}
+const Body = props =>{
+  const {rqtvListObject, qSize, qDataPages} = props
+  const {selectValue}=rqtvListObject
+
   const getScrollData = (qDisplayArea) =>{
-    if(props.rqtvListObject){
-      props.rqtvListObject.getNewDataPage(qDisplayArea)
-    }
+    rqtvListObject.getDataPage(qDisplayArea)
   }
-  const handleSelection = (value) => {
-    const callback = (res) => {
-      if(res===false){
-        getScrollData(qArea)
-      }
-    }
-    props.rqtvListObject.selectValue(Number(value), callback)
-  }
-  const pagination = usePagination(qArea, props.size, getScrollData)
+
+  const qArea = qDataPages&&{...qDataPages[0].qArea, qHeight:props.qDataPageHeight}
+
+  const pagination = usePagination(qArea, qSize, getScrollData)
+
 
   return(
-    <>
+    <ButtonGroup className="rqtv-button-bar">
       {pagination.currentPage!==1&&
         <Button type="button" className="rqtv-btn" onClick={()=>pagination.setCurrentPage(pagination.currentPage-1)}>
           {"<"}
         </Button>
       }
-        {props.data&&props.data.qMatrix.map(record =>
-          <Button key={record[0].qElemNumber} type="button" className={`rqtv-btn ${props.buttonSize} ${record[0].qState} `} onClick={()=>handleSelection(record[0].qElemNumber)}>
-            {record[0].qText}
+      {qDataPages&&qDataPages[0].qMatrix.map(item =>
+          <Button
+            key={item[0].qElemNumber}
+            type="button"
+            className={`rqtv-btn ${props.buttonSize} ${item[0].qState} `}
+            onClick={()=>selectValue(item[0].qElemNumber)}
+          >
+            {item[0].qText}
           </Button>
-          )
-        }
+        )
+      }
       {pagination.currentPage<pagination.lastPage&&
         <Button type="button" className="rqtv-btn" onClick={()=>pagination.setCurrentPage(pagination.currentPage+1)}>
           {">"}
         </Button>
       }
-    </>
+    </ButtonGroup>
   )
 }
 

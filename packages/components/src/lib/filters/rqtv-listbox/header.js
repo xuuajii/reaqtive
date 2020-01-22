@@ -20,6 +20,7 @@ const Header = props =>{
   )
 }
 export default Header
+
 const HeaderToolbar = props =>
 <div className="rqtv-listbox-toolbar">
   {(props.showHeaderButtonbar===true)&&

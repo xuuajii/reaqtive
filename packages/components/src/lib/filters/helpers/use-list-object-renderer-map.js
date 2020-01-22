@@ -12,7 +12,7 @@ const useListObjectRendererMap = (qLayoutHandler, qObjectHandler) => {
     set({
       loading:qLoading,
       error:qError,
-      noData:!(qDataPages)||(qDataPages&&qDataPages.qMatrix.length===0),
+      noData:!(qDataPages)||(qDataPages&&qDataPages.qMatrix.length===0)||qDataPages===null,
       reload:qObjectHandler.reloadObject
     })
     //return ()=>set(null)
