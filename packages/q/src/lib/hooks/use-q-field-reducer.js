@@ -50,7 +50,7 @@ const initialState = {
 const qFieldReducer = (state, action) => {
   switch (action.type) {
     case 'error':
-      return state.maxErrorCounter>state.qErrorCounter ? {...initialState, qErrorCounter: state.qErrorCounter + 1} : {...initialState, qError:true, qErrorField:action.qErrorField, rqtvMessage:'error getting field'};
+      return state.maxErrorCounter>=state.qErrorCounter ? {...initialState, qErrorCounter: state.qErrorCounter + 1} : {...initialState, qError:true, qErrorField:action.qErrorField, rqtvMessage:'error getting field'};
     case 'successField':
       return action.isAlwaysOneSelected?{...initialState, qErrorCounter: 0, qLoading:true, qField:action.qField}:{...initialState, qErrorCounter: 0, qLoading:false, qField:action.qField};
     case 'reloadField':
@@ -70,7 +70,7 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
   useEffect(()=>{
     const runEffect = async () => {
       const result =await getQField(qDoc, qFieldName)
-      result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'successField', qField:result, isAlwaysOneSelected:isAlwaysOneSelected})
+      return (result instanceof Error)?dispatch({type:'error', qError:result}):dispatch({type:'successField', qField:result, isAlwaysOneSelected:isAlwaysOneSelected})
     }
     qDoc&&qFieldName&&runEffect()
   }, [qDoc, qFieldName])
@@ -81,7 +81,7 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
         const result = await removeAlwaysOneSelected(qField)
       }
       qField&&qField.removeAllListeners()
-      if(resetOnUnmount&&qField){
+      if(resetOnUnmount&&qField&&isAlwaysOneSelected===true){
         onUnmount()
       }
     }
@@ -89,9 +89,9 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
 
   useEffect(()=>{
     const runEffect = async() => {
-      if(qField && isAlwaysOneSelected){
+      if(qField!==null && isAlwaysOneSelected===true){
         const result = await setAlwaysOneSelected(qField, defaultValue)
-        result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'successNxProps'})
+        return (result instanceof Error)?dispatch({type:'error', qError:result}):dispatch({type:'successNxProps'})
       }
     }
     runEffect()
