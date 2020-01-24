@@ -37,7 +37,10 @@ const RqtvStandardTemplate = props => {
         sideMenuFieldsMatch = {props.sideMenuFieldsMatch}
       />
       <RqtvSideMenuMain isOpen={showSideMenu}>
-        <div className={`${props.useContainerFluid?'container-fluid':'container'}`}>
+        <div
+          className={`${props.useContainerFluid?'container-fluid':'container'} ${props.containerClassName?props.containerClassName:''}`}
+          style={{...props.containerStyle}}
+        >
           <RqtvRenderer {...rendererProps} isFixed={true}>
             {props.usePageHeader&&<RqtvPageHeader/>}
             {props.children}
@@ -50,7 +53,9 @@ const RqtvStandardTemplate = props => {
 
 RqtvStandardTemplate.propTypes = {
   useContainerFluid:PropTypes.bool,
-  usePageHeader:PropTypes.bool
+  usePageHeader:PropTypes.bool,
+  containerStyle:PropTypes.object,
+  containerClassName:PropTypes.string
 }
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid:true,
