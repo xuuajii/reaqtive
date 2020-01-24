@@ -13,7 +13,7 @@ var _q = require("@reaqtive/q");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\current-selections-field.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\current-selections-field.js";
 
 const CurrentSelectionsField = props => {
   const isMounted = (0, _layout.useIsMounted)();

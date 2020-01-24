@@ -17,7 +17,7 @@ var _rqtvCurrentSelectionsObject = _interopRequireDefault(require("./rqtv-curren
 
 var _layout = _interopRequireDefault(require("./layout"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\index.js";
 const qCurrentSelectionsObjectDef = {
   "qInfo": {
     "qId": "",

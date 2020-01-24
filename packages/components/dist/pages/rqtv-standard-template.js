@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
+
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -19,7 +21,7 @@ var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
 
 const RqtvStandardTemplate = props => {
   const _useState = (0, _react.useState)(false),
@@ -63,7 +65,8 @@ const RqtvStandardTemplate = props => {
     },
     __self: void 0
   }, _react.default.createElement("div", {
-    className: "".concat(props.useContainerFluid ? 'container-fluid' : 'container'),
+    className: "".concat(props.useContainerFluid ? 'container-fluid' : 'container', " ").concat(props.containerClassName ? props.containerClassName : ''),
+    style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 40
@@ -73,13 +76,13 @@ const RqtvStandardTemplate = props => {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 44
     },
     __self: void 0
   }), props.usePageHeader && _react.default.createElement(_index.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 45
     },
     __self: void 0
   }), props.children))));
@@ -87,7 +90,9 @@ const RqtvStandardTemplate = props => {
 
 RqtvStandardTemplate.propTypes = {
   useContainerFluid: _propTypes.default.bool,
-  usePageHeader: _propTypes.default.bool
+  usePageHeader: _propTypes.default.bool,
+  containerStyle: _propTypes.default.object,
+  containerClassName: _propTypes.default.string
 };
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid: true,
