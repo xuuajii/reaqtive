@@ -8,6 +8,7 @@ import {
   RqtvMultibox,
   RqtvPageHeader
 } from '@reaqtive/components'
+import {QVariable} from '@reaqtive/q'
 import {Section, Example} from '../example-components/index'
 
 const examples = {
@@ -116,6 +117,9 @@ const examples = {
 
 const Filters = props =>
 <>
+  <QVariable>
+    <div>AZZ</div>
+  </QVariable>
   <Section title='RqtvListbox'>
     <Example codeString={examples['rqtvListbox']}>
       <RqtvListbox qFieldExpr='Customer' qLabelExpr={`=if(count(distinct Customer)=1, only(Customer), count(distinct Customer)) `} height={400}/>

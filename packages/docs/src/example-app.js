@@ -6,7 +6,7 @@ import React, {useRef} from 'react'
 import Home from './pages/home'
 import Visualizations from './pages/visualizations'
 import Filters from './pages/filters'
-import Test from './pages/test'
+import ReaqtiveQ from './pages/reaqtive-q'
 // import Theme from './theme'
 // import AppObjects from './app-objects'
 // import RqtvAppAndRqtvPage from './rqtv-app-and-rqtv-page'
@@ -64,9 +64,9 @@ const ExampleApp = props => {
           </RqtvPage>
           {/*Filters*/}
           <RqtvPage
-            path={'/test'}
+            path={'/reaqtive-q'}
             id={4}
-            title='Test'
+            title='@raqtive/q'
             // triggers={[
             //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
             //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
@@ -75,9 +75,9 @@ const ExampleApp = props => {
             <RqtvStandardTemplate
               searchFieldsMatch={{method:'include', mask:['Cust*']}}
               useContainerFluid={false}
-              usePageHeader={false}
+              usePageHeader={true}
             >
-              <Test/>
+              <ReaqtiveQ/>
             </RqtvStandardTemplate>
           </RqtvPage>
         </RqtvApp>
