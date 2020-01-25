@@ -3,7 +3,7 @@
 //
 
 import React from 'react'
-import {Dropdown, DropdownButton, DropdownMenu, DropdonMenuItem} from '@reaqtive/layout'
+import {Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem} from '@reaqtive/layout'
 
 const RqtvVizContainerHeader = React.forwardRef((props, ref) => {
   //console.log(props.items)
@@ -14,7 +14,7 @@ const RqtvVizContainerHeader = React.forwardRef((props, ref) => {
         :<Dropdown className="chart-list">
           <DropdownButton label={props.title} className="viz-container-dropdown-button"/>
           <DropdownMenu>
-            {props.items.map(item=><DropdonMenuItem key={item.id} action={()=>props.setActiveItem(item)} label={item.title}/>)}
+            {props.items.map(item=><DropdownMenuItem key={item.id} action={()=>props.setActiveItem(item)} label={item.title}/>)}
           </DropdownMenu>
         </Dropdown>
       }
