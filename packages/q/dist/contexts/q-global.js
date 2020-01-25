@@ -26,6 +26,16 @@ const schema = require('enigma.js/schemas/12.20.0.json');
 const SenseUtilities = require('enigma.js/sense-utilities');
 
 const QGlobal = _react.default.createContext();
+/**
+ * QGlobal
+ * This context provides a handler for the qGlobal provided by Qlik engine Api.
+ * the handler is an object with 3 props:
+ * qGlobal: the actual qGlobal provided by the qEngine. It is initially null and it is set when the promis is resolved
+ * qError: initially null it is set to true if the promise for the qGlobal returns an error
+ * qLoading: initially true, it is set to false when the promise to get the qGlobal is resolved
+ * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/index.html
+ */
+
 
 exports.QGlobal = QGlobal;
 
@@ -71,7 +81,7 @@ const QGlobalProvider = props => {
     value: qGlobalHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 38
     },
     __self: void 0
   }, props.children);

@@ -40,7 +40,17 @@ const QGenericObject = props => {
 };
 
 QGenericObject.propTypes = {
+  /**
+   * the definition of the qObject.
+   * Check the following links for details
+   * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/genericobject.html
+   */
   qObjectDef: _propTypes.default.object.isRequired,
+
+  /**
+   * If true the object will handle selections using Qlik Sense mode (user will have to accept selections)
+   * If set to false the object will handle selections using QlikView mode (selection immediately applied)
+   */
   quickSelectionMode: _propTypes.default.bool
 };
 QGenericObject.defaultProps = {

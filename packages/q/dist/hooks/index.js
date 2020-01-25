@@ -89,6 +89,12 @@ Object.defineProperty(exports, "useQSelectionHandler", {
     return _useQSelectionHandler.default;
   }
 });
+Object.defineProperty(exports, "useQVariablenReducer", {
+  enumerable: true,
+  get: function () {
+    return _useQVariableReducer.default;
+  }
+});
 
 var _useQObjectHandler = _interopRequireDefault(require("./use-q-object-handler"));
 
@@ -117,3 +123,5 @@ var _useQFieldReducer = _interopRequireDefault(require("./use-q-field-reducer"))
 var _useQLayoutReducer = _interopRequireDefault(require("./use-q-layout-reducer"));
 
 var _useQSelectionHandler = _interopRequireDefault(require("./use-q-selection-handler"));
+
+var _useQVariableReducer = _interopRequireDefault(require("./use-q-variable-reducer"));

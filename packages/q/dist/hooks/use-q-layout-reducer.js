@@ -82,12 +82,17 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const qObject = qObjectHandler.qObject,
         shouldUpdate = qObjectHandler.shouldUpdate,
-        setShouldUpdate = qObjectHandler.setShouldUpdate;
-  const isSelecting = qSelectionHandler.isSelecting; // console.log({qObject, shouldUpdate, isSelecting})
+        setShouldUpdate = qObjectHandler.setShouldUpdate,
+        qVariable = qObjectHandler.qVariable;
 
+  const _ref = qSelectionHandler || false,
+        isSelecting = _ref.isSelecting; // console.log({qObject, shouldUpdate, isSelecting})
+
+
+  const layoutProvider = qObject || qVariable;
   (0, _react.useEffect)(() => {
-    const runEffect = async qObject => {
-      const result = await getLayout(qObject);
+    const runEffect = async layoutProvider => {
+      const result = await getLayout(layoutProvider);
       return result instanceof Error ? dispatch({
         type: 'error',
         qError: result
@@ -97,13 +102,13 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       });
     };
 
-    if (qLoading === true && qObject !== null) {
-      qObject && runEffect(qObject);
+    if (qLoading === true && layoutProvider !== null) {
+      layoutProvider && runEffect(layoutProvider);
     }
-  }, [qLoading, qObject, qErrorCounter]);
+  }, [qLoading, layoutProvider, qErrorCounter]);
   const updateLayout = (0, _react.useCallback)(() => {
-    const standardUpdate = async qObject => {
-      const result = await getLayout(qObject);
+    const standardUpdate = async layoutProvider => {
+      const result = await getLayout(layoutProvider);
       return result instanceof Error ? dispatch({
         type: 'error',
         qError: result
@@ -113,14 +118,14 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       });
     };
 
-    if (qObject !== null && isSelecting === true && typeof onUpdate.fn === 'function') {
+    if (layoutProvider !== null && isSelecting === true && typeof onUpdate.fn === 'function') {
       //console.log('custom update');
       onUpdate.fn();
     } else {
       //console.log('standard update');
-      qObject !== null && standardUpdate();
+      layoutProvider !== null && standardUpdate();
     }
-  }, [qObject, onUpdate, isSelecting]);
+  }, [onUpdate, isSelecting, layoutProvider]);
   (0, _react.useEffect)(() => {
     if (shouldUpdate === true) {
       updateLayout();

@@ -20,6 +20,17 @@ var _qConfigHelpers = _interopRequireDefault(require("./helpers/q-config-helpers
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-capability-api.js";
 
 const QCapabilityApi = _react.default.createContext(null);
+/**
+ * QCapabilityApi
+ * This context provides a handler for the qlik object provided by Qlik Capability APIs.
+ * the handler is an object with 5 props:
+ * qLoadingRequireJS: initially true, it is set to false when the promise to get requireJS is resolved
+ * qLoadingQlikJS: initially true, it is set to false when the promise to get qlikJS is resolved
+ * qLoadingCss: initially true, it is set to false when the promise to get qlikCSS is resolved
+ * qlik: the qlik provided by the qlik Capability APIs. It is initially null and it is set when the promis is resolved
+ * qError: initially null it is set to true if one of the promises to load requireJS or the qlik object or the css fails
+ */
+
 
 exports.QCapabilityApi = QCapabilityApi;
 
@@ -139,7 +150,7 @@ const QCapabilityApiProvider = props => {
     value: (0, _objectSpread2.default)({}, qCapabilityApiHandler, qCssHandler),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 92
     },
     __self: void 0
   }, props.children);

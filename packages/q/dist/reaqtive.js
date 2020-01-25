@@ -11,6 +11,8 @@ var _objectWithoutProperties2 = _interopRequireDefault(require("@babel/runtime/h
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _index = require("./index");
 
 var _layout = require("@reaqtive/layout");
@@ -25,32 +27,58 @@ const Reaqtive = props => {
   return _react.default.createElement(_layout.SystemProvider, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 19
     },
     __self: void 0
   }, qCapabilityApiRequired === true ? _react.default.createElement(_index.QDocProvider, {
     qConfig: qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 21
     },
     __self: void 0
   }, _react.default.createElement(_index.QAppProvider, {
     qConfig: qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 22
     },
     __self: void 0
   }, props.children)) : _react.default.createElement(_index.QDocProvider, {
     qConfig: qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 26
     },
     __self: void 0
   }, props.children));
 };
 
+Reaqtive.propTypes = {
+  /**
+  * qConfig is an object that provides reaqtive the params needed to connect to the Qlik server.
+  * params area:
+  * host: the ip address or domain of the Qlik SystemProvider
+  * port: the port on which Qlik server is listening
+  * secure: true if the Qlik server uses https, false otherwise
+  * prefix: Qlik's virtual proxy path
+  * appId: the id of the app reaqtive should connect to
+  */
+  qConfig: _propTypes.default.shape({
+    host: _propTypes.default.string,
+    port: _propTypes.default.number,
+    secure: _propTypes.default.bool,
+    port: _propTypes.default.number,
+    appId: _propTypes.default.string
+  }).isRequired,
+
+  /**
+  * if true Reaqtive downloads capability APIs from Qlik server and provides the qlik object and the qApp to its children
+  */
+  qCapabilityApiRequired: _propTypes.default.bool
+};
+Reaqtive.defaultProps = {
+  qCapabilityApiRequired: true
+};
 var _default = Reaqtive;
 exports.default = _default;

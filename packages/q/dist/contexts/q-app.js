@@ -20,6 +20,15 @@ var _qCapabilityApi = require("./q-capability-api");
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-app.js";
 
 const QApp = _react.default.createContext();
+/**
+ * QApp
+ * This context provides a handler for the application (qApp) object provided by Qlik Capability APIs.
+ * the handler is an object with 3 props:
+ * qLoading: initially true, it is set to false when the promise to get the qApp is resolved
+ * qApp: the app provided by the qlik Capability APIs. It is initially null and it is set when the promis is resolved
+ * qError: initially null it is set to true if the promise to get the qApp returns an error
+ */
+
 
 exports.QApp = QApp;
 
@@ -63,7 +72,7 @@ const QCapabilityApiConsumer = props => {
     value: qAppHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 42
     },
     __self: void 0
   }, props.children);
@@ -74,14 +83,14 @@ const QAppProvider = props => {
     qConfig: props.qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 50
     },
     __self: void 0
   }, _react.default.createElement(QCapabilityApiConsumer, {
     qConfig: props.qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 51
     },
     __self: void 0
   }, props.children));
