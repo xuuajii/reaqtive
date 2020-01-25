@@ -13,7 +13,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
 
 const RqtvPageContext = _react.default.createContext();
 
