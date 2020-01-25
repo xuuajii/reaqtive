@@ -46,14 +46,15 @@
     "@reaqtive/components": "^0.0.0-patch-2",
     "@reaqtive/layout": "^0.0.0-patch-2",
     "@reaqtive/q": "^0.0.0-patch-2",
+    "airbnb-prop-types": "^2.15.0",
     "bootstrap": "^4.4.1",
     "enigma.js": "^2.4.0",
     "node-sass": "^4.13.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "^3.3.0",
     "react-spring": "^8.0.27",
-    "react-syntax-highlighter": "^12.2.1",
-    "react-router-dom": "^5.1.2"
+    "react-syntax-highlighter": "^12.2.1"
   }
 }

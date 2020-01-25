@@ -76,6 +76,7 @@
 	"dependencies": {
 		"@reaqtive/layout": "^0.0.0-patch-2",
 		"@reaqtive/q": "^0.0.0-patch-2",
+		"airbnb-prop-types": "^2.15.0",
 		"bootstrap": "^4.4.1",
 		"lodash": "4.17.15",
 		"node-sass": "^4.13.0",
