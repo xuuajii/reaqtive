@@ -44,34 +44,35 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   const {qLoading, qLayout, qErrorCounter, qError} = qPromiseHandler
   const [onUpdate, setOnUpdate]=useState(null)
 
-  const {qObject, shouldUpdate, setShouldUpdate, } = qObjectHandler
-  const { isSelecting } = qSelectionHandler
+  const {qObject, shouldUpdate, setShouldUpdate, qVariable} = qObjectHandler
+  const { isSelecting } = qSelectionHandler || false
   // console.log({qObject, shouldUpdate, isSelecting})
-
+  const layoutProvider = qObject||qVariable
   useEffect(()=>{
-    const runEffect = async (qObject) => {
-      const result = await getLayout(qObject)
+    const runEffect = async (layoutProvider) => {
+      const result = await getLayout(layoutProvider)
       return (result instanceof Error)?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
-    if(qLoading===true && qObject!==null){
-      qObject&&runEffect(qObject)
+    if(qLoading===true && layoutProvider!==null){
+      layoutProvider&&runEffect(layoutProvider)
     }
-  }, [qLoading, qObject, qErrorCounter])
+  }, [qLoading, layoutProvider, qErrorCounter])
 
   const updateLayout = useCallback(()=>{
-    const standardUpdate = async (qObject) => {
-      const result = await getLayout(qObject)
+
+    const standardUpdate = async (layoutProvider) => {
+      const result = await getLayout(layoutProvider)
       return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
 
-    if(qObject!==null && isSelecting===true && (typeof onUpdate.fn ==='function')){
+    if(layoutProvider!==null && isSelecting===true && (typeof onUpdate.fn ==='function')){
       //console.log('custom update');
       onUpdate.fn()
     } else {
       //console.log('standard update');
-      (qObject!==null)&&standardUpdate()
+      (layoutProvider!==null)&&standardUpdate()
     }
-  },[qObject, onUpdate, isSelecting])
+  },[onUpdate, isSelecting, layoutProvider])
 
   useEffect(()=>{
     if(shouldUpdate===true){

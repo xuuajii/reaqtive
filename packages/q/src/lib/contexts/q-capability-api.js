@@ -6,7 +6,16 @@ import React, {useState, useEffect} from 'react'
 import qConfigHelpers from './helpers/q-config-helpers'
 
 const QCapabilityApi = React.createContext(null)
-
+/**
+ * QCapabilityApi
+ * This context provides a handler for the qlik object provided by Qlik Capability APIs.
+ * the handler is an object with 5 props:
+ * qLoadingRequireJS: initially true, it is set to false when the promise to get requireJS is resolved
+ * qLoadingQlikJS: initially true, it is set to false when the promise to get qlikJS is resolved
+ * qLoadingCss: initially true, it is set to false when the promise to get qlikCSS is resolved
+ * qlik: the qlik provided by the qlik Capability APIs. It is initially null and it is set when the promis is resolved
+ * qError: initially null it is set to true if one of the promises to load requireJS or the qlik object or the css fails
+ */
 const QCapabilityApiProvider = props => {
   const qConfigForProxy = qConfigHelpers.useProxy(props.qConfig)
   const requireJSUrl = qConfigHelpers.createSenseURL(qConfigForProxy, 'requireJS')

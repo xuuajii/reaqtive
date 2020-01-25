@@ -5,6 +5,14 @@ import React, {useState, useEffect, useCallback, useRef} from 'react'
 import PropTypes from 'prop-types'
 import {useQObjectReducer, useQLayoutReducer, useQSelectionHandler} from '../index'
 
+/**
+ * QGenericObject
+ * Creates a generic object and provides qObject and qLayout to its clid.
+ * It expects only 1 child
+ * It attaches an onChange event-listener to the qObject and automatically updates the layout when the event fires.
+ * For example it can provide a listobject or a hypercube to its children.
+ *
+ */
 const QGenericObject = props => {
   const {qObjectDef, quickSelectionMode} = props
   const qObjectHandler = useQObjectReducer(qObjectDef)
@@ -18,7 +26,16 @@ const QGenericObject = props => {
 }
 
 QGenericObject.propTypes = {
+  /**
+   * the definition of the qObject.
+   * Check the following links for details
+   * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/genericobject.html
+   */
   qObjectDef:PropTypes.object.isRequired,
+  /**
+   * If true the object will handle selections using Qlik Sense mode (user will have to accept selections)
+   * If set to false the object will handle selections using QlikView mode (selection immediately applied)
+   */
   quickSelectionMode:PropTypes.bool
 }
 
