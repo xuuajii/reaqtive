@@ -1,12 +1,10 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-
 import React from 'react'
-import PropTypes from 'prop-types';
-import {QDocProvider} from './index'
-import {QAppProvider} from './index'
+import {QDocProvider, QAppProvider } from './index'
 import {SystemProvider} from '@reaqtive/layout'
+import PropTypes from 'prop-types';
 
 /**
  * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children

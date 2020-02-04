@@ -2,8 +2,8 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 import React, {useState, useEffect, useCallback, useRef} from 'react'
-import PropTypes from 'prop-types'
 import {useQObjectReducer, useQLayoutReducer, useQSelectionHandler} from '../index'
+import PropTypes from 'prop-types'
 
 /**
  * QGenericObject

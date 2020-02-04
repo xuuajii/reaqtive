@@ -2,7 +2,8 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import {useState, useEffect, useCallback} from 'react'
+import {useState, useEffect, useCallback, useContext} from 'react'
+import {QDoc} from '../index'
 
 const qBeginSelections = async (qObject) => {
   try{
@@ -23,8 +24,19 @@ const qEndSelections = async (qObject, qAccept) => {
   }
 }
 
+const abortModal = (qDoc, isSelecting) => {
+  if(QDoc && isSelecting){
+    qDoc&&qDoc.abortModal(false)
+  }
+}
+
 const useQSelectionHandler = (qObject) => {
   const [isSelecting, setIsSelecting] = useState(false)
+  const qDocHandler = useContext(QDoc)
+  const qDoc = qDocHandler.qDoc
+  useEffect(()=>{
+    return () => abortModal(qDoc, isSelecting)
+  }, [qDoc, isSelecting])
 
   const beginSelections = useCallback((callback) => {
     const fn = async () => {
@@ -38,11 +50,8 @@ const useQSelectionHandler = (qObject) => {
         callback()
       }
     }
-    //console.log('begin')
-    //console.log(qObject)
     setIsSelecting(true)
     fn(qObject)
-    //result instanceof Error?setIsSelecting(false):callback()
   }, [qObject])
 
   const endSelections = useCallback((qAccept, callback) => {
