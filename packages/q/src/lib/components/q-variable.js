@@ -33,11 +33,11 @@ const exclusiveProps = Object.keys(exclusivePropTypes)
 
 QVariable.propTypes = {
   /**
-   * variableName: the name of the variable. It must not be provided if variableId is provided
+   * The name of the variable. It must not be provided if variableId is provided
    */
    variableName:PropTypes.string,
    /**
-    * variableId: the id of the variable. It must not be provided if variableName is provided
+    * The id of the variable. It must not be provided if variableName is provided
     */
    variableId:PropTypes.string,
   ...Object.fromEntries(exclusiveProps.map(exclusiveProp => [

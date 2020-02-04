@@ -10,7 +10,7 @@ const QDoc = React.createContext()
 /**
  * QDoc
  * This context provides a handler for the qDoc provided by Qlik engine Api.
- * the handler is an object with 3 props:
+ * The handler is an object with 3 props:
  * qDoc: the actual qDoc provided by the qEngine. It is initially null and it is set when the promis is resolved
  * qError: initially null it is set to true if the promise for the qDoc returns an error
  * qLoading: initially true, it is set to false when the promise to get the qDoc is resolved

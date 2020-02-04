@@ -27,7 +27,7 @@ const QGenericObject = props => {
 
 QGenericObject.propTypes = {
   /**
-   * the definition of the qObject.
+   * The definition of the qObject.
    * Check the following links for details
    * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/genericobject.html
    */

@@ -9,7 +9,7 @@ const QCapabilityApi = React.createContext(null)
 /**
  * QCapabilityApi
  * This context provides a handler for the qlik object provided by Qlik Capability APIs.
- * the handler is an object with 5 props:
+ * The handler is an object with 5 props:
  * qLoadingRequireJS: initially true, it is set to false when the promise to get requireJS is resolved
  * qLoadingQlikJS: initially true, it is set to false when the promise to get qlikJS is resolved
  * qLoadingCss: initially true, it is set to false when the promise to get qlikCSS is resolved

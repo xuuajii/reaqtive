@@ -32,19 +32,29 @@ const Reaqtive = props =>{
 Reaqtive.propTypes={
   /**
  * qConfig is an object that provides reaqtive the params needed to connect to the Qlik server.
- * params area:
- * host: the ip address or domain of the Qlik SystemProvider
- * port: the port on which Qlik server is listening
- * secure: true if the Qlik server uses https, false otherwise
- * prefix: Qlik's virtual proxy path
- * appId: the id of the app reaqtive should connect to
+ * params are: host, port, secure, prefix, appId: the id of the app reaqtive should connect to
  */
   qConfig:PropTypes.shape({
-    host: PropTypes.string,
-    port: PropTypes.number,
-    secure: PropTypes.bool,
-    port: PropTypes.number,
-    appId:PropTypes.string
+    /**
+   * host: the ip address or domain of the Qlik SystemProvider
+   */
+    host: PropTypes.string.isRequired,
+    /**
+   * port: the port on which Qlik server is listening
+   */
+    port: PropTypes.number.isRequired,
+    /**
+   * secure: true if the Qlik server uses https, false otherwise
+   */
+    secure: PropTypes.bool.isRequired,
+    /**
+   * prefix: Qlik's virtual proxy path
+   */
+    prefix: PropTypes.number.isRequired,
+    /**
+   * appId: the id of the app reaqtive should connect to
+   */
+    appId:PropTypes.string.isRequired
   }).isRequired,
 
   /**
