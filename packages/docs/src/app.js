@@ -25,7 +25,7 @@ const App = props => {
       {/*<ExampleApp />*/}
       <RqtvApp
         sideMenuFields={{ method: "include", mask: ["**"] }}
-        title="Reaqtive Demo"
+        title="Fleet Competitiveness"
       >
         {/*Home*/}
         <RqtvPage path={"/"} id={0} title="Home Page" exact={true}>

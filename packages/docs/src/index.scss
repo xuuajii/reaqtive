@@ -1,6 +1,13 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
+@import "./styles/theme.scss";
+@import "~@reaqtive/components/dist/index.scss";
+@import "./app";
 
-@import '~@reaqtive/components/dist/index.scss';
-@import './app';
+.rqtv-navbar {
+  box-shadow: 0 8px 6px -6px #0000006e;
+  a {
+    color: $theme-color;
+  }
+}
