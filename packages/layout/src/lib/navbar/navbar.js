@@ -50,7 +50,7 @@ const Navbar = props => {
 
 Navbar.propTypes = {
   className:PropTypes.string,
-  style:PropTypes.string,
+  style:PropTypes.object,
   breakpoint:PropTypes.number
 }
 
