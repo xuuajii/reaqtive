@@ -7,7 +7,7 @@ const qConfig = {
     secure: false,
     port: 4848,
     prefix: '',
-    appId: 'Executive Dashboard.qvf'
+    appId: 'Purchasing.qvf'
 };
 
 module.exports =  qConfig

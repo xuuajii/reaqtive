@@ -1,0 +1,23 @@
+@import '../../../index.scss';
+
+
+  #overview {
+
+    height: 400px;
+
+    .card:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(62, 62, 62, 0.6);
+    }
+
+    @media (max-width: 768px) {
+      height: auto;
+    }
+
+  }
+  

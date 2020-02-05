@@ -1,5 +1,5 @@
 import React from 'react'
-import {ComponentDocumentation} from '../components/components-docs/index'
+import {ComponentDocumentation} from '../app-components/components-docs/index'
 const packageData = require('../packages-data/q.json')
 const ReaqtiveQ = props => {
 

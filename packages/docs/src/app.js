@@ -3,7 +3,7 @@
 //
 
 import React, { useRef } from "react";
-import Home from "./pages/home";
+import Home from "./pages/homepage/home";
 import Visualizations from "./pages/visualizations";
 import Filters from "./pages/filters";
 import ReaqtiveQ from "./pages/reaqtive-q";
@@ -17,51 +17,72 @@ import {
 } from "@reaqtive/components";
 import SetUp from "./pages/set-up";
 import qConfig from "./q-config";
+/* Import Assets */
+import Logo from "./images/logo.png";
 
 const App = props => {
+  const fields = [
+    "Basket",
+    "Year Month",
+    "Model",
+    "Brand",
+    "Country",
+    "UID Code",
+    "Model Version",
+    "Fuel Type",
+    "Model Benchmark",
+    "Flag In Avg",
+    "Submodel Benchmark"
+  ];
   const maximizeEl = useRef();
   return (
     <Reaqtive qConfig={qConfig} qCapabilityApiRequired={true}>
       {/*<ExampleApp />*/}
       <RqtvApp
         sideMenuFields={{ method: "include", mask: ["**"] }}
-        title="Fleet Competitiveness"
+        title=""
+        brand={Logo}
+        brandStyle={{
+          width: 100,
+          height: "auto"
+        }}
+        sideMenuFieldsMatch={{ method: "include", mask: fields }}
       >
         {/*Home*/}
-        <RqtvPage path={"/"} id={0} title="Home Page" exact={true}>
-          <RqtvStandardTemplate
-            usePageHeader={false}
-            sideMenuFieldsMatch={{
-              method: "include",
-              mask: ["Cust*", "*Desc*"]
-            }}
-            useContainerFluid={false}
-          >
-            <Home maximizeEl={maximizeEl} />
-          </RqtvStandardTemplate>
-        </RqtvPage>
+        <Home
+          maximizeEl={maximizeEl}
+          path={"/"}
+          id={0}
+          title="Home"
+          exact={true}
+        />
+
         {/*Quick Start*/}
-        <RqtvPage path={"/quick-start"} id={1} title="Quick Start">
+        <RqtvPage
+          path={"/overview-by-market"}
+          id={1}
+          title="OVERVIEW BY MARKET"
+        >
           <RqtvStandardTemplate useContainerFluid={false}>
             <SetUp />
           </RqtvStandardTemplate>
         </RqtvPage>
-        {/*Visualizations*/}
+        {/*OVERVIEW BY PRODUCT*/}
         <RqtvPage
-          path={"/visualizations"}
+          path={"/overview-by-product"}
           exact={true}
           id={3}
-          title="Visualizations"
+          title="OVERVIEW BY PRODUCT"
         >
           <RqtvStandardTemplate useContainerFluid={false}>
             <Visualizations />
           </RqtvStandardTemplate>
         </RqtvPage>
-        {/*Filters*/}
+        {/*PURCHASING*/}
         <RqtvPage
-          path={"/filters"}
+          path={"/purchasing"}
           id={2}
-          title="Filters"
+          title="PURCHASING"
           // triggers={[
           //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
           //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
@@ -74,11 +95,29 @@ const App = props => {
             <Filters />
           </RqtvStandardTemplate>
         </RqtvPage>
-        {/*Filters*/}
+        {/*LONG TERM RENTAL*/}
         <RqtvPage
-          path={"/reaqtive-q"}
+          path={"/long-term-rental"}
           id={4}
-          title="@raqtive/q"
+          title="LONG TERM RENTAL"
+          // triggers={[
+          //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
+          //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
+          // ]}
+        >
+          <RqtvStandardTemplate
+            searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
+            useContainerFluid={false}
+            usePageHeader={true}
+          >
+            <ReaqtiveQ />
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*LONG TERM RENTAL*/}
+        <RqtvPage
+          path={"/tco-&-residual-value"}
+          id={5}
+          title="TCO & RESIDUAL VALUE"
           // triggers={[
           //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
           //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},

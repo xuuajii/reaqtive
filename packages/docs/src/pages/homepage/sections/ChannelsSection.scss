@@ -1,0 +1,9 @@
+@import '../../../index.scss';
+
+#channels {
+    background-color: $overlay-color-secondary;
+    /*background: linear-gradient(0deg, rgba(18, 46, 97, 0.7) 0%, rgba(91,136,217,0) 100%);*/
+    position: relative;
+    width: 100%;
+    height: 380px;
+  }
