@@ -117,9 +117,6 @@ const examples = {
 
 const Filters = props =>
 <>
-  <QVariable>
-    <div>AZZ</div>
-  </QVariable>
   <Section title='RqtvListbox'>
     <Example codeString={examples['rqtvListbox']}>
       <RqtvListbox qFieldExpr='Customer' qLabelExpr={`=if(count(distinct Customer)=1, only(Customer), count(distinct Customer)) `} height={400}/>

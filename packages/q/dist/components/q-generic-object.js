@@ -11,13 +11,22 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
 var _index = require("../index");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
+
+/**
+ * QGenericObject
+ * Creates a generic object and provides qObject and qLayout to its clid.
+ * It expects only 1 child
+ * It attaches an onChange event-listener to the qObject and automatically updates the layout when the event fires.
+ * For example it can provide a listobject or a hypercube to its children.
+ *
+ */
 const QGenericObject = props => {
   const qObjectDef = props.qObjectDef,
         quickSelectionMode = props.quickSelectionMode;

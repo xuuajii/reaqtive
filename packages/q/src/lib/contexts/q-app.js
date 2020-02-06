@@ -10,7 +10,7 @@ const QApp = React.createContext()
 /**
  * QApp
  * This context provides a handler for the application (qApp) object provided by Qlik Capability APIs.
- * the handler is an object with 3 props:
+ * The handler is an object with 3 props:
  * qLoading: initially true, it is set to false when the promise to get the qApp is resolved
  * qApp: the app provided by the qlik Capability APIs. It is initially null and it is set when the promis is resolved
  * qError: initially null it is set to true if the promise to get the qApp returns an error
