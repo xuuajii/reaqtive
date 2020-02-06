@@ -11,6 +11,8 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = require("react");
 
+var _index = require("../index");
+
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
@@ -33,12 +35,23 @@ const qEndSelections = async (qObject, qAccept) => {
   }
 };
 
+const abortModal = (qDoc, isSelecting) => {
+  if (_index.QDoc && isSelecting) {
+    qDoc && qDoc.abortModal(false);
+  }
+};
+
 const useQSelectionHandler = qObject => {
   const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         isSelecting = _useState2[0],
         setIsSelecting = _useState2[1];
 
+  const qDocHandler = (0, _react.useContext)(_index.QDoc);
+  const qDoc = qDocHandler.qDoc;
+  (0, _react.useEffect)(() => {
+    return () => abortModal(qDoc, isSelecting);
+  }, [qDoc, isSelecting]);
   const beginSelections = (0, _react.useCallback)(callback => {
     const fn = async () => {
       try {
@@ -49,12 +62,10 @@ const useQSelectionHandler = qObject => {
       } finally {
         callback();
       }
-    }; //console.log('begin')
-    //console.log(qObject)
-
+    };
 
     setIsSelecting(true);
-    fn(qObject); //result instanceof Error?setIsSelecting(false):callback()
+    fn(qObject);
   }, [qObject]);
   const endSelections = (0, _react.useCallback)((qAccept, callback) => {
     const result = qEndSelections(qObject, qAccept);

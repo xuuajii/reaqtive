@@ -2,8 +2,8 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 import React, {useState, useEffect, useCallback, useRef} from 'react'
-import PropTypes from 'prop-types'
 import {useQObjectReducer, useQLayoutReducer, useQSelectionHandler} from '../index'
+import PropTypes from 'prop-types'
 
 /**
  * QGenericObject
@@ -27,7 +27,7 @@ const QGenericObject = props => {
 
 QGenericObject.propTypes = {
   /**
-   * the definition of the qObject.
+   * The definition of the qObject.
    * Check the following links for details
    * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/genericobject.html
    */

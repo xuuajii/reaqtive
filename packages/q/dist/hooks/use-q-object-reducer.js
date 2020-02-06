@@ -108,8 +108,6 @@ const useQObjectReducer = qObjectDef => {
     if (qLoading) {
       runEffect();
     }
-
-    return () => qDoc && qDoc.abortModal(false);
   }, [qObjectDefMemo, qDoc, errorCounter, qLoading]);
   (0, _react.useEffect)(() => {
     if (qLoading === false && qObject !== null) {
