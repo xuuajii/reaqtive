@@ -6,8 +6,8 @@ import "./OverviewSection.scss";
 
 const OverviewSection = props => {
   return (
-    <div className="container">
-      <div id="overview" className="row align-items-center">
+    
+      <div id="overview" className="align-items-center">
         <div className="container">
           <div className="row">
             <div className=" col-sm-12 col-md-6 my-4">
@@ -33,7 +33,7 @@ const OverviewSection = props => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 

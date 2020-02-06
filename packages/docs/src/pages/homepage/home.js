@@ -15,6 +15,7 @@ import { RqtvAppContext } from "@reaqtive/components";
 import Overviews from "./sections/OverviewSection";
 import Channels from "./sections/ChannelsSection";
 import Footer from "./sections/Footer";
+import Divider from "../../components/divider/divider";
 import "./home.scss";
 
 const Home = props => {
@@ -39,12 +40,12 @@ const Home = props => {
         >
           <section id="main" className="parallax">
             <Overviews />
-            <Channels /> 
+            <Channels />
           </section>
+          <Divider height={70} backgroundColor={"rgba(212, 205, 205, 0.81)"} />
           <section id="footer" className="parallax pt-5">
             <Footer />
           </section>
-          
         </RqtvStandardTemplate>
       </RqtvPage>
     )
