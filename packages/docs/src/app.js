@@ -5,18 +5,12 @@
 import React, { useRef } from "react";
 import Home from "./pages/homepage/home";
 import Purchasing from "./pages/purchasing/purchasing";
-import Visualizations from "./pages/visualizations";
-import Filters from "./pages/filters";
-import ReaqtiveQ from "./pages/reaqtive-q";
-import { HashRouter as Router } from "react-router-dom";
+import Overviews from "./pages/overviews/overviews";
+import LongTermRental from "./pages/long-term-rental/long-term-rental";
+import TcoAndResidualValue from "./pages/tco-&-residual-value/tco-and-residual-value";
 import Reaqtive from "@reaqtive/q";
-import {
-  RqtvApp,
-  RqtvPage,
-  RqtvStandardTemplate,
-  RqtvBlankTemplate
-} from "@reaqtive/components";
-import SetUp from "./pages/set-up";
+import { RqtvApp } from "@reaqtive/components";
+
 import qConfig from "./q-config";
 /* Import Assets */
 import Logo from "./images/logo.png";
@@ -40,7 +34,6 @@ const App = props => {
     <Reaqtive qConfig={qConfig} qCapabilityApiRequired={true}>
       {/*<ExampleApp />*/}
       <RqtvApp
-        sideMenuFields={{ method: "include", mask: ["**"] }}
         title=""
         brand={Logo}
         brandStyle={{
@@ -58,57 +51,35 @@ const App = props => {
           exact={true}
         />
 
-        {/*Quick Start*/}
-        <RqtvPage path={"/overview"} mainDimension={"Country"} id={1} title="OVERVIEW BY MARKET">
-          <RqtvStandardTemplate useContainerFluid={false}>
-            <SetUp />
-          </RqtvStandardTemplate>
-        </RqtvPage>
-        {/*OVERVIEW BY PRODUCT*/}
-        <RqtvPage path={"/overview"} mainDimension={"Product"} id={2} title="OVERVIEW BY PRODUCT">
-          <RqtvStandardTemplate useContainerFluid={false}>
-            <Visualizations />
-          </RqtvStandardTemplate>
-        </RqtvPage>
+        <Overviews
+          path={"/overview/market"}
+          id={1}
+          title="Overview by Market"
+          mainDimension={"country"}
+        />
+
+        <Overviews
+          path={"/overview/product"}
+          id={2}
+          title="Overview by Product"
+          mainDimension={"product"}
+        />
         {/*PURCHASING*/}
         <Purchasing path={"/purchasing"} id={3} title="PURCHASING" />
 
         {/*LONG TERM RENTAL*/}
-        <RqtvPage
+        <LongTermRental
           path={"/long-term-rental"}
           id={4}
           title="LONG TERM RENTAL"
-          // triggers={[
-          //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-          //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-          // ]}
-        >
-          <RqtvStandardTemplate
-            searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
-            useContainerFluid={false}
-            usePageHeader={true}
-          >
-            <ReaqtiveQ />
-          </RqtvStandardTemplate>
-        </RqtvPage>
+        />
+
         {/*LONG TERM RENTAL*/}
-        <RqtvPage
+        <TcoAndResidualValue
           path={"/tco-&-residual-value"}
           id={5}
           title="TCO & RESIDUAL VALUE"
-          // triggers={[
-          //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-          //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-          // ]}
-        >
-          <RqtvStandardTemplate
-            searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
-            useContainerFluid={false}
-            usePageHeader={true}
-          >
-            <ReaqtiveQ />
-          </RqtvStandardTemplate>
-        </RqtvPage>
+        />
       </RqtvApp>
     </Reaqtive>
   );
