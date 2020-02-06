@@ -9,7 +9,7 @@ import {
   RqtvPageHeader
 } from '@reaqtive/components'
 import {QVariable} from '@reaqtive/q'
-import {Section, Example} from '../app-components/index'
+import {Section, Example} from '../example-components/index'
 
 const examples = {
   rqtvListbox:`

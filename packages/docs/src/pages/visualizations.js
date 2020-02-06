@@ -5,7 +5,7 @@
 import React, {useRef} from 'react'
 import {Link} from 'react-router-dom'
 import { RqtvVizContainer, QViz, RqtvMaximizePortalEl, RqtvPageHeader} from '@reaqtive/components'
-import {Example,Section, Code} from '../app-components/index'
+import {Example,Section, Code} from '../example-components/index'
 
 
 const examples=[

@@ -3,7 +3,7 @@
 //
 
 import React from 'react'
-import {Section, Example} from '../app-components/index'
+import {Section, Example} from '../example-components/index'
 import {RqtvPageHeader} from '@reaqtive/components'
 
 const SetUp = props =>

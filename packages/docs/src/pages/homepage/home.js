@@ -9,7 +9,7 @@ import {
   RqtvStandardTemplate,
   RqtvBlankTemplate
 } from "@reaqtive/components";
-import { RqtvPageHeader, Section } from "../../app-components/index";
+import { RqtvPageHeader, Section } from "../../example-components/index";
 import { NavLink } from "react-router-dom";
 import { RqtvAppContext } from "@reaqtive/components";
 import Overviews from "./sections/OverviewSection";
