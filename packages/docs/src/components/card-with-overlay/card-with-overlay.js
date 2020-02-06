@@ -1,5 +1,5 @@
 import React from "react";
-import "./cardWithOverlay.scss";
+import "./card-with-overlay.scss";
 import { useHistory } from "react-router-dom";
 
 const CardOverlay = props => {

@@ -1,6 +1,7 @@
 import React from "react";
-import "./ChannelsSection.scss";
-import CardWithImage from "../../../components/card-with-image/cardWithImage";
+import "./channel-section.scss";
+
+import CardWithImage from "../../../components/card-with-image/card-with-image";
 const ChannelsSection = props => {
   return (
     <div id="channels" className="align-items-center">

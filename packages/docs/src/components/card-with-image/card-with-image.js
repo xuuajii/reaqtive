@@ -1,5 +1,5 @@
 import React from "react";
-import './cardWithImage.scss';
+import './card-with-image.scss';
 
 const CardWithImage = props => {
   return (

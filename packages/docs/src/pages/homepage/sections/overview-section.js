@@ -1,8 +1,8 @@
 import React from "react";
-import CardOverlay from "../../../components/card-with-overlay/cardWithOverlay";
+import CardOverlay from "../../../components/card-with-overlay/card-with-overlay";
 //import Card from "../../../components/shared/Cards/Card/Card";
 //import { useHistory } from 'react-router-dom';
-import "./OverviewSection.scss";
+import "./overview-section.scss";
 
 const OverviewSection = props => {
   return (

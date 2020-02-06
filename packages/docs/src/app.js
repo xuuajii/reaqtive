@@ -4,6 +4,7 @@
 
 import React, { useRef } from "react";
 import Home from "./pages/homepage/home";
+import Purchasing from "./pages/purchasing/purchasing";
 import Visualizations from "./pages/visualizations";
 import Filters from "./pages/filters";
 import ReaqtiveQ from "./pages/reaqtive-q";
@@ -58,43 +59,20 @@ const App = props => {
         />
 
         {/*Quick Start*/}
-        <RqtvPage
-          path={"/overview-by-market"}
-          id={1}
-          title="OVERVIEW BY MARKET"
-        >
+        <RqtvPage path={"/overview"} mainDimension={"Country"} id={1} title="OVERVIEW BY MARKET">
           <RqtvStandardTemplate useContainerFluid={false}>
             <SetUp />
           </RqtvStandardTemplate>
         </RqtvPage>
         {/*OVERVIEW BY PRODUCT*/}
-        <RqtvPage
-          path={"/overview-by-product"}
-          exact={true}
-          id={3}
-          title="OVERVIEW BY PRODUCT"
-        >
+        <RqtvPage path={"/overview"} mainDimension={"Product"} id={2} title="OVERVIEW BY PRODUCT">
           <RqtvStandardTemplate useContainerFluid={false}>
             <Visualizations />
           </RqtvStandardTemplate>
         </RqtvPage>
         {/*PURCHASING*/}
-        <RqtvPage
-          path={"/purchasing"}
-          id={2}
-          title="PURCHASING"
-          // triggers={[
-          //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-          //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-          // ]}
-        >
-          <RqtvStandardTemplate
-            searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
-            useContainerFluid={false}
-          >
-            <Filters />
-          </RqtvStandardTemplate>
-        </RqtvPage>
+        <Purchasing path={"/purchasing"} id={3} title="PURCHASING" />
+
         {/*LONG TERM RENTAL*/}
         <RqtvPage
           path={"/long-term-rental"}
