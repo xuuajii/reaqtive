@@ -14,6 +14,7 @@ import { NavLink } from "react-router-dom";
 import { RqtvAppContext } from "@reaqtive/components";
 import Overviews from "./sections/OverviewSection";
 import Channels from "./sections/ChannelsSection";
+import Footer from "./sections/Footer";
 import "./home.scss";
 
 const Home = props => {
@@ -38,8 +39,12 @@ const Home = props => {
         >
           <section id="main" className="parallax">
             <Overviews />
-            {/*<Channels /> */}
+            <Channels /> 
           </section>
+          <section id="footer" className="parallax pt-5">
+            <Footer />
+          </section>
+          
         </RqtvStandardTemplate>
       </RqtvPage>
     )

@@ -1,45 +1,45 @@
 import React from "react";
-import './ChannelsSection.scss';
-
+import "./ChannelsSection.scss";
+import CardWithImage from "../../../components/card-with-image/cardWithImage";
 const ChannelsSection = props => {
   return (
-    <div id="channels">
-      <div className="container">
+    <div id="channels" className="align-items-center">
+      <div className="container ">
         <div className="row">
-          <div className="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 mt-3">
-            <Card
+          <div className="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 my-4 ">
+            <CardWithImage
               id={"purchasing"}
-              height={"144px"}
-              img={require("../../../images/purchasing.jpg")}
+              imgHeight={170}
+              imgPadding = {"13px"}
+              img={require("../../../images/homepage/purchasing.jpg")}
               title={"Purchasing"}
-              text={"Competitiveness indexes & prices analysis."}
-              style={{ maxWidth: 540 + "px" }}
+              body={"Competitiveness indexes & prices analysis."}
               redirect={`/purchasing`}
-              py={3}
+              cursor = {"pointer"}
             />
           </div>
-          <div className="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 mt-3">
-            <Card
-              id={"ltr"}
-              height={"144px"}
-              img={require("../../../images/ltr.jpg")}
+          <div className="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 my-4">
+            <CardWithImage
+              id={"purchasing"}
+              imgHeight={170}
+              imgPadding = {"13px"}
+              img={require("../../../images/homepage/ltr.jpg")}
               title={"LTR"}
-              text={"Long Term Rental cost analysis."}
-              style={{ maxWidth: 540 + "px" }}
-              redirect={`/ltr`}
-              py={3}
+              body={"Competitiveness indexes & prices analysis."}
+              redirect={`/purchasing`}
+              cursor = {"pointer"}
             />
           </div>
-          <div className="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 mt-3">
-            <Card
-              id={"tco"}
-              height={"144px"}
-              img={require("../../../images/methodology.jpg")}
+          <div className="col-10 offset-1 col-sm-12 offset-sm-0 col-md-4 my-4">
+            <CardWithImage
+              id={"purchasing"}
+              imgHeight={170}
+              imgPadding = {"13px"}
+              img={require("../../../images/homepage/methodology.jpg")}
               title={"TCO & Residual Value"}
-              text={"Cost analysis of a vehicle's life cycle."}
-              style={{ maxWidth: 540 + "px" }}
-              redirect={`/tco-residual-value`}
-              py={3}
+              body={"Competitiveness indexes & prices analysis."}
+              redirect={`/purchasing`}
+              cursor = {"pointer"}
             />
           </div>
         </div>
