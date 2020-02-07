@@ -19,7 +19,7 @@ var _index = require("../index");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-detail-page.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-detail-page.js";
 
 const RqtvDetailPage = props => {
   return _react.default.createElement(_reactRouterDom.Route, {

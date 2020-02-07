@@ -17,7 +17,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-global.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-global.js";
 
 const enigma = require('enigma.js');
 
@@ -29,7 +29,7 @@ const QGlobal = _react.default.createContext();
 /**
  * QGlobal
  * This context provides a handler for the qGlobal provided by Qlik engine Api.
- * the handler is an object with 3 props:
+ * The handler is an object with 3 props:
  * qGlobal: the actual qGlobal provided by the qEngine. It is initially null and it is set when the promis is resolved
  * qError: initially null it is set to true if the promise for the qGlobal returns an error
  * qLoading: initially true, it is set to false when the promise to get the qGlobal is resolved

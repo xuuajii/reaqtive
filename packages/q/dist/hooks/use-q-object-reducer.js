@@ -92,13 +92,15 @@ const useQObjectReducer = qObjectDef => {
         setIsSelecting = _useState4[1];
 
   (0, _react.useEffect)(() => {
+    let isSubscribed = true;
+
     const runEffect = async () => {
       if (qDoc) {
         const result = await getQObject(qDoc, qObjectDefMemo);
         result instanceof Error ? dispatch({
           type: 'error',
           qError: result
-        }) : dispatch({
+        }) : isSubscribed && dispatch({
           type: 'success',
           qObject: result
         });
@@ -106,15 +108,22 @@ const useQObjectReducer = qObjectDef => {
     };
 
     if (qLoading) {
-      runEffect();
-    }
-  }, [qObjectDefMemo, qDoc, errorCounter, qLoading]);
-  (0, _react.useEffect)(() => {
-    if (qLoading === false && qObject !== null) {
-      qObject.on('changed', () => setShouldUpdate(true));
+      isSubscribed && runEffect();
     }
 
-    return () => qObject && qObject.removeAllListeners();
+    return () => isSubscribed = false;
+  }, [qObjectDefMemo, qDoc, errorCounter, qLoading]);
+  (0, _react.useEffect)(() => {
+    let isSubscribed = true;
+
+    if (qLoading === false && qObject !== null) {
+      qObject.on('changed', () => setShouldUpdate(isSubscribed));
+    }
+
+    return () => {
+      isSubscribed = false;
+      qObject && qObject.removeAllListeners();
+    };
   }, [qLoading, qObject]);
   return (0, _objectSpread2.default)({}, qPromiseHandler, {
     reloadObject: () => dispatch({

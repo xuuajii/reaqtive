@@ -17,7 +17,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar.js";
 const defaultTogglerStyle = {
   border: 0
 };
@@ -74,7 +74,7 @@ const Navbar = props => {
 
 Navbar.propTypes = {
   className: _propTypes.default.string,
-  style: _propTypes.default.string,
+  style: _propTypes.default.object,
   breakpoint: _propTypes.default.number
 };
 Navbar.defaultProps = {

@@ -17,7 +17,7 @@ var _layout = require("@reaqtive/layout");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
 
 /**
  * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children
@@ -62,19 +62,33 @@ const Reaqtive = props => {
 Reaqtive.propTypes = {
   /**
   * qConfig is an object that provides reaqtive the params needed to connect to the Qlik server.
-  * params area:
-  * host: the ip address or domain of the Qlik SystemProvider
-  * port: the port on which Qlik server is listening
-  * secure: true if the Qlik server uses https, false otherwise
-  * prefix: Qlik's virtual proxy path
-  * appId: the id of the app reaqtive should connect to
+  * params are: host, port, secure, prefix, appId: the id of the app reaqtive should connect to
   */
   qConfig: _propTypes.default.shape({
-    host: _propTypes.default.string,
-    port: _propTypes.default.number,
-    secure: _propTypes.default.bool,
-    port: _propTypes.default.number,
-    appId: _propTypes.default.string
+    /**
+    * host: the ip address or domain of the Qlik SystemProvider
+    */
+    host: _propTypes.default.string.isRequired,
+
+    /**
+    * port: the port on which Qlik server is listening
+    */
+    port: _propTypes.default.number.isRequired,
+
+    /**
+    * secure: true if the Qlik server uses https, false otherwise
+    */
+    secure: _propTypes.default.bool.isRequired,
+
+    /**
+    * prefix: Qlik's virtual proxy path
+    */
+    prefix: _propTypes.default.string.isRequired,
+
+    /**
+    * appId: the id of the app reaqtive should connect to
+    */
+    appId: _propTypes.default.string.isRequired
   }).isRequired,
 
   /**

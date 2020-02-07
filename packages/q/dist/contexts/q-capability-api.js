@@ -17,13 +17,13 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _qConfigHelpers = _interopRequireDefault(require("./helpers/q-config-helpers"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-capability-api.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-capability-api.js";
 
 const QCapabilityApi = _react.default.createContext(null);
 /**
  * QCapabilityApi
  * This context provides a handler for the qlik object provided by Qlik Capability APIs.
- * the handler is an object with 5 props:
+ * The handler is an object with 5 props:
  * qLoadingRequireJS: initially true, it is set to false when the promise to get requireJS is resolved
  * qLoadingQlikJS: initially true, it is set to false when the promise to get qlikJS is resolved
  * qLoadingCss: initially true, it is set to false when the promise to get qlikCSS is resolved

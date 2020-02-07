@@ -21,10 +21,11 @@ var _index = require("../index");
 
 var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-navbar\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-navbar\\index.js";
 
 const RqtvNavbar = props => {
-  const searchFieldsMatch = props.searchFieldsMatch;
+  const searchFieldsMatch = props.searchFieldsMatch,
+        showSideMenuToggle = props.showSideMenuToggle;
   const rqtvApp = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
 
   const _useState = (0, _react.useState)(props.showCurrentSelections),
@@ -57,18 +58,18 @@ const RqtvNavbar = props => {
       lineNumber: 28
     },
     __self: void 0
-  }, _react.default.createElement(_layout.Button, {
+  }, showSideMenuToggle && _react.default.createElement(_layout.Button, {
     onClick: props.onToggleMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 30
     },
     __self: void 0
   }, _react.default.createElement(_layout.HamburgerMenu, {
     isOpen: props.sideMenuActive,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 31
     },
     __self: void 0
   })), _react.default.createElement(_layout.NavbarBrand, {
@@ -77,14 +78,14 @@ const RqtvNavbar = props => {
     imgStyle: rqtvApp.brandStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 34
     },
     __self: void 0
   }, rqtvApp.title)), _react.default.createElement(_layout.NavbarNav, {
     neverCollapse: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvCurrentSelections, {
@@ -93,16 +94,16 @@ const RqtvNavbar = props => {
     customLoading: () => _react.default.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 39
       },
       __self: void 0
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 39
     },
     __self: void 0
-  }), _react.default.createElement(_index.RqtvSearchObject, {
+  }), props.showSearch && _react.default.createElement(_index.RqtvSearchObject, {
     onOpen: () => {
       props.closeSideMenu();
       setShowCurrentSelections(false);
@@ -116,7 +117,7 @@ const RqtvNavbar = props => {
     resultsHeight: '100%',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 41
     },
     __self: void 0
   }))));
@@ -126,12 +127,14 @@ RqtvNavbar.propTypes = {
   fixedTop: _propTypes.default.bool,
   sticky: _propTypes.default.bool,
   onToggleMenu: _propTypes.default.func,
-  showCurrentSelections: _propTypes.default.bool
+  showCurrentSelections: _propTypes.default.bool,
+  showSideMenuToggle: _propTypes.default.bool
 };
 RqtvNavbar.defaultProps = {
   fixedTop: false,
   sticky: true,
-  showCurrentSelections: true
+  showCurrentSelections: true,
+  showSideMenuToggle: true
 };
 var _default = RqtvNavbar;
 exports.default = _default;

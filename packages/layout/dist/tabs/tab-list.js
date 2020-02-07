@@ -21,7 +21,7 @@ var _index = require("./index");
 
 var _index2 = require("../contexts/index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-list.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-list.js";
 
 const TabList = props => {
   const system = (0, _react.useContext)(_index2.System);

@@ -21,7 +21,7 @@ var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
 
 const RqtvStandardTemplate = props => {
   const _useState = (0, _react.useState)(false),
@@ -41,6 +41,8 @@ const RqtvStandardTemplate = props => {
     onToggleMenu: toggleSideMenu,
     closeSideMenu: () => setShowSideMenu(false),
     searchFieldsMatch: props.searchFieldsMatch,
+    showSearch: props.showSearch,
+    showSideMenuToggle: props.useSideMenu,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 26
@@ -54,14 +56,14 @@ const RqtvStandardTemplate = props => {
     sideMenuFieldsMatch: props.sideMenuFieldsMatch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 34
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvSideMenuMain, {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 41
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -69,20 +71,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 42
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 46
     },
     __self: void 0
   }), props.usePageHeader && _react.default.createElement(_index.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 47
     },
     __self: void 0
   }), props.children))));
@@ -92,11 +94,15 @@ RqtvStandardTemplate.propTypes = {
   useContainerFluid: _propTypes.default.bool,
   usePageHeader: _propTypes.default.bool,
   containerStyle: _propTypes.default.object,
-  containerClassName: _propTypes.default.string
+  containerClassName: _propTypes.default.string,
+  showSearch: _propTypes.default.bool,
+  useSideMenu: _propTypes.default.bool
 };
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid: true,
-  usePageHeader: true
+  usePageHeader: true,
+  showSearch: true,
+  useSideMenu: true
 };
 var _default = RqtvStandardTemplate;
 exports.default = _default;
