@@ -46,8 +46,9 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const {qObject, shouldUpdate, setShouldUpdate, qVariable} = qObjectHandler
   const { isSelecting } = qSelectionHandler || false
-  // console.log({qObject, shouldUpdate, isSelecting})
   const layoutProvider = qObject||qVariable
+
+  //first call to get layout
   useEffect(()=>{
     const runEffect = async (layoutProvider) => {
       const result = await getLayout(layoutProvider)
@@ -58,29 +59,34 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
     }
   }, [qLoading, layoutProvider, qErrorCounter])
 
-  const updateLayout = useCallback(()=>{
 
-    const standardUpdate = async (layoutProvider) => {
+  //handle the function that updates the layout: the function changes for generic-objects which are not in quickSelectionMode
+  //when an object not in quickSelectionMode is in isSelecting state the update function should be passed by the component
+  //using the layout
+  const updateLayout = useCallback(()=>{
+    const standardUpdate = async () => {
       const result = await getLayout(layoutProvider)
       return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
-
     if(layoutProvider!==null && isSelecting===true && (typeof onUpdate.fn ==='function')){
-      //console.log('custom update');
       onUpdate.fn()
     } else {
-      //console.log('standard update');
       (layoutProvider!==null)&&standardUpdate()
     }
   },[onUpdate, isSelecting, layoutProvider])
 
+  // call for layout update when the engine recalculates the qObject
   useEffect(()=>{
-    if(shouldUpdate===true){
+    let isSubscribed=true
+    if(shouldUpdate===true && isSubscribed===true){
       updateLayout()
       setShouldUpdate(false)
     }
+    return ()=> isSubscribed=false
   },[shouldUpdate, updateLayout])
 
+
+  // method used by the components using the layout to update the layout
   const applyQLayoutPatch = useCallback((path, patch) => {
     const qLayoutPatched = getPatchedObject(qLayout, path, patch)
     dispatch({type:'success', qLayout:qLayoutPatched})
