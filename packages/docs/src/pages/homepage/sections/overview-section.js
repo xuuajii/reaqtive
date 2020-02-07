@@ -1,7 +1,5 @@
 import React from "react";
 import CardOverlay from "../../../components/card-with-overlay/card-with-overlay";
-//import Card from "../../../components/shared/Cards/Card/Card";
-//import { useHistory } from 'react-router-dom';
 import "./overview-section.scss";
 
 const OverviewSection = props => {
@@ -17,7 +15,7 @@ const OverviewSection = props => {
                 text={
                   "Index & prices analysis cross-model for Fleet by Dealer and Long Term Rental"
                 }
-                redirect={`/overview-by-market`}
+                redirect={`/overview/country`}
               />
             </div>
             <div className=" col-sm-12 col-md-6 my-4">
@@ -27,7 +25,7 @@ const OverviewSection = props => {
                 text={
                   "Index & prices analysis cross-market for Private, Fleet by Dealer and Long Term Rental"
                 }
-                redirect={`/overview-by-product`}
+                redirect={`/overview/product`}
               />
             </div>
           </div>

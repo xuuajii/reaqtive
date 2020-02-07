@@ -3,10 +3,11 @@ import "./card-with-overlay.scss";
 import { useHistory } from "react-router-dom";
 
 const CardOverlay = props => {
-  //let history = useHistory();
+  const history = useHistory();
   return (
     <div
-      /*onClick={() => history.replace(props.redirect)}*/ id="card-overlay"
+      id="card-overlay"
+      onClick={() => history.replace(props.redirect)}
       className="card bg-dark text-white"
     >
       <img src={props.img} className="card-img" alt="..." />

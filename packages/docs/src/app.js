@@ -52,7 +52,7 @@ const App = props => {
         />
 
         <Overviews
-          path={"/overview/market"}
+          path={"/overview/country"}
           id={1}
           title="Overview by Market"
           mainDimension={"country"}

@@ -15,7 +15,7 @@ import { RqtvAppContext } from "@reaqtive/components";
 import Overviews from "./sections/overview-section";
 import Channels from "./sections/channel-section";
 import Footer from "./sections/footer";
-import Divider from "../../components/divider/divider";
+import Divider from "../../components/layout/divider/divider";
 import "./home.scss";
 
 const Home = props => {
