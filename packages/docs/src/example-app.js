@@ -10,7 +10,6 @@ import ReaqtiveQ from './pages/reaqtive-q'
 // import Theme from './theme'
 // import AppObjects from './app-objects'
 // import RqtvAppAndRqtvPage from './rqtv-app-and-rqtv-page'
-import {HashRouter as Router} from 'react-router-dom'
 import Reaqtive from '@reaqtive/q'
 import { RqtvApp, RqtvPage, RqtvStandardTemplate, RqtvBlankTemplate } from '@reaqtive/components'
 //import BlankTemplateExample from './blank-template-example'
@@ -76,6 +75,7 @@ const ExampleApp = props => {
               searchFieldsMatch={{method:'include', mask:['Cust*']}}
               useContainerFluid={false}
               usePageHeader={true}
+              showSearch={false}
             >
               <ReaqtiveQ/>
             </RqtvStandardTemplate>

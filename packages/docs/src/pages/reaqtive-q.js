@@ -1,18 +1,86 @@
-import React from 'react'
-import {ComponentDocumentation} from '../example-components/components-docs/index'
-import _ from 'lodash'
-const packageData = require('../packages-data/q.json')
+import React, {useState, useMemo, useEffect, useCallback, useContext} from 'react'
+import { useLocation, useHistory, Switch, Route, NavLink } from "react-router-dom";
+import  {RqtvPage, RqtvListbox} from '@reaqtive/components'
+import {useQObjectReducer, useQLayoutReducer, QGlobal} from '@reaqtive/q'
+
 const ReaqtiveQ = props => {
-  const componentsData = _.omitBy(packageData, (item)=>item.description.length===0);
-  const componentsNormalizedData = _.values(componentsData);//_.mapValues(componentsData, (component)=>_.values(component));
-  console.log(componentsNormalizedData)
-  const data=packageData['packages\\q\\src\\lib\\components\\q-generic-object.js']
+  const location = useLocation();
+  //console.log(currentLocation)
+  const qGlobalHandler = useContext(QGlobal)
+  console.log(qGlobalHandler)
+  const mainPath='/reaqtive-q'
   return(
     //<ComponentDocumentation title = {'a'} componentData={data}/>
-    <>
-      {componentsNormalizedData.map((component, index)=><ComponentDocumentation key={index} componentData={component}/>)}
-    </>
+    <div>
+      <Switch>
+        <Route path={mainPath} exact={true}>
+          <div>Normal Page</div>
+          <NavLink to={mainPath+'/nestedpage'}><button>Go To Nested Page</button></NavLink>
+        </Route>
+        <RqtvPage
+          id={7} title="Nested Page"
+          path={mainPath+'/nestedpage'}
+          fallbackPage="/reaqtive-q"
+          triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict'}}]}
+          conditionExpr="=count(distinct Customer)=1"
+        >
+          <div>
+            <RqtvListbox qFieldExpr="Customer"/>
+          </div>
+        </RqtvPage>
+      </Switch>
+    </div>
   )
 }
+
+// const useQPageObjectDef = (qConditionExpr) => useMemo(()=>{
+//   return {
+//     qInfo: {
+//       qType: "tableData"
+//     },
+//     qCondition: {
+//       qStringExpression: {
+//         qExpr: qConditionExpr
+//       }
+//     }
+//   }
+// }, [qConditionExpr])
+//
+// const NestedPage = props =>{
+//   const location = useLocation();
+//   const history = useHistory();
+//   const qConditionExpr = "count(distinct Customer)>1";
+//   const qObjectDef=useQPageObjectDef(qConditionExpr)
+//   const qObjectHandler = useQObjectReducer(qObjectDef)
+//   const qLayoutHandler = useQLayoutReducer(qObjectHandler)
+//   const qCondition = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qCondition
+//
+//   const [conditionSatisfied, setCondtionSatisfied] = useState()
+//   useEffect(()=>{
+//     if(qCondition==='0'){
+//       setCondtionSatisfied(false)
+//     }
+//     if(qCondition==='-1'){
+//       setCondtionSatisfied(true)
+//     }
+//   },[qCondition])
+//   useEffect(()=>{
+//     if(conditionSatisfied===false){
+//       history.push(props.fallbackPage)
+//     }
+//   },[conditionSatisfied])
+//
+//   if(conditionSatisfied===null|| conditionSatisfied===undefined){
+//     return <div>aaaa</div>
+//   } else{
+//     return(
+//       <RqtvPage id={props.id} title={props.title} path={props.path}>
+//         <div>
+//           <RqtvListbox qFieldExpr="Customer"/>
+//         </div>
+//       </RqtvPage>
+//     )
+//   }
+// }
 
 export default ReaqtiveQ
