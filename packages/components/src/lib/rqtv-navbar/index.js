@@ -11,7 +11,7 @@ import {RqtvSearchObject} from '../index'
 import {RqtvAppContext} from '../contexts/rqtv-app-context'
 
 const RqtvNavbar = props => {
-  const { searchFieldsMatch } = props
+  const { searchFieldsMatch, showSideMenuToggle } = props
   const rqtvApp = useContext(RqtvAppContext)
 
   const [showCurrentSelections , setShowCurrentSelections] = useState(props.showCurrentSelections)
@@ -26,28 +26,32 @@ const RqtvNavbar = props => {
     <>
       <Navbar className="fixed-top rqtv-navbar">
         <div className="navbar-brand-container">
-        <Button onClick={props.onToggleMenu} >
-          <HamburgerMenu isOpen={props.sideMenuActive}/>
-        </Button>
+        {showSideMenuToggle&&
+          <Button onClick={props.onToggleMenu} >
+            <HamburgerMenu isOpen={props.sideMenuActive}/>
+          </Button>
+        }
           <NavbarBrand url={rqtvApp.brandUrl} imgUrl={rqtvApp.brand} imgStyle={rqtvApp.brandStyle}>
             {rqtvApp.title}
           </NavbarBrand>
         </div>
         <NavbarNav neverCollapse={true}>
           <RqtvCurrentSelections hidden={!showCurrentSelections} hidePrefix={hidePrefix} customLoading={()=><div/>}/>
-          <RqtvSearchObject
-            onOpen={()=>{
-              props.closeSideMenu()
-              setShowCurrentSelections(false)
-            }}
-            onClose={()=>{
-              setShowCurrentSelections(props.showCurrentSelections)
-            }}
-            searchFields={fieldList&&fieldList.map(field=>field.qName)}
-            expandFrom="right"
-            useBackdrop={true}
-            resultsHeight={'100%'}
-          />
+          {props.showSearch&&
+            <RqtvSearchObject
+              onOpen={()=>{
+                props.closeSideMenu()
+                setShowCurrentSelections(false)
+              }}
+              onClose={()=>{
+                setShowCurrentSelections(props.showCurrentSelections)
+              }}
+              searchFields={fieldList&&fieldList.map(field=>field.qName)}
+              expandFrom="right"
+              useBackdrop={true}
+              resultsHeight={'100%'}
+            />
+          }
         </NavbarNav>
       </Navbar>
     </>
@@ -59,12 +63,14 @@ RqtvNavbar.propTypes={
   sticky:PropTypes.bool,
   onToggleMenu:PropTypes.func,
   showCurrentSelections:PropTypes.bool,
+  showSideMenuToggle:PropTypes.bool
 }
 
 RqtvNavbar.defaultProps={
   fixedTop:false,
   sticky:true,
   showCurrentSelections:true,
+  showSideMenuToggle:true
 }
 
 
