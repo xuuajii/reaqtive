@@ -50,7 +50,7 @@ Reaqtive.propTypes={
     /**
    * prefix: Qlik's virtual proxy path
    */
-    prefix: PropTypes.number.isRequired,
+    prefix: PropTypes.string.isRequired,
     /**
    * appId: the id of the app reaqtive should connect to
    */
