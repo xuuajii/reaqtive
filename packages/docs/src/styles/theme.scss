@@ -12,6 +12,14 @@ $navbar-color:$primary;
 $card-overlay-bg : #00000073;
 $card-overlay-box-shadow : 10px 10px 5px -9px #424040;
 
+// CARD Component
+$card-color : #000;
+$card-bg : #ffffff;
+$card-box-shadow : $card-overlay-box-shadow;
+//CARD BODY
+$labelColor: rgba(62, 61, 61, 0.95);
+$topBorder:1px solid rgba(0,0,0,.07);
+
 //Toggle Switch
 $toggle-switch-color: #fff;
 $toggle-switch-not-selected-backgroud-color:#ccc;

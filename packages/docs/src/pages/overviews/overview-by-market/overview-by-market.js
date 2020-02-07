@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from "react";
 import ToggleSwitch from "../../../components/layout/toggle-switch/toggle-switch";
-
+import Card from '../../../components/layout/card/Card';
 const OverviewByMarket = props => {
-  const [isSwitchActivated, setIsSwitchActivated] = useState(false);
+    
+  const [value, setValue] = useState(false);
 
-  useEffect(() => {
-    if (isSwitchActivated) {
-      //do something
-    }
-  }, [isSwitchActivated]);
   return (
     <>
       <h1>By Market</h1>
       <ToggleSwitch
-        id={1}
-        small={true}
+        isOn = {value}
         onChange={function(e) {
-          setIsSwitchActivated(e);
+            setValue(!value);
         }}
       />
-      {isSwitchActivated && <p>Attivato</p>}
+      {value && <p>Attivato</p>}
+
+      <Card displayLogo={true} isInfoAbsolute={true} gradient={true} />
     </>
   );
 };

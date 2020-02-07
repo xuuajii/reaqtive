@@ -2,51 +2,33 @@ import React, { useState, useEffect } from "react";
 import "./toggle-switch.scss";
 
 const ToggleSwtich = props => {
-  const [checked, setChecked] = useState(false);
-
-  const onChange = e => {
-    setChecked(!checked);
-  };
-
-  useEffect(() => {
-    props.onChange(checked);
-  }, [checked]);
-
   return (
-    <div
-      className={"toggle-switch" + (props.small ? " small-switch" : "")}
-      style={{ width: props.width }}
-    >
+    <>
       <input
+        checked={props.isOn}
+        onChange={props.onChange}
+        className="react-switch-checkbox"
+        id={`react-switch-new`}
         type="checkbox"
-        className="toggle-switch-checkbox"
-        name="toggleSwitch"
-        id={props.id}
-        onChange={onChange}
       />
-      <label className="toggle-switch-label" htmlFor={props.id}>
-        <span
-          className={
-            props.disabled
-              ? "toggle-switch-inner toggle-switch-disabled"
-              : "toggle-switch-inner"
-          }
-        />
-        <span
-          className={
-            props.disabled
-              ? "toggle-switch-switch toggle-switch-disabled"
-              : "toggle-switch-switch"
-          }
-        />
+      <label
+        style={{
+          background: props.isOn && props.activatedColor,
+          transform: `scale(${props.scaleValue})`
+        }}
+        className="react-switch-label"
+        htmlFor={`react-switch-new`}
+      >
+        <span className={`react-switch-button`} />
       </label>
-    </div>
+    </>
   );
 };
 
 export default ToggleSwtich;
 
 ToggleSwtich.defaultProps = {
-  disabled: false,
-  small: false
+  activatedColor: "#5C88DA",
+  defaultSwitchStatus: true,
+  scaleValue: 0.5
 };
