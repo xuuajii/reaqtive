@@ -18,7 +18,7 @@ const Layout = props => {
 
   const {rqtvListObject} = props
   const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
-  const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
+  const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
   const dropdownMenuEl=useRef();
 
   useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(0), props.show)
@@ -27,10 +27,13 @@ const Layout = props => {
     endSelections(qAccept, props.hideDropdownMenu)
   }
 
-  useEffect(()=>{
-    const qDisplayArea = qArea
-    setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
+  const layoutUpdater = useCallback(()=>{
+    qArea&&rqtvListObject.getDataPage(qArea)
   },[qArea])
+
+  useEffect(()=>{
+    setLayoutUpdater(()=>layoutUpdater)
+  },[layoutUpdater])
 
   const showToolbar = props.quickSelectionMode===false||props.showSearch
 

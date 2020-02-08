@@ -1,7 +1,7 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef, useCallback} from 'react'
 import {useOutsideEventListener} from '@reaqtive/layout'
 import Header from './header'
 import Body from './body'
@@ -19,10 +19,17 @@ const Layout = props => {
   const {rqtvListObject} = props//useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
 
   const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
-  const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
+  const endSelectionsCallback= () =>{
+    bodyEl.current.scrollTop=0
+  }
+  const endSelectionsWithCallBack = (qAccept) => {
+    endSelections(qAccept, endSelectionsCallback)
+  }
+  const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
   const [showSearch, setShowSearch] = useState();
   const listboxEl=useRef();
   const headerEl=useRef();
+  const bodyEl=useRef();
   const headerHeight = headerEl.current&&headerEl.current.getBoundingClientRect().height
   const searchEl=useRef();
   const [searchHeight, seSearchHeight] = useState(searchEl.current&&searchEl.current.offsetHeight)
@@ -33,10 +40,13 @@ const Layout = props => {
 
   useOutsideEventListener(listboxEl, ()=>endSelections(0), isSelecting)
 
-  useEffect(()=>{
-    const qDisplayArea = qArea
-    setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
+  const layoutUpdater = useCallback(()=>{
+    qArea&&rqtvListObject.getDataPage(qArea)
   },[qArea])
+
+  useEffect(()=>{
+    setLayoutUpdater(()=>layoutUpdater)
+  },[layoutUpdater])
 
   //const title = qLayout?!(isSelecting)?qLayout.label:qLayout.qListObject.qDimensionInfo.qFallbackTitle:'';
   const setTitle = () => {
@@ -56,7 +66,7 @@ const Layout = props => {
         {props.showHeader&&
           <Header
             title = {title}
-            endSelections={endSelections}
+            endSelections={endSelectionsWithCallBack}
             clearSelections={rqtvListObject.clearSelections}
             selectExcluded={rqtvListObject.selectExcluded}
             selectPossible={rqtvListObject.selectPossible}
@@ -90,6 +100,7 @@ const Layout = props => {
               selectValue={rqtvListObject.selectValue}
               getDataPage={rqtvListObject.getDataPage}
               height={bodyHeight}
+              bodyEl={bodyEl}
             />
           </RqtvRenderer>
         </div>

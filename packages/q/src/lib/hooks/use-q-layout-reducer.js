@@ -42,7 +42,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const [qPromiseHandler, dispatch] = useReducer(qLayoutReducer, initialState);
   const {qLoading, qLayout, qErrorCounter, qError} = qPromiseHandler
-  const [onUpdate, setOnUpdate]=useState(null)
+  const [layoutUpdater, setLayoutUpdater]=useState(null)
 
   const {qObject, shouldUpdate, setShouldUpdate, qVariable} = qObjectHandler
   const { isSelecting } = qSelectionHandler || false
@@ -68,12 +68,12 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       const result = await getLayout(layoutProvider)
       return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
-    if(layoutProvider!==null && isSelecting===true && (typeof onUpdate.fn ==='function')){
-      onUpdate.fn()
+    if(layoutProvider!==null && isSelecting===true && (typeof layoutUpdater ==='function')){
+      layoutUpdater()
     } else {
       (layoutProvider!==null)&&standardUpdate()
     }
-  },[onUpdate, isSelecting, layoutProvider])
+  },[layoutUpdater, isSelecting, layoutProvider])
 
   // call for layout update when the engine recalculates the qObject
   useEffect(()=>{
@@ -92,7 +92,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
     dispatch({type:'success', qLayout:qLayoutPatched})
   },[qLayout])
 
-  return {...qPromiseHandler, setOnUpdate, applyQLayoutPatch}
+  return {...qPromiseHandler, setLayoutUpdater, applyQLayoutPatch}
 }
 
 export default useQLayoutReducer

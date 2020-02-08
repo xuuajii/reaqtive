@@ -3,7 +3,7 @@ import {usePagination} from '@reaqtive/q'
 import {Button, ButtonGroup} from '@reaqtive/layout'
 
 const Body = props =>{
-  const {rqtvListObject, qSize, qDataPages} = props
+  const { rqtvListObject, qSize, qDataPages, goToFirstPageAfterSelection } = props
   const {selectValue}=rqtvListObject
 
   const getScrollData = (qDisplayArea) =>{
@@ -14,6 +14,9 @@ const Body = props =>{
 
   const pagination = usePagination(qArea, qSize, getScrollData)
 
+  const selectionCallback = () => {
+    goToFirstPageAfterSelection&&pagination.setCurrentPage(1)
+  }
 
   return(
     <ButtonGroup className="rqtv-button-bar">
@@ -27,7 +30,7 @@ const Body = props =>{
             key={item[0].qElemNumber}
             type="button"
             className={`rqtv-btn ${props.buttonSize} ${item[0].qState} `}
-            onClick={()=>selectValue(item[0].qElemNumber)}
+            onClick={()=>selectValue(item[0].qElemNumber, selectionCallback)}
           >
             {item[0].qText}
           </Button>
