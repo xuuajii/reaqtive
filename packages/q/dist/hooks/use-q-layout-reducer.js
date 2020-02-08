@@ -77,8 +77,8 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const _useState = (0, _react.useState)(null),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-        onUpdate = _useState2[0],
-        setOnUpdate = _useState2[1];
+        layoutUpdater = _useState2[0],
+        setLayoutUpdater = _useState2[1];
 
   const qObject = qObjectHandler.qObject,
         shouldUpdate = qObjectHandler.shouldUpdate,
@@ -121,12 +121,12 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       });
     };
 
-    if (layoutProvider !== null && isSelecting === true && typeof onUpdate.fn === 'function') {
-      onUpdate.fn();
+    if (layoutProvider !== null && isSelecting === true && typeof layoutUpdater === 'function') {
+      layoutUpdater();
     } else {
       layoutProvider !== null && standardUpdate();
     }
-  }, [onUpdate, isSelecting, layoutProvider]); // call for layout update when the engine recalculates the qObject
+  }, [layoutUpdater, isSelecting, layoutProvider]); // call for layout update when the engine recalculates the qObject
 
   (0, _react.useEffect)(() => {
     let isSubscribed = true;
@@ -147,7 +147,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
     });
   }, [qLayout]);
   return (0, _objectSpread2.default)({}, qPromiseHandler, {
-    setOnUpdate,
+    setLayoutUpdater,
     applyQLayoutPatch
   });
 };

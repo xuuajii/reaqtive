@@ -15,11 +15,13 @@ var _index = require("../../loading/index");
 
 var _index2 = require("../helpers/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\layout.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\layout.js";
 
 const Layout = props => {
   const rqtvListObject = props.rqtvListObject,
-        qLayoutHandler = props.qLayoutHandler;
+        qLayoutHandler = props.qLayoutHandler,
+        qDataPageHeight = props.qDataPageHeight,
+        goToFirstPageAfterSelection = props.goToFirstPageAfterSelection;
   const qLayout = qLayoutHandler && qLayoutHandler.qLayout;
   const qSize = qLayout && qLayout.qListObject.qSize;
   const qDataPages = qLayout && qLayout.qListObject.qDataPages;
@@ -34,7 +36,8 @@ const Layout = props => {
     rqtvListObject: rqtvListObject,
     qSize: qSize,
     qDataPages: qDataPages,
-    qDataPageHeight: props.qDataPageHeight,
+    qDataPageHeight: qDataPageHeight,
+    goToFirstPageAfterSelection: goToFirstPageAfterSelection,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15

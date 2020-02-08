@@ -13,14 +13,15 @@ var _layout = require("@reaqtive/layout");
 
 var _qScrollHandler = _interopRequireDefault(require("../shared/q-scroll-handler"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\body.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\body.js";
 
 const Body = props => {
   const selectValue = props.selectValue,
         qDataPages = props.qDataPages,
         qSize = props.qSize,
         getDataPage = props.getDataPage,
-        height = props.height; //console.log(height)
+        height = props.height,
+        bodyEl = props.bodyEl; //console.log(height)
 
   return qDataPages && _react.default.createElement("div", {
     className: "rqtv-listbox-body",
@@ -35,6 +36,7 @@ const Body = props => {
     qSize: qSize,
     visibleHeight: height,
     getDataPage: getDataPage,
+    bodyEl: bodyEl,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 15

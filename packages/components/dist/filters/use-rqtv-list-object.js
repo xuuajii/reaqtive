@@ -38,10 +38,11 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
     return {
       isSearching: isSearching,
       waitingDataPage: waitingDataPage,
-      selectValue: async value => {
+      selectValue: async (value, callback) => {
         handleSelections(async () => {
           try {
             await qObject.selectListObjectValues('/qListObjectDef', [value], toggle);
+            callback && callback();
           } catch (err) {
             console.log(err);
           }

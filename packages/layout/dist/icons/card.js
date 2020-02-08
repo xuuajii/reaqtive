@@ -25,7 +25,7 @@ var _img_placeholder_generic = _interopRequireDefault(require("../../img_placeho
 
 var _format = _interopRequireDefault(require("./format"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\icons\\card.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\icons\\card.js";
 
 const Card = props => {
   const data = props.data;

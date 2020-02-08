@@ -18,7 +18,7 @@ const Layout = props => {
   const {rqtvListObject} = props//useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
 
   const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
-  const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
+  const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
   const [showSearch, setShowSearch] = useState();
   const listboxEl=useRef();
   const headerEl=useRef();
@@ -34,7 +34,7 @@ const Layout = props => {
 
   useEffect(()=>{
     const qDisplayArea = qArea
-    setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
+    setLayoutUpdater({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
   },[qArea])
 
   return(

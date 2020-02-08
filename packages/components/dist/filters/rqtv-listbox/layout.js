@@ -27,7 +27,7 @@ var _index2 = require("../../loading/index");
 
 var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\layout.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\layout.js";
 
 const Layout = props => {
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
@@ -40,8 +40,17 @@ const Layout = props => {
         isSelecting = _props$qSelectionHand.isSelecting,
         beginSelections = _props$qSelectionHand.beginSelections,
         endSelections = _props$qSelectionHand.endSelections;
+
+  const endSelectionsCallback = () => {
+    bodyEl.current.scrollTop = 0;
+  };
+
+  const endSelectionsWithCallBack = qAccept => {
+    endSelections(qAccept, endSelectionsCallback);
+  };
+
   const _props$qLayoutHandler = props.qLayoutHandler,
-        setOnUpdate = _props$qLayoutHandler.setOnUpdate,
+        setLayoutUpdater = _props$qLayoutHandler.setLayoutUpdater,
         applyQLayoutPatch = _props$qLayoutHandler.applyQLayoutPatch;
 
   const _useState = (0, _react.useState)(),
@@ -51,6 +60,7 @@ const Layout = props => {
 
   const listboxEl = (0, _react.useRef)();
   const headerEl = (0, _react.useRef)();
+  const bodyEl = (0, _react.useRef)();
   const headerHeight = headerEl.current && headerEl.current.getBoundingClientRect().height;
   const searchEl = (0, _react.useRef)();
 
@@ -64,12 +74,12 @@ const Layout = props => {
   }, [showSearch, props.alwaysShowSearch]);
   const bodyHeight = props.height - (headerHeight + searchHeight || 0);
   (0, _layout.useOutsideEventListener)(listboxEl, () => endSelections(0), isSelecting);
+  const layoutUpdater = (0, _react.useCallback)(() => {
+    qArea && rqtvListObject.getDataPage(qArea);
+  }, [qArea]);
   (0, _react.useEffect)(() => {
-    const qDisplayArea = qArea;
-    setOnUpdate({
-      fn: () => rqtvListObject.getDataPage(qDisplayArea)
-    });
-  }, [qArea]); //const title = qLayout?!(isSelecting)?qLayout.label:qLayout.qListObject.qDimensionInfo.qFallbackTitle:'';
+    setLayoutUpdater(() => layoutUpdater);
+  }, [layoutUpdater]); //const title = qLayout?!(isSelecting)?qLayout.label:qLayout.qListObject.qDimensionInfo.qFallbackTitle:'';
 
   const setTitle = () => {
     if (qLayout) {
@@ -92,12 +102,12 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 65
     },
     __self: void 0
   }, props.showHeader && _react.default.createElement(_header.default, {
     title: title,
-    endSelections: endSelections,
+    endSelections: endSelectionsWithCallBack,
     clearSelections: rqtvListObject.clearSelections,
     selectExcluded: rqtvListObject.selectExcluded,
     selectPossible: rqtvListObject.selectPossible,
@@ -111,13 +121,13 @@ const Layout = props => {
     headerEl: headerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 67
     },
     __self: void 0
   }), _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 73
+      lineNumber: 83
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -127,7 +137,7 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 84
     },
     __self: void 0
   }, (showSearch || props.alwaysShowSearch) && _react.default.createElement(_search.default, {
@@ -141,13 +151,13 @@ const Layout = props => {
     focus: props.alwaysShowSearch ? false : props.focus,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 86
     },
     __self: void 0
   })), _react.default.createElement(_index2.RqtvRenderer, Object.assign({}, rendererProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 96
     },
     __self: void 0
   }), _react.default.createElement(_body.default, {
@@ -156,9 +166,10 @@ const Layout = props => {
     selectValue: rqtvListObject.selectValue,
     getDataPage: rqtvListObject.getDataPage,
     height: bodyHeight,
+    bodyEl: bodyEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 97
     },
     __self: void 0
   })))));
