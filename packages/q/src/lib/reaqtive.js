@@ -7,8 +7,12 @@ import {SystemProvider} from '@reaqtive/layout'
 import PropTypes from 'prop-types';
 
 /**
- * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children
- * Provided contexts are: QGlobal, QDoc, QCapabilityApis, QApp and System.
+ * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
+ * Provided contexts are:
+ *- [QGlobal](#qglobal) </br>
+ *- [QDoc](#qdoc) </br>
+ *- [QCapabilityApi](#qcapabilityapi) </br>
+ *- [QApp](#qapp) </br>
  *
  */
 const Reaqtive = props =>{

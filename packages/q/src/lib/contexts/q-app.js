@@ -3,8 +3,8 @@
 //
 
 import React, {useState, useEffect, useContext} from 'react';
-import PropTypes from 'prop-types';
 import {QCapabilityApi, QCapabilityApiProvider} from './q-capability-api'
+import PropTypes from 'prop-types';
 
 const QApp = React.createContext()
 /**
@@ -15,6 +15,16 @@ const QApp = React.createContext()
  * qApp: the app provided by the qlik Capability APIs. It is initially null and it is set when the promis is resolved
  * qError: initially null it is set to true if the promise to get the qApp returns an error
  */
+ const QAppProvider = (props) => {
+   return (
+     <QCapabilityApiProvider qConfig={props.qConfig}>
+       <QCapabilityApiConsumer qConfig={props.qConfig}>
+         {props.children}
+       </QCapabilityApiConsumer>
+     </QCapabilityApiProvider>
+   )
+ }
+
 const QCapabilityApiConsumer = props => {
   const initialQAppHandler = {qApp:null, qError:null, qLoading:true}
   const [qAppHandler, setQAppHandler] = useState(initialQAppHandler)
@@ -42,16 +52,6 @@ const QCapabilityApiConsumer = props => {
     <QApp.Provider value={qAppHandler}>
       {props.children}
     </QApp.Provider>
-  )
-}
-
-const QAppProvider = (props) => {
-  return (
-    <QCapabilityApiProvider qConfig={props.qConfig}>
-      <QCapabilityApiConsumer qConfig={props.qConfig}>
-        {props.children}
-      </QCapabilityApiConsumer>
-    </QCapabilityApiProvider>
   )
 }
 
