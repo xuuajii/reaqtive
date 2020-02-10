@@ -17,11 +17,15 @@ var _layout = require("@reaqtive/layout");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
 
 /**
- * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children
- * Provided contexts are: QGlobal, QDoc, QCapabilityApis, QApp and System.
+ * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
+ * Provided contexts are:
+ *- [QGlobal](#qglobal) </br>
+ *- [QDoc](#qdoc) </br>
+ *- [QCapabilityApi](#qcapabilityapi) </br>
+ *- [QApp](#qapp) </br>
  *
  */
 const Reaqtive = props => {
@@ -32,28 +36,28 @@ const Reaqtive = props => {
   return _react.default.createElement(_layout.SystemProvider, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 21
     },
     __self: void 0
   }, qCapabilityApiRequired === true ? _react.default.createElement(_index.QDocProvider, {
     qConfig: qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 23
     },
     __self: void 0
   }, _react.default.createElement(_index.QAppProvider, {
     qConfig: qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 24
     },
     __self: void 0
   }, props.children)) : _react.default.createElement(_index.QDocProvider, {
     qConfig: qConfig,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 28
     },
     __self: void 0
   }, props.children));
