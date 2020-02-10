@@ -1,33 +1,30 @@
 import React, {useState, useMemo, useEffect, useCallback, useContext} from 'react'
 import { useLocation, useHistory, Switch, Route, NavLink } from "react-router-dom";
 import  {RqtvPage, RqtvListbox} from '@reaqtive/components'
-import {useQObjectReducer, useQLayoutReducer, QGlobal} from '@reaqtive/q'
+import {useQObjectReducer, useQLayoutReducer, QGlobal, useTriggers} from '@reaqtive/q'
 
 const ReaqtiveQ = props => {
-  const location = useLocation();
-  //console.log(currentLocation)
   const qGlobalHandler = useContext(QGlobal)
-  console.log(qGlobalHandler)
   const mainPath='/reaqtive-q'
   return(
     //<ComponentDocumentation title = {'a'} componentData={data}/>
     <div>
       <Switch>
-        <Route path={mainPath} exact={true}>
-          <div>Normal Page</div>
-          <NavLink to={mainPath+'/nestedpage'}><button>Go To Nested Page</button></NavLink>
-        </Route>
         <RqtvPage
           id={7} title="Nested Page"
           path={mainPath+'/nestedpage'}
           fallbackPage="/reaqtive-q"
-          triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict'}}]}
+          triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}
           conditionExpr="=count(distinct Customer)=1"
         >
           <div>
             <RqtvListbox qFieldExpr="Customer"/>
           </div>
         </RqtvPage>
+        <Route path={mainPath}>
+          <div>Normal Page</div>
+          <NavLink to={mainPath+'/nestedpage/?selections=AccountGroup:69999'}><button>Go To Nested Page</button></NavLink>
+        </Route>
       </Switch>
     </div>
   )
