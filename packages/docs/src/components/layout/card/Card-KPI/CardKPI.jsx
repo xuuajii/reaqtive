@@ -1,5 +1,9 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
-import Progress from "../../../../../components/shared/Progress/Progress"
+import Progress from "../../../../components/Progress/Progress";
 
 export default function CardKPI(props) {
   return (

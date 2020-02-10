@@ -1,9 +1,13 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
 import "./Card.scss";
 import { useHistory } from "react-router-dom";
 import CardLogo from "./Card-logo/CardLogo";
-//import CardKPI from "./Card-KPI/CardKPI";
-//import CardBody from "./Card-Body/CardBody";
+import CardKPI from "./Card-KPI/CardKPI";
+import CardBody from "./Card-Body/CardBody";
 
 export default function Card(props) {
   let history = useHistory();
@@ -46,8 +50,8 @@ export default function Card(props) {
           </p>
         </div>
       </div>
-      {/*props.displayKPI && <CardKPI {...props} />*/}
-      {/*props.displayBody && <CardBody {...props} />*/}
+      {props.displayKPI && <CardKPI {...props} />}
+      {props.displayBody && <CardBody {...props} />}
     </div>
   );
 }
@@ -62,7 +66,6 @@ Card.defaultProps = {
   displayKPI: false,
   displayBody: false,
   gradient: false,
-  verticalLayout: true,
   width: 250,
   imgWidth: "100%"
 };

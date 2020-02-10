@@ -1,7 +1,11 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React, { useState, useEffect } from "react";
 import "./toggle-switch.scss";
 
-const ToggleSwtich = props => {
+const ToggleSwitch = props => {
   return (
     <>
       <input
@@ -25,9 +29,9 @@ const ToggleSwtich = props => {
   );
 };
 
-export default ToggleSwtich;
+export default ToggleSwitch;
 
-ToggleSwtich.defaultProps = {
+ToggleSwitch.defaultProps = {
   activatedColor: "#5C88DA",
   defaultSwitchStatus: true,
   scaleValue: 0.5

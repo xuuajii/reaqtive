@@ -1,3 +1,7 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
 import "./card-with-overlay.scss";
 import { useHistory } from "react-router-dom";
