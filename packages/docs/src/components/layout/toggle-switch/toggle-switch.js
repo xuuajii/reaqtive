@@ -3,28 +3,35 @@
 //
 
 import React, { useState, useEffect } from "react";
+import { useSpring, animated } from "react-spring";
+
 import "./toggle-switch.scss";
 
 const ToggleSwitch = props => {
+
+
+  const labelTransition = useSpring({
+    backgroundColor : props.isOn ? `${props.activatedColor}` : `${props.disactivatedColor}` ,
+    transform: `scale(${props.scaleValue})`
+  });
+
   return (
     <>
       <input
         checked={props.isOn}
         onChange={props.onChange}
         className="react-switch-checkbox"
-        id={`react-switch-new`}
+        id="react-switch-new"
         type="checkbox"
       />
-      <label
-        style={{
-          background: props.isOn && props.activatedColor,
-          transform: `scale(${props.scaleValue})`
-        }}
-        className="react-switch-label"
-        htmlFor={`react-switch-new`}
-      >
-        <span className={`react-switch-button`} />
-      </label>
+        <animated.label
+          style={props.onChange && labelTransition}
+          className="react-switch-label"
+          htmlFor="react-switch-new"
+        >
+          <span className={`react-switch-button`} />
+        </animated.label>
+      
     </>
   );
 };
@@ -32,7 +39,10 @@ const ToggleSwitch = props => {
 export default ToggleSwitch;
 
 ToggleSwitch.defaultProps = {
+  id: "react-switch-new",
   activatedColor: "#5C88DA",
+  disactivatedColor: "grey",
   defaultSwitchStatus: true,
-  scaleValue: 0.5
+  scaleValue: 0.5,
+  isOn: false
 };
