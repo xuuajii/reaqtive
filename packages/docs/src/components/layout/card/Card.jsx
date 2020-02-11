@@ -5,9 +5,9 @@
 import React from "react";
 import "./Card.scss";
 import { useHistory } from "react-router-dom";
-import CardLogo from "./Card-logo/CardLogo";
-import CardKPI from "./Card-KPI/CardKPI";
-import CardBody from "./Card-Body/CardBody";
+import CardLogo from "./Card-logo/card-logo";
+import CardKPI from "./Card-KPI/card-kpi";
+import CardBody from "./Card-Body/card-body";
 
 export default function Card(props) {
   let history = useHistory();

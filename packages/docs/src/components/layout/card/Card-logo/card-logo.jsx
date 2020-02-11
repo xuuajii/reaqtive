@@ -3,7 +3,7 @@
 //
 
 import React from "react";
-import "./CardLogo.scss";
+import "./card-logo.scss";
 
 export default function CardLogo(props) {
   return (

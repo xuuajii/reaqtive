@@ -3,7 +3,7 @@
 //
 
 import React from "react";
-import Progress from "../../../../components/Progress/Progress";
+import Progress from "../../../Progress/Progress";
 
 export default function CardKPI(props) {
   return (

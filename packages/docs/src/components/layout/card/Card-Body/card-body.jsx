@@ -3,7 +3,7 @@
 //
 
 import React from "react";
-import "./CardBody.scss";
+import "./card-body.scss";
 import Flags from "../../../Flags/Flags";
 let countryCode;
 export default function CardBody(props) {
