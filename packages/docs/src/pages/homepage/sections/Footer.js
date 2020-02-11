@@ -1,3 +1,7 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
 
 const Footer = props => {

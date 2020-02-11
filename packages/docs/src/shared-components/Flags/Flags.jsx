@@ -27,8 +27,7 @@ Flags.defaultProps = {
     height: 200,
     width: 'auto',
     isRounded: false,
-    countryCode : 'de',
-    style: {} 
+    countryCode : 'de'
   };
 
 export default Flags;

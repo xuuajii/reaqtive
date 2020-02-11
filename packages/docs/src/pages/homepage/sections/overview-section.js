@@ -1,5 +1,9 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
-import CardOverlay from "../../../components/card-with-overlay/card-with-overlay";
+import CardOverlay from "../components/card-with-overlay/card-with-overlay";
 import "./overview-section.scss";
 
 const OverviewSection = props => {

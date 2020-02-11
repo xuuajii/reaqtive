@@ -1,3 +1,7 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
 import {
   RqtvApp,
@@ -21,6 +25,8 @@ const Overviews = props => {
       <RqtvStandardTemplate
         searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
         useContainerFluid={false}
+        containerClassName={"full-screen"}
+        usePageHeader={false}
       >
         {props.mainDimension === "country" ? (
           <OverviewByCountry mainDimension={props.mainDimension} />

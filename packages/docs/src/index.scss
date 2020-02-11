@@ -19,6 +19,14 @@
   margin: 0 !important;
 }
 
-.react-date-picker{
+.react-data-picker-custom{
   z-index: 9999;
+}
+
+.overview-by-product {
+	.card-box-container{
+		@media (min-width: $break-point-xl) {
+			padding-left: 7.8%;
+		  }
+	}
 }

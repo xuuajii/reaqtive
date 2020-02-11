@@ -1,7 +1,11 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React from "react";
 import "./channel-section.scss";
+import CardWithImage from "../components/card-with-image/card-with-image";
 
-import CardWithImage from "../../../components/card-with-image/card-with-image";
 const ChannelsSection = props => {
   return (
     <div id="channels" className="align-items-center">

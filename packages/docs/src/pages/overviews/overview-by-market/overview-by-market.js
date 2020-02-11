@@ -1,7 +1,11 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
 import React, { useState, useEffect } from "react";
-import ToggleSwitch from "../../../components/layout/toggle-switch/toggle-switch";
-import Card from "../../../components/layout/card/Card";
-import DataPicker from "../../../components/layout/data-picker/data-picker";
+import ToggleSwitch from "../../../shared-components/layout/toggle-switch/toggle-switch";
+import Card from "../../../shared-components/layout/card/Card";
+import DataPicker from "../../../shared-components/layout/data-picker/data-picker";
 const OverviewByMarket = props => {
   const [value, setValue] = useState(false);
 

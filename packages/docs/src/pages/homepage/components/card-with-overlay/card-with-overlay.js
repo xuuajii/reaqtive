@@ -4,6 +4,7 @@
 
 import React from "react";
 import "./card-with-overlay.scss";
+import { RqtvApp } from "@reaqtive/components";
 import { useHistory } from "react-router-dom";
 
 const CardOverlay = props => {
@@ -26,7 +27,7 @@ const CardOverlay = props => {
 export default CardOverlay;
 
 CardOverlay.defaultProps = {
-  img: require("../../images/placeholders/car.png"),
+  img: require("../../../../images/placeholders/car.png"),
   title: "Title",
   text: "Text"
 };

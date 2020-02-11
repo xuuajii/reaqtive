@@ -7,3 +7,14 @@ const normalizeExpression = (expression) => {
 }
 
 export {normalizeExpression}
+
+const extractSubNodes = (recursiveDimension, depth) =>{
+  if(depth===0){
+    const {qSubNodes, ...rest} = recursiveDimension
+    return rest
+  } else {
+    return extractSubNodes(recursiveDimension.qSubNodes[0], depth-1)
+  }
+}
+
+export {extractSubNodes}

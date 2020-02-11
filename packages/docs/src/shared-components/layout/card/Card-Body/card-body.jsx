@@ -12,7 +12,7 @@ export default function CardBody(props) {
   };
   return (
     <>
-      <div className="container ">
+      <div className="container">
         <div className="row  font-weight-bold align-items-center">
           <div className="col-6"> Country</div>
           <div className="col-6">
@@ -35,21 +35,22 @@ export default function CardBody(props) {
                   }
                 >
                   <div className="row align-items-center">
-                    <div className="col-3 my-1 px-3">
-                      <Flags
+                    <div className="col-5 my-1">
+                      {item.bodyImage.qText}
+                      {/*<Flags
                         countryCode={countryCode}
                         isRounded={true}
                         height={20}
-                      />
+                      />*/}
                     </div>
                     <div
-                      className="col-9 px-3"
+                      className="col-7 px-0"
                       style={{
                         fontSize: "9px",
                         fontWeight: "bold"
                       }}
                     >
-                      {item.country}
+                      {item.bodyLabel.qText}
                     </div>
                   </div>
                 </div>

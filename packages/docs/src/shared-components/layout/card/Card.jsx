@@ -16,7 +16,7 @@ export default function Card(props) {
     <div
       onClick={() => history.replace(props.redirect)}
       id={props.id}
-      className={"card" + (props.flexItemClassName ? " flex-item" : "")}
+      className={"card" + (props.flexItem ? " flex-item" : "")}
       style={{ width: props.width }}
     >
       <div className="row no-gutters">
@@ -26,18 +26,13 @@ export default function Card(props) {
             "col-auto px-3 mt-3" + (props.gradient ? " pickgradient" : "")
           }
         >
-          <img
-            className={props.imgWidth ? "card-img" : ""}
-            width={props.imgWidth}
-            src={props.img}
-            alt="..."
-          />
+          <img className={"card-img"} src={props.img} alt="..." />
         </div>
         <div
           style={{ bottom: props.cardInfoBottom }}
           className={
             "col-auto col-sm-12 col-md-12 pl-3 pl-sm-0 px-md-3 mt-sm-3 w-100" +
-            (props.isInfoAbsolute ? " card-info" : "")
+            (props.isInfoAbsolute ? " card-info-product" : "card-info")
           }
         >
           <h4 style={{ paddingTop: props.titlePaddingTop }}>{props.title}</h4>
@@ -67,5 +62,5 @@ Card.defaultProps = {
   displayBody: false,
   gradient: false,
   width: 250,
-  imgWidth: "100%"
+  cardInfoBottom: 0
 };
