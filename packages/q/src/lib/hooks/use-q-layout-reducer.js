@@ -50,13 +50,15 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   //first call to get layout
   useEffect(()=>{
+    let isSubscribed=true
     const runEffect = async (layoutProvider) => {
       const result = await getLayout(layoutProvider)
       return (result instanceof Error)?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
     }
-    if(qLoading===true && layoutProvider!==null){
+    if(qLoading===true && layoutProvider!==null && isSubscribed===true){
       layoutProvider&&runEffect(layoutProvider)
     }
+    return ()=> isSubscribed=false
   }, [qLoading, layoutProvider, qErrorCounter])
 
 

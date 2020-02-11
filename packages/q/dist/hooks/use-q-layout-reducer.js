@@ -91,6 +91,8 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   const layoutProvider = qObject || qVariable; //first call to get layout
 
   (0, _react.useEffect)(() => {
+    let isSubscribed = true;
+
     const runEffect = async layoutProvider => {
       const result = await getLayout(layoutProvider);
       return result instanceof Error ? dispatch({
@@ -102,9 +104,11 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       });
     };
 
-    if (qLoading === true && layoutProvider !== null) {
+    if (qLoading === true && layoutProvider !== null && isSubscribed === true) {
       layoutProvider && runEffect(layoutProvider);
     }
+
+    return () => isSubscribed = false;
   }, [qLoading, layoutProvider, qErrorCounter]); //handle the function that updates the layout: the function changes for generic-objects which are not in quickSelectionMode
   //when an object not in quickSelectionMode is in isSelecting state the update function should be passed by the component
   //using the layout

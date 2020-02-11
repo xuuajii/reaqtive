@@ -1,13 +1,15 @@
 "use strict";
 
-var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
-
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -26,28 +28,43 @@ const RqtvPage = props => {
     id: props.id
   };
   const fallbackPage = props.fallbackPage;
+  const location = (0, _reactRouterDom.useLocation)();
+
+  const _useState = (0, _react.useState)(false),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        hasChangedLocation = _useState2[0],
+        setHasChangedLocation = _useState2[1];
+
+  (0, _react.useEffect)(() => {
+    const delay = location.search !== "" ? 500 : 0;
+    setTimeout(() => setHasChangedLocation(true), delay); //console.log(delay)
+
+    return () => setHasChangedLocation(false);
+  }, [location]);
   return _react.default.createElement(_reactRouterDom.Route, {
     path: props.path,
     exact: props.exact,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 22
     },
     __self: void 0
   }, _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
     triggers: props.triggers,
     pageData: pageData,
     conditionExpr: props.conditionExpr,
+    hasQueryString: location.search !== "" ? true : false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 23
     },
     __self: void 0
   }, _react.default.createElement(RqtvPageConsumer, {
     fallbackPage: fallbackPage,
+    hasChangedLocation: hasChangedLocation,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 29
     },
     __self: void 0
   }, props.children)));
@@ -62,12 +79,12 @@ const RqtvPageConsumer = props => {
 
   const fallbackPage = props.fallbackPage;
 
-  if (conditionRes === false && fallbackPage !== "" && triggerState.done === true) {
+  if (props.hasChangedLocation === true && conditionRes === false && fallbackPage !== "" && triggerState.done === true) {
     return _react.default.createElement(_reactRouterDom.Redirect, {
       to: fallbackPage,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 43
       },
       __self: void 0
     });

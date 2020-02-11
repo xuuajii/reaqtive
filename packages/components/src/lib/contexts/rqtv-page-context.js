@@ -30,12 +30,27 @@ const useQPageObjectDef = (qConditionExpr, qTitleExpr) => useMemo(()=>{
 
 const RqtvPageConsumer = props => {
   const location = useLocation();
-  //console.log(currentLocation)
+
+  // const [locationSearch, setLocationSearch] = useState(null)
+  // useEffect(()=>{
+  //   setLocationSearch(location.search)
+  //   return () => setLocationSearch(null)
+  // },[location.search])
   const queryStringTriggers = useQueryString(location.search)
-  const triggers = queryStringTriggers?[...props.triggers, ...queryStringTriggers]:[...props.triggers]
-  const triggersDone = useTriggers([...triggers])
-  const initialTriggerState=useRef(triggersDone)
-  const triggerState = Array.isArray(queryStringTriggers)?triggersDone:initialTriggerState.current;
+  const [triggers, setTriggers] = useState(null)
+  useEffect(()=>{
+
+    if(location.search!==null && location.search!=='' && Array.isArray(queryStringTriggers) && queryStringTriggers.length>0){
+      setTriggers([...props.triggers, ...queryStringTriggers])
+    }
+
+    if(location.search===''){
+      setTriggers([...props.triggers])
+    }
+    return () =>  setTriggers(null)
+  },[props.triggers, queryStringTriggers, location.search])
+  const triggerState = useTriggers(triggers)
+  //console.log(location.search,triggers, queryStringTriggers)
 
   const qConditionExpr = props.conditionExpr;
   const qObjectDef=useQPageObjectDef(qConditionExpr)
@@ -52,6 +67,7 @@ const RqtvPageConsumer = props => {
     if(qCondition==='-1'){
       setConditionRes(true)
     }
+    return () => setConditionRes(null)
   },[qCondition])
 
 
@@ -59,7 +75,9 @@ const RqtvPageConsumer = props => {
     <RqtvPageContext.Provider
       value={{triggerState, pageData:props.pageData, conditionRes, qTitle}}
     >
-      {props.children}
+      {
+        props.children
+      }
     </RqtvPageContext.Provider>
   )
 }

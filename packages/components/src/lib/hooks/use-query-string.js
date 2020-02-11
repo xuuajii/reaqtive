@@ -28,8 +28,9 @@ const useQueryString = (search) => {
   useEffect(()=>{
     const values = queryString.parse(search)
     const selectionsArray = Array.isArray(values.selections)?values.selections:[values.selections]
-    const parsedTriggers = search?selectionsArray.map(selection=>parseSelection(selection)):[]
+    const parsedTriggers = search?selectionsArray.map(selection=>parseSelection(selection)):null
     setTriggers(parsedTriggers)
+    return () => setTriggers(null)
   },[search])
   return triggers
 }

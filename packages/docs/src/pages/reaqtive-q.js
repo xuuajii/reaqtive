@@ -14,16 +14,16 @@ const ReaqtiveQ = props => {
           id={7} title="Nested Page"
           path={mainPath+'/nestedpage'}
           fallbackPage="/reaqtive-q"
-          triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}
           conditionExpr="=count(distinct Customer)=1"
         >
+        {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
           <div>
             <RqtvListbox qFieldExpr="Customer"/>
           </div>
         </RqtvPage>
         <Route path={mainPath}>
           <div>Normal Page</div>
-          <NavLink to={mainPath+'/nestedpage/?selections=AccountGroup:69999'}><button>Go To Nested Page</button></NavLink>
+          <NavLink to={mainPath+'/nestedpage/?selections=Customer:Benedict'}><button>Go To Nested Page</button></NavLink>
         </Route>
       </Switch>
     </div>
