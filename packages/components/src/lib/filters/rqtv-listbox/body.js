@@ -7,12 +7,12 @@ import { ListGroup, ListGroupItem } from '@reaqtive/layout'
 import QScrollHandler from '../shared/q-scroll-handler'
 
 const Body = props => {
-  const {selectValue, qDataPages, qSize, getDataPage, height}=props
+  const {selectValue, qDataPages, qSize, getDataPage, height, bodyEl}=props
   //console.log(height)
   return(
     qDataPages&&
     <div className="rqtv-listbox-body">
-      <QScrollHandler className="rqtv-listbox-body" qDataPages={qDataPages} qSize={qSize} visibleHeight={height} getDataPage={getDataPage}>
+      <QScrollHandler className="rqtv-listbox-body" qDataPages={qDataPages} qSize={qSize} visibleHeight={height} getDataPage={getDataPage} bodyEl={bodyEl}>
         <ListGroup>
           {
             qDataPages&&qDataPages[0].qMatrix.map(item =>

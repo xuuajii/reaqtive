@@ -15,9 +15,13 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\shared\\q-scroll-handler.js";
+var _useDebounce = require("use-debounce");
+
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\shared\\q-scroll-handler.js";
 
 const QScrollHandler = props => {
   const _useState = (0, _react.useState)({
@@ -28,12 +32,17 @@ const QScrollHandler = props => {
         scrollPosition = _useState2[0],
         setScrollPosition = _useState2[1];
 
-  const updateScrollPosition = e => {
+  const _useDebouncedCallback = (0, _useDebounce.useDebouncedCallback)( // function
+  target => {
+    //setValue(e);
     setScrollPosition({
-      top: e.target.scrollTop,
+      top: target.scrollTop,
       left: 0
     });
-  };
+  }, // delay in ms
+  props.debounceDelay),
+        _useDebouncedCallback2 = (0, _slicedToArray2.default)(_useDebouncedCallback, 1),
+        updateScrollPosition = _useDebouncedCallback2[0];
 
   const loadedEl = (0, _react.useRef)();
   const loadedElHeight = loadedEl.current && loadedEl.current.getBoundingClientRect().height;
@@ -49,10 +58,11 @@ const QScrollHandler = props => {
       maxHeight: visibleHeight,
       overflowY: 'auto'
     }, props.style),
-    onScroll: e => updateScrollPosition(e),
+    onScroll: e => updateScrollPosition(e.target),
+    ref: props.bodyEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 32
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -61,14 +71,14 @@ const QScrollHandler = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 33
     },
     __self: void 0
   }), _react.default.createElement("div", {
     ref: loadedEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 34
     },
     __self: void 0
   }, props.children), _react.default.createElement("div", {
@@ -77,7 +87,7 @@ const QScrollHandler = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 37
     },
     __self: void 0
   }));
@@ -85,3 +95,9 @@ const QScrollHandler = props => {
 
 var _default = QScrollHandler;
 exports.default = _default;
+QScrollHandler.propTypes = {
+  debounceDelay: _propTypes.default.number
+};
+QScrollHandler.defualtProps = {
+  debounceDelay: 500
+};

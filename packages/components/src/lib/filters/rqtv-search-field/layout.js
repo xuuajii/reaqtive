@@ -19,19 +19,18 @@ const Layout = props => {
     const {rqtvListObject} = props
     const {isSearching} = rqtvListObject
     const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
-    const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
+    const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
     const dropdownMenuEl=useRef();
 
     useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(0), props.show)
 
-    const endSelectionsAndHide = (qAccept) => {
-      endSelections(qAccept, ()=>props.setShow(false))
-    }
+    const layoutUpdater = useCallback(()=>{
+      qArea&&rqtvListObject.getDataPage(qArea)
+    },[qArea])
 
     useEffect(()=>{
-      const qDisplayArea = qArea
-      setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
-    },[qArea])
+      setLayoutUpdater(()=>layoutUpdater)
+    },[layoutUpdater])
 
    const [listHeight, setListHeight] = useState('100%')
    const abort = () => {
@@ -50,6 +49,11 @@ const Layout = props => {
        setTimeout(()=>props.setShow(true),200)
      }
    },[isSearching])
+
+   const endSelectionsAndHide = (qAccept) => {
+     endSelections(qAccept, ()=>props.setShow(false))
+     abort()
+   }
 
    return(
       <div ref={dropdownMenuEl} className="rqtv-search-field">

@@ -19,7 +19,7 @@ var _rqtvCurrentSelectionsModal = _interopRequireDefault(require("./rqtv-current
 
 var _index = require("../loading/index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\layout.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\layout.js";
 
 const Layout = props => {
   //console.log(props)

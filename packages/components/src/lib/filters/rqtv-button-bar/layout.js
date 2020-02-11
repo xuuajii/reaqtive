@@ -4,7 +4,7 @@ import {RqtvRenderer} from '../../loading/index'
 import {useListObjectRendererMap} from '../helpers/index'
 
 const Layout = props => {
-  const {rqtvListObject, qLayoutHandler} = props
+  const {rqtvListObject, qLayoutHandler, qDataPageHeight,goToFirstPageAfterSelection} = props
   const qLayout = qLayoutHandler&&qLayoutHandler.qLayout
   const qSize = qLayout&&qLayout.qListObject.qSize
   const qDataPages= qLayout&&qLayout.qListObject.qDataPages
@@ -16,7 +16,8 @@ const Layout = props => {
         rqtvListObject={rqtvListObject}
         qSize={qSize}
         qDataPages={qDataPages}
-        qDataPageHeight={props.qDataPageHeight}
+        qDataPageHeight={qDataPageHeight}
+        goToFirstPageAfterSelection={goToFirstPageAfterSelection}
       />
     </RqtvRenderer>
   )

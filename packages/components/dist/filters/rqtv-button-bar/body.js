@@ -15,12 +15,13 @@ var _q = require("@reaqtive/q");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\body.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\body.js";
 
 const Body = props => {
   const rqtvListObject = props.rqtvListObject,
         qSize = props.qSize,
-        qDataPages = props.qDataPages;
+        qDataPages = props.qDataPages,
+        goToFirstPageAfterSelection = props.goToFirstPageAfterSelection;
   const selectValue = rqtvListObject.selectValue;
 
   const getScrollData = qDisplayArea => {
@@ -31,11 +32,16 @@ const Body = props => {
     qHeight: props.qDataPageHeight
   });
   const pagination = (0, _q.usePagination)(qArea, qSize, getScrollData);
+
+  const selectionCallback = () => {
+    goToFirstPageAfterSelection && pagination.setCurrentPage(1);
+  };
+
   return _react.default.createElement(_layout.ButtonGroup, {
     className: "rqtv-button-bar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 22
     },
     __self: void 0
   }, pagination.currentPage !== 1 && _react.default.createElement(_layout.Button, {
@@ -44,17 +50,17 @@ const Body = props => {
     onClick: () => pagination.setCurrentPage(pagination.currentPage - 1),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 24
     },
     __self: void 0
   }, "<"), qDataPages && qDataPages[0].qMatrix.map(item => _react.default.createElement(_layout.Button, {
     key: item[0].qElemNumber,
     type: "button",
     className: "rqtv-btn ".concat(props.buttonSize, " ").concat(item[0].qState, " "),
-    onClick: () => selectValue(item[0].qElemNumber),
+    onClick: () => selectValue(item[0].qElemNumber, selectionCallback),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 29
     },
     __self: void 0
   }, item[0].qText)), pagination.currentPage < pagination.lastPage && _react.default.createElement(_layout.Button, {
@@ -63,7 +69,7 @@ const Body = props => {
     onClick: () => pagination.setCurrentPage(pagination.currentPage + 1),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 40
     },
     __self: void 0
   }, ">"));

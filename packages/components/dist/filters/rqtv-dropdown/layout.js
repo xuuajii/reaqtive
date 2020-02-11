@@ -29,7 +29,7 @@ var _index2 = require("../helpers/index");
 
 var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
 
 const Layout = props => {
   const dropdownMenuHeight = props.dropdownMenuHeight,
@@ -45,7 +45,7 @@ const Layout = props => {
         beginSelections = _props$qSelectionHand.beginSelections,
         endSelections = _props$qSelectionHand.endSelections;
   const _props$qLayoutHandler = props.qLayoutHandler,
-        setOnUpdate = _props$qLayoutHandler.setOnUpdate,
+        setLayoutUpdater = _props$qLayoutHandler.setLayoutUpdater,
         applyQLayoutPatch = _props$qLayoutHandler.applyQLayoutPatch;
   const dropdownMenuEl = (0, _react.useRef)();
   (0, _layout.useOutsideEventListener)(dropdownMenuEl, () => endSelectionsAndHide(0), props.show);
@@ -54,12 +54,12 @@ const Layout = props => {
     endSelections(qAccept, props.hideDropdownMenu);
   };
 
-  (0, _react.useEffect)(() => {
-    const qDisplayArea = qArea;
-    setOnUpdate({
-      fn: () => rqtvListObject.getDataPage(qDisplayArea)
-    });
+  const layoutUpdater = (0, _react.useCallback)(() => {
+    qArea && rqtvListObject.getDataPage(qArea);
   }, [qArea]);
+  (0, _react.useEffect)(() => {
+    setLayoutUpdater(() => layoutUpdater);
+  }, [layoutUpdater]);
   const showToolbar = props.quickSelectionMode === false || props.showSearch;
   const toolbarRef = (0, _react.useCallback)(toolbarEl => {
     if (toolbarEl !== null) {
@@ -87,7 +87,7 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 53
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_dropdownToolbar.default, {
@@ -101,13 +101,13 @@ const Layout = props => {
     toolbarRef: toolbarRef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 55
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 66
     },
     __self: void 0
   }), qLayout && _react.default.createElement(_dropdownMenuBody.default, {
@@ -120,7 +120,7 @@ const Layout = props => {
     hideHorizontalScrollbar: hideHorizontalScrollbar,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 70
     },
     __self: void 0
   })));

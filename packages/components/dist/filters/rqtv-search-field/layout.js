@@ -27,7 +27,7 @@ var _index2 = require("../helpers/index");
 
 var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\layout.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\layout.js";
 
 const Layout = props => {
   const dropdownMenuHeight = props.dropdownMenuHeight,
@@ -45,21 +45,16 @@ const Layout = props => {
         beginSelections = _props$qSelectionHand.beginSelections,
         endSelections = _props$qSelectionHand.endSelections;
   const _props$qLayoutHandler = props.qLayoutHandler,
-        setOnUpdate = _props$qLayoutHandler.setOnUpdate,
+        setLayoutUpdater = _props$qLayoutHandler.setLayoutUpdater,
         applyQLayoutPatch = _props$qLayoutHandler.applyQLayoutPatch;
   const dropdownMenuEl = (0, _react.useRef)();
   (0, _layout.useOutsideEventListener)(dropdownMenuEl, () => endSelectionsAndHide(0), props.show);
-
-  const endSelectionsAndHide = qAccept => {
-    endSelections(qAccept, () => props.setShow(false));
-  };
-
-  (0, _react.useEffect)(() => {
-    const qDisplayArea = qArea;
-    setOnUpdate({
-      fn: () => rqtvListObject.getDataPage(qDisplayArea)
-    });
+  const layoutUpdater = (0, _react.useCallback)(() => {
+    qArea && rqtvListObject.getDataPage(qArea);
   }, [qArea]);
+  (0, _react.useEffect)(() => {
+    setLayoutUpdater(() => layoutUpdater);
+  }, [layoutUpdater]);
 
   const _useState = (0, _react.useState)('100%'),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -82,19 +77,25 @@ const Layout = props => {
       setTimeout(() => props.setShow(true), 200);
     }
   }, [isSearching]);
+
+  const endSelectionsAndHide = qAccept => {
+    endSelections(qAccept, () => props.setShow(false));
+    abort();
+  };
+
   return _react.default.createElement("div", {
     ref: dropdownMenuEl,
     className: "rqtv-search-field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 59
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "rqtv-search-field-header",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 60
     },
     __self: void 0
   }, _react.default.createElement(_dropdownToolbar.default, {
@@ -107,7 +108,7 @@ const Layout = props => {
     showSearch: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 61
     },
     __self: void 0
   })), _react.default.createElement(_layout.DropdownMenu, {
@@ -120,13 +121,13 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 71
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 72
     },
     __self: void 0
   }), qDataPages && _react.default.createElement(_dropdownMenuBody.default, {
@@ -139,7 +140,7 @@ const Layout = props => {
     hideHorizontalScrollbar: hideHorizontalScrollbar,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 74
     },
     __self: void 0
   }))));

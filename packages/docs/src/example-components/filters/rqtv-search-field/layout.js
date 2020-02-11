@@ -18,7 +18,7 @@ const Layout = props => {
     const {rqtvListObject} = props
     const {isSearching} = rqtvListObject
     const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
-    const {setOnUpdate, applyQLayoutPatch} = props.qLayoutHandler
+    const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
     const dropdownMenuEl=useRef();
 
     useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(0), props.show)
@@ -29,7 +29,7 @@ const Layout = props => {
 
     useEffect(()=>{
       const qDisplayArea = qArea
-      setOnUpdate({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
+      setLayoutUpdater({fn:()=>rqtvListObject.getDataPage(qDisplayArea)})
     },[qArea])
 
    const [listHeight, setListHeight] = useState('100%')

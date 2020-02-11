@@ -77,8 +77,8 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const _useState = (0, _react.useState)(null),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-        onUpdate = _useState2[0],
-        setOnUpdate = _useState2[1];
+        layoutUpdater = _useState2[0],
+        setLayoutUpdater = _useState2[1];
 
   const qObject = qObjectHandler.qObject,
         shouldUpdate = qObjectHandler.shouldUpdate,
@@ -86,10 +86,10 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
         qVariable = qObjectHandler.qVariable;
 
   const _ref = qSelectionHandler || false,
-        isSelecting = _ref.isSelecting; // console.log({qObject, shouldUpdate, isSelecting})
+        isSelecting = _ref.isSelecting;
 
+  const layoutProvider = qObject || qVariable; //first call to get layout
 
-  const layoutProvider = qObject || qVariable;
   (0, _react.useEffect)(() => {
     const runEffect = async layoutProvider => {
       const result = await getLayout(layoutProvider);
@@ -105,9 +105,12 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
     if (qLoading === true && layoutProvider !== null) {
       layoutProvider && runEffect(layoutProvider);
     }
-  }, [qLoading, layoutProvider, qErrorCounter]);
+  }, [qLoading, layoutProvider, qErrorCounter]); //handle the function that updates the layout: the function changes for generic-objects which are not in quickSelectionMode
+  //when an object not in quickSelectionMode is in isSelecting state the update function should be passed by the component
+  //using the layout
+
   const updateLayout = (0, _react.useCallback)(() => {
-    const standardUpdate = async layoutProvider => {
+    const standardUpdate = async () => {
       const result = await getLayout(layoutProvider);
       return result instanceof Error ? dispatch({
         type: 'error',
@@ -118,20 +121,24 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       });
     };
 
-    if (layoutProvider !== null && isSelecting === true && typeof onUpdate.fn === 'function') {
-      //console.log('custom update');
-      onUpdate.fn();
+    if (layoutProvider !== null && isSelecting === true && typeof layoutUpdater === 'function') {
+      layoutUpdater();
     } else {
-      //console.log('standard update');
       layoutProvider !== null && standardUpdate();
     }
-  }, [onUpdate, isSelecting, layoutProvider]);
+  }, [layoutUpdater, isSelecting, layoutProvider]); // call for layout update when the engine recalculates the qObject
+
   (0, _react.useEffect)(() => {
-    if (shouldUpdate === true) {
+    let isSubscribed = true;
+
+    if (shouldUpdate === true && isSubscribed === true) {
       updateLayout();
       setShouldUpdate(false);
     }
-  }, [shouldUpdate, updateLayout]);
+
+    return () => isSubscribed = false;
+  }, [shouldUpdate, updateLayout]); // method used by the components using the layout to update the layout
+
   const applyQLayoutPatch = (0, _react.useCallback)((path, patch) => {
     const qLayoutPatched = (0, _helpers.getPatchedObject)(qLayout, path, patch);
     dispatch({
@@ -140,7 +147,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
     });
   }, [qLayout]);
   return (0, _objectSpread2.default)({}, qPromiseHandler, {
-    setOnUpdate,
+    setLayoutUpdater,
     applyQLayoutPatch
   });
 };

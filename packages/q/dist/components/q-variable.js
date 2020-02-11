@@ -53,12 +53,12 @@ const exclusivePropTypes = {
 const exclusiveProps = Object.keys(exclusivePropTypes);
 QVariable.propTypes = (0, _objectSpread2.default)({
   /**
-   * variableName: the name of the variable. It must not be provided if variableId is provided
+   * The name of the variable. It must not be provided if variableId is provided
    */
   variableName: _propTypes.default.string,
 
   /**
-   * variableId: the id of the variable. It must not be provided if variableName is provided
+   * The id of the variable. It must not be provided if variableName is provided
    */
   variableId: _propTypes.default.string
 }, Object.fromEntries(exclusiveProps.map(exclusiveProp => [exclusiveProp, _airbnbPropTypes.default.and([exclusivePropTypes[exclusiveProp], (props, propName, componentName, ...rest) => {

@@ -116,12 +116,14 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
         qError = qPromiseHandler.qError,
         errorCounter = qPromiseHandler.errorCounter;
   (0, _react.useEffect)(() => {
+    let isSubscribed = true;
+
     const runEffect = async () => {
       const result = await getQField(qDoc, qFieldName);
       return result instanceof Error ? dispatch({
         type: 'error',
         qError: result
-      }) : dispatch({
+      }) : isSubscribed === true && dispatch({
         type: 'successField',
         qField: result,
         isAlwaysOneSelected: isAlwaysOneSelected
@@ -129,6 +131,7 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
     };
 
     qDoc && qFieldName && runEffect();
+    return () => isSubscribed = false;
   }, [qDoc, qFieldName]);
   (0, _react.useEffect)(() => {
     return () => {

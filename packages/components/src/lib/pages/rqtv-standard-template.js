@@ -28,6 +28,8 @@ const RqtvStandardTemplate = props => {
         onToggleMenu={toggleSideMenu}
         closeSideMenu={()=>setShowSideMenu(false)}
         searchFieldsMatch = {props.searchFieldsMatch}
+        showSearch={props.showSearch}
+        showSideMenuToggle = {props.useSideMenu}
       />
       <RqtvSideMenu
         isOpen={showSideMenu}
@@ -55,11 +57,15 @@ RqtvStandardTemplate.propTypes = {
   useContainerFluid:PropTypes.bool,
   usePageHeader:PropTypes.bool,
   containerStyle:PropTypes.object,
-  containerClassName:PropTypes.string
+  containerClassName:PropTypes.string,
+  showSearch:PropTypes.bool,
+  useSideMenu:PropTypes.bool
 }
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid:true,
-  usePageHeader:true
+  usePageHeader:true,
+  showSearch:true,
+  useSideMenu:true
 }
 
 export default RqtvStandardTemplate

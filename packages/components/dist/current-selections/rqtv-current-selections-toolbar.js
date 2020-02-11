@@ -17,7 +17,7 @@ var _layout = require("@reaqtive/layout");
 
 var _currentSelectionsButtons = require("./current-selections-buttons");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\rqtv-current-selections-toolbar.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\rqtv-current-selections-toolbar.js";
 
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()

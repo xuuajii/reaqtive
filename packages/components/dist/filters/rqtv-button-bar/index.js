@@ -19,7 +19,7 @@ var _index = require("../helpers/index");
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\index.js";
 
 const RqtvButtonBar = props => {
   const qFieldExpr = props.qFieldExpr,
@@ -63,7 +63,8 @@ RqtvButtonBar.propTypes = {
   qFieldLabelExpr: _propTypes.default.string,
   qSortObject: _propTypes.default.object,
   buttonSize: _propTypes.default.string,
-  qDataPageHeight: _propTypes.default.number
+  qDataPageHeight: _propTypes.default.number,
+  goToFirstPageAfterSelection: _propTypes.default.bool
 };
 RqtvButtonBar.defaultProps = {
   qSortObject: {
@@ -76,7 +77,8 @@ RqtvButtonBar.defaultProps = {
   },
   buttonSize: 'btn-sm',
   qDataPageHeight: 5,
-  toggle: true
+  toggle: true,
+  goToFirstPageAfterSelection: true
 };
 var _default = RqtvButtonBar;
 exports.default = _default;

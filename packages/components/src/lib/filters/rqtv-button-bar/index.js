@@ -23,13 +23,15 @@ RqtvButtonBar.propTypes={
   qSortObject:PropTypes.object,
   buttonSize:PropTypes.string,
   qDataPageHeight:PropTypes.number,
+  goToFirstPageAfterSelection:PropTypes.bool
 }
 
 RqtvButtonBar.defaultProps={
   qSortObject:{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 1, qSortByLoadOrder: 0, qSortByExpression: 0 },
   buttonSize:'btn-sm',
   qDataPageHeight:5,
-  toggle:true
+  toggle:true,
+  goToFirstPageAfterSelection:true
 }
 
 export default RqtvButtonBar
