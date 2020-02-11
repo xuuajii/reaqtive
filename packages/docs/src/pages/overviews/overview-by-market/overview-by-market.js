@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ToggleSwitch from "../../../components/layout/toggle-switch/toggle-switch";
 import Card from "../../../components/layout/card/Card";
+import DataPicker from "../../../components/layout/data-picker/data-picker";
 const OverviewByMarket = props => {
   const [value, setValue] = useState(false);
 
@@ -14,7 +15,7 @@ const OverviewByMarket = props => {
         }}
       />
       {value && <p>Attivato</p>}
-
+      <DataPicker />
       <Card
         displayLogo={true}
         isInfoAbsolute={true}
