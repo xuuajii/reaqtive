@@ -4,6 +4,7 @@ const readdirp = require('readdirp');
 const reactDocgen = require('react-docgen');
 const util = require('util');
 const os = require('os');
+const jsdoc2md = require('jsdoc-to-markdown')
 const ReactDocGenMarkdownRenderer = require('react-docgen-markdown-renderer');
 const _ = require('lodash')
 const templates = require('./templates')
@@ -186,11 +187,11 @@ const composeSection = (section) => {
   }
   const sectionTitle = '## '+section.title.toUpperCase();
   const sectionComponentsMarkdown = _.map(section.components, (component) => {
-    const markdown = generateComponentMarkdown(component)+'\n';
-    const cleanedMarkdown = contextCleanUp(markdown)+'\n'
+    const markdown = generateComponentMarkdown(component)+os.EOL;
+    const cleanedMarkdown = contextCleanUp(markdown)+os.EOL
     return cleanedMarkdown
   })
-  return sectionTitle+'\n'+'***'+'\n'+sectionComponentsMarkdown.join('\n')+'<br/>'+'<br/>'+'\n'
+  return sectionTitle+os.EOL+'***'+os.EOL+sectionComponentsMarkdown.join(os.EOL)+os.EOL+os.EOL
 }
 
 const generateIntro = (package) => {
@@ -204,9 +205,9 @@ const run = async (package, root) => {
   const sectionsWithFiles = await addFileListToSections(packageSourcePath, package.sections)
   const sectionsWithComponents = await addComponentsMetadata(sectionsWithFiles)
   const sectionsWithSnippets = await addExamplesToSections(sectionsWithComponents, `${package.examplePath}`)
-  const reaqtiveDocs = composeSection(sectionsWithSnippets[0])
-  const contextsDocs = composeSection(sectionsWithSnippets[1])
-  const componentsDocs = composeSection(sectionsWithSnippets[2])
+  // const reaqtiveDocs = composeSection(sectionsWithSnippets[0])
+  // const contextsDocs = composeSection(sectionsWithSnippets[1])
+  // const componentsDocs = composeSection(sectionsWithSnippets[2])
   const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(os.EOL)
   const intro = generateIntro({...package, sections:sectionsWithSnippets})
   const packageDocs = intro+'***'+os.EOL+mergedSectionsDocs
@@ -214,4 +215,15 @@ const run = async (package, root) => {
   fs.writeFile(`${packagePath}\\README.md`, packageDocs, callback);
 }
 
-run(reaqtiveModules.packages.q, reaqtiveModules.rootPath)
+//run(reaqtiveModules.packages.q, reaqtiveModules.rootPath)
+const filePath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/src/lib/hooks/use-q-object-reducer.js`);
+const outputPath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/test-hook.md`);
+console.log(filePath)
+extractHooksData = async (hookFilePath) => {
+  const rawMetadataArray = await jsdoc2md.getTemplateData({files:hookFilePath})
+  const filteredMetadataArray = rawMetadataArray.filter(block=>block.comment!=='')
+  const template = await jsdoc2md.render({data:filteredMetadataArray})
+  const callback = ()=>console.log(template)
+  fs.writeFile(`${outputPath}`, template, callback);
+}
+extractHooksData(filePath)

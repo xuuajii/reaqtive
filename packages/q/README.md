@@ -81,7 +81,8 @@ __qConfig.prefix__ | `String` |  | :white_check_mark: | prefix: Qlik's virtual p
 __qConfig.secure__ | `Boolean` |  | :white_check_mark: | secure: true if the Qlik server uses https, false otherwise
 
 
-<br/><br/>
+
+
 
 ## CONTEXTS
 ***
@@ -224,7 +225,8 @@ export default MyComponentWithQGlobal
 ```
 
 
-<br/><br/>
+
+
 
 ## COMPONENTS
 ***
@@ -268,8 +270,10 @@ __variableId__ | `String` |  | :x: | The id of the variable. It must not be prov
 __variableName__ | `String` |  | :x: | The name of the variable. It must not be provided if variableId is provided
 
 
-<br/><br/>
+
+
 
 ## HOOKS
 ***
-<br/><br/>
+
+

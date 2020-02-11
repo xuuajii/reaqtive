@@ -39,6 +39,27 @@ const qObjectReducer = (state, action) => {
   }
 }
 
+/**
+ * @typedef {object} qObjectHandler - the object returned by useQObjectReducer
+ * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server
+ * @property {boolean} qError - if true there was an error retrieving the qObject from the engine
+ * @property {object} qObject - the object returned from the server
+ * @property {function} reloadObject - a method to ask the qlik engine to recalculate the qObject
+ * @property {boolean} shouldUpdate - a boolean variable which is set to true when the object is recalculated and you should ask the engine fro the layou (e.g. after selections)
+ * @property {function} setShouldUpdate - a function to clean up the shouldupdate property after the needed effects have run
+ */
+
+ /**
+  * @typedef {function} hook
+  * @type {function}
+  */
+
+/**
+  *@function useQObjectReducer(qObjectDef) - a hook to create and retrieve a generic object from the qlik engine
+  *@kind {hook}
+  *@param {object} qObjectDef - The object that tells to the qlik engine what object you want
+  *@return {qObjectHandler} Returns the handler of the newly created object
+*/
 
 const useQObjectReducer = (qObjectDef) => {
   const maxError = 10;
@@ -50,7 +71,7 @@ const useQObjectReducer = (qObjectDef) => {
   const [shouldUpdate, setShouldUpdate] = useState()
   const [isSelecting, setIsSelecting] = useState(false)
   useEffect(()=>{
-    
+
     let isSubscribed=true
     const runEffect = async () => {
       if(qDoc){
@@ -74,7 +95,6 @@ const useQObjectReducer = (qObjectDef) => {
       qObject&&qObject.removeAllListeners()
     }
   },[qLoading, qObject])
-
 
   return {
       ...qPromiseHandler,
