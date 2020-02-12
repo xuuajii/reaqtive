@@ -3,8 +3,8 @@
 //
 
 import React, {useState} from "react";
-//import Basket from "../example-components/overview-by-product/basket-view/basket";
-import PageHeader from '../../components/layout/page-header/page-header';
+import Basket from "./basket";
+import PageHeader from '../../../shared-components/layout/page-header/page-header';
 import {RqtvBreadcrumb} from "@reaqtive/components";
 
 const qHypercubeDef = {

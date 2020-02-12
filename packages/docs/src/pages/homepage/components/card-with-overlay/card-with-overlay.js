@@ -12,7 +12,7 @@ const CardOverlay = props => {
   return (
     <div
       id="card-overlay"
-      onClick={() => history.replace(props.redirect)}
+      onClick={() => history.push(props.redirect)}
       className="card bg-dark text-white"
     >
       <img src={props.img} className="card-img" alt="..." />

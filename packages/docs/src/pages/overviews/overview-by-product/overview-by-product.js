@@ -6,7 +6,9 @@ import React from "react";
 import { QGenericObject, QListObject } from "@reaqtive/q";
 import PageHeader from "../../../shared-components/layout/page-header/page-header";
 import CardDecksByBrand from "./components/card-decks-by-brand";
-import {RqtvBreadcrumb} from "@reaqtive/components";
+import { RqtvBreadcrumb } from "@reaqtive/components";
+import { RqtvPage, RqtvStandardTemplate } from "@reaqtive/components";
+import BasketAnalysis from "../basket/basket-analysis";
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,12 +20,28 @@ import {
 //import BasketAnalysis from "../basket-analysis";
 
 const OverviewByProduct = props => {
+  console.log(props);
   let match = useRouteMatch();
   return (
     <>
-      <Route exact path={`${match.path}/basket-analysis`}>
-        {/*<BasketAnalysis />*/}
-      </Route>
+      <RqtvPage
+        path={props.path + "/basket-analysis"}
+        id={10}
+        title={"props.title"}
+        // triggers={[
+        //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
+        //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
+        // ]}
+      >
+        <RqtvStandardTemplate
+          searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
+          useContainerFluid={false}
+          containerClassName={"full-screen"}
+          usePageHeader={false}
+        >
+          <BasketAnalysis />
+        </RqtvStandardTemplate>
+      </RqtvPage>
       <Route exact={true} path={match.path}>
         <div className="overview-by-product">
           <div className="container-fluid">
@@ -41,14 +59,13 @@ const OverviewByProduct = props => {
 
 export default OverviewByProduct;
 
-
 const brandListObjectDef = {
-    qInfo: {
-      qType: "tableData"
-    },
-    brands: {
-      qStringExpression: {
-        qExpr: "concat(distinct [Brand Benchmark],',')"
-      }
+  qInfo: {
+    qType: "tableData"
+  },
+  brands: {
+    qStringExpression: {
+      qExpr: "concat(distinct [Brand Benchmark],',')"
     }
-  };
+  }
+};
