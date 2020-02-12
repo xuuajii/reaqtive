@@ -216,14 +216,40 @@ const run = async (package, root) => {
 }
 
 //run(reaqtiveModules.packages.q, reaqtiveModules.rootPath)
-const filePath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/src/lib/hooks/use-q-object-reducer.js`);
+const filePath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/src/lib/hooks/*`);
 const outputPath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/test-hook.md`);
-console.log(filePath)
+//console.log(filePath)
 extractHooksData = async (hookFilePath) => {
   const rawMetadataArray = await jsdoc2md.getTemplateData({files:hookFilePath})
-  const filteredMetadataArray = rawMetadataArray.filter(block=>block.comment!=='')
-  const template = await jsdoc2md.render({data:filteredMetadataArray})
-  const callback = ()=>console.log(template)
-  fs.writeFile(`${outputPath}`, template, callback);
+  const filteredMetadataArray = rawMetadataArray.filter(block=>(block.comment!=='' && block.id.substring(0,3)==='use'))
+  //const template = await jsdoc2md.render({data:filteredMetadataArray})
+  // const callback = ()=>
+  const generateHookMarkDown = (hook) => {
+    const title = `### ${hook.name}`
+    const description = `${hook.description}`
+    const kind = `${hook.kind}`
+    const generateParams = (params) => {
+      const header = `param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+`
+      const rows = params.map(param=>
+        `__${param.name}__ | ddd |${
+          param.defaultvalue?'1':'ddd'
+        } | ${
+          !param.optional? ':white_check_mark:' : ':x:'
+        } | ${
+          param.description?param.description:''
+        }`
+      ).join(os.EOL)
+      return header+rows
+    }
+    const paramsTable=generateParams(hook.params)
+    const markDown = title+os.EOL+os.EOL+description+os.EOL+os.EOL+'#### **Params**'+os.EOL+paramsTable+os.EOL
+    return markDown
+    //console.log(hook.params)
+  }
+  const markdown = filteredMetadataArray.map(hook=>generateHookMarkDown(hook)).join(os.EOL)
+  const callback = () =>console.log(markdown)
+  fs.writeFile(`${outputPath}`, markdown, callback);
 }
 extractHooksData(filePath)

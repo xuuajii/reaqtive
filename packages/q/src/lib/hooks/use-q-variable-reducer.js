@@ -44,6 +44,29 @@ const qVariableReducer = (state, action) => {
   }
 }
 
+/**
+ * @typedef {object} qVariableHandler - the object returned by useQLayoutReducer
+ * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server
+ * @property {boolean} qError - if true there was an error retrieving the qVariable from the engine
+ * @property {object} qVariable - the object returned from the server to interact with the variable
+ * @property {boolean} shouldUpdate - a boolean variable which is set to true when the object is recalculated and you should ask the engine fro the layou (e.g. after selections)
+ * @property {function} setShouldUpdate - a function to clean up the shouldupdate property after the needed effects have run
+ */
+
+ /**
+  * @typedef {function} hook
+  * @type {function}
+  */
+
+/**
+  *@function useQVariableReducer
+  *@description hook to retrieve a variable already available in the qDoc
+  *@kind hook
+  *@param {string} id - the name or id of the variable
+  *@param {string} [idType=name] - tells to the variable reducer whether to use the name or id to retrieve the variable
+  *@return {qVariableHandler} Returns the handler of the variable
+*/
+
 const useQVaraibleReducer = (id, idType='name') => {
   const qDocHandler = useContext(QDoc)
   const qDoc = qDocHandler&&qDocHandler.qDoc

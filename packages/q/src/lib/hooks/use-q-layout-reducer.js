@@ -37,7 +37,28 @@ const qLayoutReducer = (state, action) => {
       throw new Error();
   }
 }
+/**
+ * @typedef {object} qLayoutHandler - the object returned by useQLayoutReducer
+ * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server
+ * @property {boolean} qError - if true there was an error retrieving the qLayout from the engine
+ * @property {object} qLayout - the object returned from the server which contains the layout returned from the qlik server
+ * @property {function} setLayoutUpdater - a method that accept a function that can be defined inside the view using the layout. by default the layout updater is qObject.getLayout(). it could be useful to change the layout updater when the generic object is in selecting mode
+ * @property {function} applyQLayoutPatch - a function that allow to change the shape of the layout from the view. it is inteneded to be used when the qDisplayArea changes: the view asks the server for a new data page and the apply the patch to the already existing layout
+ */
 
+ /**
+  * @typedef {function} hook
+  * @type {function}
+  */
+
+/**
+  *@function useQLayoutReducer
+  *@description a hook to create and retrieve a the layout of a qObject (tested with generic objects and variables)
+  *@kind hook
+  *@param {qObjectHandler} qObjectHandler - the handler retrieved by useQObjectReducer
+  *@param {qSelectionHandler} [qSelectionHandler]  - the handler that manages the selection state of the generic object, it is not needed if the qObject does not have a selection state to handle
+  *@return {qLayoutHandler} Returns the handler of the qLayout
+*/
 const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
   const [qPromiseHandler, dispatch] = useReducer(qLayoutReducer, initialState);

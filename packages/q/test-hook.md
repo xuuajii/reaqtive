@@ -1,41 +1,49 @@
-## Typedefs
+### useQFieldReducer
 
-<dl>
-<dt><a href="#qObjectHandler">qObjectHandler</a> : <code>object</code></dt>
-<dd><p>the object returned by useQObjectReducer</p>
-</dd>
-<dt><a href="#hook">hook</a> : <code>function</code></dt>
-<dd></dd>
-</dl>
+a hook to retrieve a field from qDoc. if provided a defaulta value it selecte the value when it mounts and set the field to always one selected if isAlwaysOneSelected is set to true
 
-<a name="useQObjectReducer(qObjectDef) - a hook to create and retrieve a generic object from the qlik engine"></a>
+#### **Params**
+param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+__qFieldName__ | ddd |ddd | :white_check_mark: | the name of the field
+__isAlwaysOneSelected__ | ddd |ddd | :x: | flag to set isAlwaysOneSelected
+__defaultValue__ | ddd |ddd | :x: | the defaultValue to be selected before setting isAlwaysOneSelected to true
+__resetOnUnmount__ | ddd |ddd | :x: | if set to true it set isAlwaysOneSelected to false when unmount
 
-## useQObjectReducer(qObjectDef) - a hook to create and retrieve a generic object from the qlik engine ⇒ [<code>qObjectHandler</code>](#qObjectHandler)
-**Kind**: global {hook}  
-**Returns**: [<code>qObjectHandler</code>](#qObjectHandler) - Returns the handler of the newly created object  
+### useQLayoutReducer
 
-| Param | Type | Description |
-| --- | --- | --- |
-| qObjectDef | <code>object</code> | The object that tells to the qlik engine what object you want |
+a hook to create and retrieve a the layout of a qObject (tested with generic objects and variables)
 
-<a name="qObjectHandler"></a>
+#### **Params**
+param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+__qObjectHandler__ | ddd |ddd | :white_check_mark: | the handler retrieved by useQObjectReducer
+__qSelectionHandler__ | ddd |ddd | :x: | the handler that manages the selection state of the generic object, it is not needed if the qObject does not have a selection state to handle
 
-## qObjectHandler : <code>object</code>
-the object returned by useQObjectReducer
+### useQObjectReducer
 
-**Kind**: global typedef  
-**Properties**
+a hook to create and retrieve a generic object from the qlik engine
 
-| Name | Type | Description |
-| --- | --- | --- |
-| qLoading | <code>boolean</code> | if true the the handler is still waiting for response from the qlik server |
-| qError | <code>boolean</code> | if true there was an error retrieving the qObject from the engine |
-| qObject | <code>object</code> | the object returned from the server |
-| reloadObject | <code>function</code> | a method to ask the qlik engine to recalculate the qObject |
-| shouldUpdate | <code>boolean</code> | a boolean variable which is set to true when the object is recalculated and you should ask the engine fro the layou (e.g. after selections) |
-| setShouldUpdate | <code>function</code> | a function to clean up the shouldupdate property after the needed effects have run |
+#### **Params**
+param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+__qObjectDef__ | ddd |ddd | :white_check_mark: | The object that tells to the qlik engine what object you want
 
-<a name="hook"></a>
+### useQSelectionHandler(
 
-## hook : <code>function</code>
-**Kind**: global typedef  
+a hook to handle the selection state of an object
+
+#### **Params**
+param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+__qObject__ | ddd |ddd | :white_check_mark: | the qObject to apply the state to
+
+### useQVariableReducer
+
+hook to retrieve a variable already available in the qDoc
+
+#### **Params**
+param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+__id__ | ddd |ddd | :white_check_mark: | the name or id of the variable
+__idType__ | ddd |1 | :x: | tells to the variable reducer whether to use the name or id to retrieve the variable

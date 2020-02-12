@@ -55,8 +55,9 @@ const qObjectReducer = (state, action) => {
   */
 
 /**
-  *@function useQObjectReducer(qObjectDef) - a hook to create and retrieve a generic object from the qlik engine
-  *@kind {hook}
+  *@function useQObjectReducer
+  *@description a hook to create and retrieve a generic object from the qlik engine
+  *@kind hook
   *@param {object} qObjectDef - The object that tells to the qlik engine what object you want
   *@return {qObjectHandler} Returns the handler of the newly created object
 */
