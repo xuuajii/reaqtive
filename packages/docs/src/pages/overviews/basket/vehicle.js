@@ -59,6 +59,9 @@ const Vehicle = props => {
               img={extractSubNodes(item, 5).qText}
               height={"auto"}
               brandImage={extractSubNodes(item, 6).qText}
+              maxWidth={"60px"}
+              paddingRight={"12px"}
+              top={"10px"}
             />
           );
         })}

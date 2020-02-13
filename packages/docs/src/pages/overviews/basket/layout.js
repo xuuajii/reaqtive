@@ -7,33 +7,20 @@ import Vehicle from "./vehicle";
 import {RqtvVizContainer, QViz} from "@reaqtive/components"
 
 const Layout = props => {
-  const [myProps, setMyProps] = useState(props);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [hypercube, setHypercube] = useState("");
-  useEffect(() => {
-    setMyProps(props);
-    console.log("layout", props.layout);
-  }, [props]);
+  
+  const isLayoutLoaded = props.qLayoutHandler.qLayout && props.qLayoutHandler.qLayout;
+  const hypercube = isLayoutLoaded && props.qLayoutHandler.qLayout.qHyperCube
+  const basket = hypercube && hypercube.qPivotDataPages[0].qLeft[0].qText;
 
-  useEffect(() => {
-    setIsLoaded(false);
-    console.log(myProps.qLayoutHandler.qLayout);
-    if (myProps.qLayoutHandler.qLayout) {
-      setIsLoaded(true);
-      setHypercube(myProps.qLayoutHandler.qLayout.qHyperCube);
-    }
-  }, [myProps]);
-  const basket = hypercube.qPivotDataPages && hypercube.qPivotDataPages[0].qLeft[0].qText;
   useEffect(()=>{
     props.setPageTitle(basket)
     console.log("basket",basket)
   },[basket])
-  /*myProps.qLayoutHandler.qLayout.qHyperCube.qhypercubePages[0].qLeft[0].qText*/
+
   return (
     <div>
-      {isLoaded ? (
-        <Component
-
+      {isLayoutLoaded ? (
+        <VehicleLayout
           basket={basket}
           qLeftSubNodes={hypercube.qPivotDataPages[0].qLeft[0].qSubNodes}
           qDataSubNodes={hypercube.qPivotDataPages[0].qData}
@@ -175,17 +162,10 @@ const channels = [
   {code:'ltr', title:'Long Term Rental', fieldValue:'[Vehicle Discounted Price Business]'}
 ]
 
-const Component = props => {
-  let getCountryCode = props.basket
-    .slice(Math.max(props.basket.length - 2, 1))
-    .toLowerCase();
+const VehicleLayout = props => {
+  
   return (
     <>
-      {/*<BasketTable
-        countryCode={getCountryCode}
-        qLeftSubNodes={props.qLeftSubNodes}
-        qDataSubNodes={props.qDataSubNodes}
-      />*/}
       <Vehicle hypercube={props.hypercube} />
       <div className="container-fluid basket-analysis-charts" style={{marginTop:'4rem'}}>
         <div className="row">

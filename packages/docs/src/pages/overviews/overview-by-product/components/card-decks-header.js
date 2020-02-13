@@ -34,7 +34,7 @@ const CardDecksHeader = props => {
           <div className="col-auto col-sm-auto col-md-auto">
             <div style={{ display: "flex", alignItems: "center" }}>
               <BrandLogo
-                img={getBrandLogo(brand)}
+                brandImage={getBrandLogo(brand)}
                 position={"relative"}
                 top={"0px"}
                 height={"50px"}

@@ -9,8 +9,8 @@ export default function CardLogo(props) {
   return (
     <img
       className="card-logo"
-      src={props.img}
-      style={{ height: props.height, position: props.position, top: props.top }}
+      src={props.brandImage}
+      style={{ height: props.height, position: props.position, top: props.top , maxWidth: props.maxWidth,paddingRight: props.paddingRight}}
     />
   );
 }

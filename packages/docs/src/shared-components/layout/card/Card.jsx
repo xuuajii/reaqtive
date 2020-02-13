@@ -9,7 +9,7 @@ import CardLogo from "./Card-logo/card-logo";
 import CardKPI from "./Card-KPI/card-kpi";
 import CardBody from "./Card-Body/card-body";
 
-export default function Card(props) {
+const Card = props => {
   let history = useHistory();
 
   return (
@@ -20,7 +20,7 @@ export default function Card(props) {
       style={{ width: props.width }}
     >
       <div className="row no-gutters">
-        {props.displayLogo && <CardLogo img={props.brandImage} />}
+        {props.displayLogo && <CardLogo {...props} />}
         <div
           className={
             "col-auto px-3 mt-3" + (props.gradient ? " pickgradient" : "")
@@ -49,7 +49,9 @@ export default function Card(props) {
       {props.displayBody && <CardBody {...props} />}
     </div>
   );
-}
+};
+
+export default Card;
 
 Card.defaultProps = {
   title: "Title",

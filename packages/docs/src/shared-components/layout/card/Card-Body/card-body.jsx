@@ -12,96 +12,83 @@ export default function CardBody(props) {
   };
   return (
     <>
-      <div className="container">
-        <div className="row  font-weight-bold align-items-center">
-          <div className="col-6"> Country</div>
-          <div className="col-6">
-            <div className="row text-center">
-              <div className="col-4 px-0">Priv</div>
-              <div className="col-4 px-0">FbD</div>
-              <div className="col-4 px-0">LTR</div>
+      {props.ovByProduct ? (
+        <>
+          <div className="container ">
+            <div className="row  font-weight-bold align-items-center">
+              <div className="col-6"> Country</div>
+              <div className="col-6">
+                <div className="row text-center">
+                  <div className="col-4 px-0">Priv</div>
+                  <div className="col-4 px-0">FbD</div>
+                  <div className="col-4 px-0">LTR</div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        {props.cardBody ? (
-          props.cardBody.map(function(item, index) {
-            getCountryCode(item.country);
-            return (
-              <div className="row list align-items-center" key={countryCode}>
-                <div
-                  className="col-6"
-                  onClick={() =>
-                    handleBodyItemClick(props.data.cardBody[index].bodyLabel)
-                  }
-                >
-                  <div className="row align-items-center">
-                    <div className="col-5 my-1">
-                      {item.bodyImage.qText}
-                      {/*<Flags
+            {props.cardBody.map(function(item, index) {
+              getCountryCode(item.country);
+              return (
+                <div className="row list align-items-center" key={countryCode}>
+                  <div
+                    className="col-6"
+                    onClick={() =>
+                      handleBodyItemClick(props.data.cardBody[index].bodyLabel)
+                    }
+                  >
+                    <div className="row align-items-center">
+                      <div className="col-5 my-1">
+                        {item.bodyImage.qText}
+                        {/*<Flags
                         countryCode={countryCode}
                         isRounded={true}
                         height={20}
                       />*/}
+                      </div>
+                      <div
+                        className="col-7 px-0"
+                        style={{
+                          fontSize: "9px",
+                          fontWeight: "bold"
+                        }}
+                      >
+                        {item.bodyLabel.qText}
+                      </div>
                     </div>
-                    <div
-                      className="col-7 px-0"
-                      style={{
-                        fontSize: "9px",
-                        fontWeight: "bold"
-                      }}
-                    >
-                      {item.bodyLabel.qText}
+                  </div>
+                  <div className="col-6">
+                    <div className="row text-center">
+                      <div className="col-4 px-0">
+                        {item.bodyMeasures[0].qText}
+                      </div>
+                      <div className="col-4 px-0">
+                        {item.bodyMeasures[1].qText}
+                      </div>
+                      <div className="col-4 px-0">
+                        {item.bodyMeasures[2].qText}
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="col-6">
-                  <div className="row text-center">
-                    <div className="col-4 px-0">
-                      {item.bodyMeasures[0].qText}
-                    </div>
-                    <div className="col-4 px-0">
-                      {item.bodyMeasures[1].qText}
-                    </div>
-                    <div className="col-4 px-0">
-                      {item.bodyMeasures[2].qText}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        ) : (
-          <div className="row list align-items-center" key={countryCode}>
-            <div className="col-6">
-              <div className="row align-items-center">
-                <div className="col-3 my-1 px-3">
-                  <Flags
-                    countryCode={countryCode}
-                    isRounded={true}
-                    height={20}
-                  />
-                </div>
-                <div
-                  className="col-9 px-3"
-                  style={{
-                    fontSize: "9px",
-                    fontWeight: "bold"
-                  }}
-                >
-                  GERMANY
-                </div>
-              </div>
-            </div>
-            <div className="col-6">
-              <div className="row text-center">
-                <div className="col-4 px-0">110</div>
-                <div className="col-4 px-0">100</div>
-                <div className="col-4 px-0">105</div>
-              </div>
-            </div>
+              );
+            })}
           </div>
-        )}
-      </div>
+        </>
+      ) : (
+        <>
+          <div className="card-property">
+            <div className="label">{props.price}</div>
+            <div className="value">{props.priceValue}</div>
+          </div>
+          <div className="card-property">
+            <div className="label">{props.bea}</div>
+            <div className="value">{props.beaValue}</div>
+          </div>
+          <div className="card-property">
+            <div className="label">{props.aea}</div>
+            <div className="value">{props.aeaValue}</div>
+          </div>
+        </>
+      )}
     </>
   );
 }
