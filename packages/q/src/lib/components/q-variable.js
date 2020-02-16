@@ -16,13 +16,17 @@ import useQLayoutReducer from '../hooks/use-q-layout-reducer'
  *
  */
 const QVariable = (props) => {
-  const qVariableHandler = useQVaraibleReducer('vCurrentYear')
+  const variableId = props.variableName||props.variableId
+  const idType=props.variableId?'id':'name'
+  const qVariableHandler = useQVaraibleReducer(variableId, idType)
   const qLayoutHandler = useQLayoutReducer(qVariableHandler)
   const moreThanOneChild = Array.isArray(props.children)
   if (moreThanOneChild){
       throw "QGenericObject must have  only one child, wrap the content inside a React element";
   }
-  return React.cloneElement(props.children, {props, qLayoutHandler, qVariableHandler})
+  return React.isValidElement(props.children)
+    ?React.cloneElement(props.children, {props, qLayoutHandler, qVariableHandler})
+    :props.children({qLayoutHandler, qVariableHandler})
 }
 
 const exclusivePropTypes = {

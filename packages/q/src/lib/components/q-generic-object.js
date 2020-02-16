@@ -22,7 +22,9 @@ const QGenericObject = props => {
   if (moreThanOneChild){
       throw "QGenericObject must have  only one child, wrap the content inside a React element";
   }
-  return React.cloneElement(props.children, {qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode})
+  return React.isValidElement(props.children)
+  ?React.cloneElement(props.children, {qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode})
+  :props.children({qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode})
 }
 
 QGenericObject.propTypes = {
