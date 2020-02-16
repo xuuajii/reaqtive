@@ -17,7 +17,7 @@ var _headerButtonbar = _interopRequireDefault(require("../shared/header-buttonba
 
 var _listboxMenu = _interopRequireDefault(require("./listbox-menu"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\header.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\header.js";
 
 const Header = props => {
   const titleCursor = props.titleAction ? 'pointer' : 'auto';
