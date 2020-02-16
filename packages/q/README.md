@@ -22,7 +22,7 @@ npm install @reaqtive/components
 ```
 ***
 ## REAQTIVE
-***
+
 ### **Reaqtive**
 
 
@@ -87,7 +87,7 @@ __qConfig.secure__ | `Boolean` |  | :white_check_mark: | secure: true if the Qli
 
 
 ## CONTEXTS
-***
+
 ### **QApp**
 
 
@@ -233,7 +233,7 @@ export default MyComponentWithQGlobal
 
 
 ## COMPONENTS
-***
+
 ### **QGenericObject**
 
 
@@ -280,7 +280,7 @@ __variableName__ | `String` |  | :x: | The name of the variable. It must not be 
 
 
 ## HOOKS
-***
+
 
 
 

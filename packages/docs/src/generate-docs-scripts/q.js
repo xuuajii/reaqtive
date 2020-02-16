@@ -192,7 +192,7 @@ const composeSection = (section) => {
     const cleanedMarkdown = contextCleanUp(markdown)+os.EOL
     return cleanedMarkdown
   })
-  return sectionTitle+os.EOL+'***'+os.EOL+sectionComponentsMarkdown.join(os.EOL)+os.EOL+os.EOL
+  return sectionTitle+os.EOL+os.EOL+sectionComponentsMarkdown.join(os.EOL)+os.EOL+os.EOL
 }
 
 const generateIntro = (package) => {
