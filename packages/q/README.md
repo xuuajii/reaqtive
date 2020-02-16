@@ -248,6 +248,10 @@ It expects only 1 child
 It attaches an onChange event-listener to the qObject and automatically updates the layout when the event fires.
 For example it can provide a listobject or a hypercube to its children.
 
+QGenericObject must have one and only one child. The child can be a React element (external layout mode) or a function that returns a React element (inline layout mode).
+
+See the example below for details
+
 
 **Props**: 
 
@@ -346,7 +350,10 @@ export default MyQGenericObject
 QVariable
 It provides a variable and its layout to its child.
 It automatically aupdate layout everytime the variable is updated by the engine calculations.
-It expects no more than 1 child
+
+QVariable must have one and only one child. The child can be a React element (external layout mode) or a function that returns a React element (inline layout mode).
+
+See the example below for details
 
 
 **Props**: 
