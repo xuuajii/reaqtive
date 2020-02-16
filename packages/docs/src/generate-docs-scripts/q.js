@@ -7,9 +7,10 @@ const os = require('os');
 const jsdoc2md = require('jsdoc-to-markdown')
 const ReactDocGenMarkdownRenderer = require('react-docgen-markdown-renderer');
 const _ = require('lodash')
-const generateHooksSection = require('./generate-hooks-section')
+const {generateHooksSection, readHooksMetadata} = require('./generate-hooks-section')
 const templates = require('./templates')
 const componentPath = path.join(__dirname, '../../../q/src/lib/reaqtive.js');
+const emptyLine = os.EOL+'<br></br>'+os.EOL;
 const reaqtiveModules={
   name:'reaqtive',
   rootPath:'../../..',
@@ -188,11 +189,12 @@ const composeSection = (section) => {
   }
   const sectionTitle = '## '+section.title.toUpperCase();
   const sectionComponentsMarkdown = _.map(section.components, (component) => {
-    const markdown = generateComponentMarkdown(component)+os.EOL;
+    const markdown = generateComponentMarkdown(component)+os.EOL
     const cleanedMarkdown = contextCleanUp(markdown)+os.EOL
     return cleanedMarkdown
   })
-  return sectionTitle+os.EOL+os.EOL+sectionComponentsMarkdown.join(os.EOL)+os.EOL+os.EOL
+  const sectionHooksMarkdown = section.hooksMetadata?generateHooksSection(section):'';
+  return sectionTitle+os.EOL+sectionComponentsMarkdown.join(os.EOL)+sectionHooksMarkdown
 }
 
 const generateIntro = (package) => {
@@ -205,15 +207,17 @@ const run = async (package, root) => {
   const packageSourcePath = path.join(__dirname, `${root}/${package.path}/${package.sourcePath}`);
   const sectionsWithFiles = await addFileListToSections(packageSourcePath, package.sections)
   const sectionsWithComponents = await addComponentsMetadata(sectionsWithFiles)
-  const sectionsWithSnippets = await addExamplesToSections(sectionsWithComponents, `${package.examplePath}`)
+  const hooksMetadata = await readHooksMetadata(packageSourcePath+'/hooks/*')
+  const sectionsWithHooksMetadata = sectionsWithComponents.map(section=>section.title==='hooks'?{...section, hooksMetadata}:section)
+  const sectionsWithSnippets = await addExamplesToSections(sectionsWithHooksMetadata, `${package.examplePath}`)
   // const reaqtiveDocs = composeSection(sectionsWithSnippets[0])
   // const contextsDocs = composeSection(sectionsWithSnippets[1])
   // const componentsDocs = composeSection(sectionsWithSnippets[2])
-  const hooksSection = await generateHooksSection(packageSourcePath+'/hooks/*')
+  //const hooksSection = await generateHooksSection(packageSourcePath+'/hooks/*')
 
-  const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(os.EOL+os.EOL+os.EOL)+os.EOL+os.EOL+os.EOL+hooksSection
+  const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(emptyLine)//+hooksSection
   const intro = generateIntro({...package, sections:sectionsWithSnippets})
-  const packageDocs = intro+os.EOL+mergedSectionsDocs
+  const packageDocs = intro+emptyLine+mergedSectionsDocs
   const callback = ()=> console.log('done')
   fs.writeFile(`${packagePath}\\README.md`, packageDocs, callback);
 }

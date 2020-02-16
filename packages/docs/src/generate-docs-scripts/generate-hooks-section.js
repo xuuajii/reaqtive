@@ -1,10 +1,15 @@
 const os = require('os');
 const jsdoc2md = require('jsdoc-to-markdown')
 //console.log(filePath)
-generateHooksSection = async (hookFilePath) => {
+
+const readHooksMetadata = async (hookFilePath) => {
   const rawMetadataArray = await jsdoc2md.getTemplateData({files:hookFilePath})
-  //console.log(rawMetadataArray)
-  const filteredMetadataArray = rawMetadataArray.filter(block=>(block.comment!=='' && block.id.substring(0,3)==='use'))
+  return rawMetadataArray
+}
+
+generateHooksSection = (section) => {
+  const rawMetadataArray = section.hooksMetadata
+  const filteredMetadataArray = rawMetadataArray&&rawMetadataArray.filter(block=>(block.comment!=='' && block.id.substring(0,3)==='use'))
   //const template = await jsdoc2md.render({data:filteredMetadataArray})
   // const callback = ()=>
   const generateHookMarkDown = (hook) => {
@@ -56,4 +61,4 @@ It returns a **${item.type.names[0]}**: ${item.description}
   const markdown = filteredMetadataArray.map(hook=>generateHookMarkDown(hook)).join(os.EOL)
   return markdown
 }
-module.exports = generateHooksSection
+module.exports = {generateHooksSection, readHooksMetadata}

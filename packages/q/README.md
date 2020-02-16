@@ -21,8 +21,8 @@ Depending on your needs and you can install @reaqtive/components instead. It pro
 npm install @reaqtive/components
 ```
 
+<br></br>
 ## REAQTIVE
-
 ### **Reaqtive**
 
 
@@ -82,12 +82,8 @@ __qConfig.secure__ | `Boolean` |  | :white_check_mark: | secure: true if the Qli
 
 
 
-
-
-
-
+<br></br>
 ## CONTEXTS
-
 ### **QApp**
 
 
@@ -228,12 +224,8 @@ export default MyComponentWithQGlobal
 
 
 
-
-
-
-
+<br></br>
 ## COMPONENTS
-
 ### **QGenericObject**
 
 
@@ -275,17 +267,8 @@ __variableName__ | `String` |  | :x: | The name of the variable. It must not be 
 
 
 
-
-
-
-
+<br></br>
 ## HOOKS
-
-
-
-
-
-
 ### **useQFieldReducer**
 
 #### Description
