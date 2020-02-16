@@ -4,6 +4,7 @@
 
 import {useState, useEffect, useCallback, useContext} from 'react'
 import {QDoc} from '../index'
+import React from 'react'
 
 const qBeginSelections = async (qObject) => {
   try{
@@ -32,11 +33,14 @@ const abortModal = (qDoc, isSelecting) => {
 
 /**
  * @typedef {object} qSelectionHandler - the object returned by useQLayoutReducer
- * @property isSelecting
- * @method handleSelections
- * @method beginSelections
- * @method endSelections
+ * @property {boolean} isSelecting - a boolen that tells you if the object is in selection state
+ * @property {function} handleSelections
+ * @property {function} endSelections
  */
+
+ /**
+  * @typedef {object} qObject - the interface provided by the qlik engine
+  */
 
  /**
   * @typedef {function} hook
@@ -44,11 +48,11 @@ const abortModal = (qDoc, isSelecting) => {
   */
 
 /**
-  *@function useQSelectionHandler(
+  *@function useQSelectionHandler
   *@description a hook to handle the selection state of an object
   *@kind hook
-  *@param {object} qObject - the qObject to apply the state to
-  *@return {qSelectionHandler} Returns an object with the current selection state (isSelecting) and the method to manage it
+  *@param {qObject} qObject - the qObject to apply the state to
+  *@return {qSelectionHandler} qSelectionHandler an object with the current selection state (isSelecting) and the method to manage it
 */
 
 const useQSelectionHandler = (qObject) => {

@@ -64,7 +64,7 @@ const qVariableReducer = (state, action) => {
   *@kind hook
   *@param {string} id - the name or id of the variable
   *@param {string} [idType=name] - tells to the variable reducer whether to use the name or id to retrieve the variable
-  *@return {qVariableHandler} Returns the handler of the variable
+  *@return {qVariableHandler} the handler of the variable
 */
 
 const useQVaraibleReducer = (id, idType='name') => {

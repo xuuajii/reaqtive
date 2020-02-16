@@ -82,7 +82,7 @@ const qFieldReducer = (state, action) => {
   *@param {boolean} [isAlwaysOneSelected=false] - flag to set isAlwaysOneSelected
   *@param {string} [defaultValue] - the defaultValue to be selected before setting isAlwaysOneSelected to true
   *@param {boolean} [resetOnUnmount] - if set to true it set isAlwaysOneSelected to false when unmount
-  *@return {qfieldHandler} Returns the handler of the variable
+  *@return {qfieldHandler} the handler of the qlik field
 */
 
 const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOnUnmount=true) => {

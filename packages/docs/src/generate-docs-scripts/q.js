@@ -7,6 +7,7 @@ const os = require('os');
 const jsdoc2md = require('jsdoc-to-markdown')
 const ReactDocGenMarkdownRenderer = require('react-docgen-markdown-renderer');
 const _ = require('lodash')
+const generateHooksSection = require('./generate-hooks-section')
 const templates = require('./templates')
 const componentPath = path.join(__dirname, '../../../q/src/lib/reaqtive.js');
 const reaqtiveModules={
@@ -23,7 +24,7 @@ const reaqtiveModules={
 This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
 @reaqtive/q provides 4 types of APIs which are listed below.
-</br>
+
 `,
       conclusion:`
 #### Installation
@@ -208,48 +209,12 @@ const run = async (package, root) => {
   // const reaqtiveDocs = composeSection(sectionsWithSnippets[0])
   // const contextsDocs = composeSection(sectionsWithSnippets[1])
   // const componentsDocs = composeSection(sectionsWithSnippets[2])
-  const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(os.EOL)
+  const hooksSection = await generateHooksSection(packageSourcePath+'/hooks/*')
+
+  const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(os.EOL+os.EOL+os.EOL)+os.EOL+os.EOL+os.EOL+hooksSection
   const intro = generateIntro({...package, sections:sectionsWithSnippets})
   const packageDocs = intro+'***'+os.EOL+mergedSectionsDocs
   const callback = ()=> console.log('done')
   fs.writeFile(`${packagePath}\\README.md`, packageDocs, callback);
 }
-
-//run(reaqtiveModules.packages.q, reaqtiveModules.rootPath)
-const filePath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/src/lib/hooks/*`);
-const outputPath = path.join(__dirname, `${reaqtiveModules.rootPath}/q/test-hook.md`);
-//console.log(filePath)
-extractHooksData = async (hookFilePath) => {
-  const rawMetadataArray = await jsdoc2md.getTemplateData({files:hookFilePath})
-  const filteredMetadataArray = rawMetadataArray.filter(block=>(block.comment!=='' && block.id.substring(0,3)==='use'))
-  //const template = await jsdoc2md.render({data:filteredMetadataArray})
-  // const callback = ()=>
-  const generateHookMarkDown = (hook) => {
-    const title = `### ${hook.name}`
-    const description = `${hook.description}`
-    const kind = `${hook.kind}`
-    const generateParams = (params) => {
-      const header = `param | type | default value | required | description
----- | :----: | :-------: | :--------: | -----------
-`
-      const rows = params.map(param=>
-        `__${param.name}__ | ddd |${
-          param.defaultvalue?'1':'ddd'
-        } | ${
-          !param.optional? ':white_check_mark:' : ':x:'
-        } | ${
-          param.description?param.description:''
-        }`
-      ).join(os.EOL)
-      return header+rows
-    }
-    const paramsTable=generateParams(hook.params)
-    const markDown = title+os.EOL+os.EOL+description+os.EOL+os.EOL+'#### **Params**'+os.EOL+paramsTable+os.EOL
-    return markDown
-    //console.log(hook.params)
-  }
-  const markdown = filteredMetadataArray.map(hook=>generateHookMarkDown(hook)).join(os.EOL)
-  const callback = () =>console.log(markdown)
-  fs.writeFile(`${outputPath}`, markdown, callback);
-}
-extractHooksData(filePath)
+run(reaqtiveModules.packages.q, reaqtiveModules.rootPath)

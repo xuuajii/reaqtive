@@ -57,7 +57,7 @@ const qLayoutReducer = (state, action) => {
   *@kind hook
   *@param {qObjectHandler} qObjectHandler - the handler retrieved by useQObjectReducer
   *@param {qSelectionHandler} [qSelectionHandler]  - the handler that manages the selection state of the generic object, it is not needed if the qObject does not have a selection state to handle
-  *@return {qLayoutHandler} Returns the handler of the qLayout
+  *@return {qLayoutHandler} the handler of the qLayout
 */
 const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
 
