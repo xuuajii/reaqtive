@@ -40,6 +40,7 @@ const QGenericObject = props => {
   }
 
   return _react.default.isValidElement(props.children) ? _react.default.cloneElement(props.children, {
+    props,
     qObjectHandler,
     qLayoutHandler,
     qSelectionHandler,
