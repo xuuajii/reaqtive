@@ -102,8 +102,8 @@ const addComponentsMetadata = async (sections) => {
   const iterateSections = async (section) => {
     const components = await mapAsync(section.fileList, extractComponentMetadata)
     const cleanedComponents = components.filter(component=>component!==null&&component!==undefined)
-
-    const componentObject = cleanedComponents.reduce(
+    const sortedComponents = section.title==='contexts'?cleanedComponents.reverse():cleanedComponents
+    const componentObject = sortedComponents.reduce(
       (obj, item) => Object.assign(obj, { [item.displayName]: item }), {});
       return {...section, components: componentObject}
   }
@@ -175,7 +175,7 @@ const generateComponentMarkdown = (componentMetadata) => {
     /* Array of component ASTs that this component composes*/
     []);
     const propsMarkdown = componentMetadata.props?`**Props**: ${os.EOL}`+propsTableMarkdown:''
-    const markdownString = headerMarkdown+'\n'+snippetMarkdown+'\n'+propsMarkdown
+    const markdownString = headerMarkdown+os.EOL+propsMarkdown+os.EOL+snippetMarkdown+emptyLine
     return markdownString
 }
 

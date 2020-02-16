@@ -1,6 +1,6 @@
 const os = require('os');
 const jsdoc2md = require('jsdoc-to-markdown')
-//console.log(filePath)
+const emptyLine='<br></br>'
 
 const readHooksMetadata = async (hookFilePath) => {
   const rawMetadataArray = await jsdoc2md.getTemplateData({files:hookFilePath})
@@ -58,7 +58,7 @@ It returns a **${item.type.names[0]}**: ${item.description}
     const markDown = title+os.EOL+os.EOL+description+os.EOL+os.EOL+'#### Params'+os.EOL+paramsTable+os.EOL+returns+os.EOL
     return markDown
   }
-  const markdown = filteredMetadataArray.map(hook=>generateHookMarkDown(hook)).join(os.EOL)
+  const markdown = filteredMetadataArray.map(hook=>generateHookMarkDown(hook)).join(os.EOL)+emptyLine
   return markdown
 }
 module.exports = {generateHooksSection, readHooksMetadata}
