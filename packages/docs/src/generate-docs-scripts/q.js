@@ -20,7 +20,7 @@ const reaqtiveModules={
       sourcePath:'src/lib',
       examplePath:'../examples/q',
       intro:`# **@reaqtive/q**
-***
+
 This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
 @reaqtive/q provides 4 types of APIs which are listed below.
@@ -213,7 +213,7 @@ const run = async (package, root) => {
 
   const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(os.EOL+os.EOL+os.EOL)+os.EOL+os.EOL+os.EOL+hooksSection
   const intro = generateIntro({...package, sections:sectionsWithSnippets})
-  const packageDocs = intro+'***'+os.EOL+mergedSectionsDocs
+  const packageDocs = intro+os.EOL+mergedSectionsDocs
   const callback = ()=> console.log('done')
   fs.writeFile(`${packagePath}\\README.md`, packageDocs, callback);
 }
