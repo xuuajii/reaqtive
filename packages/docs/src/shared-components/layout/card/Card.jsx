@@ -29,7 +29,7 @@ const Card = props => {
           <img className={"card-img"} src={props.img} alt="..." />
         </div>
         <div
-          style={{ bottom: props.cardInfoBottom }}
+          style={{ bottom: props.cardInfoBottom, background: props.cardInfoBackground }}
           className={
             "col-auto col-sm-12 col-md-12 pl-3 pl-sm-0 px-md-3 mt-sm-3 w-100" +
             (props.isInfoAbsolute ? " card-info-product" : "card-info")
@@ -64,5 +64,6 @@ Card.defaultProps = {
   displayBody: false,
   gradient: false,
   width: 250,
-  cardInfoBottom: 0
+  cardInfoBottom: 0,
+  cardInfoBackground : "linear-gradient(0deg, #ffffff94 30%, rgba(255, 255, 255, 0.1) 100%)"
 };

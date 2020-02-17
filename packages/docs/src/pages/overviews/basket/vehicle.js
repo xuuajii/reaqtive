@@ -62,6 +62,7 @@ const Vehicle = props => {
               maxWidth={"60px"}
               paddingRight={"12px"}
               top={"10px"}
+              cardInfoBackground = {"none"}
             />
           );
         })}
