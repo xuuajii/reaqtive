@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\current-selections-buttons.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\current-selections-buttons.js";
 
 const SelectionsButton = props => {
   return props.show > 0 && _react.default.createElement("button", {
