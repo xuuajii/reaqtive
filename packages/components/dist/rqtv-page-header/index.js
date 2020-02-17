@@ -18,27 +18,28 @@ var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\p
 const RqtvPageHeader = props => {
   const rqtvPage = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
   const pageData = rqtvPage.pageData;
+  const title = props.title || pageData.title;
   return _react.default.createElement(_layout.Navbar, {
     className: "page-header",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 15
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "navbar-brand",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 16
     },
     __self: void 0
   }, _react.default.createElement("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 17
     },
     __self: void 0
-  }, pageData.title)), props.children);
+  }, title)), props.children);
 };
 
 exports.RqtvPageHeader = RqtvPageHeader;
