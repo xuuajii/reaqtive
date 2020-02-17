@@ -43,34 +43,12 @@ const Layout = props => {
       };
     });
   const history = useHistory();
-  const goToDetail = async (bodyRowIdFieldValue, cardIdFieldValue) => {
-    //console.log(props, bodyRowIdFieldValue)
-    try {
-      const cardSelected = await qObject.selectHyperCubeValues(
-        "/qHyperCubeDef",
-        0,
-        [cardIdFieldValue.qElemNo],
-        false
-      );
-      //console.log(cardSelected)
-      if (cardSelected) {
-        const bodyRowSelected = await qObject.selectHyperCubeValues(
-          "/qHyperCubeDef",
-          4,
-          [bodyRowIdFieldValue.qElemNo],
-          false
-        );
-        if (cardSelected && bodyRowSelected) {
-          console.log(cardSelected && bodyRowSelected);
-          setTimeout(
-            () => history.push(`${history.location.pathname}/basket-analysis`),
-            500
-          );
-        }
-      }
-    } catch (err) {
-      console.log("error selecting card", err);
-    }
+  const goToDetail = async (productValue, bodyRowValue) => {
+    const queryString = `?selections=Submodel Benchmark:${productValue}&selections=Country:${bodyRowValue}`;
+    const link = `${history.location.pathname}/basket-analysis/${queryString}`
+    setTimeout(()=>{
+      history.push(link)
+    }, 100)
   };
   return (
     <CardBox backgroundGradient={gradient} key={props.brand}>
@@ -78,7 +56,7 @@ const Layout = props => {
         {cards &&
           cards.map((card, index) => (
             <Card
-              goToDetail={goToDetail}
+              onBodyRowClick={goToDetail}
               key={card.title.qElemNo}
               data={card}
               title={card.title.qText}
@@ -86,14 +64,12 @@ const Layout = props => {
               img={card.cardImage.qText}
               brandImage={card.brandImage.qText}
               flexItem={true}
-              isInfoAbsolute={true}
               displayBody={true}
               ovByProduct={true}
               displayLogo={false}
               imgHeight={"auto"}
               cardBody={card.cardBody}
               titlePaddingTop={"90px"}
-              isInfoAbsoluteByProduct={true}
             />
           ))}
       </RqtvRenderer>

@@ -27,10 +27,13 @@ const OverviewByProduct = props => {
         path={props.path + "/basket-analysis"}
         id={10}
         title={"props.title"}
+        conditionExpr={"=count(distinct [Country])=1 and count(distinct [Submodel Benchmark])=1"}
+        fallbackPage={match.path}
         // triggers={[
         //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
         //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
         // ]}
+
       >
         <RqtvStandardTemplate
           searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
