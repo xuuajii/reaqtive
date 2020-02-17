@@ -10,10 +10,11 @@ import { Navbar, NavbarNav } from '@reaqtive/layout'
 const RqtvPageHeader = props => {
   const rqtvPage=useContext(RqtvPageContext)
   const {pageData} = rqtvPage
+  const title = props.title||pageData.title
   return(
     <Navbar className={`page-header`}>
       <div className={`navbar-brand`}>
-        <h3>{pageData.title}</h3>
+        <h3>{title}</h3>
       </div>
       {props.children}
     </Navbar>
