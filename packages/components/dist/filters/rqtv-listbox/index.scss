@@ -53,6 +53,7 @@
       li{
         font-size: 0.9rem;
         line-height: 1.5rem;
+        text-transform: capitalize;
         &:hover{
           background-color: $listbox-dropdown-menu-hover;
         }

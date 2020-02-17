@@ -19,7 +19,7 @@ var _layout = require("@reaqtive/layout");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\visualizations\\q-viz.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\visualizations\\q-viz.js";
 const QViz = (0, _react.forwardRef)((props, ref) => {
   const qAppHandler = (0, _react.useContext)(_q.QApp);
   const system = (0, _react.useContext)(_layout.System);

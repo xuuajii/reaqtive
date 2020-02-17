@@ -17,7 +17,7 @@ var _rqtvAppRendererStyle = require("./rqtv-app-renderer-style");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-app-loading.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-app-loading.js";
 
 const AnimatedNumber = props => {
   const animatedProps = (0, _reactSpring.useSpring)({

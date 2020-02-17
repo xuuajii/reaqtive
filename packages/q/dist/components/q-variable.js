@@ -31,7 +31,9 @@ var _useQLayoutReducer = _interopRequireDefault(require("../hooks/use-q-layout-r
  *
  */
 const QVariable = props => {
-  const qVariableHandler = (0, _useQVariableReducer.default)('vCurrentYear');
+  const variableId = props.variableName || props.variableId;
+  const idType = props.variableId ? 'id' : 'name';
+  const qVariableHandler = (0, _useQVariableReducer.default)(variableId, idType);
   const qLayoutHandler = (0, _useQLayoutReducer.default)(qVariableHandler);
   const moreThanOneChild = Array.isArray(props.children);
 
@@ -39,8 +41,11 @@ const QVariable = props => {
     throw "QGenericObject must have  only one child, wrap the content inside a React element";
   }
 
-  return _react.default.cloneElement(props.children, {
+  return _react.default.isValidElement(props.children) ? _react.default.cloneElement(props.children, {
     props,
+    qLayoutHandler,
+    qVariableHandler
+  }) : props.children({
     qLayoutHandler,
     qVariableHandler
   });
