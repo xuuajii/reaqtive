@@ -10,7 +10,7 @@ const OverviewByMarket = props => {
   const [value, setValue] = useState(false);
 
   return (
-    <>
+    <div className="ml-5">
       <h1>By Market</h1>
       <ToggleSwitch
         isOn={value}
@@ -27,7 +27,7 @@ const OverviewByMarket = props => {
         displayKPI={true}
         displayBody={true}
       />
-    </>
+    </div>
   );
 };
 
