@@ -6,6 +6,53 @@ import React, {useState, useEffect, useContext } from 'react'
 import {QDoc} from '../contexts/q-doc'
 import {useDeepCompareMemo} from '@reaqtive/layout'
 
+/**
+ * @typedef {object} triggerState - the object returned by useQLayoutReducer
+ * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server
+ * @property {boolean} qError - if true there was an error retrieving the qLayout from the engine
+ * @property {boolean} done - all triggers have been fired with no errors
+ */
+
+ /**
+  * @typedef {function} hook
+  * @type {function}
+  */
+
+/**
+ *@typedef {object} trigger
+ *@type{object}
+ *@property {string} type - the type of the trigger
+ *@property {object} params - the params accepted by the specific trigger type
+ */
+
+ /**
+  *@typedef {object} selectFieldValue
+  *@property {string} fieldName - the name of the field to select
+  *@property {string} value - the exact value to be selected
+  *@property {boolean} alwaysOneSelected - if true the field will be set to alwaysOneSelected after the value has been selected
+  */
+
+  /**
+   *@typedef {object} selectFieldValues
+   *@property {string} fieldName - the name of the field to select
+   *@property {object[]} value - the exact value to be selected
+   */
+
+   /**
+    *@typedef {object} value
+    *@property {string} qText - the name of the field to select
+    *@property {boolean} qIsNumeric - true if the value to be selected is a number
+    *@property {number} qNumber - the number to be selected
+    */
+
+
+/**
+  *@function useTrigger
+  *@description a hook to handle triggers and send specific command to the engine. Currently only field selections are supported
+  *@kind hook
+  *@param {trigger[]} triggers - the qApp object provided by the qApp context
+  *@return {triggerState} qVizHandler - return the handler to interact with the visualization retrieved from the qApp
+*/
 
 const useTriggers = (triggers) => {
   ///////////////////////////////////////////////////////////////

@@ -19,7 +19,7 @@ var _reactRouterDom = require("react-router-dom");
 
 var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-page.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-page.js";
 
 const RqtvPage = props => {
   const pageData = {

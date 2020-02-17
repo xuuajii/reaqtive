@@ -4,10 +4,13 @@ const readdirp = require('readdirp');
 const reactDocgen = require('react-docgen');
 const util = require('util');
 const os = require('os');
+const jsdoc2md = require('jsdoc-to-markdown')
 const ReactDocGenMarkdownRenderer = require('react-docgen-markdown-renderer');
 const _ = require('lodash')
+const {generateHooksSection, readHooksMetadata} = require('./generate-hooks-section')
 const templates = require('./templates')
 const componentPath = path.join(__dirname, '../../../q/src/lib/reaqtive.js');
+const emptyLine = os.EOL+'<br></br>'+os.EOL;
 const reaqtiveModules={
   name:'reaqtive',
   rootPath:'../../..',
@@ -18,11 +21,11 @@ const reaqtiveModules={
       sourcePath:'src/lib',
       examplePath:'../examples/q',
       intro:`# **@reaqtive/q**
-***
+
 This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
 @reaqtive/q provides 4 types of APIs which are listed below.
-</br>
+
 `,
       conclusion:`
 #### Installation
@@ -99,8 +102,8 @@ const addComponentsMetadata = async (sections) => {
   const iterateSections = async (section) => {
     const components = await mapAsync(section.fileList, extractComponentMetadata)
     const cleanedComponents = components.filter(component=>component!==null&&component!==undefined)
-
-    const componentObject = cleanedComponents.reduce(
+    const sortedComponents = section.title==='contexts'?cleanedComponents.reverse():cleanedComponents
+    const componentObject = sortedComponents.reduce(
       (obj, item) => Object.assign(obj, { [item.displayName]: item }), {});
       return {...section, components: componentObject}
   }
@@ -172,7 +175,7 @@ const generateComponentMarkdown = (componentMetadata) => {
     /* Array of component ASTs that this component composes*/
     []);
     const propsMarkdown = componentMetadata.props?`**Props**: ${os.EOL}`+propsTableMarkdown:''
-    const markdownString = headerMarkdown+'\n'+snippetMarkdown+'\n'+propsMarkdown
+    const markdownString = headerMarkdown+os.EOL+propsMarkdown+os.EOL+snippetMarkdown+emptyLine
     return markdownString
 }
 
@@ -186,11 +189,12 @@ const composeSection = (section) => {
   }
   const sectionTitle = '## '+section.title.toUpperCase();
   const sectionComponentsMarkdown = _.map(section.components, (component) => {
-    const markdown = generateComponentMarkdown(component)+'\n';
-    const cleanedMarkdown = contextCleanUp(markdown)+'\n'
+    const markdown = generateComponentMarkdown(component)+os.EOL
+    const cleanedMarkdown = contextCleanUp(markdown)+os.EOL
     return cleanedMarkdown
   })
-  return sectionTitle+'\n'+'***'+'\n'+sectionComponentsMarkdown.join('\n')+'<br/>'+'<br/>'+'\n'
+  const sectionHooksMarkdown = section.hooksMetadata?generateHooksSection(section):'';
+  return sectionTitle+os.EOL+sectionComponentsMarkdown.join(os.EOL)+sectionHooksMarkdown
 }
 
 const generateIntro = (package) => {
@@ -203,15 +207,18 @@ const run = async (package, root) => {
   const packageSourcePath = path.join(__dirname, `${root}/${package.path}/${package.sourcePath}`);
   const sectionsWithFiles = await addFileListToSections(packageSourcePath, package.sections)
   const sectionsWithComponents = await addComponentsMetadata(sectionsWithFiles)
-  const sectionsWithSnippets = await addExamplesToSections(sectionsWithComponents, `${package.examplePath}`)
-  const reaqtiveDocs = composeSection(sectionsWithSnippets[0])
-  const contextsDocs = composeSection(sectionsWithSnippets[1])
-  const componentsDocs = composeSection(sectionsWithSnippets[2])
-  const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(os.EOL)
+  const hooksMetadata = await readHooksMetadata(packageSourcePath+'/hooks/*')
+  const sectionsWithHooksMetadata = sectionsWithComponents.map(section=>section.title==='hooks'?{...section, hooksMetadata}:section)
+  const sectionsWithSnippets = await addExamplesToSections(sectionsWithHooksMetadata, `${package.examplePath}`)
+  // const reaqtiveDocs = composeSection(sectionsWithSnippets[0])
+  // const contextsDocs = composeSection(sectionsWithSnippets[1])
+  // const componentsDocs = composeSection(sectionsWithSnippets[2])
+  //const hooksSection = await generateHooksSection(packageSourcePath+'/hooks/*')
+
+  const mergedSectionsDocs = sectionsWithSnippets.map(section=>composeSection(section)).join(emptyLine)//+hooksSection
   const intro = generateIntro({...package, sections:sectionsWithSnippets})
-  const packageDocs = intro+'***'+os.EOL+mergedSectionsDocs
+  const packageDocs = intro+emptyLine+mergedSectionsDocs
   const callback = ()=> console.log('done')
   fs.writeFile(`${packagePath}\\README.md`, packageDocs, callback);
 }
-
 run(reaqtiveModules.packages.q, reaqtiveModules.rootPath)

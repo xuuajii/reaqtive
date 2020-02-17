@@ -62,6 +62,29 @@ const qFieldReducer = (state, action) => {
   }
 }
 
+/**
+ * @typedef {object} qfieldHandler - the object returned by useQLayoutReducer
+ * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server
+ * @property {boolean} qError - if true there was an error retrieving the qField from the engine
+ * @property {object} qField - the object returned from the server to interact with the field
+ */
+
+ /**
+  * @typedef {function} hook
+  * @type {function}
+  */
+
+/**
+  *@function useQFieldReducer
+  *@description a hook to retrieve a field from qDoc. if provided a defaulta value it selecte the value when it mounts and set the field to always one selected if isAlwaysOneSelected is set to true
+  *@kind hook
+  *@param {string} qFieldName - the name of the field
+  *@param {boolean} [isAlwaysOneSelected=false] - flag to set isAlwaysOneSelected
+  *@param {string} [defaultValue] - the defaultValue to be selected before setting isAlwaysOneSelected to true
+  *@param {boolean} [resetOnUnmount] - if set to true it set isAlwaysOneSelected to false when unmount
+  *@return {qfieldHandler} the handler of the qlik field
+*/
+
 const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOnUnmount=true) => {
   const qDocHandler = useContext(QDoc)
   const qDoc = qDocHandler.qDoc

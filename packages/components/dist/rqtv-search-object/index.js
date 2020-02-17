@@ -23,7 +23,7 @@ var _rqtvSearch = _interopRequireDefault(require("./rqtv-search"));
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\index.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\index.js";
 
 const RqtvSearchObject = props => {
   const alwaysExpanded = props.alwaysExpanded,

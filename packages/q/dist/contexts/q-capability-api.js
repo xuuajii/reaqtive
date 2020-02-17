@@ -17,7 +17,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _qConfigHelpers = _interopRequireDefault(require("./helpers/q-config-helpers"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-capability-api.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\contexts\\q-capability-api.js";
 
 const QCapabilityApi = _react.default.createContext(null);
 /**

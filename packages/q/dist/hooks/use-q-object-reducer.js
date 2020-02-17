@@ -64,6 +64,33 @@ const qObjectReducer = (state, action) => {
       throw new Error();
   }
 };
+/**
+ * @typedef {object} qObjectHandler - the object returned by useQObjectReducer
+ * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server
+ * @property {boolean} qError - if true there was an error retrieving the qObject from the engine
+ * @property {object} qObject - the object returned from the server
+ * @property {function} reloadObject - a method to ask the qlik engine to recalculate the qObject
+ * @property {boolean} shouldUpdate - a boolean variable which is set to true when the object is recalculated and you should ask the engine fro the layou (e.g. after selections)
+ * @property {function} setShouldUpdate - a function to clean up the shouldupdate property after the needed effects have run
+ */
+
+/**
+ * @typedef {function} hook
+ * @type {function}
+ */
+
+/**
+ * @typedef {object} qObjectDef - the shape of the object you want the qlik engine to crearte for you
+ */
+
+/**
+  *@function useQObjectReducer
+  *@description a hook to create and retrieve a generic object from the qlik engine
+  *@kind hook
+  *@param {qObjectDef} qObjectDef - The object that tells to the qlik engine what object you want
+  *@return {qObjectHandler} the handler of the newly created object
+*/
+
 
 const useQObjectReducer = qObjectDef => {
   const maxError = 10;
