@@ -52,7 +52,8 @@ const RqtvPage = props => {
   }, _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
     triggers: props.triggers,
     pageData: pageData,
-    conditionExpr: props.conditionExpr,
+    qConditionExpr: props.qConditionExpr,
+    qTitleExpr: props.qTitleExpr,
     hasQueryString: location.search !== "" ? true : false,
     __source: {
       fileName: _jsxFileName,
@@ -64,7 +65,7 @@ const RqtvPage = props => {
     hasChangedLocation: hasChangedLocation,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 30
     },
     __self: void 0
   }, props.children)));
@@ -84,7 +85,7 @@ const RqtvPageConsumer = props => {
       to: fallbackPage,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 43
+        lineNumber: 44
       },
       __self: void 0
     });

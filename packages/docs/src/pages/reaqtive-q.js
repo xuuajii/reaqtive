@@ -14,7 +14,8 @@ const ReaqtiveQ = props => {
           id={7} title="Nested Page"
           path={mainPath+'/nestedpage'}
           fallbackPage="/reaqtive-q"
-          conditionExpr="=count(distinct Customer)=1"
+          qConditionExpr="=count(distinct Customer)=1"
+          exactActiveMatch={false}
         >
         {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
           <div>

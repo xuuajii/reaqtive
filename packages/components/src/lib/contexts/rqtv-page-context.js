@@ -52,8 +52,7 @@ const RqtvPageConsumer = props => {
   const triggerState = useTriggers(triggers)
   //console.log(location.search,triggers, queryStringTriggers)
 
-  const qConditionExpr = props.conditionExpr;
-  const qTitleExpr = props.qTitleExpr;
+  const {qConditionExpr, qTitleExpr} = props;
   const qObjectDef=useQPageObjectDef(qConditionExpr, qTitleExpr)
   const qObjectHandler = useQObjectReducer(qObjectDef)
   const qLayoutHandler = useQLayoutReducer(qObjectHandler)

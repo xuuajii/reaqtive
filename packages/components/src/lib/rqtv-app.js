@@ -20,8 +20,8 @@ const RqtvApp = props =>{
   useEffect(()=>{
     const filteredPages = React.Children.toArray(props.children)//.filter(isRqtvPage)
     const extractPageInfo = page => {
-      const { title, path, id, icon } = page.props;
-      return { title, path, id, icon }
+      const { title, path, id, icon, exactActiveMatch } = page.props;
+      return { title, path, id, icon, exactActiveMatch }
     }
     setPages(filteredPages.map(page=>extractPageInfo(page)))
   },[props.children])

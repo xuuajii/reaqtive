@@ -15,7 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-collapse.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-collapse.js";
 
 const NavbarCollapse = props => {
   const collapseEl = (0, _react.useRef)();

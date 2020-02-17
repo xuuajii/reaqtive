@@ -23,7 +23,8 @@ const RqtvPage = props => {
       <RqtvPageProvider
         triggers={props.triggers}
         pageData={pageData}
-        conditionExpr={props.conditionExpr}
+        qConditionExpr={props.qConditionExpr}
+        qTitleExpr={props.qTitleExpr}
         hasQueryString={location.search!==""?true:false}
       >
         <RqtvPageConsumer fallbackPage={fallbackPage} hasChangedLocation={hasChangedLocation}>
