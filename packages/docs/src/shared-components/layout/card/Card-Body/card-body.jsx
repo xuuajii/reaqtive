@@ -28,7 +28,7 @@ export default function CardBody(props) {
             {props.cardBody.map(function(item, index) {
               getCountryCode(item.country);
               return (
-                <div className="row list align-items-center" key={countryCode}>
+                <div key={index} className="row list align-items-center" >
                   <div
                     className="col-6"
                     onClick={() =>

@@ -14,7 +14,6 @@ const Layout = props => {
 
   useEffect(()=>{
     props.setPageTitle(basket)
-    console.log("basket",basket)
   },[basket])
 
   return (

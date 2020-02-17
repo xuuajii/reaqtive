@@ -16,7 +16,6 @@ const Layout = props => {
   const { qObjectHandler } = props;
   const { qObject } = qObjectHandler;
   const { qError, qLoading, qLayout } = qLayoutHandler;
-  console.log(qLayout);
   const qMeasureInfo = qLayout && qLayout.qHyperCube.qMeasureInfo;
   const qPivotDataPages = qLayout && qLayout.qHyperCube.qPivotDataPages;
   const noData = qLayout && qPivotDataPages.length === 0;
@@ -43,9 +42,7 @@ const Layout = props => {
         })
       };
     });
-  console.log("cards", cards);
   const history = useHistory();
-  console.log(history);
   const goToDetail = async (bodyRowIdFieldValue, cardIdFieldValue) => {
     //console.log(props, bodyRowIdFieldValue)
     try {

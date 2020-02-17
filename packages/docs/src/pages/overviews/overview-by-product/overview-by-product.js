@@ -20,7 +20,6 @@ import {
 //import BasketAnalysis from "../basket-analysis";
 
 const OverviewByProduct = props => {
-  console.log(props);
   let match = useRouteMatch();
   return (
     <>
