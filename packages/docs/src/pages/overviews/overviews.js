@@ -8,8 +8,7 @@ import Overview from "./overview";
 
 const Overviews = props => {
   return (
-    <>
-      <RqtvPage
+    <RqtvPage
         path={props.path}
         id={props.id}
         title={props.title}
@@ -27,7 +26,6 @@ const Overviews = props => {
           <Overview {...props} />
         </RqtvStandardTemplate>
       </RqtvPage>
-    </>
   );
 };
 

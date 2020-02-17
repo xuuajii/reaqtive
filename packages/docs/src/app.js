@@ -56,6 +56,7 @@ const App = props => {
           id={1}
           title="Overview by Market"
           mainDimension={"country"}
+          exactActiveMatch={false}
         />
 
         <Overviews
@@ -63,6 +64,7 @@ const App = props => {
           id={2}
           title="Overview by Product"
           mainDimension={"product"}
+          exactActiveMatch={false}
         />
         {/*PURCHASING*/}
         <Purchasing path={"/purchasing"} id={3} title="PURCHASING" />
