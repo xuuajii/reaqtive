@@ -23,7 +23,7 @@ var _layout = _interopRequireDefault(require("./layout"));
 
 var _index = require("../helpers/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\index.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\index.js";
 
 const RqtvSearchField = props => {
   const qFieldExpr = props.qFieldExpr,

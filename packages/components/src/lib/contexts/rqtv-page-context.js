@@ -26,7 +26,7 @@ const useQPageObjectDef = (qConditionExpr, qTitleExpr) => useMemo(()=>{
       }
     }
   }
-}, [qConditionExpr])
+}, [qConditionExpr, qTitleExpr])
 
 const RqtvPageConsumer = props => {
   const location = useLocation();
@@ -53,7 +53,7 @@ const RqtvPageConsumer = props => {
   //console.log(location.search,triggers, queryStringTriggers)
 
   const qConditionExpr = props.conditionExpr;
-  const qObjectDef=useQPageObjectDef(qConditionExpr)
+  const qObjectDef=useQPageObjectDef(qConditionExpr, qTitleExpr)
   const qObjectHandler = useQObjectReducer(qObjectDef)
   const qLayoutHandler = useQLayoutReducer(qObjectHandler)
   const qCondition = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qCondition

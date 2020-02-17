@@ -13,7 +13,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _rqtvRendererViews = require("./rqtv-renderer-views");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-renderer.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-renderer.js";
 
 const RqtvRenderer = props => {
   const loadingComponent = props.customLoading ? props.customLoading : _react.default.createElement(_rqtvRendererViews.RqtvSpinner, {
