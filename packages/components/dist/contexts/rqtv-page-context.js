@@ -21,7 +21,7 @@ var _index = require("../hooks/index");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
 
 const RqtvPageContext = _react.default.createContext();
 
@@ -73,6 +73,7 @@ const RqtvPageConsumer = props => {
   const triggerState = (0, _q.useTriggers)(triggers); //console.log(location.search,triggers, queryStringTriggers)
 
   const qConditionExpr = props.conditionExpr;
+  const qTitleExpr = props.qTitleExpr;
   const qObjectDef = useQPageObjectDef(qConditionExpr, qTitleExpr);
   const qObjectHandler = (0, _q.useQObjectReducer)(qObjectDef);
   const qLayoutHandler = (0, _q.useQLayoutReducer)(qObjectHandler);
@@ -104,7 +105,7 @@ const RqtvPageConsumer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 76
     },
     __self: void 0
   }, props.children);
@@ -114,7 +115,7 @@ const RqtvPageProvider = props => {
   return _react.default.createElement(RqtvPageConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 88
     },
     __self: void 0
   }), props.children);

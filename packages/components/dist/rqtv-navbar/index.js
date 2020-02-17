@@ -21,7 +21,7 @@ var _index = require("../index");
 
 var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-navbar\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-navbar\\index.js";
 
 const RqtvNavbar = props => {
   const searchFieldsMatch = props.searchFieldsMatch,
