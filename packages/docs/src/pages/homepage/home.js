@@ -31,6 +31,7 @@ const Home = props => {
       >
         <RqtvStandardTemplate
           usePageHeader={false}
+          useSidemenu={false}
           sideMenuFieldsMatch={{
             method: "include",
             mask: ["Cust*", "*Desc*"]

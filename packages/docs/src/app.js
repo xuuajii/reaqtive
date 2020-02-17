@@ -52,18 +52,16 @@ const App = props => {
         />
 
         <Overviews
-          path={"/overview/country"}
+          path={"/overview-by-country"}
           id={1}
-          title="Overview by Market"
-          mainDimension={"country"}
+          title="Overview by Country"
           exactActiveMatch={false}
         />
 
         <Overviews
-          path={"/overview/product"}
+          path={"/overview-by-product"}
           id={2}
           title="Overview by Product"
-          mainDimension={"product"}
           exactActiveMatch={false}
         />
         {/*PURCHASING*/}

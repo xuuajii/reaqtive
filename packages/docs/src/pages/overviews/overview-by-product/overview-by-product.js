@@ -4,9 +4,9 @@
 
 import React, {useContext} from "react";
 import { QGenericObject, QListObject } from "@reaqtive/q";
-import PageHeader from "../../../shared-components/layout/page-header/page-header";
+import {RqtvPageHeader} from '@reaqtive/components';
 import CardDecksByBrand from "./components/card-decks-by-brand";
-import { RqtvBreadcrumb } from "@reaqtive/components";
+import  {Breadcrumb}  from "../../../shared-components/index.js";
 import { RqtvPage, RqtvStandardTemplate, RqtvPageContext } from "@reaqtive/components";
 import BasketAnalysis from "../basket/basket-analysis";
 import {
@@ -15,7 +15,8 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
+  useLocation
 } from "react-router-dom";
 //import BasketAnalysis from "../basket-analysis";
 
@@ -29,11 +30,7 @@ const OverviewByProduct = props => {
         title={"props.title"}
         qConditionExpr={"=count(distinct [Country])=1 and count(distinct [Submodel Benchmark])=1"}
         fallbackPage={match.path}
-        // triggers={[
-        //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-        //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-        // ]}
-
+        qTitleExpr ="'basket analysis - '&only([Submodel Benchmark])&'-'&only([Country ISO Code])&' - '&$(lastMonthLabel)"
       >
         <RqtvStandardTemplate
           searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
@@ -45,7 +42,14 @@ const OverviewByProduct = props => {
         </RqtvStandardTemplate>
       </RqtvPage>
       <Route exact={true} path={match.path}>
-        <Layout/>
+        <RqtvPage
+          path={props.path}
+          id={9}
+          title={props.title}
+          qTitleExpr="'overview by product - '&$(lastMonthLabel)"
+        >
+          <Layout/>
+        </RqtvPage>
       </Route>
     </>
   );
@@ -53,13 +57,13 @@ const OverviewByProduct = props => {
 
 const Layout = props => {
   const rqtvPageContext = useContext(RqtvPageContext)
-  console.log(rqtvPageContext)
+
   return(
     <div className="overview-by-product">
       <div className="container-fluid">
-        <PageHeader style={{ paddingTop: "0.5rem" }}></PageHeader>
+        <RqtvPageHeader style={{ paddingTop: "0.5rem" }} title={rqtvPageContext.qTitle}></RqtvPageHeader>
       </div>
-      <RqtvBreadcrumb />
+      <Breadcrumb/>
       <QGenericObject qObjectDef={brandListObjectDef}>
         <CardDecksByBrand />
       </QGenericObject>
