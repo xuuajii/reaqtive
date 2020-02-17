@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\animations\\carousel\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\animations\\carousel\\index.js";
 
 const CarouselPanel = props => {
   return _react.default.createElement(_reactSpring.animated.div, {

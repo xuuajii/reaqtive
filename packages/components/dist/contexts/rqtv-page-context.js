@@ -72,8 +72,8 @@ const RqtvPageConsumer = props => {
   }, [props.triggers, queryStringTriggers, location.search]);
   const triggerState = (0, _q.useTriggers)(triggers); //console.log(location.search,triggers, queryStringTriggers)
 
-  const qConditionExpr = props.conditionExpr;
-  const qTitleExpr = props.qTitleExpr;
+  const qConditionExpr = props.qConditionExpr,
+        qTitleExpr = props.qTitleExpr;
   const qObjectDef = useQPageObjectDef(qConditionExpr, qTitleExpr);
   const qObjectHandler = (0, _q.useQObjectReducer)(qObjectDef);
   const qLayoutHandler = (0, _q.useQLayoutReducer)(qObjectHandler);
@@ -105,7 +105,7 @@ const RqtvPageConsumer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 76
+      lineNumber: 75
     },
     __self: void 0
   }, props.children);
@@ -115,7 +115,7 @@ const RqtvPageProvider = props => {
   return _react.default.createElement(RqtvPageConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 87
     },
     __self: void 0
   }), props.children);

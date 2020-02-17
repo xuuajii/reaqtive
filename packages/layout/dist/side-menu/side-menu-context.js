@@ -17,7 +17,7 @@ var _index = require("../index");
 
 var _useConfig = _interopRequireDefault(require("./use-config"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\side-menu\\side-menu-context.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\side-menu\\side-menu-context.js";
 
 const SideMenuContext = _react.default.createContext();
 

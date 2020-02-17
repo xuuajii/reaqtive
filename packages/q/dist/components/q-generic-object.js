@@ -25,7 +25,10 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
  * It expects only 1 child
  * It attaches an onChange event-listener to the qObject and automatically updates the layout when the event fires.
  * For example it can provide a listobject or a hypercube to its children.
+ * 
+ * QGenericObject must have one and only one child. The child can be a React element (external layout mode) or a function that returns a React element (inline layout mode).
  *
+ * See the example below for details
  */
 const QGenericObject = props => {
   const qObjectDef = props.qObjectDef,
