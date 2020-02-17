@@ -27,8 +27,10 @@ var _useQLayoutReducer = _interopRequireDefault(require("../hooks/use-q-layout-r
  * QVariable
  * It provides a variable and its layout to its child.
  * It automatically aupdate layout everytime the variable is updated by the engine calculations.
- * It expects no more than 1 child
  *
+ * QVariable must have one and only one child. The child can be a React element (external layout mode) or a function that returns a React element (inline layout mode).
+ *
+ * See the example below for details
  */
 const QVariable = props => {
   const variableId = props.variableName || props.variableId;
