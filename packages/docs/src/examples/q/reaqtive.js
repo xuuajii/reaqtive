@@ -1,6 +1,6 @@
 import React from 'react'
 import Reaqtive from '@reaqtive/q'
-import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp} from './index'
+import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp, MyQGenericObject, MyQVariable} from './index'
 
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
@@ -23,6 +23,8 @@ const MyReaqtiveComponent = props => {
       <MyComponentWithQDoc/>
       <MyComponentWithQCapabilityApi/>
       <MyComponentWithQApp/>
+      <MyQGenericObject/>
+      <MyQVariable/>
     </Reaqtive>
   )
 }

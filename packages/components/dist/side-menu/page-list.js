@@ -2,12 +2,16 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _reactRouterDom = require("react-router-dom");
 
@@ -20,7 +24,7 @@ const PageList = props => {
     className: "list-group page-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 14
     },
     __self: void 0
   }, props.pages.map(page => _react.default.createElement(PageLink, {
@@ -28,7 +32,7 @@ const PageList = props => {
     page: page,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 15
     },
     __self: void 0
   })));
@@ -44,13 +48,14 @@ const PageLink = props => {
     }
   };
 
+  const exactActiveMatch = page.exactActiveMatch !== undefined && page.exactActiveMatch !== null ? page.exactActiveMatch : true;
   return _react.default.createElement(_reactRouterDom.NavLink, {
     to: page.path,
     activeClassName: "active",
-    exact: true,
+    exact: page.path === '/' ? true : exactActiveMatch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 32
     },
     __self: void 0
   }, _react.default.createElement("li", {
@@ -58,7 +63,7 @@ const PageLink = props => {
     onClick: handleClick,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 33
     },
     __self: void 0
   }, page.path === '/' ? _react.default.createElement(_layout.LuiIcon, {
@@ -68,7 +73,7 @@ const PageLink = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 35
     },
     __self: void 0
   }) : _react.default.createElement(_layout.LuiIcon, {
@@ -78,7 +83,7 @@ const PageLink = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 36
     },
     __self: void 0
   }), page.title));

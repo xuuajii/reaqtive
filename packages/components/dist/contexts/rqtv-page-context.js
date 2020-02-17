@@ -43,7 +43,7 @@ const useQPageObjectDef = (qConditionExpr, qTitleExpr) => (0, _react.useMemo)(()
       }
     }
   };
-}, [qConditionExpr]);
+}, [qConditionExpr, qTitleExpr]);
 
 const RqtvPageConsumer = props => {
   const location = (0, _reactRouterDom.useLocation)(); // const [locationSearch, setLocationSearch] = useState(null)
@@ -72,8 +72,9 @@ const RqtvPageConsumer = props => {
   }, [props.triggers, queryStringTriggers, location.search]);
   const triggerState = (0, _q.useTriggers)(triggers); //console.log(location.search,triggers, queryStringTriggers)
 
-  const qConditionExpr = props.conditionExpr;
-  const qObjectDef = useQPageObjectDef(qConditionExpr);
+  const qConditionExpr = props.qConditionExpr,
+        qTitleExpr = props.qTitleExpr;
+  const qObjectDef = useQPageObjectDef(qConditionExpr, qTitleExpr);
   const qObjectHandler = (0, _q.useQObjectReducer)(qObjectDef);
   const qLayoutHandler = (0, _q.useQLayoutReducer)(qObjectHandler);
   const qCondition = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qCondition;

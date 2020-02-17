@@ -12,17 +12,23 @@ import useQLayoutReducer from '../hooks/use-q-layout-reducer'
  * QVariable
  * It provides a variable and its layout to its child.
  * It automatically aupdate layout everytime the variable is updated by the engine calculations.
- * It expects no more than 1 child
  *
+ * QVariable must have one and only one child. The child can be a React element (external layout mode) or a function that returns a React element (inline layout mode).
+ *
+ * See the example below for details
  */
 const QVariable = (props) => {
-  const qVariableHandler = useQVaraibleReducer('vCurrentYear')
+  const variableId = props.variableName||props.variableId
+  const idType=props.variableId?'id':'name'
+  const qVariableHandler = useQVaraibleReducer(variableId, idType)
   const qLayoutHandler = useQLayoutReducer(qVariableHandler)
   const moreThanOneChild = Array.isArray(props.children)
   if (moreThanOneChild){
       throw "QGenericObject must have  only one child, wrap the content inside a React element";
   }
-  return React.cloneElement(props.children, {props, qLayoutHandler, qVariableHandler})
+  return React.isValidElement(props.children)
+    ?React.cloneElement(props.children, {props, qLayoutHandler, qVariableHandler})
+    :props.children({qLayoutHandler, qVariableHandler})
 }
 
 const exclusivePropTypes = {

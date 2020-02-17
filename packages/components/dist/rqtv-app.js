@@ -51,12 +51,14 @@ const RqtvApp = props => {
             title = _page$props.title,
             path = _page$props.path,
             id = _page$props.id,
-            icon = _page$props.icon;
+            icon = _page$props.icon,
+            exactActiveMatch = _page$props.exactActiveMatch;
       return {
         title,
         path,
         id,
-        icon
+        icon,
+        exactActiveMatch
       };
     };
 

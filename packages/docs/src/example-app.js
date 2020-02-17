@@ -28,7 +28,7 @@ const ExampleApp = props => {
           title="Reaqtive Demo"
         >
           {/*Home*/}
-          <RqtvPage path={'/'} id={0} title='Home Page' exact={true}>
+          <RqtvPage path={'/'} id={0} title='Home Page' exact={true} qTitleExpr="=1+1">
             <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
               <Home
                 maximizeEl={maximizeEl}
@@ -66,6 +66,7 @@ const ExampleApp = props => {
             path={'/reaqtive-q'}
             id={4}
             title='@raqtive/q'
+            exactActiveMatch={false}
             // triggers={[
             //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
             //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
