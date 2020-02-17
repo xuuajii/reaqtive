@@ -5,7 +5,7 @@
 import React, { useState } from "react";
 import DatePicker from "react-date-picker";
 //import DatePicker from 'react-date-picker/dist/entry.nostyle'
-
+import './data-picker.scss';
 const DataPicker = props => {
   const [date, setDate] = useState(new Date());
 
@@ -20,6 +20,8 @@ const DataPicker = props => {
         className="react-data-picker-custom"
         onChange={onChange}
         value={date}
+        isOpen = {true}
+        view = {"year"}
       />
     </div>
   );

@@ -93,7 +93,6 @@ const Layout = props => {
               imgHeight={"auto"}
               cardBody={card.cardBody}
               titlePaddingTop={"90px"}
-              isInfoAbsoluteByProduct={true}
             />
           ))}
       </RqtvRenderer>
