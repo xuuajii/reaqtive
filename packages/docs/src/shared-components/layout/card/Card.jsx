@@ -58,7 +58,7 @@ Card.defaultProps = {
   text: "SubTitle",
   img: require("../../../images/placeholders/car.png"),
   brandImage: require("../../../images/placeholders/brand.png"),
-  isInfoAbsolute: false,
+  isInfoAbsolute: true,
   displayLogo: false,
   displayKPI: false,
   displayBody: false,

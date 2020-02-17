@@ -2,12 +2,12 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React from "react";
+import React, {useContext} from "react";
 import { QGenericObject, QListObject } from "@reaqtive/q";
-import PageHeader from "../../../shared-components/layout/page-header/page-header";
+import {RqtvPageHeader} from '@reaqtive/components';
 import CardDecksByBrand from "./components/card-decks-by-brand";
-import { RqtvBreadcrumb } from "@reaqtive/components";
-import { RqtvPage, RqtvStandardTemplate } from "@reaqtive/components";
+import  {Breadcrumb}  from "../../../shared-components/index.js";
+import { RqtvPage, RqtvStandardTemplate, RqtvPageContext } from "@reaqtive/components";
 import BasketAnalysis from "../basket/basket-analysis";
 import {
   BrowserRouter as Router,
@@ -15,7 +15,8 @@ import {
   Route,
   Link,
   useRouteMatch,
-  useParams
+  useParams,
+  useLocation
 } from "react-router-dom";
 //import BasketAnalysis from "../basket-analysis";
 
@@ -27,10 +28,9 @@ const OverviewByProduct = props => {
         path={props.path + "/basket-analysis"}
         id={10}
         title={"props.title"}
-        // triggers={[
-        //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-        //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-        // ]}
+        qConditionExpr={"=count(distinct [Country])=1 and count(distinct [Submodel Benchmark])=1"}
+        fallbackPage={match.path}
+        qTitleExpr ="'basket analysis - '&only([Submodel Benchmark])&'-'&only([Country ISO Code])&' - '&$(lastMonthLabel)"
       >
         <RqtvStandardTemplate
           searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
@@ -42,19 +42,34 @@ const OverviewByProduct = props => {
         </RqtvStandardTemplate>
       </RqtvPage>
       <Route exact={true} path={match.path}>
-        <div className="overview-by-product">
-          <div className="container-fluid">
-            <PageHeader style={{ paddingTop: "0.5rem" }}></PageHeader>
-          </div>
-          <RqtvBreadcrumb />
-          <QGenericObject qObjectDef={brandListObjectDef}>
-            <CardDecksByBrand />
-          </QGenericObject>
-        </div>
+        <RqtvPage
+          path={props.path}
+          id={9}
+          title={props.title}
+          qTitleExpr="'overview by product - '&$(lastMonthLabel)"
+        >
+          <Layout/>
+        </RqtvPage>
       </Route>
     </>
   );
 };
+
+const Layout = props => {
+  const rqtvPageContext = useContext(RqtvPageContext)
+
+  return(
+    <div className="overview-by-product">
+      <div className="container-fluid">
+        <RqtvPageHeader style={{ paddingTop: "0.5rem" }} title={rqtvPageContext.qTitle}></RqtvPageHeader>
+      </div>
+      <Breadcrumb/>
+      <QGenericObject qObjectDef={brandListObjectDef}>
+        <CardDecksByBrand />
+      </QGenericObject>
+    </div>
+  )
+}
 
 export default OverviewByProduct;
 

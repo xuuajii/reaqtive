@@ -7,8 +7,8 @@ import "./card-body.scss";
 import Flags from "../../../Flags/Flags";
 let countryCode;
 export default function CardBody(props) {
-  const handleBodyItemClick = bodyRowIdField => {
-    props.goToDetail(bodyRowIdField, props.data.productId);
+  const handleBodyItemClick = (bodyRowValue) => {
+    props.onBodyRowClick(props.data.productId.qText, bodyRowValue);
   };
   return (
     <>
@@ -32,7 +32,7 @@ export default function CardBody(props) {
                   <div
                     className="col-6"
                     onClick={() =>
-                      handleBodyItemClick(props.data.cardBody[index].bodyLabel)
+                      handleBodyItemClick(item.bodyLabel.qText)
                     }
                   >
                     <div className="row align-items-center">

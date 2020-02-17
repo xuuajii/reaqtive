@@ -3,12 +3,15 @@
 //
 
 import React from 'react';
+import {useLocation} from 'react-router-dom'
 import OverviewByProduct from './overview-by-product/overview-by-product';
 import OverviewByMarket from './overview-by-market/overview-by-market';
 const Overview = props => {
-    return (
-        props.mainDimension === "country" ? <OverviewByMarket /> : <OverviewByProduct {...props}/>
-    );
+  const location = useLocation()
+  
+  return (
+      location.pathname === "overview-by-country" ? <OverviewByMarket /> : <OverviewByProduct {...props}/>
+  );
 }
 
 export default Overview;

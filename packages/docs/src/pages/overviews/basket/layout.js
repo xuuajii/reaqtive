@@ -7,14 +7,10 @@ import Vehicle from "./vehicle";
 import {RqtvVizContainer, QViz} from "@reaqtive/components"
 
 const Layout = props => {
-  
+
   const isLayoutLoaded = props.qLayoutHandler.qLayout && props.qLayoutHandler.qLayout;
   const hypercube = isLayoutLoaded && props.qLayoutHandler.qLayout.qHyperCube
   const basket = hypercube && hypercube.qPivotDataPages[0].qLeft[0].qText;
-
-  useEffect(()=>{
-    props.setPageTitle(basket)
-  },[basket])
 
   return (
     <div>
@@ -162,7 +158,7 @@ const channels = [
 ]
 
 const VehicleLayout = props => {
-  
+
   return (
     <>
       <Vehicle hypercube={props.hypercube} />

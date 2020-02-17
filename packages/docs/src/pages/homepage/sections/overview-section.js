@@ -8,7 +8,7 @@ import "./overview-section.scss";
 
 const OverviewSection = props => {
   return (
-    
+
       <div id="overview" className="align-items-center">
         <div className="container">
           <div className="row">
@@ -19,7 +19,7 @@ const OverviewSection = props => {
                 text={
                   "Index & prices analysis cross-model for Fleet by Dealer and Long Term Rental"
                 }
-                redirect={`/overview/country`}
+                redirect={`/overview-by-country`}
               />
             </div>
             <div className=" col-sm-12 col-md-6 my-4">
@@ -29,13 +29,13 @@ const OverviewSection = props => {
                 text={
                   "Index & prices analysis cross-market for Private, Fleet by Dealer and Long Term Rental"
                 }
-                redirect={`/overview/product`}
+                redirect={`/overview-by-product`}
               />
             </div>
           </div>
         </div>
       </div>
-    
+
   );
 };
 

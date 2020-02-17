@@ -2,10 +2,9 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React, {useState} from "react";
+import React, {useContext} from "react";
 import Basket from "./basket";
-import PageHeader from '../../../shared-components/layout/page-header/page-header';
-import {RqtvBreadcrumb} from "@reaqtive/components";
+import { RqtvPageHeader, RqtvPageContext, RqtvBreadcrumb } from "@reaqtive/components";
 
 const qHypercubeDef = {
   qInfo: {
@@ -187,16 +186,17 @@ const qHypercubeDef = {
 
 const BasketAnalysis = (props) => {
 
-const [title,setTitle] = useState("basket analysis")
+const rqtvPageContext = useContext(RqtvPageContext)
+const title = rqtvPageContext&&rqtvPageContext.qTitle
 
   return (
     <>
       <div className="container-fluid">
-        <PageHeader title={`BASKET ANALYSIS ${title ? '- ' + title : ''} `} style={{paddingTop:'0.5rem'}}>
-        </PageHeader>
+        <RqtvPageHeader title={title} style={{paddingTop:'0.5rem'}}>
+        </RqtvPageHeader>
       </div>
       <RqtvBreadcrumb />
-      <Basket setPageTitle={setTitle} qHypercubeDef={qHypercubeDef} />
+      <Basket qHypercubeDef={qHypercubeDef} />
     </>
   );
 };
