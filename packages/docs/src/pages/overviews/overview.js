@@ -8,9 +8,9 @@ import OverviewByProduct from './overview-by-product/overview-by-product';
 import OverviewByMarket from './overview-by-market/overview-by-market';
 const Overview = props => {
   const location = useLocation()
-  
+  console.log(location.pathname)
   return (
-      location.pathname === "overview-by-country" ? <OverviewByMarket /> : <OverviewByProduct {...props}/>
+      location.pathname === "/overview-by-country" ? <OverviewByMarket /> : <OverviewByProduct {...props}/>
   );
 }
 
