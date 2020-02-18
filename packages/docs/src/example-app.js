@@ -35,7 +35,7 @@ const ExampleApp = props => {
             exact={true}
             qTitleExpr="=1+1"
             triggers={[
-                {type:'fieldSelection',params:{fieldName:'Customer'}},
+                {type:'clearField',params:{fieldName:'Customer'}},
             ]}
           >
             <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
