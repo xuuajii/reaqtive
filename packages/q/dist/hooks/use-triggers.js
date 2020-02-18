@@ -47,18 +47,18 @@ const useTriggers = triggers => {
   const qDocHandler = (0, _react.useContext)(_qDoc.QDoc);
   const triggersMemo = (0, _layout.useDeepCompareMemo)(triggers);
   (0, _react.useEffect)(() => {
-    if (!triggers || triggers && triggers.length === 0 || progress === (triggers && triggers.length)) {
+    if (triggersMemo && triggersMemo.length === 0 || progress === (triggersMemo && triggersMemo.length)) {
       setDone(true);
       setQLoading(false);
     }
-  }, [progress]);
+  }, [progress, triggersMemo]);
   (0, _react.useEffect)(() => {
-    if (qDocHandler.qDoc && triggers && triggers.length > 0) {
-      triggers && triggers.forEach(trigger => fire(trigger));
+    if (qDocHandler.qDoc && triggersMemo && triggersMemo.length > 0) {
+      triggersMemo && triggersMemo.forEach(trigger => fire(trigger));
     }
 
     return () => {
-      qDocHandler.qDoc && triggers && triggers.length > 0 && triggers.forEach(trigger => {
+      qDocHandler.qDoc && triggersMemo && triggersMemo.length > 0 && triggersMemo.forEach(trigger => {
         if (trigger.type === 'fieldSelection' && trigger.params.alwaysOneSelected === true) {
           removeAlwaysOneSelected(trigger.params);
         }
