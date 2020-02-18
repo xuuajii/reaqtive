@@ -132,7 +132,7 @@ const useTriggers = triggers => {
       const field = await getField(qDocHandler.qDoc, params);
 
       if (field !== undefined) {
-        const clearedField = await clearField(field);
+        const clearedField = field.clear();
         return clearedField instanceof Error ? false : true;
       }
     }
