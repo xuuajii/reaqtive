@@ -28,7 +28,16 @@ const ExampleApp = props => {
           title="Reaqtive Demo"
         >
           {/*Home*/}
-          <RqtvPage path={'/'} id={0} title='Home Page' exact={true} qTitleExpr="=1+1">
+          <RqtvPage
+            path={'/'}
+            id={0}
+            title='Home Page'
+            exact={true}
+            qTitleExpr="=1+1"
+            triggers={[
+                {type:'fieldSelection',params:{fieldName:'Customer'}},
+            ]}
+          >
             <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
               <Home
                 maximizeEl={maximizeEl}

@@ -101,6 +101,10 @@ const useTriggers = (triggers) => {
         trigger.params&&selectFieldValues(trigger.params)
         trigger.params&&setProgress(progress=>progress+1)
       break;
+      case 'clearField':
+        trigger.params&&clearField(trigger.params)
+        trigger.params&&setProgress(progress=>progress+1)
+      break;
       default:
         console.log('unkown trigger type', trigger.type)
         setQLoading(false)
@@ -137,6 +141,16 @@ const useTriggers = (triggers) => {
       if(field!==undefined){
         const valuesSelected = await selectValues(field, params)
         return (valuesSelected instanceof Error)?false:true
+      }
+    }
+  }
+
+  const clearField = async (params) => {
+    if(params !== undefined){
+      const field = await getField(qDocHandler.qDoc, params)
+      if(field!==undefined){
+        const clearedField = await clearField(field)
+        return (clearedField instanceof Error)?false:true
       }
     }
   }
@@ -192,6 +206,18 @@ const selectValues = async (field, params) => {
   }
   catch(err){
     console.log('error selecting trigger value', err)
+    return err
+  }
+}
+
+const clearField = async (field) => {
+  try{
+    const cleared = await field&&field.clear()
+    return cleared
+  }
+  catch(err){
+    console.log('error clearing field in trigger', err)
+    return err
   }
 }
 
