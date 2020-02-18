@@ -10,10 +10,10 @@ export {normalizeExpression}
 
 const extractSubNodes = (recursiveDimension, depth) =>{
   if(depth===0){
-    const {qSubNodes, ...rest} = recursiveDimension
+    const {qSubNodes, ...rest} = recursiveDimension||{}
     return rest
   } else {
-    return extractSubNodes(recursiveDimension.qSubNodes[0], depth-1)
+    return extractSubNodes(recursiveDimension&&recursiveDimension.qSubNodes[0], depth-1)
   }
 }
 

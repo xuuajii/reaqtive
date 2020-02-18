@@ -2,9 +2,10 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React, {useContext} from "react";
-import Basket from "./basket";
-import { RqtvPageHeader, RqtvPageContext, RqtvBreadcrumb } from "@reaqtive/components";
+import React, {useState, useContext, useRef} from "react";
+import BasketAnalysisCards from "./basket-analysis-cards";
+import { RqtvPageHeader, RqtvPageContext, RqtvBreadcrumb, RqtvMaximizePortalEl } from "@reaqtive/components";
+import BasketAnalysisCharts from './basket-analysis-charts'
 
 const qHypercubeDef = {
   qInfo: {
@@ -185,18 +186,23 @@ const qHypercubeDef = {
 };
 
 const BasketAnalysis = (props) => {
-
+const maximizeElRef=useRef()
 const rqtvPageContext = useContext(RqtvPageContext)
 const title = rqtvPageContext&&rqtvPageContext.qTitle
-
+const [hyperCubeLoaded, setHyperCubeLoaded] = useState(false)
+const showCharts = () => {
+  setHyperCubeLoaded(true)
+}
   return (
     <>
       <div className="container-fluid">
         <RqtvPageHeader title={title} style={{paddingTop:'0.5rem'}}>
         </RqtvPageHeader>
       </div>
+      <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
       <RqtvBreadcrumb />
-      <Basket qHypercubeDef={qHypercubeDef} />
+      <BasketAnalysisCards qHypercubeDef={qHypercubeDef} showCharts={showCharts}/>
+      {hyperCubeLoaded&&<BasketAnalysisCharts maximizeElRef={maximizeElRef}/>}
     </>
   );
 };

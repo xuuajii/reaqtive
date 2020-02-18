@@ -21,19 +21,18 @@ const Layout = props => {
   const noData = qLayout && qPivotDataPages.length === 0;
   const { qData, qLeft, qTop } = (qPivotDataPages && qPivotDataPages[0]) || {};
   const cards =
-    qPivotDataPages &&
-    qPivotDataPages[0].qLeft.map((product, index) => {
+    qPivotDataPages && qPivotDataPages[0] && qPivotDataPages[0].qLeft.map((product, index) => {
       return {
-        productId: extractSubNodes(qLeft[index], 0),
-        title: extractSubNodes(qLeft[index], 0),
-        subTitle: extractSubNodes(qLeft[index], 1),
-        cardImage: extractSubNodes(qLeft[index], 2),
-        brandImage: extractSubNodes(qLeft[index], 3),
-        cardBody: qTop.map((bodyRow, bodyIndex) => {
+        productId: qLeft[index]&&extractSubNodes(qLeft[index], 0),
+        title: qLeft[index]&&extractSubNodes(qLeft[index], 0),
+        subTitle: qLeft[index]&&extractSubNodes(qLeft[index], 1),
+        cardImage: qLeft[index]&&extractSubNodes(qLeft[index], 2),
+        brandImage: qLeft[index]&&extractSubNodes(qLeft[index], 3),
+        cardBody: qTop&&qTop.map((bodyRow, bodyIndex) => {
           return {
-            bodyLabel: extractSubNodes(qTop[bodyIndex], 0),
-            bodyImage: extractSubNodes(qTop[bodyIndex], 1),
-            bodyMeasures: qData[index].filter((bodyCell, bodyCellIndex) => {
+            bodyLabel: qTop&&extractSubNodes(qTop[bodyIndex], 0),
+            bodyImage: qTop&&extractSubNodes(qTop[bodyIndex], 1),
+            bodyMeasures: qData&&qData[index].filter((bodyCell, bodyCellIndex) => {
               return (
                 Math.floor(bodyCellIndex / qMeasureInfo.length) === bodyIndex
               );

@@ -4,7 +4,7 @@ import Card from "../../../shared-components/layout/card/Card";
 import { extractSubNodes } from "../../../example-components/helpers";
 import { RqtvBreadcrumb } from "@reaqtive/components";
 
-const Vehicle = props => {
+const BasketAnalysisCardsLayout = props => {
   let hypercube = props.hypercube;
   let visualDiff =
     hypercube.qMeasureInfo[3].qMax - hypercube.qMeasureInfo[3].qMin;
@@ -71,4 +71,4 @@ const Vehicle = props => {
   );
 };
 
-export default Vehicle;
+export default BasketAnalysisCardsLayout;
