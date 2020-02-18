@@ -9,7 +9,7 @@ import OverviewByMarket from './overview-by-market/overview-by-market';
 const Overview = props => {
   const location = useLocation()
   return (
-      location.pathname === "/overview-by-country" ? <OverviewByMarket /> : <OverviewByProduct {...props}/>
+      location.pathname === "/overview-by-country" ? <OverviewByMarket {...props}/> : <OverviewByProduct {...props}/>
   );
 }
 

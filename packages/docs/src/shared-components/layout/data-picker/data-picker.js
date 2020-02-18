@@ -7,11 +7,10 @@ import DatePicker from "react-date-picker";
 //import DatePicker from 'react-date-picker/dist/entry.nostyle'
 import './data-picker.scss';
 const DataPicker = props => {
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(props.value);
 
   const onChange = date => setDate(date);
-  console.log(date);
-
+  
   return (
     <div>
       <DatePicker
@@ -19,9 +18,12 @@ const DataPicker = props => {
         minDate={props.minDate}
         className="react-data-picker-custom"
         onChange={onChange}
-        value={date}
+        value={props.value}
         isOpen = {true}
         view = {"year"}
+        format = {"y-MM"}
+        maxDetail = {"year"}
+        minDetail = {"decade"}
       />
     </div>
   );
@@ -30,5 +32,6 @@ const DataPicker = props => {
 export default DataPicker;
 
 DataPicker.defaultProps = {
-    minDate : new Date('2018')
+    minDate : new Date('2018'),
+    value: new Date()
 }
