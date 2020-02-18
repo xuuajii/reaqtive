@@ -10,7 +10,7 @@ const RqtvRendererContainer = props => {
   const loadingContainer=useRef()
   const loadingContainerEl=loadingContainer.current
   const loadingContainerHeight=loadingContainerEl&&loadingContainerEl.parentNode.offsetHeight
-  const fixedStyles=props.isFixed?{position:'fixed', height:'100%', width:'100%'}:{}
+  const fixedStyles=props.isFixed?{position:'fixed', height:'100%', width:'100%', left:0, top:0}:{}
   const stickyStyles=props.isSticky===true?{position:'sticky', top:0}:{}
   const height=props.top?'100%':loadingContainerHeight
   return(

@@ -26,7 +26,9 @@ const RqtvRendererContainer = props => {
   const fixedStyles = props.isFixed ? {
     position: 'fixed',
     height: '100%',
-    width: '100%'
+    width: '100%',
+    left: 0,
+    top: 0
   } : {};
   const stickyStyles = props.isSticky === true ? {
     position: 'sticky',
