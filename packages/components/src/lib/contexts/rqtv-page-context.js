@@ -10,15 +10,10 @@ import {useQObjectReducer, useQLayoutReducer, useTriggers} from '@reaqtive/q'
 
 const RqtvPageContext = React.createContext()
 
-const useQPageObjectDef = (qConditionExpr, qTitleExpr) => useMemo(()=>{
+const useQPageObjectDef = (qTitleExpr) => useMemo(()=>{
   return {
     qInfo: {
-      qType: "tableData"
-    },
-    qCondition: {
-      qStringExpression: {
-        qExpr: qConditionExpr
-      }
+      qType: "tableData",
     },
     qTitle:{
       qStringExpression:{
@@ -26,7 +21,7 @@ const useQPageObjectDef = (qConditionExpr, qTitleExpr) => useMemo(()=>{
       }
     }
   }
-}, [qConditionExpr, qTitleExpr])
+}, [qTitleExpr])
 
 const RqtvPageConsumer = props => {
   const location = useLocation();
@@ -50,16 +45,31 @@ const RqtvPageConsumer = props => {
     return () =>  setTriggers(null)
   },[props.triggers, queryStringTriggers, location.search])
   const triggerState = useTriggers(triggers)
-  //console.log(location.search,triggers, queryStringTriggers)
 
   const {qConditionExpr, qTitleExpr} = props;
-  const qObjectDef=useQPageObjectDef(qConditionExpr, qTitleExpr)
+  const qObjectDef=useQPageObjectDef(qTitleExpr)
   const qObjectHandler = useQObjectReducer(qObjectDef)
   const qLayoutHandler = useQLayoutReducer(qObjectHandler)
   const qCondition = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qCondition
   const [conditionRes, setConditionRes] = useState()
   const qTitle = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qTitle
-
+  useEffect(()=>{
+    if(triggerState.done===true && qObjectHandler.qObject!==null && qConditionExpr!==''){
+      qObjectHandler.qObject.setProperties(
+        {
+          ...qObjectDef,
+          qInfo:{qId:qObjectHandler.qObject.id, ...qObjectDef.qInfo},
+          qExtendsId:'',
+          qCondition: {
+            qStringExpression: {
+              qExpr: qConditionExpr||''
+            }
+          }
+        }
+      )
+    }
+  }, [qObjectHandler, triggerState.done, qConditionExpr, qObjectDef])
+  
   useEffect(()=>{
     if(qCondition==='0'){
       setConditionRes(false)
@@ -92,12 +102,12 @@ const RqtvPageProvider = props => {
 
 RqtvPageProvider.propTypes = {
   triggers:PropTypes.array.isRequired,
-  conditionExpr:PropTypes.string
+  qConditionExpr:PropTypes.string
 }
 
 RqtvPageProvider.defaultProps = {
   triggers:[],
-  conditionExpr:""
+  qConditionExpr:''
 }
 
 export {RqtvPageProvider, RqtvPageContext}
