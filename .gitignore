@@ -1,3 +1,4 @@
 *node_modules*
 *-lock*
 lerna-debug.log
+*packages/docs/build/*
