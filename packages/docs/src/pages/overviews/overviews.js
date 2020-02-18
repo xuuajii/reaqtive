@@ -12,10 +12,10 @@ const Overviews = props => {
         path={props.path}
         id={props.id}
         title={props.title}
-        // triggers={[
-        //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-        //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-        // ]}
+        triggers={[
+          {type:'clearField',params:{fieldName:'Country'}},
+          {type:'clearField',params:{fieldName:'Submodel Benchmark'}},
+        ]}
       >
         <RqtvStandardTemplate
           searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
