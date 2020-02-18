@@ -19,6 +19,7 @@ const Modal = props => {
       setOpen(props.open)
       system.hideOverflow()
     }
+    return () => system.showOverflow()
   }, [props.open])
 
   const closeModal = () =>{

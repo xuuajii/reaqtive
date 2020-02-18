@@ -36,6 +36,8 @@ const Modal = props => {
       setOpen(props.open);
       system.hideOverflow();
     }
+
+    return () => system.showOverflow();
   }, [props.open]);
 
   const closeModal = () => {
@@ -85,7 +87,7 @@ const Modal = props => {
     className: "modal show ".concat(props.className ? props.className : ''),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 48
     },
     __self: void 0
   }, children.map(child => _react.default.cloneElement(child, {
@@ -94,7 +96,7 @@ const Modal = props => {
     show: open,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 58
     },
     __self: void 0
   })); // return(
