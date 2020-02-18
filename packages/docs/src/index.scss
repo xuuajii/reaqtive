@@ -11,6 +11,14 @@
   a {
     color: $theme-color;
   }
+  .modal-footer {
+    .rqtv-current-selections-toolbar {
+      .btn {
+      	color:$navbar-bg;
+        background-color:$navbar-color
+      }
+    }
+  }
 }
 
 .full-screen{
