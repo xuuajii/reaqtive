@@ -22,7 +22,7 @@ const OverviewByMarket = props => {
           }}
         />
         {value && <p>Attivato</p>}
-        <DataPicker />
+        <DataPicker isOpen={false}/>
         <Card
           displayLogo={true}
           isInfoAbsolute={true}

@@ -21,13 +21,13 @@ const ToggleSwitch = props => {
         checked={props.isOn}
         onChange={props.onChange}
         className="react-switch-checkbox"
-        id="react-switch-new"
+        id={props.id}
         type="checkbox"
       />
         <animated.label
           style={props.onChange && labelTransition}
           className="react-switch-label"
-          htmlFor="react-switch-new"
+          htmlFor={props.id}
         >
           <span className={`react-switch-button`} />
         </animated.label>
@@ -44,5 +44,8 @@ ToggleSwitch.defaultProps = {
   disactivatedColor: "grey",
   defaultSwitchStatus: true,
   scaleValue: 0.5,
-  isOn: false
+  isOn: false,
+  onChange : function(e) {
+    return null;
+  }
 };

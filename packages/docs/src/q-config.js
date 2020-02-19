@@ -9,7 +9,7 @@ const qEnvironments = {
       secure: false,
       port: 4848,
       prefix: '',
-      appId: 'Purchasing_server.qvf'
+      appId: 'Purchasing.qvf'
   },
   "ENG_SERVER": {
     host: '40.113.14.238',

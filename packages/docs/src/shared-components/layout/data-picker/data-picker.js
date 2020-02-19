@@ -19,7 +19,7 @@ const DataPicker = props => {
         className="react-data-picker-custom"
         onChange={onChange}
         value={props.value}
-        isOpen = {true}
+        isOpen = {props.isOpen}
         view = {"year"}
         format = {"y-MM"}
         maxDetail = {"year"}
@@ -33,5 +33,6 @@ export default DataPicker;
 
 DataPicker.defaultProps = {
     minDate : new Date('2018'),
-    value: new Date()
+    value: new Date(),
+    isOpen: true
 }
