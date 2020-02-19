@@ -58,7 +58,7 @@ const Layout = props => {
     }, 100)
   };
   return (
-    <CardBox backgroundGradient={gradient} key={props.brand}>
+    <CardBox backgroundGradient={gradient} key={props.brand} minHeight={420}>
       <RqtvRenderer error={qError} loading={qLoading} noData={noData}>
         {cards &&
           cards.map((card, index) => (

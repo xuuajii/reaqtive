@@ -7,15 +7,10 @@ import { RqtvBreadcrumb } from "@reaqtive/components";
 const BasketAnalysisCardsLayout = props => {
   let hypercube = props.hypercube;
   let visualDiff =
-    hypercube.qMeasureInfo[3].qMax - hypercube.qMeasureInfo[3].qMin;
-  let minVisualPrice = hypercube.qMeasureInfo[3].qMin;
-  let discountedPrivateDiff =
-    hypercube.qMeasureInfo[4].qMax - hypercube.qMeasureInfo[4].qMin;
-  let minDiscountedPrivate = hypercube.qMeasureInfo[4].qMin;
-  let discountedBusinessDiff =
-    hypercube.qMeasureInfo[5].qMax - hypercube.qMeasureInfo[5].qMin;
-  let minDiscountedBusiness = hypercube.qMeasureInfo[5].qMin;
-
+    Math.max(hypercube.qMeasureInfo[3].qMax, hypercube.qMeasureInfo[4].qMax, hypercube.qMeasureInfo[5].qMax)
+    - Math.min(hypercube.qMeasureInfo[3].qMin, hypercube.qMeasureInfo[4].qMin, hypercube.qMeasureInfo[5].qMin);
+  let minVisualPrice = Math.min(hypercube.qMeasureInfo[3].qMin, hypercube.qMeasureInfo[4].qMin, hypercube.qMeasureInfo[5].qMin);
+  
   return (
     <>
       <CardBox>
@@ -48,10 +43,10 @@ const BasketAnalysisCardsLayout = props => {
               aeaValue={hypercube.qPivotDataPages[0].qData[index][2].qText}
               visualPriceRange={visualDiff}
               minVisualPrice={minVisualPrice}
-              discountedPrivateRange={discountedPrivateDiff}
-              minDiscountedPrivate={minDiscountedPrivate}
-              discountedBusinessRange={discountedBusinessDiff}
-              minDiscountedBusiness={minDiscountedBusiness}
+              discountedPrivateRange={visualDiff}
+              minDiscountedPrivate={minVisualPrice}
+              discountedBusinessRange={visualDiff}
+              minDiscountedBusiness={minVisualPrice}
               displayLogo={true}
               displayKPI={true}
               displayBody={true}
