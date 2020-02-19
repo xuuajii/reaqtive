@@ -13,7 +13,7 @@ const BasketAnalysisCharts = props => {
       <div className="row">
       {
         channels.map((channel, index)=>
-          <div className={`col-md-4`} key={channel.code}>
+          <div className={`col-lg-4`} key={channel.code}>
             <div>
               <h4 className="channel-card-title">{channel.title}</h4>
             </div>

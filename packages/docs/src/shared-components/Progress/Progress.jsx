@@ -16,12 +16,12 @@ export default function Progress(props) {
   let textLabel = props.textLabel;
   let proportionalValue;
   let color;
-  
+
   if(value < 99){
-    color = "green";
+    color = "#f75353";
   }
   if(value > 103){
-    color = "#f75353"
+    color = "green"
   }
   if(value > 98 && value < 104){
     color = "orange"

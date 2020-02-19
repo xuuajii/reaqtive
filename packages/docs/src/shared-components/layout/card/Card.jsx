@@ -17,14 +17,15 @@ const Card = props => {
       onClick={() => history.replace(props.redirect)}
       id={props.id}
       className={"card" + (props.flexItem ? " flex-item" : "")}
-      style={{ width: props.width }}
+      style={{ width: props.width, minWidth:props.width}}
     >
-      <div className="row no-gutters">
+      <div className="row no-gutters" style={{ width: props.width, minWidth:props.width}}>
         {props.displayLogo && <CardLogo {...props} />}
         <div
           className={
             "col-auto px-3 mt-3" + (props.gradient ? " pickgradient" : "")
           }
+          style={{height:props.imgHeight}}
         >
           <img className={"card-img"} src={props.img} alt="..." />
         </div>
@@ -65,5 +66,6 @@ Card.defaultProps = {
   gradient: false,
   width: 250,
   cardInfoBottom: 0,
-  cardInfoBackground : "linear-gradient(0deg, #ffffff94 30%, rgba(255, 255, 255, 0.1) 100%)"
+  cardInfoBackground : "linear-gradient(0deg, #ffffff94 30%, rgba(255, 255, 255, 0.1) 100%)",
+  imgHeight:139
 };

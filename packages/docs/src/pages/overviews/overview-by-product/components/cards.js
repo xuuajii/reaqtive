@@ -17,7 +17,7 @@ const Cards = props => {
           {
             qDef: {
               qGrouping: "N",
-              qFieldDefs: ["Model Benchmark"],
+              qFieldDefs: ["Submodel Benchmark"],
               qSortCriterias: [
                 {
                   qSortByNumeric: 1,
@@ -35,7 +35,7 @@ const Cards = props => {
             },
             qNullSuppression: true
           },
-          
+
           {
             qDef: {
               qGrouping: "N",
@@ -54,7 +54,7 @@ const Cards = props => {
             qDef: {
               qGrouping: "N",
               qFieldDefs: ["Country"]
-              
+
               //qReverseSort: qReverseSort
             },
             qNullSuppression: true
@@ -62,19 +62,19 @@ const Cards = props => {
           {
             qDef: {
               qGrouping: "N",
-              qFieldDefs: ["JATO Country Code"]
-    
+              qFieldDefs: [`=lower([Country ISO Code])`]
+
               //qReverseSort: qReverseSort
             },
             qNullSuppression: true
           }
-          
+
         ],
         qMeasures: [
-          
+
           {
             qDef: {
-              qDef: `($(realIndex($(lastMonthSet), [Vehicle Visual Price], reference)))`,
+              qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Private], reference)))`,
               //qDef: `avg([Vehicle Visual Price])`,
               qLabel: "Visual Price",
               qSortBy: {
@@ -85,7 +85,7 @@ const Cards = props => {
           },
           {
             qDef: {
-              qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Private], reference)))`,
+              qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Business], reference)))`,
               //qDef: `avg([Vehicle Visual Price])`,
               qLabel: "Discounted Price Private",
               qSortBy: {
@@ -96,7 +96,7 @@ const Cards = props => {
           },
           {
             qDef: {
-              qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Business], reference)))`,
+              qDef: `($(realIndex($(lastMonthSet), -, reference)))`,
               //qDef: `avg([Vehicle Visual Price])`,
               qLabel: "Discounted Price Business",
               qSortBy: {
@@ -111,7 +111,7 @@ const Cards = props => {
         qAlwaysFullyExpanded: true,
         qIndentMode: false,
         //qInterColumnSortOrder: [0,1,2,3,4],
-        qSuppressZero: true,
+        qSuppressZero: false,
         qInitialDataFetch: [
           {
             qLeft: 0,

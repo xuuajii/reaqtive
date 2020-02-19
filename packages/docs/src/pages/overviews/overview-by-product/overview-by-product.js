@@ -81,5 +81,10 @@ const brandListObjectDef = {
     qStringExpression: {
       qExpr: "concat(distinct [Brand Benchmark],',')"
     }
+  },
+  brandJSON: {
+    qStringExpression: {
+      qExpr: `concat(distinct '{"description":"'&[Brand Benchmark]&'",'&'"brandImage":"'&rangemaxstring([Brand Image Benchmark],0)&'"}', '|')`
+    }
   }
 };

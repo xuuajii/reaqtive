@@ -4,7 +4,7 @@
 
 import React from "react";
 import "./card-body.scss";
-import Flags from "../../../Flags/Flags";
+import Avatar from "../../../avatar";
 let countryCode;
 export default function CardBody(props) {
   const handleBodyItemClick = (bodyRowValue) => {
@@ -26,7 +26,6 @@ export default function CardBody(props) {
               </div>
             </div>
             {props.cardBody.map(function(item, index) {
-              getCountryCode(item.country);
               return (
                 <div key={index} className="row list align-items-center" >
                   <div
@@ -37,12 +36,14 @@ export default function CardBody(props) {
                   >
                     <div className="row align-items-center">
                       <div className="col-5 my-1">
-                        {item.bodyImage.qText}
-                        {/*<Flags
-                        countryCode={countryCode}
-                        isRounded={true}
-                        height={20}
-                      />*/}
+                        {
+                          <Avatar
+                            avatarPlaceHolder={item.bodyImage.qText}
+                            avatarUrl={item.bodyImage}
+                            isRounded={true}
+                            height={20}
+                          />
+                        }
                       </div>
                       <div
                         className="col-7 px-0"
@@ -95,39 +96,4 @@ export default function CardBody(props) {
 
 CardBody.defaultProps = {
   ovByProduct: false
-};
-
-const getCountryCode = country => {
-  switch (country) {
-    case "SPAIN":
-      return (countryCode = "es");
-      break;
-    case "NETHERLANDS":
-      return (countryCode = "nl");
-      break;
-    case "BELGIUM":
-      return (countryCode = "be");
-      break;
-    case "SWITZERLAND":
-      return (countryCode = "ch");
-      break;
-    case "ITALY":
-      return (countryCode = "it");
-      break;
-    case "AUSTRIA":
-      return (countryCode = "at");
-      break;
-    case "FRANCE":
-      return (countryCode = "fr");
-      break;
-    case "GERMANY":
-      return (countryCode = "de");
-      break;
-    case "POLAND":
-      return (countryCode = "pl");
-      break;
-    default:
-      return (countryCode = "de");
-      break;
-  }
 };

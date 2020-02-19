@@ -32,8 +32,10 @@ const qHypercubeDef = {
           qFieldDefs: ["%KEY_VEHICLE"],
           qSortCriterias: [
             {
-              qSortByNumeric: 1,
-              qSortByAscii: 1
+              qSortByExpression: 1,
+              qExpression: {
+                qv: `if(Model=[Model Benchmark] and [UID Code]=[UID Benchmark], 1, 200)`
+              }
             }
           ]
         },

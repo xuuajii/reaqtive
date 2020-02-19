@@ -22,6 +22,7 @@
     background: linear-gradient(0deg, #ffffff57 0%, rgba(91, 136, 217, 0) 100%);
     h4{
       font-weight: bold;
+      width:100%;
     }
 }
 
@@ -29,10 +30,12 @@
   position: absolute !important;
   bottom: 0px;
   background: linear-gradient(0deg, #ffffff94 30%, rgba(255, 255, 255, 0.1) 100%);
+  min-width: 100%;
   /*left: 50%;
   transform: translateX(-50%)*/
   h4{
     font-weight: bold;
+    min-width:100%;
   }
 }
 
@@ -74,4 +77,3 @@
       background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(91,136,217,0) 100%);
     }
   }
-  

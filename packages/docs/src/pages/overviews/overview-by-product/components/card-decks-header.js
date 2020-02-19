@@ -12,7 +12,8 @@ import JeepLogo from "../../../../images/Brand/jeep.png";
 
 const CardDecksHeader = props => {
 
- const brand = props.brand;
+  const brand = props.brand;
+  const brandImage = props.brandImage;
   return (
     <div>
       <div className="container full-screen">
@@ -34,7 +35,7 @@ const CardDecksHeader = props => {
           <div className="col-auto col-sm-auto col-md-auto">
             <div style={{ display: "flex", alignItems: "center" }}>
               <BrandLogo
-                brandImage={getBrandLogo(brand)}
+                brandImage={brandImage}
                 position={"relative"}
                 top={"0px"}
                 height={"50px"}
@@ -82,7 +83,7 @@ const changeTitleColorbyBrand = brand => {
         break;
     }
   };
-  
+
   const getBrandLogo = brand => {
     switch (brand) {
       case "ALFA ROMEO":
