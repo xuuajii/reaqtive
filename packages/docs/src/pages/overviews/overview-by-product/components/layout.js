@@ -8,6 +8,7 @@ import { RqtvRenderer } from "@reaqtive/components";
 import { extractSubNodes } from "../../../../example-components/helpers";
 import Card from "../../../../shared-components/layout/card/Card";
 import { useHistory } from "react-router-dom";
+import {flagsImgFolder} from '../../../../helpers'
 
 let gradient;
 const Layout = props => {
@@ -20,6 +21,13 @@ const Layout = props => {
   const qPivotDataPages = qLayout && qLayout.qHyperCube.qPivotDataPages;
   const noData = qLayout && qPivotDataPages.length === 0;
   const { qData, qLeft, qTop } = (qPivotDataPages && qPivotDataPages[0]) || {};
+
+  const extractBodyImages = (item, depth) => {
+    const bodyImageVaue = extractSubNodes(item, depth)
+    const bodyImageUrl = `${flagsImgFolder}/${bodyImageVaue.qText}_rounded.svg`
+    //console.log('/images/flags/at_rounded.svg',bodyImageUrl)
+    return bodyImageUrl
+  }
   const cards =
     qPivotDataPages && qPivotDataPages[0] && qPivotDataPages[0].qLeft.map((product, index) => {
       return {
@@ -31,7 +39,7 @@ const Layout = props => {
         cardBody: qTop&&qTop.map((bodyRow, bodyIndex) => {
           return {
             bodyLabel: qTop&&extractSubNodes(qTop[bodyIndex], 0),
-            bodyImage: qTop&&extractSubNodes(qTop[bodyIndex], 1),
+            bodyImage: qTop&&extractBodyImages(qTop[bodyIndex], 1),
             bodyMeasures: qData&&qData[index].filter((bodyCell, bodyCellIndex) => {
               return (
                 Math.floor(bodyCellIndex / qMeasureInfo.length) === bodyIndex
