@@ -21,7 +21,7 @@ var _currentSelectionsField = _interopRequireDefault(require("./current-selectio
 
 var _rqtvCurrentSelectionsToolbar = _interopRequireDefault(require("./rqtv-current-selections-toolbar"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\current-selections\\rqtv-current-selections-modal.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\current-selections\\rqtv-current-selections-modal.js";
 
 const RqtvCurrentSelectionsModal = props => {
   const modalBodyEl = (0, _react.useRef)();

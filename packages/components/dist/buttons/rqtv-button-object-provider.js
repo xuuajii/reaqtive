@@ -21,11 +21,11 @@ var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button-object-provider.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button-object-provider.js";
 
 const RqtvButtonObjectProvider = props => {
   const appContext = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
-  const ripple = appContext.theme && appContext.theme.ripple ? 'ripple' : props.ripple;
+  const ripple = appContext && appContext.theme && appContext.theme.ripple ? 'ripple' : props.ripple;
   const qButtonDef = (0, _react.useMemo)(() => {
     return {
       "qInfo": {
@@ -44,13 +44,11 @@ const RqtvButtonObjectProvider = props => {
     };
   }, [props.qLabelExpr, props.qColorExpr]);
   const layoutProps = {
-    className: props.className ? props.className : "".concat(props.color, " ").concat('text-' + props.fontColor, " ").concat(props.className),
+    className: props.className ? props.className : '',
     onClick: props.onClick,
     label: props.label,
     ripple: ripple,
-    style: (0, _objectSpread2.default)({
-      fontSize: props.fontSize
-    }, props.style),
+    style: (0, _objectSpread2.default)({}, props.style),
     showCaret: props.showCaret
   };
 

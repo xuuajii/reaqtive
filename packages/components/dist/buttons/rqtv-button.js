@@ -15,7 +15,7 @@ var _layout = require("@reaqtive/layout");
 
 var _rqtvButtonObjectProvider = _interopRequireDefault(require("./rqtv-button-object-provider"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button.js";
 
 const RqtvButtonLayout = props => {
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
@@ -46,26 +46,17 @@ const RqtvButton = props => _react.default.createElement(_rqtvButtonObjectProvid
   __self: void 0
 }));
 
-const fontSizePropCheck = (props, propName, componentName) => {
-  if (!(typeof props[propName] === 'string' && (props[propName].indexOf('px') !== -1 || props[propName].indexOf('rem') !== -1) || typeof props[propName] === 'number')) {
-    return new Error('Invalid prop `' + propName + '` supplied to' + ' `' + componentName + '`. Validation failed. Expected a number or a string containing rem or px');
-  }
-};
-
 RqtvButton.propTypes = {
   label: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
   color: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired,
   fontColor: _propTypes.default.string,
-  fontSize: fontSizePropCheck,
   ripple: _propTypes.default.bool,
   style: _propTypes.default.object
 };
 RqtvButton.defaultProps = {
   label: '',
-  color: 'primary',
   fontColor: 'light',
-  fontSize: '1rem',
   ripple: true,
   style: {}
 };
