@@ -26,38 +26,18 @@ const RqtvButton = props =>
 </RqtvButtonObjectProvider>
 
 
-const fontSizePropCheck = (props, propName, componentName) =>{
-  if (
-      !(
-        (
-          typeof props[propName]==='string' &&
-          (props[propName].indexOf('px')!==-1||props[propName].indexOf('rem')!==-1)
-        )
-        ||
-        (typeof props[propName]==='number')
-      )
-    ){
-      return new Error(
-        'Invalid prop `' + propName + '` supplied to' +
-        ' `' + componentName + '`. Validation failed. Expected a number or a string containing rem or px'
-      );
-  }
-}
 RqtvButton.propTypes = {
   label:PropTypes.oneOfType([PropTypes.string,PropTypes.element]),
   color:PropTypes.string,
   onClick:PropTypes.func.isRequired,
   fontColor:PropTypes.string,
-  fontSize:fontSizePropCheck,
   ripple:PropTypes.bool,
   style:PropTypes.object
 }
 
 RqtvButton.defaultProps = {
   label:'',
-  color:'primary',
   fontColor:'light',
-  fontSize:'1rem',
   ripple:true,
   style:{}
 }

@@ -5,10 +5,16 @@
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import {Modal,ModalDialog,ModalHeader,ModalBody,ModalFooter} from '@reaqtive/layout'
-import RqtvListbox from '../rqtv-listbox/index'
 import {RqtvButton} from '../../index'
 import {normalizeExpression} from '../../helpers'
 import {useQFieldHandler} from '@reaqtive/q'
+import RqtvListbox from '../rqtv-listbox/index'
+
+/**
+ * RqtvModalListbox
+ * It allows you to wrap a listbox inside a modal: the listbox will be hidden and a button will be shown.
+ * Clicking the button the listbox will appear inside a modal
+ */
 
 const RqtvModalListbox = props => {
   const [showModal, setShowModal] = useState(false)
@@ -35,7 +41,13 @@ const RqtvModalListbox = props => {
   const listboxProps ={showHeaderButtonbar:true, alwaysShowSearch:true, ...props.listboxProps}
   return(
     <div>
-      <RqtvButton onClick={openModal} label={props.listboxProps.qFieldExpr} qLabelExpr={qLabelExpr} />
+      <RqtvButton
+        onClick={openModal}
+        label={props.listboxProps.qFieldExpr}
+        qLabelExpr={qLabelExpr}
+        className={props.buttonClassName}
+        style={props.buttonStyle}
+      />
       <Modal open={showModal} onClose={handleClose}>
         <ModalDialog>
           <ModalHeader title=" " close={handleClose} showDismiss={true}/>
@@ -54,11 +66,27 @@ const RqtvModalListbox = props => {
 }
 
 RqtvModalListbox.propTypes = {
-  qLabelExpr:PropTypes.string
+  /**
+   * The expression used in the listbox title and in the button that toggles the listbox
+   */
+  qLabelExpr:PropTypes.string,
+  /**
+   * className for the dropdown button
+   */
+  buttonClassName:PropTypes.string,
+  /**
+   * style object to customize the dropdown button
+   */
+  buttonStyle:PropTypes.object,
+  /**
+   * the props which will be passed to the listbox
+   */
+  listboxProps:PropTypes.object
 }
 
 RqtvModalListbox.defaultProps = {
-
+  buttonStyle:{},
+  buttonClassName:'primary text-light'
 }
 
 export default RqtvModalListbox
