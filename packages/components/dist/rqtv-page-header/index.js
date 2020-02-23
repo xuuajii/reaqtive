@@ -19,7 +19,7 @@ const RqtvPageHeader = props => {
   const rqtvPage = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
   const pageData = rqtvPage.pageData,
         qTitle = rqtvPage.qTitle;
-  const title = props.title || qTitle || pageData.title;
+  const title = props.title || qTitle !== '' && qTitle && qTitle || pageData.title;
   return _react.default.createElement(_layout.Navbar, {
     className: "page-header",
     __source: {

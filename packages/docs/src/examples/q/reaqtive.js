@@ -27,6 +27,7 @@ const MyReaqtiveComponent = props => {
       <MyQGenericObject/>
       <MyQVariable/>
       <MyRqtvListbox/>*/}
+      <MyRqtvDropdownFilter/>
       <MyRqtvModalListbox/>
       <MyRqtvSearchField/>
     </Reaqtive>

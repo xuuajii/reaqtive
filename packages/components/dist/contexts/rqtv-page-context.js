@@ -135,9 +135,11 @@ const RqtvPageProvider = props => {
 exports.RqtvPageProvider = RqtvPageProvider;
 RqtvPageProvider.propTypes = {
   triggers: _propTypes.default.array.isRequired,
-  qConditionExpr: _propTypes.default.string
+  qConditionExpr: _propTypes.default.string,
+  qTitleExpr: _propTypes.default.string
 };
 RqtvPageProvider.defaultProps = {
   triggers: [],
-  qConditionExpr: ''
+  qConditionExpr: "=''",
+  qTitleExpr: "=''"
 };

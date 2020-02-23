@@ -13,50 +13,47 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _layout = require("@reaqtive/layout");
 
-var _rqtvButtonObjectProvider = _interopRequireDefault(require("./rqtv-button-object-provider"));
+var _q = require("@reaqtive/q");
+
+var _qButtonObjectDef = _interopRequireDefault(require("./q-button-object-def"));
 
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button.js";
 
-const RqtvButtonLayout = props => {
-  const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
-  return _react.default.createElement(_layout.Button, {
-    className: props.className,
-    ripple: props.ripple,
-    style: props.style,
-    onClick: props.onClick,
+const RqtvButton = props => {
+  const qObjectDef = (0, _qButtonObjectDef.default)(props.qLabelExpr, props.qColorExpr);
+  return _react.default.createElement(_q.QGenericObject, {
+    qObjectDef: qObjectDef,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 13
     },
     __self: void 0
-  }, qLayout && qLayout.label ? qLayout.label : props.label);
+  }, qGenericObject => {
+    const qLayout = qGenericObject.qLayoutHandler.qLayout;
+    const label = qLayout && qLayout.label ? qLayout.label : props.label;
+    return _react.default.createElement(_layout.Button, {
+      className: props.className,
+      ripple: props.ripple,
+      style: props.style,
+      onClick: props.onClick,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      },
+      __self: void 0
+    }, label);
+  });
 };
-
-const RqtvButton = props => _react.default.createElement(_rqtvButtonObjectProvider.default, Object.assign({}, props, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 24
-  },
-  __self: void 0
-}), _react.default.createElement(RqtvButtonLayout, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 25
-  },
-  __self: void 0
-}));
 
 RqtvButton.propTypes = {
   label: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
   color: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired,
-  fontColor: _propTypes.default.string,
   ripple: _propTypes.default.bool,
   style: _propTypes.default.object
 };
 RqtvButton.defaultProps = {
-  label: '',
-  fontColor: 'light',
+  label: ' ',
   ripple: true,
   style: {}
 };

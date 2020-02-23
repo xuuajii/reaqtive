@@ -6,8 +6,7 @@
 import './vendors/lui-icons/index.css';
 
 // components
-export { default as Button} from './button';
-export * from './button';
+export * from './buttons/index';
 
 export { default as Backdrop} from './backdrop';
 export * from './backdrop';

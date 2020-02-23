@@ -5,39 +5,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Button} from '@reaqtive/layout'
-import RqtvButtonObjectProvider from './rqtv-button-object-provider'
-const RqtvButtonLayout = props => {
-  const qLayout=props.qLayoutHandler&&props.qLayoutHandler.qLayout
-
+import {QGenericObject} from '@reaqtive/q'
+import qButtonObjectDef from './q-button-object-def'
+const RqtvButton = props => {
+  const qObjectDef = qButtonObjectDef(props.qLabelExpr, props.qColorExpr)
   return(
-    <Button
-      className={props.className}
-      ripple={props.ripple}
-      style={props.style}
-      onClick={props.onClick}
-    >
-      {qLayout&&qLayout.label?qLayout.label:props.label}
-    </Button>
+    <QGenericObject qObjectDef={qObjectDef}>
+    {(qGenericObject)=>{
+      const qLayout = qGenericObject.qLayoutHandler.qLayout
+      const label = qLayout&&qLayout.label?qLayout.label:props.label;
+      return(
+        <Button
+        className={props.className}
+        ripple={props.ripple}
+        style={props.style}
+        onClick={props.onClick}
+        >
+          {label}
+        </Button>
+      )}
+    }
+    </QGenericObject>
   )
 }
-const RqtvButton = props =>
-<RqtvButtonObjectProvider {...props}>
-  <RqtvButtonLayout/>
-</RqtvButtonObjectProvider>
+
 
 
 RqtvButton.propTypes = {
   label:PropTypes.oneOfType([PropTypes.string,PropTypes.element]),
   color:PropTypes.string,
   onClick:PropTypes.func.isRequired,
-  fontColor:PropTypes.string,
   ripple:PropTypes.bool,
   style:PropTypes.object
 }
 
 RqtvButton.defaultProps = {
-  label:'',
-  fontColor:'light',
+  label:' ',
   ripple:true,
   style:{}
 }

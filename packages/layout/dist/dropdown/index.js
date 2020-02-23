@@ -7,7 +7,7 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.DropdownMenuItem = exports.DropdownMenu = exports.DropdownButton = exports.Dropdown = void 0;
+exports.DropdownMenuItem = exports.DropdownMenu = exports.Dropdown = void 0;
 
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
 
@@ -18,8 +18,6 @@ var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _index = require("../index");
-
-var _button = _interopRequireDefault(require("../button"));
 
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\dropdown\\index.js";
 
@@ -41,7 +39,7 @@ const Dropdown = props => {
     ref: dropdownEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 21
     },
     __self: void 0
   }, props.children.map((child, index) => _react.default.cloneElement(child, {
@@ -60,37 +58,6 @@ Dropdown.defaultProps = {
   clickOnItemClose: true
 };
 
-const DropdownButton = props => {
-  return _react.default.createElement(_button.default, {
-    className: "dropdown-toggle hide-caret ".concat(props.className),
-    type: "button",
-    onClick: props.toggleMenu,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 40
-    },
-    __self: void 0
-  }, props.label, !props.hideCaret && _react.default.createElement(_index.LuiIcon, {
-    iconType: "triangle-".concat(props.show ? 'top' : 'bottom'),
-    className: "caret",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 42
-    },
-    __self: void 0
-  })); //{props.icon()}
-};
-
-exports.DropdownButton = DropdownButton;
-DropdownButton.propTypes = {
-  className: _propTypes.default.string,
-  hideCaret: _propTypes.default.bool
-};
-DropdownButton.defaultProps = {
-  className: 'btn-primary',
-  hideCaret: false
-};
-
 const DropdownMenu = _react.default.forwardRef((props, ref) => {
   return _react.default.createElement("div", {
     className: "dropdown-menu ".concat(props.show ? 'show' : '', " dropdown-menu-").concat(props.align),
@@ -98,13 +65,13 @@ const DropdownMenu = _react.default.forwardRef((props, ref) => {
     ref: ref,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 39
     },
     __self: void 0
   }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
@@ -135,7 +102,7 @@ const DropdownMenuItem = props => {
     style: props.style,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 63
     },
     __self: void 0
   }, props.label ? props.label : props.children);

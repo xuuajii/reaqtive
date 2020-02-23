@@ -7,62 +7,50 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
-
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _layout = require("@reaqtive/layout");
 
-var _rqtvButtonObjectProvider = _interopRequireDefault(require("./rqtv-button-object-provider"));
+var _q = require("@reaqtive/q");
+
+var _qButtonObjectDef = _interopRequireDefault(require("./q-button-object-def"));
 
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-dropdown-button.js";
 
-const RqtvDropdownButtonLayout = props => {
-  //console.log(props)
-  const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
-  const showCaret = props.showCaret,
-        className = props.className;
-  return _react.default.createElement(_layout.Button, {
-    className: className,
-    ripple: props.ripple,
-    style: (0, _objectSpread2.default)({}, props.style),
-    onClick: props.onClick,
+const RqtvDropdownButton = props => {
+  const qObjectDef = (0, _qButtonObjectDef.default)(props.qLabelExpr, props.qColorExpr);
+  return _react.default.createElement(_q.QGenericObject, {
+    qObjectDef: qObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 13
     },
     __self: void 0
-  }, qLayout && qLayout.label ? qLayout.label : props.label, showCaret && _react.default.createElement(_layout.LuiIcon, {
-    iconType: "triangle-".concat(props.show ? 'top' : 'bottom'),
-    className: "caret",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 24
-    },
-    __self: void 0
-  }));
+  }, qGenericObject => {
+    const qLayout = qGenericObject.qLayoutHandler.qLayout;
+    const label = qLayout && qLayout.label ? qLayout.label : props.label;
+    return _react.default.createElement(_layout.DropdownButton, {
+      className: props.className,
+      ripple: props.ripple,
+      style: props.style,
+      onClick: props.onClick,
+      show: props.show,
+      showCaret: props.showCaret,
+      label: label,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      },
+      __self: void 0
+    });
+  });
 };
 
-const RqtvDropdownButton = props => _react.default.createElement(_rqtvButtonObjectProvider.default, Object.assign({}, props, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 29
-  },
-  __self: void 0
-}), _react.default.createElement(RqtvDropdownButtonLayout, Object.assign({
-  show: props.show
-}, props, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 30
-  },
-  __self: void 0
-})));
-
 RqtvDropdownButton.propTypes = {
-  label: _propTypes.default.string,
+  label: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
+  color: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired,
   ripple: _propTypes.default.bool,
   style: _propTypes.default.object

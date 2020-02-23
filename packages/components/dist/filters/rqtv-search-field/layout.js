@@ -32,7 +32,9 @@ var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components
 const Layout = props => {
   const dropdownMenuHeight = props.dropdownMenuHeight,
         dropdownMenuWidth = props.dropdownMenuWidth,
-        hideHorizontalScrollbar = props.hideHorizontalScrollbar;
+        hideHorizontalScrollbar = props.hideHorizontalScrollbar,
+        dropdownMenuItemStyle = props.dropdownMenuItemStyle,
+        placeholder = props.placeholder;
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
   const qDataPages = qLayout && qLayout.qListObject.qDataPages;
   const qSize = qLayout && qLayout.qListObject.qSize;
@@ -88,14 +90,14 @@ const Layout = props => {
     className: "rqtv-search-field",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 58
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "rqtv-search-field-header",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 59
     },
     __self: void 0
   }, _react.default.createElement(_dropdownToolbar.default, {
@@ -106,9 +108,10 @@ const Layout = props => {
     isSelecting: isSelecting,
     quickSelectionMode: props.quickSelectionMode,
     showSearch: true,
+    placeholder: placeholder,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 60
     },
     __self: void 0
   })), _react.default.createElement(_layout.DropdownMenu, {
@@ -138,6 +141,8 @@ const Layout = props => {
     height: listHeight,
     width: dropdownMenuWidth,
     hideHorizontalScrollbar: hideHorizontalScrollbar,
+    hideHorizontalScrollbar: hideHorizontalScrollbar,
+    dropdownMenuItemStyle: dropdownMenuItemStyle,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 74

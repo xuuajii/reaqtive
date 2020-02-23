@@ -5,8 +5,6 @@
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import {useOutsideEventListener} from '../index'
-import Button from '../button'
-import {LuiIcon} from '../index'
 
 
 const Dropdown = props => {
@@ -33,26 +31,6 @@ Dropdown.propTypes = {
 
 Dropdown.defaultProps = {
   clickOnItemClose:true
-}
-
-const DropdownButton = props => {
-  return(
-    <Button className={`dropdown-toggle hide-caret ${props.className}`} type="button" onClick={props.toggleMenu}>
-      {props.label}
-      {!props.hideCaret&&<LuiIcon iconType={`triangle-${props.show?'top':'bottom'}`} className="caret"/>}
-    </Button>
-  )
-  //{props.icon()}
-}
-
-DropdownButton.propTypes = {
-  className:PropTypes.string,
-  hideCaret:PropTypes.bool
-}
-
-DropdownButton.defaultProps = {
-  className:'btn-primary',
-  hideCaret:false
 }
 
 const DropdownMenu = React.forwardRef((props, ref) => {
@@ -88,4 +66,4 @@ const DropdownMenuItem = props => {
   )
 }
 
-export {Dropdown, DropdownButton, DropdownMenu, DropdownMenuItem}
+export {Dropdown, DropdownMenu, DropdownMenuItem}

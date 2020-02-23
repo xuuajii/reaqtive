@@ -4,35 +4,37 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import {LuiIcon} from '@reaqtive/layout'
-import RqtvButtonObjectProvider from './rqtv-button-object-provider'
-import {Button} from '@reaqtive/layout'
-
-const RqtvDropdownButtonLayout = props => {
-  //console.log(props)
-  const qLayout=props.qLayoutHandler&&props.qLayoutHandler.qLayout
-  const {showCaret, className }=props
-
+import {DropdownButton} from '@reaqtive/layout'
+import {QGenericObject} from '@reaqtive/q'
+import qButtonObjectDef from './q-button-object-def'
+const RqtvDropdownButton = props => {
+  const qObjectDef = qButtonObjectDef(props.qLabelExpr, props.qColorExpr)
   return(
-    <Button
-      className={className}
-      ripple={props.ripple}
-      style={{...props.style}}
-      onClick={props.onClick}
-    >
-      {qLayout&&qLayout.label?qLayout.label:props.label}
-      {showCaret&&<LuiIcon iconType={`triangle-${props.show?'top':'bottom'}`} className="caret"/>}
-    </Button>
+    <QGenericObject qObjectDef={qObjectDef}>
+    {(qGenericObject)=>{
+      const qLayout = qGenericObject.qLayoutHandler.qLayout
+      const label = qLayout&&qLayout.label?qLayout.label:props.label;
+      return(
+        <DropdownButton
+          className={props.className}
+          ripple={props.ripple}
+          style={props.style}
+          onClick={props.onClick}
+          show={props.show}
+          showCaret={props.showCaret}
+          label={label}
+        />
+      )}
+    }
+    </QGenericObject>
   )
 }
-const RqtvDropdownButton = props =>
-<RqtvButtonObjectProvider {...props}>
-  <RqtvDropdownButtonLayout show={props.show} {...props}/>
-</RqtvButtonObjectProvider>
+
 
 
 RqtvDropdownButton.propTypes = {
-  label:PropTypes.string,
+  label:PropTypes.oneOfType([PropTypes.string,PropTypes.element]),
+  color:PropTypes.string,
   onClick:PropTypes.func.isRequired,
   ripple:PropTypes.bool,
   style:PropTypes.object
@@ -45,4 +47,4 @@ RqtvDropdownButton.defaultProps = {
 }
 
 
-export default RqtvDropdownButton
+export  default RqtvDropdownButton
