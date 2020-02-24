@@ -21,7 +21,7 @@ import {
 //import BasketAnalysis from "../basket-analysis";
 
 const OverviewByProduct = props => {
-  let match = useRouteMatch();
+  const match = useRouteMatch();
   return (
     <>
       <RqtvPage
