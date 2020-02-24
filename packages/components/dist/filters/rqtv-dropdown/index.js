@@ -25,9 +25,18 @@ var _rqtvDropdownButton = _interopRequireDefault(require("../../buttons/rqtv-dro
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
 
-const RqtvDropdown = props => {
+/**
+ * RqtvDropdownFilter
+ * It is a listbox shaped as a dropdown.
+ * It has the same responsive behaviour as bootstrap dropdown when wrapped in a collapse
+ *
+ * You can twek its behavuiour using props.
+ *
+ * You can customize its styles using css or using props.
+ */
+const RqtvDropdownFilter = props => {
   const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         show = _useState2[0],
@@ -59,12 +68,13 @@ const RqtvDropdown = props => {
   const qFieldExpr = props.qFieldExpr,
         qSortObject = props.qSortObject,
         qLabelExpr = props.qLabelExpr,
-        qId = props.qId;
+        showCaret = props.showCaret,
+        buttonStyle = props.buttonStyle,
+        buttonClassName = props.buttonClassName;
   const qObjectDef = (0, _index.useMapPropsToDef)({
     qFieldExpr,
     qSortObject,
-    qLabelExpr,
-    qId
+    qLabelExpr
   });
   const qButtonLabelExpr = props.qLabelExpr ? props.qLabelExpr : qObjectDef.label.qStringExpression.qExpr;
   return _react.default.createElement("div", {
@@ -72,17 +82,19 @@ const RqtvDropdown = props => {
     ref: dropdownEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 45
     },
     __self: void 0
   }, _react.default.createElement(_rqtvDropdownButton.default, {
     onClick: handleClick,
     show: show,
     qLabelExpr: qButtonLabelExpr,
-    showCaret: true,
+    showCaret: showCaret,
+    style: buttonStyle,
+    className: buttonClassName,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 46
     },
     __self: void 0
   }), show && _react.default.createElement(_q.QGenericObject, {
@@ -90,13 +102,13 @@ const RqtvDropdown = props => {
     quickSelectionMode: props.quickSelectionMode,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 55
     },
     __self: void 0
   }, _react.default.createElement(_rqtvListObject.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 56
     },
     __self: void 0
   }), _react.default.createElement(_layout.default, Object.assign({}, props, {
@@ -104,29 +116,115 @@ const RqtvDropdown = props => {
     hideDropdownMenu: hideDropdownMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 57
     },
     __self: void 0
   })))));
 };
 
-RqtvDropdown.propTypes = {
+RqtvDropdownFilter.propTypes = {
+  /**
+   * The expression which will be used in the listbox. It can be a fieldname or a valid expression
+   */
   qFieldExpr: _propTypes.default.string.isRequired,
+
+  /**
+   * The expression of the title used in the dropdown button (by default it shows the name of the field and the count distinct of that
+   * field or the selected value if there is only one selected value)
+   */
   qFieldLabelExpr: _propTypes.default.string,
-  qSortObject: _propTypes.default.object,
+  qSortObject: _propTypes.default.shape({
+    /**
+     * Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+     */
+    qSortByState: _propTypes.default.number,
+
+    /**
+     * Sorts the field values by frequency (number of occurrences in the field).
+     */
+    qSortByFrequency: _propTypes.default.number,
+
+    /**
+     * Sorts the field values by numeric value.
+     */
+    qSortByNumeric: _propTypes.default.number,
+
+    /**
+     * Sorts the field by alphabetical order.
+     */
+    qSortByAscii: _propTypes.default.number,
+
+    /**
+     * Sorts the field values by the initial load order.
+     */
+    qSortByLoadOrder: _propTypes.default.number,
+
+    /**
+     * Sorts the field by expression.
+     */
+    qSortByExpression: _propTypes.default.number,
+
+    /**
+     * Sort by expression.
+     */
+    qExpression: _propTypes.default.shape({
+      qv: _propTypes.default.string
+    }),
+    qSortByGreyness: _propTypes.default.number
+  }),
+
+  /**
+   * Show/hide the search input when the dropdown is open
+   */
   showSearch: _propTypes.default.bool,
+
+  /**
+   * Height of the dropdown when is open
+   */
   dropdownMenuHeight: _propTypes.default.number,
+
+  /**
+   * Width of the dropdown when is open
+   */
   dropdownMenuWidth: _propTypes.default.number,
+
+  /**
+   * Show/hide the caret in the dropdown button
+   */
   showCaret: _propTypes.default.bool,
-  buttonColor: _propTypes.default.string,
-  buttonFontColor: _propTypes.default.string,
+
+  /**
+   * style object to customize the dropdown button
+   */
   buttonStyle: _propTypes.default.object,
+
+  /**
+   * className for the dropdown button
+   */
+  buttonClassName: _propTypes.default.string,
+
+  /**
+   * style object to customize the dropdown menu
+   */
   dropdownMenuStyle: _propTypes.default.object,
+
+  /**
+   * style object to customize the style of the dropdown menu items (it can be overwritten by selections color coding)
+   */
   dropdownMenuItemStyle: _propTypes.default.object,
+
+  /**
+   * Show/hide overflowX
+   */
   hideHorizontalScrollbar: _propTypes.default.bool,
+
+  /**
+   * if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply),
+   * if false it uses Qlik View selection behaviour (apply selections immediately)
+   */
   quickSelectionMode: _propTypes.default.bool
 };
-RqtvDropdown.defaultProps = {
+RqtvDropdownFilter.defaultProps = {
   qSortObject: {
     qSortByState: 1,
     qSortByFrequency: 0,
@@ -139,13 +237,12 @@ RqtvDropdown.defaultProps = {
   dropdownMenuHeight: 300,
   dropdownMenuWidth: 265,
   showCaret: true,
-  buttonColor: 'primary',
-  buttonFontColor: 'light',
   buttonStyle: {},
+  buttonClassName: 'primary text-light',
   dropdownMenuStyle: {},
   dropdownMenuItemStyle: {},
   hideHorizontalScrollbar: false,
   quickSelectionMode: false
 };
-var _default = RqtvDropdown;
+var _default = RqtvDropdownFilter;
 exports.default = _default;

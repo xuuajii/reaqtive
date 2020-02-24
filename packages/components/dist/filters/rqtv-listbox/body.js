@@ -13,7 +13,7 @@ var _layout = require("@reaqtive/layout");
 
 var _qScrollHandler = _interopRequireDefault(require("../shared/q-scroll-handler"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\body.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\body.js";
 
 const Body = props => {
   const selectValue = props.selectValue,
@@ -21,13 +21,14 @@ const Body = props => {
         qSize = props.qSize,
         getDataPage = props.getDataPage,
         height = props.height,
-        bodyEl = props.bodyEl; //console.log(height)
-
+        bodyEl = props.bodyEl,
+        listStyle = props.listStyle,
+        itemStyle = props.itemStyle;
   return qDataPages && _react.default.createElement("div", {
     className: "rqtv-listbox-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 13
     },
     __self: void 0
   }, _react.default.createElement(_qScrollHandler.default, {
@@ -39,22 +40,24 @@ const Body = props => {
     bodyEl: bodyEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 14
     },
     __self: void 0
   }, _react.default.createElement(_layout.ListGroup, {
+    style: listStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 15
     },
     __self: void 0
   }, qDataPages && qDataPages[0].qMatrix.map(item => _react.default.createElement(_layout.ListGroupItem, {
     className: item[0].qState,
     key: item[0].qElemNumber,
     onClick: () => selectValue(item[0].qElemNumber),
+    style: itemStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 18
     },
     __self: void 0
   }, item[0].qText)))));

@@ -15,13 +15,16 @@ var _q = require("@reaqtive/q");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\body.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\body.js";
 
 const Body = props => {
   const rqtvListObject = props.rqtvListObject,
         qSize = props.qSize,
         qDataPages = props.qDataPages,
-        goToFirstPageAfterSelection = props.goToFirstPageAfterSelection;
+        goToFirstPageAfterSelection = props.goToFirstPageAfterSelection,
+        buttonSize = props.buttonSize,
+        buttonsClassName = props.buttonsClassName,
+        buttonsStyle = props.buttonsStyle;
   const selectValue = rqtvListObject.selectValue;
 
   const getScrollData = qDisplayArea => {
@@ -37,6 +40,7 @@ const Body = props => {
     goToFirstPageAfterSelection && pagination.setCurrentPage(1);
   };
 
+  const className = "rqtv-btn ".concat(buttonSize, " ").concat(buttonsClassName);
   return _react.default.createElement(_layout.ButtonGroup, {
     className: "rqtv-button-bar",
     __source: {
@@ -46,8 +50,9 @@ const Body = props => {
     __self: void 0
   }, pagination.currentPage !== 1 && _react.default.createElement(_layout.Button, {
     type: "button",
-    className: "rqtv-btn",
+    className: className,
     onClick: () => pagination.setCurrentPage(pagination.currentPage - 1),
+    style: buttonsStyle,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 24
@@ -56,8 +61,9 @@ const Body = props => {
   }, "<"), qDataPages && qDataPages[0].qMatrix.map(item => _react.default.createElement(_layout.Button, {
     key: item[0].qElemNumber,
     type: "button",
-    className: "rqtv-btn ".concat(props.buttonSize, " ").concat(item[0].qState, " "),
+    className: "".concat(className, " ").concat(item[0].qState, " "),
     onClick: () => selectValue(item[0].qElemNumber, selectionCallback),
+    style: buttonsStyle,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 29
@@ -65,11 +71,12 @@ const Body = props => {
     __self: void 0
   }, item[0].qText)), pagination.currentPage < pagination.lastPage && _react.default.createElement(_layout.Button, {
     type: "button",
-    className: "rqtv-btn",
+    className: className,
     onClick: () => pagination.setCurrentPage(pagination.currentPage + 1),
+    style: buttonsStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 41
     },
     __self: void 0
   }, ">"));

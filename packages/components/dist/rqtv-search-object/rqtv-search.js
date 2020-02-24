@@ -29,7 +29,7 @@ var _q = require("@reaqtive/q");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\rqtv-search.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\rqtv-search.js";
 
 const AnimatedInput = props => {
   const expandFrom = props.expandFrom,

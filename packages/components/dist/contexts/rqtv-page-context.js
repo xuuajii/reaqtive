@@ -23,7 +23,7 @@ var _index = require("../hooks/index");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
 
 const RqtvPageContext = _react.default.createContext();
 
@@ -135,9 +135,11 @@ const RqtvPageProvider = props => {
 exports.RqtvPageProvider = RqtvPageProvider;
 RqtvPageProvider.propTypes = {
   triggers: _propTypes.default.array.isRequired,
-  qConditionExpr: _propTypes.default.string
+  qConditionExpr: _propTypes.default.string,
+  qTitleExpr: _propTypes.default.string
 };
 RqtvPageProvider.defaultProps = {
   triggers: [],
-  qConditionExpr: ''
+  qConditionExpr: "=''",
+  qTitleExpr: "=''"
 };

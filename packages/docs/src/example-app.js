@@ -33,10 +33,10 @@ const ExampleApp = props => {
             id={0}
             title='Home Page'
             exact={true}
-            qTitleExpr="=1+1"
             triggers={[
                 {type:'clearField',params:{fieldName:'Customer'}},
             ]}
+            qTitleExpr='=1+1'
           >
             <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
               <Home
