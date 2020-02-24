@@ -5,7 +5,11 @@ const PageHeader = props => {
   const rqtvPageContext = useContext(RqtvPageContext)
 
   const title = rqtvPageContext.qTitle||props.fallbackTitle
-  return <RqtvPageHeader title={title} />
+  return (
+    <div className="container-fluid">
+      <RqtvPageHeader title={title} />
+    </div>
+  )
 }
 
 export default PageHeader

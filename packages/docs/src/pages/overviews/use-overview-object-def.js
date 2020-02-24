@@ -1,4 +1,5 @@
 import {useMemo} from 'react'
+import {flagsBordersImgFolder} from '../../helpers'
 
 const useOverviewObjectDef = (marketArea) => {
   const qObjectDef = useMemo(()=>{
@@ -26,29 +27,51 @@ const useOverviewObjectDef = (marketArea) => {
                     qDef: {
                       qGrouping: "N", //${brand}
                       //qFieldDefs: ["Brand Benchmark"]
-                      qFieldDefs:[ `[Country ISO Code]`],
+                      qFieldDefs:[ `=''`],
                     },
                     qNullSuppression: true
                   },
                   {
                     qDef: {
                       qGrouping: "N",
-                      qFieldDefs: ["Submodel Benchmark"]
+                      qFieldDefs: [`='${flagsBordersImgFolder}/'&lower([Country ISO Code])&'.png'`]
                     },
                     qNullSuppression: true
                   },
                   {
-                  qDef: {
-                    qGrouping: "N",
-                    qFieldDefs: ["=if([UID Benchmark]=[UID Code], [Brand Image Benchmark])"]
+                    qDef: {
+                      qGrouping: "N",
+                      qFieldDefs: ["=' '"]
+                    },
+                      qNullSuppression: true
                   },
+                  {
+                    qDef:{
+                      qGrouping:"N",
+                      qFieldDefs:["=if([UID Benchmark]=[UID Code], [Submodel Benchmark])"],
+                      qSortCriterias: [
+                        {
+                          qSortByExpression: 1,
+                          qExpression: {
+                            qv: `=ord(left([Brand Benchmark],1))`
+                          }
+                        }
+                      ]
+                    },
+                    qNullSuppression: true
+                  },
+                  {
+                    qDef:{
+                      qGrouping:"N",
+                      qFieldDefs:["=if([UID Benchmark]=[UID Code], [Brand Image Benchmark])"],
+                    },
                     qNullSuppression: true
                   }
                 ],
                 qMeasures:[
                   {
                     qDef: {
-                      qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Private], reference)))`,
+                      qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Private], basket)))`,
                       //qDef: `avg([Vehicle Visual Price])`,
                       qLabel: "Visual Price",
                       qSortBy: {
@@ -59,7 +82,7 @@ const useOverviewObjectDef = (marketArea) => {
                   },
                   {
                     qDef: {
-                      qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Business], reference)))`,
+                      qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Business], basket)))`,
                         //qDef: `avg([Vehicle Visual Price])`,
                         qLabel: "Discounted Price Private",
                         qSortBy: {
@@ -70,7 +93,7 @@ const useOverviewObjectDef = (marketArea) => {
                   },
                   {
                     qDef: {
-                      qDef: `($(realIndex($(lastMonthSet), -, reference)))`,
+                      qDef: `($(realIndex($(lastMonthSet), -, basket)))`,
                       //qDef: `avg([Vehicle Visual Price])`,
                       qLabel: "Discounted Price Business",
                       qSortBy: {
@@ -80,7 +103,7 @@ const useOverviewObjectDef = (marketArea) => {
                     }
                   }
                 ],
-                qNoOfLeftDims: 2,
+                qNoOfLeftDims: 4,
                 qMode: "P",
                 qAlwaysFullyExpanded: true,
                 qIndentMode: false,
@@ -93,8 +116,7 @@ const useOverviewObjectDef = (marketArea) => {
                     qTop: 0,
                     qHeight: 300
                   }
-                ],
-                qColumnOrder: [0,1, 2, 3]
+                ]
               }
             }
     )

@@ -5,6 +5,7 @@
 import React from "react";
 import { QGenericObject } from "@reaqtive/q";
 import Layout from './layout';
+import {flagsImgFolder} from '../../../../helpers'
 
 const Cards = props => {
   let brand = props.brand;
@@ -62,10 +63,9 @@ const Cards = props => {
           {
             qDef: {
               qGrouping: "N",
-              qFieldDefs: [`=lower([Country ISO Code])`]
-
-              //qReverseSort: qReverseSort
+              qFieldDefs: [`='${flagsImgFolder}/'&lower([Country ISO Code])&'_rounded.svg'`],
             },
+            qAttributeExpressions:[{qExpression:'=only([Country ISO Code])',}],
             qNullSuppression: true
           }
 

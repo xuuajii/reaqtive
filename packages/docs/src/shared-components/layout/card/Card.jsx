@@ -2,16 +2,19 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React from "react";
+import React, {useState} from "react";
 import "./Card.scss";
 import { useHistory } from "react-router-dom";
 import CardLogo from "./Card-logo/card-logo";
 import CardKPI from "./Card-KPI/card-kpi";
 import CardBody from "./Card-Body/card-body";
-
+import cardPlaceholder from './images/card-img-placeholder.png'
 const Card = props => {
   let history = useHistory();
-
+  const [cardImgSrc, setCardImgSrc] = useState(props.img)
+  const onCardImgError = () => {
+    setCardImgSrc(cardPlaceholder)
+  }
   return (
     <div
       onClick={() => history.replace(props.redirect)}
@@ -25,9 +28,9 @@ const Card = props => {
           className={
             "col-auto px-3 mt-3" + (props.gradient ? " pickgradient" : "")
           }
-          style={{height:props.imgHeight}}
+          style={{height:props.imgHeight, minHeight:props.imgHeight, margin:'auto'}}
         >
-          <img className={"card-img"} src={props.img} alt="..." />
+          <img className={"card-img"} src={cardImgSrc} alt="..." onError={onCardImgError} style={{height:props.imgHeight, minHeight:props.imgHeight}}/>
         </div>
         <div
           style={{ bottom: props.cardInfoBottom, background: props.cardInfoBackground }}
@@ -55,8 +58,8 @@ const Card = props => {
 export default Card;
 
 Card.defaultProps = {
-  title: "Title",
-  text: "SubTitle",
+  title: " ",
+  text: " ",
   img: require("../../../images/placeholders/car.png"),
   brandImage: require("../../../images/placeholders/brand.png"),
   isInfoAbsolute: true,

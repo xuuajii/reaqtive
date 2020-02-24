@@ -18,6 +18,12 @@
     border-top: 0;
 }
 
+.card-body-label{  
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .card-property .label {
     color: $labelColor;
 }

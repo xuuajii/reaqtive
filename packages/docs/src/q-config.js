@@ -18,6 +18,13 @@ const qEnvironments = {
     prefix: '',
     appId: 'd487e0f7-ab0c-4332-b028-4ed460439f95'
   },
+  "FCA_CERT": {
+    host: 'lab-home.qliksense.fcagroup.com',
+    secure: true,
+    port: 443,
+    prefix: '',
+    appId: 'b11cb256-efc4-4e14-a3db-9c74099f450a'
+  },
 }
 
 const qConfig = qEnvironments[process.env.REACT_APP_QLIK_ENV];

@@ -32,14 +32,7 @@ const OverviewByProduct = props => {
         fallbackPage={match.path}
         qTitleExpr ="'basket analysis - '&only([Submodel Benchmark])&'-'&only([Country ISO Code])&' - '&$(lastMonthLabel)"
       >
-        <RqtvStandardTemplate
-          searchFieldsMatch={{ method: "include", mask: ["Cust*"] }}
-          useContainerFluid={false}
-          containerClassName={"full-screen"}
-          usePageHeader={false}
-        >
-          <BasketAnalysis />
-        </RqtvStandardTemplate>
+        <BasketAnalysis />
       </RqtvPage>
       <Route exact={true} path={match.path}>
         <RqtvPage

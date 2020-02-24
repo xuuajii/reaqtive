@@ -6,7 +6,7 @@ import React, {useState} from 'react';
 
 const Avatar = (props) => {
     const {avatarUrl, avatarPlaceHolder, isRounded} = props;
-    
+
     const [imgError, setImgError]=useState()
 
     const replaceEmptyImage = () => {
@@ -20,6 +20,7 @@ const Avatar = (props) => {
             src={avatarUrl}
             height={props.height}
             width={props.width}
+            style={{maxWidth:'130%'}}
             type="image/svg+xml"
         />
 

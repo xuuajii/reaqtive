@@ -14,6 +14,8 @@
     background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,transparent),color-stop(95%,#fff));
     background: -webkit-linear-gradient(top,transparent 20%,#fff 95%);
     background: linear-gradient(180deg,transparent 20%,#fff 95%);
+    width:auto !important;
+    max-width:100%;
 }
 
 .card-info{

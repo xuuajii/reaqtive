@@ -38,18 +38,18 @@ export default function CardBody(props) {
                       <div className="col-5 my-1">
                         {
                           <Avatar
-                            avatarPlaceHolder={item.bodyImage.qText}
-                            avatarUrl={item.bodyImage}
+                            avatarPlaceHolder={item.bodyImgPlacehoder}
+                            avatarUrl={item.bodyImage.qText}
                             isRounded={true}
                             height={20}
                           />
                         }
                       </div>
                       <div
-                        className="col-7 px-0"
+                        className="col-7 px-0 card-body-label"
                         style={{
                           fontSize: "9px",
-                          fontWeight: "bold"
+                          fontWeight: "bold",
                         }}
                       >
                         {item.bodyLabel.qText}
@@ -59,13 +59,13 @@ export default function CardBody(props) {
                   <div className="col-6">
                     <div className="row text-center">
                       <div className="col-4 px-0">
-                        {item.bodyMeasures[0].qText}
+                        {item.bodyMeasures[0]&&item.bodyMeasures[0].qText}
                       </div>
                       <div className="col-4 px-0">
-                        {item.bodyMeasures[1].qText}
+                        {item.bodyMeasures[1]&&item.bodyMeasures[1].qText}
                       </div>
                       <div className="col-4 px-0">
-                        {item.bodyMeasures[2].qText}
+                        {item.bodyMeasures[2]&&item.bodyMeasures[2].qText}
                       </div>
                     </div>
                   </div>

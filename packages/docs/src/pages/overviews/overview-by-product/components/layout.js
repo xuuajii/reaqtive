@@ -39,7 +39,8 @@ const Layout = props => {
         cardBody: qTop&&qTop.map((bodyRow, bodyIndex) => {
           return {
             bodyLabel: qTop&&extractSubNodes(qTop[bodyIndex], 0),
-            bodyImage: qTop&&extractBodyImages(qTop[bodyIndex], 1),
+            bodyImage: qTop&&extractSubNodes(qTop[bodyIndex], 1),
+            bodyImgPlacehoder: qTop&&extractSubNodes(qTop[bodyIndex], 1).qAttrExps.qValues[0].qText,
             bodyMeasures: qData&&qData[index].filter((bodyCell, bodyCellIndex) => {
               return (
                 Math.floor(bodyCellIndex / qMeasureInfo.length) === bodyIndex
