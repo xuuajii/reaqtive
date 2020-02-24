@@ -24,7 +24,6 @@ const useMapPropsToDef = props => {
   const qObjectDef = (0, _react.useMemo)(() => {
     return props.qObjectDef ? props.qObjectDef : {
       "qInfo": {
-        "qId": "'".concat(props.qId, "'"),
         "qType": "ListObject"
       },
       "qListObjectDef": {

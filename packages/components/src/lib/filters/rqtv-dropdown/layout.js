@@ -10,7 +10,7 @@ import useRqtvListObject from '../use-rqtv-list-object'
 import {DropdownMenu} from '@reaqtive/layout'
 
 const Layout = props => {
-  const{dropdownMenuHeight, dropdownMenuWidth, hideHorizontalScrollbar}=props
+  const{dropdownMenuHeight, dropdownMenuWidth, hideHorizontalScrollbar, dropdownMenuStyle, dropdownMenuItemStyle}=props
   const qLayout = props.qLayoutHandler&&props.qLayoutHandler.qLayout
   const qDataPages = qLayout&&qLayout.qListObject.qDataPages
   const qSize = qLayout&&qLayout.qListObject.qSize
@@ -50,7 +50,7 @@ const Layout = props => {
  const [listHeight, setListHeight] = useState('100%')
 
   return(
-    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
+    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{...dropdownMenuStyle, minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
     {showToolbar&&
       <DropdownToolbar
         searchListObjectFor={rqtvListObject.searchListObjectFor}
@@ -75,6 +75,7 @@ const Layout = props => {
               height={listHeight}
               width={dropdownMenuWidth}
               hideHorizontalScrollbar={hideHorizontalScrollbar}
+              dropdownMenuItemStyle={dropdownMenuItemStyle}
           />
         }
       </RqtvRenderer>

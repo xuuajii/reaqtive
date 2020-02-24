@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\shared\\header-buttonbar.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\shared\\header-buttonbar.js";
 
 const HeaderButtonbar = props => _react.default.createElement("div", {
   className: "header-toolbar",

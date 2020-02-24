@@ -17,7 +17,7 @@ var _index = require("../index");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-renderer-views.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-renderer-views.js";
 
 const RqtvRendererContainer = props => {
   const loadingContainer = (0, _react.useRef)();

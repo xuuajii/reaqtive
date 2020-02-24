@@ -69,7 +69,7 @@ const RqtvPageConsumer = props => {
       )
     }
   }, [qObjectHandler, triggerState.done, qConditionExpr, qObjectDef])
-  
+
   useEffect(()=>{
     if(qCondition==='0'){
       setConditionRes(false)
@@ -102,12 +102,14 @@ const RqtvPageProvider = props => {
 
 RqtvPageProvider.propTypes = {
   triggers:PropTypes.array.isRequired,
-  qConditionExpr:PropTypes.string
+  qConditionExpr:PropTypes.string,
+  qTitleExpr:PropTypes.string
 }
 
 RqtvPageProvider.defaultProps = {
   triggers:[],
-  qConditionExpr:''
+  qConditionExpr:"=''",
+  qTitleExpr:"=''",
 }
 
 export {RqtvPageProvider, RqtvPageContext}

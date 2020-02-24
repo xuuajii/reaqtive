@@ -1,0 +1,27 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.btn{
+  //border:0;
+  font-size: 1rem;
+  &:not([disabled]){
+    cursor: pointer;
+    outline: 0;
+    outline-style: none;
+    box-shadow: none;
+  }
+  &:active,&:focus,&:hover{
+    outline: 0;
+    outline-style: none;
+    box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0);
+  }
+}
+.btn.focus{
+  outline: 0;
+  outline-style: none;
+  box-shadow: 0 0 0 0rem rgba(0, 123, 255, 0);
+}
+.btn:focus{
+  box-shadow:0 0 0 0rem rgba(0, 123, 255, 0) !important;
+}
