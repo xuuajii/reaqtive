@@ -27,14 +27,16 @@ var _index2 = require("../../loading/index");
 
 var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\layout.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\layout.js";
 
 const Layout = props => {
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
   const qDataPages = qLayout && qLayout.qListObject.qDataPages;
   const qSize = qLayout && qLayout.qListObject.qSize;
   const qArea = qLayout && qLayout.qListObject.qDataPages[0].qArea;
-  const rqtvListObject = props.rqtvListObject; //useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
+  const rqtvListObject = props.rqtvListObject,
+        listStyle = props.listStyle,
+        itemStyle = props.itemStyle; //useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
 
   const _props$qSelectionHand = props.qSelectionHandler,
         isSelecting = _props$qSelectionHand.isSelecting,
@@ -167,6 +169,8 @@ const Layout = props => {
     getDataPage: rqtvListObject.getDataPage,
     height: bodyHeight,
     bodyEl: bodyEl,
+    listStyle: listStyle,
+    itemStyle: itemStyle,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 97

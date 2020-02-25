@@ -16,7 +16,7 @@ const Layout = props => {
   const qSize = qLayout&&qLayout.qListObject.qSize
   const qArea = qLayout&&qLayout.qListObject.qDataPages[0].qArea
 
-  const {rqtvListObject} = props//useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
+  const {rqtvListObject, listStyle, itemStyle} = props//useRqtvListObject(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode)
 
   const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
   const endSelectionsCallback= () =>{
@@ -101,6 +101,8 @@ const Layout = props => {
               getDataPage={rqtvListObject.getDataPage}
               height={bodyHeight}
               bodyEl={bodyEl}
+              listStyle={listStyle}
+              itemStyle={itemStyle}
             />
           </RqtvRenderer>
         </div>

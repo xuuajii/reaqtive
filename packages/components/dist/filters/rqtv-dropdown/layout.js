@@ -9,6 +9,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
+
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
@@ -29,12 +31,14 @@ var _index2 = require("../helpers/index");
 
 var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
 
 const Layout = props => {
   const dropdownMenuHeight = props.dropdownMenuHeight,
         dropdownMenuWidth = props.dropdownMenuWidth,
-        hideHorizontalScrollbar = props.hideHorizontalScrollbar;
+        hideHorizontalScrollbar = props.hideHorizontalScrollbar,
+        dropdownMenuStyle = props.dropdownMenuStyle,
+        dropdownMenuItemStyle = props.dropdownMenuItemStyle;
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
   const qDataPages = qLayout && qLayout.qListObject.qDataPages;
   const qSize = qLayout && qLayout.qListObject.qSize;
@@ -79,12 +83,12 @@ const Layout = props => {
   return _react.default.createElement(_layout.DropdownMenu, {
     show: props.show,
     ref: dropdownMenuEl,
-    style: {
+    style: (0, _objectSpread2.default)({}, dropdownMenuStyle, {
       minHeight: 120,
       maxHeight: dropdownMenuHeight,
       overflowY: 'hidden',
       width: dropdownMenuWidth
-    },
+    }),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 53
@@ -118,6 +122,7 @@ const Layout = props => {
     height: listHeight,
     width: dropdownMenuWidth,
     hideHorizontalScrollbar: hideHorizontalScrollbar,
+    dropdownMenuItemStyle: dropdownMenuItemStyle,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 70

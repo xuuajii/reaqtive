@@ -11,7 +11,7 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/
 
 var _react = _interopRequireDefault(require("react"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\icons\\lui-icon.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\icons\\lui-icon.js";
 
 const LuiIcon = props => _react.default.createElement("span", {
   className: "lui-icon lui-icon--".concat(props.iconType, " ").concat(props.className),

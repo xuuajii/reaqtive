@@ -9,7 +9,7 @@ exports.ButtonGroup = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\button-group\\index.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\button-group\\index.js";
 
 const ButtonGroup = props => _react.default.createElement("div", {
   className: "btn-group ".concat(props.className),

@@ -19,22 +19,27 @@ var _q = require("@reaqtive/q");
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _layout = _interopRequireDefault(require("./layout"));
-
 var _index = require("../helpers/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\index.js";
+var _layout = _interopRequireDefault(require("./layout"));
 
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\index.js";
+
+/**
+ * RqtvSearchField
+ * It provides you an input field to search a listbox.
+ * When the user starts typing a dropdown menu appears under the input field.
+ *
+ * You can tweak its behaviour using props
+ *
+ * You can customize style using props and css
+ */
 const RqtvSearchField = props => {
   const qFieldExpr = props.qFieldExpr,
-        qSortObject = props.qSortObject,
-        qId = props.qId,
-        qLabelExpr = props.qLabelExpr;
+        qSortObject = props.qSortObject;
   const qObjectDef = (0, _index.useMapPropsToDef)({
     qFieldExpr,
-    qSortObject,
-    qId,
-    qLabelExpr
+    qSortObject
   });
 
   const _useState = (0, _react.useState)(),
@@ -46,7 +51,7 @@ const RqtvSearchField = props => {
     className: "dropdown ".concat(true ? 'show' : '', " rqtv-dropdown"),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 25
     },
     __self: void 0
   }, _react.default.createElement(_q.QGenericObject, {
@@ -54,13 +59,13 @@ const RqtvSearchField = props => {
     quickSelectionMode: props.quickSelectionMode,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 26
     },
     __self: void 0
   }, _react.default.createElement(_rqtvListObject.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 30
     },
     __self: void 0
   }), _react.default.createElement(_layout.default, Object.assign({}, props, {
@@ -68,20 +73,82 @@ const RqtvSearchField = props => {
     setShow: setShow,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 31
     },
     __self: void 0
   })))));
 };
 
 RqtvSearchField.propTypes = {
+  /**
+   * The expression which will be used in the listbox. It can be a fieldname or a valid expression
+   */
   qFieldExpr: _propTypes.default.string.isRequired,
-  qFieldLabelExpr: _propTypes.default.string,
-  qSortObject: _propTypes.default.object,
-  quickSelectionMode: _propTypes.default.bool,
+  qSortObject: _propTypes.default.shape({
+    /**
+     * Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+     */
+    qSortByState: _propTypes.default.number,
+
+    /**
+     * Sorts the field values by frequency (number of occurrences in the field).
+     */
+    qSortByFrequency: _propTypes.default.number,
+
+    /**
+     * Sorts the field values by numeric value.
+     */
+    qSortByNumeric: _propTypes.default.number,
+
+    /**
+     * Sorts the field by alphabetical order.
+     */
+    qSortByAscii: _propTypes.default.number,
+
+    /**
+     * Sorts the field values by the initial load order.
+     */
+    qSortByLoadOrder: _propTypes.default.number,
+
+    /**
+     * Sorts the field by expression.
+     */
+    qSortByExpression: _propTypes.default.number,
+
+    /**
+     * Sort by expression.
+     */
+    qExpression: _propTypes.default.shape({
+      qv: _propTypes.default.string
+    }),
+    qSortByGreyness: _propTypes.default.number
+  }),
+
+  /**
+   * Height of the dropdown when is open
+   */
   dropdownMenuHeight: _propTypes.default.number,
+
+  /**
+   * Width of the dropdown when is open
+   */
   dropdownMenuWidth: _propTypes.default.number,
-  hideHorizontalScrollbar: _propTypes.default.bool
+
+  /**
+   * Show/hide overflowX
+   */
+  hideHorizontalScrollbar: _propTypes.default.bool,
+
+  /**
+   * if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply),
+   * if false it uses Qlik View selection behaviour (apply selections immediately)
+   */
+  quickSelectionMode: _propTypes.default.bool,
+
+  /**
+    * The text shown in the input field when not searching
+  */
+  placeholder: _propTypes.default.string
 };
 RqtvSearchField.defaultProps = {
   qSortObject: {
@@ -95,18 +162,8 @@ RqtvSearchField.defaultProps = {
   quickSelectionMode: false,
   dropdownMenuHeight: 300,
   dropdownMenuWidth: 265,
-  hideHorizontalScrollbar: false
-}; // showSearch:PropTypes.bool,
-// dropdownMenuHeight:PropTypes.number,
-// dropdownMenuWidth:PropTypes.number,
-// showCaret:PropTypes.bool,
-// buttonColor:PropTypes.string,
-// buttonFontColor:PropTypes.string,
-// buttonStyle:PropTypes.object,
-// dropdownMenuStyle:PropTypes.object,
-// dropdownMenuItemStyle:PropTypes.object,
-// hideHorizontalScrollbar:PropTypes.bool,
-// quickSelectionMode:PropTypes.bool,
-
+  hideHorizontalScrollbar: false,
+  placeholder: 'Search'
+};
 var _default = RqtvSearchField;
 exports.default = _default;

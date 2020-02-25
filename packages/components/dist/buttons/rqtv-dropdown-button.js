@@ -13,69 +13,50 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _layout = require("@reaqtive/layout");
 
-var _rqtvButtonObjectProvider = _interopRequireDefault(require("./rqtv-button-object-provider"));
+var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-dropdown-button.js";
+var _qButtonObjectDef = _interopRequireDefault(require("./q-button-object-def"));
 
-const RqtvDropdownButtonLayout = props => {
-  //console.log(props)
-  const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
-  return _react.default.createElement(_layout.Button, {
-    className: props.className,
-    ripple: props.ripple,
-    style: props.style,
-    onClick: props.onClick,
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-dropdown-button.js";
+
+const RqtvDropdownButton = props => {
+  const qObjectDef = (0, _qButtonObjectDef.default)(props.qLabelExpr, props.qColorExpr);
+  return _react.default.createElement(_q.QGenericObject, {
+    qObjectDef: qObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 13
     },
     __self: void 0
-  }, qLayout && qLayout.label ? qLayout.label : props.label, _react.default.createElement(_layout.LuiIcon, {
-    iconType: "triangle-".concat(props.show ? 'top' : 'bottom'),
-    className: "caret",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 23
-    },
-    __self: void 0
-  }));
-};
-
-const RqtvDropdownButton = props => _react.default.createElement(_rqtvButtonObjectProvider.default, Object.assign({}, props, {
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 28
-  },
-  __self: void 0
-}), _react.default.createElement(RqtvDropdownButtonLayout, {
-  show: props.show,
-  __source: {
-    fileName: _jsxFileName,
-    lineNumber: 29
-  },
-  __self: void 0
-}));
-
-const fontSizePropCheck = (props, propName, componentName) => {
-  if (!(typeof props[propName] === 'string' && (props[propName].indexOf('px') !== -1 || props[propName].indexOf('rem') !== -1) || typeof props[propName] === 'number')) {
-    return new Error('Invalid prop `' + propName + '` supplied to' + ' `' + componentName + '`. Validation failed. Expected a number or a string containing rem or px');
-  }
+  }, qGenericObject => {
+    const qLayout = qGenericObject.qLayoutHandler.qLayout;
+    const label = qLayout && qLayout.label ? qLayout.label : props.label;
+    return _react.default.createElement(_layout.DropdownButton, {
+      className: props.className,
+      ripple: props.ripple,
+      style: props.style,
+      onClick: props.onClick,
+      show: props.show,
+      showCaret: props.showCaret,
+      label: label,
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 18
+      },
+      __self: void 0
+    });
+  });
 };
 
 RqtvDropdownButton.propTypes = {
-  label: _propTypes.default.string,
+  label: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.element]),
   color: _propTypes.default.string,
   onClick: _propTypes.default.func.isRequired,
-  fontColor: _propTypes.default.string,
-  fontSize: fontSizePropCheck,
   ripple: _propTypes.default.bool,
   style: _propTypes.default.object
 };
 RqtvDropdownButton.defaultProps = {
-  label: '',
-  color: 'primary',
-  fontColor: 'light',
-  fontSize: '1rem',
+  label: ' ',
   ripple: true,
   style: {}
 };

@@ -11,7 +11,7 @@ import {QComponent} from '@reaqtive/q'
 
 const RqtvButtonObjectProvider = props => {
   const appContext = useContext(RqtvAppContext);
-  const ripple=appContext.theme&&appContext.theme.ripple?'ripple':props.ripple;
+  const ripple=appContext&&appContext.theme&&appContext.theme.ripple?'ripple':props.ripple;
   const qButtonDef = useMemo(()=>{return(
     {
       "qInfo": { "qType": "LayoutExpressions" },
@@ -28,11 +28,11 @@ const RqtvButtonObjectProvider = props => {
     })
   }, [props.qLabelExpr, props.qColorExpr])
   const layoutProps = {
-    className:props.className?props.className:`${props.color} ${'text-'+props.fontColor} ${props.className}`,
+    className:props.className?props.className:'',
     onClick:props.onClick,
     label:props.label,
     ripple:ripple,
-    style:{fontSize:props.fontSize, ...props.style},
+    style:{...props.style},
     showCaret:props.showCaret,
   }
   const children = React.Children.toArray(props.children)

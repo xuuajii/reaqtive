@@ -20,7 +20,7 @@ const useMapPropsToDef = (props) => {
     return props.qObjectDef
     ?props.qObjectDef
     :{
-      "qInfo": { "qId": `'${props.qId}'`, "qType": "ListObject" },
+      "qInfo": { "qType": "ListObject" },
       "qListObjectDef": {
         "qDef": props.qDimensionDef
           ?props.qDimensionDef

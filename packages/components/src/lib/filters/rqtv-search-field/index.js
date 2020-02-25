@@ -5,12 +5,21 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { QGenericObject } from '@reaqtive/q'
 import RqtvListObject from '../rqtv-list-object'
-import Layout from './layout'
 import {useMapPropsToDef} from '../helpers/index'
+import Layout from './layout'
 
+/**
+ * RqtvSearchField
+ * It provides you an input field to search a listbox.
+ * When the user starts typing a dropdown menu appears under the input field.
+ *
+ * You can tweak its behaviour using props
+ *
+ * You can customize style using props and css
+ */
 const RqtvSearchField = props =>{
-  const {qFieldExpr, qSortObject, qId, qLabelExpr} = props
-  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject, qId, qLabelExpr})
+  const {qFieldExpr, qSortObject} = props
+  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject})
   const [show, setShow] = useState()
   return(
     <div className={`dropdown ${true ? 'show' : ''} rqtv-dropdown`}>
@@ -27,13 +36,62 @@ const RqtvSearchField = props =>{
 }
 
 RqtvSearchField.propTypes={
+  /**
+   * The expression which will be used in the listbox. It can be a fieldname or a valid expression
+   */
   qFieldExpr:PropTypes.string.isRequired,
-  qFieldLabelExpr:PropTypes.string,
-  qSortObject:PropTypes.object,
-  quickSelectionMode:PropTypes.bool,
+  qSortObject:PropTypes.shape({
+    /**
+     * Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+     */
+    qSortByState:PropTypes.number,
+    /**
+     * Sorts the field values by frequency (number of occurrences in the field).
+     */
+    qSortByFrequency:PropTypes.number,
+    /**
+     * Sorts the field values by numeric value.
+     */
+    qSortByNumeric:PropTypes.number,
+    /**
+     * Sorts the field by alphabetical order.
+     */
+    qSortByAscii:PropTypes.number,
+    /**
+     * Sorts the field values by the initial load order.
+     */
+    qSortByLoadOrder:PropTypes.number,
+    /**
+     * Sorts the field by expression.
+     */
+    qSortByExpression:PropTypes.number,
+    /**
+     * Sort by expression.
+     */
+    qExpression:PropTypes.shape({qv:PropTypes.string}),
+    qSortByGreyness:PropTypes.number
+  }),
+  /**
+   * Height of the dropdown when is open
+   */
   dropdownMenuHeight:PropTypes.number,
+  /**
+   * Width of the dropdown when is open
+   */
   dropdownMenuWidth:PropTypes.number,
+  /**
+   * Show/hide overflowX
+   */
   hideHorizontalScrollbar:PropTypes.bool,
+  /**
+   * if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply),
+   * if false it uses Qlik View selection behaviour (apply selections immediately)
+   */
+  quickSelectionMode:PropTypes.bool,
+  /**
+    * The text shown in the input field when not searching
+  */
+  placeholder:PropTypes.string
 }
 
 RqtvSearchField.defaultProps={
@@ -42,17 +100,8 @@ RqtvSearchField.defaultProps={
   dropdownMenuHeight:300,
   dropdownMenuWidth:265,
   hideHorizontalScrollbar:false,
+  placeholder:'Search'
 }
-// showSearch:PropTypes.bool,
-// dropdownMenuHeight:PropTypes.number,
-// dropdownMenuWidth:PropTypes.number,
-// showCaret:PropTypes.bool,
-// buttonColor:PropTypes.string,
-// buttonFontColor:PropTypes.string,
-// buttonStyle:PropTypes.object,
-// dropdownMenuStyle:PropTypes.object,
-// dropdownMenuItemStyle:PropTypes.object,
-// hideHorizontalScrollbar:PropTypes.bool,
-// quickSelectionMode:PropTypes.bool,
+
 
 export default RqtvSearchField
