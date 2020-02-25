@@ -25,7 +25,7 @@ var _rqtvDropdownButton = _interopRequireDefault(require("../../buttons/rqtv-dro
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
 
 /**
  * RqtvDropdownFilter

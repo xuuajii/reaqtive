@@ -17,7 +17,7 @@ var _layout = require("@reaqtive/layout");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\q\\src\\lib\\reaqtive.js";
 
 /**
  * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>

@@ -17,7 +17,7 @@ var _reactRouterDom = require("react-router-dom");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\side-menu\\page-list.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\side-menu\\page-list.js";
 
 const PageList = props => {
   return _react.default.createElement("ul", {

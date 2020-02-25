@@ -15,7 +15,7 @@ var _reactRouterDom = require("react-router-dom");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-breadcrumb\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-breadcrumb\\index.js";
 
 const RqtvBreadcrumb = props => {
   const location = (0, _reactRouterDom.useLocation)();
