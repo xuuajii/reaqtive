@@ -17,7 +17,7 @@ var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-page-header\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-page-header\\index.js";
 
 const RqtvPageHeader = props => {
   const rqtvPage = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
