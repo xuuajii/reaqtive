@@ -138,7 +138,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   //when an object not in quickSelectionMode is in isSelecting state the update function should be passed by the component
   //using the layout
 
-  const currentPropmiseRef = (0, _react.useRef)();
+  const currentPropmiseRef = (0, _react.useRef)(0);
   const updateLayout = (0, _react.useCallback)(() => {
     currentPropmiseRef.current = currentPropmiseRef.current + 1;
 
