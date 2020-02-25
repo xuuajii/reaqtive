@@ -16,15 +16,12 @@ const QViz = forwardRef((props, ref) => {
   const qVizWrapperEl = useRef()
   const qVizHandler = useQVizHandler(qAppHandler.qApp, props.id, props.chartProps)
   const qVizRef = useRef(qVizHandler.qViz)
-  
+
   useEffect(()=>{
     if(qVizHandler.qVizLoading===false && props.showTitle===false && !(props.chartProps&&props.chartProps.rest.showTitles===true)){
       qVizHandler.qViz.setOptions({showTitles:false});
     }
     qVizRef.current=qVizHandler.qViz
-    return () => {
-      qVizRef.current&&qVizRef.current.close()
-    }
   }, [qVizHandler.qViz])
 
   useEffect(()=>{
