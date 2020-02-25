@@ -29,7 +29,7 @@ var _layout = require("@reaqtive/layout");
 
 var _wildMatch = _interopRequireDefault(require("./wild-match"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-app-context.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-app-context.js";
 
 const RqtvAppContext = _react.default.createContext();
 

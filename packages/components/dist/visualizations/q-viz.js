@@ -19,7 +19,7 @@ var _layout = require("@reaqtive/layout");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\visualizations\\q-viz.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\visualizations\\q-viz.js";
 const QViz = (0, _react.forwardRef)((props, ref) => {
   const qAppHandler = (0, _react.useContext)(_q.QApp);
   const system = (0, _react.useContext)(_layout.System);
@@ -34,6 +34,9 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     }
 
     qVizRef.current = qVizHandler.qViz;
+    return () => {
+      qVizRef.current && qVizRef.current.close();
+    };
   }, [qVizHandler.qViz]);
   (0, _react.useEffect)(() => {
     //console.log(1)
@@ -94,7 +97,7 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     ref: qVizWrapperEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 72
     },
     __self: void 0
   }, qVizHandler.qViz !== null ? _react.default.createElement("div", {
@@ -105,13 +108,13 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 74
     },
     __self: void 0
   }) : _react.default.createElement(_index.RqtvSpinner, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 75
     },
     __self: void 0
   }));

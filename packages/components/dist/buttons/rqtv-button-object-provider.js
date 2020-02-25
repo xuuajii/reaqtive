@@ -21,7 +21,7 @@ var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button-object-provider.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-button-object-provider.js";
 
 const RqtvButtonObjectProvider = props => {
   const appContext = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
