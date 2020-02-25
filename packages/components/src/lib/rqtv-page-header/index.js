@@ -3,6 +3,7 @@
 //
 
 import React, {useContext} from 'react'
+import PropTypes from 'prop-types'
 import {RqtvPageContext} from '../contexts/rqtv-page-context'
 import { Navbar, NavbarNav } from '@reaqtive/layout'
 
@@ -12,13 +13,21 @@ const RqtvPageHeader = props => {
   const {pageData} = rqtvPage
   const title = props.title||pageData.title
   return(
-    <Navbar className={`page-header`}>
+    <Navbar className={`rqtv-page-header page-header ${props.className}`}>
       <div className={`navbar-brand`}>
         <h3>{title}</h3>
       </div>
       {props.children}
     </Navbar>
   )
+}
+
+RqtvPageHeader.propTypes={
+  className:PropTypes.string,
+}
+
+RqtvPageHeader.defaultProps={
+  className:'',
 }
 
 export {RqtvPageHeader}
