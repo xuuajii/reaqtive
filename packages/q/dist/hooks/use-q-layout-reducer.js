@@ -18,10 +18,12 @@ var _helpers = require("../helpers/helpers");
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-const getLayout = async qObject => {
+const getLayout = async (qObject, promiseId) => {
   try {
     const qLayout = await qObject.getLayout();
-    return qLayout;
+    return (0, _objectSpread2.default)({}, qLayout, {
+      promiseId
+    });
   } catch (err) {
     return err;
   }
@@ -136,16 +138,22 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   //when an object not in quickSelectionMode is in isSelecting state the update function should be passed by the component
   //using the layout
 
+  const currentPropmiseRef = (0, _react.useRef)();
   const updateLayout = (0, _react.useCallback)(() => {
+    currentPropmiseRef.current = currentPropmiseRef.current + 1;
+
     const standardUpdate = async () => {
-      const result = await getLayout(layoutProvider);
-      return result instanceof Error ? dispatch({
-        type: 'error',
-        qError: result
-      }) : dispatch({
-        type: 'success',
-        qLayout: result
-      });
+      const result = await getLayout(layoutProvider, currentPropmiseRef.current);
+
+      if (currentPropmiseRef.current === result.promiseId) {
+        return result instanceof Error ? dispatch({
+          type: 'error',
+          qError: result
+        }) : dispatch({
+          type: 'success',
+          qLayout: result
+        });
+      }
     };
 
     if (layoutProvider !== null && isSelecting === true && typeof layoutUpdater === 'function') {
