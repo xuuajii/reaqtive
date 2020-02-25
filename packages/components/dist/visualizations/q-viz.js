@@ -34,9 +34,6 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     }
 
     qVizRef.current = qVizHandler.qViz;
-    return () => {
-      qVizRef.current && qVizRef.current.close();
-    };
   }, [qVizHandler.qViz]);
   (0, _react.useEffect)(() => {
     //console.log(1)
@@ -97,7 +94,7 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     ref: qVizWrapperEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 69
     },
     __self: void 0
   }, qVizHandler.qViz !== null ? _react.default.createElement("div", {
@@ -108,13 +105,13 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 71
     },
     __self: void 0
   }) : _react.default.createElement(_index.RqtvSpinner, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 75
+      lineNumber: 72
     },
     __self: void 0
   }));
