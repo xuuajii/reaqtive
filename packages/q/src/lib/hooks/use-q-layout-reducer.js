@@ -86,7 +86,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
   //handle the function that updates the layout: the function changes for generic-objects which are not in quickSelectionMode
   //when an object not in quickSelectionMode is in isSelecting state the update function should be passed by the component
   //using the layout
-  const currentPropmiseRef=useRef()
+  const currentPropmiseRef=useRef(0)
   const updateLayout = useCallback(()=>{
     currentPropmiseRef.current = currentPropmiseRef.current+1;
     const standardUpdate = async () => {
@@ -101,7 +101,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       (layoutProvider!==null)&&standardUpdate()
     }
   },[layoutUpdater, isSelecting, layoutProvider])
-
+  
   // call for layout update when the engine recalculates the qObject
   useEffect(()=>{
     let isSubscribed=true
