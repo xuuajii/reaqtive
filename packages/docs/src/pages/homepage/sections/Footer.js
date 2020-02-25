@@ -1,43 +1,35 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from "react";
 
-const Footer = props => {
+export default function Footer() {
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-2 mx-2">
-          <p>METHODOLOGY</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-        </div>
-        <div className="col-md-2 mx-2">
-          <p>SOURCES</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
-        </div>
-        <div className="col-md-2 mx-2">
-          <p>AD-HOC REPORTING </p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat.
-          </p>
+    <section id="footer" className="parallax pt-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-2 mx-2">
+            <p>METHODOLOGY</p>
+            <ul>
+              <li><a>Basket definition</a></li>
+              <li><a>Data Integration</a></li>
+              <li><a>Calculation rules</a></li>
+            </ul>
+          </div>
+          <div className="col-md-2 mx-2">
+            <p>DATA SOURCES</p>
+            <ul>
+              <li><a>Private</a></li>
+              <li><a>Fleet By Dealer</a></li>
+              <li><a>Long Term Rental</a></li>
+              <li><a>TCO & Residual Value</a></li>
+            </ul>
+          </div>
+          <div className="col-md-2 mx-2">
+            <p>AD-HOC REPORTING </p>
+            <li><a>Purchasing</a></li>
+            <li><a>LTR & Leasing</a></li>
+            <li><a>TCO & Residual Value</a></li>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Footer;
+}
