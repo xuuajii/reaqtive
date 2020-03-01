@@ -9,9 +9,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.RqtvAppContextProvider = exports.RqtvAppContext = void 0;
 
-var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
-
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -66,26 +66,10 @@ const RqtvAppContextConsumer = props => {
         pages = props.pages,
         sideMenuFieldsMatch = props.sideMenuFieldsMatch,
         searchFieldMatch = props.searchFieldMatch;
-  /******************************************************/
-  // qDoc app settings: get all objects and data
-  //which are managed directly by the qDoc and that are used in RqtvApp (current selections and field list)
-
-  /******************************************************/
-
-  const qDocHandler = (0, _react.useContext)(_q.QDoc);
-
-  const _useState = (0, _react.useState)(null),
-        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-        qDoc = _useState2[0],
-        setQDoc = _useState2[1];
-
-  (0, _react.useEffect)(() => {
-    setQDoc(qDocHandler.qDoc);
-  }, [qDocHandler]);
-  const qFieldListHandler = (0, _q.useQObjectHandler)(qDoc, qFieldListDef);
-  const qFieldListLayoutHandler = (0, _q.useQLayoutHandler)(qFieldListHandler.qObject);
-  const qCurrentSelectionsHandler = (0, _q.useQObjectHandler)(qDoc, qCurrentSelectionsDef);
-  const qCurrentSelectionsLayoutHandler = (0, _q.useQLayoutHandler)(qCurrentSelectionsHandler.qObject);
+  const qFieldListHandler = (0, _q.useQObjectReducer)(qFieldListDef);
+  const qFieldListLayoutHandler = (0, _q.useQLayoutReducer)(qFieldListHandler);
+  const qCurrentSelectionsHandler = (0, _q.useQObjectReducer)(qCurrentSelectionsDef);
+  const qCurrentSelectionsLayoutHandler = (0, _q.useQLayoutReducer)(qCurrentSelectionsHandler);
   const qFieldList = qFieldListLayoutHandler.qLayout;
   const qCurrentSelections = qCurrentSelectionsLayoutHandler.qLayout;
   const enhancedFieldList = (0, _q.useEnhancedFieldList)(qFieldList && qFieldList.qFieldList, qCurrentSelections);
@@ -113,15 +97,15 @@ const RqtvAppContextConsumer = props => {
   const system = (0, _react.useContext)(_layout.System);
   const location = (0, _reactRouterDom.useLocation)();
 
-  const _useState3 = (0, _react.useState)(false),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        isMaximized = _useState4[0],
-        setIsMaximized = _useState4[1];
+  const _useState = (0, _react.useState)(false),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        isMaximized = _useState2[0],
+        setIsMaximized = _useState2[1];
 
-  const _useState5 = (0, _react.useState)(),
-        _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-        scrollPostioMemo = _useState6[0],
-        setScrollPostioMemo = _useState6[1];
+  const _useState3 = (0, _react.useState)(),
+        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+        scrollPostioMemo = _useState4[0],
+        setScrollPostioMemo = _useState4[1];
 
   const scrollTo = scrollPosition => {
     const mainNode = system.getAppMainNode();
@@ -170,7 +154,7 @@ const RqtvAppContextConsumer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 97
     },
     __self: void 0
   }, props.children);
@@ -180,7 +164,7 @@ const RqtvAppContextProvider = props => {
   return _react.default.createElement(RqtvAppContextConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 122
     },
     __self: void 0
   }), props.children);

@@ -7,9 +7,7 @@ import { useLocation } from "react-router-dom";
 import _ from 'lodash'
 import PropTypes from 'prop-types';
 import Logo from './logo.png'
-import {useQObjectHandler} from '@reaqtive/q'
-import {useQLayoutHandler} from '@reaqtive/q'
-import {QDoc} from '@reaqtive/q'
+import { useQObjectReducer, useQLayoutReducer } from '@reaqtive/q'
 import {System} from '@reaqtive/layout'
 import wildMatch from './wild-match'
 import {useEnhancedFieldList} from '@reaqtive/q'
@@ -38,21 +36,10 @@ const qCurrentSelectionsDef = {
 const RqtvAppContextConsumer = (props) => {
   const {theme, brand, title, brandUrl, brandStyle, hidePrefix, pages, sideMenuFieldsMatch, searchFieldMatch}=props
 
-  /******************************************************/
-  // qDoc app settings: get all objects and data
-  //which are managed directly by the qDoc and that are used in RqtvApp (current selections and field list)
-  /******************************************************/
-  const qDocHandler = useContext(QDoc)
-  const [qDoc, setQDoc] = useState(null)
-
-  useEffect(()=>{
-    setQDoc(qDocHandler.qDoc)
-  },[qDocHandler])
-
-  const qFieldListHandler = useQObjectHandler(qDoc, qFieldListDef)
-  const qFieldListLayoutHandler = useQLayoutHandler(qFieldListHandler.qObject)
-  const qCurrentSelectionsHandler = useQObjectHandler(qDoc, qCurrentSelectionsDef)
-  const qCurrentSelectionsLayoutHandler = useQLayoutHandler(qCurrentSelectionsHandler.qObject)
+  const qFieldListHandler = useQObjectReducer(qFieldListDef)
+  const qFieldListLayoutHandler = useQLayoutReducer(qFieldListHandler)
+  const qCurrentSelectionsHandler = useQObjectReducer(qCurrentSelectionsDef)
+  const qCurrentSelectionsLayoutHandler = useQLayoutReducer(qCurrentSelectionsHandler)
   const qFieldList = qFieldListLayoutHandler.qLayout
   const qCurrentSelections = qCurrentSelectionsLayoutHandler.qLayout
   const enhancedFieldList = useEnhancedFieldList(qFieldList&&qFieldList.qFieldList, qCurrentSelections)
