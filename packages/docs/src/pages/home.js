@@ -19,9 +19,9 @@ const Home = (props) =>{
         <ul className="list-group">
           {rqtvApp.pages.map(page=>
             page.path!=='/'&&
-            <li className="list-group-item" key={page.id}>
+            <li className="list-group-item" key={page.key}>
               <NavLink to={page.path}>
-                {page.title}
+                <span style={{textTransform:'uppercase'}}>{page.linkName}</span>
               </NavLink>
             </li>
           )}
