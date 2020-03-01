@@ -76,7 +76,7 @@ const useTriggers = (triggers) => {
 
   useEffect(()=>{
     if(qDocHandler.qDoc && triggersMemo&&triggersMemo.length>0){
-      triggersMemo&&triggersMemo.forEach(trigger => fire(trigger))
+      triggersMemo&&triggersMemo.forEach(trigger => setTimeout(()=>fire(trigger), 200))
     }
     return () => {
       qDocHandler.qDoc&&triggersMemo&&triggersMemo.length>0&&triggersMemo.forEach(trigger=>{

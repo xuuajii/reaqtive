@@ -54,7 +54,7 @@ const useTriggers = triggers => {
   }, [progress, triggersMemo]);
   (0, _react.useEffect)(() => {
     if (qDocHandler.qDoc && triggersMemo && triggersMemo.length > 0) {
-      triggersMemo && triggersMemo.forEach(trigger => fire(trigger));
+      triggersMemo && triggersMemo.forEach(trigger => setTimeout(() => fire(trigger), 200));
     }
 
     return () => {
