@@ -4,11 +4,11 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import PropTypes from 'prop-types'
-import { Route, Redirect, useLocation } from 'react-router-dom'
+import { Redirect, useLocation } from 'react-router-dom'
 import {RqtvPageContext, RqtvPageProvider} from '../contexts/rqtv-page-context'
 
 const RqtvPage = props => {
-  const pageData={path:props.path, title:props.title, id:props.id}
+  const pageData={title:props.title}
   const {fallbackPage} = props
   const location = useLocation()
   const [hasChangedLocation, setHasChangedLocation] = useState(false)
@@ -19,8 +19,7 @@ const RqtvPage = props => {
     return () => setHasChangedLocation(false)
   },[location])
   return(
-    <Route path={props.path} exact={props.exact}>
-      <RqtvPageProvider
+    <RqtvPageProvider
         triggers={props.triggers}
         pageData={pageData}
         qConditionExpr={props.qConditionExpr}
@@ -30,8 +29,7 @@ const RqtvPage = props => {
         <RqtvPageConsumer fallbackPage={fallbackPage} hasChangedLocation={hasChangedLocation}>
           {props.children}
         </RqtvPageConsumer>
-      </RqtvPageProvider>
-    </Route>
+    </RqtvPageProvider>
   )
 }
 
@@ -47,8 +45,6 @@ const RqtvPageConsumer = props => {
 }
 
 RqtvPage.propTypes = {
-  path:PropTypes.string.isRequired,
-  id:PropTypes.number.isRequired,
   title:PropTypes.string.isRequired,
   triggers:PropTypes.array.isRequired,
   conditionExpr:PropTypes.string,

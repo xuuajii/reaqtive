@@ -9,7 +9,6 @@ import {QAppProvider} from '@reaqtive/q'
 import {useTriggers} from '@reaqtive/q'
 import {RqtvAppContextProvider} from './contexts/rqtv-app-context'
 import {RqtvAppRenderer} from './loading/index'
-import { HashRouter  as Router, Switch } from "react-router-dom";
 
 const RqtvApp = props =>{
   const {qCapabilityApiRequired, children, triggers, ...rqtvAppProps} = props
@@ -18,10 +17,11 @@ const RqtvApp = props =>{
   const isRqtvPage = (child) => child//.type&&child.type.name==='RqtvPage'
   const [pages , setPages] = useState(children)
   useEffect(()=>{
-    const filteredPages = React.Children.toArray(props.children)//.filter(isRqtvPage)
+    const filteredPages = React.Children.toArray(props.children.props.children)//.filter(isRqtvPage)
     const extractPageInfo = page => {
-      const { title, path, id, icon, exactActiveMatch } = page.props;
-      return { title, path, id, icon, exactActiveMatch }
+      const { linkName, path, icon, exactActiveMatch } = page.props;
+      const key = page.key
+      return { linkName:linkName?linkName:path.replace(/-/g, ' ').replace(/\//,''), path, key, icon, exactActiveMatch }
     }
     setPages(filteredPages.map(page=>extractPageInfo(page)))
   },[props.children])
@@ -29,18 +29,11 @@ const RqtvApp = props =>{
     document.title=props.title
   },[props.title])
   return(
-    <Router>
-      <RqtvAppContextProvider {...rqtvAppProps} pages={pages}>
-        <RqtvAppRenderer qCapabilityApiRequired={qCapabilityApiRequired} triggersDone={triggerState.qLoading===false}>
-          {  props.children.length && props.useRouter===true?
-            <Switch>
-              {props.children}
-            </Switch>
-            :props.children
-          }
-        </RqtvAppRenderer>
-      </RqtvAppContextProvider>
-    </Router>
+    <RqtvAppContextProvider {...rqtvAppProps} pages={pages}>
+      <RqtvAppRenderer qCapabilityApiRequired={qCapabilityApiRequired} triggersDone={triggerState.qLoading===false}>
+        {props.children}
+      </RqtvAppRenderer>
+    </RqtvAppContextProvider>
   )
 }
 
@@ -52,14 +45,12 @@ RqtvApp.propTypes={
       params:PropTypes.object
     }))
   ]),
-  title:PropTypes.string,
-  useRouter:PropTypes.bool
+  title:PropTypes.string
 }
 
 RqtvApp.defaultProps={
   triggers:[],
-  title:'Reaqtive App',
-  useRouter:true
+  title:'Reaqtive App'
 }
 
 export default RqtvApp

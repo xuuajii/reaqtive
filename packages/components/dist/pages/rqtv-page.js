@@ -23,9 +23,7 @@ var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components
 
 const RqtvPage = props => {
   const pageData = {
-    path: props.path,
-    title: props.title,
-    id: props.id
+    title: props.title
   };
   const fallbackPage = props.fallbackPage;
   const location = (0, _reactRouterDom.useLocation)();
@@ -41,15 +39,7 @@ const RqtvPage = props => {
 
     return () => setHasChangedLocation(false);
   }, [location]);
-  return _react.default.createElement(_reactRouterDom.Route, {
-    path: props.path,
-    exact: props.exact,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: void 0
-  }, _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
+  return _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
     triggers: props.triggers,
     pageData: pageData,
     qConditionExpr: props.qConditionExpr,
@@ -57,7 +47,7 @@ const RqtvPage = props => {
     hasQueryString: location.search !== "" ? true : false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 22
     },
     __self: void 0
   }, _react.default.createElement(RqtvPageConsumer, {
@@ -65,10 +55,10 @@ const RqtvPage = props => {
     hasChangedLocation: hasChangedLocation,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 29
     },
     __self: void 0
-  }, props.children)));
+  }, props.children));
 };
 
 const RqtvPageConsumer = props => {
@@ -85,7 +75,7 @@ const RqtvPageConsumer = props => {
       to: fallbackPage,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 44
+        lineNumber: 42
       },
       __self: void 0
     });
@@ -95,8 +85,6 @@ const RqtvPageConsumer = props => {
 };
 
 RqtvPage.propTypes = {
-  path: _propTypes.default.string.isRequired,
-  id: _propTypes.default.number.isRequired,
   title: _propTypes.default.string.isRequired,
   triggers: _propTypes.default.array.isRequired,
   conditionExpr: _propTypes.default.string,

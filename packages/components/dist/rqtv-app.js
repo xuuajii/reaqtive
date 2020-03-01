@@ -23,8 +23,6 @@ var _rqtvAppContext = require("./contexts/rqtv-app-context");
 
 var _index = require("./loading/index");
 
-var _reactRouterDom = require("react-router-dom");
-
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-app.js";
 
 const RqtvApp = props => {
@@ -43,20 +41,20 @@ const RqtvApp = props => {
         setPages = _useState2[1];
 
   (0, _react.useEffect)(() => {
-    const filteredPages = _react.default.Children.toArray(props.children); //.filter(isRqtvPage)
+    const filteredPages = _react.default.Children.toArray(props.children.props.children); //.filter(isRqtvPage)
 
 
     const extractPageInfo = page => {
       const _page$props = page.props,
-            title = _page$props.title,
+            linkName = _page$props.linkName,
             path = _page$props.path,
-            id = _page$props.id,
             icon = _page$props.icon,
             exactActiveMatch = _page$props.exactActiveMatch;
+      const key = page.key;
       return {
-        title,
+        linkName: linkName ? linkName : path.replace(/-/g, ' ').replace(/\//, ''),
         path,
-        id,
+        key,
         icon,
         exactActiveMatch
       };
@@ -67,17 +65,11 @@ const RqtvApp = props => {
   (0, _react.useEffect)(() => {
     document.title = props.title;
   }, [props.title]);
-  return _react.default.createElement(_reactRouterDom.HashRouter, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 32
-    },
-    __self: void 0
-  }, _react.default.createElement(_rqtvAppContext.RqtvAppContextProvider, Object.assign({}, rqtvAppProps, {
+  return _react.default.createElement(_rqtvAppContext.RqtvAppContextProvider, Object.assign({}, rqtvAppProps, {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 32
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvAppRenderer, {
@@ -85,16 +77,10 @@ const RqtvApp = props => {
     triggersDone: triggerState.qLoading === false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 33
     },
     __self: void 0
-  }, props.children.length && props.useRouter === true ? _react.default.createElement(_reactRouterDom.Switch, {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 36
-    },
-    __self: void 0
-  }, props.children) : props.children)));
+  }, props.children));
 };
 
 RqtvApp.propTypes = {
@@ -102,13 +88,11 @@ RqtvApp.propTypes = {
     type: _propTypes.default.string,
     params: _propTypes.default.object
   }))]),
-  title: _propTypes.default.string,
-  useRouter: _propTypes.default.bool
+  title: _propTypes.default.string
 };
 RqtvApp.defaultProps = {
   triggers: [],
-  title: 'Reaqtive App',
-  useRouter: true
+  title: 'Reaqtive App'
 };
 var _default = RqtvApp;
 exports.default = _default;

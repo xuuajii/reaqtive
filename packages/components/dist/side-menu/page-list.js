@@ -28,7 +28,7 @@ const PageList = props => {
     },
     __self: void 0
   }, props.pages.map(page => _react.default.createElement(PageLink, {
-    key: page.id,
+    key: page.key,
     page: page,
     __source: {
       fileName: _jsxFileName,
@@ -86,7 +86,7 @@ const PageLink = props => {
       lineNumber: 36
     },
     __self: void 0
-  }), page.title));
+  }), page.linkName));
 };
 
 var _default = PageList;
