@@ -13,7 +13,7 @@ var _search = _interopRequireDefault(require("../shared/search"));
 
 var _endSelectionsButtons = _interopRequireDefault(require("../shared/end-selections-buttons"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\dropdown-toolbar.js";
+var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\dropdown-toolbar.js";
 
 const DropdownToolbar = props => _react.default.createElement("div", {
   className: "btn-group dropdown-toolbar",
