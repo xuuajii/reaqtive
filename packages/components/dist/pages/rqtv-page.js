@@ -19,63 +19,80 @@ var _reactRouterDom = require("react-router-dom");
 
 var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
+var _q = require("@reaqtive/q");
+
 var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-page.js";
 
-const RqtvPage = props => {
-  const pageData = {
-    title: props.title
+const useQConditionDef = qConditionExpr => (0, _react.useMemo)(() => {
+  return {
+    qInfo: {
+      qType: "page-condition"
+    },
+    qCondition: {
+      qStringExpression: {
+        qExpr: qConditionExpr || ''
+      }
+    }
   };
+}, [qConditionExpr]);
+
+const RqtvPage = props => {
   const fallbackPage = props.fallbackPage;
-  const location = (0, _reactRouterDom.useLocation)();
-
-  const _useState = (0, _react.useState)(false),
-        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-        hasChangedLocation = _useState2[0],
-        setHasChangedLocation = _useState2[1];
-
-  (0, _react.useEffect)(() => {
-    const delay = location.search !== "" ? 500 : 0;
-    setTimeout(() => setHasChangedLocation(true), delay); //console.log(delay)
-
-    return () => setHasChangedLocation(false);
-  }, [location]);
   return _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
     triggers: props.triggers,
-    pageData: pageData,
     qConditionExpr: props.qConditionExpr,
     qTitleExpr: props.qTitleExpr,
     hasQueryString: location.search !== "" ? true : false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 29
     },
     __self: void 0
   }, _react.default.createElement(RqtvPageConsumer, {
     fallbackPage: fallbackPage,
-    hasChangedLocation: hasChangedLocation,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 35
     },
     __self: void 0
   }, props.children));
 };
 
 const RqtvPageConsumer = props => {
+  const location = (0, _reactRouterDom.useLocation)();
   const rqtvPageContext = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
-
-  const _ref = rqtvPageContext && rqtvPageContext,
-        conditionRes = _ref.conditionRes,
-        triggerState = _ref.triggerState;
-
   const fallbackPage = props.fallbackPage;
 
-  if (props.hasChangedLocation === true && conditionRes === false && fallbackPage !== "" && triggerState.done === true) {
+  const _ref = rqtvPageContext && rqtvPageContext,
+        triggerState = _ref.triggerState,
+        qCondition = _ref.qCondition,
+        qPageObjectHandler = _ref.qPageObjectHandler,
+        qTitle = _ref.qTitle;
+
+  const _useState = (0, _react.useState)(),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        triggersDone = _useState2[0],
+        setTriggersDone = _useState2[1];
+
+  (0, _react.useEffect)(() => {
+    setTriggersDone(triggerState.done);
+    return () => setTriggersDone(false);
+  }, [triggerState.done]);
+  (0, _react.useEffect)(() => {
+    qPageObjectHandler.set;
+  }, [location.pathname]); // useEffect(()=>{
+  //   if( qCondition==='0' && fallbackPage && triggersDone===true){
+  //     console.log('redirect')
+  //   }
+  //fallbackPage&&console.log(qCondition, qTitle, triggersDone)
+  // },[qCondition, fallbackPage, triggersDone])
+
+  if (qCondition === '0' && fallbackPage && triggersDone === true) {
     return _react.default.createElement(_reactRouterDom.Redirect, {
-      to: fallbackPage,
+      to: fallbackPage ? fallbackPage : "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 69
       },
       __self: void 0
     });
@@ -85,15 +102,13 @@ const RqtvPageConsumer = props => {
 };
 
 RqtvPage.propTypes = {
-  title: _propTypes.default.string.isRequired,
   triggers: _propTypes.default.array.isRequired,
-  conditionExpr: _propTypes.default.string,
+  qConditionExpr: _propTypes.default.string,
   fallbackPage: _propTypes.default.string
 };
 RqtvPage.defaultProps = {
   triggers: [],
-  conditionExpr: "",
-  fallbackPage: ""
+  qConditionExpr: ""
 };
 var _default = RqtvPage;
 exports.default = _default;

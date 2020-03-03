@@ -41,7 +41,11 @@ const RqtvApp = props => {
         setPages = _useState2[1];
 
   (0, _react.useEffect)(() => {
-    const filteredPages = _react.default.Children.toArray(props.children.props.children); //.filter(isRqtvPage)
+    const sortedPages = _react.default.Children.toArray(props.children.props.children).sort((a, b) => {
+      const pageA = a;
+      const pageB = b;
+      return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0;
+    }); //.filter(isRqtvPage)
 
 
     const extractPageInfo = page => {
@@ -60,7 +64,7 @@ const RqtvApp = props => {
       };
     };
 
-    setPages(filteredPages.map(page => extractPageInfo(page)));
+    setPages(sortedPages.map(page => extractPageInfo(page)));
   }, [props.children]);
   (0, _react.useEffect)(() => {
     document.title = props.title;
@@ -69,7 +73,7 @@ const RqtvApp = props => {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 36
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvAppRenderer, {
@@ -77,7 +81,7 @@ const RqtvApp = props => {
     triggersDone: triggerState.qLoading === false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 37
     },
     __self: void 0
   }, props.children));

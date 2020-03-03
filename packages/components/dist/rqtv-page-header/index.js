@@ -21,9 +21,8 @@ var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components
 
 const RqtvPageHeader = props => {
   const rqtvPage = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
-  const pageData = rqtvPage.pageData,
-        qTitle = rqtvPage.qTitle;
-  const title = props.title || qTitle !== '' && qTitle && qTitle || pageData.title;
+  const qTitle = rqtvPage.qTitle;
+  const title = props.title || qTitle !== '' && qTitle && qTitle;
   return _react.default.createElement(_layout.Navbar, {
     className: "rqtv-page-header page-header ".concat(props.className),
     __source: {
@@ -49,7 +48,8 @@ const RqtvPageHeader = props => {
 
 exports.RqtvPageHeader = RqtvPageHeader;
 RqtvPageHeader.propTypes = {
-  className: _propTypes.default.string
+  className: _propTypes.default.string,
+  title: _propTypes.default.string
 };
 RqtvPageHeader.defaultProps = {
   className: ''

@@ -30,25 +30,9 @@ const ExampleApp = props => {
             title="Reaqtive Demo"
           >
               <Switch>
-                {/*Home*/}
-                <Route path={'/'} exact={true} linkName='home page'>
-                  <RqtvPage
-                    title='Home Page'
-                    triggers={[
-                        {type:'clearField',params:{fieldName:'Customer'}},
-                    ]}
-                    qTitleExpr='=1+1'
-                  >
-                    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
-                      <Home
-                        maximizeEl={maximizeEl}
-                      />
-                    </RqtvStandardTemplate>
-                  </RqtvPage>
-                </Route>
                 {/*Quick Start*/}
                 <Route path={'/quick-start'}>
-                  <RqtvPage  title='Quick Start'>
+                  <RqtvPage  qTitleExpr="'Quick Start'">
                     <RqtvStandardTemplate useContainerFluid={false}>
                       <SetUp/>
                     </RqtvStandardTemplate>
@@ -56,7 +40,7 @@ const ExampleApp = props => {
                 </Route>
                 {/*Visualizations*/}
                 <Route path={'/visualizations'}>
-                  <RqtvPage title='Visualizations'>
+                  <RqtvPage qTitleExpr="'Visualizations'">
                     <RqtvStandardTemplate useContainerFluid={false}>
                       <Visualizations/>
                     </RqtvStandardTemplate>
@@ -64,7 +48,7 @@ const ExampleApp = props => {
                 </Route>
                 {/*Filters*/}
                 <Route path={'/filters'}>
-                  <RqtvPage title='Filters'>
+                  <RqtvPage qTitleExpr="'Filters'">
                     <RqtvStandardTemplate searchFieldsMatch={{method:'include', mask:['Cust*']}} useContainerFluid={false}>
                       <Filters/>
                     </RqtvStandardTemplate>
@@ -72,7 +56,7 @@ const ExampleApp = props => {
                 </Route>
                 {/*Filters*/}
                 <Route path={'/reaqtive-q'} linkName="@reaqtive/q">
-                  <RqtvPage title='@raqtive/q' exactActiveMatch={false}>
+                  <RqtvPage qTitleExpr="'@raqtive/q'" exactActiveMatch={false} qConditionExpr="1=1">
                     <RqtvStandardTemplate
                       searchFieldsMatch={{method:'include', mask:['Cust*']}}
                       useContainerFluid={false}
@@ -80,6 +64,21 @@ const ExampleApp = props => {
                       showSearch={false}
                     >
                       <ReaqtiveQ/>
+                    </RqtvStandardTemplate>
+                  </RqtvPage>
+                </Route>
+                {/*Home*/}
+                <Route path={'/'} exact={true} linkName='home page'>
+                  <RqtvPage
+                    triggers={[
+                        {type:'clearField',params:{fieldName:'Customer'}},
+                    ]}
+                    qTitleExpr='1+1'
+                  >
+                    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
+                      <Home
+                        maximizeEl={maximizeEl}
+                      />
                     </RqtvStandardTemplate>
                   </RqtvPage>
                 </Route>
@@ -95,4 +94,4 @@ export default ExampleApp
 //   {type:'fieldSelection', params:{fieldName:'Customer', value:'Zocalo', alwaysOneSelected:true}},
 //   {type:'fieldSelection', params:{fieldName:'AccountDesc', value:'Commission', alwaysOneSelected:true}}
 // ]}
-// <RqtvListbox title={'Customer'} qFieldExpr={'Customer'} height={300} qId={1}/>
+// <RqtvListbox qTitleExpr={'Customer'} qFieldExpr={'Customer'} height={300} qId={1}/>
