@@ -17,8 +17,10 @@ const RqtvStandardTemplate = props => {
   const [showSideMenu, setShowSideMenu] = useState(false)
   const toggleSideMenu = () => setShowSideMenu(!showSideMenu)
   const rqtvPage = useContext(RqtvPageContext)
+  const {triggerState, qCondition } = rqtvPage||{}
+
   const rendererProps = {
-    loading:rqtvPage&&rqtvPage.triggerState.qLoading,
+    loading:triggerState.qLoading,//||qCondition===null||qCondition===undefined,
     error:(!(rqtvPage&&rqtvPage.triggerState.qLoading)&&(rqtvPage&&rqtvPage.triggerState.qError)),
   }
   return(

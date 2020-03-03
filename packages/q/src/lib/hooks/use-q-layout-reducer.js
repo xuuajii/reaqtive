@@ -101,7 +101,7 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       (layoutProvider!==null)&&standardUpdate()
     }
   },[layoutUpdater, isSelecting, layoutProvider])
-  
+
   // call for layout update when the engine recalculates the qObject
   useEffect(()=>{
     let isSubscribed=true

@@ -17,13 +17,17 @@ const RqtvApp = props =>{
   const isRqtvPage = (child) => child//.type&&child.type.name==='RqtvPage'
   const [pages , setPages] = useState(children)
   useEffect(()=>{
-    const filteredPages = React.Children.toArray(props.children.props.children)//.filter(isRqtvPage)
+    const sortedPages = React.Children.toArray(props.children.props.children).sort((a,b)=>{
+      const pageA = a
+      const pageB = b
+      return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0
+    })//.filter(isRqtvPage)
     const extractPageInfo = page => {
       const { linkName, path, icon, exactActiveMatch } = page.props;
       const key = page.key
       return { linkName:linkName?linkName:path.replace(/-/g, ' ').replace(/\//,''), path, key, icon, exactActiveMatch }
     }
-    setPages(filteredPages.map(page=>extractPageInfo(page)))
+    setPages(sortedPages.map(page=>extractPageInfo(page)))
   },[props.children])
   useEffect(()=>{
     document.title=props.title

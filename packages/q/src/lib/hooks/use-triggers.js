@@ -72,11 +72,18 @@ const useTriggers = (triggers) => {
       setDone(true)
       setQLoading(false)
     }
+    return ()=>{
+      if(qLoading===false){
+        setDone(false)
+        setQLoading(true)
+        setProgress(false)
+      }
+    }
   }, [progress, triggersMemo])
 
   useEffect(()=>{
-    if(qDocHandler.qDoc && triggersMemo&&triggersMemo.length>0){
-      triggersMemo&&triggersMemo.forEach(trigger => setTimeout(()=>fire(trigger), 200))
+    if(qDocHandler.qDoc && triggersMemo&&triggersMemo.length>0 && qLoading===true){
+      triggersMemo&&triggersMemo.forEach(trigger => fire(trigger))
     }
     return () => {
       qDocHandler.qDoc&&triggersMemo&&triggersMemo.length>0&&triggersMemo.forEach(trigger=>{
@@ -85,7 +92,7 @@ const useTriggers = (triggers) => {
         }
       })
     }
-  }, [qDocHandler, triggersMemo])
+  }, [qDocHandler, triggersMemo, qLoading])
 
   ///////////////////////////////////////////////////////////////
   // fire the right trigger
