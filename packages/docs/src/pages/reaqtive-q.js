@@ -10,28 +10,27 @@ const ReaqtiveQ = props => {
     //<ComponentDocumentation title = {'a'} componentData={data}/>
     <div>
       <Switch>
-        <Route path={mainPath+'/nestedpage'} >
-          <RqtvPage
+        <RqtvPage
             fallbackPage="/reaqtive-q"
             qConditionExpr="=count(distinct Customer)=1"
             qTitleExpr="'Nested Page'"
             exactActiveMatch={false}
+            path={mainPath+'/nestedpage'}
           >
           {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
             <div>
               <RqtvListbox qFieldExpr="Customer"/>
             </div>
-          </RqtvPage>
-        </Route>
-        <Route path={mainPath} >
-          <RqtvPage
+        </RqtvPage>
+        <RqtvPage
             qTitleExpr="'Main Page'"
             exactActiveMatch={false}
+            path={mainPath}
+            exact={true}
           >
             <div>Normal Page</div>
             <NavLink to={mainPath+'/nestedpage/?selections=Customer:Benedict&selections=Account:61099'}><button>Go To Nested Page</button></NavLink>
-          </RqtvPage>
-        </Route>
+        </RqtvPage>
       </Switch>
     </div>
   )

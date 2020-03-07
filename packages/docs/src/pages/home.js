@@ -21,7 +21,7 @@ const Home = (props) =>{
             page.path!=='/'&&
             <li className="list-group-item" key={page.key}>
               <NavLink to={page.path}>
-                <span style={{textTransform:'uppercase'}}>{page.linkName}</span>
+                <span style={{textTransform:'uppercase'}}>{page.linkName?page.linkName:page.pathpath.replace(/-/g, ' ').replace(/\//,'')}</span>
               </NavLink>
             </li>
           )}

@@ -22,70 +22,59 @@ const ExampleApp = props => {
   const maximizeEl=useRef();
   //const pages = [{id:'0', title:'Home Page'},{id:'1', title:'Visualiztions Page'},{id:'2', title:'Pagina 2'}]
   return(
-    <Router>
-      <Reaqtive qConfig={qConfig} qCapabilityApiRequired={true}>
-          {/*<ExampleApp />*/}
-          <RqtvApp
-            sideMenuFields={{method:'include', mask:['**']}}
-            title="Reaqtive Demo"
+    <Reaqtive qConfig={qConfig} qCapabilityApiRequired={true}>
+      {/*<ExampleApp />*/}
+      <RqtvApp
+        sideMenuFields={{method:'include', mask:['**']}}
+        title="Reaqtive Demo"
+      >
+        {/*Quick Start*/}
+        <RqtvPage  qTitleExpr="'Quick Start'" path={'/quick-start'}>
+          <RqtvStandardTemplate useContainerFluid={false}>
+            <SetUp/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Visualizations*/}
+        <RqtvPage qTitleExpr="'Visualizations'" path={'/visualizations'}>
+          <RqtvStandardTemplate useContainerFluid={false}>
+            <Visualizations/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Filters*/}
+        <RqtvPage qTitleExpr="'Filters'" path={'/filters'}>
+          <RqtvStandardTemplate searchFieldsMatch={{method:'include', mask:['Cust*']}} useContainerFluid={false}>
+            <Filters/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Filters*/}
+        <RqtvPage qTitleExpr="'@raqtive/q'" exactActiveMatch={false} qConditionExpr="1=1" linkName="@reaqtive/q" path="/reaqtive-q">
+            <RqtvStandardTemplate
+              searchFieldsMatch={{method:'include', mask:['Cust*']}}
+              useContainerFluid={false}
+              usePageHeader={true}
+              showSearch={false}
           >
-              <Switch>
-                {/*Quick Start*/}
-                <Route path={'/quick-start'}>
-                  <RqtvPage  qTitleExpr="'Quick Start'">
-                    <RqtvStandardTemplate useContainerFluid={false}>
-                      <SetUp/>
-                    </RqtvStandardTemplate>
-                  </RqtvPage>
-                </Route>
-                {/*Visualizations*/}
-                <Route path={'/visualizations'}>
-                  <RqtvPage qTitleExpr="'Visualizations'">
-                    <RqtvStandardTemplate useContainerFluid={false}>
-                      <Visualizations/>
-                    </RqtvStandardTemplate>
-                  </RqtvPage>
-                </Route>
-                {/*Filters*/}
-                <Route path={'/filters'}>
-                  <RqtvPage qTitleExpr="'Filters'">
-                    <RqtvStandardTemplate searchFieldsMatch={{method:'include', mask:['Cust*']}} useContainerFluid={false}>
-                      <Filters/>
-                    </RqtvStandardTemplate>
-                  </RqtvPage>
-                </Route>
-                {/*Filters*/}
-                <Route path={'/reaqtive-q'} linkName="@reaqtive/q">
-                  <RqtvPage qTitleExpr="'@raqtive/q'" exactActiveMatch={false} qConditionExpr="1=1">
-                    <RqtvStandardTemplate
-                      searchFieldsMatch={{method:'include', mask:['Cust*']}}
-                      useContainerFluid={false}
-                      usePageHeader={true}
-                      showSearch={false}
-                    >
-                      <ReaqtiveQ/>
-                    </RqtvStandardTemplate>
-                  </RqtvPage>
-                </Route>
-                {/*Home*/}
-                <Route path={'/'} exact={true} linkName='home page'>
-                  <RqtvPage
-                    triggers={[
-                        {type:'clearField',params:{fieldName:'Customer'}},
-                    ]}
-                    qTitleExpr='1+1'
-                  >
-                    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
-                      <Home
-                        maximizeEl={maximizeEl}
-                      />
-                    </RqtvStandardTemplate>
-                  </RqtvPage>
-                </Route>
-              </Switch>
-          </RqtvApp>
-        </Reaqtive>
-      </Router>
+            <ReaqtiveQ/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Home*/}
+        <RqtvPage
+            path={'/'}
+            exact={true}
+            linkName='home page'
+            triggers={[
+                {type:'clearField',params:{fieldName:'Customer'}},
+            ]}
+            qTitleExpr='1+1'
+        >
+          <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
+            <Home
+              maximizeEl={maximizeEl}
+            />
+          </RqtvStandardTemplate>
+        </RqtvPage>
+      </RqtvApp>
+    </Reaqtive>
   )
 }
 
