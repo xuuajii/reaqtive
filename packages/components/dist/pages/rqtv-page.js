@@ -38,24 +38,32 @@ const useQConditionDef = qConditionExpr => (0, _react.useMemo)(() => {
 
 const RqtvPage = props => {
   const fallbackPage = props.fallbackPage;
-  return _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
+  return _react.default.createElement(_reactRouterDom.Route, {
+    path: props.path,
+    exact: props.exact,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: void 0
+  }, _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
     triggers: props.triggers,
     qConditionExpr: props.qConditionExpr,
     qTitleExpr: props.qTitleExpr,
     hasQueryString: location.search !== "" ? true : false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 30
     },
     __self: void 0
   }, _react.default.createElement(RqtvPageConsumer, {
     fallbackPage: fallbackPage,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: void 0
-  }, props.children));
+  }, props.children)));
 };
 
 const RqtvPageConsumer = props => {
@@ -80,19 +88,14 @@ const RqtvPageConsumer = props => {
   }, [triggerState.done]);
   (0, _react.useEffect)(() => {
     qPageObjectHandler.set;
-  }, [location.pathname]); // useEffect(()=>{
-  //   if( qCondition==='0' && fallbackPage && triggersDone===true){
-  //     console.log('redirect')
-  //   }
-  //fallbackPage&&console.log(qCondition, qTitle, triggersDone)
-  // },[qCondition, fallbackPage, triggersDone])
+  }, [location.pathname]);
 
   if (qCondition === '0' && fallbackPage && triggersDone === true) {
     return _react.default.createElement(_reactRouterDom.Redirect, {
       to: fallbackPage ? fallbackPage : "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 69
+        lineNumber: 63
       },
       __self: void 0
     });
@@ -102,13 +105,19 @@ const RqtvPageConsumer = props => {
 };
 
 RqtvPage.propTypes = {
+  path: _propTypes.default.string.isRequired,
+  linkName: _propTypes.default.string,
   triggers: _propTypes.default.array.isRequired,
+  qTitleExpr: _propTypes.default.string,
   qConditionExpr: _propTypes.default.string,
-  fallbackPage: _propTypes.default.string
+  fallbackPage: _propTypes.default.string,
+  exact: _propTypes.default.bool
 };
 RqtvPage.defaultProps = {
+  exact: false,
   triggers: [],
-  qConditionExpr: ""
+  qConditionExpr: "",
+  qTitleExpr: "'My Reaqtive Page'"
 };
 var _default = RqtvPage;
 exports.default = _default;

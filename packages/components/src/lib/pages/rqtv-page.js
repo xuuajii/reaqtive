@@ -4,7 +4,7 @@
 
 import React, {useState, useEffect, useContext, useMemo} from 'react'
 import PropTypes from 'prop-types'
-import { Redirect, useLocation } from 'react-router-dom'
+import { Route, Redirect, useLocation } from 'react-router-dom'
 import {RqtvPageContext, RqtvPageProvider} from '../contexts/rqtv-page-context'
 import {useQObjectReducer, useQLayoutReducer } from '@reaqtive/q'
 
@@ -26,18 +26,20 @@ const RqtvPage = props => {
   const {fallbackPage} = props
 
   return(
-    <RqtvPageProvider
-        triggers={props.triggers}
-        qConditionExpr={props.qConditionExpr}
-        qTitleExpr={props.qTitleExpr}
-        hasQueryString={location.search!==""?true:false}
-      >
-        <RqtvPageConsumer
-          fallbackPage={fallbackPage}
+    <Route path={props.path} exact={props.exact}>
+      <RqtvPageProvider
+          triggers={props.triggers}
+          qConditionExpr={props.qConditionExpr}
+          qTitleExpr={props.qTitleExpr}
+          hasQueryString={location.search!==""?true:false}
         >
-          {props.children}
-        </RqtvPageConsumer>
-    </RqtvPageProvider>
+          <RqtvPageConsumer
+            fallbackPage={fallbackPage}
+          >
+            {props.children}
+          </RqtvPageConsumer>
+      </RqtvPageProvider>
+    </Route>
   )
 }
 
@@ -57,14 +59,6 @@ const RqtvPageConsumer = props => {
     qPageObjectHandler.set
   }, [location.pathname])
 
-  // useEffect(()=>{
-  //   if( qCondition==='0' && fallbackPage && triggersDone===true){
-  //     console.log('redirect')
-  //   }
-  //fallbackPage&&console.log(qCondition, qTitle, triggersDone)
-  // },[qCondition, fallbackPage, triggersDone])
-
-
   if( qCondition==='0' && fallbackPage && triggersDone===true){
     return <Redirect to={fallbackPage?fallbackPage:""} />
   }
@@ -72,14 +66,20 @@ const RqtvPageConsumer = props => {
 }
 
 RqtvPage.propTypes = {
+  path:PropTypes.string.isRequired,
+  linkName:PropTypes.string,
   triggers:PropTypes.array.isRequired,
+  qTitleExpr:PropTypes.string,
   qConditionExpr:PropTypes.string,
-  fallbackPage:PropTypes.string
+  fallbackPage:PropTypes.string,
+  exact:PropTypes.bool,
 }
 
 RqtvPage.defaultProps = {
+  exact:false,
   triggers:[],
   qConditionExpr:"",
+  qTitleExpr:"'My Reaqtive Page'"
 }
 
 export default RqtvPage
