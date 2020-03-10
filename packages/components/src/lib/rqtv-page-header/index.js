@@ -5,7 +5,7 @@
 import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
 import {RqtvPageContext} from '../contexts/rqtv-page-context'
-import { Navbar, NavbarNav } from '@reaqtive/layout'
+import { Navbar, NavbarNav as RqtvNavbarNav, NavbarCollapse as RqtvNavbarCollapse, NavbarToggle as RqtvNavbarToggle } from '@reaqtive/layout'
 
 
 const RqtvPageHeader = props => {
@@ -31,4 +31,4 @@ RqtvPageHeader.defaultProps={
   className:'',
 }
 
-export {RqtvPageHeader}
+export {RqtvPageHeader, RqtvNavbarNav, RqtvNavbarCollapse, RqtvNavbarToggle}

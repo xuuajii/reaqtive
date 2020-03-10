@@ -29,24 +29,17 @@ const Navbar = props => {
   },[navbarEl.current])
   //const [paddingElHeight, setPaddingElHeight] = useState(0)
 
-  const mapPropToElement = (child, index) => {
-    const propsMap ={
-      NavbarCollapse:{show:showCollapse},
-      NavbarToggle:{toggleCollapse,showCollapse}
-    }
-    const mappedProp = propsMap[child.type.name]
-    //console.log(mappedProp)
-    return mappedProp ? React.cloneElement(child,{...mappedProp}):React.cloneElement(child)
-  }
 
   return (
     <>
       <nav className={`navbar ${props.className?props.className:''}`} style={{...props.style}} ref={navbarEl}>
-        {children.map((child, index)=> mapPropToElement(child,index))}
+        {props.children
+        }
       </nav>
     </>
   )
 }
+//React.Children.toArray(props.children).map(child=> React.cloneElement(child,{toggleCollapse,showCollapse}))
 
 Navbar.propTypes = {
   className:PropTypes.string,
@@ -55,7 +48,7 @@ Navbar.propTypes = {
 }
 
 Navbar.defaultProps = {
-  className:"navbar-expand-lg navbar-light bg-light",
+  className:"navbar-expand-lg",
   breakpoint:992,
 }
 

@@ -15,10 +15,12 @@ const NavbarNav = props => {
 }
 
 NavbarNav.propTypes={
-  neverCollapse:PropTypes.bool
+  neverCollapse:PropTypes.bool,
+  className:PropTypes.string,
 }
 NavbarNav.defaultProps={
-  neverCollapse:false
+  neverCollapse:false,
+  className:''
 }
 
 export default NavbarNav

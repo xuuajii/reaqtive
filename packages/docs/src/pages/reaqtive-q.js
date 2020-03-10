@@ -1,6 +1,6 @@
 import React, {useState, useMemo, useEffect, useCallback, useContext} from 'react'
 import { useLocation, useHistory, Switch, Route, NavLink } from "react-router-dom";
-import  {RqtvPage, RqtvListbox} from '@reaqtive/components'
+import  {RqtvPage, RqtvPageHeader, RqtvListbox, RqtvNavbarNav, RqtvNavbarToggle, RqtvNavbarCollapse, RqtvDropdownFilter} from '@reaqtive/components'
 import {useQObjectReducer, useQLayoutReducer, QGlobal, useTriggers} from '@reaqtive/q'
 
 const ReaqtiveQ = props => {
@@ -28,6 +28,9 @@ const ReaqtiveQ = props => {
             path={mainPath}
             exact={true}
           >
+            <RqtvPageHeader>
+              <RqtvNavbarToggle/>
+            </RqtvPageHeader>
             <div>Normal Page</div>
             <NavLink to={mainPath+'/nestedpage/?selections=Customer:Benedict&selections=Account:61099'}><button>Go To Nested Page</button></NavLink>
         </RqtvPage>

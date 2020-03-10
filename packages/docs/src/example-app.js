@@ -50,8 +50,9 @@ const ExampleApp = props => {
         <RqtvPage qTitleExpr="'@raqtive/q'" exactActiveMatch={false} qConditionExpr="1=1" linkName="@reaqtive/q" path="/reaqtive-q">
             <RqtvStandardTemplate
               searchFieldsMatch={{method:'include', mask:['Cust*']}}
+              sideMenuFieldsMatch={{method:'include', mask:['Cust*']}}
               useContainerFluid={false}
-              usePageHeader={true}
+              usePageHeader={false}
               showSearch={false}
           >
             <ReaqtiveQ/>
