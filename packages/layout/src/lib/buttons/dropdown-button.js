@@ -8,7 +8,7 @@ const DropdownButton = props => {
 
   const onClick = (e)=>{
     typeof props.onClick==='function' && props.onClick(e);
-    props.toggleMenu();
+    typeof props.toggleMenu==='function' && props.toggleMenu();
   }
 
   return(
