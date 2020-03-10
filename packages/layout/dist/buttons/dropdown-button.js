@@ -22,7 +22,7 @@ var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\sr
 const DropdownButton = props => {
   const onClick = e => {
     typeof props.onClick === 'function' && props.onClick(e);
-    props.toggleMenu();
+    typeof props.toggleMenu === 'function' && props.toggleMenu();
   };
 
   return _react.default.createElement(_button.default, {

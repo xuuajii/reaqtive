@@ -31,10 +31,12 @@ const NavbarNav = props => {
 };
 
 NavbarNav.propTypes = {
-  neverCollapse: _propTypes.default.bool
+  neverCollapse: _propTypes.default.bool,
+  className: _propTypes.default.string
 };
 NavbarNav.defaultProps = {
-  neverCollapse: false
+  neverCollapse: false,
+  className: ''
 };
 var _default = NavbarNav;
 exports.default = _default;
