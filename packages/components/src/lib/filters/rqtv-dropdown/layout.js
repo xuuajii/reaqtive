@@ -50,7 +50,7 @@ const Layout = props => {
  const [listHeight, setListHeight] = useState('100%')
 
   return(
-    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{...dropdownMenuStyle, minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
+    <DropdownMenu show={props.show} align={props.align} ref={dropdownMenuEl} style={{...dropdownMenuStyle, minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
     {showToolbar&&
       <DropdownToolbar
         searchListObjectFor={rqtvListObject.searchListObjectFor}

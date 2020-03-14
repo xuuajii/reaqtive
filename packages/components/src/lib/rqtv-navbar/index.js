@@ -25,16 +25,18 @@ const RqtvNavbar = props => {
   return(
     <>
       <Navbar className="fixed-top rqtv-navbar">
-        <div className="navbar-brand-container">
-        {showSideMenuToggle&&
-          <Button onClick={props.onToggleMenu} >
-            <HamburgerMenu isOpen={props.sideMenuActive}/>
-          </Button>
-        }
-          <NavbarBrand url={rqtvApp.brandUrl} imgUrl={rqtvApp.brand} imgStyle={rqtvApp.brandStyle}>
-            {rqtvApp.title}
-          </NavbarBrand>
-        </div>
+        <>
+          <div className="navbar-brand-container">
+          {showSideMenuToggle&&
+            <Button onClick={props.onToggleMenu} >
+              <HamburgerMenu isOpen={props.sideMenuActive}/>
+            </Button>
+          }
+            <NavbarBrand url={rqtvApp.brandUrl} imgUrl={rqtvApp.brand} imgStyle={rqtvApp.brandStyle}>
+              {rqtvApp.title}
+            </NavbarBrand>
+          </div>
+        </>
         <NavbarNav neverCollapse={true}>
           <RqtvCurrentSelections hidden={!showCurrentSelections} hidePrefix={hidePrefix} customLoading={()=><div/>}/>
           {props.showSearch&&

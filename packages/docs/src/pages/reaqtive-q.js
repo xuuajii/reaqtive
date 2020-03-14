@@ -30,6 +30,11 @@ const ReaqtiveQ = props => {
           >
             <RqtvPageHeader>
               <RqtvNavbarToggle/>
+              <RqtvNavbarCollapse>
+                <RqtvNavbarNav>
+                  <RqtvDropdownFilter qFieldExpr="Customer" align='right'/>
+                </RqtvNavbarNav>
+              </RqtvNavbarCollapse>
             </RqtvPageHeader>
             <div>Normal Page</div>
             <NavLink to={mainPath+'/nestedpage/?selections=Customer:Benedict&selections=Account:61099'}><button>Go To Nested Page</button></NavLink>

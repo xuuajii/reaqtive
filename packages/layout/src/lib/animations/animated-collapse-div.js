@@ -2,7 +2,7 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React, { useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 // import PropTypes from 'prop-types'
 import {useTransition, animated} from 'react-spring'
 
@@ -14,35 +14,46 @@ const AnimatedCollapseDiv = props => {
   const getRefHeight = (ref) => {
     return ref.current?ref.current.getBoundingClientRect().height:0
   }
-  const height= props.height?props.height:getRefHeight(collapseEl)
+  //const height = props.height?props.height:getRefHeight(collapseEl)
 
-  //((console.log( collapseEl.current&&collapseEl.current.offsetHeight )
-  const transitions = useTransition(props.show, null, {
-    enter: ()=> async next =>{
-      if(height){
-        await next({height:height, overflow:'hidden', marginTop:-33, opacity:1})
-        await next({height:height, overflow:'visible', marginTop:-33, opacity:1})
-      }
-    },
-    leave:()=>async next=>{
-      // console.log(height)
-      if(height){
-        await next({height:height, overflow:'hidden', marginTop:-33, opacity:1})
-        await next({height:0, overflow:'hidden', marginTop:0, opacity:0})
-      }
-    },
-    from:{  height:0, overflow:'hidden', marginTop:0, opacity:0},
-    unique:true,
-    reverse:!(props.show)
-    })
+  const [height, setHeight] = useState(0)
+  const [show, setShow] = useState(true)
+  useEffect(()=>{
+    setShow(props.show)
+  },[props.show])
+  useEffect(()=>{
+    if(show===true){
+      const rectHeight = collapseEl.current&&collapseEl.current.getBoundingClientRect().height
+      const newHeight=props.height?props.height:rectHeight
+      setHeight(newHeight)
+    }
+  },[show, props.height])
+  const transitions = useTransition(show, null, {
+  enter: ()=> async next =>{
+    if(height){
+      await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+      await next({height:props.height?height:'auto', overflow:'visible', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+    }
+  },
+  leave:()=>async next=>{
+    // console.log(height)
+    if(height){
+      await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+      await next({height:0, overflow:'hidden', marginTop:0, opacity:0})
+    }
+  },
+  from:{  height:0, overflow:'hidden', marginTop:0, opacity:0},
+  unique:true,
+  reverse:!(props.show)
+  })
 
-    return transitions.map(({ item, props:animatedProps, key }) =>{
-      return item&&
-        <animated.div className={`collapse show ${props.className}`} key={key} style={{...animatedProps}} >
-            <div ref={collapseEl}>{props.children}</div>
-        </animated.div>
-      }
-    )
+  return transitions.map(({ item, props:animatedProps, key }) =>{
+    return item&&
+      <animated.div className={`collapse ${props.className} show `} key={key} style={{...animatedProps}} >
+          <div ref={collapseEl}>{props.children}</div>
+      </animated.div>
+    }
+  )
 
 }
 

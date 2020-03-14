@@ -1,7 +1,10 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-
+$break-point-lg: 992px;
+$break-point-md: 768px;
+$break-point-sm: 576px;
+$break-point-xs: 350px;
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import './buttons/button.scss';
 @import './search.scss';

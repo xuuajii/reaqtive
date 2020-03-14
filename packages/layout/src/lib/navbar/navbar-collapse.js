@@ -2,20 +2,35 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React, {useRef} from 'react'
-// import PropTypes from 'prop-types'
-import {useTransition, animated} from 'react-spring'
-
+import React, {useContext} from 'react'
+import PropTypes from 'prop-types'
+import {AnimatedCollapseDiv, System} from '../index'
 
 const NavbarCollapse = props => {
+  const system = useContext(System)
+  const verticalNavbar = system.windowWidth<=system.breakPoints[props.breakPoint]?true:false
+
   return (
-    <div class="collapse navbar-collapse show">
-      {props.children}
+    verticalNavbar===false
+    ?<div className={`collapse navbar-collapse show ${props.className}`}>
+      {React.Children.toArray(props.children).map(child=>React.cloneElement(child, {verticalNavbar}))}
     </div>
+    :<AnimatedCollapseDiv className={`navbar-collapse ${props.className}`} show={props.showCollapse}>
+      {React.Children.toArray(props.children).map(child=>React.cloneElement(child, {verticalNavbar}))}
+    </AnimatedCollapseDiv>
   )
 }
 
 export default NavbarCollapse
+
+NavbarCollapse.propTypes={
+  className:PropTypes.string,
+  breakPoint:PropTypes.string,
+}
+NavbarCollapse.defaultProps={
+  className:'',
+  breakPoint:'lg'
+}
 
 // const NavbarCollapse = props => {
 //

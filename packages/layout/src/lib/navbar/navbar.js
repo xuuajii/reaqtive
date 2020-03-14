@@ -11,11 +11,10 @@ const defaultTogglerStyle = {
 
 const Navbar = props => {
   const navbarEl = useRef()
-  const [showCollapse, setShowCollapse] = useState(window.innerWidth>props.breakpoint?true:false)
+  const [showCollapse, setShowCollapse] = useState(false)
 
   const toggleCollapse = () => {
     setShowCollapse(!showCollapse)
-
   }
   const children = React.Children.toArray(props.children)
   const addPaddingTop = props.className.indexOf("fixed-top")!==-1
@@ -33,8 +32,7 @@ const Navbar = props => {
   return (
     <>
       <nav className={`navbar ${props.className?props.className:''}`} style={{...props.style}} ref={navbarEl}>
-        {props.children
-        }
+        {React.Children.toArray(props.children).map(child=>React.cloneElement(child, {showCollapse, toggleCollapse}))}
       </nav>
     </>
   )

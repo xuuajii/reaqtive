@@ -16,12 +16,7 @@ const RqtvDropdownButton = props => {
       const label = qLayout&&qLayout.label?qLayout.label:props.label;
       return(
         <DropdownButton
-          className={props.className}
-          ripple={props.ripple}
-          style={props.style}
-          onClick={props.onClick}
-          show={props.show}
-          showCaret={props.showCaret}
+          {...props}
           label={label}
         />
       )}

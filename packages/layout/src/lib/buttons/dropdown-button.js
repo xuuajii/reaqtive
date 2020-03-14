@@ -12,7 +12,7 @@ const DropdownButton = props => {
   }
 
   return(
-    <Button className={`dropdown-toggle hide-caret ${props.className}`} type="button" onClick={onClick} style={props.style}>
+    <Button className={`dropdown-toggle hide-caret ${props.className} ${props.isNavItem?'nav-item':''}`} type="button" onClick={onClick} style={props.style}>
       {props.label}
       {!props.hideCaret&&<LuiIcon iconType={`triangle-${props.show?'top':'bottom'}`} className="caret"/>}
     </Button>

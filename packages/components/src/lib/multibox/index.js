@@ -25,7 +25,7 @@ const RqtvMultibox = props => {
               {field.hasSelections===true&&<span className="selection-indicator"/>}
               {field.label||fieldExpr}
             </CollapseHeader>
-            <CollapseBody height={props.fieldHeight}>
+            <CollapseBody height={props.fieldHeight} hideTitleWhenExpanded={true}>
               <RqtvListbox
                 height={props.fieldHeight}
                 qFieldExpr={fieldExpr}
