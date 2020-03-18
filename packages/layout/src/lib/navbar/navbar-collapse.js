@@ -8,7 +8,7 @@ import {AnimatedCollapseDiv, System} from '../index'
 
 const NavbarCollapse = props => {
   const system = useContext(System)
-  const verticalNavbar = system.windowWidth<=system.breakPoints[props.breakPoint]?true:false
+  const verticalNavbar = system.windowWidth<system.breakPoints[props.breakPoint]?true:false
 
   return (
     verticalNavbar===false

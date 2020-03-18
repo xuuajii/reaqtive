@@ -16,11 +16,12 @@ const AnimatedCollapseDiv = props => {
   }
   //const height = props.height?props.height:getRefHeight(collapseEl)
 
-  const [height, setHeight] = useState(0)
+  const [height, setHeight] = useState(props.height)
   const [show, setShow] = useState(true)
   useEffect(()=>{
     setShow(props.show)
   },[props.show])
+
   useEffect(()=>{
     if(show===true){
       const rectHeight = collapseEl.current&&collapseEl.current.getBoundingClientRect().height
@@ -28,23 +29,24 @@ const AnimatedCollapseDiv = props => {
       setHeight(newHeight)
     }
   },[show, props.height])
+
   const transitions = useTransition(show, null, {
-  enter: ()=> async next =>{
-    if(height){
-      await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
-      await next({height:props.height?height:'auto', overflow:'visible', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
-    }
-  },
-  leave:()=>async next=>{
-    // console.log(height)
-    if(height){
-      await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
-      await next({height:0, overflow:'hidden', marginTop:0, opacity:0})
-    }
-  },
-  from:{  height:0, overflow:'hidden', marginTop:0, opacity:0},
-  unique:true,
-  reverse:!(props.show)
+    enter: ()=> async next =>{
+      if(height){
+        await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+        await next({height:props.height?height:'auto', overflow:'visible', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+      }
+    },
+    leave:()=>async next=>{
+      // console.log(height)
+      if(height){
+        await next({height:props.height?height:'auto', overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+        await next({height:0, overflow:'hidden', marginTop:0, opacity:0})
+      }
+    },
+    from:{  height:0, overflow:'hidden', marginTop:0, opacity:0},
+    unique:true,
+    reverse:!show
   })
 
   return transitions.map(({ item, props:animatedProps, key }) =>{

@@ -1,0 +1,50 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+.switch-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .switch-label.right{
+    margin: 0 0 0 1rem;
+  }
+  .switch-label.left{
+    margin: 0 1rem 0 0;
+  }
+  .switch-label.top{
+    margin: 0 0 1rem 0;
+  }
+  .switch-label.bottom{
+    margin: 1rem 0 0 0;
+  }
+  .switch-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .switch-slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    width: 50px;
+    height: 25px;
+    border-radius: 100px;
+    position: relative;
+    margin: 0;
+  }
+
+  .switch-slider .switch-button {
+    content: '';
+    position: absolute;
+    top:0;
+    left:0;
+    width: 25px;
+    height: 25px;
+    border-radius: 45px;
+    transition: 0.6s;
+    background: #fff;
+    box-shadow: 0 0 2px 0 rgba(10, 10, 10, 0.29);
+  }
+}

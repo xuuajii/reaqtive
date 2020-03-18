@@ -8,9 +8,10 @@ import PropTypes from 'prop-types'
 const NavbarNav = props => {
   //const flexDirection = props.neverCollapse?'row':'column'
   const {verticalNavbar} = props
+  const neverCollapseHandler = props.neverCollapse?'d-flex flex-row ':''
   return (
-    <ul className={`nav navbar-nav ${props.className}`} style={{flexGrow:1, ...props.style}} >
-      {React.Children.toArray(props.children).map(child=>React.cloneElement(child, {isNavItem:true, verticalNavbar}))}
+    <ul className={`navbar-nav ${neverCollapseHandler} ${props.className}`} style={{flexGrow:1, ...props.style}} >
+      {props.children}
     </ul>
   )
 }

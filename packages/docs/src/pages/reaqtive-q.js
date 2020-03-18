@@ -2,6 +2,7 @@ import React, {useState, useMemo, useEffect, useCallback, useContext} from 'reac
 import { useLocation, useHistory, Switch, Route, NavLink } from "react-router-dom";
 import  {RqtvPage, RqtvPageHeader, RqtvListbox, RqtvNavbarNav, RqtvNavbarToggle, RqtvNavbarCollapse, RqtvDropdownFilter} from '@reaqtive/components'
 import {useQObjectReducer, useQLayoutReducer, QGlobal, useTriggers} from '@reaqtive/q'
+import {Switch as SwitchToggle, NavItem} from '@reaqtive/layout'
 
 const ReaqtiveQ = props => {
   const qGlobalHandler = useContext(QGlobal)
@@ -32,7 +33,12 @@ const ReaqtiveQ = props => {
               <RqtvNavbarToggle/>
               <RqtvNavbarCollapse>
                 <RqtvNavbarNav>
-                  <RqtvDropdownFilter qFieldExpr="Customer" align='right'/>
+                  <NavItem>
+                    <RqtvDropdownFilter qFieldExpr="Customer" align='right'/>
+                  </NavItem>
+                  <NavItem className="nav-item">
+                    <SwitchToggle label="Ciao"/>
+                  </NavItem>
                 </RqtvNavbarNav>
               </RqtvNavbarCollapse>
             </RqtvPageHeader>

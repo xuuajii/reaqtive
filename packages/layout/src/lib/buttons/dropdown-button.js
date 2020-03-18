@@ -24,10 +24,12 @@ export default DropdownButton
 
 DropdownButton.propTypes = {
   className:PropTypes.string,
+  style:PropTypes.object,
   hideCaret:PropTypes.bool
 }
 
 DropdownButton.defaultProps = {
   className:'btn-primary text-light',
+  style:{},
   hideCaret:false
 }
