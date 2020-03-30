@@ -2,6 +2,8 @@
 
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -9,22 +11,47 @@ exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactSpring = require("react-spring");
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-collapse.js";
+var _index = require("../index");
+
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-collapse.js";
 
 const NavbarCollapse = props => {
-  return _react.default.createElement("div", {
-    class: "collapse navbar-collapse show",
+  const system = (0, _react.useContext)(_index.System);
+  const verticalNavbar = system.windowWidth < system.breakPoints[props.breakPoint] ? true : false;
+  return verticalNavbar === false ? _react.default.createElement("div", {
+    className: "collapse navbar-collapse show ".concat(props.className),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 15
     },
     __self: void 0
-  }, props.children);
+  }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
+    verticalNavbar
+  }))) : _react.default.createElement(_index.AnimatedCollapseDiv, {
+    className: "navbar-collapse ".concat(props.className),
+    show: props.showCollapse,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 18
+    },
+    __self: void 0
+  }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
+    verticalNavbar
+  })));
 };
 
-var _default = NavbarCollapse; // const NavbarCollapse = props => {
+var _default = NavbarCollapse;
+exports.default = _default;
+NavbarCollapse.propTypes = {
+  className: _propTypes.default.string,
+  breakPoint: _propTypes.default.string
+};
+NavbarCollapse.defaultProps = {
+  className: '',
+  breakPoint: 'lg'
+}; // const NavbarCollapse = props => {
 //
 //   const collapseEl=useRef()
 //   const getRefHeight = (ref) => {
@@ -60,5 +87,3 @@ var _default = NavbarCollapse; // const NavbarCollapse = props => {
 //     )
 //
 // }
-
-exports.default = _default;

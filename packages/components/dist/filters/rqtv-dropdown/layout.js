@@ -31,7 +31,7 @@ var _index2 = require("../helpers/index");
 
 var _useRqtvListObject = _interopRequireDefault(require("../use-rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\layout.js";
 
 const Layout = props => {
   const dropdownMenuHeight = props.dropdownMenuHeight,
@@ -82,6 +82,7 @@ const Layout = props => {
 
   return _react.default.createElement(_layout.DropdownMenu, {
     show: props.show,
+    align: props.align,
     ref: dropdownMenuEl,
     style: (0, _objectSpread2.default)({}, dropdownMenuStyle, {
       minHeight: 120,

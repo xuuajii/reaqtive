@@ -17,7 +17,7 @@ var _button = _interopRequireDefault(require("./button"));
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\buttons\\dropdown-button.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\buttons\\dropdown-button.js";
 
 const DropdownButton = props => {
   const onClick = e => {
@@ -26,7 +26,7 @@ const DropdownButton = props => {
   };
 
   return _react.default.createElement(_button.default, {
-    className: "dropdown-toggle hide-caret ".concat(props.className),
+    className: "dropdown-toggle hide-caret ".concat(props.className, " ").concat(props.isNavItem ? 'nav-item' : ''),
     type: "button",
     onClick: onClick,
     style: props.style,
@@ -50,9 +50,11 @@ var _default = DropdownButton;
 exports.default = _default;
 DropdownButton.propTypes = {
   className: _propTypes.default.string,
+  style: _propTypes.default.object,
   hideCaret: _propTypes.default.bool
 };
 DropdownButton.defaultProps = {
   className: 'btn-primary text-light',
+  style: {},
   hideCaret: false
 };

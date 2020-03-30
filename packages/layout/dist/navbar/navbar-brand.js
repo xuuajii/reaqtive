@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-brand.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-brand.js";
 //console.log(1)
 const defaultImgStyle = {
   width: "40px",
@@ -31,9 +31,7 @@ const NavbarBrand = props => {
   return _react.default.createElement("a", {
     href: "#section",
     className: "navbar-brand ".concat(props.className ? props.className : ''),
-    style: (0, _objectSpread2.default)({
-      cursor: 'pointer'
-    }, props.style),
+    style: (0, _objectSpread2.default)({}, props.style),
     onClick: navigate,
     __source: {
       fileName: _jsxFileName,

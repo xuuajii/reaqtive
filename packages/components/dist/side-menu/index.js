@@ -27,7 +27,7 @@ var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
 var _pageList = _interopRequireDefault(require("./page-list"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\side-menu\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\side-menu\\index.js";
 
 const RqtvSideMenu = props => {
   const sideMenuFieldsMatch = props.sideMenuFieldsMatch;

@@ -17,7 +17,7 @@ const AnimatedCollapseDiv = props => {
   //const height = props.height?props.height:getRefHeight(collapseEl)
 
   const [height, setHeight] = useState(props.height)
-  const [show, setShow] = useState(true)
+  const [show, setShow] = useState(props.height>0?false:true)
   useEffect(()=>{
     setShow(props.show)
   },[props.show])

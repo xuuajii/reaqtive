@@ -15,7 +15,7 @@ var _layout = require("@reaqtive/layout");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\multibox\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\multibox\\index.js";
 
 const RqtvMultibox = props => {
   // console.log(props.fieldList)
@@ -55,6 +55,7 @@ const RqtvMultibox = props => {
       __self: void 0
     }), field.label || fieldExpr), _react.default.createElement(_layout.CollapseBody, {
       height: props.fieldHeight,
+      hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28

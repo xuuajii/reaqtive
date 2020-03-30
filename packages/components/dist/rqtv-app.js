@@ -25,7 +25,7 @@ var _rqtvAppContext = require("./contexts/rqtv-app-context");
 
 var _index = require("./loading/index");
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\rqtv-app.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-app.js";
 
 const RqtvApp = props => {
   const qCapabilityApiRequired = props.qCapabilityApiRequired,

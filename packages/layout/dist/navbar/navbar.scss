@@ -1,0 +1,9 @@
+.navbar{
+  .navbar-nav{
+    .nav-item{
+      @media (min-width: $break-point-md) {
+        margin-left:0.5rem;
+      }
+    }
+  }
+}

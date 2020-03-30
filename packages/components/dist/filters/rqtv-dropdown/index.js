@@ -25,7 +25,7 @@ var _rqtvDropdownButton = _interopRequireDefault(require("../../buttons/rqtv-dro
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
 
 /**
  * RqtvDropdownFilter
@@ -92,6 +92,7 @@ const RqtvDropdownFilter = props => {
     showCaret: showCaret,
     style: buttonStyle,
     className: buttonClassName,
+    isNavItem: props.isNavItem,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 46
@@ -102,13 +103,13 @@ const RqtvDropdownFilter = props => {
     quickSelectionMode: props.quickSelectionMode,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: void 0
   }, _react.default.createElement(_rqtvListObject.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 57
     },
     __self: void 0
   }), _react.default.createElement(_layout.default, Object.assign({}, props, {
@@ -116,13 +117,18 @@ const RqtvDropdownFilter = props => {
     hideDropdownMenu: hideDropdownMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 58
     },
     __self: void 0
   })))));
 };
 
 RqtvDropdownFilter.propTypes = {
+  /**
+   * It allows to align the dropdown menu to the left or to rhe right of the button
+   */
+  align: _propTypes.default.string,
+
   /**
    * The expression which will be used in the listbox. It can be a fieldname or a valid expression
    */
@@ -225,6 +231,7 @@ RqtvDropdownFilter.propTypes = {
   quickSelectionMode: _propTypes.default.bool
 };
 RqtvDropdownFilter.defaultProps = {
+  align: 'left',
   qSortObject: {
     qSortByState: 1,
     qSortByFrequency: 0,

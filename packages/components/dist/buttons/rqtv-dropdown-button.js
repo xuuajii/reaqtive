@@ -17,7 +17,7 @@ var _q = require("@reaqtive/q");
 
 var _qButtonObjectDef = _interopRequireDefault(require("./q-button-object-def"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-dropdown-button.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\buttons\\rqtv-dropdown-button.js";
 
 const RqtvDropdownButton = props => {
   const qObjectDef = (0, _qButtonObjectDef.default)(props.qLabelExpr, props.qColorExpr);
@@ -31,20 +31,14 @@ const RqtvDropdownButton = props => {
   }, qGenericObject => {
     const qLayout = qGenericObject.qLayoutHandler.qLayout;
     const label = qLayout && qLayout.label ? qLayout.label : props.label;
-    return _react.default.createElement(_layout.DropdownButton, {
-      className: props.className,
-      ripple: props.ripple,
-      style: props.style,
-      onClick: props.onClick,
-      show: props.show,
-      showCaret: props.showCaret,
+    return _react.default.createElement(_layout.DropdownButton, Object.assign({}, props, {
       label: label,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 18
       },
       __self: void 0
-    });
+    }));
   });
 };
 

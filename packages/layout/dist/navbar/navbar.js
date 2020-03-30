@@ -17,7 +17,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\paolo_d\\Projects\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar.js";
 const defaultTogglerStyle = {
   border: 0
 };
@@ -25,7 +25,7 @@ const defaultTogglerStyle = {
 const Navbar = props => {
   const navbarEl = (0, _react.useRef)();
 
-  const _useState = (0, _react.useState)(window.innerWidth > props.breakpoint ? true : false),
+  const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         showCollapse = _useState2[0],
         setShowCollapse = _useState2[1];
@@ -51,10 +51,13 @@ const Navbar = props => {
     ref: navbarEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 34
     },
     __self: void 0
-  }, props.children));
+  }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
+    showCollapse,
+    toggleCollapse
+  }))));
 }; //React.Children.toArray(props.children).map(child=> React.cloneElement(child,{toggleCollapse,showCollapse}))
 
 

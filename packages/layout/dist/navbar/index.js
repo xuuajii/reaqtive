@@ -41,6 +41,12 @@ Object.defineProperty(exports, "HamburgerMenu", {
     return _hamburgerMenu.default;
   }
 });
+Object.defineProperty(exports, "NavItem", {
+  enumerable: true,
+  get: function () {
+    return _navItem.default;
+  }
+});
 
 var _navbar = _interopRequireDefault(require("./navbar"));
 
@@ -53,3 +59,5 @@ var _navbarToggle = _interopRequireDefault(require("./navbar-toggle"));
 var _navbarNav = _interopRequireDefault(require("./navbar-nav"));
 
 var _hamburgerMenu = _interopRequireDefault(require("./hamburger-menu"));
+
+var _navItem = _interopRequireDefault(require("./nav-item"));
