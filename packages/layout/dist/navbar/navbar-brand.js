@@ -31,9 +31,7 @@ const NavbarBrand = props => {
   return _react.default.createElement("a", {
     href: "#section",
     className: "navbar-brand ".concat(props.className ? props.className : ''),
-    style: (0, _objectSpread2.default)({
-      cursor: 'pointer'
-    }, props.style),
+    style: (0, _objectSpread2.default)({}, props.style),
     onClick: navigate,
     __source: {
       fileName: _jsxFileName,

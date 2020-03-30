@@ -14,7 +14,7 @@ const Layout = props => {
   const qLayout = props.qLayoutHandler&&props.qLayoutHandler.qLayout
   const qDataPages = qLayout&&qLayout.qListObject.qDataPages
   const qSize = qLayout&&qLayout.qListObject.qSize
-  const qArea = qLayout&&qLayout.qListObject.qDataPages[0].qArea
+  const qArea = qDataPages&&qDataPages.length>0&&qDataPages[0].qArea
 
   const {rqtvListObject} = props
   const { isSelecting, beginSelections, endSelections} = props.qSelectionHandler
@@ -50,7 +50,7 @@ const Layout = props => {
  const [listHeight, setListHeight] = useState('100%')
 
   return(
-    <DropdownMenu show={props.show} ref={dropdownMenuEl} style={{...dropdownMenuStyle, minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
+    <DropdownMenu show={props.show} align={props.align} ref={dropdownMenuEl} style={{...dropdownMenuStyle, minHeight:120, maxHeight:dropdownMenuHeight, overflowY:'hidden', width:dropdownMenuWidth}}>
     {showToolbar&&
       <DropdownToolbar
         searchListObjectFor={rqtvListObject.searchListObjectFor}

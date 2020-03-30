@@ -7,6 +7,24 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "RqtvNavbarNav", {
+  enumerable: true,
+  get: function () {
+    return _layout.NavbarNav;
+  }
+});
+Object.defineProperty(exports, "RqtvNavbarCollapse", {
+  enumerable: true,
+  get: function () {
+    return _layout.NavbarCollapse;
+  }
+});
+Object.defineProperty(exports, "RqtvNavbarToggle", {
+  enumerable: true,
+  get: function () {
+    return _layout.NavbarToggle;
+  }
+});
 exports.RqtvPageHeader = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
@@ -21,18 +39,16 @@ var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\p
 
 const RqtvPageHeader = props => {
   const rqtvPage = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
-  const pageData = rqtvPage.pageData,
-        qTitle = rqtvPage.qTitle;
-  const title = props.title || qTitle !== '' && qTitle && qTitle || pageData.title;
+  const qTitle = rqtvPage.qTitle;
+  const title = props.title || qTitle !== '' && qTitle && qTitle;
   return _react.default.createElement(_layout.Navbar, {
-    className: "rqtv-page-header page-header ".concat(props.className),
+    className: "rqtv-page-header page-header navbar-expand-md ".concat(props.className),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 16
     },
     __self: void 0
-  }, _react.default.createElement("div", {
-    className: "navbar-brand",
+  }, _react.default.createElement(_layout.NavbarBrand, {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 17
@@ -49,7 +65,8 @@ const RqtvPageHeader = props => {
 
 exports.RqtvPageHeader = RqtvPageHeader;
 RqtvPageHeader.propTypes = {
-  className: _propTypes.default.string
+  className: _propTypes.default.string,
+  title: _propTypes.default.string
 };
 RqtvPageHeader.defaultProps = {
   className: ''

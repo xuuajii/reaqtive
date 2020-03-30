@@ -4,7 +4,7 @@
 
 const qConfigHelpers = {
   useProxy: (qConfig)=> {
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development' && qConfig.port===4848) {
       const qConfigForProxy = {...qConfig, host: 'localhost', port: 3000}
       return qConfigForProxy
     } else {
@@ -30,9 +30,9 @@ const qConfigHelpers = {
         path='unmatched'
       }
     const prefix = (qConfigForProxy.prefix !== '') ? `/${qConfigForProxy.prefix}` : '';
-    const qSenseURL = `${(qConfigForProxy.secure ? 'https://' : 'http://') + qConfigForProxy.host + (qConfigForProxy.port ? `:${qConfigForProxy.port}` : '') + prefix+path}`;///resources/assets/external/requirejs/require.js`;
+    const qSenseURL = `${(qConfigForProxy.secure ? 'https://' : 'http://') + qConfigForProxy.host + (qConfigForProxy.port ? `:${qConfigForProxy.port}` : '') + prefix+path}`;
     return qSenseURL;
-  }
+  },
 }
 
 export default qConfigHelpers

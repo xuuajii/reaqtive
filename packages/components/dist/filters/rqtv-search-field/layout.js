@@ -38,7 +38,7 @@ const Layout = props => {
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout;
   const qDataPages = qLayout && qLayout.qListObject.qDataPages;
   const qSize = qLayout && qLayout.qListObject.qSize;
-  const qArea = qLayout && qLayout.qListObject.qDataPages[0].qArea;
+  const qArea = qDataPages && qDataPages.length > 0 && qDataPages[0].qArea;
   const rendererProps = (0, _index2.useListObjectRendererMap)(props.qLayoutHandler, props.qObjectHandler);
   const rqtvListObject = props.rqtvListObject;
   const isSearching = rqtvListObject.isSearching;

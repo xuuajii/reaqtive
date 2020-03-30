@@ -32,8 +32,14 @@ const RqtvStandardTemplate = props => {
   const toggleSideMenu = () => setShowSideMenu(!showSideMenu);
 
   const rqtvPage = (0, _react.useContext)(_rqtvPageContext.RqtvPageContext);
+
+  const _ref = rqtvPage || {},
+        triggerState = _ref.triggerState,
+        qCondition = _ref.qCondition;
+
   const rendererProps = {
-    loading: rqtvPage && rqtvPage.triggerState.qLoading,
+    loading: triggerState.qLoading,
+    //||qCondition===null||qCondition===undefined,
     error: !(rqtvPage && rqtvPage.triggerState.qLoading) && rqtvPage && rqtvPage.triggerState.qError
   };
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_index.RqtvNavbar, {
@@ -45,7 +51,7 @@ const RqtvStandardTemplate = props => {
     showSideMenuToggle: props.useSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 28
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvSideMenu, {
@@ -56,14 +62,14 @@ const RqtvStandardTemplate = props => {
     sideMenuFieldsMatch: props.sideMenuFieldsMatch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 36
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvSideMenuMain, {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 43
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -71,20 +77,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 44
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 48
     },
     __self: void 0
   }), props.usePageHeader && _react.default.createElement(_index.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 49
     },
     __self: void 0
   }), props.children))));

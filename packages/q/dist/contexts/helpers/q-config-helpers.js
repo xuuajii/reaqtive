@@ -14,7 +14,7 @@ var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/
 //
 const qConfigHelpers = {
   useProxy: qConfig => {
-    if (process.env.NODE_ENV === 'development') {
+    if (process.env.NODE_ENV === 'development' && qConfig.port === 4848) {
       const qConfigForProxy = (0, _objectSpread2.default)({}, qConfig, {
         host: 'localhost',
         port: 3000
@@ -49,8 +49,7 @@ const qConfigHelpers = {
     }
 
     const prefix = qConfigForProxy.prefix !== '' ? "/".concat(qConfigForProxy.prefix) : '';
-    const qSenseURL = "".concat((qConfigForProxy.secure ? 'https://' : 'http://') + qConfigForProxy.host + (qConfigForProxy.port ? ":".concat(qConfigForProxy.port) : '') + prefix + path); ///resources/assets/external/requirejs/require.js`;
-
+    const qSenseURL = "".concat((qConfigForProxy.secure ? 'https://' : 'http://') + qConfigForProxy.host + (qConfigForProxy.port ? ":".concat(qConfigForProxy.port) : '') + prefix + path);
     return qSenseURL;
   }
 };

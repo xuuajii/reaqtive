@@ -51,25 +51,25 @@ const RqtvNavbar = props => {
       lineNumber: 27
     },
     __self: void 0
-  }, _react.default.createElement("div", {
+  }, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "navbar-brand-container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 29
     },
     __self: void 0
   }, showSideMenuToggle && _react.default.createElement(_layout.Button, {
     onClick: props.onToggleMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 31
     },
     __self: void 0
   }, _react.default.createElement(_layout.HamburgerMenu, {
     isOpen: props.sideMenuActive,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 32
     },
     __self: void 0
   })), _react.default.createElement(_layout.NavbarBrand, {
@@ -78,14 +78,14 @@ const RqtvNavbar = props => {
     imgStyle: rqtvApp.brandStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: void 0
-  }, rqtvApp.title)), _react.default.createElement(_layout.NavbarNav, {
+  }, rqtvApp.title))), _react.default.createElement(_layout.NavbarNav, {
     neverCollapse: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 40
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvCurrentSelections, {
@@ -94,13 +94,13 @@ const RqtvNavbar = props => {
     customLoading: () => _react.default.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 41
       },
       __self: void 0
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 41
     },
     __self: void 0
   }), props.showSearch && _react.default.createElement(_index.RqtvSearchObject, {
@@ -117,7 +117,7 @@ const RqtvNavbar = props => {
     resultsHeight: '100%',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 43
     },
     __self: void 0
   }))));

@@ -29,26 +29,26 @@ const RqtvPageContext = _react.default.createContext();
 
 exports.RqtvPageContext = RqtvPageContext;
 
-const useQPageObjectDef = qTitleExpr => (0, _react.useMemo)(() => {
+const mapPageObject = (qTitleExpr, qConditionExpr) => {
   return {
     qInfo: {
-      qType: "tableData"
+      qType: "page-object"
     },
     qTitle: {
       qStringExpression: {
         qExpr: qTitleExpr
       }
+    },
+    qCondition: {
+      qStringExpression: {
+        qExpr: qConditionExpr
+      }
     }
   };
-}, [qTitleExpr]);
+};
 
 const RqtvPageConsumer = props => {
-  const location = (0, _reactRouterDom.useLocation)(); // const [locationSearch, setLocationSearch] = useState(null)
-  // useEffect(()=>{
-  //   setLocationSearch(location.search)
-  //   return () => setLocationSearch(null)
-  // },[location.search])
-
+  const location = (0, _reactRouterDom.useLocation)();
   const queryStringTriggers = (0, _index.useQueryString)(location.search);
 
   const _useState = (0, _react.useState)(null),
@@ -67,56 +67,34 @@ const RqtvPageConsumer = props => {
 
     return () => setTriggers(null);
   }, [props.triggers, queryStringTriggers, location.search]);
-  const triggerState = (0, _q.useTriggers)(triggers);
   const qConditionExpr = props.qConditionExpr,
         qTitleExpr = props.qTitleExpr;
-  const qObjectDef = useQPageObjectDef(qTitleExpr);
+  const qObjectDef = mapPageObject(qTitleExpr, qConditionExpr);
   const qObjectHandler = (0, _q.useQObjectReducer)(qObjectDef);
   const qLayoutHandler = (0, _q.useQLayoutReducer)(qObjectHandler);
-  const qCondition = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qCondition;
-
-  const _useState3 = (0, _react.useState)(),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        conditionRes = _useState4[0],
-        setConditionRes = _useState4[1];
-
+  (0, _react.useEffect)(() => {
+    //if(triggerState.done===true && qObjectHandler.qObject!==null && qConditionExpr!==''){
+    qObjectHandler.qObject && qObjectHandler.qObject.setProperties((0, _objectSpread2.default)({}, qObjectDef, {
+      qInfo: (0, _objectSpread2.default)({
+        qId: qObjectHandler.qObject.id
+      }, qObjectDef.qInfo),
+      qExtendsId: ''
+    })); //}
+  }, [location.pathname, qConditionExpr, qTitleExpr, qObjectHandler]);
+  const triggerState = (0, _q.useTriggers)(triggers);
   const qTitle = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qTitle;
-  (0, _react.useEffect)(() => {
-    if (triggerState.done === true && qObjectHandler.qObject !== null && qConditionExpr !== '') {
-      qObjectHandler.qObject.setProperties((0, _objectSpread2.default)({}, qObjectDef, {
-        qInfo: (0, _objectSpread2.default)({
-          qId: qObjectHandler.qObject.id
-        }, qObjectDef.qInfo),
-        qExtendsId: '',
-        qCondition: {
-          qStringExpression: {
-            qExpr: qConditionExpr || ''
-          }
-        }
-      }));
-    }
-  }, [qObjectHandler, triggerState.done, qConditionExpr, qObjectDef]);
-  (0, _react.useEffect)(() => {
-    if (qCondition === '0') {
-      setConditionRes(false);
-    }
-
-    if (qCondition === '-1') {
-      setConditionRes(true);
-    }
-
-    return () => setConditionRes(null);
-  }, [qCondition]);
+  const qCondition = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qCondition;
   return _react.default.createElement(RqtvPageContext.Provider, {
     value: {
       triggerState,
       pageData: props.pageData,
-      conditionRes,
-      qTitle
+      qTitle,
+      qCondition,
+      qPageObjectHandler: qObjectHandler
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 71
     },
     __self: void 0
   }, props.children);
@@ -126,7 +104,7 @@ const RqtvPageProvider = props => {
   return _react.default.createElement(RqtvPageConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 83
     },
     __self: void 0
   }), props.children);

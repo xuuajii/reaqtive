@@ -4,12 +4,10 @@
 
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
-import {QDocProvider} from '@reaqtive/q'
-import {QAppProvider} from '@reaqtive/q'
-import {useTriggers} from '@reaqtive/q'
+import { HashRouter as Router, Switch } from 'react-router-dom'
+import {QDocProvider, QAppProvider, useTriggers} from '@reaqtive/q'
 import {RqtvAppContextProvider} from './contexts/rqtv-app-context'
 import {RqtvAppRenderer} from './loading/index'
-import { HashRouter  as Router, Switch } from "react-router-dom";
 
 const RqtvApp = props =>{
   const {qCapabilityApiRequired, children, triggers, ...rqtvAppProps} = props
@@ -18,13 +16,19 @@ const RqtvApp = props =>{
   const isRqtvPage = (child) => child//.type&&child.type.name==='RqtvPage'
   const [pages , setPages] = useState(children)
   useEffect(()=>{
-    const filteredPages = React.Children.toArray(props.children)//.filter(isRqtvPage)
+    const sortedPages = React.Children.toArray(props.children)
+    .sort((a,b)=>{
+      const pageA = a
+      const pageB = b
+      return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0
+    })//.filter(isRqtvPage)
     const extractPageInfo = page => {
-      const { title, path, id, icon, exactActiveMatch } = page.props;
-      return { title, path, id, icon, exactActiveMatch }
+      const { linkName, path, icon, exactActiveMatch } = page.props;
+      const key = page.key
+      return { linkName:linkName?linkName:path.replace(/-/g, ' ').replace(/\//,'') , path, key, icon, exactActiveMatch}
     }
-    setPages(filteredPages.map(page=>extractPageInfo(page)))
-  },[props.children])
+    setPages(sortedPages.map(page=>extractPageInfo(page)))
+  },[])
   useEffect(()=>{
     document.title=props.title
   },[props.title])

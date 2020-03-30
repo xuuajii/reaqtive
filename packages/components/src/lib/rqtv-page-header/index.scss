@@ -8,11 +8,13 @@
   padding-right: 0;
   padding-bottom: $page-header-padding-bottom;
   .navbar-brand{
+    cursor: default;
     h3{
       color:$page-title-color;
       font-size: $page-header-font-size;
       font-weight: $page-header-font-weight;
       line-height: 2rem;
+      margin-bottom: 0;
       text-transform: uppercase;
       overflow: hidden;
       white-space: nowrap;

@@ -35,7 +35,7 @@ const Dropdown = props => {
   };
 
   return _react.default.createElement("div", {
-    className: "dropdown ".concat(show ? 'show' : '', " ").concat(props.className ? props.className : ''),
+    className: "dropdown ".concat(props.isNavItem === true ? 'nav-item' : '', " ").concat(show ? 'show' : '', " ").concat(props.className ? props.className : ''),
     ref: dropdownEl,
     __source: {
       fileName: _jsxFileName,
@@ -61,17 +61,19 @@ Dropdown.defaultProps = {
 const DropdownMenu = _react.default.forwardRef((props, ref) => {
   return _react.default.createElement("div", {
     className: "dropdown-menu ".concat(props.show ? 'show' : '', " dropdown-menu-").concat(props.align),
-    style: (0, _objectSpread2.default)({}, props.style),
+    style: (0, _objectSpread2.default)({}, props.style, {
+      width: props.verticalNavbar ? '100%' : ''
+    }),
     ref: ref,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 41
     },
     __self: void 0
   }, _react.default.createElement("ul", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 45
     },
     __self: void 0
   }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
@@ -102,7 +104,7 @@ const DropdownMenuItem = props => {
     style: props.style,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 69
     },
     __self: void 0
   }, props.label ? props.label : props.children);

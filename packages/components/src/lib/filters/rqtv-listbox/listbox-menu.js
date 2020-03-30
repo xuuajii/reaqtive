@@ -16,7 +16,7 @@ const ListboxMenu = props => {
   ]
   return(
     <Dropdown>
-      <DropdownButton hideCaret={true} label={<LuiIcon iconType="more"/>}/>
+      <DropdownButton hideCaret={true} label={<LuiIcon iconType="more"/>} />
       <DropdownMenu align="right">
         {items.map(item=><DropdownMenuItem key={item.id} action={()=>item.action()} label={item.label}/>)}
       </DropdownMenu>

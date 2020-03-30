@@ -25,7 +25,7 @@ const defaultTogglerStyle = {
 const Navbar = props => {
   const navbarEl = (0, _react.useRef)();
 
-  const _useState = (0, _react.useState)(window.innerWidth > props.breakpoint ? true : false),
+  const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         showCollapse = _useState2[0],
         setShowCollapse = _useState2[1];
@@ -45,32 +45,21 @@ const Navbar = props => {
     }
   }, [navbarEl.current]); //const [paddingElHeight, setPaddingElHeight] = useState(0)
 
-  const mapPropToElement = (child, index) => {
-    const propsMap = {
-      NavbarCollapse: {
-        show: showCollapse
-      },
-      NavbarToggle: {
-        toggleCollapse,
-        showCollapse
-      }
-    };
-    const mappedProp = propsMap[child.type.name]; //console.log(mappedProp)
-
-    return mappedProp ? _react.default.cloneElement(child, (0, _objectSpread2.default)({}, mappedProp)) : _react.default.cloneElement(child);
-  };
-
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("nav", {
     className: "navbar ".concat(props.className ? props.className : ''),
     style: (0, _objectSpread2.default)({}, props.style),
     ref: navbarEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 34
     },
     __self: void 0
-  }, children.map((child, index) => mapPropToElement(child, index))));
-};
+  }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
+    showCollapse,
+    toggleCollapse
+  }))));
+}; //React.Children.toArray(props.children).map(child=> React.cloneElement(child,{toggleCollapse,showCollapse}))
+
 
 Navbar.propTypes = {
   className: _propTypes.default.string,
@@ -78,7 +67,7 @@ Navbar.propTypes = {
   breakpoint: _propTypes.default.number
 };
 Navbar.defaultProps = {
-  className: "navbar-expand-lg navbar-light bg-light",
+  className: "navbar-expand-lg",
   breakpoint: 992
 };
 var _default = Navbar;

@@ -3,6 +3,7 @@
 //
 
 import React, {useRef} from 'react'
+import { HashRouter  as Router, Switch, Route } from 'react-router-dom'
 import Home from './pages/home'
 import Visualizations from './pages/visualizations'
 import Filters from './pages/filters'
@@ -22,76 +23,59 @@ const ExampleApp = props => {
   //const pages = [{id:'0', title:'Home Page'},{id:'1', title:'Visualiztions Page'},{id:'2', title:'Pagina 2'}]
   return(
     <Reaqtive qConfig={qConfig} qCapabilityApiRequired={true}>
-        {/*<ExampleApp />*/}
-        <RqtvApp
-          sideMenuFields={{method:'include', mask:['**']}}
-          title="Reaqtive Demo"
-        >
-          {/*Home*/}
-          <RqtvPage
+      {/*<ExampleApp />*/}
+      <RqtvApp
+        sideMenuFields={{method:'include', mask:['**']}}
+        title="Reaqtive Demo"
+      >
+        {/*Quick Start*/}
+        <RqtvPage  qTitleExpr="'Quick Start'" path={'/quick-start'}>
+          <RqtvStandardTemplate useContainerFluid={false}>
+            <SetUp/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Visualizations*/}
+        <RqtvPage qTitleExpr="'Visualizations'" path={'/visualizations'}>
+          <RqtvStandardTemplate useContainerFluid={false}>
+            <Visualizations/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Filters*/}
+        <RqtvPage qTitleExpr="'Filters'" path={'/filters'}>
+          <RqtvStandardTemplate searchFieldsMatch={{method:'include', mask:['Cust*']}} useContainerFluid={false}>
+            <Filters/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Filters*/}
+        <RqtvPage qTitleExpr="'@raqtive/q'" exactActiveMatch={false} qConditionExpr="1=1" linkName="@reaqtive/q" path="/reaqtive-q">
+            <RqtvStandardTemplate
+              searchFieldsMatch={{method:'include', mask:['Cust*']}}
+              sideMenuFieldsMatch={{method:'include', mask:['Cust*']}}
+              useContainerFluid={false}
+              usePageHeader={false}
+              showSearch={false}
+          >
+            <ReaqtiveQ/>
+          </RqtvStandardTemplate>
+        </RqtvPage>
+        {/*Home*/}
+        <RqtvPage
             path={'/'}
-            id={0}
-            title='Home Page'
             exact={true}
+            linkName='home page'
             triggers={[
                 {type:'clearField',params:{fieldName:'Customer'}},
             ]}
-            qTitleExpr='=1+1'
-          >
-            <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
-              <Home
-                maximizeEl={maximizeEl}
-              />
-            </RqtvStandardTemplate>
-          </RqtvPage>
-          {/*Quick Start*/}
-          <RqtvPage path={'/quick-start'}  id={1} title='Quick Start'>
-            <RqtvStandardTemplate useContainerFluid={false}>
-              <SetUp/>
-            </RqtvStandardTemplate>
-          </RqtvPage>
-          {/*Visualizations*/}
-          <RqtvPage path={'/visualizations'} exact={true} id={3} title='Visualizations'>
-            <RqtvStandardTemplate useContainerFluid={false}>
-              <Visualizations/>
-            </RqtvStandardTemplate>
-          </RqtvPage>
-          {/*Filters*/}
-          <RqtvPage
-            path={'/filters'}
-            id={2}
-            title='Filters'
-            // triggers={[
-            //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-            //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-            // ]}
-          >
-            <RqtvStandardTemplate searchFieldsMatch={{method:'include', mask:['Cust*']}} useContainerFluid={false}>
-              <Filters/>
-            </RqtvStandardTemplate>
-          </RqtvPage>
-          {/*Filters*/}
-          <RqtvPage
-            path={'/reaqtive-q'}
-            id={4}
-            title='@raqtive/q'
-            exactActiveMatch={false}
-            // triggers={[
-            //   {type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}},
-            //   //{type:'fieldSelection',params:{fieldName:'AccountDesc',value:'Bonus'}},
-            // ]}
-          >
-            <RqtvStandardTemplate
-              searchFieldsMatch={{method:'include', mask:['Cust*']}}
-              useContainerFluid={false}
-              usePageHeader={true}
-              showSearch={false}
-            >
-              <ReaqtiveQ/>
-            </RqtvStandardTemplate>
-          </RqtvPage>
-        </RqtvApp>
-      </Reaqtive>
+            qTitleExpr='1+1'
+        >
+          <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
+            <Home
+              maximizeEl={maximizeEl}
+            />
+          </RqtvStandardTemplate>
+        </RqtvPage>
+      </RqtvApp>
+    </Reaqtive>
   )
 }
 
@@ -100,4 +84,4 @@ export default ExampleApp
 //   {type:'fieldSelection', params:{fieldName:'Customer', value:'Zocalo', alwaysOneSelected:true}},
 //   {type:'fieldSelection', params:{fieldName:'AccountDesc', value:'Commission', alwaysOneSelected:true}}
 // ]}
-// <RqtvListbox title={'Customer'} qFieldExpr={'Customer'} height={300} qId={1}/>
+// <RqtvListbox qTitleExpr={'Customer'} qFieldExpr={'Customer'} height={300} qId={1}/>

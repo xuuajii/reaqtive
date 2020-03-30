@@ -2,63 +2,84 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState, useEffect, useContext, useMemo} from 'react'
 import PropTypes from 'prop-types'
 import { Route, Redirect, useLocation } from 'react-router-dom'
 import {RqtvPageContext, RqtvPageProvider} from '../contexts/rqtv-page-context'
+import {useQObjectReducer, useQLayoutReducer } from '@reaqtive/q'
+
+const useQConditionDef = (qConditionExpr) => useMemo(()=>{
+  return {
+    qInfo: {
+      qType: "page-condition",
+    },
+    qCondition: {
+      qStringExpression: {
+        qExpr: qConditionExpr||''
+      }
+    }
+  }
+}, [qConditionExpr])
+
 
 const RqtvPage = props => {
-  const pageData={path:props.path, title:props.title, id:props.id}
   const {fallbackPage} = props
-  const location = useLocation()
-  const [hasChangedLocation, setHasChangedLocation] = useState(false)
-  useEffect(()=>{
-    const delay = location.search!==""?500:0
-    setTimeout(()=>setHasChangedLocation(true),delay)
-    //console.log(delay)
-    return () => setHasChangedLocation(false)
-  },[location])
+
   return(
     <Route path={props.path} exact={props.exact}>
       <RqtvPageProvider
-        triggers={props.triggers}
-        pageData={pageData}
-        qConditionExpr={props.qConditionExpr}
-        qTitleExpr={props.qTitleExpr}
-        hasQueryString={location.search!==""?true:false}
-      >
-        <RqtvPageConsumer fallbackPage={fallbackPage} hasChangedLocation={hasChangedLocation}>
-          {props.children}
-        </RqtvPageConsumer>
+          triggers={props.triggers}
+          qConditionExpr={props.qConditionExpr}
+          qTitleExpr={props.qTitleExpr}
+          hasQueryString={location.search!==""?true:false}
+        >
+          <RqtvPageConsumer
+            fallbackPage={fallbackPage}
+          >
+            {props.children}
+          </RqtvPageConsumer>
       </RqtvPageProvider>
     </Route>
   )
 }
 
 const RqtvPageConsumer = props => {
+  const location = useLocation()
   const rqtvPageContext=useContext(RqtvPageContext)
-  const {conditionRes, triggerState}=rqtvPageContext&&rqtvPageContext
   const {fallbackPage}=props
+  const {triggerState, qCondition, qPageObjectHandler, qTitle}=rqtvPageContext&&rqtvPageContext
+  const [triggersDone, setTriggersDone] = useState()
+  useEffect(()=>{
+    setTriggersDone(triggerState.done)
+    return ()=>setTriggersDone(false)
+  },[triggerState.done])
 
-  if(props.hasChangedLocation===true && conditionRes===false && fallbackPage!=="" && triggerState.done===true){
-    return <Redirect to={fallbackPage} />
+
+  useEffect(()=>{
+    qPageObjectHandler.set
+  }, [location.pathname])
+
+  if( qCondition==='0' && fallbackPage && triggersDone===true){
+    return <Redirect to={fallbackPage?fallbackPage:""} />
   }
   return  props.children
 }
 
 RqtvPage.propTypes = {
   path:PropTypes.string.isRequired,
-  id:PropTypes.number.isRequired,
-  title:PropTypes.string.isRequired,
+  linkName:PropTypes.string,
   triggers:PropTypes.array.isRequired,
-  conditionExpr:PropTypes.string,
-  fallbackPage:PropTypes.string
+  qTitleExpr:PropTypes.string,
+  qConditionExpr:PropTypes.string,
+  fallbackPage:PropTypes.string,
+  exact:PropTypes.bool,
 }
 
 RqtvPage.defaultProps = {
+  exact:false,
   triggers:[],
-  conditionExpr:"",
-  fallbackPage:""
+  qConditionExpr:"",
+  qTitleExpr:"'My Reaqtive Page'"
 }
 
 export default RqtvPage
