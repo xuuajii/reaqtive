@@ -22,7 +22,7 @@ const NavbarToggle = props =>{
     {props.children
       ?props.children
       :props.bootstrapDefault
-        ? <span class="navbar-toggler-icon"></span>
+        ?<span class="navbar-toggler-icon"></span>
         :<animated.div style={animatedProps}><LuiIcon iconType={`triangle-bottom`}/></animated.div>
     }
   </button>

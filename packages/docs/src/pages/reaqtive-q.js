@@ -1,7 +1,8 @@
 import React, {useState, useMemo, useEffect, useCallback, useContext} from 'react'
 import { useLocation, useHistory, Switch, Route, NavLink } from "react-router-dom";
-import  {RqtvPage, RqtvListbox} from '@reaqtive/components'
+import  {RqtvPage, RqtvPageHeader, RqtvListbox, RqtvNavbarNav, RqtvNavbarToggle, RqtvNavbarCollapse, RqtvDropdownFilter} from '@reaqtive/components'
 import {useQObjectReducer, useQLayoutReducer, QGlobal, useTriggers} from '@reaqtive/q'
+import {Switch as SwitchToggle, NavItem} from '@reaqtive/layout'
 
 const ReaqtiveQ = props => {
   const qGlobalHandler = useContext(QGlobal)
@@ -11,21 +12,39 @@ const ReaqtiveQ = props => {
     <div>
       <Switch>
         <RqtvPage
-          id={7} title="Nested Page"
-          path={mainPath+'/nestedpage'}
-          fallbackPage="/reaqtive-q"
-          qConditionExpr="=count(distinct Customer)=1"
-          exactActiveMatch={false}
-        >
-        {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
-          <div>
-            <RqtvListbox qFieldExpr="Customer"/>
-          </div>
+            fallbackPage="/reaqtive-q"
+            qConditionExpr="=count(distinct Customer)=1"
+            qTitleExpr="'Nested Page'"
+            exactActiveMatch={false}
+            path={mainPath+'/nestedpage'}
+          >
+          {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
+            <div>
+              <RqtvListbox qFieldExpr="Customer"/>
+            </div>
         </RqtvPage>
-        <Route path={mainPath}>
-          <div>Normal Page</div>
-          <NavLink to={mainPath+'/nestedpage/?selections=Customer:Benedict'}><button>Go To Nested Page</button></NavLink>
-        </Route>
+        <RqtvPage
+            qTitleExpr="'Main Page'"
+            exactActiveMatch={false}
+            path={mainPath}
+            exact={true}
+          >
+            <RqtvPageHeader>
+              <RqtvNavbarToggle/>
+              <RqtvNavbarCollapse>
+                <RqtvNavbarNav>
+                  <NavItem>
+                    <RqtvDropdownFilter qFieldExpr="Customer" align='right'/>
+                  </NavItem>
+                  <NavItem className="nav-item">
+                    <SwitchToggle label="Ciao"/>
+                  </NavItem>
+                </RqtvNavbarNav>
+              </RqtvNavbarCollapse>
+            </RqtvPageHeader>
+            <div>Normal Page</div>
+            <NavLink to={mainPath+'/nestedpage/?selections=Customer:Benedict&selections=Account:61099'}><button>Go To Nested Page</button></NavLink>
+        </RqtvPage>
       </Switch>
     </div>
   )

@@ -15,7 +15,7 @@ import RqtvNavbar from './rqtv-navbar/index'
 import {RqtvRenderer, RqtvSpinner} from './loading/index'
 import { RqtvSideMenu, RqtvSideMenuMain } from './side-menu/index'
 import { RqtvPage, RqtvBlankTemplate, RqtvStandardTemplate, RqtvDetailPage } from './pages/index'
-import { RqtvPageHeader } from './rqtv-page-header/index'
+import { RqtvPageHeader, RqtvNavbarNav, RqtvNavbarToggle, RqtvNavbarCollapse} from './rqtv-page-header/index'
 import { RqtvBreadcrumb } from './rqtv-breadcrumb/index'
 import RqtvMaximizePortalEl from './rqtv-maximize-portal-el'
 import {RqtvAppContext,RqtvPageContext} from './contexts/index'
@@ -43,6 +43,9 @@ export {
   RqtvSideMenu,
   RqtvSideMenuMain,
   RqtvPageHeader,
+  RqtvNavbarNav,
+  RqtvNavbarToggle,
+  RqtvNavbarCollapse,
   RqtvMaximizePortalEl,
   RqtvBreadcrumb,
   RqtvDetailPage,

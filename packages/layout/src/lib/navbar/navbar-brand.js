@@ -18,7 +18,7 @@ const NavbarBrand = props => {
     window.location=props.url
   }
   return (
-    <a href="#section" className={`navbar-brand ${props.className?props.className:''}`} style={{cursor:'pointer',...props.style}} onClick={navigate}>
+    <a href="#section" className={`navbar-brand ${props.className?props.className:''}`} style={{...props.style}} onClick={navigate}>
     {(props.imgUrl)&&
       <img
         src={props.imgUrl}

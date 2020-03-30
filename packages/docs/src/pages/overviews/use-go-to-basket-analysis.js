@@ -5,7 +5,7 @@ const useGoToBasketAnalysis = (history, bodyRowValue, productValue) => useCallba
   const link = `${history&&history.location.pathname}/basket-analysis/${queryString}`
   setTimeout(()=>{
     history&&history.push(link)
-  }, 100)
+  }, 200)
 },[history, productValue, bodyRowValue])
 
 export default useGoToBasketAnalysis

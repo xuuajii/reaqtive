@@ -2,7 +2,7 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import React, {useContext} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { QGenericObject, QListObject } from "@reaqtive/q";
 import {RqtvPageHeader} from '@reaqtive/components';
 import CardDecksByBrand from "./components/card-decks-by-brand";
@@ -50,11 +50,13 @@ const OverviewByProduct = props => {
 
 const Layout = props => {
   const rqtvPageContext = useContext(RqtvPageContext)
-
+  const [showNavbarCollapse, setShowNavbarCollapse] = useState(false)
+  const toggleNavbarCollapse = () => setShowNavbarCollapse(!showNavbarCollapse)
   return(
     <div className="overview-by-product">
       <div className="container-fluid">
-        <RqtvPageHeader style={{ paddingTop: "0.5rem" }} title={rqtvPageContext.qTitle}></RqtvPageHeader>
+        <RqtvPageHeader className="navbar-expand-md" style={{ paddingTop: "0.5rem" }} title={rqtvPageContext.qTitle}>
+        </RqtvPageHeader>
       </div>
       <Breadcrumb/>
       <QGenericObject qObjectDef={brandListObjectDef}>
@@ -63,7 +65,24 @@ const Layout = props => {
     </div>
   )
 }
+const NavbarCollapse = props => {
 
+  return(
+    <div className={`collapse navbar-collapse ${props.show?'show':''}`}>
+      <ul className="navbar-nav">
+        <li className="nav-item active">
+          <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link" href="#">Link</a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  )
+}
 export default OverviewByProduct;
 
 const brandListObjectDef = {

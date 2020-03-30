@@ -55,6 +55,7 @@ const RqtvMultibox = props => {
       __self: void 0
     }), field.label || fieldExpr), _react.default.createElement(_layout.CollapseBody, {
       height: props.fieldHeight,
+      hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28

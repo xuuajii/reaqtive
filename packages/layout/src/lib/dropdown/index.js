@@ -18,7 +18,10 @@ const Dropdown = props => {
   }
 
   return(
-    <div className={`dropdown ${show ? 'show' : ''} ${props.className?props.className:''}`} ref={dropdownEl}>
+    <div
+      className={`dropdown ${props.isNavItem===true?'nav-item':''} ${show ? 'show' : ''} ${props.className?props.className:''}`}
+      ref={dropdownEl}
+    >
       {props.children.map((child, index) =>
         React.cloneElement(child, {key:index, show:show, toggleMenu:toggleMenu, itemToggleMenu:props.clickOnItemClose?toggleMenu:()=>true})
       )}
@@ -35,7 +38,10 @@ Dropdown.defaultProps = {
 
 const DropdownMenu = React.forwardRef((props, ref) => {
   return(
-    <div className={`dropdown-menu ${props.show?'show':''} dropdown-menu-${props.align}`} style={{...props.style}} ref={ref}>
+    <div className={`dropdown-menu ${props.show?'show':''} dropdown-menu-${props.align}`}
+      style={{...props.style, width:props.verticalNavbar?'100%':''}} 
+      ref={ref}
+    >
       <ul>
         {React.Children.toArray(props.children).map(child => React.cloneElement(child, {toggleMenu:props.itemToggleMenu}))}
       </ul>

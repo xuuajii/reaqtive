@@ -50,6 +50,7 @@ const RqtvDropdownFilter = props =>{
           showCaret={showCaret}
           style={buttonStyle}
           className={buttonClassName}
+          isNavItem={props.isNavItem}
         />
         {show&&
           <QGenericObject qObjectDef={qObjectDef} quickSelectionMode={props.quickSelectionMode}>
@@ -63,6 +64,10 @@ const RqtvDropdownFilter = props =>{
 }
 
 RqtvDropdownFilter.propTypes={
+  /**
+   * It allows to align the dropdown menu to the left or to rhe right of the button
+   */
+  align:PropTypes.string,
   /**
    * The expression which will be used in the listbox. It can be a fieldname or a valid expression
    */
@@ -147,6 +152,7 @@ RqtvDropdownFilter.propTypes={
 }
 
 RqtvDropdownFilter.defaultProps={
+  align:'left',
   qSortObject:{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 },
   showSearch:true,
   dropdownMenuHeight:300,

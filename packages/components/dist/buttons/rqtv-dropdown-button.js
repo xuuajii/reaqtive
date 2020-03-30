@@ -31,20 +31,14 @@ const RqtvDropdownButton = props => {
   }, qGenericObject => {
     const qLayout = qGenericObject.qLayoutHandler.qLayout;
     const label = qLayout && qLayout.label ? qLayout.label : props.label;
-    return _react.default.createElement(_layout.DropdownButton, {
-      className: props.className,
-      ripple: props.ripple,
-      style: props.style,
-      onClick: props.onClick,
-      show: props.show,
-      showCaret: props.showCaret,
+    return _react.default.createElement(_layout.DropdownButton, Object.assign({}, props, {
       label: label,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 18
       },
       __self: void 0
-    });
+    }));
   });
 };
 

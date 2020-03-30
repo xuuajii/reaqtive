@@ -40,7 +40,7 @@ const QCapabilityApiConsumer = props => {
       const qConfig = {
         host:props.qConfig.host,
         port:props.qConfig.port,
-        prefix:props.qConfig.prefix,
+        prefix:(props.qConfig.prefix !== '') ? `/${props.qConfig.prefix}/` : '/',//props.qConfig.prefix==='' && props.qConfig.port!=='4848'?'/':props.qConfig.prefix,
         isSecure:props.qConfig.secure
       }
       const qApp = qlik.openApp(props.qConfig.appId, qConfig)

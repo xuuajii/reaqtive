@@ -12,7 +12,7 @@ import {SideMenuContext} from '@reaqtive/layout'
 const PageList = props => {
   return(
     <ul className="list-group page-list">
-      {props.pages.map(page => <PageLink key={page.id} page={page}/>)}
+      {props.pages.map(page => <PageLink key={page.key} page={page}/>)}
     </ul>
   )
 }
@@ -28,6 +28,7 @@ const PageLink = props => {
   }
 
   const exactActiveMatch = page.exactActiveMatch!==undefined&&page.exactActiveMatch!==null?page.exactActiveMatch:true;
+
   return(
     <NavLink to={page.path} activeClassName="active" exact={ page.path==='/'?true:exactActiveMatch}>
     <li className="list-group-item" onClick={handleClick}>
@@ -35,7 +36,7 @@ const PageLink = props => {
           ?<LuiIcon iconType="home" style={{marginRight:'0.5rem'}}/>
           :<LuiIcon iconType="sheet" style={{marginRight:'0.5rem'}}/>
         }
-        {page.title}
+        {page.linkName}
     </li>
     </NavLink>
   )

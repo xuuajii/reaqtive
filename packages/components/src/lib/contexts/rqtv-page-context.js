@@ -10,31 +10,30 @@ import {useQObjectReducer, useQLayoutReducer, useTriggers} from '@reaqtive/q'
 
 const RqtvPageContext = React.createContext()
 
-const useQPageObjectDef = (qTitleExpr) => useMemo(()=>{
+const mapPageObject = (qTitleExpr,qConditionExpr) =>{
   return {
     qInfo: {
-      qType: "tableData",
+      qType: "page-object",
     },
     qTitle:{
       qStringExpression:{
         qExpr: qTitleExpr
       }
+    },
+    qCondition:{
+      qStringExpression:{
+        qExpr: qConditionExpr
+      }
     }
   }
-}, [qTitleExpr])
+}
 
 const RqtvPageConsumer = props => {
   const location = useLocation();
 
-  // const [locationSearch, setLocationSearch] = useState(null)
-  // useEffect(()=>{
-  //   setLocationSearch(location.search)
-  //   return () => setLocationSearch(null)
-  // },[location.search])
   const queryStringTriggers = useQueryString(location.search)
   const [triggers, setTriggers] = useState(null)
   useEffect(()=>{
-
     if(location.search!==null && location.search!=='' && Array.isArray(queryStringTriggers) && queryStringTriggers.length>0){
       setTriggers([...props.triggers, ...queryStringTriggers])
     }
@@ -44,46 +43,33 @@ const RqtvPageConsumer = props => {
     }
     return () =>  setTriggers(null)
   },[props.triggers, queryStringTriggers, location.search])
-  const triggerState = useTriggers(triggers)
 
   const {qConditionExpr, qTitleExpr} = props;
-  const qObjectDef=useQPageObjectDef(qTitleExpr)
+  const qObjectDef=mapPageObject(qTitleExpr,qConditionExpr)
   const qObjectHandler = useQObjectReducer(qObjectDef)
   const qLayoutHandler = useQLayoutReducer(qObjectHandler)
-  const qCondition = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qCondition
-  const [conditionRes, setConditionRes] = useState()
-  const qTitle = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qTitle
   useEffect(()=>{
-    if(triggerState.done===true && qObjectHandler.qObject!==null && qConditionExpr!==''){
-      qObjectHandler.qObject.setProperties(
+  //if(triggerState.done===true && qObjectHandler.qObject!==null && qConditionExpr!==''){
+      qObjectHandler.qObject&&qObjectHandler.qObject.setProperties(
         {
           ...qObjectDef,
           qInfo:{qId:qObjectHandler.qObject.id, ...qObjectDef.qInfo},
           qExtendsId:'',
-          qCondition: {
-            qStringExpression: {
-              qExpr: qConditionExpr||''
-            }
-          }
         }
       )
-    }
-  }, [qObjectHandler, triggerState.done, qConditionExpr, qObjectDef])
 
-  useEffect(()=>{
-    if(qCondition==='0'){
-      setConditionRes(false)
-    }
-    if(qCondition==='-1'){
-      setConditionRes(true)
-    }
-    return () => setConditionRes(null)
-  },[qCondition])
+    //}
+  }, [location.pathname, qConditionExpr, qTitleExpr, qObjectHandler])
 
+
+  const triggerState = useTriggers(triggers)
+
+  const qTitle = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qTitle
+  const qCondition = qLayoutHandler.qLayout&&qLayoutHandler.qLayout.qCondition
 
   return(
     <RqtvPageContext.Provider
-      value={{triggerState, pageData:props.pageData, conditionRes, qTitle}}
+      value={{triggerState, pageData:props.pageData, qTitle, qCondition, qPageObjectHandler:qObjectHandler}}
     >
       {
         props.children

@@ -10,7 +10,7 @@ const Body = props =>{
     rqtvListObject.getDataPage(qDisplayArea)
   }
 
-  const qArea = qDataPages&&{...qDataPages[0].qArea, qHeight:props.qDataPageHeight}
+  const qArea = qDataPages&&qDataPages&&qDataPages.length>0&&{...qDataPages[0].qArea, qHeight:props.qDataPageHeight}
 
   const pagination = usePagination(qArea, qSize, getScrollData)
 

@@ -31,4 +31,13 @@ const qConfig = qEnvironments[process.env.REACT_APP_QLIK_ENV];
 
 module.exports = module.exports = qConfig.default || qConfig;
 
+// const qConfig = {
+//     host: '40.113.14.238',
+//     secure: true,
+//     port: 443,
+//     prefix: '',
+//     appId: '8aa3a035-0689-4aab-a920-d6722509ed51'
+// };
+
+
 module.exports =  qConfig

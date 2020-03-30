@@ -204,7 +204,7 @@ const showCharts = () => {
       <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
       <RqtvBreadcrumb />
       <BasketAnalysisCards qHypercubeDef={qHypercubeDef} showCharts={showCharts}/>
-      {hyperCubeLoaded&&<BasketAnalysisCharts maximizeElRef={maximizeElRef}/>}
+      <BasketAnalysisCharts maximizeElRef={maximizeElRef}/>
     </>
   );
 };
