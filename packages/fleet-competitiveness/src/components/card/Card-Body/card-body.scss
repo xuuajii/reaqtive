@@ -1,0 +1,42 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+@import '../../../index.scss';
+
+.card-property{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 5px;
+    border-top: $topBorder;
+    font-size: 0.8rem;
+    background-color: #f9f9f9;
+}
+
+.card .card-property:first-child{
+    border-top: 0;
+}
+
+.card-body-label{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-property .label {
+    color: $labelColor;
+}
+
+.list:hover{
+    background-color: #d7d7d7 !important;
+    cursor: pointer;
+}
+
+.list:nth-child(even){
+    background-color: #eaeaeaa6;
+}
+
+/*.list:nth-child(even){
+    background-color: blue;
+}*/

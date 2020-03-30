@@ -1,0 +1,62 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+@import '../../../../index.scss';
+
+#card-overlay {
+    .card-img-overlay{
+        &:hover{
+            background-color: $card-overlay-bg;
+            cursor: pointer;
+        }
+    
+        h5{
+            position: absolute;
+            bottom: 60px;
+            @media (max-width: 992px) and (min-width: 768px) {
+                bottom: 90px
+            }
+            
+            @media (max-width: 325px){
+                bottom: 80px
+            }
+        }
+    
+        p {
+            position: absolute;
+            bottom: 20px;
+        }
+    }
+
+    .card-img{
+        &:first-child{
+            height: 260px;
+            box-shadow: $card-overlay-box-shadow;
+        }
+    }
+    .card-img-top {
+        height: 160px;
+        width: auto;
+        position: relative;
+        margin: 0 auto;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .card {
+        max-height: 350px;
+        border: none;
+    }
+
+    .btn {
+        position: relative;
+        bottom: 5px;
+    }
+
+    .card-body {
+        height: 100px;
+        font-size: 11px;
+    }
+}
+

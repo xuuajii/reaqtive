@@ -1,0 +1,40 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+$primary: #5C88DA;
+$side-menu-field-list-border-color:rgba(0,0,0,0);
+$theme-color: $primary;
+$overlay-color-primary : rgba(212, 205, 205, 0.81);
+$overlay-color-secondary :rgba(91, 136, 217, 0.55);
+$primary-color-hover: #3C67B5;
+$box-shadow : 10px 10px 5px -9px #424040;
+//NAVBAR
+$navbar-bg:#fff;
+$navbar-color:$primary;
+
+//CARD OVERLAY COMPONENT
+$card-overlay-bg : #00000073;
+$card-overlay-box-shadow : $box-shadow;
+
+// CARD Component
+$card-color : #000;
+$card-bg : #ffffff;
+$card-box-shadow : $card-overlay-box-shadow;
+//CARD BODY
+$labelColor: rgba(62, 61, 61, 0.95);
+$topBorder:1px solid rgba(0,0,0,.07);
+
+//Toggle Switch
+$toggle-switch-color: #fff;
+$toggle-switch-not-selected-backgroud-color:#ccc;
+$toggle-switch-selected-backgroud-color: $primary;
+
+//PROGRESS CHART
+$progressColor: #5b88d9;
+
+//------------------------------------------------------------
+// Breakpoints
+//------------------------------------------------------------
+$break-point-xl: 1140px;
+$break-point-sm: 576px;

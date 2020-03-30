@@ -4,10 +4,10 @@
 
 import React, { useRef } from "react";
 import Home from "./pages/homepage/home";
-import Purchasing from "./pages/purchasing/purchasing";
-import Overviews from "./pages/overviews/overviews";
-import LongTermRental from "./pages/long-term-rental/long-term-rental";
-import TcoAndResidualValue from "./pages/tco-&-residual-value/tco-and-residual-value";
+import Purchasing from "./pages/purchasing/index";
+import Overview from "./pages/overview/overview";
+import Ltr from "./pages/ltr/index";
+import Tco from "./pages/tco/index";
 import Reaqtive from "@reaqtive/q";
 import { RqtvApp } from "@reaqtive/components";
 
@@ -16,19 +16,7 @@ import qConfig from "./q-config";
 import Logo from "./images/logo.png";
 
 const App = props => {
-  const fields = [
-    "Basket",
-    "Year Month",
-    "Model",
-    "Brand",
-    "Country",
-    "UID Code",
-    "Model Version",
-    "Fuel Type",
-    "Model Benchmark",
-    "Flag In Avg",
-    "Submodel Benchmark"
-  ];
+  const sideMenuFieldsMatch = { method: "include", mask: ['*Benchmark*', '*Year*', '*Basket*'] }
   const maximizeEl = useRef();
   return (
     <Reaqtive qConfig={qConfig} qCapabilityApiRequired={true}>
@@ -40,45 +28,51 @@ const App = props => {
           width: 100,
           height: "auto"
         }}
-        sideMenuFieldsMatch={{ method: "include", mask: fields }}
+        sideMenuFieldsMatch={sideMenuFieldsMatch}
       >
-        {/*Home*/}
-        <Home
-          maximizeEl={maximizeEl}
-          path={"/"}
-          title="Home"
-          exact={true}
-          searchFieldsMatch={{method:'include', mask:['**']}}
-        />
-
-        <Overviews
+        <Overview
           path={"/overview-by-country"}
           id={1}
           title="Overview by Country"
           exactActiveMatch={false}
+          sideMenuFieldsMatch={sideMenuFieldsMatch}
         />
-
-        <Overviews
+        <Overview
           path={"/overview-by-product"}
           id={2}
-          title="Overview by Product"
           exactActiveMatch={false}
+          sideMenuFieldsMatch={sideMenuFieldsMatch}
         />
         {/*PURCHASING*/}
-        <Purchasing path={"/purchasing"} id={3} title="PURCHASING" />
-
+        <Purchasing
+          path={"/purchasing"}
+          id={3}
+          title="'PURCHASING'"
+          sideMenuFieldsMatch={sideMenuFieldsMatch}
+        />
         {/*LONG TERM RENTAL*/}
-        <LongTermRental
+        <Ltr
           path={"/long-term-rental"}
           id={4}
-          title="LONG TERM RENTAL"
+          title="'LONG TERM RENTAL'"
+          sideMenuFieldsMatch={sideMenuFieldsMatch}
         />
-
         {/*LONG TERM RENTAL*/}
-        <TcoAndResidualValue
+        <Tco
           path={"/tco-&-residual-value"}
           id={5}
-          title="TCO & RESIDUAL VALUE"
+          title="'TCO & RESIDUAL VALUE'"
+          sideMenuFieldsMatch={sideMenuFieldsMatch}
+        />
+        {/*Home*/}
+        <Home
+          maximizeEl={maximizeEl}
+          path={"/"}
+          id={0}
+          title="Home"
+          linkName="home"
+          exact={true}
+          sideMenuFieldsMatch={sideMenuFieldsMatch}
         />
       </RqtvApp>
     </Reaqtive>
