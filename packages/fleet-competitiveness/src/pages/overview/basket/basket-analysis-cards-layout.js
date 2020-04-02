@@ -9,7 +9,7 @@ const BasketAnalysisCardsLayout = props => {
   let visualDiff =
     Math.max(hypercube.qMeasureInfo[4].qMax, hypercube.qMeasureInfo[5].qMax)
     - Math.min(hypercube.qMeasureInfo[4].qMin, hypercube.qMeasureInfo[5].qMin);
-  let minVisualPrice = Math.min(hypercube.qMeasureInfo[3].qMin, hypercube.qMeasureInfo[4].qMin, hypercube.qMeasureInfo[5].qMin);
+  let minVisualPrice = Math.min( hypercube.qMeasureInfo[4].qMin, hypercube.qMeasureInfo[5].qMin);
   return (
     <>
       <CardBox>

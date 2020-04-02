@@ -18,7 +18,7 @@ const Cards = props => {
           {
             qDef: {
               qGrouping: "N",
-              qFieldDefs: ["Submodel Benchmark"],
+              qFieldDefs: ["=if([Flag Is Benchmark]=1,[Submodel Benchmark])"],
               qSortCriterias: [
                 {
                   qSortByNumeric: 1,

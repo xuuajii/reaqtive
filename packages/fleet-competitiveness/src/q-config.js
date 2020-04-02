@@ -16,7 +16,7 @@ const qEnvironments = {
     secure: true,
     port: 443,
     prefix: '',
-    appId: 'd487e0f7-ab0c-4332-b028-4ed460439f95'
+    appId: '61102840-1738-42b6-aeb0-0e764b7cf03f'
   },
   "FCA_CERT": {
     host: 'lab-home.qliksense.fcagroup.com',

@@ -71,7 +71,7 @@ const useOverviewObjectDef = (marketArea) => {
                 qMeasures:[
                   {
                     qDef: {
-                      qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Private], basket)))`,
+                      qDef: `'-'`,
                       //qDef: `avg([Vehicle Visual Price])`,
                       qLabel: "Visual Price",
                       qSortBy: {
@@ -82,9 +82,9 @@ const useOverviewObjectDef = (marketArea) => {
                   },
                   {
                     qDef: {
-                      qDef: `($(realIndex($(lastMonthSet), [Vehicle Discounted Price Business], basket)))`,
+                      qDef: `($(realIndexBenchmark($(lastMonthSet),FBD,[Vehicle Discounted Price Business])))`,
                         //qDef: `avg([Vehicle Visual Price])`,
-                        qLabel: "Discounted Price Private",
+                        qLabel: "FBD",
                         qSortBy: {
                         qSortByNumeric: 0,
                         qSortByAscii: 1
@@ -93,9 +93,9 @@ const useOverviewObjectDef = (marketArea) => {
                   },
                   {
                     qDef: {
-                      qDef: `($(realIndex($(lastMonthSet), -, basket)))`,
+                      qDef: `($(visualIndexBenchmark($(lastMonthSet),LTR,[Med Monthly Rent])))`,
                       //qDef: `avg([Vehicle Visual Price])`,
-                      qLabel: "Discounted Price Business",
+                      qLabel: "LTR",
                       qSortBy: {
                       qSortByNumeric: 0,
                       qSortByAscii: 1

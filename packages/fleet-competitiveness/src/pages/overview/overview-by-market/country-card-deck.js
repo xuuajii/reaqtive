@@ -27,7 +27,7 @@ const CountryCardDeck = props => {
                   qHyperCube&&qHyperCube.qPivotDataPages.length>0
                   ?cards.map(card=>
                     <Card
-                      onBodyRowClick={()=>true}
+                      onBodyRowClick={goToDetail}
                       key={card.title.qElemNo}
                       data={card}
                       title={card.title.qText}
