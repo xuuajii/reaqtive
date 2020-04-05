@@ -32,6 +32,7 @@ const NavbarCollapse = props => {
   }))) : _react.default.createElement(_index.AnimatedCollapseDiv, {
     className: "navbar-collapse ".concat(props.className),
     show: props.showCollapse,
+    autoHeight: props.autoHeight,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 18
@@ -46,11 +47,13 @@ var _default = NavbarCollapse;
 exports.default = _default;
 NavbarCollapse.propTypes = {
   className: _propTypes.default.string,
-  breakPoint: _propTypes.default.string
+  breakPoint: _propTypes.default.string,
+  autoHeight: _propTypes.default.bool
 };
 NavbarCollapse.defaultProps = {
   className: '',
-  breakPoint: 'lg'
+  breakPoint: 'lg',
+  autoHeight: true
 }; // const NavbarCollapse = props => {
 //
 //   const collapseEl=useRef()

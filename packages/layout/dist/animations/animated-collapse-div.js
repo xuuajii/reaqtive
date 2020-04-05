@@ -24,30 +24,21 @@ const AnimatedCollapseDiv = props => {
 
   const getRefHeight = ref => {
     return ref.current ? ref.current.getBoundingClientRect().height : 0;
-  }; //const height = props.height?props.height:getRefHeight(collapseEl)
-
+  };
 
   const _useState = (0, _react.useState)(props.height),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         height = _useState2[0],
         setHeight = _useState2[1];
 
-  const _useState3 = (0, _react.useState)(props.height > 0 ? false : true),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        show = _useState4[0],
-        setShow = _useState4[1];
-
   (0, _react.useEffect)(() => {
-    setShow(props.show);
-  }, [props.show]);
-  (0, _react.useEffect)(() => {
-    if (show === true) {
+    if (props.show === true) {
       const rectHeight = collapseEl.current && collapseEl.current.getBoundingClientRect().height;
       const newHeight = props.height ? props.height : rectHeight;
       setHeight(newHeight);
     }
-  }, [show, props.height]);
-  const transitions = (0, _reactSpring.useTransition)(show, null, {
+  }, [props.show, props.height]);
+  const transitions = (0, _reactSpring.useTransition)(props.show, null, {
     enter: () => async next => {
       if (height) {
         await next({
@@ -57,7 +48,7 @@ const AnimatedCollapseDiv = props => {
           opacity: 1
         });
         await next({
-          height: props.height ? height : 'auto',
+          height: props.autoHeight === true ? 'auto' : height,
           overflow: 'visible',
           marginTop: props.hideTitleWhenExpanded ? -33 : 0,
           opacity: 1
@@ -65,10 +56,9 @@ const AnimatedCollapseDiv = props => {
       }
     },
     leave: () => async next => {
-      // console.log(height)
       if (height) {
         await next({
-          height: props.height ? height : 'auto',
+          height: height,
           overflow: 'hidden',
           marginTop: props.hideTitleWhenExpanded ? -33 : 0,
           opacity: 1
@@ -81,6 +71,22 @@ const AnimatedCollapseDiv = props => {
         });
       }
     },
+    update: () => async next => {
+      if (height) {
+        await next({
+          height: height,
+          overflow: 'hidden',
+          marginTop: props.hideTitleWhenExpanded ? -33 : 0,
+          opacity: 1
+        });
+        await next({
+          height: props.autoHeight === true ? 'auto' : height,
+          overflow: 'visible',
+          marginTop: props.hideTitleWhenExpanded ? -33 : 0,
+          opacity: 1
+        });
+      }
+    },
     from: {
       height: 0,
       overflow: 'hidden',
@@ -88,7 +94,7 @@ const AnimatedCollapseDiv = props => {
       opacity: 0
     },
     unique: true,
-    reverse: !show
+    reverse: !props.show
   });
   return transitions.map(({
     item,
