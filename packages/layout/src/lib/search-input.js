@@ -37,8 +37,10 @@ const SearchInput = (props) =>{
         if(searchInputEl.current.value.length>0){
           setSearchString(searchInputEl.current.value)
         } else {
-          props.clearSearchAction()
-          resetSearchInput()
+          if(props.hideWhenDeleteString===true){
+            props.clearSearchAction()
+            resetSearchInput()
+          }
         }
     }
   }
@@ -89,10 +91,12 @@ SearchInput.propTypes={
   searchAction:PropTypes.func.isRequired,
   acceptSearchAction:PropTypes.func.isRequired,
   placeholder:PropTypes.string,
-  focus:PropTypes.bool
+  focus:PropTypes.bool,
+  hideWhenDeleteString:PropTypes.bool
 }
 
 SearchInput.defaultProps={
   placeholder:"Search",
   focus:true,
+  hideWhenDeleteString:true
 }

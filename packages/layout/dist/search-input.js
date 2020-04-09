@@ -54,8 +54,10 @@ const SearchInput = props => {
         if (searchInputEl.current.value.length > 0) {
           setSearchString(searchInputEl.current.value);
         } else {
-          props.clearSearchAction();
-          resetSearchInput();
+          if (props.hideWhenDeleteString === true) {
+            props.clearSearchAction();
+            resetSearchInput();
+          }
         }
 
     }
@@ -84,7 +86,7 @@ const SearchInput = props => {
     className: "rqtv-search-input-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 70
     },
     __self: void 0
   }, _react.default.createElement("input", {
@@ -96,7 +98,7 @@ const SearchInput = props => {
     onFocus: () => props.onFocus && props.onFocus(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 71
     },
     __self: void 0
   }), props.hideSearch && (!props.alwaysShowSearch || props.isSearching) && _react.default.createElement("button", {
@@ -104,14 +106,14 @@ const SearchInput = props => {
     onClick: hideSearch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 80
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "lui-icon lui-icon--small lui-icon--close",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 79
+      lineNumber: 81
     },
     __self: void 0
   })));
@@ -124,9 +126,11 @@ SearchInput.propTypes = {
   searchAction: _propTypes.default.func.isRequired,
   acceptSearchAction: _propTypes.default.func.isRequired,
   placeholder: _propTypes.default.string,
-  focus: _propTypes.default.bool
+  focus: _propTypes.default.bool,
+  hideWhenDeleteString: _propTypes.default.bool
 };
 SearchInput.defaultProps = {
   placeholder: "Search",
-  focus: true
+  focus: true,
+  hideWhenDeleteString: true
 };

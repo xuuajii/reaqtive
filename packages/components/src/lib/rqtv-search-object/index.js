@@ -10,6 +10,15 @@ import {Button} from '@reaqtive/layout'
 import {LuiIcon} from '@reaqtive/layout'
 import {Backdrop} from '@reaqtive/layout'
 
+/**
+ * RqtvSearchObject
+ *
+ * It dispays a search object to search a single string in multiple fields.
+ *
+ * If rendered inside the rqtv-navbar it will have fixed position and search results will colver the underlying page
+ *
+ */
+
 const RqtvSearchObject = props =>{
   const {alwaysExpanded, expandFrom, width, ...rest} = props ;
   const [show, setShow] = useState(false)
@@ -42,7 +51,8 @@ const RqtvSearchObject = props =>{
             <LuiIcon iconType={'search'}/>
           </Button>}
         {
-          show&&<div className={`rqtv-search-animated-container ${show&&'show'}`} ref={searchContainerEl}>
+          show&&
+          <div className={`rqtv-search-animated-container ${show&&'show'}`} ref={searchContainerEl}>
             <div className="backdrop-search" onClick={hideSearch}></div>
             <RqtvSearch {...props} hideSearch={hideSearch} show={show}/>
           </div>
@@ -54,16 +64,42 @@ const RqtvSearchObject = props =>{
 }
 
 RqtvSearchObject.propTypes = {
+  /**
+   * If true the search input will always be displayed
+   *
+   */
   alwaysExpanded:PropTypes.bool,
+  /**
+   * The direction from which the input will expand if not always expanded
+   *
+   */
   expandFrom:PropTypes.oneOf(['right', 'left']),
-  width:PropTypes.number,
+  /**
+   * width of the component. It accept px or %
+   *
+   */
+  width:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
+  /**
+   * function fired after showing the search input. (not called if alwaysExpanded is true)
+   *
+   */
   onOpen:PropTypes.func,
+  /**
+   * function fired after hiding the search input. (not called if alwaysExpanded is true)
+   *
+   */
   onClose:PropTypes.func,
+  /**
+   * the fields of the data model to search against
+   *
+   */
+  searchFields:PropTypes.array,
 }
 
 RqtvSearchObject.defaultProps = {
   alwaysExpanded:false,
   expandFrom:'left',
+  width:'100%'
 }
 
 export default RqtvSearchObject
