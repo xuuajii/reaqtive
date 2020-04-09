@@ -19,22 +19,13 @@ var _lodash = _interopRequireDefault(require("lodash"));
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 const useEnhancedFieldList = (qFieldList, qCurrentSelections) => {
-  const qFieldListRef = (0, _react.useRef)(qFieldList);
-  (0, _react.useEffect)(() => {
-    const hasChanged = !_lodash.default.isEqual(qFieldList, qFieldListRef.current);
-
-    if (hasChanged) {
-      qFieldListRef.current = qFieldList;
-    }
-  }, [qFieldList]);
-
-  const _useState = (0, _react.useState)(qFieldListRef.current),
+  const _useState = (0, _react.useState)(qFieldList),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         enhancedFieldList = _useState2[0],
         set = _useState2[1];
 
   (0, _react.useEffect)(() => {
-    const fieldList = qFieldListRef.current && qFieldListRef.current.qItems; //console.log(fieldList)
+    const fieldList = qFieldList && qFieldList.qItems; //console.log(fieldList)
 
     const fieldListWithSelections = fieldList && fieldList.map(field => {
       const qField = _lodash.default.find(qCurrentSelections && qCurrentSelections.qSelectionObject.qSelections, selection => {
@@ -46,7 +37,7 @@ const useEnhancedFieldList = (qFieldList, qCurrentSelections) => {
       });
     });
     set(fieldListWithSelections);
-  }, [qFieldListRef.current, qCurrentSelections]);
+  }, [qFieldList, qCurrentSelections]);
   return enhancedFieldList;
 };
 
