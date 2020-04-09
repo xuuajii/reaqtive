@@ -27,8 +27,8 @@ const RqtvCurrentSelectionsToolbar = props => {
   const showBack = props.qBackCount > 0 && !isMinimized || props.inModal;
   const showForward = props.qForwardCount > 0 && !isMinimized || props.inModal;
   const showClearAll = props.qSelectionsCount > 0 && !isMinimized || props.inModal;
-  const show = props.qBackCount > 0 || props.qForwardCount > 0 || props.qSelectionsCount > 0 || props.alwayShowToolbar;
-  return show && _react.default.createElement("div", {
+  const show = props.qBackCount > 0 || props.qForwardCount > 0 || props.qSelectionsCount > 0 || props.alwaysShowToolbar;
+  return show ? _react.default.createElement("div", {
     className: "rqtv-current-selections-toolbar ".concat(props.inModal ? 'in-modal' : ''),
     __source: {
       fileName: _jsxFileName,
@@ -108,7 +108,7 @@ const RqtvCurrentSelectionsToolbar = props => {
       lineNumber: 34
     },
     __self: void 0
-  }));
+  })) : _react.default.createElement(_react.default.Fragment, null);
 };
 
 RqtvCurrentSelectionsToolbar.propTypes = {

@@ -12,6 +12,14 @@ import {System} from '@reaqtive/layout'
 import wildMatch from './wild-match'
 import {useEnhancedFieldList} from '@reaqtive/q'
 
+/**
+ * RqtvAppContext
+ * It is a react context. It provides generic info about the app.
+ * It is provided by the RqtvApp component
+ * Beyond providing access to the props set in RqtvApp component, it provides access to the qFieldList, the qCurrentSelections
+ * and the enhancedFieldList objects and to the pages array. The pages array contatins one element for each first level page of the app.
+ */
+
 const RqtvAppContext = React.createContext()
 const qFieldListDef = {
   "qInfo": { "qId": "", "qType": "FieldList" },
@@ -109,7 +117,8 @@ const RqtvAppContextConsumer = (props) => {
           searchFieldList,
           filterFieldList,
           pages,
-          setIsMaximized
+          setIsMaximized,
+          isMaximized
         }}
     >
       {props.children}

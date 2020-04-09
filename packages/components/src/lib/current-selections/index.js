@@ -18,6 +18,16 @@ const qCurrentSelectionsObjectDef = {
 	qFields: null
 }
 
+/**
+ * RqtvCurrentSelections
+ *
+ * it is a toolbar that displays the current selection status and the buttons to go back, forward and clear current selections.
+ * Clicking on the button displayin the number of current selections, a modal will appear showing the current selection box (fields and selected values)
+ * It currently does not support alternate states. It always display the default state.
+ * Styles can be customized via css (or scss)
+ *
+ */
+
 const RqtvCurrentSelections = (props) => {
   return(
     <div className="rqtv-current-selections" hidden={props.hidden}>
@@ -38,17 +48,29 @@ const RqtvCurrentSelections = (props) => {
 }
 
 RqtvCurrentSelections.propTypes={
+  /**
+   * it allows to turnoff the current selections box modal
+   */
   useCurrentSelectionModal:PropTypes.bool,
+  /**
+   * when true it transform the toolbar into a fixed positioned floating button
+   */
   isResponsive:PropTypes.bool,
+  /**
+   * it allows to show/hide the modal toggler
+   */
   showModalToggler:PropTypes.bool,
-  alwayShowToolbar:PropTypes.bool
+  /**
+   * if true the current selection toolbar is always shown even if no selection history exists (0 current, selection 0 back-count and 0 forward count)
+   */
+  alwaysShowToolbar:PropTypes.bool
 }
 
 RqtvCurrentSelections.defaultProps={
   useCurrentSelectionModal:true,
   isResponsive:true,
   showModalToggler:true,
-  alwayShowToolbar:false
+  alwaysShowToolbar:false
 }
 
 export default RqtvCurrentSelections

@@ -48,7 +48,7 @@ const Layout = props => {
           openCurrentSelectionsModal={openCurrentSelectionsModal}
           isResponsive={props.isResponsive}
           showModalToggler={props.showModalToggler}
-          alwayShowToolbar={props.alwayShowToolbar}
+          alwaysShowToolbar={props.alwaysShowToolbar}
         />
         {
           props.useCurrentSelectionModal&&

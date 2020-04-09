@@ -51,7 +51,7 @@ const RqtvStandardTemplate = props => {
     showSideMenuToggle: props.useSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 37
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvSideMenu, {
@@ -62,14 +62,14 @@ const RqtvStandardTemplate = props => {
     sideMenuFieldsMatch: props.sideMenuFieldsMatch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 45
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvSideMenuMain, {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 52
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -77,31 +77,60 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 53
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 57
     },
     __self: void 0
   }), props.usePageHeader && _react.default.createElement(_index.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 58
     },
     __self: void 0
   }), props.children))));
 };
 
 RqtvStandardTemplate.propTypes = {
+  /**
+   * it lets you choose between a bootstrap container or container-fluid to wrap the page
+   *
+   */
   useContainerFluid: _propTypes.default.bool,
+
+  /**
+   * show/hide the page header that would contain only the title of the page and can't be customized
+   *
+   */
   usePageHeader: _propTypes.default.bool,
+
+  /**
+   * it allows to set the styles of the div conatining the page (the components you will develop)
+   *
+   */
   containerStyle: _propTypes.default.object,
+
+  /**
+   * the css classes of the container wrapping the page
+   *
+   */
   containerClassName: _propTypes.default.string,
+
+  /**
+   * show/hide the search object in the navbar
+   *
+   */
   showSearch: _propTypes.default.bool,
+
+  /**
+   * show/hide the side menu
+   *
+   */
   useSideMenu: _propTypes.default.bool
 };
 RqtvStandardTemplate.defaultProps = {

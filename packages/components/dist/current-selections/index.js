@@ -27,6 +27,15 @@ const qCurrentSelectionsObjectDef = {
   qSelections: null,
   qFields: null
 };
+/**
+ * RqtvCurrentSelections
+ *
+ * it is a toolbar that displays the current selection status and the buttons to go back, forward and clear current selections.
+ * Clicking on the button displayin the number of current selections, a modal will appear showing the current selection box (fields and selected values)
+ * It currently does not support alternate states. It always display the default state.
+ * Styles can be customized via css (or scss)
+ *
+ */
 
 const RqtvCurrentSelections = props => {
   return _react.default.createElement("div", {
@@ -34,20 +43,20 @@ const RqtvCurrentSelections = props => {
     hidden: props.hidden,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 33
     },
     __self: void 0
   }, _react.default.createElement(_q.QComponent, {
     qObjectDef: qCurrentSelectionsObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsObject.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 35
     },
     __self: void 0
   }, _react.default.createElement(_layout.default, {
@@ -59,23 +68,38 @@ const RqtvCurrentSelections = props => {
     customLoading: props.customLoading,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 36
     },
     __self: void 0
   }))));
 };
 
 RqtvCurrentSelections.propTypes = {
+  /**
+   * it allows to turnoff the current selections box modal
+   */
   useCurrentSelectionModal: _propTypes.default.bool,
+
+  /**
+   * when true it transform the toolbar into a fixed positioned floating button
+   */
   isResponsive: _propTypes.default.bool,
+
+  /**
+   * it allows to show/hide the modal toggler
+   */
   showModalToggler: _propTypes.default.bool,
-  alwayShowToolbar: _propTypes.default.bool
+
+  /**
+   * if true the current selection toolbar is always shown even if no selection history exists (0 current, selection 0 back-count and 0 forward count)
+   */
+  alwaysShowToolbar: _propTypes.default.bool
 };
 RqtvCurrentSelections.defaultProps = {
   useCurrentSelectionModal: true,
   isResponsive: true,
   showModalToggler: true,
-  alwayShowToolbar: false
+  alwaysShowToolbar: false
 };
 var _default = RqtvCurrentSelections;
 exports.default = _default;

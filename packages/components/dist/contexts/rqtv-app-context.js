@@ -150,11 +150,12 @@ const RqtvAppContextConsumer = props => {
       searchFieldList,
       filterFieldList,
       pages,
-      setIsMaximized
+      setIsMaximized,
+      isMaximized
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 105
     },
     __self: void 0
   }, props.children);
@@ -164,7 +165,7 @@ const RqtvAppContextProvider = props => {
   return _react.default.createElement(RqtvAppContextConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 122
+      lineNumber: 131
     },
     __self: void 0
   }), props.children);

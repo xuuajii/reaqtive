@@ -8,6 +8,13 @@ import { useLocation } from 'react-router-dom'
 import { useQueryString } from '../hooks/index'
 import {useQObjectReducer, useQLayoutReducer, useTriggers} from '@reaqtive/q'
 
+/**
+ * RqtvPageContext
+ * It is a react context. It provides generic info about the page.
+ * It is provided by the RqtvPage component
+ * It provides the page triggerState, the page title and teh page condition result
+ */
+
 const RqtvPageContext = React.createContext()
 
 const mapPageObject = (qTitleExpr,qConditionExpr) =>{

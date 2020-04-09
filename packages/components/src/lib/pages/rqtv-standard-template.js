@@ -13,6 +13,15 @@ import {
   RqtvPageHeader
 } from '../index'
 
+/**
+ * RqtvStandardTemplate
+ *
+ * It is a component that allows you to use Reaqtive main components without having to declare them one by one.
+ * Of course does not allow the same flexibility as recreating a template manually.
+ * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader
+ *
+ */
+
 const RqtvStandardTemplate = props => {
   const [showSideMenu, setShowSideMenu] = useState(false)
   const toggleSideMenu = () => setShowSideMenu(!showSideMenu)
@@ -56,11 +65,35 @@ const RqtvStandardTemplate = props => {
 }
 
 RqtvStandardTemplate.propTypes = {
+  /**
+   * it lets you choose between a bootstrap container or container-fluid to wrap the page
+   *
+   */
   useContainerFluid:PropTypes.bool,
+  /**
+   * show/hide the page header that would contain only the title of the page and can't be customized
+   *
+   */
   usePageHeader:PropTypes.bool,
+  /**
+   * it allows to set the styles of the div conatining the page (the components you will develop)
+   *
+   */
   containerStyle:PropTypes.object,
+  /**
+   * the css classes of the container wrapping the page
+   *
+   */
   containerClassName:PropTypes.string,
+  /**
+   * show/hide the search object in the navbar
+   *
+   */
   showSearch:PropTypes.bool,
+  /**
+   * show/hide the side menu
+   *
+   */
   useSideMenu:PropTypes.bool
 }
 RqtvStandardTemplate.defaultProps = {

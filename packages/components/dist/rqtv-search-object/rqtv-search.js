@@ -40,7 +40,7 @@ const AnimatedInput = props => {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: width ? width : '100%',
+    width: width,
     transformStyle: 'preserve-3d'
   };
   const animatedProps = (0, _reactSpring.useSpring)({
@@ -63,6 +63,7 @@ const AnimatedInput = props => {
     },
     __self: void 0
   }, _react.default.createElement(_layout.SearchInput, Object.assign({}, props, {
+    hideWhenDeleteString: false,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 35
@@ -91,7 +92,8 @@ const RqtvSearch = props => {
   const qSearchResults = qSearchResultsHandler.qSearchResults; //console.log(qSearchResults)
 
   const searchResultsEl = (0, _react.useRef)();
-  (0, _layout.useOutsideEventListener)(searchResultsEl, () => clearSearch(), showResults);
+  const containerEl = (0, _react.useRef)();
+  (0, _layout.useOutsideEventListener)(containerEl, () => clearSearch(), showResults);
 
   const _useState7 = (0, _react.useState)({
     top: 0,
@@ -135,6 +137,7 @@ const RqtvSearch = props => {
   };
 
   const handleChangeString = string => {
+    //console.log(1111, qSearchResultsHandler.qEngineError.qError)
     setSearchString(string);
     setShowResults(true);
   };
@@ -144,6 +147,10 @@ const RqtvSearch = props => {
     setShowResults(false);
     setSearchString();
     props.hideSearch();
+  };
+
+  const retry = () => {
+    qSearchResultsHandler.search(searchString);
   };
 
   const acceptSearchResult = (searchTerm = searchString) => {
@@ -166,13 +173,13 @@ const RqtvSearch = props => {
   const singleTitleHeight = titleEl.current && titleEl.current.offsetHeight;
   const dropdownMenuStyle = singleSearchResultHeight ? {
     minHeight: singleSearchResultHeight + (singleTitleHeight || 0)
-  } : {}; //console.log(searchResultHeight)
-
+  } : {};
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "rqtv-search dropdown ".concat(showResults ? 'show' : ''),
+    ref: containerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 111
+      lineNumber: 117
     },
     __self: void 0
   }, _react.default.createElement(AnimatedInput, {
@@ -186,7 +193,7 @@ const RqtvSearch = props => {
     width: props.width,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 112
+      lineNumber: 118
     },
     __self: void 0
   }), _react.default.createElement("div", {
@@ -196,16 +203,17 @@ const RqtvSearch = props => {
     style: dropdownMenuStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 123
+      lineNumber: 129
     },
     __self: void 0
   }, searchString && _react.default.createElement(_index.RqtvRenderer, {
     loading: qSearchResultsHandler.qLoading,
-    error: qSearchResultsHandler.qError,
+    error: qSearchResultsHandler.qEngineError.qError,
     noData: qSearchResults && qSearchResults.qSearchGroupArray.length === 0,
+    reload: retry,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129
+      lineNumber: 135
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -216,7 +224,7 @@ const RqtvSearch = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 134
+      lineNumber: 141
     },
     __self: void 0
   }, qSearchResults && _react.default.createElement(_searchResults.default, {
@@ -227,7 +235,7 @@ const RqtvSearch = props => {
     singleFieldItemHeight: singleFieldItemHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138
+      lineNumber: 145
     },
     __self: void 0
   }))))));

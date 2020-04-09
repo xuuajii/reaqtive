@@ -10,6 +10,13 @@ import {RqtvCurrentSelections} from '../index'
 import {RqtvSearchObject} from '../index'
 import {RqtvAppContext} from '../contexts/rqtv-app-context'
 
+/**
+ * RqtvNavbar
+ *
+ * It is a component that renders the top navbar of the reaqtive app. It is based on bootstrap navbar
+ * Styles can be customized via css (or scss)
+ */
+
 const RqtvNavbar = props => {
   const { searchFieldsMatch, showSideMenuToggle } = props
   const rqtvApp = useContext(RqtvAppContext)
@@ -63,8 +70,17 @@ const RqtvNavbar = props => {
 RqtvNavbar.propTypes={
   fixedTop:PropTypes.bool,
   sticky:PropTypes.bool,
+  /**
+   * function fired when clicking on the HamburgerMenu button
+   */
   onToggleMenu:PropTypes.func,
+  /**
+   * show/hide the current selections toolbar
+   */
   showCurrentSelections:PropTypes.bool,
+  /**
+   * show/hide hamburger menu
+   */
   showSideMenuToggle:PropTypes.bool
 }
 
