@@ -9,6 +9,18 @@ import { System } from '@reaqtive/layout'
 import {RqtvSpinner} from '../index'
 import {useQVizHandler} from '@reaqtive/q'
 
+/**
+ * QViz
+ *
+ * It is a component that allows to retrieve Qlik visualizations.
+ * Qlik visualizations can be retrieved by id (if they already exists in the Qlik Sense app) or
+ * they can be created on the fly providing the properties to the engine.
+ * QViz also provide an imperative handle to inteact with Qlik visualizazion.
+ * To access the handle you have to provide a handle to the QViz component
+ *
+ */
+
+
 const QViz = forwardRef((props, ref) => {
 
   const qAppHandler = useContext(QApp)
@@ -62,13 +74,16 @@ const QViz = forwardRef((props, ref) => {
     },
     exportPdf: () =>{
       exportPdf()
+    },
+    getQViz: () => {
+      return qVizRef.current
     }
   }));
 
   return(
     <div style={{height:props.height, width:'100%'}} ref={qVizWrapperEl}>
       {(qVizHandler.qViz!==null)
-        ?<div id={props.id} style={{height:'100%', width:'100%'}}></div>
+        ?<div id={qVizHandler.vizId} style={{height:'100%', width:'100%'}}></div>
         :<RqtvSpinner/>
       }
     </div>
@@ -78,7 +93,21 @@ const QViz = forwardRef((props, ref) => {
 
 
 QViz.propTypes = {
-  showTitle : PropTypes.bool
+  /**
+   * show/hide the title in Qlik visualization
+   *
+   */
+  showTitle : PropTypes.bool,
+  /**
+   * the id of the visualization to be retrieved and of the div that will contain it
+   *
+   */
+  id: PropTypes.string.isRequired,
+  /**
+   * the properties of the object to be created on the fly
+   *
+   */
+  chartProps: PropTypes.object
 }
 
 QViz.defaultProps = {
