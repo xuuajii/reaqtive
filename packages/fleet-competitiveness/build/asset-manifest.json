@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/extensions/fleet-competitiveness/static/css/main.0c74f580.chunk.css",
-    "main.js": "/extensions/fleet-competitiveness/static/js/main.cf47a949.chunk.js",
-    "main.js.map": "/extensions/fleet-competitiveness/static/js/main.cf47a949.chunk.js.map",
+    "main.js": "/extensions/fleet-competitiveness/static/js/main.d771cc3c.chunk.js",
+    "main.js.map": "/extensions/fleet-competitiveness/static/js/main.d771cc3c.chunk.js.map",
     "runtime-main.js": "/extensions/fleet-competitiveness/static/js/runtime-main.db9c2b6a.js",
     "runtime-main.js.map": "/extensions/fleet-competitiveness/static/js/runtime-main.db9c2b6a.js.map",
     "static/js/2.86291ac3.chunk.js": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js",
     "static/js/2.86291ac3.chunk.js.map": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js.map",
     "index.html": "/extensions/fleet-competitiveness/index.html",
-    "precache-manifest.119d88d7519a9ffb2dd3d2bd3e4d978e.js": "/extensions/fleet-competitiveness/precache-manifest.119d88d7519a9ffb2dd3d2bd3e4d978e.js",
+    "precache-manifest.3899cc51822905f248831c9ea7d2c821.js": "/extensions/fleet-competitiveness/precache-manifest.3899cc51822905f248831c9ea7d2c821.js",
     "service-worker.js": "/extensions/fleet-competitiveness/service-worker.js",
     "static/css/main.0c74f580.chunk.css.map": "/extensions/fleet-competitiveness/static/css/main.0c74f580.chunk.css.map",
     "static/js/2.86291ac3.chunk.js.LICENSE.txt": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js.LICENSE.txt",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.db9c2b6a.js",
     "static/js/2.86291ac3.chunk.js",
     "static/css/main.0c74f580.chunk.css",
-    "static/js/main.cf47a949.chunk.js"
+    "static/js/main.d771cc3c.chunk.js"
   ]
 }

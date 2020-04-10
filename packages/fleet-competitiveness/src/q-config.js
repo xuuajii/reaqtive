@@ -23,7 +23,7 @@ const qEnvironments = {
     secure: true,
     port: 443,
     prefix: '',
-    appId: 'b11cb256-efc4-4e14-a3db-9c74099f450a'
+    appId: '5706c7fe-f390-4e24-8efc-4b921836a0e0'
   },
 }
 

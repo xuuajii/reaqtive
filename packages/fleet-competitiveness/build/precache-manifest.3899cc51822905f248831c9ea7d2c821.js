@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dbf5390b2b14c9ded89a6530b85bbd8a",
+    "revision": "4d67c00f1cdde0761f222b6454b750d0",
     "url": "/extensions/fleet-competitiveness/index.html"
   },
   {
-    "revision": "c11d6ec7338cb6a75216",
+    "revision": "44ae24a72448d3ce124d",
     "url": "/extensions/fleet-competitiveness/static/css/main.0c74f580.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c11d6ec7338cb6a75216",
-    "url": "/extensions/fleet-competitiveness/static/js/main.cf47a949.chunk.js"
+    "revision": "44ae24a72448d3ce124d",
+    "url": "/extensions/fleet-competitiveness/static/js/main.d771cc3c.chunk.js"
   },
   {
     "revision": "9c4f054ec0d26eee753c",

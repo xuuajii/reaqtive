@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/extensions/fleet-competitiveness/precache-manifest.119d88d7519a9ffb2dd3d2bd3e4d978e.js"
+  "/extensions/fleet-competitiveness/precache-manifest.3899cc51822905f248831c9ea7d2c821.js"
 );
 
 self.addEventListener('message', (event) => {
