@@ -25,9 +25,9 @@ const TabPanels = props => {
        {
          props.animatedTabs
         ?<Carousel index={activeTab}>
-          {children.map((child,index)=>
-            <CarouselPanel key={index}>{React.cloneElement(child, {tabsEl, tabListEl})}</CarouselPanel>
-          )
+          {children.map((child,index)=>{
+            return React.cloneElement(child, {tabsEl, tabListEl})
+          })
           }
         </Carousel>
         :children.map((child,index)=>index===activeTab&&<div key={index===activeTab&&index} style={{width:'100%'}}>{React.cloneElement(child, {tabsEl, tabListEl})}</div>)

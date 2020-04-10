@@ -26,6 +26,15 @@ var _header = _interopRequireDefault(require("./header"));
 var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-viz-container\\index.js";
 
 // import { useDebounce } from 'use-debounce';
+
+/**
+ * RqtvVizContainer
+ *
+ * It provide a container to a visualization. It accept multiple children. In case i detects more tha one child,
+ * it shows one child at a time and provide a dropdown menu to toggle the desired child.
+ * If its children provide exports methods it automatically shows export buttons
+ *
+ */
 const RqtvVizContainer = props => {
   const rqtvAppContext = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
   const activeChartRef = (0, _react.useRef)();
@@ -118,7 +127,7 @@ const RqtvVizContainer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 86
     },
     __self: void 0
   }, _react.default.createElement(_header.default, {
@@ -128,7 +137,7 @@ const RqtvVizContainer = props => {
     ref: headerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 87
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_toolbar.default, {
@@ -143,14 +152,14 @@ const RqtvVizContainer = props => {
     maximized: maximized,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 94
     },
     __self: void 0
   })), _react.default.createElement("div", {
     className: "viz-container-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 97
+      lineNumber: 106
     },
     __self: void 0
   }, _react.default.cloneElement(activeChart, {
@@ -162,10 +171,29 @@ const RqtvVizContainer = props => {
 };
 
 RqtvVizContainer.propTypes = {
+  /**
+   * The height of the container pixels or % can be used
+   */
   height: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
+
+  /**
+   * Show/hide export to excel button
+   */
   showExportExcel: _propTypes.default.bool,
+
+  /**
+   * Show/hide export to pdf button
+   */
   showExportPdf: _propTypes.default.bool,
+
+  /**
+   * Show/hide export to img button
+   */
   showExportImg: _propTypes.default.bool,
+
+  /**
+   * If true window scrollbar will be hidden when the container is maximized
+   */
   hideScrollWhenMaximized: _propTypes.default.bool
 };
 RqtvVizContainer.defaultProps = {

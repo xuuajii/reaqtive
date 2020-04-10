@@ -84,6 +84,9 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     },
     exportPdf: () => {
       exportPdf();
+    },
+    getQViz: () => {
+      return qVizRef.current;
     }
   }));
   return _react.default.createElement("div", {
@@ -94,30 +97,46 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     ref: qVizWrapperEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 84
     },
     __self: void 0
   }, qVizHandler.qViz !== null ? _react.default.createElement("div", {
-    id: props.id,
+    id: qVizHandler.vizId,
     style: {
       height: '100%',
       width: '100%'
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 86
     },
     __self: void 0
   }) : _react.default.createElement(_index.RqtvSpinner, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 87
     },
     __self: void 0
   }));
 });
 QViz.propTypes = {
-  showTitle: _propTypes.default.bool
+  /**
+   * show/hide the title in Qlik visualization
+   *
+   */
+  showTitle: _propTypes.default.bool,
+
+  /**
+   * the id of the visualization to be retrieved and of the div that will contain it
+   *
+   */
+  id: _propTypes.default.string.isRequired,
+
+  /**
+   * the properties of the object to be created on the fly
+   *
+   */
+  chartProps: _propTypes.default.object
 };
 QViz.defaultProps = {
   showTitle: false

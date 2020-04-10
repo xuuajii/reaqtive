@@ -14,39 +14,39 @@ const AnimatedCollapseDiv = props => {
   const getRefHeight = (ref) => {
     return ref.current?ref.current.getBoundingClientRect().height:0
   }
-  //const height = props.height?props.height:getRefHeight(collapseEl)
 
   const [height, setHeight] = useState(props.height)
-  const [show, setShow] = useState(props.height>0?false:true)
-  useEffect(()=>{
-    setShow(props.show)
-  },[props.show])
 
   useEffect(()=>{
-    if(show===true){
+    if(props.show===true){
       const rectHeight = collapseEl.current&&collapseEl.current.getBoundingClientRect().height
       const newHeight=props.height?props.height:rectHeight
       setHeight(newHeight)
     }
-  },[show, props.height])
+  },[props.show, props.height])
 
-  const transitions = useTransition(show, null, {
+  const transitions = useTransition(props.show, null, {
     enter: ()=> async next =>{
       if(height){
         await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
-        await next({height:props.height?height:'auto', overflow:'visible', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+        await next({height:props.autoHeight===true?'auto':height, overflow:'visible', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
       }
     },
     leave:()=>async next=>{
-      // console.log(height)
       if(height){
-        await next({height:props.height?height:'auto', overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+        await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
         await next({height:0, overflow:'hidden', marginTop:0, opacity:0})
       }
     },
-    from:{  height:0, overflow:'hidden', marginTop:0, opacity:0},
+    update: ()=> async next =>{
+      if(height){
+        await next({height:height, overflow:'hidden', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+        await next({height:props.autoHeight===true?'auto':height, overflow:'visible', marginTop:props.hideTitleWhenExpanded?-33:0, opacity:1})
+      }
+    },
+    from:{  height:0, overflow:'hidden', marginTop:0, opacity:0 },
     unique:true,
-    reverse:!show
+    reverse:!props.show
   })
 
   return transitions.map(({ item, props:animatedProps, key }) =>{

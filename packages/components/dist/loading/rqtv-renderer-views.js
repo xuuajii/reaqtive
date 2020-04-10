@@ -11,9 +11,9 @@ exports.RqtvError = exports.RqtvSpinner = exports.RqtvNoData = void 0;
 
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
 
-var _react = _interopRequireWildcard(require("react"));
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
-var _index = require("../index");
+var _react = _interopRequireWildcard(require("react"));
 
 var _layout = require("@reaqtive/layout");
 
@@ -34,7 +34,17 @@ const RqtvRendererContainer = props => {
     position: 'sticky',
     top: 0
   } : {};
-  const height = props.top ? '100%' : loadingContainerHeight;
+
+  const _useState = (0, _react.useState)(),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        height = _useState2[0],
+        setHeight = _useState2[1];
+
+  (0, _react.useEffect)(() => {
+    if (height === 0 || height === null || height === undefined) {
+      setHeight(props.top ? '100%' : loadingContainerHeight);
+    }
+  }, [loadingContainerHeight]);
   return _react.default.createElement("div", {
     className: "rqtv-loading-container",
     style: (0, _objectSpread2.default)({
@@ -45,7 +55,7 @@ const RqtvRendererContainer = props => {
     ref: loadingContainer,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 21
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -58,7 +68,7 @@ const RqtvRendererContainer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 22
     },
     __self: void 0
   }, _react.default.cloneElement(props.children, {
@@ -73,7 +83,7 @@ const RqtvSpinner = props => {
     isSticky: props.isSticky,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 32
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -82,14 +92,14 @@ const RqtvSpinner = props => {
     style: props.style,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 33
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "sr-only",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 34
     },
     __self: void 0
   }, "Loading...")));
@@ -101,14 +111,14 @@ const RqtvNoData = props => _react.default.createElement(RqtvRendererContainer, 
   isFixed: props.isFixed,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 37
+    lineNumber: 41
   },
   __self: void 0
 }, _react.default.createElement("div", {
   className: "rqtv-no-data",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 38
+    lineNumber: 42
   },
   __self: void 0
 }, _react.default.createElement("span", {
@@ -118,13 +128,13 @@ const RqtvNoData = props => _react.default.createElement(RqtvRendererContainer, 
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 39
+    lineNumber: 43
   },
   __self: void 0
 }), _react.default.createElement("span", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 40
+    lineNumber: 44
   },
   __self: void 0
 }, "No data available")));
@@ -135,35 +145,34 @@ const RqtvError = props => _react.default.createElement(RqtvRendererContainer, {
   isFixed: props.isFixed,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 47
+    lineNumber: 51
   },
   __self: void 0
 }, _react.default.createElement("div", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 48
+    lineNumber: 52
   },
   __self: void 0
-}, _react.default.createElement(_index.RqtvButton, {
+}, _react.default.createElement(_layout.Button, {
   className: "rqtv-error-refresh",
-  onClick: props.reload,
-  label: _react.default.createElement(_layout.LuiIcon, {
-    iconType: "reload",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 49
-    },
-    __self: void 0
-  }),
+  onClick: props.reload ? props.reload : () => false,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 49
+    lineNumber: 53
   },
   __self: void 0
-}), _react.default.createElement("span", {
+}, _react.default.createElement(_layout.LuiIcon, {
+  iconType: "reload",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 50
+    lineNumber: 54
+  },
+  __self: void 0
+})), _react.default.createElement("span", {
+  __source: {
+    fileName: _jsxFileName,
+    lineNumber: 56
   },
   __self: void 0
 }, "Error Loading Content")));

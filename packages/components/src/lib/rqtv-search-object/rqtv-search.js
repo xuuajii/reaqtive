@@ -21,7 +21,7 @@ const AnimatedInput = props => {
       position:'absolute',
       top:0,
       left:0,
-      width:width?width:'100%',
+      width:width,
       transformStyle: 'preserve-3d'
     }
 
@@ -34,6 +34,7 @@ const AnimatedInput = props => {
     <animated.div style={{...wrapperStyles, ...animatedProps}}>
       <SearchInput
         {...props}
+        hideWhenDeleteString={false}
       />
     </animated.div>
   )
@@ -48,7 +49,8 @@ const RqtvSearch = props => {
     const qSearchResults=qSearchResultsHandler.qSearchResults;
     //console.log(qSearchResults)
     const searchResultsEl = useRef()
-    useOutsideEventListener(searchResultsEl, ()=>clearSearch(), showResults)
+    const containerEl = useRef()
+    useOutsideEventListener(containerEl, ()=>clearSearch(), showResults)
     const [scrollPosition, setScrollPosition] = useState({top:0, left:0})
     const [size, setSize] = useState({qcy:1,qcx:1})
     const [debouncedScrollPosition] = useDebounce(scrollPosition, 200);
@@ -74,6 +76,7 @@ const RqtvSearch = props => {
     }
 
     const handleChangeString = string => {
+      //console.log(1111, qSearchResultsHandler.qEngineError.qError)
       setSearchString(string)
       setShowResults(true)
     }
@@ -82,6 +85,10 @@ const RqtvSearch = props => {
       setShowResults(false)
       setSearchString()
       props.hideSearch()
+    }
+
+    const retry = () => {
+      qSearchResultsHandler.search(searchString)
     }
 
     const acceptSearchResult = (searchTerm=searchString) =>{
@@ -105,10 +112,9 @@ const RqtvSearch = props => {
     const titleEl = useRef()
     const singleTitleHeight=titleEl.current&&titleEl.current.offsetHeight;
     const dropdownMenuStyle=singleSearchResultHeight?{minHeight:singleSearchResultHeight+(singleTitleHeight||0)}:{}
-    //console.log(searchResultHeight)
     return (
       <>
-        <div className={`rqtv-search dropdown ${showResults ? 'show' : ''}`} >
+        <div className={`rqtv-search dropdown ${showResults ? 'show' : ''}`} ref={containerEl}>
           <AnimatedInput
             searchAction={handleChangeString}
             clearSearchAction={()=>clearSearch()}
@@ -128,8 +134,9 @@ const RqtvSearch = props => {
           >
             {searchString&&<RqtvRenderer
               loading={qSearchResultsHandler.qLoading}
-              error={qSearchResultsHandler.qError}
+              error={qSearchResultsHandler.qEngineError.qError}
               noData ={ qSearchResults&&qSearchResults.qSearchGroupArray.length===0}
+              reload={retry}
             >
               <div
                 style={{width:props.resultsWidth, height:searchResultHeight, maxHeight:'100%'}}

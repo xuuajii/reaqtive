@@ -60,17 +60,12 @@ const TabPanels = props => {
       lineNumber: 27
     },
     __self: void 0
-  }, children.map((child, index) => _react.default.createElement(_index.CarouselPanel, {
-    key: index,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 29
-    },
-    __self: void 0
-  }, _react.default.cloneElement(child, {
-    tabsEl,
-    tabListEl
-  })))) : children.map((child, index) => index === activeTab && _react.default.createElement("div", {
+  }, children.map((child, index) => {
+    return _react.default.cloneElement(child, {
+      tabsEl,
+      tabListEl
+    });
+  })) : children.map((child, index) => index === activeTab && _react.default.createElement("div", {
     key: index === activeTab && index,
     style: {
       width: '100%'

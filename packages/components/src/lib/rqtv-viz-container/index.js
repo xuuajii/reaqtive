@@ -10,6 +10,15 @@ import RqtvVizContainerToolbar from './toolbar'
 import RqtvVizContainerHeader from './header'
 // import { useDebounce } from 'use-debounce';
 
+/**
+ * RqtvVizContainer
+ *
+ * It provide a container to a visualization. It accept multiple children. In case i detects more tha one child,
+ * it shows one child at a time and provide a dropdown menu to toggle the desired child.
+ * If its children provide exports methods it automatically shows export buttons
+ *
+ */
+
 const RqtvVizContainer = props => {
   const rqtvAppContext = useContext(RqtvAppContext)
   const activeChartRef = useRef()
@@ -101,10 +110,25 @@ const RqtvVizContainer = props => {
   return maximized?ReactDOM.createPortal(vizContainer,props.maximizeElRef.current):vizContainer;
 }
 RqtvVizContainer.propTypes ={
+  /**
+   * The height of the container pixels or % can be used
+   */
   height:PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  /**
+   * Show/hide export to excel button
+   */
   showExportExcel:PropTypes.bool,
+  /**
+   * Show/hide export to pdf button
+   */
   showExportPdf:PropTypes.bool,
+  /**
+   * Show/hide export to img button
+   */
   showExportImg:PropTypes.bool,
+  /**
+   * If true window scrollbar will be hidden when the container is maximized
+   */
   hideScrollWhenMaximized:PropTypes.bool,
 }
 

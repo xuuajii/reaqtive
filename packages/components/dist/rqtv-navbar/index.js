@@ -39,7 +39,7 @@ const RqtvNavbar = props => {
   const currentSelectionsCustomLoading = () => _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 30
     },
     __self: void 0
   });
@@ -48,28 +48,28 @@ const RqtvNavbar = props => {
     className: "fixed-top rqtv-navbar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "navbar-brand-container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 36
     },
     __self: void 0
   }, showSideMenuToggle && _react.default.createElement(_layout.Button, {
     onClick: props.onToggleMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement(_layout.HamburgerMenu, {
     isOpen: props.sideMenuActive,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 39
     },
     __self: void 0
   })), _react.default.createElement(_layout.NavbarBrand, {
@@ -78,14 +78,14 @@ const RqtvNavbar = props => {
     imgStyle: rqtvApp.brandStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 42
     },
     __self: void 0
   }, rqtvApp.title))), _react.default.createElement(_layout.NavbarNav, {
     neverCollapse: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 47
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvCurrentSelections, {
@@ -94,13 +94,13 @@ const RqtvNavbar = props => {
     customLoading: () => _react.default.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 41
+        lineNumber: 48
       },
       __self: void 0
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 48
     },
     __self: void 0
   }), props.showSearch && _react.default.createElement(_index.RqtvSearchObject, {
@@ -117,7 +117,7 @@ const RqtvNavbar = props => {
     resultsHeight: '100%',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 50
     },
     __self: void 0
   }))));
@@ -126,8 +126,20 @@ const RqtvNavbar = props => {
 RqtvNavbar.propTypes = {
   fixedTop: _propTypes.default.bool,
   sticky: _propTypes.default.bool,
+
+  /**
+   * function fired when clicking on the HamburgerMenu button
+   */
   onToggleMenu: _propTypes.default.func,
+
+  /**
+   * show/hide the current selections toolbar
+   */
   showCurrentSelections: _propTypes.default.bool,
+
+  /**
+   * show/hide hamburger menu
+   */
   showSideMenuToggle: _propTypes.default.bool
 };
 RqtvNavbar.defaultProps = {

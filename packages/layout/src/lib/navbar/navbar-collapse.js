@@ -15,7 +15,7 @@ const NavbarCollapse = props => {
     ?<div className={`collapse navbar-collapse show ${props.className}`}>
       {React.Children.toArray(props.children).map(child=>React.cloneElement(child, {verticalNavbar}))}
     </div>
-    :<AnimatedCollapseDiv className={`navbar-collapse ${props.className}`} show={props.showCollapse}>
+    :<AnimatedCollapseDiv className={`navbar-collapse ${props.className}`} show={props.showCollapse} autoHeight={props.autoHeight}>
       {React.Children.toArray(props.children).map(child=>React.cloneElement(child, {verticalNavbar}))}
     </AnimatedCollapseDiv>
   )
@@ -26,10 +26,12 @@ export default NavbarCollapse
 NavbarCollapse.propTypes={
   className:PropTypes.string,
   breakPoint:PropTypes.string,
+  autoHeight:PropTypes.bool
 }
 NavbarCollapse.defaultProps={
   className:'',
-  breakPoint:'lg'
+  breakPoint:'lg',
+  autoHeight:true
 }
 
 // const NavbarCollapse = props => {

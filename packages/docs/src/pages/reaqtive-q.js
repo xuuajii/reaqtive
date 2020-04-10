@@ -1,12 +1,17 @@
-import React, {useState, useMemo, useEffect, useCallback, useContext} from 'react'
+import React, {useState, useMemo, useEffect, useCallback, useContext, useRef} from 'react'
 import { useLocation, useHistory, Switch, Route, NavLink } from "react-router-dom";
-import  {RqtvPage, RqtvPageHeader, RqtvListbox, RqtvNavbarNav, RqtvNavbarToggle, RqtvNavbarCollapse, RqtvDropdownFilter} from '@reaqtive/components'
+import  {RqtvPage, RqtvPageHeader, RqtvListbox, RqtvNavbarNav, RqtvNavbarToggle, RqtvNavbarCollapse, RqtvDropdownFilter, QViz} from '@reaqtive/components'
 import {useQObjectReducer, useQLayoutReducer, QGlobal, useTriggers} from '@reaqtive/q'
 import {Switch as SwitchToggle, NavItem} from '@reaqtive/layout'
 
 const ReaqtiveQ = props => {
   const qGlobalHandler = useContext(QGlobal)
   const mainPath='/reaqtive-q'
+  const chartRef = useRef()
+  const action=()=>{
+    const qViz = chartRef.current&&chartRef.current.getQViz()
+    console.log(qViz)
+  }
   return(
     //<ComponentDocumentation title = {'a'} componentData={data}/>
     <div>
@@ -20,7 +25,44 @@ const ReaqtiveQ = props => {
           >
           {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
             <div>
+              <button className="btn btn-primary" onClick={action}>succhia</button>
+            </div>
+            <div>
               <RqtvListbox qFieldExpr="Customer"/>
+            </div>
+            <div>
+            <QViz
+              id="VizExample1"
+              chartProps={{
+                chartType:'barchart',
+                chartColumns: [
+                  {
+                    "qDef":{
+                      "qFieldDefs": ["[Product Sub Group Desc]"],
+                       "qFieldLabels": ["Product Sub Group"],
+                       "qSortCriterias":[{qSortByExpression:1,qExpression:"=Sum([Sales Quantity]*[Sales Price])"}],
+                       "qReverseSort":true
+                     }
+                   },
+                  "Customer Type",
+                  {
+                    "qDef":{
+                      "qDef":"=Sum([Sales Quantity]*[Sales Price])",
+                      "qLabel":"Revenue"
+                    }
+                  }
+                ],
+                rest: {
+                  "showTitles": false,
+                  "title": "Revenue",
+                  "barGrouping":{grouping:"stacked"}
+                }
+              }}
+              height={'300px'}
+            />
+            </div>
+            <div>
+              <QViz key="pDKRhr" id="pDKRhr" title="scatter chart" height="500px" ref={chartRef}/>
             </div>
         </RqtvPage>
         <RqtvPage

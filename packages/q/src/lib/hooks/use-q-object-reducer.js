@@ -95,11 +95,15 @@ const useQObjectReducer = (qObjectDef) => {
     if(qLoading===false && qObject!==null){
       qObject.on('changed', ()=>setShouldUpdate(isSubscribed))
     }
+
     return () => {
       isSubscribed=false
-      qObject&&qObject.removeAllListeners()
+      if(qObject!==null) {
+        qObject&&qObject.removeAllListeners()
+        qDoc.destroySessionObject(qObject.id)
+      }
     }
-  },[qLoading, qObject])
+  },[qLoading, qObject, qDoc])
 
   return {
       ...qPromiseHandler,

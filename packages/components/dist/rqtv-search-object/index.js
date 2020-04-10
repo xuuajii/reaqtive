@@ -63,13 +63,13 @@ const RqtvSearchObject = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 44
     },
     __self: void 0
   }, props.alwaysExpanded === true ? _react.default.createElement(_rqtvSearch.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 47
     },
     __self: void 0
   })) : _react.default.createElement(_react.default.Fragment, null, !show && _react.default.createElement(_layout.Button, Object.assign({
@@ -78,14 +78,14 @@ const RqtvSearchObject = props => {
   }, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 50
     },
     __self: void 0
   }), _react.default.createElement(_layout.LuiIcon, {
     iconType: 'search',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 51
     },
     __self: void 0
   })), show && _react.default.createElement("div", {
@@ -93,7 +93,7 @@ const RqtvSearchObject = props => {
     ref: searchContainerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 55
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -101,7 +101,7 @@ const RqtvSearchObject = props => {
     onClick: hideSearch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 56
     },
     __self: void 0
   }), _react.default.createElement(_rqtvSearch.default, Object.assign({}, props, {
@@ -109,22 +109,53 @@ const RqtvSearchObject = props => {
     show: show,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 57
     },
     __self: void 0
   })))));
 };
 
 RqtvSearchObject.propTypes = {
+  /**
+   * If true the search input will always be displayed
+   *
+   */
   alwaysExpanded: _propTypes.default.bool,
+
+  /**
+   * The direction from which the input will expand if not always expanded
+   *
+   */
   expandFrom: _propTypes.default.oneOf(['right', 'left']),
-  width: _propTypes.default.number,
+
+  /**
+   * width of the component. It accept px or %
+   *
+   */
+  width: _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.number]),
+
+  /**
+   * function fired after showing the search input. (not called if alwaysExpanded is true)
+   *
+   */
   onOpen: _propTypes.default.func,
-  onClose: _propTypes.default.func
+
+  /**
+   * function fired after hiding the search input. (not called if alwaysExpanded is true)
+   *
+   */
+  onClose: _propTypes.default.func,
+
+  /**
+   * the fields of the data model to search against
+   *
+   */
+  searchFields: _propTypes.default.array
 };
 RqtvSearchObject.defaultProps = {
   alwaysExpanded: false,
-  expandFrom: 'left'
+  expandFrom: 'left',
+  width: '100%'
 };
 var _default = RqtvSearchObject;
 exports.default = _default;

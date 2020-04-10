@@ -60,14 +60,10 @@ const RqtvCurrentSelectionsModal = props =>{
                 </CurrentSelectionsListbox>*/
             }
             <Carousel index={activeField===''?0:1}>
-              <CarouselPanel key={0}>
-                <CurrentSelectionsList currentSelections={filteredSelections} setActiveField={setActiveField}/>
-              </CarouselPanel>
-              <CarouselPanel key={1}>
-                <CurrentSelectionsListbox backToFieldList={()=>setActiveField('')}>
+              <CurrentSelectionsList currentSelections={filteredSelections} setActiveField={setActiveField}/>
+              <CurrentSelectionsListbox backToFieldList={()=>setActiveField('')}>
                   {activFieldListbox}
                 </CurrentSelectionsListbox>
-              </CarouselPanel>
             </Carousel>
 
           </ModalBody>

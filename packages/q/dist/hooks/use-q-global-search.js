@@ -20,69 +20,66 @@ var _helpers = require("../helpers/helpers");
 //
 const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchOffset = 0, qMatchCount = 20) => {
   //console.log(fields)
-  const qInitialSearchParams = {
-    qOptions: {
-      qSearchFields: fields,
-      qContext: 'CONTEXT_CURRENT_SELECTIONS',
-      qCharEncoding: 'CHAR_ENCODING_UTF8'
-    },
-    qTerms: [],
-    qPage: {
-      qOffset: qItemOffSet,
-      qCount: qItemCount,
-      qGroupItemOptions: [{
-        qGroupItemType: 'FIELD',
-        qOffset: qMatchOffset,
-        qMatchCount: 20
-      }]
-    }
-  };
-  const qDocHandler = (0, _react.useContext)(_index.QDoc);
+  const qInitialSearchParams = (0, _react.useMemo)(() => {
+    return {
+      qOptions: {
+        qSearchFields: fields,
+        qContext: 'CONTEXT_CURRENT_SELECTIONS',
+        qCharEncoding: 'CHAR_ENCODING_UTF8'
+      },
+      qTerms: [],
+      qPage: {
+        qOffset: qItemOffSet,
+        qCount: qItemCount,
+        qGroupItemOptions: [{
+          qGroupItemType: 'FIELD',
+          qOffset: qMatchOffset,
+          qMatchCount: 20
+        }]
+      }
+    };
+  }, [fields, qItemOffSet, qMatchOffset, qItemCount]);
+  const qDocHandler = (0, _react.useContext)(_index.QDoc); //const [qSearchParams, setQSearchParams] = useState(qInitialSearchParams)
 
-  const _useState = (0, _react.useState)(qInitialSearchParams),
+  const _useState = (0, _react.useState)(null),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
-        qSearchParams = _useState2[0],
-        setQSearchParams = _useState2[1];
-
-  const _useState3 = (0, _react.useState)(null),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        qSearchResults = _useState4[0],
-        setQSearchResults = _useState4[1];
+        qSearchResults = _useState2[0],
+        setQSearchResults = _useState2[1];
 
   const intialQEngineError = {
     qError: false
   };
 
-  const _useState5 = (0, _react.useState)(true),
+  const _useState3 = (0, _react.useState)(true),
+        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+        qLoading = _useState4[0],
+        setQLoading = _useState4[1];
+
+  const _useState5 = (0, _react.useState)(intialQEngineError),
         _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-        qLoading = _useState6[0],
-        setQLoading = _useState6[1];
+        qEngineError = _useState6[0],
+        setQEngineError = _useState6[1];
 
-  const _useState7 = (0, _react.useState)(intialQEngineError),
+  const _useState7 = (0, _react.useState)(0),
         _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
-        qEngineError = _useState8[0],
-        setQEngineError = _useState8[1];
+        qErrorCount = _useState8[0],
+        setQErrorCount = _useState8[1];
 
-  const _useState9 = (0, _react.useState)(0),
-        _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
-        qErrorCount = _useState10[0],
-        setQErrorCount = _useState10[1];
-
-  const search = searchString => {
-    const patchedParams = (0, _helpers.getPatchedObject)(qSearchParams, 'qTerms', [searchString]);
+  const search = (0, _react.useCallback)(searchString => {
+    const patchedParams = (0, _helpers.getPatchedObject)(qInitialSearchParams, 'qTerms', [searchString]);
     patchedParams && searchString && qDocHandler.qDoc && qDocHandler.qDoc.searchResults(patchedParams).then(qResults => {
       setQSearchResults(qResults);
       setQEngineError(intialQEngineError);
       setQErrorCount(0);
       setQLoading(false);
     }).catch(qErr => {
+      qErrorCount >= 10 && console.log(qErr);
       setQErrorCount(qErrorCount => qErrorCount + 1);
     });
-  };
-
+  }, [qInitialSearchParams]);
   (0, _react.useEffect)(() => {
     if (qErrorCount >= 10) {
-      console.log('error searching');
+      console.log('error searching', qErrorCount);
       setQEngineError({
         qError: true,
         rqtvMessage: 'error getting global search results'
@@ -95,7 +92,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   }, [qErrorCount, searchString]);
 
   const selectSearchResults = (searchString, qId, callback) => {
-    const selectSearchParams = (0, _helpers.replaceObjectProp)(qSearchParams, 'qPage', 'qMatchIx', qId);
+    const selectSearchParams = (0, _helpers.replaceObjectProp)(qInitialSearchParams, 'qPage', 'qMatchIx', qId);
     const patchedSelectSearchParams = (0, _helpers.getPatchedObject)(selectSearchParams, 'qTerms', [searchString]); // console.log(patchedSelectSearchParams)
 
     qDocHandler.qDoc.selectAssociations(patchedSelectSearchParams).then(qResult => {
@@ -124,7 +121,8 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
     qSearchResults,
     qLoading,
     qEngineError,
-    selectSearchResults
+    selectSearchResults,
+    search
   };
 };
 

@@ -149,9 +149,13 @@ const useQObjectReducer = qObjectDef => {
 
     return () => {
       isSubscribed = false;
-      qObject && qObject.removeAllListeners();
+
+      if (qObject !== null) {
+        qObject && qObject.removeAllListeners();
+        qDoc.destroySessionObject(qObject.id);
+      }
     };
-  }, [qLoading, qObject]);
+  }, [qLoading, qObject, qDoc]);
   return (0, _objectSpread2.default)({}, qPromiseHandler, {
     reloadObject: () => dispatch({
       type: 'reloadObject'

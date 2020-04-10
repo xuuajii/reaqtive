@@ -2,22 +2,14 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import {useState, useEffect, useRef } from 'react';
+import {useState, useEffect } from 'react';
 import _ from 'lodash'
 
   const useEnhancedFieldList = (qFieldList, qCurrentSelections) => {
 
-  const qFieldListRef = useRef(qFieldList)
+    const [enhancedFieldList, set] = useState(qFieldList)
   useEffect(()=>{
-    const hasChanged = !(_.isEqual(qFieldList, qFieldListRef.current))
-    if(hasChanged){
-      qFieldListRef.current=qFieldList
-    }
-  }, [qFieldList])
-
-  const [enhancedFieldList, set] = useState(qFieldListRef.current)
-  useEffect(()=>{
-    const fieldList = qFieldListRef.current&&qFieldListRef.current.qItems
+    const fieldList = qFieldList&&qFieldList.qItems
     //console.log(fieldList)
     const fieldListWithSelections = fieldList&&fieldList.map(field=>{
       const qField = _.find(qCurrentSelections&&qCurrentSelections.qSelectionObject.qSelections, (selection)=>{
@@ -25,8 +17,9 @@ import _ from 'lodash'
       });
       return {...field, selectedCount:qField&&qField.qSelectedCount}
     })
+
     set(fieldListWithSelections)
-  },[qFieldListRef.current, qCurrentSelections])
+  },[qFieldList, qCurrentSelections])
 
   return enhancedFieldList
 }
