@@ -10,6 +10,7 @@ import CardDecksByBrand from "./components/card-decks-by-brand";
 import { RqtvPage, RqtvStandardTemplate, RqtvPageContext } from "@reaqtive/components";
 import BasketAnalysis from "../basket/basket-analysis";
 import { Route } from "react-router-dom";
+import OverviewHeader from '../overview-header'
 //import BasketAnalysis from "../basket-analysis";
 
 const OverviewByProduct = props => {
@@ -33,6 +34,8 @@ const OverviewByProduct = props => {
           fallbackPage={props.path}
           qTitleExpr ="'basket analysis - '&only([Submodel Benchmark])&'-'&only([Country ISO Code])&' - '&$(lastMonthLabel)"
         >
+          <OverviewHeader/>
+          <RqtvBreadcrumb/>
           <BasketAnalysis />
         </RqtvPage>
         <RqtvPage
@@ -40,6 +43,8 @@ const OverviewByProduct = props => {
           exact={true}
           qTitleExpr ="'overview by product'&' - '&$(lastMonthLabel)"
         >
+          <OverviewHeader/>
+          <RqtvBreadcrumb/>
           <Layout/>
         </RqtvPage>
       </RqtvStandardTemplate>
@@ -53,10 +58,6 @@ const Layout = props => {
   const toggleNavbarCollapse = () => setShowNavbarCollapse(!showNavbarCollapse)
   return(
     <div className="overview-by-product">
-      <div className="container-fluid">
-        <RqtvPageHeader/>
-      </div>
-      <RqtvBreadcrumb/>
       <QGenericObject qObjectDef={brandListObjectDef}>
         <CardDecksByBrand />
       </QGenericObject>

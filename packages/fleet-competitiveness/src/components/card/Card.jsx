@@ -22,7 +22,7 @@ const Card = props => {
       className={"card" + (props.flexItem ? " flex-item" : "")}
       style={{ width: props.width, minWidth:props.width}}
     >
-      <div className="row no-gutters" style={{ width: props.width, minWidth:props.width}}>
+      <div className="row no-gutters rqtv-card-header" style={{ width: props.width, minWidth:props.width}}>
         {props.displayLogo && <CardLogo {...props} />}
         <div
           className={
@@ -51,6 +51,7 @@ const Card = props => {
       </div>
       {props.displayKPI && <CardKPI {...props} />}
       {props.displayBody && <CardBody {...props} />}
+      {typeof props.customBody === 'function' && props.customBody()}
     </div>
   );
 };

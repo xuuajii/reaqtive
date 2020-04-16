@@ -54,7 +54,6 @@ const App = props => {
         <Ltr
           path={"/long-term-rental"}
           id={4}
-          title="'LONG TERM RENTAL'"
           sideMenuFieldsMatch={sideMenuFieldsMatch}
         />
         {/*LONG TERM RENTAL*/}

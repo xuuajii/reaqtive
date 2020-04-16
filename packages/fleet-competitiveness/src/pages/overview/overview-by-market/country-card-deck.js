@@ -6,7 +6,7 @@ import useOverviewObjectDef from '../use-overview-object-def'
 import Card from "../../../components/card/Card";
 import CardBox from "../../../components/card-deck/card-deck";
 import useGoToBasketAnalysis from '../use-go-to-basket-analysis'
-import {mapHyperCubeToCards} from '../helpers'
+import {mapHyperCubeToCards} from '../../../helpers'
 
 const CountryCardDeck = props => {
   const  {marketArea} = props

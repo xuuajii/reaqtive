@@ -8,6 +8,9 @@
     color: $card-color;
     background-color: $card-bg;
     box-shadow: $card-box-shadow;
+    .rqtv-card-header{
+      min-height: 177.75px;
+    }
 }
 
 .card-img{

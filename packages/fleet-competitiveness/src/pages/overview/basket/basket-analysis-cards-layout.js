@@ -1,7 +1,7 @@
 import React from "react";
 import CardBox from "../../../components/card-deck/card-deck";
 import Card from "../../../components/card/Card";
-import { extractSubNodes } from "../helpers";
+import { extractSubNodes } from "../../../helpers";
 import { RqtvBreadcrumb } from "@reaqtive/components";
 
 const BasketAnalysisCardsLayout = props => {

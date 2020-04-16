@@ -7,7 +7,7 @@ import './card-deck.scss';
 
 export default function CardBox (props) {
     return(
-        <div style={{backgroundImage:props.backgroundGradient, zIndex:0, minHeight:props.minHeight}} className="card-box-container" >
+        <div style={{backgroundImage:props.backgroundGradient, zIndex:0, minHeight:props.minHeight}} className="card-box-container rqtv-card-deck" >
             <ul className="flex-container">
                 {props.children}
             </ul>

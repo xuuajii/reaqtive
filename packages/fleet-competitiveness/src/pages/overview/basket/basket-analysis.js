@@ -6,6 +6,7 @@ import React, {useState, useContext, useRef} from "react";
 import BasketAnalysisCards from "./basket-analysis-cards";
 import { RqtvPageHeader, RqtvPageContext, RqtvBreadcrumb, RqtvMaximizePortalEl } from "@reaqtive/components";
 import BasketAnalysisCharts from './basket-analysis-charts'
+import SelectionSwitch from '../../../components/selection-switch'
 
 const qHypercubeDef = {
   qInfo: {
@@ -158,12 +159,7 @@ const showCharts = () => {
 }
   return (
     <>
-      <div className="container-fluid">
-        <RqtvPageHeader title={title} style={{paddingTop:'0.5rem'}}>
-        </RqtvPageHeader>
-      </div>
       <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
-      <RqtvBreadcrumb />
       <BasketAnalysisCards qHypercubeDef={qHypercubeDef} showCharts={showCharts}/>
       <BasketAnalysisCharts maximizeElRef={maximizeElRef}/>
     </>

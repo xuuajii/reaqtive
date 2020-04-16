@@ -14,13 +14,13 @@ const Avatar = (props) => {
     }
     return (
         imgError
-        ?<span style={{textTransform:'uppercase'}}>{avatarPlaceHolder}</span>
+        ?<span style={{textTransform:'uppercase', ...props.style}}>{avatarPlaceHolder}</span>
         :<img
             onError={replaceEmptyImage}
             src={avatarUrl}
             height={props.height}
             width={props.width}
-            style={{maxWidth:'130%'}}
+            style={{maxWidth:'130%', ...props.style}}
             type="image/svg+xml"
         />
 

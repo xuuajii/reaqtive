@@ -1,5 +1,7 @@
 import React from 'react'
-import {RqtvPage, RqtvStandardTemplate} from '@reaqtive/components'
+import { RqtvPage, RqtvStandardTemplate } from '@reaqtive/components'
+import LtrOverview from './ltr-overview'
+import LtrDetail from './ltr-detail'
 
 const Ltr = props => {
   return(
@@ -7,14 +9,17 @@ const Ltr = props => {
       maximizeEl={props.maximizeEl}
       path={props.path}
       id={props.id}
-      title={props.title}
+      qTitleExpr="'LTR analysis '&$(lastMonthLabel)"
       exact={props.exact}
     >
       <RqtvStandardTemplate
-        usePageHeader={true}
+        usePageHeader={false}
         useContainerFluid={true}
         searchFieldsMatch={props.searchFieldsMatch}
+        containerClassName={"full-screen ltr"}
       >
+        <LtrDetail path={props.path + "/detail"}/>
+        <LtrOverview path={props.path}/>
       </RqtvStandardTemplate>
     </RqtvPage>
   )
