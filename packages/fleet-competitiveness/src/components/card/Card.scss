@@ -4,12 +4,48 @@
 
 @import '../../index.scss';
 
-.card{
+.rqtv-card{
+    min-height: 177.75px;
     color: $card-color;
     background-color: $card-bg;
     box-shadow: $card-box-shadow;
-    .rqtv-card-header{
+    padding:1 1 1 1 !important;
+    .card-header{
       min-height: 177.75px;
+      border-bottom: 0;
+      padding-bottom:0;
+      background-color: $card-bg;
+    }
+    .table-responsive{
+      z-index: 100;
+      margin-top: -10px;
+    }
+    .table-sm{
+      font-size: 0.85rem;
+      tbody{
+        tr:hover{
+          background-color: #CCC;
+        }
+      }
+      th{
+        text-transform: uppercase;
+        border-top:0;
+        text-align: left;
+        font-size: 0.8rem;
+        &:nth-child(1n+3){
+        text-align: center;
+        }
+      }
+      td{
+        cursor: pointer;
+        vertical-align: middle;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &:nth-child(1n+3){
+        text-align: center;
+        }
+      }
     }
 }
 

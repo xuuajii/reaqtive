@@ -38,7 +38,7 @@ export default SelectionSwitch
 
 SelectionSwitch.propTypes = {
   qFieldExpr:PropTypes.string.isRequired,
-  selectionValue:PropTypes.oneOf(PropTypes.string, PropTypes.number),
+  selectionValue:PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   label:PropTypes.string
 }
 

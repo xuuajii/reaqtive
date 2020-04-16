@@ -18,7 +18,7 @@ const Ltr = props => {
         searchFieldsMatch={props.searchFieldsMatch}
         containerClassName={"full-screen ltr"}
       >
-        <LtrDetail path={props.path + "/detail"}/>
+        <LtrDetail path={props.path + "/detail"} fallbackPage={props.path}/>
         <LtrOverview path={props.path}/>
       </RqtvStandardTemplate>
     </RqtvPage>

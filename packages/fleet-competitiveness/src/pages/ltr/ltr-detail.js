@@ -11,7 +11,7 @@ const LtrDetail = props => {
     <RqtvPage
       path={props.path}
       qConditionExpr={"=count(distinct [Basket LTR])=1 and count(distinct Country)=1"}
-      fallbackPage={props.path}
+      fallbackPage={props.fallbackPage}
       qTitleExpr ="only([Basket LTR])&' '&only([Country ISO Code])&' - '&$(lastMonthLabel)"
     >
       <LtrHeader/>
@@ -95,7 +95,7 @@ const StockChart = props => {
               ],
               qMeasures:[{
                 "qDef":{
-                  "qDef":`=if(%Point='Min',avg([Min Monthly Rent]),if(%Point='Med',avg([Med Monthly Rent]),avg([Max Monthly Rent])))`,
+                  "qDef":`=if(%Point='Min',avg([Min ${measureField}]),if(%Point='Med',avg([Med ${measureField}]),avg([Max ${measureField}])))`,
                   "qLabel":"Monthly Rent",
                 }
               }],

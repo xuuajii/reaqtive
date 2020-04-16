@@ -8,8 +8,8 @@ import Rectangle from "../rectangle";
 
 const CardDeckHeader = props => {
 
-  const brand = props.brand;
-  const brandImage = props.brandImage;
+  const title = props.title;
+  const logo = props.logo;
   return (
     <div className="container full-screen">
       <div
@@ -22,7 +22,7 @@ const CardDeckHeader = props => {
         <div className="col-3 col-sm-2 col-md-2 col-lg-1">
           <Rectangle
             height={57}
-            backgroundColor={changeTitleColorbyBrand(brand)}
+            backgroundColor={changeTitleColorbyBrand(title)}
             marginTop={"11px"}
             marginLeft={"30px"}
           />
@@ -30,7 +30,7 @@ const CardDeckHeader = props => {
         <div className="col-auto col-sm-auto col-md-auto">
           <div style={{ display: "flex", alignItems: "center" }}>
             <BrandLogo
-              brandImage={brandImage}
+              brandImage={logo}
               position={"relative"}
               top={"0px"}
               height={"50px"}
@@ -41,12 +41,12 @@ const CardDeckHeader = props => {
                   //textShadow: "4px 4px 9px rgba(150, 150, 150, 1)",
                   textDecorationLine: "underline",
                   textUnderlinePosition: "under",
-                  textDecorationColor: changeTitleColorbyBrand(brand),
+                  textDecorationColor: changeTitleColorbyBrand(title),
                   fontSize: "2rem"
                 }}
                 className="py-3"
               >
-                {brand}
+                {title}
               </h1>
             </div>
           </div>

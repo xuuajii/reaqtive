@@ -28,6 +28,8 @@ const brandListObjectDef = {
   }
 };
 
+const extractBrandObject = (qLayout) => qLayout.brandJSON.split("|").map(brand=>JSON.parse(brand))
+
 const setBackgroundGradientByBrand = brand => {
   return brand === "ALFA ROMEO"
   ?"linear-gradient(136deg, #000000, #210e13, #3b141d, #561726, #843e4d, #9c5262, #a95163, #984456, #812f42, #642231, #540f21, #3d1c1c)"
@@ -90,4 +92,4 @@ const mapHyperCubeToCards = (qHyperCube) => {
   return cards
 }
 
-export {imgFolder, flagsImgFolder, flagsBordersImgFolder, medalsImgFolder, mapHyperCubeToCards, extractSubNodes, brandListObjectDef, setBackgroundGradientByBrand}
+export {imgFolder, flagsImgFolder, flagsBordersImgFolder, medalsImgFolder, mapHyperCubeToCards, extractSubNodes, brandListObjectDef, extractBrandObject, setBackgroundGradientByBrand}

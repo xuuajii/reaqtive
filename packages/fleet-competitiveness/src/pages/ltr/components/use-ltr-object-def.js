@@ -1,5 +1,12 @@
 import {useMemo} from 'react'
-import {flagsImgFolder} from '../../helpers'
+import {flagsImgFolder, medalsImgFolder} from '../../../helpers'
+
+const getMedalExpr = (field) => `='${medalsImgFolder}/'&
+  pick(
+    if([Flag Is Benchmark LTR]=1,
+      rangemin(rank(Avg({<$(lastMonthSet)>} ${field})),4)
+    ),'gold','silver','bronze','no'
+  )&'_medal_no_stripe.svg'`
 
 const useLtrObjectDef = (brand) => {
   const qObjectDef = useMemo(()=>{
@@ -23,7 +30,7 @@ const useLtrObjectDef = (brand) => {
                     ]
                   },
                     qAttributeExpressions:[
-                      {qExpression:"='Rank out of '&count({<$(lastMonthSet)>}  distinct Model)&' competitors'"}
+                      {qExpression:"='Rank out of '&count({<$(lastMonthSet)>}  distinct Model)"}
                     ],
                     qNullSuppression: true
                   },
@@ -69,7 +76,10 @@ const useLtrObjectDef = (brand) => {
                         qSortByNumeric: 0,
                         qSortByAscii: 1
                       }
-                    }
+                    },
+                    qAttributeExpressions:[
+                      {qExpression:getMedalExpr('-[Med Monthly Rent]')}
+                    ]
                   },
                   {
                     qDef: {
@@ -79,7 +89,10 @@ const useLtrObjectDef = (brand) => {
                         qSortByNumeric: 0,
                         qSortByAscii: 1
                       }
-                    }
+                    },
+                    qAttributeExpressions:[
+                      {qExpression:getMedalExpr('-[Med Monthly SMR]')}
+                    ]
                   },
                   {
                     qDef: {
@@ -89,18 +102,11 @@ const useLtrObjectDef = (brand) => {
                         qSortByNumeric: 0,
                         qSortByAscii: 1
                       }
-                    }
+                    },
+                    qAttributeExpressions:[
+                      {qExpression:getMedalExpr('[Med RV]/[Net Price]')}
+                    ]
                   },
-                  // {
-                  //   qDef: {
-                  //     qDef: `if([Flag Is Benchmark LTR]=1 ,count({<$(lastMonthSet)>} total<[Basket LTR]> distinct Model))`,
-                  //       qLabel: "Total Models",
-                  //       qSortBy: {
-                  //       qSortByNumeric: 0,
-                  //       qSortByAscii: 1
-                  //     }
-                  //   }
-                  // },
                 ],
                 qNoOfLeftDims: 2,
                 qMode: "P",

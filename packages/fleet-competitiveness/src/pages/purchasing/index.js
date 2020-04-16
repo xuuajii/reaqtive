@@ -1,6 +1,7 @@
 import React from 'react'
 import {RqtvPage, RqtvStandardTemplate} from '@reaqtive/components'
-
+import PurchasingOverview from './purchasing-overview'
+import PurchasingDetail from './purchasing-detail'
 const Purchasing = props => {
   return(
     <RqtvPage
@@ -14,7 +15,10 @@ const Purchasing = props => {
         usePageHeader={true}
         useContainerFluid={true}
         searchFieldsMatch={props.searchFieldsMatch}
+        containerClassName={"full-screen purchasing"}
       >
+        <PurchasingDetail path={props.path+'/detail'} fallbackPage={props.path}/>
+        <PurchasingOverview path={props.path} />
       </RqtvStandardTemplate>
     </RqtvPage>
   )
