@@ -119,7 +119,7 @@ const RqtvVizContainer = props => {
   };
 
   const vizContainer = _react.default.createElement("div", {
-    className: "viz-container",
+    className: "viz-container ".concat(props.className),
     ref: vizContainerEl,
     style: {
       height: maximized ? '100%' : props.height,
@@ -135,6 +135,7 @@ const RqtvVizContainer = props => {
     items: items,
     setActiveItem: setActiveItem,
     ref: headerEl,
+    className: "".concat(props.containerClassName),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 87
@@ -152,14 +153,14 @@ const RqtvVizContainer = props => {
     maximized: maximized,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 95
     },
     __self: void 0
   })), _react.default.createElement("div", {
     className: "viz-container-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 107
     },
     __self: void 0
   }, _react.default.cloneElement(activeChart, {
@@ -194,14 +195,26 @@ RqtvVizContainer.propTypes = {
   /**
    * If true window scrollbar will be hidden when the container is maximized
    */
-  hideScrollWhenMaximized: _propTypes.default.bool
+  hideScrollWhenMaximized: _propTypes.default.bool,
+
+  /**
+   * Container css classes
+   */
+  className: _propTypes.default.string,
+
+  /**
+   * Container header css classes
+   */
+  containerClassName: _propTypes.default.string
 };
 RqtvVizContainer.defaultProps = {
   height: 300,
   showExportExcel: true,
   showExportPdf: true,
   showExportImg: true,
-  hideScrollWhenMaximized: true
+  hideScrollWhenMaximized: true,
+  className: '',
+  containerClassName: ''
 };
 var _default = RqtvVizContainer;
 exports.default = _default;

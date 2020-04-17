@@ -55,7 +55,7 @@ const RqtvStandardTemplate = props => {
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvSideMenu, {
-    isOpen: showSideMenu,
+    isOpen: showSideMenu && props.useSideMenu,
     onClose: () => setShowSideMenu(false),
     useFieldList: true,
     usePageList: true,

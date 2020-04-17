@@ -43,7 +43,7 @@ const RqtvStandardTemplate = props => {
         showSideMenuToggle = {props.useSideMenu}
       />
       <RqtvSideMenu
-        isOpen={showSideMenu}
+        isOpen={showSideMenu&&props.useSideMenu}
         onClose={()=>setShowSideMenu(false)}
         useFieldList={true}
         usePageList={true}

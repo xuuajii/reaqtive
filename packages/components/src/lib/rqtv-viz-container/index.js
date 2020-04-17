@@ -83,12 +83,13 @@ const RqtvVizContainer = props => {
   }
 
   const vizContainer =
-  <div className="viz-container" ref={vizContainerEl} style={{height:maximized?'100%':props.height, border:maximized?0:''}}>
+  <div className={`viz-container ${props.className}`} ref={vizContainerEl} style={{height:maximized?'100%':props.height, border:maximized?0:''}}>
     <RqtvVizContainerHeader
       title={activeItem&&activeItem.title}
       items={items}
       setActiveItem={setActiveItem}
       ref={headerEl}
+      className={`${props.containerClassName}`}
     >
       {showToolbar&&
         <RqtvVizContainerToolbar
@@ -130,6 +131,14 @@ RqtvVizContainer.propTypes ={
    * If true window scrollbar will be hidden when the container is maximized
    */
   hideScrollWhenMaximized:PropTypes.bool,
+  /**
+   * Container css classes
+   */
+  className:PropTypes.string,
+  /**
+   * Container header css classes
+   */
+  containerClassName:PropTypes.string, 
 }
 
 RqtvVizContainer.defaultProps={
@@ -137,7 +146,9 @@ RqtvVizContainer.defaultProps={
   showExportExcel:true,
   showExportPdf:true,
   showExportImg:true,
-  hideScrollWhenMaximized:true
+  hideScrollWhenMaximized:true,
+  className:'',
+  containerClassName:'',
 }
 
 export default RqtvVizContainer
