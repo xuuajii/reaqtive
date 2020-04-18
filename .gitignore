@@ -2,3 +2,4 @@
 *-lock*
 lerna-debug.log
 *packages/docs/build/*
+*packages/fleet-competitiveness/build/*
