@@ -19,32 +19,19 @@ import "./home.scss";
 
 const Home = props => {
   const rqtvApp = useContext(RqtvAppContext);
+  console.log(rqtvApp)
   return (
     rqtvApp && (
-      <RqtvPage
-        maximizeEl={props.maximizeEl}
-        path={props.path}
-        id={props.id}
-        qTitleExpr={props.title}
-        exact={props.exact}
-      >
-        <RqtvStandardTemplate
-          usePageHeader={false}
-          useSidemenu={false}
-          useContainerFluid={false}
-          containerClassName={"full-screen"}
-          searchFieldsMatch={props.searchFieldsMatch}
-        >
-          <section id="main" className="parallax">
-            <Overviews />
-            <Channels />
-          </section>
-          <Divider height={70} backgroundColor={"rgba(212, 205, 205, 0.81)"} />
-          <section id="footer" className="parallax pt-5">
-            <Footer />
-          </section>
-        </RqtvStandardTemplate>
-      </RqtvPage>
+      <>
+        <section id="main" className="parallax">
+          <Overviews />
+          <Channels />
+        </section>
+        <Divider height={70} backgroundColor={"rgba(212, 205, 205, 0.81)"} />
+        <section id="footer" className="parallax pt-5">
+          <Footer />
+        </section>
+      </>
     )
   );
 };

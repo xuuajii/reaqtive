@@ -1,16 +1,31 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 
 import React from 'react';
-import {Switch, useLocation} from 'react-router-dom'
-import OverviewByProduct from './overview-by-product/overview-by-product';
-import OverviewByMarket from './overview-by-market/overview-by-market';
+import {useRouteMatch} from 'react-router-dom'
+import {RqtvPage, RqtvStandardTemplate } from '@reaqtive/components'
+import OverviewByProduct from './overview-by-product'
+import OverviewByCountry from './overview-by-country'
+import BasketAnalysis from './basket-analysis'
+
 const Overview = props => {
-  const location = useLocation()
-  return (
-    location.pathname === "/overview-by-country" ? <OverviewByMarket {...props}/> : <OverviewByProduct {...props}/>
-  );
+  const match = useRouteMatch()
+  return(
+    <>
+      <RqtvPage
+        path={`${match.path}/detail`}
+        fallbackPage={match.path}
+        qTitleExpr ="'basket analysis - '&only([Submodel Benchmark])&'-'&only([Country ISO Code])&' - '&$(lastMonthLabel)"
+        qConditionExpr={"=count(distinct [Country])=1 and count(distinct [Submodel Benchmark])=1"}
+      >
+        <BasketAnalysis/>
+      </RqtvPage>
+      <RqtvPage path={`/overview-by-product`} qTitleExpr="='overview by product '&$(lastMonthLabel)" exact={true}>
+        <OverviewByProduct/>
+      </RqtvPage>
+      <RqtvPage path={`/overview-by-country`} qTitleExpr="='overview by country '&$(lastMonthLabel)" exact={true}>
+        <OverviewByCountry/>
+      </RqtvPage>
+    </>
+  )
 }
 
 export default Overview;

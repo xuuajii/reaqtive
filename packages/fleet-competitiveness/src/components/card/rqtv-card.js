@@ -1,31 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Card, CardHeader, CardLogo, CardImage, CardHeaderText, CardBody} from './index'
+import {Card, CardHeader, CardLogo, CardImage, CardHeaderText, CardBody, CardKpi } from './index'
 
 const RqtvCard = props => {
   const cardClassName = `rqtv-card ${props.cardClassName}`
   const cardHeaderClassName = `${props.cardHeaderClassName}`
   const cardStyle={width:props.width, minWidth:props.width, ...props.cardStyle}
   const cardHeaderStyle={width:'100%', minWidth:'100%',...props.cardHeaderStyle}
-  const {displayLogo, logoProps, bodyRowLink} = props
+  const {
+    displayLogo, logoProps, bodyRowLink,
+    cardImage, displayGradient, cardBrandImg, cardBrandText, cardKpis,
+    subTitle, title, cardBody, cellWidth, rowHeight, cardSelectionField, rowSelectionField,
+    minKpiValue, kpiRange
+  } = props
   return(
     <Card className={cardClassName} flexItem style={cardStyle}>
       <CardHeader className={cardHeaderClassName} style={cardHeaderStyle}>
-        {displayLogo&&<CardLogo {...logoProps} imgUrl={props.cardBrandImg} placeHolder={props.cardBrandText}/>}
-        <CardImage imgUrl={props.cardImage} displayGradient={props.displayGradient}/>
-        <CardHeaderText title={props.title} subTitle={props.subTitle} style={{bottom:0, position:'absolute', ...props.style}}/>
+        {displayLogo&&<CardLogo {...logoProps} imgUrl={cardBrandImg} placeHolder={cardBrandText}/>}
+        <CardImage imgUrl={cardImage} displayGradient={displayGradient}/>
+        <CardHeaderText title={title} subTitle={subTitle} style={{bottom:0, position:'absolute'}}/>
       </CardHeader>
       {
-        props.cardBody&&
+        cardKpis&&
+          <div className="d-flex w-100 justify-content-around mb-3">
+          {cardKpis.map(kpi=>{
+            return<CardKpi key={kpi.label} value={kpi.qText} textLabel={kpi.label} minValue={minKpiValue} range={kpiRange}/>
+          })}
+          </div>
+      }
+      {
+        cardBody&&
         <CardBody
-          cardValue={props.title}
-          bodyTable={props.cardBody}
-          cellWidth={props.cellWidth}
-          rowHeight={props.rowHeight}
+          cardValue={title}
+          bodyTable={cardBody}
+          cellWidth={cellWidth}
+          rowHeight={rowHeight}
           showAvatar
           bodyRowLink={bodyRowLink}
-          cardSelectionField={props.cardSelectionField}
-          rowSelectionField={props.rowSelectionField}
+          cardSelectionField={cardSelectionField}
+          rowSelectionField={rowSelectionField}
         />
       }
     </Card>

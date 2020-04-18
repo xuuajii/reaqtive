@@ -1,27 +1,16 @@
 import React from 'react'
+import {useRouteMatch} from 'react-router-dom'
 import { RqtvPage, RqtvStandardTemplate } from '@reaqtive/components'
 import LtrOverview from './ltr-overview'
 import LtrDetail from './ltr-detail'
 
 const Ltr = props => {
+  const match = useRouteMatch()
   return(
-    <RqtvPage
-      maximizeEl={props.maximizeEl}
-      path={props.path}
-      id={props.id}
-      qTitleExpr="'LTR analysis '&$(lastMonthLabel)"
-      exact={props.exact}
-    >
-      <RqtvStandardTemplate
-        usePageHeader={false}
-        useContainerFluid={true}
-        searchFieldsMatch={props.searchFieldsMatch}
-        containerClassName={"full-screen ltr"}
-      >
-        <LtrDetail path={props.path + "/detail"} fallbackPage={props.path}/>
-        <LtrOverview path={props.path}/>
-      </RqtvStandardTemplate>
-    </RqtvPage>
+    <>
+      <LtrDetail path={match.path + "/detail"} fallbackPage={match.path}/>
+      <LtrOverview path={match.path}/>
+    </>
   )
 }
 

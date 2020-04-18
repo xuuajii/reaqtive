@@ -7,14 +7,16 @@ const CardBody = props => {
   const goToDetail = (cardValue, bodyRowValue) => {
     const queryString = `?selections=${props.cardSelectionField}:${cardValue}&selections=${props.rowSelectionField}:${bodyRowValue}`;
     const link = `${history.location.pathname}${props.bodyRowLink}/${queryString}`
-    setTimeout(()=>history.push(link), 100)
+    setTimeout(()=>props.bodyRowLink&&history.push(link), 100)
   }
 
-  const {headers, rows} = props.bodyTable
+  const {headers, rows, rowsAreMeasures} = props.bodyTable
   const {showAvatar} = props
+  const stdTableClassName='table table-sm table-hover'
+  const tableClassName = rowsAreMeasures?`${stdTableClassName} measure-table`:`${stdTableClassName} table-striped`
   return(
     <div className="table-responsive">
-    <table className="table table-striped table-sm table-hover">
+    <table className={tableClassName}>
       <thead>
         <tr>
           {showAvatar&&<th scope="col" />}

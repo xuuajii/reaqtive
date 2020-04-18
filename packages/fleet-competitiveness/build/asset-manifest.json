@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/extensions/fleet-competitiveness/static/css/main.0c74f580.chunk.css",
-    "main.js": "/extensions/fleet-competitiveness/static/js/main.d771cc3c.chunk.js",
-    "main.js.map": "/extensions/fleet-competitiveness/static/js/main.d771cc3c.chunk.js.map",
+    "main.css": "/extensions/fleet-competitiveness/static/css/main.79f121f6.chunk.css",
+    "main.js": "/extensions/fleet-competitiveness/static/js/main.c7437515.chunk.js",
+    "main.js.map": "/extensions/fleet-competitiveness/static/js/main.c7437515.chunk.js.map",
     "runtime-main.js": "/extensions/fleet-competitiveness/static/js/runtime-main.db9c2b6a.js",
     "runtime-main.js.map": "/extensions/fleet-competitiveness/static/js/runtime-main.db9c2b6a.js.map",
-    "static/js/2.86291ac3.chunk.js": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js",
-    "static/js/2.86291ac3.chunk.js.map": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js.map",
+    "static/js/2.92517474.chunk.js": "/extensions/fleet-competitiveness/static/js/2.92517474.chunk.js",
+    "static/js/2.92517474.chunk.js.map": "/extensions/fleet-competitiveness/static/js/2.92517474.chunk.js.map",
     "index.html": "/extensions/fleet-competitiveness/index.html",
-    "precache-manifest.3899cc51822905f248831c9ea7d2c821.js": "/extensions/fleet-competitiveness/precache-manifest.3899cc51822905f248831c9ea7d2c821.js",
+    "precache-manifest.5fd2d54a8e940b4d7ab2a999bd65cd7a.js": "/extensions/fleet-competitiveness/precache-manifest.5fd2d54a8e940b4d7ab2a999bd65cd7a.js",
     "service-worker.js": "/extensions/fleet-competitiveness/service-worker.js",
-    "static/css/main.0c74f580.chunk.css.map": "/extensions/fleet-competitiveness/static/css/main.0c74f580.chunk.css.map",
-    "static/js/2.86291ac3.chunk.js.LICENSE.txt": "/extensions/fleet-competitiveness/static/js/2.86291ac3.chunk.js.LICENSE.txt",
+    "static/css/main.79f121f6.chunk.css.map": "/extensions/fleet-competitiveness/static/css/main.79f121f6.chunk.css.map",
+    "static/js/2.92517474.chunk.js.LICENSE.txt": "/extensions/fleet-competitiveness/static/js/2.92517474.chunk.js.LICENSE.txt",
     "static/media/flags.jpg": "/extensions/fleet-competitiveness/static/media/flags.71cd086a.jpg",
     "static/media/logo.png": "/extensions/fleet-competitiveness/static/media/logo.37fe8322.png",
     "static/media/ltr.jpg": "/extensions/fleet-competitiveness/static/media/ltr.d320718a.jpg",
@@ -22,8 +22,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.db9c2b6a.js",
-    "static/js/2.86291ac3.chunk.js",
-    "static/css/main.0c74f580.chunk.css",
-    "static/js/main.d771cc3c.chunk.js"
+    "static/js/2.92517474.chunk.js",
+    "static/css/main.79f121f6.chunk.css",
+    "static/js/main.c7437515.chunk.js"
   ]
 }

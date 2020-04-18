@@ -2,7 +2,7 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-@import '../../index.scss';
+//@import '../../index.scss';
 
 .rqtv-card{
     min-height: 177.75px;
@@ -47,6 +47,20 @@
         }
       }
     }
+    .measure-table{
+      tbody{tr{
+        &:hover{
+          background-color:#FFF;
+        }
+        td{
+          cursor:default;
+        }
+      }}
+      td:nth-child(1n+3){
+        text-align: right;
+        padding-right: 1rem;
+      }
+    }
 }
 
 .card-img{
@@ -85,7 +99,7 @@
 }
 
 .flex-item {
-    background-color: #C5CAE9;
+    //background-color: #C5CAE9;
     display: flex;
     justify-content: center;
     align-items: center;
