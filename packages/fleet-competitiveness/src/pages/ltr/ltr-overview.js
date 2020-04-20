@@ -13,7 +13,6 @@ const LtrOverview = props => {
       qTitleExpr ="'LTR Ranking '&$(lastMonthLabel)"
     >
       <LtrHeader/>
-      <RqtvBreadcrumb/>
       <QGenericObject qObjectDef={brandListObjectDef}>
         {(qGenericObject)=>{
           const {qError, qLoading, qLayout} = qGenericObject.qLayoutHandler

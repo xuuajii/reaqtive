@@ -1,5 +1,4 @@
 import React from 'react'
-import {RqtvBreadcrumb} from '@reaqtive/components'
 import OverviewHeader from './overview-header'
 import useOverviewCardDef from './use-overview-card-def'
 import FieldSection from '../../components/field-section'
@@ -10,7 +9,6 @@ const OverviewByProduct = props => {
   return(
     <>
       <OverviewHeader/>
-      <RqtvBreadcrumb/>
       <FieldSection qObjectDef={brandListObjectDef}>
         {(brand) => <Layout key={brand.description} {...brand}/>}
       </FieldSection>

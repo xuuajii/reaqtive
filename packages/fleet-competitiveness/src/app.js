@@ -19,7 +19,7 @@ const stdTemplateProps = {
   usePageHeader:false,
   useContainerFluid:true,
   searchFieldsMatch:sideMenuFieldsMatch,
-  containerClassName:"full-screen ltr",
+  containerClassName:"full-screen",
 }
 const App = props => {
   const maximizeEl = useRef();

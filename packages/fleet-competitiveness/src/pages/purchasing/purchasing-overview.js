@@ -2,11 +2,15 @@ import React from 'react'
 import {RqtvRenderer, RqtvPage} from '@reaqtive/components'
 import {QGenericObject} from '@reaqtive/q'
 import {brandListObjectDef, extractBrandObject} from '../../helpers'
+import PurchasingHeader from './purchasing-header'
 import PurchasingCards from './purchasing-cards'
 
 const PurchasingOverview = props => {
   return (
-    <RqtvPage path={props.path} exact={true}>
+    <RqtvPage path={props.path} exact={true}
+      qTitleExpr="='Purchasing '&$(=lastMonthLabel)"
+    >
+      <PurchasingHeader/>
       <QGenericObject qObjectDef={brandListObjectDef}>
         {(qGenericObject)=>{
           const {qLoading, qError, qLayout} = qGenericObject.qLayoutHandler

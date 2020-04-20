@@ -5,6 +5,7 @@ import {RqtvPage, RqtvStandardTemplate } from '@reaqtive/components'
 import OverviewByProduct from './overview-by-product'
 import OverviewByCountry from './overview-by-country'
 import BasketAnalysis from './basket-analysis'
+import {Footer} from '../../components/index'
 
 const Overview = props => {
   const match = useRouteMatch()
@@ -24,6 +25,7 @@ const Overview = props => {
       <RqtvPage path={`/overview-by-country`} qTitleExpr="='overview by country '&$(lastMonthLabel)" exact={true}>
         <OverviewByCountry/>
       </RqtvPage>
+      <Footer/>
     </>
   )
 }

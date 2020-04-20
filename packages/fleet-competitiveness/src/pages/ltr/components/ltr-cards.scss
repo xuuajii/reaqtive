@@ -1,8 +1,8 @@
-.ltr{
+.ltr,.purchasing-detail{
   .viz-container{
     -webkit-box-shadow: 11px 14px 8px -4px rgba(150,148,150,0.79);
     -moz-box-shadow: 11px 14px 8px -4px rgba(150,148,150,0.79);
-    box-shadow: 11px 14px 8px -4px rgba(150,148,150,0.79)
+    box-shadow: 11px 14px 8px -4px rgba(150,148,150,0.79);
   }
   .section{
     margin:0;
@@ -24,8 +24,21 @@
     .row{
       margin-top:-1.35rem;
       background-color:#EEE;
-      padding-top:2.5rem;
       padding-bottom:5rem;
+      @media (min-width: $break-point-md) {
+        padding-bottom:0;
+      }
+      .col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,.col-md-7,.col-md-8,.col-md-9,
+      .col-md-10,.col-md-11,.col-md-12{
+        @media (min-width: $break-point-md) {
+          margin-top:2.5rem;
+          margin-bottom:4.5rem;
+        }
+        &:first-of-type{
+          margin-top:2.5rem;
+        }
+        margin-bottom:2.5rem;
+      }
     }
     &:nth-child(2){
       margin-top:-3.6rem;

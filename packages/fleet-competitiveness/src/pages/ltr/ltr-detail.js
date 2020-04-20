@@ -3,6 +3,7 @@ import { RqtvPage, RqtvPageHeader, RqtvNavbarCollapse, RqtvNavbarToggle, RqtvNav
 import {QGenericObject} from '@reaqtive/q'
 import {Switch, NavItem} from '@reaqtive/layout'
 import SelectionSwitch from '../../components/selection-switch'
+import {Section, SectionTitle} from '../../components/index'
 import LtrHeader from './components/ltr-header'
 
 const LtrDetail = props => {
@@ -15,13 +16,10 @@ const LtrDetail = props => {
       qTitleExpr ="only([Basket LTR])&' '&only([Country ISO Code])&' - '&$(lastMonthLabel)"
     >
       <LtrHeader/>
-      <RqtvBreadcrumb/>
       <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
       <div className="container-fluid" style={{marginTop:'1rem'}}>
-        <div className="section">
-          <div className="title-container">
-            <h4 className="title">STOCK CHARTS</h4>
-          </div>
+        <Section>
+          <SectionTitle title="STOCK CHARTS"/>
           <div className="row">
             <div className="col-md-4">
               <StockChart id="stock1" measureField="Monthly Rent" title="Monthly Rent" maximizeElRef={maximizeElRef}/>
@@ -33,11 +31,9 @@ const LtrDetail = props => {
               {<StockChart id="stock3" measureField="RV]/[Net Price" title="Residual Value %" maximizeElRef={maximizeElRef}/>}
             </div>
           </div>
-        </div>
-        <div className="section">
-          <div className="title-container">
-            <h4 className="title">TREND CHARTS - MONTHLY RENT</h4>
-          </div>
+        </Section>
+        <Section className="section">
+          <SectionTitle title="TREND CHARTS - MONTHLY RENT"/>
           <div className="row">
             <div className="col-md-6">
               <TrendChart id="trend1" showLegend={false} showMeasureAxis={'labels'} measure="=num(avg([Med Monthly Rent]), '#,##0')" title="Median Monthly Rent" maximizeElRef={maximizeElRef}/>
@@ -46,11 +42,9 @@ const LtrDetail = props => {
               <TrendChart id="trend1" showLegend={true} showMeasureAxis={'none'} measure="=dual(rank(avg([Med Monthly Rent])), -rank(avg([Med Monthly Rent])))" title="Rank Monthly Rent" maximizeElRef={maximizeElRef}/>
             </div>
           </div>
-        </div>
-        <div className="section">
-          <div className="title-container">
-            <h4 className="title">TREND CHARTS - RESIDUAL VALUE</h4>
-          </div>
+        </Section>
+        <Section className="section">
+          <SectionTitle title="TREND CHARTS - RESIDUAL VALUE"/>
           <div className="row">
             <div className="col-md-6">
               <TrendChart id="trend1" showLegend={false} showMeasureAxis={'labels'} measure="=num(avg([Med RV]/[Net Price]), '#,##0%')" title="Median Residual Value %" maximizeElRef={maximizeElRef}/>
@@ -59,7 +53,7 @@ const LtrDetail = props => {
               <TrendChart id="trend1" showLegend={true} showMeasureAxis={'none'} measure="=dual(rank(avg([Med RV]/[Net Price])), -rank(avg([Med RV]/[Net Price])))" title="Rank Monthly Rent" maximizeElRef={maximizeElRef}/>
             </div>
           </div>
-        </div>
+        </Section>
       </div>
     </RqtvPage>
   )

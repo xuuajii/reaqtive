@@ -20,7 +20,6 @@ const OverviewByCountry = props => {
   return(
     <>
       <OverviewHeader/>
-      <RqtvBreadcrumb/>
       <FieldSection qObjectDef={marketAreasObjectDef}>
         {(marketArea) => <Layout key={marketArea.description} {...marketArea}/>}
       </FieldSection>
