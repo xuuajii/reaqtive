@@ -40,6 +40,7 @@ const useQVizHandler = (qApp, id, chartProps) => {
       .then(qViz => {
         setVizId(qViz.id)
       })
+      .catch(qErr=>console.log(qErr))
     }
     if(id && !(chartProps)){
       setVizId(id)
@@ -48,6 +49,7 @@ const useQVizHandler = (qApp, id, chartProps) => {
     if(vizId!==null && qVizHandler.qVizLoading===true){
       qApp&&qApp.visualization.get(vizId)
       .then(qViz => setQVizHandler({qVizLoading:false, qViz:qViz}))
+      .catch(qErr=>console.log(qErr))
     }
   },[qApp, chartProps, vizId, id, qVizHandler.qVizLoading])
 

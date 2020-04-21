@@ -60,7 +60,7 @@ const useQVizHandler = (qApp, id, chartProps) => {
       //qVizHandler.qVizLoading===true && qVizHandler.qViz===null && qApp!==null && qApp !== undefined){
       qApp && qApp.visualization.create(chartProps.chartType, chartProps.chartColumns, chartProps.rest).then(qViz => {
         setVizId(qViz.id);
-      });
+      }).catch(qErr => console.log(qErr));
     }
 
     if (id && !chartProps) {
@@ -71,7 +71,7 @@ const useQVizHandler = (qApp, id, chartProps) => {
       qApp && qApp.visualization.get(vizId).then(qViz => setQVizHandler({
         qVizLoading: false,
         qViz: qViz
-      }));
+      })).catch(qErr => console.log(qErr));
     }
   }, [qApp, chartProps, vizId, id, qVizHandler.qVizLoading]);
   (0, _react.useEffect)(() => {
