@@ -7,7 +7,7 @@ import BasketAnalysisCharts from './basket-analysis-charts'
 const  BasketAnalysis = props => {
   const gradient = 'linear-gradient(120deg, rgba(240,240,240,1) 0%, rgba(220,220,220,1) 40%, rgba(220,220,220,1) 60%, rgba(240,240,240,1) 100%)'
   return(
-    <>
+    <div className="basket-analysis">
       <OverviewHeader/>
       <RqtvCards
         deckProps={{
@@ -30,7 +30,7 @@ const  BasketAnalysis = props => {
         cardObjectDef={qObjectDef}
       />
       <BasketAnalysisCharts />
-    </>
+    </div>
   )
 }
 
@@ -79,7 +79,7 @@ const qObjectDef = {
       },
       {
         qDef: {
-          qDef: `num($(visualPrice(lastMonthSet,FBD,[Vehicle Discounted Price Business])), '#,##0')`,
+          qDef: `num($(visualPrice($(lastMonthSet),FBD,[Vehicle Discounted Price Business])), '#,##0')`,
           //qDef: `avg([Vehicle Visual Price])`,
           qLabel: "Discounted Price Business",
           qSortBy: {
@@ -90,7 +90,7 @@ const qObjectDef = {
       },
       {
         qDef: {
-          qDef: `num($(visualPrice(lastMonthSet, LTR, [Med Monthly Rent])), '#,##0')`,
+          qDef: `num($(visualPrice($(lastMonthSet), LTR, [Med Monthly Rent])), '#,##0')`,
           //qDef: `avg([Vehicle Visual Price])`,
           qLabel: "Monthly Rent",
           qSortBy: {
@@ -112,7 +112,7 @@ const qObjectDef = {
       },
       {
         qDef: {
-          qDef: `$(realIndexVsBenchmark(lastMonthSet,FBD,[Vehicle Discounted Price Business]))`,
+          qDef: `$(realIndexVsBenchmark($(lastMonthSet),FBD,[Vehicle Discounted Price Business]))`,
           //qDef: `avg([Vehicle Visual Price])`,
           qLabel: "FBD",
           qSortBy: {
@@ -123,7 +123,7 @@ const qObjectDef = {
       },
       {
         qDef: {
-          qDef: `$(visualIdexVsBenchmark(lastMonthSet,LTR,[Med Monthly Rent]))`,
+          qDef: `$(visualIdexVsBenchmark($(lastMonthSet),LTR,[Med Monthly Rent]))`,
           //qDef: `avg([Vehicle Visual Price])`,
           qLabel: "LTR",
           qSortBy: {
