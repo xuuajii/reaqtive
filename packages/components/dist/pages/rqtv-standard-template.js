@@ -21,8 +21,16 @@ var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/pages/rqtv-standard-template.js";
 
+/**
+ * RqtvStandardTemplate
+ *
+ * It is a component that allows you to use Reaqtive main components without having to declare them one by one.
+ * Of course does not allow the same flexibility as recreating a template manually.
+ * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader
+ *
+ */
 const RqtvStandardTemplate = props => {
   const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -60,6 +68,7 @@ const RqtvStandardTemplate = props => {
     useFieldList: true,
     usePageList: true,
     sideMenuFieldsMatch: props.sideMenuFieldsMatch,
+    additionalTabs: props.sideMenuAdditionalTabs,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 45
@@ -69,7 +78,7 @@ const RqtvStandardTemplate = props => {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -77,20 +86,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 58
     },
     __self: void 0
   }), props.usePageHeader && _react.default.createElement(_index.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 59
     },
     __self: void 0
   }), props.children))));

@@ -48,6 +48,7 @@ const RqtvStandardTemplate = props => {
         useFieldList={true}
         usePageList={true}
         sideMenuFieldsMatch = {props.sideMenuFieldsMatch}
+        additionalTabs={props.sideMenuAdditionalTabs}
       />
       <RqtvSideMenuMain isOpen={showSideMenu}>
         <div
