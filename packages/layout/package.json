@@ -29,7 +29,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "transpile": "SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
+    "transpile-mac": "NODE_ENV=development babel src/lib --out-dir dist --copy-files",
     "watch": "watch \"npm run transpile\" src",
+    "watch-mac": "watch \"npm run transpile-mac\" src",
     "scss": "node-sass src/scss-dev/sass_dev.scss src/scss-dev/sass_dev.css"
   },
   "peerDependencies": {

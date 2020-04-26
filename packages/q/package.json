@@ -28,7 +28,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "transpile": "SET NODE_ENV=development&&babel src/lib --out-dir dist --copy-files",
-    "watch": "watch \"npm run transpile\" src"
+    "transpile-mac": "NODE_ENV=development babel src/lib --out-dir dist --copy-files",
+    "watch": "watch \"npm run transpile\" src",
+    "watch-mac": "watch \"npm run transpile-mac\" src"
   },
   "peerDependencies": {
     "react": "^16.12.0",
