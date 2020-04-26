@@ -45,7 +45,7 @@ const RqtvMultibox = props => {
 }
 
 
-RqtvMultibox.propsTypes = {
+RqtvMultibox.propTypes = {
   /**
    * An array of fieldnames which will be displayed in the multibox
    */
@@ -53,7 +53,7 @@ RqtvMultibox.propsTypes = {
   /**
    * The height of the listbox of the active field
    */
-  fieldHeight:PropTypes.integer
+  fieldHeight:PropTypes.number
 }
 
 RqtvMultibox.defaultProps = {

@@ -32,7 +32,7 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
 /**
  * RqtvApp
  *
- * It is the main component of @reqative/components. It provides routing using react router and a context that allows you to store
+ * It provides routing using react router and a context that allows you to store
  * app info to be available everywhere inside your app.
  *
  */

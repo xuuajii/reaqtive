@@ -149,6 +149,10 @@ RqtvDropdownFilter.propTypes={
    * if false it uses Qlik View selection behaviour (apply selections immediately)
    */
   quickSelectionMode:PropTypes.bool,
+  /**
+   * if true uses toggle select
+   */
+  toggle:PropTypes.bool
 }
 
 RqtvDropdownFilter.defaultProps={
@@ -164,5 +168,6 @@ RqtvDropdownFilter.defaultProps={
   dropdownMenuItemStyle:{},
   hideHorizontalScrollbar:false,
   quickSelectionMode:false,
+  toggle:true
 }
 export default RqtvDropdownFilter

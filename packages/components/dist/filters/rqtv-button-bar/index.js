@@ -139,7 +139,12 @@ RqtvButtonBar.propTypes = {
   /**
    * style object to customize buttons style (it can be overwritten by selections color coding)
    */
-  buttonsStyle: _propTypes.default.object
+  buttonsStyle: _propTypes.default.object,
+
+  /**
+   * if true uses toggle select
+   */
+  toggle: _propTypes.default.bool
 };
 RqtvButtonBar.defaultProps = {
   qSortObject: {

@@ -91,7 +91,11 @@ RqtvSearchField.propTypes={
   /**
     * The text shown in the input field when not searching
   */
-  placeholder:PropTypes.string
+  placeholder:PropTypes.string,
+  /**
+   * if true uses toggle select
+   */
+  toggle:PropTypes.bool
 }
 
 RqtvSearchField.defaultProps={
@@ -100,7 +104,8 @@ RqtvSearchField.defaultProps={
   dropdownMenuHeight:300,
   dropdownMenuWidth:265,
   hideHorizontalScrollbar:false,
-  placeholder:'Search'
+  placeholder:'Search',
+  toggle:true
 }
 
 

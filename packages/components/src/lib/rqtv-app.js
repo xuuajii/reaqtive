@@ -13,7 +13,7 @@ import {triggerType} from './custom-prop-types/index.js'
 /**
  * RqtvApp
  *
- * It is the main component of @reqative/components. It provides routing using react router and a context that allows you to store
+ * It provides routing using react router and a context that allows you to store
  * app info to be available everywhere inside your app.
  *
  */

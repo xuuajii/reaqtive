@@ -123,7 +123,11 @@ RqtvListbox.propTypes={
    * if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply),
    * if false it uses Qlik View selection behaviour (apply selections immediately)
    */
-  quickSelectionMode:PropTypes.bool
+  quickSelectionMode:PropTypes.bool,
+  /**
+   * if true uses toggle select
+   */
+  toggle:PropTypes.bool
 }
 
 RqtvListbox.defaultProps={
@@ -139,7 +143,8 @@ RqtvListbox.defaultProps={
   titleStyle:{},
   listStyle:{},
   itemStyle:{},
-  quickSelectionMode:false
+  quickSelectionMode:false,
+  toggle:true
 }
 
 export default RqtvListbox

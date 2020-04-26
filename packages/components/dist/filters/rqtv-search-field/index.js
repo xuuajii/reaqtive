@@ -148,7 +148,12 @@ RqtvSearchField.propTypes = {
   /**
     * The text shown in the input field when not searching
   */
-  placeholder: _propTypes.default.string
+  placeholder: _propTypes.default.string,
+
+  /**
+   * if true uses toggle select
+   */
+  toggle: _propTypes.default.bool
 };
 RqtvSearchField.defaultProps = {
   qSortObject: {
@@ -163,7 +168,8 @@ RqtvSearchField.defaultProps = {
   dropdownMenuHeight: 300,
   dropdownMenuWidth: 265,
   hideHorizontalScrollbar: false,
-  placeholder: 'Search'
+  placeholder: 'Search',
+  toggle: true
 };
 var _default = RqtvSearchField;
 exports.default = _default;

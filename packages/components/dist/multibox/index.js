@@ -80,7 +80,7 @@ const RqtvMultibox = props => {
   }));
 };
 
-RqtvMultibox.propsTypes = {
+RqtvMultibox.propTypes = {
   /**
    * An array of fieldnames which will be displayed in the multibox
    */
@@ -89,7 +89,7 @@ RqtvMultibox.propsTypes = {
   /**
    * The height of the listbox of the active field
    */
-  fieldHeight: _propTypes.default.integer
+  fieldHeight: _propTypes.default.number
 };
 RqtvMultibox.defaultProps = {
   fieldHeight: 300

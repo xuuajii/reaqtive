@@ -85,7 +85,11 @@ RqtvButtonBar.propTypes={
   /**
    * style object to customize buttons style (it can be overwritten by selections color coding)
    */
-  buttonsStyle:PropTypes.object
+  buttonsStyle:PropTypes.object,
+  /**
+   * if true uses toggle select
+   */
+  toggle:PropTypes.bool
 }
 
 RqtvButtonBar.defaultProps={

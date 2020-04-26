@@ -68,8 +68,6 @@ const RqtvNavbar = props => {
 }
 
 RqtvNavbar.propTypes={
-  fixedTop:PropTypes.bool,
-  sticky:PropTypes.bool,
   /**
    * function fired when clicking on the HamburgerMenu button
    */
@@ -85,8 +83,6 @@ RqtvNavbar.propTypes={
 }
 
 RqtvNavbar.defaultProps={
-  fixedTop:false,
-  sticky:true,
   showCurrentSelections:true,
   showSideMenuToggle:true
 }
