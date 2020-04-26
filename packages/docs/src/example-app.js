@@ -68,7 +68,17 @@ const ExampleApp = props => {
             ]}
             qTitleExpr='1+1'
         >
-          <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}} useContainerFluid={false}>
+          <RqtvStandardTemplate
+            sideMenuFieldsMatch={{method:'include', mask:['Cust*', '*Desc*']}}
+            useContainerFluid={false}
+            sideMenuAdditionalTabs={[
+              {
+                label:'My additional tab',
+                icon:<div>MT</div>,
+                tab:<div style={{color:'white', textAlign:'center'}}>My Additional Tab</div>
+              }
+            ]}
+          >
             <Home
               maximizeEl={maximizeEl}
             />

@@ -105,6 +105,7 @@ QViz.propTypes = {
   id: PropTypes.string.isRequired,
   /**
    * the properties of the object to be created on the fly
+   * chartProps must be passed as: {'chartType':'string', 'columns':'array', 'rest':'object'} see this link for details https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/VisualizationAPI.htm
    *
    */
   chartProps: PropTypes.object

@@ -8,6 +8,15 @@ import { HashRouter as Router, Switch } from 'react-router-dom'
 import {QDocProvider, QAppProvider, useTriggers} from '@reaqtive/q'
 import {RqtvAppContextProvider} from './contexts/rqtv-app-context'
 import {RqtvAppRenderer} from './loading/index'
+import {triggerType} from './custom-prop-types/index.js'
+
+/**
+ * RqtvApp
+ *
+ * It is the main component of @reqative/components. It provides routing using react router and a context that allows you to store
+ * app info to be available everywhere inside your app.
+ *
+ */
 
 const RqtvApp = props =>{
   const {qCapabilityApiRequired, children, triggers, ...rqtvAppProps} = props
@@ -49,21 +58,66 @@ const RqtvApp = props =>{
 }
 
 RqtvApp.propTypes={
-  triggers:PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.arrayOf(PropTypes.shape({
-      type:PropTypes.string,
-      params:PropTypes.object
-    }))
-  ]),
+  /**
+   * triggers to fire when opening the app (do not abuse triggers)
+   *
+   */
+  triggers:triggerType,
+  /**
+   * the title of the app displayed in the navbar
+   *
+   */
   title:PropTypes.string,
-  useRouter:PropTypes.bool
+  /**
+   * the brand of the app displayed in the navbar. An image is expected: import it in the app and pass it as a prop
+   *
+   */
+  brand:PropTypes.string,
+  /**
+   * the url to redirect to when clicking on the brand
+   *
+   */
+  brandUrl:PropTypes.string,
+  /**
+   * styles to be applied to the image container
+   *
+   */
+  brandStyle:PropTypes.object,
+  /**
+   * if true the applicatin will be wrapped in react router and in a switch
+   *
+   */
+  useRouter:PropTypes.bool,
+  /**
+   * fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  sideMenuFieldsMatch:PropTypes.shape({
+    method:PropTypes.oneOf(['include', 'exclude']),
+    mask:PropTypes.arrayOf(PropTypes.string)
+  }),
+  useRouter:PropTypes.bool,
+  /**
+   * fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  searchFieldMatch:PropTypes.shape({
+    method:PropTypes.oneOf(['include', 'exclude']),
+    mask:PropTypes.arrayOf(PropTypes.string)
+  }),
+  /**
+   * Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
+   *
+   */
+  hidePrefix:'%',
 }
 
 RqtvApp.defaultProps={
   triggers:[],
-  title:'Reaqtive App',
-  useRouter:true
+  useRouter:true,
+  hidePrefix:'%',
+  sideMenuFieldsMatch:{method:'include', mask:['**']},
+  searchFieldMatch:{method:'include', mask:['**']}
 }
 
 export default RqtvApp

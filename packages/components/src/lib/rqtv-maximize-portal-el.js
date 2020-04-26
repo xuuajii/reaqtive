@@ -5,6 +5,12 @@
 import React, {useState, useEffect} from 'react'
 import PropTypes from 'prop-types'
 
+/**
+ * RqtvMaximizePortalEl
+ *
+ * It renders a portal to which a ref can be passed. The portal can be used to maximize visualizations in the app.
+ */
+
 const RqtvMaximizePortalEl = props => {
   const [maximizedHeight, set] = useState(0)
   useEffect(()=>{
@@ -23,8 +29,17 @@ const RqtvMaximizePortalEl = props => {
 }
 
 RqtvMaximizePortalEl.propTypes={
+  /**
+   * the ref which will be attached to the dom element
+   */
   maximizeElRef:PropTypes.object.isRequired,
+  /**
+   * style of the object which will contain the maximized visualization
+   */
   style:PropTypes.object,
+  /**
+   * if true the maximized visualization will occupy all the space below the navbar and on the right of the sidemenu. Page overflow will be hidden
+   */
   maximizeFullPage:PropTypes.bool
 }
 RqtvMaximizePortalEl.defaultProps={

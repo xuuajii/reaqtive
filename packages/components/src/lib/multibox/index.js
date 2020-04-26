@@ -7,7 +7,12 @@ import PropTypes from 'prop-types'
 import  {Accordion, Collapse, CollapseHeader, CollapseBody} from '@reaqtive/layout'
 import  {RqtvListbox} from '../index'
 
-
+/**
+ * RqtvMultibox
+ *
+ * It returns an accordion that shows a list of fields.
+ * A listbox is displayed for the active field. One field at a time can be active.
+ */
 const RqtvMultibox = props => {
   // console.log(props.fieldList)
 
@@ -39,8 +44,15 @@ const RqtvMultibox = props => {
   )
 }
 
+
 RqtvMultibox.propsTypes = {
+  /**
+   * An array of fieldnames which will be displayed in the multibox
+   */
   fields:PropTypes.array.isRequired,
+  /**
+   * The height of the listbox of the active field
+   */
   fieldHeight:PropTypes.integer
 }
 
