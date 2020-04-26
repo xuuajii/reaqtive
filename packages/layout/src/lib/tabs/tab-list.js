@@ -25,7 +25,7 @@ const TabList = props=> {
   const [indicatorPlacement, setIndicatorPlacement] = useState()
   useEffect(()=>{
     updateIndicator()
-  }, [props.activeTab, system.triggerResize])
+  }, [props.activeTab, system.windowWidth])
 
   return(
     <nav className="nav nav-tabs tab-list" ref={props.tabListEl}>

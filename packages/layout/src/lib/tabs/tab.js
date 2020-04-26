@@ -26,7 +26,7 @@ const Tab = props => {
           ref={activeTabEl}
       >
         {props.useIcons&&<Icon/>}
-          {props.label}
+          <span className="tab-label">{props.label}</span>
       </div>
 }
 
