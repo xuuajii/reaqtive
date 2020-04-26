@@ -15,7 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-nav.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/navbar/navbar-nav.js";
 
 const NavbarNav = props => {
   //const flexDirection = props.neverCollapse?'row':'column'

@@ -9,7 +9,7 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\modal\\modal-body.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/modal/modal-body.js";
 
 const ModalBody = props => _react.default.createElement("div", {
   className: "modal-body",

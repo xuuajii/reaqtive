@@ -25,8 +25,17 @@ var _rqtvAppContext = require("./contexts/rqtv-app-context");
 
 var _index = require("./loading/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-app.js";
+var _index2 = require("./custom-prop-types/index.js");
 
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/rqtv-app.js";
+
+/**
+ * RqtvApp
+ *
+ * It is the main component of @reqative/components. It provides routing using react router and a context that allows you to store
+ * app info to be available everywhere inside your app.
+ *
+ */
 const RqtvApp = props => {
   const qCapabilityApiRequired = props.qCapabilityApiRequired,
         children = props.children,
@@ -74,14 +83,14 @@ const RqtvApp = props => {
   return _react.default.createElement(_reactRouterDom.HashRouter, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 45
     },
     __self: void 0
   }, _react.default.createElement(_rqtvAppContext.RqtvAppContextProvider, Object.assign({}, rqtvAppProps, {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 46
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvAppRenderer, {
@@ -89,30 +98,92 @@ const RqtvApp = props => {
     triggersDone: triggerState.qLoading === false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 47
     },
     __self: void 0
   }, props.children.length && props.useRouter === true ? _react.default.createElement(_reactRouterDom.Switch, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 49
     },
     __self: void 0
   }, props.children) : props.children)));
 };
 
 RqtvApp.propTypes = {
-  triggers: _propTypes.default.oneOfType([_propTypes.default.array, _propTypes.default.arrayOf(_propTypes.default.shape({
-    type: _propTypes.default.string,
-    params: _propTypes.default.object
-  }))]),
+  /**
+   * triggers to fire when opening the app (do not abuse triggers)
+   *
+   */
+  triggers: _index2.triggerType,
+
+  /**
+   * the title of the app displayed in the navbar
+   *
+   */
   title: _propTypes.default.string,
-  useRouter: _propTypes.default.bool
+
+  /**
+   * the brand of the app displayed in the navbar. An image is expected: import it in the app and pass it as a prop
+   *
+   */
+  brand: _propTypes.default.string,
+
+  /**
+   * the url to redirect to when clicking on the brand
+   *
+   */
+  brandUrl: _propTypes.default.string,
+
+  /**
+   * styles to be applied to the image container
+   *
+   */
+  brandStyle: _propTypes.default.object,
+
+  /**
+   * if true the applicatin will be wrapped in react router and in a switch
+   *
+   */
+  useRouter: _propTypes.default.bool,
+
+  /**
+   * fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  sideMenuFieldsMatch: _propTypes.default.shape({
+    method: _propTypes.default.oneOf(['include', 'exclude']),
+    mask: _propTypes.default.arrayOf(_propTypes.default.string)
+  }),
+  useRouter: _propTypes.default.bool,
+
+  /**
+   * fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  searchFieldMatch: _propTypes.default.shape({
+    method: _propTypes.default.oneOf(['include', 'exclude']),
+    mask: _propTypes.default.arrayOf(_propTypes.default.string)
+  }),
+
+  /**
+   * Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
+   *
+   */
+  hidePrefix: '%'
 };
 RqtvApp.defaultProps = {
   triggers: [],
-  title: 'Reaqtive App',
-  useRouter: true
+  useRouter: true,
+  hidePrefix: '%',
+  sideMenuFieldsMatch: {
+    method: 'include',
+    mask: ['**']
+  },
+  searchFieldMatch: {
+    method: 'include',
+    mask: ['**']
+  }
 };
 var _default = RqtvApp;
 exports.default = _default;

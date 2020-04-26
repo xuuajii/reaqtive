@@ -17,7 +17,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/navbar/navbar.js";
 const defaultTogglerStyle = {
   border: 0
 };

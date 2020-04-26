@@ -21,7 +21,7 @@ var _index = require("./index");
 
 var _index2 = require("../contexts/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-list.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/tabs/tab-list.js";
 
 const TabList = props => {
   const system = (0, _react.useContext)(_index2.System);
@@ -46,7 +46,7 @@ const TabList = props => {
 
   (0, _react.useEffect)(() => {
     updateIndicator();
-  }, [props.activeTab, system.triggerResize]);
+  }, [props.activeTab, system.windowWidth]);
   return _react.default.createElement("nav", {
     className: "nav nav-tabs tab-list",
     ref: props.tabListEl,

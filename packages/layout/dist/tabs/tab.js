@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/tabs/tab.js";
 
 const Tab = props => {
   const handleClick = () => {
@@ -58,7 +58,14 @@ const Tab = props => {
       lineNumber: 28
     },
     __self: void 0
-  }), props.label);
+  }), _react.default.createElement("span", {
+    className: "tab-label",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 29
+    },
+    __self: void 0
+  }, props.label));
 };
 
 Tab.propTypes = {

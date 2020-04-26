@@ -15,7 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\switch\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/switch/index.js";
 
 const Switch = props => {
   const _useState = (0, _react.useState)(props.isOn),

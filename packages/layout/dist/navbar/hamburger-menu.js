@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\hamburger-menu.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/navbar/hamburger-menu.js";
 const openedTransformationConfig = {
   top: 'translate(2, 2) rotate(0)',
   center: 'translate(2, 14) rotate(0)',

@@ -15,8 +15,14 @@ var _layout = require("@reaqtive/layout");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\multibox\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/multibox/index.js";
 
+/**
+ * RqtvMultibox
+ *
+ * It returns an accordion that shows a list of fields.
+ * A listbox is displayed for the active field. One field at a time can be active.
+ */
 const RqtvMultibox = props => {
   // console.log(props.fieldList)
   return _react.default.createElement(_layout.Accordion, {
@@ -26,7 +32,7 @@ const RqtvMultibox = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 20
     },
     __self: void 0
   }, props.fieldList.map(field => {
@@ -36,21 +42,21 @@ const RqtvMultibox = props => {
       key: fieldExpr,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 26
       },
       __self: void 0
     }, _react.default.createElement(_layout.CollapseHeader, {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 27
       },
       __self: void 0
     }, field.hasSelections === true && _react.default.createElement("span", {
       className: "selection-indicator",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 30
       },
       __self: void 0
     }), field.label || fieldExpr), _react.default.createElement(_layout.CollapseBody, {
@@ -58,7 +64,7 @@ const RqtvMultibox = props => {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 33
       },
       __self: void 0
     }, _react.default.createElement(_index.RqtvListbox, {
@@ -67,7 +73,7 @@ const RqtvMultibox = props => {
       qLabelExpr: "'".concat(field.label || fieldExpr, "'"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 34
       },
       __self: void 0
     })));
@@ -75,7 +81,14 @@ const RqtvMultibox = props => {
 };
 
 RqtvMultibox.propsTypes = {
+  /**
+   * An array of fieldnames which will be displayed in the multibox
+   */
   fields: _propTypes.default.array.isRequired,
+
+  /**
+   * The height of the listbox of the active field
+   */
   fieldHeight: _propTypes.default.integer
 };
 RqtvMultibox.defaultProps = {

@@ -21,8 +21,14 @@ var _index = require("../index");
 
 var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-navbar\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/rqtv-navbar/index.js";
 
+/**
+ * RqtvNavbar
+ *
+ * It is a component that renders the top navbar of the reaqtive app. It is based on bootstrap navbar
+ * Styles can be customized via css (or scss)
+ */
 const RqtvNavbar = props => {
   const searchFieldsMatch = props.searchFieldsMatch,
         showSideMenuToggle = props.showSideMenuToggle;

@@ -18,6 +18,7 @@ var _q = require("@reaqtive/q");
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
+//import withQComponent from './with-q-component'
 const RqtvCurrentSelectionsObject = props => {
   const qDocHandler = (0, _react.useContext)(_q.QDoc);
   const qDoc = qDocHandler.qDoc; //qSelectionsCount={qSelectionObject&&qSelectionObject.qSelections.length}

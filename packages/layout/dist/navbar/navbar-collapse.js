@@ -15,7 +15,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-collapse.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/navbar/navbar-collapse.js";
 
 const NavbarCollapse = props => {
   const system = (0, _react.useContext)(_index.System);

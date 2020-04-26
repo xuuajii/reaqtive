@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\buttons\\button.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/buttons/button.js";
 
 const Button = props => {
   const className = "btn ".concat(props.className ? props.className : 'btn-default', " ").concat(props.ripple ? 'ripple' : ''); //const [className, setClassName] = useState(classNameInitial)
