@@ -3,7 +3,7 @@ import {RqtvDropdownFilter} from '@reaqtive/components'
 
 const MyRqtvDropdownFilter = props =>
 <RqtvDropdownFilter
-  qFieldExpr="$Table"
+  qFieldExpr="Customer"
   dropdownMenuItemStyle={{textTransform:'uppercase'}}
 />
 

@@ -4,13 +4,9 @@ import {RqtvListbox} from '@reaqtive/components'
 const MyRqtvListbox = props => {
   return(
     <RqtvListbox
-      qFieldExpr="$Field"
+      qFieldExpr="Customer"
       qLabelExpr="=count(distinct Customer)"
       height={300}
-      itemStyle={{
-        textTransform:'uppercase',
-        fontFamily:'serif'
-      }}
     />
   )
 }

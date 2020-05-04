@@ -73,5 +73,40 @@ const propsTableTemplateObject = templateCreator`
   ${({ context, getType }) => generatePropsTable(context.props, getType)}
 `;
 
+const hookParams = (params) => {
+  const header = `param | type | default value | required | description
+---- | :----: | :-------: | :--------: | -----------
+`
+  const rows = params.map(param=>
+    `__${param.name}__ | ${param.type.names[0]} |${
+      param.defaultvalue?param.defaultvalue:''
+    } | ${
+      !param.optional? ':white_check_mark:' : ':x:'
+    } | ${
+      param.description?param.description:''
+    }`
+  ).join(os.EOL)
+  return header+rows
+}
 
-module.exports = { headerTemplate: headerTemplateObject, propsTable:propsTableTemplateObject}
+const hookReturns = (returns) => {
+  const title = returns.map(item => `#### Returns
+It returns a **${item.type.names[0]}**: ${item.description}
+`)
+
+  const generateReturnsTable = (item) => {
+    const header = `name | type | description
+---- | :----: | -------
+`
+    const rows = item.props.map(prop =>{
+    return  `__${prop.name}__ | ${prop.type.names[0]}| ${
+        prop.description?prop.description:''
+      }`
+    }).join(os.EOL)
+    return header+rows
+  }
+  const returnsTable = returns.map(item=>generateReturnsTable(item))
+  const returnsItem = title+os.EOL+returnsTable
+  return returnsItem
+}
+module.exports = { headerTemplate: headerTemplateObject, propsTable:propsTableTemplateObject, hookParams:hookParams, hookReturns:hookReturns}

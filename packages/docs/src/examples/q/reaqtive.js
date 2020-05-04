@@ -1,16 +1,16 @@
 import React from 'react'
 import Reaqtive from '@reaqtive/q'
 import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp, MyQGenericObject, MyQVariable} from './index'
-import {MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField} from '../components/index'
+import {MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from '../components/index'
 
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
-  const qConfig = {
-      host: 'localhost',    //or your Qlik Sense Enterprise host
-      secure: false,        //true if you wanto to connect to your QS Enterprise host
-      port: 4848,           //443 if you wanto to connect to your QS Enterprise host
-      prefix: '',           //the virtual proxy tou want to use on your QS Enterprise host
-      appId: 'Executive Dashboard.qvf' //the id of your app on QS Enterprise
+  const qConfig = {                                 //For QS Desktop
+      host: '40.113.14.238',                        //localhost
+      secure: true,                                 //false
+      port: 443,                                    //4848
+      prefix: '',                                   //''
+      appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
   return (
     <Reaqtive
@@ -19,19 +19,40 @@ const MyReaqtiveComponent = props => {
       {/*
         Inside Reaqtive children you will have access to the contexts it provides.
         You can use them individually or combine them in your components
-      */}
-            {/*<MyComponentWithQGlobal/>
+
+      <MyComponentWithQGlobal/>
       <MyComponentWithQDoc/>
       <MyComponentWithQCapabilityApi/>
       <MyComponentWithQApp/>
       <MyQGenericObject/>
       <MyQVariable/>
-      <MyRqtvListbox/>*/}
-      <MyRqtvDropdownFilter/>
+      <MyRqtvListbox/>
       <MyRqtvModalListbox/>
       <MyRqtvSearchField/>
+      <MyRqtvListbox/>
+      <MyRqtvMultibox/>
+      <MyQVizExamples/>
+      <MyRqtvContainerExample/>
+      <MyRqtvCurrentSelections/>
+      <MyRqtvSearchObject/>*/}
+      <div className="container">
+      <Wrapper>
+        <MyRqtvSearchObject/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvListbox/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvDropdownFilter/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvSearchField/>
+      </Wrapper>
+      </div>
     </Reaqtive>
   )
 }
+
+const Wrapper = props => <div style={{marginBottom:'2rem'}}>{props.children}</div>
 
 export default MyReaqtiveComponent

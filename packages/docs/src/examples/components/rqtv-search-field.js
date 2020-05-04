@@ -3,7 +3,7 @@ import {RqtvSearchField} from '@reaqtive/components'
 
 const MyRqtvSearchField = props =>
 <RqtvSearchField
-  qFieldExpr="$Field"
-  placeholder="Ciao"
+  qFieldExpr="Customer"
+  placeholder="Search"
 />
 export default MyRqtvSearchField

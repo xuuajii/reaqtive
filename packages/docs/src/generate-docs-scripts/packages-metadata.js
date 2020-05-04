@@ -11,10 +11,9 @@ const reaqtiveModules={
 
 This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
-@reaqtive/q provides 4 types of APIs which are listed below.
 
 `,
-      conclusion:`
+      usage:`
 #### Installation
 @reaqtive/q does not provide any layout components, it only allows you to interact with the Qlik engine. You can use it as a stand alone package and develop your layout components using its APIs, as described below.
 \`\`\`
@@ -28,22 +27,22 @@ npm install @reaqtive/components
       sections:[
         {
           title:'reaqtive',
-          path:'',
+          paths:['reaqtive.js'],
           docLib:'reactDocgen',
         },
         {
           title:'contexts',
-          path:'contexts',
+          paths:['contexts/q-*.js'],
           docLib:'reactDocgen',
         },
         {
           title:'components',
-          path:'components',
+          paths:['components/q-*.js'],
           docLib:'reactDocgen',
         },
         {
           title:'hooks',
-          path:'hooks',
+          paths:['hooks/use-q*-reducer.js', 'hooks/use-q-viz-handler.js'],
           docLib:'jsDoc',
         }
       ]
@@ -53,26 +52,50 @@ npm install @reaqtive/components
       path:'components',
       sourcePath:'src/lib',
       examplePath:'../examples/components',
+      intro:`# **@reaqtive/components**
+
+This package helps creating guided analytics using Qlik APIs. It provides a set of reusable react components to speed up mash up developments.
+
+`,
+      usage:`
+#### Installation
+
+\`\`\`
+npm install @reaqtive/components
+\`\`\`
+
+@reaqtive/q will be installed as well, it will help you interact with Qlik engine and Qlik Capability APIs
+`,
       sections:[
         {
           title:'filters',
+          intro:'',
           paths:['filters/**/index.js', 'multibox/index.js'],
-          dicLib:'reactDocgen'
+          docLib:'reactDocgen'
         },
         {
           title:'visualizations',
+          intro:'',
           paths:['visualizations/q-viz.js', 'rqtv-viz-container/index.js'],
-          dicLib:'reactDocgen'
+          docLib:'reactDocgen'
         },
         {
           title:'app objects',
+          intro:'',
           paths:['current-selections/index.js', 'rqtv-search-object/index.js', 'rqtv-navbar/index.js', , 'side-menu/index.js'],
-          dicLib:'reactDocgen'
+          docLib:'reactDocgen'
         },
         {
           title:'App',
+          intro:'',
           paths:['rqtv-app.js', 'pages/*.js'],
-          dicLib:'reactDocgen'
+          docLib:'reactDocgen'
+        },
+        {
+          title:'Styles',
+          intro:'',
+          paths:['styles/thems.scss'],
+          docLib:'styles'
         }
       ]
     }
