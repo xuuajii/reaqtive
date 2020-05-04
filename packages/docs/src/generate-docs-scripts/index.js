@@ -176,7 +176,7 @@ const run = async (package, root) => {
   const packageExamplesPath = path.join(__dirname, `${package.examplePath}`);
   const sectionsWithFiles = package.sections.map(section=>addFileListToSection(packageSourcePath, section))
   const sectionsWithComponents = sectionsWithFiles.map(section=>addSectionMetadata(section, packageExamplesPath))
-  const mergedSections = sectionsWithComponents.map(section=>composeSection(section))
+  const mergedSections = sectionsWithComponents.map(section=>composeSection(section)).join(os.EOL)
   const packageDocs = addPackageIntro(package, mergedSections)
   const callback = ()=> console.log(`done ${package.name}`)
   fs.writeFile(`${packagePath}/README.md`, packageDocs, callback);
