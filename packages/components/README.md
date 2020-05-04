@@ -15,9 +15,9 @@ npm install @reaqtive/components
 ### TABLE OF CONTENTS
 - [FILTERS](#filters) </br>
 - [VISUALIZATIONS](#visualizations) </br>
-- [APP OBJECTS](#app objects) </br>
-- [APP](#App) </br>
-- [STYLES](#Styles) </br>
+- [APP OBJECTS](#app-objects) </br>
+- [APP](#app) </br>
+- [STYLES](#styles) </br>
 
 ## FILTERS
 ### **RqtvButtonBar**

@@ -166,7 +166,7 @@ const composeSection = (section) => {
 
 const addPackageIntro = (package, mergedSectionsMarkdown) => {
   const packageSummary = '### TABLE OF CONTENTS'+os.EOL+package.sections.map(section =>
-    `- [${section.title.toUpperCase()}](#${section.title}) </br>${os.EOL}`).reduce((accumulator,item)=>accumulator+item)
+    `- [${section.title.toUpperCase()}](#${_.kebabCase(section.title)}) </br>${os.EOL}`).reduce((accumulator,item)=>accumulator+item)
   return package.intro+os.EOL+package.usage+os.EOL+packageSummary+os.EOL+mergedSectionsMarkdown
 }
 
