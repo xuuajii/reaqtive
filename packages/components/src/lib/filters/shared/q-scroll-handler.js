@@ -9,7 +9,7 @@ import { useDebouncedCallback } from 'use-debounce';
 
 const QScrollHandler = props => {
   const [scrollPosition, setScrollPosition] = useState({top:0, left:0})
-  
+
   const [updateScrollPosition] = useDebouncedCallback(
     // function
     (target) => {
@@ -20,21 +20,29 @@ const QScrollHandler = props => {
     props.debounceDelay
   );
 
+  const bodyEl = useRef()
   const loadedEl=useRef()
   const loadedElHeight = loadedEl.current&&loadedEl.current.getBoundingClientRect().height
   const {qDataPages, visibleHeight, qSize, getDataPage} = props;
   const itemQty = qDataPages.reduce((total, item) => total + item['qArea']['qHeight'], 0)
-  const listItemHeight = loadedElHeight/itemQty
+  const listItemHeight = Math.round(loadedElHeight/itemQty)
 
   const scrollHandler = useScrollHandler(scrollPosition, qDataPages[0].qArea, qSize, visibleHeight, listItemHeight, 0.2, getDataPage)
+  const bodyElementRef = props.bodyEl!==undefined?props.bodyEl:bodyEl
+
+  useEffect(()=>{
+    if(bodyElementRef.current && bodyElementRef.current.scrollTop>scrollHandler.fillers.top){
+      bodyElementRef.current.scrollTop=Math.min(bodyElementRef.current.scrollTop,scrollHandler.fillers.top)
+     }
+  },[scrollHandler.fillers.top, bodyElementRef])
 
   return(
-    <div style={{ maxHeight:visibleHeight, overflowY:'auto', ...props.style}} onScroll={(e)=>updateScrollPosition(e.target)} ref={props.bodyEl}>
-      <div style={{height:scrollHandler.fillers.top||0}}/>
-        <div ref={loadedEl}>
-          {props.children}
-        </div>
-      <div style={{height:scrollHandler.fillers.bottom||0}}/>
+    <div style={{height:visibleHeight,minHeight:visibleHeight,maxHeight:visibleHeight, overflowY:'auto', ...props.style}} onScroll={(e)=>updateScrollPosition(e.target)} ref={bodyElementRef}>
+      <div style={{maxHeight:scrollHandler.fillers.top||0,minHeight:scrollHandler.fillers.top||0, height:scrollHandler.fillers.top||0}}/>
+      <div ref={loadedEl}>
+        {props.children}
+      </div>
+      <div style={{maxHeight:scrollHandler.fillers.bottom||0, minHeight:scrollHandler.fillers.bottom||0, height:scrollHandler.fillers.bottom||0}}/>
     </div>
   )
 }

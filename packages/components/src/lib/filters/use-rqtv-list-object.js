@@ -1,7 +1,7 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-import React, {useState, useMemo} from 'react'
+import React, {useState, useMemo, useRef} from 'react'
 
 const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, quickSelectionMode=false, _toggle=true) => {
 
@@ -13,12 +13,11 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
 
   const [isSearching, setIsSearching] = useState()
   const [waitingDataPage, setWaitingDataPage] = useState()
-
+  const currentDataPage = useRef()
   const rqtvListObject=useMemo(()=>{
     return{
     isSearching:isSearching,
     waitingDataPage:waitingDataPage,
-
     selectValue: async (value, callback) => {
       handleSelections(async() => {
         try{
@@ -32,9 +31,12 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
 
     getDataPage: async (qDisplayArea) => {
       setWaitingDataPage(true)
+      currentDataPage.current=qDisplayArea
       try{
         const qNewDataPage = await qObject.getListObjectData('/qListObjectDef',[qDisplayArea])
-        applyQLayoutPatch('qLayout/qListObject/qDataPages', qNewDataPage)
+        if(qNewDataPage[0].qArea.qTop===currentDataPage.current.qTop){
+          applyQLayoutPatch('qLayout/qListObject/qDataPages', qNewDataPage)
+        }
       } catch(err){
         console.log(err)
       } finally{
