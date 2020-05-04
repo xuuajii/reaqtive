@@ -12,9 +12,9 @@ const SearchResults = props => {
     return(
       <ul className="list-group">
         <div hidden={!props.scrollHandler.fillers.top} style={{height:props.scrollHandler.fillers.top}}></div>
-          {searchResults.qSearchGroupArray.map(qSearchGroup =>
+          {searchResults.qSearchGroupArray.map((qSearchGroup, index) =>
             <SearchGroup
-              key={qSearchGroup.qId}
+              key={qSearchGroup.qId+index}
               qFieldName = {qSearchGroup.qItems[0].qIdentifier}
               matches = {qSearchGroup.qItems[0].qItemMatches}
               selectSearchResults={props.selectSearchResults}
@@ -48,7 +48,7 @@ const SearchGroup = props =>
     </h6>
     <div className="search-result-matches-container">
       {props.matches.map((match, index)=>
-        <Fragment key={match.qText}>
+        <Fragment key={match.qText+index}>
           <span
             className="search-result-match"
             onClick={(searchString, qId)=>props.selectSearchResults(match.qText)}

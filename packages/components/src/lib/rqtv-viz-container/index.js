@@ -13,8 +13,8 @@ import RqtvVizContainerHeader from './header'
 /**
  * RqtvVizContainer
  *
- * It provide a container to a visualization. It accept multiple children. In case i detects more tha one child,
- * it shows one child at a time and provide a dropdown menu to toggle the desired child.
+ * It provides a container to a visualization. It accepts multiple children. In case i detects more tha one child,
+ * it shows one child at a time and a dropdown menu to toggle the desired child.
  * If its children provide exports methods it automatically shows export buttons
  *
  */
@@ -79,6 +79,9 @@ const RqtvVizContainer = props => {
   },[maximized])
 
   const toggleMaximize = () => {
+    if(typeof props.onMaximize === 'function'){
+      props.onMaximize()
+    }
     setMaximized((maximized)=>!maximized)
   }
 
@@ -138,7 +141,7 @@ RqtvVizContainer.propTypes ={
   /**
    * Container header css classes
    */
-  containerClassName:PropTypes.string, 
+  containerClassName:PropTypes.string,
 }
 
 RqtvVizContainer.defaultProps={

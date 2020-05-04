@@ -49,7 +49,7 @@ RqtvMultibox.propTypes = {
   /**
    * An array of fieldnames which will be displayed in the multibox
    */
-  fields:PropTypes.array.isRequired,
+  fieldList:PropTypes.array.isRequired,
   /**
    * The height of the listbox of the active field
    */

@@ -160,7 +160,7 @@ const RqtvSearch = props => {
 
 RqtvSearch.propTypes = {
   resultshHeight:PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
-  resultsWidth:PropTypes.number,
+  resultsWidth:PropTypes.oneOfType([PropTypes.number,PropTypes.string]),
   searchFields:PropTypes.array,
   useBackdrop:PropTypes.bool,
   backdropStyle:PropTypes.object,
