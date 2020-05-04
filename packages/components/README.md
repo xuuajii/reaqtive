@@ -10,9 +10,9 @@ This package helps creating guided analytics using Qlik APIs. It provides a set 
 npm install @reaqtive/components
 ```
 
-@reaqtive/q will be installed as well, it will help you interact with Qlik engine and Qlik Capability APIs
+[@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
 
-###TABLE OF CONTENTS
+### TABLE OF CONTENTS
 - [FILTERS](#filters) </br>
 - [VISUALIZATIONS](#visualizations) </br>
 - [APP OBJECTS](#app objects) </br>
@@ -121,7 +121,7 @@ import {RqtvDropdownFilter} from '@reaqtive/components'
 
 const MyRqtvDropdownFilter = props =>
 <RqtvDropdownFilter
-  qFieldExpr="$Table"
+  qFieldExpr="Customer"
   dropdownMenuItemStyle={{textTransform:'uppercase'}}
 />
 
@@ -183,7 +183,7 @@ import {RqtvListbox} from '@reaqtive/components'
 const MyRqtvListbox = props => {
   return(
     <RqtvListbox
-      qFieldExpr="$Field"
+      qFieldExpr="Customer"
       qLabelExpr="=count(distinct Customer)"
       height={300}
     />
@@ -277,7 +277,7 @@ import {RqtvSearchField} from '@reaqtive/components'
 
 const MyRqtvSearchField = props =>
 <RqtvSearchField
-  qFieldExpr="$Field"
+  qFieldExpr="Customer"
   placeholder="Search"
 />
 export default MyRqtvSearchField
@@ -323,7 +323,8 @@ export default MyRqtvMultibox
 <br></br>
 
 
-,## VISUALIZATIONS
+
+## VISUALIZATIONS
 ### **QViz**
 
 
@@ -504,7 +505,8 @@ export default MyRqtvContainerExample
 <br></br>
 
 
-,## APP OBJECTS
+
+## APP OBJECTS
 ### **RqtvCurrentSelections**
 
 
@@ -644,7 +646,8 @@ __usePageList__ | `Boolean` | `false` | :x: | show/hide the page list tab
 <br></br>
 
 
-,## APP
+
+## APP
 ### **RqtvApp**
 
 
@@ -735,4 +738,5 @@ __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 <br></br>
 
 
-,## STYLES
+
+## STYLES

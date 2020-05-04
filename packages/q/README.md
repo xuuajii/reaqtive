@@ -2,20 +2,16 @@
 
 This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
-
+@reaqtive/q does not provide any layout components, it only allows you to interact with the Qlik engine. You can use it as a stand alone package and develop your layout components using its APIs, as described below.
+Depending on your needs and you can install @reaqtive/components instead. It provides a set of ready to use layout components to build data visualization apps on top o Qlik APIs, and depends on @reaqtive/q.
 
 
 #### Installation
-@reaqtive/q does not provide any layout components, it only allows you to interact with the Qlik engine. You can use it as a stand alone package and develop your layout components using its APIs, as described below.
 ```
 npm install @reaqtive/q
 ```
-Depending on your needs and you can install @reaqtive/components instead. It provides a set of ready to use layout components to build data visualization apps on top o Qlik APIs, and depends on @reaqtive/q.
-```
-npm install @reaqtive/components
-```
 
-###TABLE OF CONTENTS
+### TABLE OF CONTENTS
 - [REAQTIVE](#reaqtive) </br>
 - [CONTEXTS](#contexts) </br>
 - [COMPONENTS](#components) </br>
@@ -69,7 +65,7 @@ const MyReaqtiveComponent = props => {
       {/*
         Inside Reaqtive children you will have access to the contexts it provides.
         You can use them individually or combine them in your components
-      */}
+
       <MyComponentWithQGlobal/>
       <MyComponentWithQDoc/>
       <MyComponentWithQCapabilityApi/>
@@ -77,7 +73,6 @@ const MyReaqtiveComponent = props => {
       <MyQGenericObject/>
       <MyQVariable/>
       <MyRqtvListbox/>
-      <MyRqtvDropdownFilter/>
       <MyRqtvModalListbox/>
       <MyRqtvSearchField/>
       <MyRqtvListbox/>
@@ -85,10 +80,26 @@ const MyReaqtiveComponent = props => {
       <MyQVizExamples/>
       <MyRqtvContainerExample/>
       <MyRqtvCurrentSelections/>
-      <MyRqtvSearchObject/>
+      <MyRqtvSearchObject/>*/}
+      <div className="container">
+      <Wrapper>
+        <MyRqtvSearchObject/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvListbox/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvDropdownFilter/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvSearchField/>
+      </Wrapper>
+      </div>
     </Reaqtive>
   )
 }
+
+const Wrapper = props => <div style={{marginBottom:'2rem'}}>{props.children}</div>
 
 export default MyReaqtiveComponent
 
@@ -96,7 +107,8 @@ export default MyReaqtiveComponent
 <br></br>
 
 
-,## CONTEXTS
+
+## CONTEXTS
 ### **QGlobal**
 
 
@@ -248,7 +260,8 @@ export default MyComponentWithQApp
 <br></br>
 
 
-,## COMPONENTS
+
+## COMPONENTS
 ### **QGenericObject**
 
 
@@ -428,7 +441,8 @@ export default MyQVariable
 <br></br>
 
 
-,## HOOKS
+
+## HOOKS
 ### **useQFieldReducer**
 
 #### Description
