@@ -29,7 +29,7 @@ DropdownButton.propTypes = {
 }
 
 DropdownButton.defaultProps = {
-  className:'btn-primary text-light',
+  className:' ',
   style:{},
   hideCaret:false
 }
