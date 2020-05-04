@@ -30,8 +30,8 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
 /**
  * RqtvVizContainer
  *
- * It provide a container to a visualization. It accept multiple children. In case i detects more tha one child,
- * it shows one child at a time and provide a dropdown menu to toggle the desired child.
+ * It provides a container to a visualization. It accepts multiple children. In case i detects more tha one child,
+ * it shows one child at a time and a dropdown menu to toggle the desired child.
  * If its children provide exports methods it automatically shows export buttons
  *
  */
@@ -115,6 +115,10 @@ const RqtvVizContainer = props => {
   }, [maximized]);
 
   const toggleMaximize = () => {
+    if (typeof props.onMaximize === 'function') {
+      props.onMaximize();
+    }
+
     setMaximized(maximized => !maximized);
   };
 
@@ -127,7 +131,7 @@ const RqtvVizContainer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 89
     },
     __self: void 0
   }, _react.default.createElement(_header.default, {
@@ -138,7 +142,7 @@ const RqtvVizContainer = props => {
     className: "".concat(props.containerClassName),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 90
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_toolbar.default, {
@@ -153,14 +157,14 @@ const RqtvVizContainer = props => {
     maximized: maximized,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 98
     },
     __self: void 0
   })), _react.default.createElement("div", {
     className: "viz-container-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 107
+      lineNumber: 110
     },
     __self: void 0
   }, _react.default.cloneElement(activeChart, {

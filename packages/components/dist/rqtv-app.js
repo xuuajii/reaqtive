@@ -115,7 +115,7 @@ RqtvApp.propTypes = {
    * triggers to fire when opening the app (do not abuse triggers)
    *
    */
-  triggers: _index2.triggerType,
+  triggers: _propTypes.default.arrayOf(_index2.triggerType),
 
   /**
    * the title of the app displayed in the navbar
@@ -170,7 +170,7 @@ RqtvApp.propTypes = {
    * Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
    *
    */
-  hidePrefix: '%'
+  hidePrefix: _propTypes.default.string
 };
 RqtvApp.defaultProps = {
   triggers: [],

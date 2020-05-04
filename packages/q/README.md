@@ -1,14 +1,8 @@
-# **`@reaqtive/q`**
+# **@reaqtive/q**
 
 This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
-@reaqtive/q provides 4 types of APIs which are listed below.
 
-
-- [Reaqtive](#reaqtive)
-- [Contexts](#contexts)
-- [Components](#components)
-- [Hooks](#hooks)
 
 
 #### Installation
@@ -21,7 +15,12 @@ Depending on your needs and you can install @reaqtive/components instead. It pro
 npm install @reaqtive/components
 ```
 
-<br></br>
+###TABLE OF CONTENTS
+- [REAQTIVE](#reaqtive) </br>
+- [CONTEXTS](#contexts) </br>
+- [COMPONENTS](#components) </br>
+- [HOOKS](#hooks) </br>
+
 ## REAQTIVE
 ### **Reaqtive**
 
@@ -52,15 +51,16 @@ __qConfig.secure__ | `Boolean` |  | :white_check_mark: | secure: true if the Qli
 import React from 'react'
 import Reaqtive from '@reaqtive/q'
 import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp, MyQGenericObject, MyQVariable} from './index'
+import {MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from '../components/index'
 
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
-  const qConfig = {
-      host: 'localhost',    //or your Qlik Sense Enterprise host
-      secure: false,        //true if you wanto to connect to your QS Enterprise host
-      port: 4848,           //443 if you wanto to connect to your QS Enterprise host
-      prefix: '',           //the virtual proxy tou want to use on your QS Enterprise host
-      appId: 'Executive Dashboard.qvf' //the id of your app on QS Enterprise
+  const qConfig = {                                 //For QS Desktop
+      host: '40.113.14.238',                        //localhost
+      secure: true,                                 //false
+      port: 443,                                    //4848
+      prefix: '',                                   //''
+      appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
   return (
     <Reaqtive
@@ -76,18 +76,27 @@ const MyReaqtiveComponent = props => {
       <MyComponentWithQApp/>
       <MyQGenericObject/>
       <MyQVariable/>
+      <MyRqtvListbox/>
+      <MyRqtvDropdownFilter/>
+      <MyRqtvModalListbox/>
+      <MyRqtvSearchField/>
+      <MyRqtvListbox/>
+      <MyRqtvMultibox/>
+      <MyQVizExamples/>
+      <MyRqtvContainerExample/>
+      <MyRqtvCurrentSelections/>
+      <MyRqtvSearchObject/>
     </Reaqtive>
   )
 }
 
 export default MyReaqtiveComponent
+
 ```
 <br></br>
 
 
-
-<br></br>
-## CONTEXTS
+,## CONTEXTS
 ### **QGlobal**
 
 
@@ -120,6 +129,7 @@ const MyComponentWithQGlobal = props => {
 }
 
 export default MyComponentWithQGlobal
+
 ```
 <br></br>
 
@@ -157,6 +167,7 @@ const MyComponentWithQDoc = props => {
 }
 
 export default MyComponentWithQDoc
+
 ```
 <br></br>
 
@@ -195,6 +206,7 @@ const MyComponentWithQCapabilityApi = props => {
 }
 
 export default MyComponentWithQCapabilityApi
+
 ```
 <br></br>
 
@@ -231,13 +243,12 @@ const MyComponentWithQApp = props => {
 }
 
 export default MyComponentWithQApp
+
 ```
 <br></br>
 
 
-
-<br></br>
-## COMPONENTS
+,## COMPONENTS
 ### **QGenericObject**
 
 
@@ -258,7 +269,7 @@ See the example below for details
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __qObjectDef__ | `Object` |  | :white_check_mark: | The definition of the qObject. Check the following links for details https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/genericobject.html
-__quickSelectionMode__ | `Boolean` | `false` | :x: | If true the object will handle selections using Qlik Sense mode (user will have to accept selections) If set to false the object will handle selections using QlikView mode (selection immediately applied)
+__quickSelectionMode__ | `Boolean` | `true` | :x: | If true the object will handle selections using Qlik Sense mode (user will have to accept selections) If set to false the object will handle selections using QlikView mode (selection immediately applied)
 
 **Example:** 
 ```javascript
@@ -338,6 +349,7 @@ const Layout = props => {
 }
 
 export default MyQGenericObject
+
 ```
 <br></br>
 
@@ -411,13 +423,12 @@ const Layout = props =>
   </div>
 </div>
 export default MyQVariable
+
 ```
 <br></br>
 
 
-
-<br></br>
-## HOOKS
+,## HOOKS
 ### **useQFieldReducer**
 
 #### Description
@@ -481,24 +492,6 @@ __reloadObject__ | function| a method to ask the qlik engine to recalculate the 
 __shouldUpdate__ | boolean| a boolean variable which is set to true when the object is recalculated and you should ask the engine fro the layou (e.g. after selections)
 __setShouldUpdate__ | function| a function to clean up the shouldupdate property after the needed effects have run
 
-### **useQSelectionHandler**
-
-#### Description
-a hook to handle the selection state of an object
-
-#### Params
-param | type | default value | required | description
----- | :----: | :-------: | :--------: | -----------
-__qObject__ | qObject | | :white_check_mark: | the qObject to apply the state to
-#### Returns
-It returns a **qSelectionHandler**: qSelectionHandler an object with the current selection state (isSelecting) and the method to manage it
-
-name | type | description
----- | :----: | -------
-__isSelecting__ | boolean| a boolen that tells you if the object is in selection state
-__handleSelections__ | function| 
-__endSelections__ | function| 
-
 ### **useQVariableReducer**
 
 #### Description
@@ -529,8 +522,8 @@ a hook to retrieve a variable already available in the qDoc
 param | type | default value | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __qApp__ | object | | :white_check_mark: | the qApp object provided by the qApp context
-__id=__ | string | | :x: | if id is defined chartProps are not, the useQVizHandler will ask for an already existing viz to the qApp
-__chartProps=__ | object | | :x: | if the object is defined the useQVizHandler will create the visualization on the fly not considering an eventually provided id
+__id__ | string | | :x: | if id is defined and chartProps are not, the useQVizHandler will ask for an already existing viz to the qApp
+__chartProps__ | object | | :x: | if the chartProps is defined the useQVizHandler will create the visualization on the fly not considering an eventually provided id
 #### Returns
 It returns a **qVizHandler**: - handler to interact with the visualization retrieved from the qApp
 
@@ -538,4 +531,3 @@ name | type | description
 ---- | :----: | -------
 __qVizLoading__ | boolean| if true the the handler is still waiting for response from the qlik server
 __qViz__ | object| the interface to interact with the visualization (e.g. to export it in excel, to resize it, etc.)
-<br></br>

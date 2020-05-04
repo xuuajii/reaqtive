@@ -34,6 +34,7 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
         waitingDataPage = _useState4[0],
         setWaitingDataPage = _useState4[1];
 
+  const currentDataPage = (0, _react.useRef)();
   const rqtvListObject = (0, _react.useMemo)(() => {
     return {
       isSearching: isSearching,
@@ -50,10 +51,14 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
       },
       getDataPage: async qDisplayArea => {
         setWaitingDataPage(true);
+        currentDataPage.current = qDisplayArea;
 
         try {
           const qNewDataPage = await qObject.getListObjectData('/qListObjectDef', [qDisplayArea]);
-          applyQLayoutPatch('qLayout/qListObject/qDataPages', qNewDataPage);
+
+          if (qNewDataPage[0].qArea.qTop === currentDataPage.current.qTop) {
+            applyQLayoutPatch('qLayout/qListObject/qDataPages', qNewDataPage);
+          }
         } catch (err) {
           console.log(err);
         } finally {

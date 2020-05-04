@@ -54,7 +54,7 @@ DropdownButton.propTypes = {
   hideCaret: _propTypes.default.bool
 };
 DropdownButton.defaultProps = {
-  className: 'btn-primary text-light',
+  className: ' ',
   style: {},
   hideCaret: false
 };

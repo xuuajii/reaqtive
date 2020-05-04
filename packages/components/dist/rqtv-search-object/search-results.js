@@ -32,8 +32,8 @@ const SearchResults = props => {
         lineNumber: 14
       },
       __self: void 0
-    }), searchResults.qSearchGroupArray.map(qSearchGroup => _react.default.createElement(SearchGroup, {
-      key: qSearchGroup.qId,
+    }), searchResults.qSearchGroupArray.map((qSearchGroup, index) => _react.default.createElement(SearchGroup, {
+      key: qSearchGroup.qId + index,
       qFieldName: qSearchGroup.qItems[0].qIdentifier,
       matches: qSearchGroup.qItems[0].qItemMatches,
       selectSearchResults: props.selectSearchResults,
@@ -105,7 +105,7 @@ const SearchGroup = props => _react.default.createElement("li", {
   },
   __self: void 0
 }, props.matches.map((match, index) => _react.default.createElement(_react.Fragment, {
-  key: match.qText,
+  key: match.qText + index,
   __source: {
     fileName: _jsxFileName,
     lineNumber: 51

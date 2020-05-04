@@ -9,13 +9,13 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-const triggerType = _propTypes.default.oneOf(_propTypes.default.shape({
+const triggerType = [_propTypes.default.shape({
   type: 'fieldSelection',
   params: _propTypes.default.shape({
     fieldName: _propTypes.default.string,
     value: _propTypes.default.string
   })
-}, {
+}), _propTypes.default.shape({
   type: 'fieldSelections',
   params: _propTypes.default.shape({
     fieldName: _propTypes.default.string,
@@ -25,12 +25,11 @@ const triggerType = _propTypes.default.oneOf(_propTypes.default.shape({
       qNumber: _propTypes.default.number
     }))
   })
-}, {
+}), _propTypes.default.shape({
   type: 'clearField',
   params: _propTypes.default.shape({
     fieldName: _propTypes.default.string
   })
-}));
-
+})];
 var _default = triggerType;
 exports.default = _default;

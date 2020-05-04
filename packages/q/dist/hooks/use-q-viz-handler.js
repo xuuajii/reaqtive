@@ -35,8 +35,8 @@ var _react = _interopRequireWildcard(require("react"));
   *@description a hook to retrieve a variable already available in the qDoc
   *@kind hook
   *@param {object} qApp - the qApp object provided by the qApp context
-  *@param {string} [id=] - if id is defined chartProps are not, the useQVizHandler will ask for an already existing viz to the qApp
-  *@param {object} [chartProps=] -  if the object is defined the useQVizHandler will create the visualization on the fly not considering an eventually provided id
+  *@param {string} [id] - if id is defined and chartProps are not, the useQVizHandler will ask for an already existing viz to the qApp
+  *@param {object} [chartProps] -  if the chartProps is defined the useQVizHandler will create the visualization on the fly not considering an eventually provided id
   *@return {qVizHandler} - handler to interact with the visualization retrieved from the qApp
 */
 const useQVizHandler = (qApp, id, chartProps) => {

@@ -243,7 +243,7 @@ const RqtvSearch = props => {
 
 RqtvSearch.propTypes = {
   resultshHeight: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
-  resultsWidth: _propTypes.default.number,
+  resultsWidth: _propTypes.default.oneOfType([_propTypes.default.number, _propTypes.default.string]),
   searchFields: _propTypes.default.array,
   useBackdrop: _propTypes.default.bool,
   backdropStyle: _propTypes.default.object,

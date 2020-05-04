@@ -44,6 +44,7 @@ const QScrollHandler = props => {
         _useDebouncedCallback2 = (0, _slicedToArray2.default)(_useDebouncedCallback, 1),
         updateScrollPosition = _useDebouncedCallback2[0];
 
+  const bodyEl = (0, _react.useRef)();
   const loadedEl = (0, _react.useRef)();
   const loadedElHeight = loadedEl.current && loadedEl.current.getBoundingClientRect().height;
   const qDataPages = props.qDataPages,
@@ -51,43 +52,55 @@ const QScrollHandler = props => {
         qSize = props.qSize,
         getDataPage = props.getDataPage;
   const itemQty = qDataPages.reduce((total, item) => total + item['qArea']['qHeight'], 0);
-  const listItemHeight = loadedElHeight / itemQty;
+  const listItemHeight = Math.round(loadedElHeight / itemQty);
   const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qDataPages[0].qArea, qSize, visibleHeight, listItemHeight, 0.2, getDataPage);
+  const bodyElementRef = props.bodyEl !== undefined ? props.bodyEl : bodyEl;
+  (0, _react.useEffect)(() => {
+    if (bodyElementRef.current && bodyElementRef.current.scrollTop > scrollHandler.fillers.top) {
+      bodyElementRef.current.scrollTop = Math.min(bodyElementRef.current.scrollTop, scrollHandler.fillers.top);
+    }
+  }, [scrollHandler.fillers.top, bodyElementRef]);
   return _react.default.createElement("div", {
     style: (0, _objectSpread2.default)({
+      height: visibleHeight,
+      minHeight: visibleHeight,
       maxHeight: visibleHeight,
       overflowY: 'auto'
     }, props.style),
     onScroll: e => updateScrollPosition(e.target),
-    ref: props.bodyEl,
+    ref: bodyElementRef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 40
     },
     __self: void 0
   }, _react.default.createElement("div", {
     style: {
+      maxHeight: scrollHandler.fillers.top || 0,
+      minHeight: scrollHandler.fillers.top || 0,
       height: scrollHandler.fillers.top || 0
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 41
     },
     __self: void 0
   }), _react.default.createElement("div", {
     ref: loadedEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 42
     },
     __self: void 0
   }, props.children), _react.default.createElement("div", {
     style: {
+      maxHeight: scrollHandler.fillers.bottom || 0,
+      minHeight: scrollHandler.fillers.bottom || 0,
       height: scrollHandler.fillers.bottom || 0
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 45
     },
     __self: void 0
   }));
