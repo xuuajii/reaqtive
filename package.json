@@ -16,6 +16,7 @@
     "watch-mac:components": "npx lerna run watch-mac --scope=\"@reaqtive/components\"",
     "watch-mac:layout": "npx lerna run watch-mac --scope=\"@reaqtive/layout\"",
     "start": "npx lerna run start --scope=\"@reaqtive/docs\"",
+    "start-secure": "npx lerna run start-secure --scope=\"@reaqtive/docs\"",
     "watch-all": "concurrently --kill-others \"npm run watch:q\" \"npm run watch:components\" \"npm run watch:layout\"",
     "watch-all-mac": "concurrently --kill-others \"npm run watch-mac:q\" \"npm run watch-mac:components\" \"npm run watch-mac:layout\"",
     "install":"npx lerna clean&&npx lerna bootstrap --hoist"
