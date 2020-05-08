@@ -17,16 +17,16 @@ Object.defineProperty(exports, "QGenericObject", {
     return _qGenericObject.default;
   }
 });
-Object.defineProperty(exports, "QListObject", {
-  enumerable: true,
-  get: function () {
-    return _qListObject.default;
-  }
-});
 Object.defineProperty(exports, "QVariable", {
   enumerable: true,
   get: function () {
     return _qVariable.default;
+  }
+});
+Object.defineProperty(exports, "QShareCapabilityApi", {
+  enumerable: true,
+  get: function () {
+    return _qShareCapabilityApi.default;
   }
 });
 
@@ -34,6 +34,6 @@ var _qComponent = _interopRequireDefault(require("./q-component"));
 
 var _qGenericObject = _interopRequireDefault(require("./q-generic-object"));
 
-var _qListObject = _interopRequireDefault(require("./q-list-object"));
-
 var _qVariable = _interopRequireDefault(require("./q-variable"));
+
+var _qShareCapabilityApi = _interopRequireDefault(require("./q-share-capability-api"));

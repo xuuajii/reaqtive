@@ -31,31 +31,20 @@ const QDoc = _react.default.createContext();
  * qLoading: initially true, it is set to false when the promise to get the qDoc is resolved
  * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/index.html
  */
+// const QDocProvider = (props) => {
+//   return (
+//     <QGlobalProvider qConfig={props.qConfig}>
+//       <QGlobalConsumer qConfig={props.qConfig}>
+//         {props.children}
+//       </QGlobalConsumer>
+//     </QGlobalProvider>
+//   )
+// }
 
 
 exports.QDoc = QDoc;
 
 const QDocProvider = props => {
-  return _react.default.createElement(_qGlobal.QGlobalProvider, {
-    qConfig: props.qConfig,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 21
-    },
-    __self: void 0
-  }, _react.default.createElement(QGlobalConsumer, {
-    qConfig: props.qConfig,
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 22
-    },
-    __self: void 0
-  }, props.children));
-};
-
-exports.QDocProvider = QDocProvider;
-
-const QGlobalConsumer = props => {
   const initialQDocHandler = {
     qDoc: null,
     qError: null,
@@ -90,8 +79,10 @@ const QGlobalConsumer = props => {
     value: qDocHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 44
     },
     __self: void 0
   }, props.children);
 };
+
+exports.QDocProvider = QDocProvider;

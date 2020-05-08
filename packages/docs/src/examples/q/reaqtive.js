@@ -31,11 +31,13 @@ const MyReaqtiveComponent = props => {
       <MyRqtvSearchField/>
       <MyRqtvListbox/>
       <MyRqtvMultibox/>
-      <MyQVizExamples/>
       <MyRqtvContainerExample/>
       <MyRqtvCurrentSelections/>
       <MyRqtvSearchObject/>*/}
       <div className="container">
+      <Wrapper>
+        <MyQVizExamples/>
+      </Wrapper>
       <Wrapper>
         <MyRqtvSearchObject/>
       </Wrapper>
