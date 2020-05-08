@@ -17,7 +17,7 @@ var _react = require("react");
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 const getFillersTop = (currentTop, itemHeight) => {
-  return Math.max(1, currentTop * itemHeight);
+  return Math.max(0, currentTop * itemHeight);
 };
 
 const getFillersBottom = (topHeight, visibleListHeight, listHeight) => {
@@ -32,55 +32,56 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
   const displayAreaHeight = currentDisplayArea.qHeight * listItemHeight;
   const listHeight = size.qcy * listItemHeight;
   const bufferSize = buffer * currentDisplayArea.qHeight;
+  const updated = (0, _react.useRef)(true);
+  const qDisplayArea = (0, _react.useRef)(currentDisplayArea);
+  const lastPossibleTop = Math.ceil(size.qcy - currentDisplayArea.qHeight);
+  const visibleStart = Math.max(0, getTop(scrollPosition.top, listItemHeight, lastPossibleTop));
 
   const _useState = (0, _react.useState)({
     top: 0,
+    bottom: 0,
     left: 0,
-    right: 0,
-    bottom: 0
+    right: 0
   }),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         fillers = _useState2[0],
         setFillers = _useState2[1];
 
   (0, _react.useEffect)(() => {
-    const topHeight = getFillersTop(qDisplayArea.qTop, listItemHeight);
+    const topHeight = getFillersTop(currentDisplayArea.qTop, listItemHeight);
     const bottomHeight = getFillersBottom(topHeight, displayAreaHeight, listHeight);
     setFillers((0, _objectSpread2.default)({}, fillers, {
       top: topHeight,
       bottom: bottomHeight
     }));
-  }, [displayAreaHeight, listHeight, listItemHeight]);
-
-  const _useState3 = (0, _react.useState)(currentDisplayArea),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        qDisplayArea = _useState4[0],
-        setQDisplaArea = _useState4[1];
-
+  }, [displayAreaHeight, listHeight, listItemHeight, currentDisplayArea]);
   (0, _react.useEffect)(() => {
-    const lastPossibleTop = Math.round(size.qcy - qDisplayArea.qHeight);
-    const topRecord = Math.max(0, getTop(scrollPosition.top, listItemHeight, lastPossibleTop));
-    const listHeight = Math.floor(visibleListHeight / listItemHeight);
-    const fetchLessLimit = qDisplayArea.qTop + listHeight - bufferSize;
-    const fetchMoreLimit = qDisplayArea.qTop + listHeight + bufferSize;
+    const visibleListItems = visibleListHeight / listItemHeight;
+    const visibleEnd = visibleStart + visibleListItems;
+    const displayStart = currentDisplayArea.qTop;
+    const displayEnd = currentDisplayArea.qTop + currentDisplayArea.qHeight;
+    const shouldFetchLess = Math.max(0, visibleStart - bufferSize) < displayStart || scrollPosition.top === 0 && currentDisplayArea.qTop === 0;
+    const shouldFecthMore = Math.min(visibleEnd + bufferSize) > displayEnd || visibleStart >= lastPossibleTop && currentDisplayArea.qTop !== lastPossibleTop;
+    const topHeight = getFillersTop(visibleStart, listItemHeight);
+    const bottomHeight = getFillersBottom(topHeight, displayAreaHeight, listHeight);
 
-    if ((topRecord > fetchMoreLimit || topRecord < fetchLessLimit && qDisplayArea.qTop !== 0 || topRecord >= lastPossibleTop) && topRecord !== qDisplayArea.qTop) {
-      setQDisplaArea((0, _objectSpread2.default)({}, qDisplayArea, {
-        qTop: topRecord
-      }));
+    if (shouldFecthMore && !shouldFetchLess) {
+      qDisplayArea.current = (0, _objectSpread2.default)({}, qDisplayArea.current, {
+        qTop: visibleStart
+      });
     }
-  }, [scrollPosition.top, qDisplayArea.qTop, qDisplayArea.qHeight, listItemHeight, bufferSize, size, visibleListHeight]);
+
+    if (shouldFetchLess && !shouldFecthMore) {
+      qDisplayArea.current = (0, _objectSpread2.default)({}, qDisplayArea.current, {
+        qTop: Math.max(0, visibleStart - bufferSize)
+      });
+    }
+  }, [scrollPosition.top]);
   (0, _react.useEffect)(() => {
-    const topHeight = getFillersTop(qDisplayArea.qTop, listItemHeight);
-    const bottomHeight = getFillersBottom(topHeight, displayAreaHeight, listHeight);
-    getScrollData(qDisplayArea);
-    setFillers((0, _objectSpread2.default)({}, fillers, {
-      top: topHeight,
-      bottom: bottomHeight
-    }));
-  }, [qDisplayArea, listItemHeight, listHeight, displayAreaHeight]);
+    getScrollData(qDisplayArea.current);
+  }, [qDisplayArea.current]);
   return {
-    qDisplayArea,
+    qDisplayArea: qDisplayArea.current,
     fillers
   };
 };

@@ -55,11 +55,6 @@ const QScrollHandler = props => {
   const listItemHeight = Math.round(loadedElHeight / itemQty);
   const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qDataPages[0].qArea, qSize, visibleHeight, listItemHeight, 0.2, getDataPage);
   const bodyElementRef = props.bodyEl !== undefined ? props.bodyEl : bodyEl;
-  (0, _react.useEffect)(() => {
-    if (bodyElementRef.current && bodyElementRef.current.scrollTop > scrollHandler.fillers.top) {
-      bodyElementRef.current.scrollTop = Math.min(bodyElementRef.current.scrollTop, scrollHandler.fillers.top);
-    }
-  }, [scrollHandler.fillers.top, bodyElementRef]);
   return _react.default.createElement("div", {
     style: (0, _objectSpread2.default)({
       height: visibleHeight,
@@ -71,7 +66,7 @@ const QScrollHandler = props => {
     ref: bodyElementRef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -82,14 +77,14 @@ const QScrollHandler = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 35
     },
     __self: void 0
   }), _react.default.createElement("div", {
     ref: loadedEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 36
     },
     __self: void 0
   }, props.children), _react.default.createElement("div", {
@@ -100,7 +95,7 @@ const QScrollHandler = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 39
     },
     __self: void 0
   }));
