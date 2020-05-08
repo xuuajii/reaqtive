@@ -16,19 +16,18 @@ const QDoc = React.createContext()
  * qLoading: initially true, it is set to false when the promise to get the qDoc is resolved
  * https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/index.html
  */
-const QDocProvider = (props) => {
-  return (
-    <QGlobalProvider qConfig={props.qConfig}>
-      <QGlobalConsumer qConfig={props.qConfig}>
-        {props.children}
-      </QGlobalConsumer>
-    </QGlobalProvider>
-  )
-}
+// const QDocProvider = (props) => {
+//   return (
+//     <QGlobalProvider qConfig={props.qConfig}>
+//       <QGlobalConsumer qConfig={props.qConfig}>
+//         {props.children}
+//       </QGlobalConsumer>
+//     </QGlobalProvider>
+//   )
+// }
 
-export  {QDoc, QDocProvider}
 
-const QGlobalConsumer = props => {
+const QDocProvider = props => {
   const initialQDocHandler = {qDoc:null, qError:null, qLoading:true}
   const [qDocHandler, setQDocHandler] = useState(initialQDocHandler)
   const qGlobalHandler = useContext(QGlobal)
@@ -47,3 +46,5 @@ const QGlobalConsumer = props => {
     </QDoc.Provider>
   )
 }
+
+export  {QDoc, QDocProvider}

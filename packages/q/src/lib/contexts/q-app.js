@@ -15,17 +15,17 @@ const QApp = React.createContext()
  * qApp: the app provided by the qlik Capability APIs. It is initially null and it is set when the promis is resolved
  * qError: initially null it is set to true if the promise to get the qApp returns an error
  */
- const QAppProvider = (props) => {
-   return (
-     <QCapabilityApiProvider qConfig={props.qConfig}>
-       <QCapabilityApiConsumer qConfig={props.qConfig}>
-         {props.children}
-       </QCapabilityApiConsumer>
-     </QCapabilityApiProvider>
-   )
- }
+ // const QAppProvider = (props) => {
+ //   return (
+ //     <QCapabilityApiProvider qConfig={props.qConfig}>
+ //       <QCapabilityApiConsumer qConfig={props.qConfig}>
+ //         {props.children}
+ //       </QCapabilityApiConsumer>
+ //     </QCapabilityApiProvider>
+ //   )
+ // }
 
-const QCapabilityApiConsumer = props => {
+const QAppProvider = props => {
   const initialQAppHandler = {qApp:null, qError:null, qLoading:true}
   const [qAppHandler, setQAppHandler] = useState(initialQAppHandler)
   const qCapabilityApiHandler = useContext(QCapabilityApi)
