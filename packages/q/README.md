@@ -22,13 +22,6 @@ npm install @reaqtive/q
 
 
 
-Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
-Provided contexts are:
-- [QGlobal](#qglobal) </br>
-- [QDoc](#qdoc) </br>
-- [QCapabilityApi](#qcapabilityapi) </br>
-- [QApp](#qapp) </br>
-
 
 **Props**: 
 
@@ -77,11 +70,13 @@ const MyReaqtiveComponent = props => {
       <MyRqtvSearchField/>
       <MyRqtvListbox/>
       <MyRqtvMultibox/>
-      <MyQVizExamples/>
       <MyRqtvContainerExample/>
       <MyRqtvCurrentSelections/>
       <MyRqtvSearchObject/>*/}
       <div className="container">
+      <Wrapper>
+        <MyQVizExamples/>
+      </Wrapper>
       <Wrapper>
         <MyRqtvSearchObject/>
       </Wrapper>
@@ -364,6 +359,27 @@ const Layout = props => {
 export default MyQGenericObject
 
 ```
+<br></br>
+
+
+
+### **QShareCapabilityApi**
+
+
+
+
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__qConfig__ | `Shape` |  | :white_check_mark: | qConfig is an object that provides reaqtive the params needed to connect to the Qlik server. params are: host, port, secure, prefix, appId: the id of the app reaqtive should connect to
+__qConfig.appId__ | `String` |  | :white_check_mark: | appId: the id of the app reaqtive should connect to
+__qConfig.host__ | `String` |  | :white_check_mark: | host: the ip address or domain of the Qlik SystemProvider
+__qConfig.port__ | `Number` |  | :white_check_mark: | port: the port on which Qlik server is listening
+__qConfig.prefix__ | `String` |  | :white_check_mark: | prefix: Qlik's virtual proxy path
+__qConfig.secure__ | `Boolean` |  | :white_check_mark: | secure: true if the Qlik server uses https, false otherwise
+
+
 <br></br>
 
 

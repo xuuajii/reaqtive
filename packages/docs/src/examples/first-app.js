@@ -7,7 +7,7 @@ const qConfig = {                                 //For QS Desktop
     secure: true,                                 //false
     port: 443,                                    //4848
     prefix: '',                                   //''
-    appId: '3c4333d5-2053-4c0c-933c-9096b5f76e86' //your app file name (e.g. 'Executive dashboard.qvf')
+    appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
 };
 
 const FirstApp = props =>
@@ -16,11 +16,7 @@ const FirstApp = props =>
     qConfig={qConfig}
   >
     <RqtvDropdownFilter
-      qFieldExpr="Brand IHS"
-      dropdownMenuItemStyle={{textTransform:'uppercase'}}
-    />
-    <RqtvDropdownFilter
-      qFieldExpr="Vehicle"
+      qFieldExpr="Customer"
       dropdownMenuItemStyle={{textTransform:'uppercase'}}
     />
     <QViz
@@ -32,16 +28,16 @@ const FirstApp = props =>
           qHyperCubeDef:{
             qDimensions:[{
               "qDef":{
-                "qFieldDefs": ["[Year]"],
-                 "qFieldLabels": ["Year"],
+                "qFieldDefs": ["[Product Subgroup Desc]"],
+                 "qFieldLabels": ["Product Subgroup Desc"],
                  //"qSortCriterias":[{qSort:1}],
                  "qReverseSort":true
                }
              }],
             qMeasures:[{
               "qDef":{
-                "qDef":"=$(volumes)",
-                "qLabel":"Volumes"
+                "qDef":"Sum([Sales Quantity]*[Sales Price])",
+                "qLabel":"Revenue"
               }
             }]
           },
@@ -53,7 +49,6 @@ const FirstApp = props =>
       }}
       height={500}
     />
-    {props.children}
   </Reaqtive>
 </div>
 export default FirstApp
