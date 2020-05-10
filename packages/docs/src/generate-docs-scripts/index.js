@@ -170,10 +170,17 @@ const addPackageIntro = (package, mergedSectionsMarkdown) => {
   return package.intro+os.EOL+package.usage+os.EOL+packageSummary+os.EOL+mergedSectionsMarkdown
 }
 
+const addFile = (text, filePath, replaceString) => {
+  const fileContent = fs.readFileSync(filePath)
+  const textWithFile = text.replace(replaceString,os.EOL+'\`\`\`'+`javascript${os.EOL}${fileContent}${os.EOL}`+'\`\`\`'+os.EOL)
+  return textWithFile
+}
+
 const updatePackageDocs = async (package, root) => {
   console.log(`started ${package.name} docs`)
   const packagePath = path.join(__dirname, `${root}/${package.path}`);
   const packageSourcePath = path.join(__dirname, `${root}/${package.path}/${package.sourcePath}`);
+  console.log(packageSourcePath)
   const packageExamplesPath = path.join(__dirname, `${package.examplePath}`);
   const sectionsWithFiles = package.sections.map(section=>addFileListToSection(packageSourcePath, section))
   const sectionsWithComponents = sectionsWithFiles.map(section=>addSectionMetadata(section, packageExamplesPath))
@@ -182,18 +189,21 @@ const updatePackageDocs = async (package, root) => {
   const callback = ()=> console.log(`done ${package.name} docs`)
   fs.writeFile(`${packagePath}/README.md`, packageDocs, callback);
 }
-const updateReaqtiveDocs = () => {
+const updateReaqtiveDocs = (metadata) => {
+  const rootPath=path.join(__dirname, `${metadata.rootPath}`);
+  const packagesPath=path.join(__dirname, `${metadata.rootPath}/${metadata.packagesPath}`);
   console.log('started reaqtive docs')
-  const reaqtiveDocs = reaqtiveModules.text
+  const reaqtiveDocs = metadata.text
+  const textWithProxy = addFile(reaqtiveDocs, packagesPath+'/'+metadata.files.proxy, '___PROXY___')
+  const textWithExample = addFile(textWithProxy, packagesPath+'/'+metadata.files.example, '___EXAMPLE___')
   const callback = ()=> console.log(`done reaqtive docs`)
-  const rootPath = path.join(__dirname, `${root}/../../${reaqtiveModules.rootPath}`);
   //console.log(`${rootPath}/README.md`, reaqtiveDocs)
-  fs.writeFile(`${rootPath}/README.md`, reaqtiveDocs, callback);
+  fs.writeFile(`${rootPath}/README.md`, textWithExample, callback);
 }
 const run = () => {
-  updateReaqtiveDocs()
-  updatePackageDocs(reaqtiveModules.packages.components, reaqtiveModules.rootPath)
-  updatePackageDocs(reaqtiveModules.packages.q, reaqtiveModules.rootPath)
+  updateReaqtiveDocs(reaqtiveModules)
+  updatePackageDocs(reaqtiveModules.packages.components, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
+  updatePackageDocs(reaqtiveModules.packages.q, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
 }
 
 run()
