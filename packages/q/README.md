@@ -11,7 +11,7 @@ Depending on your needs and you can install @reaqtive/components instead. It pro
 npm install @reaqtive/q
 ```
 
-### TABLE OF CONTENTS
+### PROVIDED FEATURES
 - [REAQTIVE](#reaqtive) </br>
 - [CONTEXTS](#contexts) </br>
 - [COMPONENTS](#components) </br>

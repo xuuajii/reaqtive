@@ -12,7 +12,7 @@ npm install @reaqtive/components
 
 [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
 
-### TABLE OF CONTENTS
+### PROVIDED FEATURES
 - [FILTERS](#filters) </br>
 - [VISUALIZATIONS](#visualizations) </br>
 - [APP OBJECTS](#app-objects) </br>
@@ -600,9 +600,9 @@ export default MyRqtvSearchObject
 
 RqtvNavbar
 
-It is a component that renders the top navbar of the reaqtive app.
+It is a component that renders the top navbar of the reaqtive app and add spacing to the top of the page if the navbar is fixed top.
 It includes the [RqtvCurrentSelections](#rqtvcurrentselections) component and the [RqtvSearchObject](#rqtvsearchobject) component.
-It is based on bootstrap navbar, styles of the navba can be customized using navbarClassName prop which will be passed to the navbar itself or via sass/css
+It is based on bootstrap navbar, its styles can be customized using navbarClassName prop which will be passed to the navbar itself or via sass/css
 
 
 **Props**: 
@@ -628,21 +628,16 @@ import {RqtvNavbar} from '@reaqtive/components'
 const MyRqtvNavbar = props => {
   return(
   <>
-  <div className="border border-primary">
-    <RqtvNavbar
-      showSideMenuToggle={false}
-      title="RqtvNavbar"
-      fixedTop={false}
-    />
-    <div className="container py-5">
-      <p>Below your content</p>
+    <div className="border border-primary">
+      <RqtvNavbar
+        showSideMenuToggle={false}
+        title="RqtvNavbar"
+        fixedTop={true}
+      />
+      <div className="container py-5">
+        <p>Below your content</p>
+      </div>
     </div>
-  </div>
-  <RqtvNavbar
-    showSideMenuToggle={false}
-    title="RqtvNavbar"
-    fixedTop={true}
-  />
   </>
   )
 
