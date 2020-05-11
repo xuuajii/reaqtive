@@ -53,17 +53,20 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
     const bottomHeight=displayStart<lastPossibleTop?getFillersBottom(topHeight, displayAreaHeight, listHeight):0
     if((shouldFecthMore && scrollPosition.top>prevScroll.current.top)){
       qDisplayArea.current={...qDisplayArea.current, qTop:visibleStart}
-      prevScroll.current={top:Math.max(0,visibleStart)}
+      getScrollData(qDisplayArea.current)
+      //prevScroll.current={top:Math.max(0,visibleStart)}
     }
     if(shouldFetchLess && scrollPosition.top<prevScroll.current.top){
       qDisplayArea.current={...qDisplayArea.current, qTop:Math.max(0,visibleStart-bufferSize)}
+      getScrollData(qDisplayArea.current)
     }
     prevScroll.current={...prevScroll.current,top:scrollPosition.top}
-  },[scrollPosition.top,currentDisplayArea,listItemHeight,visibleListHeight,buffer,displayAreaHeight,listHeight])
+  },[scrollPosition.top,currentDisplayArea,listItemHeight,visibleListHeight,buffer,displayAreaHeight,listHeight,size])
 
-  useEffect(()=>{
-    getScrollData(qDisplayArea.current)
-  },[qDisplayArea.current])
+  // useEffect(()=>{
+  //   console.log()
+  //   getScrollData(qDisplayArea.current)
+  // },[qDisplayArea.current])
 
 
   return {qDisplayArea:qDisplayArea.current, fillers}

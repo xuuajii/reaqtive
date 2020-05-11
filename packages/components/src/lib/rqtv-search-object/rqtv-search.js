@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 import {SearchInput} from '@reaqtive/layout'
 import SearchResults from './search-results'
 import {useOutsideEventListener} from '@reaqtive/layout'
-import { useDebounce } from 'use-debounce';
+import { useDebouncedCallback } from 'use-debounce';
 import {useQGlobalSearch} from '@reaqtive/q'
 import {useScrollHandler} from '@reaqtive/q'
 import {RqtvRenderer} from '../index'
@@ -44,36 +44,40 @@ const RqtvSearch = props => {
 
     const [searchString, setSearchString] = useState()
     const [showResults, setShowResults] = useState(false)
-    const [searchOffset, setSearchOffset] = useState(0)
-    const qSearchResultsHandler = useQGlobalSearch(props.searchFields, searchString, searchOffset, 10)
+    const [qArea, setQArea] = useState({qTop:0, qLeft:0, qHeight:10, qWidth:1})
+    const qSearchResultsHandler = useQGlobalSearch(props.searchFields, searchString, qArea.qTop, 10)
     const qSearchResults=qSearchResultsHandler.qSearchResults;
-    //console.log(qSearchResults)
+
     const searchResultsEl = useRef()
     const containerEl = useRef()
     useOutsideEventListener(containerEl, ()=>clearSearch(), showResults)
     const [scrollPosition, setScrollPosition] = useState({top:0, left:0})
     const [size, setSize] = useState({qcy:1,qcx:1})
-    const [debouncedScrollPosition] = useDebounce(scrollPosition, 200);
 
     const getScrollData = (qDisplayArea) => {
-      //console.log(1)
-      setSearchOffset(qDisplayArea.qTop)
-      //searchResultsEl.current.scrollTop=debouncedScrollPosition.top;
+      //setSearchOffset(qDisplayArea.qTop)
+      setQArea({qTop:qDisplayArea.qTop, qLeft:0, qHeight:10, qWidth:1})
+      //searchResultsEl.current.scrollTop=scrollPosition.top;
     }
+
     const scrollHandler = useScrollHandler(
-      debouncedScrollPosition,
-      {qTop:searchOffset, qLeft:0, qHeight:10, qWidth:1},
+      scrollPosition,
+      qArea,
       size,
-       searchResultsEl.current&&searchResultsEl.current.clientHeight,
-       78,
-       0.2,
-       getScrollData
+      searchResultsEl.current&&searchResultsEl.current.clientHeight,
+      78,
+      0.2,
+      getScrollData
      )
-    const handleScroll = () =>{
-      //console.log(searchOffset)
-      setScrollPosition({top:searchResultsEl.current.scrollTop, left:searchResultsEl.current.scrollLeft});
-      setSearchOffset(scrollHandler.qDisplayArea.qTop)
-    }
+    const [handleScroll] = useDebouncedCallback(
+      // function
+      (target) => {
+        setScrollPosition({top:searchResultsEl.current.scrollTop, left:searchResultsEl.current.scrollLeft});
+      },
+      // delay in ms
+      //props.debounceDelay
+      200
+    );
 
     const handleChangeString = string => {
       //console.log(1111, qSearchResultsHandler.qEngineError.qError)
@@ -98,7 +102,7 @@ const RqtvSearch = props => {
     useEffect(()=>{
       setSize({qcy:(qSearchResults&&qSearchResults.qTotalNumberOfGroups)||0,qcx:1})
     }, [qSearchResults])
-    //console.log(scrollHandler)
+
     const searchResultGroupHeight=88;
     const singleFieldItemHeight=48;
     const manySearchResultHeight = qSearchResults&&qSearchResults.qTotalNumberOfGroups===1&&((qSearchResults.qSearchGroupArray[0].qItems.length*singleFieldItemHeight)+singleFieldItemHeight)
@@ -128,20 +132,20 @@ const RqtvSearch = props => {
 
           <div
             className={`dropdown-menu ${showResults?'show':''} search-results-container`}
-            onScroll={handleScroll}
+            onScroll={(e)=>handleScroll(e.target)}
             ref={searchResultsEl}
             style={dropdownMenuStyle}
           >
             {searchString&&<RqtvRenderer
               loading={qSearchResultsHandler.qLoading}
-              error={qSearchResultsHandler.qEngineError.qError}
+              error={qSearchResultsHandler.qEngineError}
               noData ={ qSearchResults&&qSearchResults.qSearchGroupArray.length===0}
               reload={retry}
             >
               <div
                 style={{width:props.resultsWidth, height:searchResultHeight, maxHeight:'100%'}}
               >
-                {qSearchResults&&
+                {showResults&&
                   <SearchResults
                     searchResults={qSearchResults}
                     scrollHandler={scrollHandler}

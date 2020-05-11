@@ -20,7 +20,7 @@ import {Backdrop} from '@reaqtive/layout'
  */
 
 const RqtvSearchObject = props =>{
-  const {alwaysExpanded, expandFrom, width, ...rest} = props ;
+  const {alwaysExpanded, expandFrom, width, fixedTop, ...rest} = props ;
   const [show, setShow] = useState(false)
   const showSearch = () => {
     setShow(true)
@@ -35,13 +35,15 @@ const RqtvSearchObject = props =>{
   }
 
   const searchContainerEl = useRef()
-  const isFixed = () => searchContainerEl.current&&window.getComputedStyle(searchContainerEl.current).position==='fixed'
+  const rqtvSearchEl = useRef()
+  const rqtvSearchElHeight = rqtvSearchEl.current&&rqtvSearchEl.current.offsetHeight
+
   useEffect(()=>{
-    isFixed()&&show?document.documentElement.style.overflow = "hidden":document.documentElement.style.overflow = "auto";
-  },[show])
+    fixedTop&&show?document.documentElement.style.overflow = "hidden":document.documentElement.style.overflow = "auto";
+  },[show, fixedTop])
 
   return (
-    <div className="rqtv-search" style={{flexDirection:expandFrom==='right'?'row-reverse':'row'}}>
+    <div className={`rqtv-search ${!fixedTop&&'rqtv-search-non-fixed'}`} style={{flexDirection:expandFrom==='right'?'row-reverse':'row',height:rqtvSearchElHeight}} ref={rqtvSearchEl}>
     {
       props.alwaysExpanded===true
       ?<RqtvSearch {...props} />
@@ -52,8 +54,8 @@ const RqtvSearchObject = props =>{
           </Button>}
         {
           show&&
-          <div className={`rqtv-search-animated-container ${show&&'show'}`} ref={searchContainerEl}>
-            <div className="backdrop-search" onClick={hideSearch}></div>
+          <div className={`rqtv-search-animated-container ${fixedTop?'rqtv-search-fixed-top':''} ${show&&'show'}`} ref={searchContainerEl}>
+            {props.useBackdrop&&<div className="backdrop-search" onClick={hideSearch}></div>}
             <RqtvSearch {...props} hideSearch={hideSearch} show={show}/>
           </div>
         }

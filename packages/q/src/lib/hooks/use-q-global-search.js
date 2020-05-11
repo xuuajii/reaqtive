@@ -2,63 +2,98 @@
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
 
-import  {useState, useEffect, useContext, useMemo, useCallback} from 'react'
+import  {useEffect, useContext, useRef, useReducer} from 'react'
 import {QDoc} from '../index'
 import {getPatchedObject, replaceObjectProp} from '../helpers/helpers'
 
+const searchObjectDefReducer = (state, action) => {
+  switch(action.type){
+    case 'search':
+      const qTerms = Array.isArray(action.qTerms)?action.qTerms:[action.qTerms]
+      return  {...state, qTerms:qTerms}
+    break;
+    case 'scroll':
+      return {...state, qPage:{...state.qPage, qOffset:action.qOffset}}
+    break;
+    default:
+      console.log('error searching')
+      throw new Error();
+  }
+}
+
+const initializeState = (fields, qItemCount, qMatchOffset, qMatchCount) => {
+  return{
+    qOptions:{
+    qSearchFields:fields,
+    qContext:'CONTEXT_CURRENT_SELECTIONS',
+    qCharEncoding:'CHAR_ENCODING_UTF8'
+    },
+    qTerms:[],
+    qPage:{
+            qOffset:0,
+            qCount:qItemCount,
+            qGroupItemOptions:[{qGroupItemType:'FIELD',qOffset:qMatchOffset, qMatchCount:qMatchCount}]
+        }
+    }
+  }
+
+const initialSearchState = {
+  qLoading:true,
+  qEngineError:false,
+  qErrorCounter:0,
+  qSearchResults:null
+}
+
+const qSearchResultsReducer = (state, action) => {
+  switch(action.type){
+    case 'success':
+      return  {...initialSearchState, qSearchResults:action.qSearchResults, qLoading:false}
+    break;
+    case 'error':
+      const newErrorCounter = state.qErrorCounter + 1;
+      return state.maxErrorCounter>=state.qErrorCounter ? {...initialSearchState, qErrorCounter: newErrorCounter} : {...initialSearchState, qLoading:false, qError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting searchresults'};
+    break;
+    default:
+      console.log('error searching')
+      throw new Error();
+  }
+}
+
+const searchQDoc = async (qDoc, searchObjectDef) => {
+  try{
+    const qSearchResults = qDoc.searchResults(searchObjectDef)
+    return qSearchResults
+  } catch(err){
+    return err
+  }
+}
+
 const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchOffset=0, qMatchCount=20) =>{
   //console.log(fields)
-
-  const qInitialSearchParams = useMemo(()=> {
-    return{
-      qOptions:{
-      qSearchFields:fields,
-      qContext:'CONTEXT_CURRENT_SELECTIONS',
-      qCharEncoding:'CHAR_ENCODING_UTF8'
-      },
-      qTerms:[],
-      qPage:{
-              qOffset:qItemOffSet,
-              qCount:qItemCount,
-              qGroupItemOptions:[{qGroupItemType:'FIELD',qOffset:qMatchOffset, qMatchCount:20}]
-          }
-    }
-  },[fields, qItemOffSet, qMatchOffset, qItemCount])
   const qDocHandler = useContext(QDoc)
-  //const [qSearchParams, setQSearchParams] = useState(qInitialSearchParams)
-  const [qSearchResults, setQSearchResults] = useState(null)
-  const intialQEngineError = {qError:false};
-  const [qLoading, setQLoading] = useState(true)
-  const [qEngineError, setQEngineError] = useState(intialQEngineError)
-  const [qErrorCount, setQErrorCount] = useState(0)
 
-  const search = useCallback((searchString) => {
-    const patchedParams = getPatchedObject(qInitialSearchParams, 'qTerms', [searchString])
-    patchedParams&&searchString&&qDocHandler.qDoc&&qDocHandler.qDoc.searchResults(patchedParams)
-    .then(qResults => {
-      setQSearchResults(qResults)
-      setQEngineError(intialQEngineError)
-      setQErrorCount(0)
-      setQLoading(false)
-    })
-    .catch(qErr=>{
-      qErrorCount>=10&&console.log(qErr)
-      setQErrorCount(qErrorCount=>qErrorCount+1)
-    })
-  },[qInitialSearchParams])
+  const initialSearchObjectDef = initializeState(fields, qItemCount, qMatchOffset, qMatchCount)
+  const [qSearchObjectDef, dispatchDef] = useReducer(searchObjectDefReducer, initialSearchObjectDef);
+
+  const [qSearchResults, dispatchResults] = useReducer(qSearchResultsReducer, initialSearchState)
+  const currentOffset=useRef(0)
+  useEffect(()=>{
+    dispatchDef({qTerms:searchString, type:'search'})
+  },[searchString])
 
   useEffect(()=>{
-    if(qErrorCount>=10){
-      console.log('error searching', qErrorCount)
-      setQEngineError({qError:true, rqtvMessage:'error getting global search results'})
-      setQSearchResults(null)
-      setQLoading(false)
-    } else {
-      search(searchString)
+    dispatchDef({qTerms:qItemOffSet, type:'scroll'})
+  },[qItemOffSet])
+
+  useEffect(()=>{
+    const search = async () => {
+      const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef)
+      return (res instanceof Error)
+        ?dispatchResults({qErrorObject:res, type:'error'})
+        :dispatchResults({qSearchResults:res, type:'success'})
     }
-  }, [qErrorCount, searchString])
-
-
+    search()
+  }, [qSearchObjectDef])
 
   const selectSearchResults = (searchString, qId, callback) => {
     const selectSearchParams = replaceObjectProp(qInitialSearchParams, 'qPage', 'qMatchIx', qId);
@@ -76,17 +111,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
     });
   }
 
-  useEffect(()=>{
-    const resetSearch = () => {
-      setQSearchResults()
-      setQLoading(true)
-      setQEngineError(intialQEngineError)
-    }
-    searchString?search(searchString):resetSearch()
-  },
-    [searchString,qItemOffSet])
-
-  return{ qSearchResults, qLoading, qEngineError, selectSearchResults, search }
+  return{ ...qSearchResults, selectSearchResults }
 }
 
 export default useQGlobalSearch
