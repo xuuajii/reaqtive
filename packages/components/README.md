@@ -584,7 +584,6 @@ const MyRqtvSearchObject =  props =>
       alwaysExpanded={false}
       expandFrom='left'
       resultsWidth='100%'
-      searchFields={[]}
       placeholder="Search"
     />
 
@@ -601,19 +600,57 @@ export default MyRqtvSearchObject
 
 RqtvNavbar
 
-It is a component that renders the top navbar of the reaqtive app. It is based on bootstrap navbar
-Styles can be customized via css (or scss)
+It is a component that renders the top navbar of the reaqtive app.
+It includes the [RqtvCurrentSelections](#rqtvcurrentselections) component and the [RqtvSearchObject](#rqtvsearchobject) component.
+It is based on bootstrap navbar, styles of the navba can be customized using navbarClassName prop which will be passed to the navbar itself or via sass/css
 
 
 **Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
+__brandImgStyle__ | `Object` |  | :x: | 
+__brandImgUrl__ | `String` |  | :x: | 
+__brandUrl__ | `String` |  | :x: | 
+__fixedTop__ | `Boolean` | `true` | :x: | if true the navbar would be fix positioned at the top of the page
+__navbarClassName__ | `String` | `''` | :x: | css classes that will be passed to the navbar div
 __onToggleMenu__ | `Function` |  | :x: | function fired when clicking on the HamburgerMenu button
+__searchResultsHeight__ | `Enum(PropTypes.string)` | `500` | :x: | 
 __showCurrentSelections__ | `Boolean` | `true` | :x: | show/hide the current selections toolbar
+__showSearch__ | `Boolean` | `true` | :x: | show/hide the global search-object
 __showSideMenuToggle__ | `Boolean` | `true` | :x: | show/hide hamburger menu
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvNavbar} from '@reaqtive/components'
 
+const MyRqtvNavbar = props => {
+  return(
+  <>
+  <div className="border border-primary">
+    <RqtvNavbar
+      showSideMenuToggle={false}
+      title="RqtvNavbar"
+      fixedTop={false}
+    />
+    <div className="container py-5">
+      <p>Below your content</p>
+    </div>
+  </div>
+  <RqtvNavbar
+    showSideMenuToggle={false}
+    title="RqtvNavbar"
+    fixedTop={true}
+  />
+  </>
+  )
+
+}
+
+export default MyRqtvNavbar
+
+```
 <br></br>
 
 

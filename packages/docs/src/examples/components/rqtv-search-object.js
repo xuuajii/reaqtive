@@ -7,7 +7,6 @@ const MyRqtvSearchObject =  props =>
       alwaysExpanded={false}
       expandFrom='left'
       resultsWidth='100%'
-      searchFields={[]}
       placeholder="Search"
     />
 

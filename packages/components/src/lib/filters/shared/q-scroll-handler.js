@@ -49,5 +49,5 @@ QScrollHandler.propTypes = {
 }
 
 QScrollHandler.defualtProps={
-  debounceDelay:500
+  debounceDelay:200
 }

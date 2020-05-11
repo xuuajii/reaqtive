@@ -40,7 +40,7 @@ __qConfig.secure__ | `Boolean` |  | :white_check_mark: | secure: true if the Qli
 import React from 'react'
 import Reaqtive from '@reaqtive/q'
 import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp, MyQGenericObject, MyQVariable} from './index'
-import {MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from '../components/index'
+import {MyRqtvNavbar, MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from '../components/index'
 
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
@@ -55,6 +55,7 @@ const MyReaqtiveComponent = props => {
     <Reaqtive
       qConfig={qConfig}
     >
+    <div className="container">
       {/*
         Inside Reaqtive children you will have access to the contexts it provides.
         You can use them individually or combine them in your components
@@ -72,8 +73,7 @@ const MyReaqtiveComponent = props => {
       <MyRqtvMultibox/>
       <MyRqtvContainerExample/>
       <MyRqtvCurrentSelections/>
-      <MyRqtvSearchObject/>*/}
-      <div className="container">
+      <MyRqtvSearchObject/>
       <Wrapper>
         <MyQVizExamples/>
       </Wrapper>
@@ -88,6 +88,23 @@ const MyReaqtiveComponent = props => {
       </Wrapper>
       <Wrapper>
         <MyRqtvSearchField/>
+      </Wrapper>
+      <MyRqtvNavbar/>
+      */}
+      <Wrapper>
+        <MyQVizExamples/>
+      </Wrapper>
+      <Wrapper>
+      <MyRqtvSearchObject/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvDropdownFilter/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvListbox/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvNavbar/>
       </Wrapper>
       </div>
     </Reaqtive>
@@ -367,13 +384,18 @@ export default MyQGenericObject
 
 
 
+QShareCapabilityApi
+
+This component is needed when you wan to display in the same app Qlik Visualizations taken from 2 or more apps.
+It wraps the Reaqtive component and provides the QCapabilityAPI context to the components downstream.
+This work around is needed to avoid to download QCapabilityAPI and AngularJS more than once.
+
 
 **Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
-__qConfig__ | `Shape` |  | :white_check_mark: | qConfig is an object that provides reaqtive the params needed to connect to the Qlik server. params are: host, port, secure, prefix, appId: the id of the app reaqtive should connect to
-__qConfig.appId__ | `String` |  | :white_check_mark: | appId: the id of the app reaqtive should connect to
+__qConfig__ | `Shape` |  | :white_check_mark: | qConfig is an object that provides reaqtive the params needed to connect to the Qlik server. params are: host, port, secure, prefix. appId is not needed in this case since the only purpose of this component is to download Qlik Capability APIs and provide it downstream.
 __qConfig.host__ | `String` |  | :white_check_mark: | host: the ip address or domain of the Qlik SystemProvider
 __qConfig.port__ | `Number` |  | :white_check_mark: | port: the port on which Qlik server is listening
 __qConfig.prefix__ | `String` |  | :white_check_mark: | prefix: Qlik's virtual proxy path

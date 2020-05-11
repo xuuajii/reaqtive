@@ -2,6 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {QCapabilityApiProvider} from '../index'
 
+/**
+ * QShareCapabilityApi
+ *
+ * This component is needed when you wan to display in the same app Qlik Visualizations taken from 2 or more apps.
+ * It wraps the Reaqtive component and provides the QCapabilityAPI context to the components downstream.
+ * This work around is needed to avoid to download QCapabilityAPI and AngularJS more than once.
+ */
 const QShareCapabilityApi = props =>
   <QCapabilityApiProvider qConfig={props.qConfig}>
     {props.children}
@@ -12,7 +19,7 @@ const QShareCapabilityApi = props =>
   QShareCapabilityApi.propTypes = {
     /**
      * qConfig is an object that provides reaqtive the params needed to connect to the Qlik server.
-     * params are: host, port, secure, prefix, appId: the id of the app reaqtive should connect to
+     * params are: host, port, secure, prefix. appId is not needed in this case since the only purpose of this component is to download Qlik Capability APIs and provide it downstream.
      */
     qConfig:PropTypes.shape({
       /**
@@ -31,9 +38,5 @@ const QShareCapabilityApi = props =>
        * prefix: Qlik's virtual proxy path
        */
       prefix: PropTypes.string.isRequired,
-      /**
-       * appId: the id of the app reaqtive should connect to
-       */
-      appId:PropTypes.string.isRequired
     }).isRequired,
   }

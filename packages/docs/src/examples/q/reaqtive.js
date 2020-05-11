@@ -1,7 +1,7 @@
 import React from 'react'
 import Reaqtive from '@reaqtive/q'
 import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp, MyQGenericObject, MyQVariable} from './index'
-import {MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from '../components/index'
+import {MyRqtvNavbar, MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from '../components/index'
 
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
@@ -16,6 +16,7 @@ const MyReaqtiveComponent = props => {
     <Reaqtive
       qConfig={qConfig}
     >
+    <div className="container">
       {/*
         Inside Reaqtive children you will have access to the contexts it provides.
         You can use them individually or combine them in your components
@@ -33,8 +34,7 @@ const MyReaqtiveComponent = props => {
       <MyRqtvMultibox/>
       <MyRqtvContainerExample/>
       <MyRqtvCurrentSelections/>
-      <MyRqtvSearchObject/>*/}
-      <div className="container">
+      <MyRqtvSearchObject/>
       <Wrapper>
         <MyQVizExamples/>
       </Wrapper>
@@ -49,6 +49,23 @@ const MyReaqtiveComponent = props => {
       </Wrapper>
       <Wrapper>
         <MyRqtvSearchField/>
+      </Wrapper>
+      <MyRqtvNavbar/>
+      */}
+      <Wrapper>
+        <MyQVizExamples/>
+      </Wrapper>
+      <Wrapper>
+      <MyRqtvSearchObject/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvDropdownFilter/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvListbox/>
+      </Wrapper>
+      <Wrapper>
+        <MyRqtvNavbar/>
       </Wrapper>
       </div>
     </Reaqtive>
