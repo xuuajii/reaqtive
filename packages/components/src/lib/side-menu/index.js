@@ -28,7 +28,7 @@ const RqtvSideMenu = props =>{
   const pages = rqtvApp&&rqtvApp.pages
 
   return(
-    <SideMenu className="rqtv-side-menu" isOpen={props.isOpen} onClose={props.onClose}>
+    <SideMenu className={`rqtv-side-menu`} isOpen={props.isOpen} onClose={props.onClose}>
       <Tabs animatedTabs={true} style={{height:'100%'}} >
         <TabList useIcons={true}>
           {props.usePageList&&<Tab label="pages" icon={<LuiIcon iconType="sheet"/>}/>}
