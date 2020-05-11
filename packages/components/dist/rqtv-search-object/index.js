@@ -37,7 +37,8 @@ const RqtvSearchObject = props => {
   const alwaysExpanded = props.alwaysExpanded,
         expandFrom = props.expandFrom,
         width = props.width,
-        rest = (0, _objectWithoutProperties2.default)(props, ["alwaysExpanded", "expandFrom", "width"]);
+        fixedTop = props.fixedTop,
+        rest = (0, _objectWithoutProperties2.default)(props, ["alwaysExpanded", "expandFrom", "width", "fixedTop"]);
 
   const _useState = (0, _react.useState)(false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -58,26 +59,27 @@ const RqtvSearchObject = props => {
   };
 
   const searchContainerEl = (0, _react.useRef)();
-
-  const isFixed = () => searchContainerEl.current && window.getComputedStyle(searchContainerEl.current).position === 'fixed';
-
+  const rqtvSearchEl = (0, _react.useRef)();
+  const rqtvSearchElHeight = rqtvSearchEl.current && rqtvSearchEl.current.offsetHeight;
   (0, _react.useEffect)(() => {
-    isFixed() && show ? document.documentElement.style.overflow = "hidden" : document.documentElement.style.overflow = "auto";
-  }, [show]);
+    fixedTop && show ? document.documentElement.style.overflow = "hidden" : document.documentElement.style.overflow = "auto";
+  }, [show, fixedTop]);
   return _react.default.createElement("div", {
-    className: "rqtv-search",
+    className: "rqtv-search ".concat(!fixedTop && 'rqtv-search-non-fixed'),
     style: {
-      flexDirection: expandFrom === 'right' ? 'row-reverse' : 'row'
+      flexDirection: expandFrom === 'right' ? 'row-reverse' : 'row',
+      height: rqtvSearchElHeight
     },
+    ref: rqtvSearchEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 46
     },
     __self: void 0
   }, props.alwaysExpanded === true ? _react.default.createElement(_rqtvSearch.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 49
     },
     __self: void 0
   })) : _react.default.createElement(_react.default.Fragment, null, !show && _react.default.createElement(_layout.Button, Object.assign({
@@ -86,30 +88,30 @@ const RqtvSearchObject = props => {
   }, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 52
     },
     __self: void 0
   }), _react.default.createElement(_layout.LuiIcon, {
     iconType: 'search',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 53
     },
     __self: void 0
   })), show && _react.default.createElement("div", {
-    className: "rqtv-search-animated-container ".concat(show && 'show'),
+    className: "rqtv-search-animated-container ".concat(fixedTop ? 'rqtv-search-fixed-top' : '', " ").concat(show && 'show'),
     ref: searchContainerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 57
     },
     __self: void 0
-  }, _react.default.createElement("div", {
+  }, props.useBackdrop && _react.default.createElement("div", {
     className: "backdrop-search",
     onClick: hideSearch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 58
     },
     __self: void 0
   }), _react.default.createElement(_rqtvSearch.default, Object.assign({}, props, {
@@ -117,7 +119,7 @@ const RqtvSearchObject = props => {
     show: show,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 59
     },
     __self: void 0
   })))));

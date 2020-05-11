@@ -72,24 +72,24 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
       qDisplayArea.current = (0, _objectSpread2.default)({}, qDisplayArea.current, {
         qTop: visibleStart
       });
-      prevScroll.current = {
-        top: Math.max(0, visibleStart)
-      };
+      getScrollData(qDisplayArea.current); //prevScroll.current={top:Math.max(0,visibleStart)}
     }
 
     if (shouldFetchLess && scrollPosition.top < prevScroll.current.top) {
       qDisplayArea.current = (0, _objectSpread2.default)({}, qDisplayArea.current, {
         qTop: Math.max(0, visibleStart - bufferSize)
       });
+      getScrollData(qDisplayArea.current);
     }
 
     prevScroll.current = (0, _objectSpread2.default)({}, prevScroll.current, {
       top: scrollPosition.top
     });
-  }, [scrollPosition.top, currentDisplayArea, listItemHeight, visibleListHeight, buffer, displayAreaHeight, listHeight]);
-  (0, _react.useEffect)(() => {
-    getScrollData(qDisplayArea.current);
-  }, [qDisplayArea.current]);
+  }, [scrollPosition.top, currentDisplayArea, listItemHeight, visibleListHeight, buffer, displayAreaHeight, listHeight, size]); // useEffect(()=>{
+  //   console.log()
+  //   getScrollData(qDisplayArea.current)
+  // },[qDisplayArea.current])
+
   return {
     qDisplayArea: qDisplayArea.current,
     fillers

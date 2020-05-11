@@ -26,13 +26,20 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
 /**
  * RqtvNavbar
  *
- * It is a component that renders the top navbar of the reaqtive app. It is based on bootstrap navbar
- * Styles can be customized via css (or scss)
+ * It is a component that renders the top navbar of the reaqtive app and add spacing to the top of the page if the navbar is fixed top.
+ * It includes the [RqtvCurrentSelections](#rqtvcurrentselections) component and the [RqtvSearchObject](#rqtvsearchobject) component.
+ * It is based on bootstrap navbar, its styles can be customized using navbarClassName prop which will be passed to the navbar itself or via sass/css
  */
 const RqtvNavbar = props => {
   const searchFieldsMatch = props.searchFieldsMatch,
-        showSideMenuToggle = props.showSideMenuToggle;
-  const rqtvApp = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
+        showSideMenuToggle = props.showSideMenuToggle,
+        fixedTop = props.fixedTop,
+        navbarClassName = props.navbarClassName;
+  const rqtvApp = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext) || {};
+  const title = props.title ? props.title : rqtvApp.title;
+  const brandUrl = props.brandUrl ? props.brandUrl : rqtvApp.brandUrl;
+  const brandImgUrl = props.brandImgUrl ? props.brandImgUrl : rqtvApp.brand;
+  const brandImgStyle = props.brandImgStyle ? props.brandImgStyle : rqtvApp.brandStyle;
 
   const _useState = (0, _react.useState)(props.showCurrentSelections),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -45,53 +52,53 @@ const RqtvNavbar = props => {
   const currentSelectionsCustomLoading = () => _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 34
     },
     __self: void 0
   });
 
   return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_layout.Navbar, {
-    className: "fixed-top rqtv-navbar",
+    className: "".concat(fixedTop === true ? 'fixed-top' : '', " rqtv-navbar ").concat(navbarClassName),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "navbar-brand-container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 40
     },
     __self: void 0
   }, showSideMenuToggle && _react.default.createElement(_layout.Button, {
     onClick: props.onToggleMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 42
     },
     __self: void 0
   }, _react.default.createElement(_layout.HamburgerMenu, {
     isOpen: props.sideMenuActive,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 43
     },
     __self: void 0
   })), _react.default.createElement(_layout.NavbarBrand, {
-    url: rqtvApp.brandUrl,
-    imgUrl: rqtvApp.brand,
-    imgStyle: rqtvApp.brandStyle,
+    url: brandUrl,
+    imgUrl: brandImgUrl,
+    imgStyle: brandImgStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 46
     },
     __self: void 0
-  }, rqtvApp.title))), _react.default.createElement(_layout.NavbarNav, {
+  }, title))), _react.default.createElement(_layout.NavbarNav, {
     neverCollapse: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 51
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvCurrentSelections, {
@@ -100,18 +107,20 @@ const RqtvNavbar = props => {
     customLoading: () => _react.default.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 52
       },
       __self: void 0
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 52
     },
     __self: void 0
   }), props.showSearch && _react.default.createElement(_index.RqtvSearchObject, {
+    fixedTop: props.fixedTop,
+    useBackdrop: props.fixedTop,
     onOpen: () => {
-      props.closeSideMenu();
+      props.closeSideMenu && props.closeSideMenu();
       setShowCurrentSelections(false);
     },
     onClose: () => {
@@ -119,17 +128,26 @@ const RqtvNavbar = props => {
     },
     searchFields: fieldList && fieldList.map(field => field.qName),
     expandFrom: "right",
-    useBackdrop: true,
-    resultsHeight: '100%',
+    resultsHeight: props.fixedTop ? '100%' : props.searchResultsHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 54
     },
     __self: void 0
   }))));
 };
 
 RqtvNavbar.propTypes = {
+  /**
+   * if true the navbar would be fix positioned at the top of the page
+   */
+  fixedTop: _propTypes.default.bool,
+
+  /**
+   * css classes that will be passed to the navbar div
+   */
+  navbarClassName: _propTypes.default.string,
+
   /**
    * function fired when clicking on the HamburgerMenu button
    */
@@ -141,13 +159,26 @@ RqtvNavbar.propTypes = {
   showCurrentSelections: _propTypes.default.bool,
 
   /**
+   * show/hide the global search-object
+   */
+  showSearch: _propTypes.default.bool,
+
+  /**
    * show/hide hamburger menu
    */
-  showSideMenuToggle: _propTypes.default.bool
+  showSideMenuToggle: _propTypes.default.bool,
+  brandUrl: _propTypes.default.string,
+  brandImgUrl: _propTypes.default.string,
+  brandImgStyle: _propTypes.default.object,
+  searchResultsHeight: _propTypes.default.oneOf(_propTypes.default.string, _propTypes.default.number)
 };
 RqtvNavbar.defaultProps = {
+  fixedTop: true,
+  navbarClassName: '',
   showCurrentSelections: true,
-  showSideMenuToggle: true
+  showSideMenuToggle: true,
+  showSearch: true,
+  searchResultsHeight: 500
 };
 var _default = RqtvNavbar;
 exports.default = _default;

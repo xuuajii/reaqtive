@@ -23,7 +23,7 @@ var _layout = require("@reaqtive/layout");
 
 var _searchResults = _interopRequireDefault(require("./search-results"));
 
-var _useDebounce3 = require("use-debounce");
+var _useDebounce = require("use-debounce");
 
 var _q = require("@reaqtive/q");
 
@@ -83,14 +83,18 @@ const RqtvSearch = props => {
         showResults = _useState4[0],
         setShowResults = _useState4[1];
 
-  const _useState5 = (0, _react.useState)(0),
+  const _useState5 = (0, _react.useState)({
+    qTop: 0,
+    qLeft: 0,
+    qHeight: 10,
+    qWidth: 1
+  }),
         _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
-        searchOffset = _useState6[0],
-        setSearchOffset = _useState6[1];
+        qArea = _useState6[0],
+        setQArea = _useState6[1];
 
-  const qSearchResultsHandler = (0, _q.useQGlobalSearch)(props.searchFields, searchString, searchOffset, 10);
-  const qSearchResults = qSearchResultsHandler.qSearchResults; //console.log(qSearchResults)
-
+  const qSearchResultsHandler = (0, _q.useQGlobalSearch)(props.searchFields, searchString, qArea.qTop, 10);
+  const qSearchResults = qSearchResultsHandler.qSearchResults;
   const searchResultsEl = (0, _react.useRef)();
   const containerEl = (0, _react.useRef)();
   (0, _layout.useOutsideEventListener)(containerEl, () => clearSearch(), showResults);
@@ -111,30 +115,29 @@ const RqtvSearch = props => {
         size = _useState10[0],
         setSize = _useState10[1];
 
-  const _useDebounce = (0, _useDebounce3.useDebounce)(scrollPosition, 200),
-        _useDebounce2 = (0, _slicedToArray2.default)(_useDebounce, 1),
-        debouncedScrollPosition = _useDebounce2[0];
-
   const getScrollData = qDisplayArea => {
-    //console.log(1)
-    setSearchOffset(qDisplayArea.qTop); //searchResultsEl.current.scrollTop=debouncedScrollPosition.top;
+    //setSearchOffset(qDisplayArea.qTop)
+    setQArea({
+      qTop: qDisplayArea.qTop,
+      qLeft: 0,
+      qHeight: 10,
+      qWidth: 1
+    }); //searchResultsEl.current.scrollTop=scrollPosition.top;
   };
 
-  const scrollHandler = (0, _q.useScrollHandler)(debouncedScrollPosition, {
-    qTop: searchOffset,
-    qLeft: 0,
-    qHeight: 10,
-    qWidth: 1
-  }, size, searchResultsEl.current && searchResultsEl.current.clientHeight, 78, 0.2, getScrollData);
+  const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qArea, size, searchResultsEl.current && searchResultsEl.current.clientHeight, 78, 0.2, getScrollData);
 
-  const handleScroll = () => {
-    //console.log(searchOffset)
+  const _useDebouncedCallback = (0, _useDebounce.useDebouncedCallback)( // function
+  target => {
     setScrollPosition({
       top: searchResultsEl.current.scrollTop,
       left: searchResultsEl.current.scrollLeft
     });
-    setSearchOffset(scrollHandler.qDisplayArea.qTop);
-  };
+  }, // delay in ms
+  //props.debounceDelay
+  200),
+        _useDebouncedCallback2 = (0, _slicedToArray2.default)(_useDebouncedCallback, 1),
+        handleScroll = _useDebouncedCallback2[0];
 
   const handleChangeString = string => {
     //console.log(1111, qSearchResultsHandler.qEngineError.qError)
@@ -162,8 +165,7 @@ const RqtvSearch = props => {
       qcy: qSearchResults && qSearchResults.qTotalNumberOfGroups || 0,
       qcx: 1
     });
-  }, [qSearchResults]); //console.log(scrollHandler)
-
+  }, [qSearchResults]);
   const searchResultGroupHeight = 88;
   const singleFieldItemHeight = 48;
   const manySearchResultHeight = qSearchResults && qSearchResults.qTotalNumberOfGroups === 1 && qSearchResults.qSearchGroupArray[0].qItems.length * singleFieldItemHeight + singleFieldItemHeight;
@@ -179,7 +181,7 @@ const RqtvSearch = props => {
     ref: containerEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 117
+      lineNumber: 121
     },
     __self: void 0
   }, _react.default.createElement(AnimatedInput, {
@@ -193,27 +195,27 @@ const RqtvSearch = props => {
     width: props.width,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 118
+      lineNumber: 122
     },
     __self: void 0
   }), _react.default.createElement("div", {
     className: "dropdown-menu ".concat(showResults ? 'show' : '', " search-results-container"),
-    onScroll: handleScroll,
+    onScroll: e => handleScroll(e.target),
     ref: searchResultsEl,
     style: dropdownMenuStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 129
+      lineNumber: 133
     },
     __self: void 0
   }, searchString && _react.default.createElement(_index.RqtvRenderer, {
     loading: qSearchResultsHandler.qLoading,
-    error: qSearchResultsHandler.qEngineError.qError,
+    error: qSearchResultsHandler.qEngineError,
     noData: qSearchResults && qSearchResults.qSearchGroupArray.length === 0,
     reload: retry,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 139
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -224,10 +226,10 @@ const RqtvSearch = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141
+      lineNumber: 145
     },
     __self: void 0
-  }, qSearchResults && _react.default.createElement(_searchResults.default, {
+  }, showResults && _react.default.createElement(_searchResults.default, {
     searchResults: qSearchResults,
     scrollHandler: scrollHandler,
     selectSearchResults: acceptSearchResult,
@@ -235,7 +237,7 @@ const RqtvSearch = props => {
     singleFieldItemHeight: singleFieldItemHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 149
     },
     __self: void 0
   }))))));
