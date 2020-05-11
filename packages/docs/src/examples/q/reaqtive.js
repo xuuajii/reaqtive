@@ -13,60 +13,18 @@ const MyReaqtiveComponent = props => {
       appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
   return (
-    <Reaqtive
-      qConfig={qConfig}
-    >
-    <div className="container">
-      {/*
-        Inside Reaqtive children you will have access to the contexts it provides.
-        You can use them individually or combine them in your components
-
-      <MyComponentWithQGlobal/>
-      <MyComponentWithQDoc/>
-      <MyComponentWithQCapabilityApi/>
-      <MyComponentWithQApp/>
-      <MyQGenericObject/>
-      <MyQVariable/>
-      <MyRqtvListbox/>
-      <MyRqtvModalListbox/>
-      <MyRqtvSearchField/>
-      <MyRqtvListbox/>
-      <MyRqtvMultibox/>
-      <MyRqtvContainerExample/>
-      <MyRqtvCurrentSelections/>
-      <MyRqtvSearchObject/>
-      <Wrapper>
-        <MyQVizExamples/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvSearchObject/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvListbox/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvDropdownFilter/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvSearchField/>
-      </Wrapper>
-      <MyRqtvNavbar/>
-      */}
-      <Wrapper>
-        <MyQVizExamples/>
-      </Wrapper>
-      <Wrapper>
-      <MyRqtvSearchObject/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvDropdownFilter/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvListbox/>
-      </Wrapper>
-      <Wrapper>
-        <MyRqtvNavbar/>
-      </Wrapper>
+    <Reaqtive qConfig={qConfig}>
+      <div className="container">
+        <Wrapper>
+         <MyRqtvListbox/>
+        </Wrapper>
+        <Wrapper>
+         <MyQVizExamples/>
+        </Wrapper>
+        <Wrapper>
+          <div>...</div>
+        </Wrapper>
+        {props.children}
       </div>
     </Reaqtive>
   )
