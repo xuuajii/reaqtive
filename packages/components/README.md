@@ -33,6 +33,19 @@ You can twek its behavuiour using props.
 You can customize its styles using css or using props.
 
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvButtonBar} from '@reaqtive/components'
+
+const MyRqtvButtonBar = props =>
+<RqtvButtonBar
+  qFieldExpr = "$Field"
+/>
+
+export default MyRqtvButtonBar
+
+```
 **Props**: 
 
   prop | type | default | required | description
@@ -55,19 +68,6 @@ __qSortObject.qSortByNumeric__ | `Number` |  | :x: | Sorts the field values by n
 __qSortObject.qSortByState__ | `Number` |  | :x: | Sorts the field values according to their logical state (selected, optional, alternative or excluded).
 __toggle__ | `Boolean` | `true` | :x: | if true uses toggle select
 
-**Example:** 
-```javascript
-import React from 'react'
-import {RqtvButtonBar} from '@reaqtive/components'
-
-const MyRqtvButtonBar = props =>
-<RqtvButtonBar
-  qFieldExpr = "$Field"
-/>
-
-export default MyRqtvButtonBar
-
-```
 <br></br>
 
 
@@ -85,6 +85,20 @@ You can twek its behavuiour using props.
 You can customize its styles using css or using props.
 
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvDropdownFilter} from '@reaqtive/components'
+
+const MyRqtvDropdownFilter = props =>
+<RqtvDropdownFilter
+  qFieldExpr="Customer"
+  dropdownMenuItemStyle={{textTransform:'uppercase'}}
+/>
+
+export default MyRqtvDropdownFilter
+
+```
 **Props**: 
 
   prop | type | default | required | description
@@ -114,20 +128,6 @@ __showCaret__ | `Boolean` | `true` | :x: | Show/hide the caret in the dropdown b
 __showSearch__ | `Boolean` | `true` | :x: | Show/hide the search input when the dropdown is open
 __toggle__ | `Boolean` | `true` | :x: | if true uses toggle select
 
-**Example:** 
-```javascript
-import React from 'react'
-import {RqtvDropdownFilter} from '@reaqtive/components'
-
-const MyRqtvDropdownFilter = props =>
-<RqtvDropdownFilter
-  qFieldExpr="Customer"
-  dropdownMenuItemStyle={{textTransform:'uppercase'}}
-/>
-
-export default MyRqtvDropdownFilter
-
-```
 <br></br>
 
 
@@ -145,6 +145,24 @@ You can twek its behavuiour using props.
 You can customize its styles using css or using props.
 
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvListbox} from '@reaqtive/components'
+
+const MyRqtvListbox = props => {
+  return(
+    <RqtvListbox
+      qFieldExpr="Customer"
+      qLabelExpr="=count(distinct Customer)"
+      height={300}
+    />
+  )
+}
+
+export default MyRqtvListbox
+
+```
 **Props**: 
 
   prop | type | default | required | description
@@ -175,24 +193,6 @@ __titleAction__ | `Function` | `()=>false` | :x: | function called when clicking
 __titleStyle__ | `Object` | `{}` | :x: | style object to customize listbox title
 __toggle__ | `Boolean` | `true` | :x: | if true uses toggle select
 
-**Example:** 
-```javascript
-import React from 'react'
-import {RqtvListbox} from '@reaqtive/components'
-
-const MyRqtvListbox = props => {
-  return(
-    <RqtvListbox
-      qFieldExpr="Customer"
-      qLabelExpr="=count(distinct Customer)"
-      height={300}
-    />
-  )
-}
-
-export default MyRqtvListbox
-
-```
 <br></br>
 
 
@@ -205,15 +205,6 @@ RqtvModalListbox
 It allows you to wrap a listbox inside a modal: the listbox will be hidden and a button will be shown.
 Clicking the button the listbox will appear inside a modal
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__buttonClassName__ | `String` | `'primary text-light'` | :x: | className for the dropdown button
-__buttonStyle__ | `Object` | `{}` | :x: | style object to customize the dropdown button
-__listboxProps__ | `Object` |  | :x: | the props which will be passed to the listbox
-__qLabelExpr__ | `String` |  | :x: | The expression used in the listbox title and in the button that toggles the listbox
 
 **Example:** 
 ```javascript
@@ -231,6 +222,15 @@ const MyRqtvModalListbox = props =>
 export default MyRqtvModalListbox
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__buttonClassName__ | `String` | `'primary text-light'` | :x: | className for the dropdown button
+__buttonStyle__ | `Object` | `{}` | :x: | style object to customize the dropdown button
+__listboxProps__ | `Object` |  | :x: | the props which will be passed to the listbox
+__qLabelExpr__ | `String` |  | :x: | The expression used in the listbox title and in the button that toggles the listbox
+
 <br></br>
 
 
@@ -248,6 +248,19 @@ You can tweak its behaviour using props
 You can customize style using props and css
 
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvSearchField} from '@reaqtive/components'
+
+const MyRqtvSearchField = props =>
+<RqtvSearchField
+  qFieldExpr="Customer"
+  placeholder="Search"
+/>
+export default MyRqtvSearchField
+
+```
 **Props**: 
 
   prop | type | default | required | description
@@ -270,19 +283,6 @@ __qSortObject.qSortByState__ | `Number` |  | :x: | Sorts the field values accord
 __quickSelectionMode__ | `Boolean` | `false` | :x: | if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply), if false it uses Qlik View selection behaviour (apply selections immediately)
 __toggle__ | `Boolean` | `true` | :x: | if true uses toggle select
 
-**Example:** 
-```javascript
-import React from 'react'
-import {RqtvSearchField} from '@reaqtive/components'
-
-const MyRqtvSearchField = props =>
-<RqtvSearchField
-  qFieldExpr="Customer"
-  placeholder="Search"
-/>
-export default MyRqtvSearchField
-
-```
 <br></br>
 
 
@@ -296,13 +296,6 @@ RqtvMultibox
 It returns an accordion that shows a list of fields.
 A listbox is displayed for the active field. One field at a time can be active.
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__fieldHeight__ | `Number` | `300` | :x: | The height of the listbox of the active field
-__fieldList__ | `Array` |  | :white_check_mark: | An array of fieldnames which will be displayed in the multibox
 
 **Example:** 
 ```javascript
@@ -320,6 +313,13 @@ const MyRqtvMultibox = props => {
 export default MyRqtvMultibox
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__fieldHeight__ | `Number` | `300` | :x: | The height of the listbox of the active field
+__fieldList__ | `Array` |  | :white_check_mark: | An array of fieldnames which will be displayed in the multibox
+
 <br></br>
 
 
@@ -337,14 +337,6 @@ they can be created on the fly providing the properties to the engine.
 QViz also provide an imperative handle to inteact with Qlik visualizazion.
 To access the handle you have to provide a handle to the QViz component
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__chartProps__ | `Object` |  | :x: | the properties of the object to be created on the fly chartProps must be passed as: {'chartType':'string', 'columns':'array', 'rest':'object'} see this link for details https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/VisualizationAPI.htm
-__id__ | `String` |  | :white_check_mark: | the id of the visualization to be retrieved and of the div that will contain it
-__showTitle__ | `Boolean` | `false` | :x: | show/hide the title in Qlik visualization
 
 **Example:** 
 ```javascript
@@ -404,6 +396,14 @@ const MyQVizOnTheFly = props =>{
 export default MyQVizExamples
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__chartProps__ | `Object` |  | :x: | the properties of the object to be created on the fly chartProps must be passed as: {'chartType':'string', 'columns':'array', 'rest':'object'} see this link for details https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/VisualizationAPI.htm
+__id__ | `String` |  | :white_check_mark: | the id of the visualization to be retrieved and of the div that will contain it
+__showTitle__ | `Boolean` | `false` | :x: | show/hide the title in Qlik visualization
+
 <br></br>
 
 
@@ -418,20 +418,6 @@ It provides a container to a visualization. It accepts multiple children. In cas
 it shows one child at a time and a dropdown menu to toggle the desired child.
 If its children provide exports methods it automatically shows export buttons
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__className__ | `String` | `''` | :x: | Container css classes
-__containerClassName__ | `String` | `''` | :x: | Container header css classes
-__height__ | `Union<Number\|String>` | `300` | :x: | The height of the container pixels or % can be used
-__height<1>__ | `Number` |  | :x: | 
-__height<2>__ | `String` |  | :x: | 
-__hideScrollWhenMaximized__ | `Boolean` | `true` | :x: | If true window scrollbar will be hidden when the container is maximized
-__showExportExcel__ | `Boolean` | `true` | :x: | Show/hide export to excel button
-__showExportImg__ | `Boolean` | `true` | :x: | Show/hide export to img button
-__showExportPdf__ | `Boolean` | `true` | :x: | Show/hide export to pdf button
 
 **Example:** 
 ```javascript
@@ -502,6 +488,20 @@ const MyRqtvContainerExample = props => {
 export default MyRqtvContainerExample
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__className__ | `String` | `''` | :x: | Container css classes
+__containerClassName__ | `String` | `''` | :x: | Container header css classes
+__height__ | `Union<Number\|String>` | `300` | :x: | The height of the container pixels or % can be used
+__height<1>__ | `Number` |  | :x: | 
+__height<2>__ | `String` |  | :x: | 
+__hideScrollWhenMaximized__ | `Boolean` | `true` | :x: | If true window scrollbar will be hidden when the container is maximized
+__showExportExcel__ | `Boolean` | `true` | :x: | Show/hide export to excel button
+__showExportImg__ | `Boolean` | `true` | :x: | Show/hide export to img button
+__showExportPdf__ | `Boolean` | `true` | :x: | Show/hide export to pdf button
+
 <br></br>
 
 
@@ -518,15 +518,6 @@ Clicking on the button displayin the number of current selections, a modal will 
 It currently does not support alternate states. It always display the default state.
 Styles can be customized via css (or scss)
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__alwaysShowToolbar__ | `Boolean` | `false` | :x: | if true the current selection toolbar is always shown even if no selection history exists (0 current, selection 0 back-count and 0 forward count)
-__isResponsive__ | `Boolean` | `true` | :x: | when true it transform the toolbar into a fixed positioned floating button
-__showModalToggler__ | `Boolean` | `true` | :x: | it allows to show/hide the modal toggler
-__useCurrentSelectionModal__ | `Boolean` | `true` | :x: | it allows to turnoff the current selections box modal
 
 **Example:** 
 ```javascript
@@ -545,6 +536,15 @@ const MyRqtvCurrentSelections = props =>
 export default MyRqtvCurrentSelections
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__alwaysShowToolbar__ | `Boolean` | `false` | :x: | if true the current selection toolbar is always shown even if no selection history exists (0 current, selection 0 back-count and 0 forward count)
+__isResponsive__ | `Boolean` | `true` | :x: | when true it transform the toolbar into a fixed positioned floating button
+__showModalToggler__ | `Boolean` | `true` | :x: | it allows to show/hide the modal toggler
+__useCurrentSelectionModal__ | `Boolean` | `true` | :x: | it allows to turnoff the current selections box modal
+
 <br></br>
 
 
@@ -559,19 +559,6 @@ It dispays a search object to search a single string in multiple fields.
 
 If rendered inside the rqtv-navbar it will have fixed position and search results will colver the underlying page
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__alwaysExpanded__ | `Boolean` | `false` | :x: | If true the search input will always be displayed
-__expandFrom__ | `Enum('right', 'left')` | `'left'` | :x: | The direction from which the input will expand if not always expanded
-__onClose__ | `Function` |  | :x: | function fired after hiding the search input. (not called if alwaysExpanded is true)
-__onOpen__ | `Function` |  | :x: | function fired after showing the search input. (not called if alwaysExpanded is true)
-__searchFields__ | `Array` |  | :x: | the fields of the data model to search against
-__width__ | `Union<String\|Number>` | `'100%'` | :x: | width of the component. It accept px or %
-__width<1>__ | `String` |  | :x: | 
-__width<2>__ | `Number` |  | :x: | 
 
 **Example:** 
 ```javascript
@@ -590,6 +577,19 @@ const MyRqtvSearchObject =  props =>
 export default MyRqtvSearchObject
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__alwaysExpanded__ | `Boolean` | `false` | :x: | If true the search input will always be displayed
+__expandFrom__ | `Enum('right', 'left')` | `'left'` | :x: | The direction from which the input will expand if not always expanded
+__onClose__ | `Function` |  | :x: | function fired after hiding the search input. (not called if alwaysExpanded is true)
+__onOpen__ | `Function` |  | :x: | function fired after showing the search input. (not called if alwaysExpanded is true)
+__searchFields__ | `Array` |  | :x: | the fields of the data model to search against
+__width__ | `Union<String\|Number>` | `'100%'` | :x: | width of the component. It accept px or %
+__width<1>__ | `String` |  | :x: | 
+__width<2>__ | `Number` |  | :x: | 
+
 <br></br>
 
 
@@ -604,23 +604,6 @@ It is a component that renders the top navbar of the reaqtive app and add spacin
 It includes the [RqtvCurrentSelections](#rqtvcurrentselections) component and the [RqtvSearchObject](#rqtvsearchobject) component.
 It is based on bootstrap navbar, its styles can be customized using navbarClassName prop which will be passed to the navbar itself or via sass/css
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__brandImgStyle__ | `Object` |  | :x: | 
-__brandImgUrl__ | `String` |  | :x: | 
-__brandUrl__ | `String` |  | :x: | 
-__fixedTop__ | `Boolean` | `true` | :x: | if true the navbar would be fix positioned at the top of the page
-__navbarClassName__ | `String` | `''` | :x: | css classes that will be passed to the navbar div
-__onToggleMenu__ | `Function` |  | :x: | function fired when clicking on the HamburgerMenu button
-__searchResultsHeight__ | `Union<String\|Number>` | `500` | :x: | 
-__searchResultsHeight<1>__ | `String` |  | :x: | 
-__searchResultsHeight<2>__ | `Number` |  | :x: | 
-__showCurrentSelections__ | `Boolean` | `true` | :x: | show/hide the current selections toolbar
-__showSearch__ | `Boolean` | `true` | :x: | show/hide the global search-object
-__showSideMenuToggle__ | `Boolean` | `true` | :x: | show/hide hamburger menu
 
 **Example:** 
 ```javascript
@@ -648,6 +631,23 @@ const MyRqtvNavbar = props => {
 export default MyRqtvNavbar
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__brandImgStyle__ | `Object` |  | :x: | 
+__brandImgUrl__ | `String` |  | :x: | 
+__brandUrl__ | `String` |  | :x: | 
+__fixedTop__ | `Boolean` | `true` | :x: | if true the navbar would be fix positioned at the top of the page
+__navbarClassName__ | `String` | `''` | :x: | css classes that will be passed to the navbar div
+__onToggleMenu__ | `Function` |  | :x: | function fired when clicking on the HamburgerMenu button
+__searchResultsHeight__ | `Union<String\|Number>` | `500` | :x: | 
+__searchResultsHeight<1>__ | `String` |  | :x: | 
+__searchResultsHeight<2>__ | `Number` |  | :x: | 
+__showCurrentSelections__ | `Boolean` | `true` | :x: | show/hide the current selections toolbar
+__showSearch__ | `Boolean` | `true` | :x: | show/hide the global search-object
+__showSideMenuToggle__ | `Boolean` | `true` | :x: | show/hide hamburger menu
+
 <br></br>
 
 
@@ -662,21 +662,6 @@ It returns toggleable fixed-positioned side menu displayed on the left of the pa
 Default tabs are the list of pages of the app and a multibox with filters.
 The open/close state has to be managed in parent component
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__additionalTabs__ | `Array[]<Shape>` |  | :x: | additional tabs to display after pages and filters
-__additionalTabs[].icon__ | `ReactElement` |  | :x: | 
-__additionalTabs[].label__ | `String` |  | :x: | 
-__additionalTabs[].tab__ | `ReactElement` |  | :x: | 
-__alwaysShowBackdrop__ | `Boolean` | `false` | :x: | if tru backdrop is always shown when RqtvSideMenu is open
-__isOpen__ | `Boolean` |  | :white_check_mark: | open/close the menu
-__onClose__ | `Function` |  | :white_check_mark: | function to set isOpen to false
-__useFieldList__ | `Boolean` | `false` | :x: | show hide the multibox
-__usePageList__ | `Boolean` | `false` | :x: | show/hide the page list tab
-__useTabs__ | `Boolean` | `false` | :x: | if true it uses the the tabs to display different views in the side menu, if false it just shows its children
 
 **Example:** 
 ```javascript
@@ -717,6 +702,21 @@ const MyRqtvSideMenu = props => {
 export default MyRqtvSideMenu
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__additionalTabs__ | `Array[]<Shape>` |  | :x: | additional tabs to display after pages and filters
+__additionalTabs[].icon__ | `ReactElement` |  | :x: | 
+__additionalTabs[].label__ | `String` |  | :x: | 
+__additionalTabs[].tab__ | `ReactElement` |  | :x: | 
+__alwaysShowBackdrop__ | `Boolean` | `false` | :x: | if tru backdrop is always shown when RqtvSideMenu is open
+__isOpen__ | `Boolean` |  | :white_check_mark: | open/close the menu
+__onClose__ | `Function` |  | :white_check_mark: | function to set isOpen to false
+__useFieldList__ | `Boolean` | `false` | :x: | show hide the multibox
+__usePageList__ | `Boolean` | `false` | :x: | show/hide the page list tab
+__useTabs__ | `Boolean` | `false` | :x: | if true it uses the the tabs to display different views in the side menu, if false it just shows its children
+
 <br></br>
 
 
@@ -732,6 +732,24 @@ It provides routing using react router and a context that allows you to store
 app info to be available everywhere inside your app.
 
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvApp} from '@reaqtive/components'
+import {HomePage, FirstPage} from './rqtv-page'
+
+const MyRqtvApp = (props) => {
+  return(
+    <RqtvApp title="Example App">
+        <FirstPage path="/first-page"/>
+        <HomePage path="/" linkName="HOME"/>
+    </RqtvApp>
+  )
+}
+
+export default MyRqtvApp
+
+```
 **Props**: 
 
   prop | type | default | required | description
@@ -754,24 +772,6 @@ __title__ | `String` |  | :x: | the title of the app displayed in the navbar
 __triggers__ | `Array[]<triggerType>` | `[]` | :x: | triggers to fire when opening the app (do not abuse triggers)
 __useRouter__ | `Boolean` | `true` | :x: | if true the applicatin will be wrapped in react router and in a switch
 
-**Example:** 
-```javascript
-import React from 'react'
-import {RqtvApp} from '@reaqtive/components'
-import {HomePage, FirstPage} from './rqtv-page'
-
-const MyRqtvApp = (props) => {
-  return(
-    <RqtvApp title="Example App">
-        <FirstPage path="/first-page"/>
-        <HomePage path="/" linkName="HOME"/>
-    </RqtvApp>
-  )
-}
-
-export default MyRqtvApp
-
-```
 <br></br>
 
 
@@ -789,18 +789,6 @@ qConditionExpr --> providing the qCondition result
 RqtvPage also accept triggers which are fired when the page mounts.
 Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change.
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__exact__ | `Boolean` | `false` | :x: | shows the route only if the path match exactly with the addressbar. See the React Router docs for details
-__fallbackPage__ | `String` |  | :x: | the page the user is redicrected to when the qConditionExpr returns false (0)
-__linkName__ | `String` |  | :x: | the name of the page displayed in the side-menu of the app. If not set it will be equal to the path, replacing '-' with  ' '
-__path__ | `String` |  | :white_check_mark: | the path to reach the page. See React Router for details
-__qConditionExpr__ | `String` | `""` | :x: | a qlik espression that returns a value, used in combination with the fallback page prop, it redirects when false
-__qTitleExpr__ | `String` | `"'My Reaqtive Page'"` | :x: | the expression that can be used to make the title dynamic as in Qlik Sense sheets
-__triggers__ | `Array` | `[]` | :x: | triggers fired when the page is mounted see @reaqtive/q docs for details
 
 **Example:** 
 ```javascript
@@ -823,6 +811,18 @@ const FirstPage = props =>
 export {HomePage, FirstPage}
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__exact__ | `Boolean` | `false` | :x: | shows the route only if the path match exactly with the addressbar. See the React Router docs for details
+__fallbackPage__ | `String` |  | :x: | the page the user is redicrected to when the qConditionExpr returns false (0)
+__linkName__ | `String` |  | :x: | the name of the page displayed in the side-menu of the app. If not set it will be equal to the path, replacing '-' with  ' '
+__path__ | `String` |  | :white_check_mark: | the path to reach the page. See React Router for details
+__qConditionExpr__ | `String` | `""` | :x: | a qlik espression that returns a value, used in combination with the fallback page prop, it redirects when false
+__qTitleExpr__ | `String` | `"'My Reaqtive Page'"` | :x: | the expression that can be used to make the title dynamic as in Qlik Sense sheets
+__triggers__ | `Array` | `[]` | :x: | triggers fired when the page is mounted see @reaqtive/q docs for details
+
 <br></br>
 
 
@@ -837,17 +837,6 @@ It is a component that allows you to use Reaqtive main components without having
 Of course does not allow the same flexibility as recreating a template manually.
 It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader
 
-
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__containerClassName__ | `String` |  | :x: | the css classes of the container wrapping the page
-__containerStyle__ | `Object` |  | :x: | it allows to set the styles of the div conatining the page (the components you will develop)
-__showSearch__ | `Boolean` | `true` | :x: | show/hide the search object in the navbar
-__useContainerFluid__ | `Boolean` | `true` | :x: | it lets you choose between a bootstrap container or container-fluid to wrap the page
-__usePageHeader__ | `Boolean` | `true` | :x: | show/hide the page header that would contain only the title of the page and can't be customized
-__useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 
 **Example:** 
 ```javascript
@@ -881,6 +870,17 @@ const MyRqtvStandardTemplate = props => {
 export default MyRqtvStandardTemplate
 
 ```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__containerClassName__ | `String` |  | :x: | the css classes of the container wrapping the page
+__containerStyle__ | `Object` |  | :x: | it allows to set the styles of the div conatining the page (the components you will develop)
+__showSearch__ | `Boolean` | `true` | :x: | show/hide the search object in the navbar
+__useContainerFluid__ | `Boolean` | `true` | :x: | it lets you choose between a bootstrap container or container-fluid to wrap the page
+__usePageHeader__ | `Boolean` | `true` | :x: | show/hide the page header that would contain only the title of the page and can't be customized
+__useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
+
 <br></br>
 
 

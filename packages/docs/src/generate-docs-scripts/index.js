@@ -128,7 +128,7 @@ const generateComponentMarkdown = (componentMetadata) => {
     /* Array of component ASTs that this component composes*/
     []);
     const propsMarkdown = componentMetadata.props?`**Props**: ${os.EOL}`+propsTableMarkdown:''
-    const markdownString = headerMarkdown+os.EOL+propsMarkdown+os.EOL+snippetMarkdown+emptyLine
+    const markdownString = headerMarkdown+os.EOL+snippetMarkdown+os.EOL+propsMarkdown+emptyLine
     return markdownString
 }
 
