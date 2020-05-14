@@ -30,7 +30,7 @@ import Reaqtive  from '@reaqtive/q'
 import {RqtvDropdownFilter, QViz, RqtvVizContainer} from '@reaqtive/components'
 
 const qConfig = {                                 //For QS Desktop
-    host: '40.113.14.238',                        //localhost
+    host: 'YOUR HOST ADDRESS',                        //localhost
     secure: true,                                 //false
     port: 443,                                    //4848
     prefix: '',                                   //''

@@ -176,8 +176,12 @@ const addPackageIntro = (package, mergedSectionsMarkdown) => {
 }
 
 const addFile = (text, filePath, replaceString) => {
-  const fileContent = fs.readFileSync(filePath)
-  const textWithFile = text.replace(replaceString,os.EOL+'\`\`\`'+`javascript${os.EOL}${fileContent}${os.EOL}`+'\`\`\`'+os.EOL)
+  const fileContent = fs.readFileSync(filePath, 'utf8')
+  const regExp = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g;
+  //const match = snippet.replace(regExp,'YOUR HOST ADDRESS');
+  const cleansedFileContent = fileContent.replace(regExp,'YOUR HOST ADDRESS');
+
+  const textWithFile = text.replace(replaceString,os.EOL+'\`\`\`'+`javascript${os.EOL}${cleansedFileContent}${os.EOL}`+'\`\`\`'+os.EOL)
   return textWithFile
 }
 
