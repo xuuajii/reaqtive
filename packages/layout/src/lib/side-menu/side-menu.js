@@ -47,18 +47,20 @@ const SideMenuLayout = props => {
           </animated.div>)
         })
       }
-      <Backdrop show={sideMenuContext.isOpen&&sideMenuContext.config.staticMain} zIndex={99} onClick={sideMenuContext.closeSideMenu}/>
+      <Backdrop show={sideMenuContext.isOpen&&(sideMenuContext.config.staticMain||props.alwaysShowBackdrop)} zIndex={99} onClick={sideMenuContext.closeSideMenu}/>
     </>)
 }
 
 SideMenu.propTypes = {
   alwaysStaticMain:PropTypes.bool,
+  alwaysShowBackdrop:PropTypes.bool,
   breakPoints:PropTypes.object,
-  defaultRatio:PropTypes.number
+  defaultRatio:PropTypes.number,
 }
 
 SideMenu.defaultProps = {
   alwaysStaticMain:false,
+  alwaysShowBackdrop:false
 }
 
 export default SideMenu

@@ -20,27 +20,32 @@ import PageList from './page-list'
  *
  */
 const RqtvSideMenu = props =>{
-  const { sideMenuFieldsMatch } = props
+  const { sideMenuFieldsMatch, useFieldList, usePageList, useTabs, alwaysShowBackdrop } = props
   const rqtvApp = useContext(RqtvAppContext)
 
-  const fieldList = sideMenuFieldsMatch?rqtvApp.filterFieldList(rqtvApp.enhancedFieldList, sideMenuFieldsMatch):rqtvApp.sideMenuFieldList
+  const fieldList = sideMenuFieldsMatch?rqtvApp&&rqtvApp.filterFieldList(rqtvApp.enhancedFieldList, sideMenuFieldsMatch):rqtvApp&&rqtvApp.sideMenuFieldList
 
   const pages = rqtvApp&&rqtvApp.pages
 
+  const showFieldList = fieldList&&useFieldList
+  const showPageList = usePageList&&pages
   return(
-    <SideMenu className={`rqtv-side-menu`} isOpen={props.isOpen} onClose={props.onClose}>
-      <Tabs animatedTabs={true} style={{height:'100%'}} >
-        <TabList useIcons={true}>
-          {props.usePageList&&<Tab label="pages" icon={<LuiIcon iconType="sheet"/>}/>}
-          {props.useFieldList&&<Tab label="fields" icon={<LuiIcon iconType="field"/>}/>}
-          {props.additionalTabs&&props.additionalTabs.map(additionalTab=><Tab label={additionalTab.label} icon={additionalTab.icon}/>)}
-          </TabList>
-        <TabPanels >
-          {props.usePageList&&<TabPanel><PageList pages={pages}/></TabPanel>}
-          {props.useFieldList&&fieldList?<FieldList fieldList={fieldList.map(field=>{return{qFieldExpr:field.qName, label:field.qName, hasSelections:field.selectedCount>0}})}/>:<></>}
-          {props.additionalTabs&&props.additionalTabs.map(additionalTab=><TabPanel>{additionalTab.tab}</TabPanel>)}
-        </TabPanels>
-      </Tabs>
+    <SideMenu className={`rqtv-side-menu`} isOpen={props.isOpen} onClose={props.onClose} alwaysShowBackdrop={alwaysShowBackdrop}>
+    {useTabs
+      ?<Tabs animatedTabs={true} style={{height:'100%'}} >
+          <TabList useIcons={true}>
+            {showPageList&&<Tab label="pages" icon={<LuiIcon iconType="sheet"/>}/>}
+            {showFieldList&&<Tab label="fields" icon={<LuiIcon iconType="field"/>}/>}
+            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><Tab label={additionalTab.label} icon={additionalTab.icon}/>)}
+            </TabList>
+          <TabPanels >
+            {showPageList&&<TabPanel><PageList pages={pages}/></TabPanel>}
+            {showFieldList&&fieldList?<FieldList fieldList={fieldList.map(field=>{return{qFieldExpr:field.qName, label:field.qName, hasSelections:field.selectedCount>0}})}/>:<></>}
+            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><TabPanel>{additionalTab.tab}</TabPanel>)}
+          </TabPanels>
+        </Tabs>
+       :props.children
+    }
     </SideMenu>
   )
 }
@@ -75,16 +80,31 @@ RqtvSideMenu.propTypes = {
    * show hide the multibox
    */
   useFieldList:PropTypes.bool,
+  /**
+   * if true it uses the the tabs to display different views in the side menu, if false it just shows its children
+   */
+  useTabs:PropTypes.bool,
+  /**
+   *
+   * if tru backdrop is always shown when RqtvSideMenu is open
+   */
+  alwaysShowBackdrop:PropTypes.bool,
+  /**
+   *
+   * additional tabs to display after pages and filters
+   */
   additionalTabs:PropTypes.arrayOf(PropTypes.shape({
-    label:PropTypes.strig,
+    label:PropTypes.string,
     icon:PropTypes.element,
     tab:PropTypes.element
-  }))
+  })),
 }
 
 RqtvSideMenu.defaultProps = {
   usePageList:false,
-  useFieldList:true,
+  useFieldList:false,
+  useTabs:false,
+  alwaysShowBackdrop:false
 }
 
 

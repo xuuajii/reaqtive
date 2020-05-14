@@ -67,6 +67,7 @@ const RqtvStandardTemplate = props => {
     onClose: () => setShowSideMenu(false),
     useFieldList: true,
     usePageList: true,
+    useTabs: true,
     sideMenuFieldsMatch: props.sideMenuFieldsMatch,
     additionalTabs: props.sideMenuAdditionalTabs,
     __source: {
@@ -78,7 +79,7 @@ const RqtvStandardTemplate = props => {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -86,20 +87,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 55
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 59
     },
     __self: void 0
   }), props.usePageHeader && _react.default.createElement(_index.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 60
     },
     __self: void 0
   }), props.children))));

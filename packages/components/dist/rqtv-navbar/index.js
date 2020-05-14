@@ -170,7 +170,7 @@ RqtvNavbar.propTypes = {
   brandUrl: _propTypes.default.string,
   brandImgUrl: _propTypes.default.string,
   brandImgStyle: _propTypes.default.object,
-  searchResultsHeight: _propTypes.default.oneOf(_propTypes.default.string, _propTypes.default.number)
+  searchResultsHeight: _propTypes.default.oneOf([_propTypes.default.string, _propTypes.default.number])
 };
 RqtvNavbar.defaultProps = {
   fixedTop: true,

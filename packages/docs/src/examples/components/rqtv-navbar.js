@@ -8,7 +8,7 @@ const MyRqtvNavbar = props => {
       <RqtvNavbar
         showSideMenuToggle={false}
         title="RqtvNavbar"
-        fixedTop={true}
+        fixedTop={false}
       />
       <div className="container py-5">
         <p>Below your content</p>

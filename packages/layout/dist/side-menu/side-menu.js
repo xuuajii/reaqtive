@@ -94,7 +94,7 @@ const SideMenuLayout = props => {
       __self: void 0
     }, sidemenuChildren));
   }), _react.default.createElement(_backdrop.default, {
-    show: sideMenuContext.isOpen && sideMenuContext.config.staticMain,
+    show: sideMenuContext.isOpen && (sideMenuContext.config.staticMain || props.alwaysShowBackdrop),
     zIndex: 99,
     onClick: sideMenuContext.closeSideMenu,
     __source: {
@@ -107,11 +107,13 @@ const SideMenuLayout = props => {
 
 SideMenu.propTypes = {
   alwaysStaticMain: _propTypes.default.bool,
+  alwaysShowBackdrop: _propTypes.default.bool,
   breakPoints: _propTypes.default.object,
   defaultRatio: _propTypes.default.number
 };
 SideMenu.defaultProps = {
-  alwaysStaticMain: false
+  alwaysStaticMain: false,
+  alwaysShowBackdrop: false
 };
 var _default = SideMenu;
 exports.default = _default;

@@ -47,6 +47,7 @@ const RqtvStandardTemplate = props => {
         onClose={()=>setShowSideMenu(false)}
         useFieldList={true}
         usePageList={true}
+        useTabs={true}
         sideMenuFieldsMatch = {props.sideMenuFieldsMatch}
         additionalTabs={props.sideMenuAdditionalTabs}
       />
