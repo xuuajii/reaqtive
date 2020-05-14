@@ -34,7 +34,7 @@ const SystemConsumer = props => _react.default.createElement(_index.SystemProvid
 const SideMenuContextProvider = props => {
   const system = (0, _react.useContext)(_index.System);
 
-  const _useState = (0, _react.useState)(false),
+  const _useState = (0, _react.useState)(props.isOpen),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         isOpen = _useState2[0],
         setIsOpen = _useState2[1];

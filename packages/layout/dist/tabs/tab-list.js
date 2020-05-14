@@ -29,6 +29,8 @@ const TabList = props => {
 
   const children = _react.default.Children.toArray(props.children);
 
+  const tabsWidth = props.tabListEl.current && props.tabListEl.current.offsetWidth;
+
   const updateIndicator = () => {
     if (activeTabEl.current) {
       setIndicatorPlacement({
@@ -46,7 +48,7 @@ const TabList = props => {
 
   (0, _react.useEffect)(() => {
     updateIndicator();
-  }, [props.activeTab, system.windowWidth]);
+  }, [props.activeTab, system.windowWidth, tabsWidth]);
   return _react.default.createElement("nav", {
     className: "nav nav-tabs tab-list",
     ref: props.tabListEl,

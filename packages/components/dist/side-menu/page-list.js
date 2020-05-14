@@ -50,7 +50,7 @@ const PageLink = props => {
 
   const exactActiveMatch = page.exactActiveMatch !== undefined && page.exactActiveMatch !== null ? page.exactActiveMatch : true;
   return _react.default.createElement(_reactRouterDom.NavLink, {
-    to: page.path,
+    to: page.path || '/',
     activeClassName: "active",
     exact: page.path === '/' ? true : exactActiveMatch,
     __source: {

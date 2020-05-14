@@ -17,6 +17,8 @@ exports.RqtvSideMenu = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _uuid = require("uuid");
+
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _layout = require("@reaqtive/layout");
@@ -55,7 +57,7 @@ const RqtvSideMenu = props => {
     alwaysShowBackdrop: alwaysShowBackdrop,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 34
     },
     __self: void 0
   }, useTabs ? _react.default.createElement(_layout.Tabs, {
@@ -65,35 +67,20 @@ const RqtvSideMenu = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: void 0
   }, _react.default.createElement(_layout.TabList, {
     useIcons: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 37
     },
     __self: void 0
   }, showPageList && _react.default.createElement(_layout.Tab, {
     label: "pages",
     icon: _react.default.createElement(_layout.LuiIcon, {
       iconType: "sheet",
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 37
-      },
-      __self: void 0
-    }),
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 37
-    },
-    __self: void 0
-  }), showFieldList && _react.default.createElement(_layout.Tab, {
-    label: "fields",
-    icon: _react.default.createElement(_layout.LuiIcon, {
-      iconType: "field",
       __source: {
         fileName: _jsxFileName,
         lineNumber: 38
@@ -105,31 +92,47 @@ const RqtvSideMenu = props => {
       lineNumber: 38
     },
     __self: void 0
-  }), props.additionalTabs && props.additionalTabs.map(additionalTab => _react.default.createElement(_layout.Tab, {
-    label: additionalTab.label,
-    icon: additionalTab.icon,
+  }), showFieldList && _react.default.createElement(_layout.Tab, {
+    label: "fields",
+    icon: _react.default.createElement(_layout.LuiIcon, {
+      iconType: "field",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 39
+      },
+      __self: void 0
+    }),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 39
     },
     __self: void 0
+  }), props.additionalTabs && props.additionalTabs.map(additionalTab => _react.default.createElement(_layout.Tab, {
+    key: (0, _uuid.v4)(),
+    label: additionalTab.label,
+    icon: additionalTab.icon,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 40
+    },
+    __self: void 0
   }))), _react.default.createElement(_layout.TabPanels, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 42
     },
     __self: void 0
   }, showPageList && _react.default.createElement(TabPanel, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 43
     },
     __self: void 0
   }, _react.default.createElement(_pageList.default, {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 43
     },
     __self: void 0
   })), showFieldList && fieldList ? _react.default.createElement(FieldList, {
@@ -142,13 +145,14 @@ const RqtvSideMenu = props => {
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 44
     },
     __self: void 0
   }) : _react.default.createElement(_react.default.Fragment, null), props.additionalTabs && props.additionalTabs.map(additionalTab => _react.default.createElement(TabPanel, {
+    key: (0, _uuid.v4)(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 45
     },
     __self: void 0
   }, additionalTab.tab)))) : props.children);
@@ -168,7 +172,7 @@ const FieldList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 61
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvMultibox, {
@@ -176,7 +180,7 @@ const FieldList = props => {
     fieldHeight: 400,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 62
     },
     __self: void 0
   }));

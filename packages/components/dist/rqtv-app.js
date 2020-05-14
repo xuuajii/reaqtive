@@ -46,36 +46,38 @@ const RqtvApp = props => {
   const isRqtvPage = child => child; //.type&&child.type.name==='RqtvPage'
 
 
-  const _useState = (0, _react.useState)(children),
+  const _useState = (0, _react.useState)(props.pages),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         pages = _useState2[0],
         setPages = _useState2[1];
 
   (0, _react.useEffect)(() => {
-    const sortedPages = _react.default.Children.toArray(props.children).sort((a, b) => {
-      const pageA = a;
-      const pageB = b;
-      return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0;
-    }); //.filter(isRqtvPage)
+    if (props.children && !props.pages) {
+      const sortedPages = _react.default.Children.toArray(props.children).sort((a, b) => {
+        const pageA = a;
+        const pageB = b;
+        return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0;
+      }); //.filter(isRqtvPage)
 
 
-    const extractPageInfo = page => {
-      const _page$props = page.props,
-            linkName = _page$props.linkName,
-            path = _page$props.path,
-            icon = _page$props.icon,
-            exactActiveMatch = _page$props.exactActiveMatch;
-      const key = page.key;
-      return {
-        linkName: linkName ? linkName : path.replace(/-/g, ' ').replace(/\//, ''),
-        path,
-        key,
-        icon,
-        exactActiveMatch
+      const extractPageInfo = page => {
+        const _page$props = page.props,
+              linkName = _page$props.linkName,
+              path = _page$props.path,
+              icon = _page$props.icon,
+              exactActiveMatch = _page$props.exactActiveMatch;
+        const key = page.key;
+        return {
+          linkName: linkName ? linkName : path ? path.replace(/-/g, ' ').replace(/\//, '') : null,
+          path,
+          key,
+          icon,
+          exactActiveMatch
+        };
       };
-    };
 
-    setPages(sortedPages.map(page => extractPageInfo(page)));
+      setPages(sortedPages.map(page => extractPageInfo(page)));
+    }
   }, []);
   (0, _react.useEffect)(() => {
     document.title = props.title;
@@ -83,14 +85,14 @@ const RqtvApp = props => {
   return _react.default.createElement(_reactRouterDom.HashRouter, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 47
     },
     __self: void 0
   }, _react.default.createElement(_rqtvAppContext.RqtvAppContextProvider, Object.assign({}, rqtvAppProps, {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 48
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvAppRenderer, {
@@ -98,13 +100,13 @@ const RqtvApp = props => {
     triggersDone: triggerState.qLoading === false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 49
     },
     __self: void 0
-  }, props.children.length && props.useRouter === true ? _react.default.createElement(_reactRouterDom.Switch, {
+  }, props.children && props.children.length && props.useRouter === true ? _react.default.createElement(_reactRouterDom.Switch, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 51
     },
     __self: void 0
   }, props.children) : props.children)));
@@ -170,7 +172,17 @@ RqtvApp.propTypes = {
    * Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
    *
    */
-  hidePrefix: _propTypes.default.string
+  hidePrefix: _propTypes.default.string,
+
+  /*
+   * RqtvApp will look for pages info among its children props, but it is possible to manually provide
+   * an array of page objects to this component which will be used to create the pagelist in the side menu
+   */
+  pages: _propTypes.default.arrayOf(_propTypes.default.shape({
+    path: _propTypes.default.path,
+    linkName: _propTypes.default.string,
+    exactActiveMatch: _propTypes.default.bool
+  }))
 };
 RqtvApp.defaultProps = {
   triggers: [],

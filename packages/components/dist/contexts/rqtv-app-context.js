@@ -141,7 +141,13 @@ const RqtvAppContextConsumer = props => {
     setScrollPostioMemo(0);
     scrollTo(0);
     setIsMaximized(false);
-  }, [location.pathname]);
+  }, [location.pathname]); //const [appSideMenuOpen, setAppSideMenuOpen]=useState(false)
+
+  const _useState5 = (0, _react.useState)(false),
+        _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+        showSideMenu = _useState6[0],
+        setShowSideMenu = _useState6[1];
+
   return _react.default.createElement(RqtvAppContext.Provider, {
     value: {
       theme,
@@ -158,11 +164,13 @@ const RqtvAppContextConsumer = props => {
       filterFieldList,
       pages,
       setIsMaximized,
-      isMaximized
+      isMaximized,
+      showSideMenu,
+      setShowSideMenu
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 107
     },
     __self: void 0
   }, props.children);
@@ -172,7 +180,7 @@ const RqtvAppContextProvider = props => {
   return _react.default.createElement(RqtvAppContextConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131
+      lineNumber: 135
     },
     __self: void 0
   }), props.children);

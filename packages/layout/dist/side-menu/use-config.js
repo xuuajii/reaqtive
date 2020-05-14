@@ -26,7 +26,7 @@ const useConfig = (currentScreenType, options) => {
   const defaultRatio = breakPoints && breakPoints.default ? breakPoints.default : options.defaultRatio;
   const alwaysStaticMain = options.alwaysStaticMain;
 
-  const _useState = (0, _react.useState)(),
+  const _useState = (0, _react.useState)(breakPoints && breakPoints[currentScreenType] ? breakPoints[currentScreenType] : defaultRatio),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         ratio = _useState2[0],
         setRatio = _useState2[1];

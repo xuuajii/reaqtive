@@ -41,6 +41,17 @@ const SideMenu = props => {
   })));
 };
 
+const openedStyles = {
+  opacity: 1,
+  transform: "translateX(0%)",
+  overflow: 'hidden'
+};
+const closedStyles = {
+  opacity: 0.75,
+  transform: "translateX(-100%)",
+  overflow: 'hidden'
+};
+
 const SideMenuLayout = props => {
   const sidemenuEl = (0, _react.useRef)();
   const system = (0, _react.useContext)(_index2.System);
@@ -49,25 +60,16 @@ const SideMenuLayout = props => {
   const sideMenuStyle = {
     width: Math.trunc(system.windowWidth * config.ratio)
   };
+  const mountedOpen = (0, _react.useRef)(sideMenuContext.isOpen);
   const transitions = (0, _reactSpring.useTransition)(sideMenuContext.isOpen, null, {
-    from: {
-      opacity: 0.75,
-      transform: "translateX(-100%)",
-      overflow: 'hidden'
-    },
-    enter: {
-      opacity: 1,
-      transform: "translateX(0)",
-      overflow: 'hidden'
-    },
-    leave: {
-      opacity: 0.75,
-      transform: "translateX(-100%)",
-      overflow: 'hidden'
-    },
-    reset: true,
-    unique: true
+    from: closedStyles,
+    enter: openedStyles,
+    leave: closedStyles,
+    // reset:true,
+    unique: true,
+    initial: mountedOpen.current && openedStyles
   });
+  mountedOpen.current = false;
   const sidemenuChildren = sideMenuContext.isOpen ? _react.default.Children.toArray(props.children) : null;
   const sideMenuProps = props;
   return _react.default.createElement(_react.default.Fragment, null, transitions.map(({
@@ -81,7 +83,7 @@ const SideMenuLayout = props => {
       className: "side-menu ".concat(sideMenuProps.className ? sideMenuProps.className : ''),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 45
+        lineNumber: 48
       },
       __self: void 0
     }, _react.default.createElement("div", {
@@ -89,7 +91,7 @@ const SideMenuLayout = props => {
       ref: sidemenuEl,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 46
+        lineNumber: 49
       },
       __self: void 0
     }, sidemenuChildren));
@@ -99,7 +101,7 @@ const SideMenuLayout = props => {
     onClick: sideMenuContext.closeSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 53
     },
     __self: void 0
   }));
