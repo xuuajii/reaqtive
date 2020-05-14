@@ -6,16 +6,6 @@ import {QGlobalProvider, QCapabilityApiProvider, QDocProvider, QAppProvider, QCa
 import {SystemProvider} from '@reaqtive/layout'
 import PropTypes from 'prop-types';
 
-/**
- * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
- * Provided contexts are:
- *- [QGlobal](#qglobal) </br>
- *- [QDoc](#qdoc) </br>
- *- [QCapabilityApi](#qcapabilityapi) </br>
- *- [QApp](#qapp) </br>
- *
- */
-
 const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
   if(!appId){
     return (props) =>
@@ -54,6 +44,16 @@ const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
     </QGlobalProvider>
   }
 }
+
+/**
+ * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
+ * Provided contexts are:
+ *- [QGlobal](#qglobal) </br>
+ *- [QDoc](#qdoc) </br>
+ *- [QCapabilityApi](#qcapabilityapi) </br>
+ *- [QApp](#qapp) </br>
+ *
+ */
 
 const Reaqtive = props =>{
   const {qConfig, qCapabilityApiRequired, children, ...rqtvAppProps} = props
