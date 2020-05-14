@@ -3,7 +3,7 @@ import {QShareCapabilityApi} from '@reaqtive/q'
 import ReaqtiveExample from './examples/q/index'
 import FirstApp from './examples/first-app'
 import {MyComponentWithQGlobal, MyComponentWithQDoc, MyComponentWithQCapabilityApi, MyComponentWithQApp, MyQGenericObject, MyQVariable} from './examples/q/index'
-import {MyRqtvSideMenu, MyRqtvNavbar, MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from './examples/components/index'
+import {MyRqtvApp, MyRqtvSideMenu, MyRqtvNavbar, MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRqtvModalListbox, MyRqtvSearchField, MyRqtvMultibox, MyQVizExamples, MyRqtvContainerExample,MyRqtvCurrentSelections, MyRqtvSearchObject} from './examples/components/index'
 
 const Example = props =>
   <ReaqtiveExample>
@@ -41,7 +41,7 @@ const Example = props =>
       <MyRqtvSearchField/>
     </Wrapper>
     <MyRqtvNavbar/>
-    */}
+
     <Wrapper>
       <MyQVizExamples/>
     </Wrapper>
@@ -59,6 +59,9 @@ const Example = props =>
     </Wrapper>
     <Wrapper>
       <MyRqtvSideMenu/>
+    </Wrapper>*/}
+    <Wrapper>
+      <MyRqtvApp/>
     </Wrapper>
   </ReaqtiveExample>
 

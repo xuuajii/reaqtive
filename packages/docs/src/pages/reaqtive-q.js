@@ -24,6 +24,7 @@ const ReaqtiveQ = props => {
             path={mainPath+'/nestedpage'}
           >
           {/*triggers={[{type:'fieldSelection',params:{fieldName:'Customer',value:'Benedict', alwaysOneSelected:true}}]}*/}
+          <RqtvPageHeader/>
             <div>
               <button className="btn btn-primary" onClick={action}>succhia</button>
             </div>

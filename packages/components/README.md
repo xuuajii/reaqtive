@@ -615,7 +615,9 @@ __brandUrl__ | `String` |  | :x: |
 __fixedTop__ | `Boolean` | `true` | :x: | if true the navbar would be fix positioned at the top of the page
 __navbarClassName__ | `String` | `''` | :x: | css classes that will be passed to the navbar div
 __onToggleMenu__ | `Function` |  | :x: | function fired when clicking on the HamburgerMenu button
-__searchResultsHeight__ | `Enum(PropTypes.string)` | `500` | :x: | 
+__searchResultsHeight__ | `Union<String\|Number>` | `500` | :x: | 
+__searchResultsHeight<1>__ | `String` |  | :x: | 
+__searchResultsHeight<2>__ | `Number` |  | :x: | 
 __showCurrentSelections__ | `Boolean` | `true` | :x: | show/hide the current selections toolbar
 __showSearch__ | `Boolean` | `true` | :x: | show/hide the global search-object
 __showSideMenuToggle__ | `Boolean` | `true` | :x: | show/hide hamburger menu
@@ -632,7 +634,7 @@ const MyRqtvNavbar = props => {
       <RqtvNavbar
         showSideMenuToggle={false}
         title="RqtvNavbar"
-        fixedTop={true}
+        fixedTop={false}
       />
       <div className="container py-5">
         <p>Below your content</p>
@@ -665,16 +667,56 @@ The open/close state has to be managed in parent component
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
-__additionalTabs__ | `Array[]<Shape>` |  | :x: | 
+__additionalTabs__ | `Array[]<Shape>` |  | :x: | additional tabs to display after pages and filters
 __additionalTabs[].icon__ | `ReactElement` |  | :x: | 
-__additionalTabs[].label__ | `PropTypes.strig` |  | :x: | 
+__additionalTabs[].label__ | `String` |  | :x: | 
 __additionalTabs[].tab__ | `ReactElement` |  | :x: | 
+__alwaysShowBackdrop__ | `Boolean` | `false` | :x: | if tru backdrop is always shown when RqtvSideMenu is open
 __isOpen__ | `Boolean` |  | :white_check_mark: | open/close the menu
 __onClose__ | `Function` |  | :white_check_mark: | function to set isOpen to false
-__useFieldList__ | `Boolean` | `true` | :x: | show hide the multibox
+__useFieldList__ | `Boolean` | `false` | :x: | show hide the multibox
 __usePageList__ | `Boolean` | `false` | :x: | show/hide the page list tab
+__useTabs__ | `Boolean` | `false` | :x: | if true it uses the the tabs to display different views in the side menu, if false it just shows its children
 
+**Example:** 
+```javascript
+import React, {useState} from 'react'
+import {RqtvSideMenu, RqtvSideMenuMain} from '@reaqtive/components'
 
+const MyRqtvSideMenu = props => {
+  const [open, setOpen] = useState(false)
+
+  const toggleSideMenu = () => {
+    setOpen(!open)
+  }
+
+  const closeSideMenu = () => {
+    setOpen(false)
+  }
+
+  return(
+    <div style={{position:'relative'}}>
+      <RqtvSideMenu
+        isOpen={open}
+        onClose={closeSideMenu}
+      >
+        <div className="text-light text-center">Here you can display your content</div>
+      </RqtvSideMenu>
+      <RqtvSideMenuMain isOpen={open}>
+        <div className="container-fluid border border-primary">
+          <div className="my-2">
+            <button className="btn btn-primary" onClick={toggleSideMenu}>Toggle Menu</button>
+          </div>
+          <div className="py-2">Your content Here</div>
+        </div>
+      </RqtvSideMenuMain>
+    </div>
+  )
+}
+
+export default MyRqtvSideMenu
+
+```
 <br></br>
 
 
@@ -698,6 +740,10 @@ __brand__ | `String` |  | :x: | the brand of the app displayed in the navbar. An
 __brandStyle__ | `Object` |  | :x: | styles to be applied to the image container
 __brandUrl__ | `String` |  | :x: | the url to redirect to when clicking on the brand
 __hidePrefix__ | `String` | `'%'` | :x: | Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
+__pages__ | `Array[]<Shape>` |  | :x: | 
+__pages[].exactActiveMatch__ | `Boolean` |  | :x: | 
+__pages[].linkName__ | `String` |  | :x: | 
+__pages[].path__ | `PropTypes.path` |  | :x: | 
 __searchFieldMatch__ | `Shape` | `{method:'include', mask:['**']}` | :x: | fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
 __searchFieldMatch.mask__ | `Array[]<String>` |  | :x: | 
 __searchFieldMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
@@ -708,7 +754,24 @@ __title__ | `String` |  | :x: | the title of the app displayed in the navbar
 __triggers__ | `Array[]<triggerType>` | `[]` | :x: | triggers to fire when opening the app (do not abuse triggers)
 __useRouter__ | `Boolean` | `true` | :x: | if true the applicatin will be wrapped in react router and in a switch
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvApp} from '@reaqtive/components'
+import {HomePage, FirstPage} from './rqtv-page'
 
+const MyRqtvApp = (props) => {
+  return(
+    <RqtvApp title="Example App">
+        <FirstPage path="/first-page"/>
+        <HomePage path="/" linkName="HOME"/>
+    </RqtvApp>
+  )
+}
+
+export default MyRqtvApp
+
+```
 <br></br>
 
 
@@ -739,7 +802,27 @@ __qConditionExpr__ | `String` | `""` | :x: | a qlik espression that returns a va
 __qTitleExpr__ | `String` | `"'My Reaqtive Page'"` | :x: | the expression that can be used to make the title dynamic as in Qlik Sense sheets
 __triggers__ | `Array` | `[]` | :x: | triggers fired when the page is mounted see @reaqtive/q docs for details
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import MyRqtvStandardTemplate from './rqtv-standard-template'
 
+const HomePage = props =>
+<RqtvPage {...props} exact={true} qTitleExpr="'Homepage'">
+  <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
+    <div>Home Page</div>
+  </RqtvStandardTemplate>
+</RqtvPage>
+
+const FirstPage = props =>
+<RqtvPage {...props} qTitleExpr="'Revenue is: '&Sum([Sales Quantity]*[Sales Price])" exactActiveMatch={false}>
+  <MyRqtvStandardTemplate/>
+</RqtvPage>
+
+export {HomePage, FirstPage}
+
+```
 <br></br>
 
 
@@ -766,7 +849,38 @@ __useContainerFluid__ | `Boolean` | `true` | :x: | it lets you choose between a 
 __usePageHeader__ | `Boolean` | `true` | :x: | show/hide the page header that would contain only the title of the page and can't be customized
 __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 
+**Example:** 
+```javascript
+import React from 'react'
+import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import {useRouteMatch, NavLink} from 'react-router-dom'
 
+
+const MyRqtvStandardTemplate = props => {
+  const { path, url } = useRouteMatch();
+
+  return(
+    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+      <RqtvPage
+        path={`${path}/with-condition`}
+        qConditionExpr={'=count(distinct Customer)=1'}
+        fallbackPage={`${path}`}
+      >
+        <div>this is a nested page with a condition</div>
+      </RqtvPage>
+      <RqtvPage path={`${path}`} exact={true}>
+        <div>this is a nested page with no condition</div>
+        <div>
+          <NavLink to={`${url}/with-condition/?selections=Customer:Benedict&selections=Account:61099'`}><button>go to page with condition</button></NavLink>
+        </div>
+      </RqtvPage>
+    </RqtvStandardTemplate>
+  )
+}
+
+export default MyRqtvStandardTemplate
+
+```
 <br></br>
 
 

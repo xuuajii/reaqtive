@@ -53,7 +53,8 @@ const MyReaqtiveComponent = props => {
   };
   return (
     <Reaqtive qConfig={qConfig}>
-      <div className="container">
+      {props.children}
+      {/*<div className="container">
         <Wrapper>
          <MyRqtvListbox/>
         </Wrapper>
@@ -63,8 +64,7 @@ const MyReaqtiveComponent = props => {
         <Wrapper>
           <div>...</div>
         </Wrapper>
-        {props.children}
-      </div>
+      </div>*/}
     </Reaqtive>
   )
 }
