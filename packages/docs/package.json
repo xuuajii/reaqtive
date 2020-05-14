@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "update-docs":"node \"./src/generate-docs-scripts/index.js\""
+    "update-docs": "node \"./src/generate-docs-scripts/index.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -59,7 +59,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "react-spring": "^8.0.27",
-    "react-syntax-highlighter": "^12.2.1"
+    "react-syntax-highlighter": "^12.2.1",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "jsdoc": "^3.6.3",
