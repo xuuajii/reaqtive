@@ -17,6 +17,8 @@ const SideMenu = props => {
   )
 }
 
+const openedStyles = { opacity:1, transform:`translateX(0%)`, overflow:'hidden' }
+const closedStyles = { opacity:0.75, transform:`translateX(-100%)`, overflow:'hidden' }
 
 const SideMenuLayout = props => {
   const sidemenuEl=useRef()
@@ -24,17 +26,18 @@ const SideMenuLayout = props => {
   const sideMenuContext = useContext(SideMenuContext)
   const config = sideMenuContext.config
   const sideMenuStyle = {
-    width:Math.trunc(system.windowWidth*config.ratio)
+    width:Math.trunc(system.windowWidth*config.ratio),
   }
-
+  const mountedOpen = useRef(sideMenuContext.isOpen)
   const transitions = useTransition(sideMenuContext.isOpen, null, {
-    from: {  opacity:0.75, transform:`translateX(-100%)` , overflow:'hidden'},
-    enter: {  opacity:1, transform:`translateX(0)`, overflow:'hidden' },
-    leave: {  opacity:0.75, transform:`translateX(-100%)`, overflow:'hidden' },
-    reset:true,
-    unique:true
+    from: closedStyles,
+    enter: openedStyles,
+    leave: closedStyles,
+    // reset:true,
+    unique:true,
+    initial:mountedOpen.current&&openedStyles
   })
-
+  mountedOpen.current=false
   const sidemenuChildren = sideMenuContext.isOpen?React.Children.toArray(props.children):null
   const sideMenuProps = props
   return (

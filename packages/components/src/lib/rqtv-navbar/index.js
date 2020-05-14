@@ -100,7 +100,7 @@ RqtvNavbar.propTypes={
   brandUrl:PropTypes.string,
   brandImgUrl:PropTypes.string,
   brandImgStyle:PropTypes.object,
-  searchResultsHeight:PropTypes.oneOf([PropTypes.string,PropTypes.number])
+  searchResultsHeight:PropTypes.oneOfType([PropTypes.string,PropTypes.number])
 }
 
 RqtvNavbar.defaultProps={

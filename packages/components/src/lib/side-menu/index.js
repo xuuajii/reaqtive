@@ -3,6 +3,7 @@
 //
 
 import React, { useContext } from 'react'
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types'
 import { SideMenu, SideMenuMain} from '@reaqtive/layout'
 import {Tabs, TabList, Tab, TabPanels} from '@reaqtive/layout'
@@ -36,12 +37,12 @@ const RqtvSideMenu = props =>{
           <TabList useIcons={true}>
             {showPageList&&<Tab label="pages" icon={<LuiIcon iconType="sheet"/>}/>}
             {showFieldList&&<Tab label="fields" icon={<LuiIcon iconType="field"/>}/>}
-            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><Tab label={additionalTab.label} icon={additionalTab.icon}/>)}
+            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><Tab  key={uuidv4()} label={additionalTab.label} icon={additionalTab.icon}/>)}
             </TabList>
           <TabPanels >
             {showPageList&&<TabPanel><PageList pages={pages}/></TabPanel>}
             {showFieldList&&fieldList?<FieldList fieldList={fieldList.map(field=>{return{qFieldExpr:field.qName, label:field.qName, hasSelections:field.selectedCount>0}})}/>:<></>}
-            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><TabPanel>{additionalTab.tab}</TabPanel>)}
+            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><TabPanel key={uuidv4()}>{additionalTab.tab}</TabPanel>)}
           </TabPanels>
         </Tabs>
        :props.children

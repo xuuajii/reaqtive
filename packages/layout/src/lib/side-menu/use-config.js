@@ -11,7 +11,7 @@ const useConfig = (currentScreenType, options) => {
   const defaultRatio = breakPoints&&breakPoints.default?breakPoints.default:options.defaultRatio
   const alwaysStaticMain = options.alwaysStaticMain
 
-  const [ratio, setRatio] = useState()
+  const [ratio, setRatio] = useState(breakPoints&&breakPoints[currentScreenType]?breakPoints[currentScreenType]:defaultRatio)
   const [staticMain, setStaticMain] = useState()
 
   useEffect(()=>{

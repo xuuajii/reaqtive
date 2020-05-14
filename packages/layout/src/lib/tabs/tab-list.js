@@ -11,7 +11,7 @@ const TabList = props=> {
   const system = useContext(System)
   const activeTabEl = useRef();
   const children = React.Children.toArray(props.children)
-
+  const tabsWidth = props.tabListEl.current&&props.tabListEl.current.offsetWidth
   const updateIndicator = () =>{
     if(activeTabEl.current){
       setIndicatorPlacement({
@@ -25,7 +25,7 @@ const TabList = props=> {
   const [indicatorPlacement, setIndicatorPlacement] = useState()
   useEffect(()=>{
     updateIndicator()
-  }, [props.activeTab, system.windowWidth])
+  }, [props.activeTab, system.windowWidth, tabsWidth])
 
   return(
     <nav className="nav nav-tabs tab-list" ref={props.tabListEl}>

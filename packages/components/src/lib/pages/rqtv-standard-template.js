@@ -4,7 +4,7 @@
 
 import React, {useState, useContext} from 'react'
 import PropTypes from 'prop-types'
-import {RqtvPageContext} from '../contexts/rqtv-page-context'
+import {RqtvAppContext, RqtvPageContext} from '../contexts/index'
 import {
   RqtvNavbar,
   RqtvSideMenu,
@@ -23,14 +23,19 @@ import {
  */
 
 const RqtvStandardTemplate = props => {
-  const [showSideMenu, setShowSideMenu] = useState(false)
-  const toggleSideMenu = () => setShowSideMenu(!showSideMenu)
+  const rqtvApp = useContext(RqtvAppContext)
   const rqtvPage = useContext(RqtvPageContext)
-  const {triggerState, qCondition } = rqtvPage||{}
+  const [innerShowSideMenu, setInnerShowSideMenu] = useState()
+  const {showSideMenu, setShowSideMenu} = rqtvApp||{showSideMenu:innerShowSideMenu, setShowSideMenu:setInnerShowSideMenu}
+  const toggleSideMenu = () => setShowSideMenu(!showSideMenu)
 
-  const rendererProps = {
+  const {triggerState, qCondition } = rqtvPage||{}
+  const rendererProps = rqtvPage&&{
     loading:triggerState.qLoading,//||qCondition===null||qCondition===undefined,
     error:(!(rqtvPage&&rqtvPage.triggerState.qLoading)&&(rqtvPage&&rqtvPage.triggerState.qError)),
+  }||{
+    loading:false,
+    error:false
   }
   return(
     <>
@@ -52,12 +57,12 @@ const RqtvStandardTemplate = props => {
         additionalTabs={props.sideMenuAdditionalTabs}
       />
       <RqtvSideMenuMain isOpen={showSideMenu}>
-        <div
+      <div
           className={`${props.useContainerFluid?'container-fluid':'container'} ${props.containerClassName?props.containerClassName:''}`}
           style={{...props.containerStyle}}
         >
           <RqtvRenderer {...rendererProps} isFixed={true}>
-            {props.usePageHeader&&<RqtvPageHeader/>}
+            {props.usePageHeader&&rqtvPage&&<RqtvPageHeader/>}
             {props.children}
           </RqtvRenderer>
         </div>

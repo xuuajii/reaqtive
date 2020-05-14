@@ -15,7 +15,7 @@ const SystemConsumer = props =>
 
 const SideMenuContextProvider = props => {
   const system = useContext(System)
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(props.isOpen)
 
   const closeSideMenu= () => {
     setIsOpen(false)

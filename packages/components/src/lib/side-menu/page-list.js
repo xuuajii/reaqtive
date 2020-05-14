@@ -30,7 +30,7 @@ const PageLink = props => {
   const exactActiveMatch = page.exactActiveMatch!==undefined&&page.exactActiveMatch!==null?page.exactActiveMatch:true;
 
   return(
-    <NavLink to={page.path} activeClassName="active" exact={ page.path==='/'?true:exactActiveMatch}>
+    <NavLink to={page.path||'/'} activeClassName="active" exact={ page.path==='/'?true:exactActiveMatch}>
     <li className="list-group-item" onClick={handleClick}>
         { page.path==='/'
           ?<LuiIcon iconType="home" style={{marginRight:'0.5rem'}}/>

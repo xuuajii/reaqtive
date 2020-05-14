@@ -66,7 +66,7 @@ const RqtvPageConsumer = props => {
       )
 
     //}
-  }, [location.pathname, qConditionExpr, qTitleExpr, qObjectHandler])
+  }, [location.pathname, qObjectDef, qObjectHandler])
 
 
   const triggerState = useTriggers(triggers)

@@ -101,6 +101,8 @@ const RqtvAppContextConsumer = (props) => {
     setIsMaximized(false)
   }, [location.pathname])
 
+  //const [appSideMenuOpen, setAppSideMenuOpen]=useState(false)
+  const [showSideMenu, setShowSideMenu] = useState(false)
   return (
     <RqtvAppContext.Provider
       value={{
@@ -118,7 +120,9 @@ const RqtvAppContextConsumer = (props) => {
           filterFieldList,
           pages,
           setIsMaximized,
-          isMaximized
+          isMaximized,
+          showSideMenu,
+          setShowSideMenu
         }}
     >
       {props.children}

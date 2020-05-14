@@ -23,20 +23,22 @@ const RqtvApp = props =>{
   const triggerState = useTriggers(props.triggers)
 
   const isRqtvPage = (child) => child//.type&&child.type.name==='RqtvPage'
-  const [pages , setPages] = useState(children)
+  const [pages , setPages] = useState(props.pages)
   useEffect(()=>{
-    const sortedPages = React.Children.toArray(props.children)
-    .sort((a,b)=>{
-      const pageA = a
-      const pageB = b
-      return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0
-    })//.filter(isRqtvPage)
-    const extractPageInfo = page => {
-      const { linkName, path, icon, exactActiveMatch } = page.props;
-      const key = page.key
-      return { linkName:linkName?linkName:path.replace(/-/g, ' ').replace(/\//,'') , path, key, icon, exactActiveMatch}
+    if(props.children&&!props.pages){
+      const sortedPages = React.Children.toArray(props.children)
+      .sort((a,b)=>{
+        const pageA = a
+        const pageB = b
+        return pageA.props.path === '/' ? -1 : pageB.props.path === '/' ? 1 : 0
+      })//.filter(isRqtvPage)
+      const extractPageInfo = page => {
+        const { linkName, path, icon, exactActiveMatch } = page.props;
+        const key = page.key
+        return { linkName:linkName?linkName:path?path.replace(/-/g, ' ').replace(/\//,''):null , path, key, icon, exactActiveMatch}
+      }
+      setPages(sortedPages.map(page=>extractPageInfo(page)))
     }
-    setPages(sortedPages.map(page=>extractPageInfo(page)))
   },[])
   useEffect(()=>{
     document.title=props.title
@@ -45,7 +47,7 @@ const RqtvApp = props =>{
     <Router>
       <RqtvAppContextProvider {...rqtvAppProps} pages={pages}>
         <RqtvAppRenderer qCapabilityApiRequired={qCapabilityApiRequired} triggersDone={triggerState.qLoading===false}>
-          {  props.children.length && props.useRouter===true?
+          {  props.children&&props.children.length && props.useRouter===true?
             <Switch>
               {props.children}
             </Switch>
@@ -110,6 +112,15 @@ RqtvApp.propTypes={
    *
    */
   hidePrefix:PropTypes.string,
+  /*
+   * RqtvApp will look for pages info among its children props, but it is possible to manually provide
+   * an array of page objects to this component which will be used to create the pagelist in the side menu
+   */
+   pages:PropTypes.arrayOf(PropTypes.shape({
+     path:PropTypes.path,
+     linkName:PropTypes.string,
+     exactActiveMatch:PropTypes.bool
+   }))
 }
 
 RqtvApp.defaultProps={
