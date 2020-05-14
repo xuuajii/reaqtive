@@ -12,6 +12,7 @@ const MyReaqtiveComponent = props => {
       prefix: '',                                   //''
       appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
+  
   return (
     <Reaqtive qConfig={qConfig}>
       {props.children}

@@ -50,7 +50,12 @@ const addComponentsMetadata = (section, examplePath) => {
 
   const addSnippet = (component) => {
     const snippet = getSnippet(component.displayName, examplePath)
-    return {...component, componentName:component.displayName, snippet:snippet}
+    const regExp = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/g;
+    const match = snippet.replace(regExp,'YOUR HOST ADDRESS');
+
+    const cleansedSnippet = snippet.replace(regExp,'YOUR HOST ADDRESS');
+
+    return {...component, componentName:component.displayName, snippet:cleansedSnippet}
   }
 
   const componentsObjectWithSnippets = _.map(componentsObject, addSnippet)
@@ -180,7 +185,7 @@ const updatePackageDocs = async (package, root) => {
   console.log(`started ${package.name} docs`)
   const packagePath = path.join(__dirname, `${root}/${package.path}`);
   const packageSourcePath = path.join(__dirname, `${root}/${package.path}/${package.sourcePath}`);
-  console.log(packageSourcePath)
+  //console.log(packageSourcePath)
   const packageExamplesPath = path.join(__dirname, `${package.examplePath}`);
   const sectionsWithFiles = package.sections.map(section=>addFileListToSection(packageSourcePath, section))
   const sectionsWithComponents = sectionsWithFiles.map(section=>addSectionMetadata(section, packageExamplesPath))

@@ -33,12 +33,13 @@ import {MyRqtvNavbar, MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRq
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
   const qConfig = {                                 //For QS Desktop
-      host: '40.113.14.238',                        //localhost
+      host: 'YOUR HOST ADDRESS',                        //localhost
       secure: true,                                 //false
       port: 443,                                    //4848
       prefix: '',                                   //''
       appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
+  
   return (
     <Reaqtive qConfig={qConfig}>
       {props.children}
@@ -349,7 +350,33 @@ It wraps the Reaqtive component and provides the QCapabilityAPI context to the c
 This work around is needed to avoid to download QCapabilityAPI and AngularJS more than once.
 
 
+**Example:** 
+```javascript
+import React from 'react'
+import {QShareCapabilityApi, Reaqtive} from '@reaqtive/q'
 
+const qConfig = {                                 //For QS Desktop
+      host: 'YOUR HOST ADDRESS',                        //localhost
+      secure: true,                                 //false
+      port: 443,                                    //4848
+      prefix: '',                                   //''
+  };
+const app1 = '8aa3a035-0689-4aab-a920-d6722509ed51'
+const app2 = '58d7234b-b31c-4f24-b1f8-2c7453e557fa' 
+
+const MySharedCapabilityApis = props =>
+<QShareCapabilityApi qConfig={qConfig}>
+  <Reaqtive qConfig={...qConfig, appId:app1}>
+    ... your components here
+  </Reaqtive>
+  <Reaqtive qConfig={...qConfig, appId:app2}>
+    ... your components here
+  </Reaqtive>
+</QShareCapabilityApi>
+
+export default MySharedCapabilityApis
+
+```
 **Props**: 
 
   prop | type | default | required | description
