@@ -16,8 +16,7 @@ If you already tried Reaqtive and you are having troubles with Reaqtive check th
 
 ## Thanks to
 
-![Eng Logo](/logo-eng.png|width=150)
-<img src="/logo-eng.png" width="150">
+<img src="/logo-eng.png" width="500">
 
 Developments are sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
 
