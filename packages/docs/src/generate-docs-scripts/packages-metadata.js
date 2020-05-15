@@ -11,7 +11,9 @@ Reaqtive aims to bring together the responsiveness and usability on mobile devic
 Reaqtive provides a library of ready to use [components](https://github.com/taan11/reaqtive/tree/master/packages/components) and a set of [utilities](https://github.com/taan11/reaqtive/tree/master/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
 
 ## Thanks to
+
 ![Eng Logo](/logo-eng.png)
+
 Developments are sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
 
 
@@ -169,6 +171,7 @@ npm install @reaqtive/q
       intro:`# **@reaqtive/components**
 
 This package helps creating guided analytics using Qlik APIs. It provides a set of reusable react components to speed up mash up developments.
+You can choose to use stand alone components and build your own navigation and routing functionalities or you can use [RqtvApp](#rqtvapp) and [RqtvPage](#rqtvpage).
 
 `,
       usage:`
@@ -201,14 +204,46 @@ npm install @reaqtive/components
         },
         {
           title:'App',
-          intro:'',
+          intro:'Components described in this section are supposed to work together: it is suggested to use RqtvApp if you want to use the other components describe here.',
           paths:['rqtv-app.js', 'pages/*.js'],
           docLib:'reactDocgen'
         },
         {
           title:'Styles',
-          intro:'',
-          paths:['styles/thems.scss'],
+          intro:`Styles are based on bootstrap classes and components.
+In reaqtive components plain boostrap classes have been used and they are scoped using the name of the Reaqtive components they are used into. For example the wrapper div of a RqtvListbox has rqtv-listbox class, the RqtvSideMenu a rqtv-side-menu class.
+You can customize the styles the components referring to these classes in your scss files.
+Moreover you can customize Reaqtive theme by including a theme file and changing theme variables values. You can add your theme creating an index.scss file and a theme.scss file. Below an example.
+
+*theme.scss*
+\`\`\`sass
+...
+$primary: #5C88DA;
+$side-menu-field-list-border-color:rgba(0,0,0,0);
+$navbar-bg:#fff;
+$navbar-color:$primary;
+...
+\`\`\`
+
+
+*index.scss*
+\`\`\`sass
+// import files with this order otherwise Reaqtive theme will overwrite yours
+@import "./styles/theme.scss";
+@import "~@reaqtive/components/dist/index.scss";
+...
+\`\`\`
+
+*index.js*
+\`\`\`javascript
+...
+import './index.scss'
+...
+\`\`\`
+
+You can find the complete list of Reaqtive theme variable [here](#https://github.com/taan11/reaqtive/blob/master/packages/components/src/lib/styles/theme.scss) and the complete list of Bootstrap variables [here](#https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss)
+`,
+          paths:['styles/theme.scss'],
           docLib:'styles'
         }
       ]

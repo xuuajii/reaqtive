@@ -158,6 +158,7 @@ const composeSection = (section) => {
     }
   }
   const sectionTitle = '## '+section.title.toUpperCase();
+  const sectionIntro = section.intro&&section.intro!==''?section.intro+os.EOL+os.EOL:''
   const sectionComponentsMarkdown = section.components!==undefined
   ?_.map(section.components, (component) => {
     const markdown = generateComponentMarkdown(component)+os.EOL
@@ -166,7 +167,7 @@ const composeSection = (section) => {
   })
   :[]
   const sectionHooksMarkdown = section.hooks!==undefined?_.map(section.hooks, generateHookMarkDown):[];
-  return sectionTitle+os.EOL+sectionComponentsMarkdown.join(os.EOL)+sectionHooksMarkdown.join(os.EOL)
+  return sectionTitle+os.EOL+sectionIntro+sectionComponentsMarkdown.join(os.EOL)+sectionHooksMarkdown.join(os.EOL)
 }
 
 const addPackageIntro = (package, mergedSectionsMarkdown) => {

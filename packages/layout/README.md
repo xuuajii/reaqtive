@@ -1,11 +1,4 @@
 # `@reaqtive/layout`
 
-> TODO: description
-
-## Usage
-
-```
-const layout = require('@reaqtive/layout');
-
-// TODO: DEMONSTRATE API
-```
+It is a layout component library used in @reaqtive/components.
+It is experimental and its API could change in time.

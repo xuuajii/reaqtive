@@ -23,6 +23,9 @@ npm install @reaqtive/q
 
 
 Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
+Contexts allows you to interact with Qlik APIs. To have access to Qlik APIs you have to wrap your main component in a ```<Reaqtive>``` tag.
+Reaqtive allows to connect the same React app to multiple Qlik apps. If you use only the Engine APIs you just have render multiple ```<Reaqtive>``` components in your app remembering to set to false the qCapabilityApiRequired prop.
+Instead, if you want to use also the capability APIs you have to use the QShareCapabilityApi component to avoid to download AngularJS twice. You can find an example [here](#qsharecapabilityapi)
 Provided contexts are:
 - [QGlobal](#qglobal) </br>
 - [QDoc](#qdoc) </br>
@@ -352,7 +355,7 @@ __quickSelectionMode__ | `Boolean` | `true` | :x: | If true the object will hand
 
 QShareCapabilityApi
 
-This component is needed when you wan to display in the same app Qlik Visualizations taken from 2 or more apps.
+This component is needed when you wan to display in the same React app Qlik Visualizations taken from 2 or more Qlik Sense apps.
 It wraps the Reaqtive component and provides the QCapabilityAPI context to the components downstream.
 This work around is needed to avoid to download QCapabilityAPI and AngularJS more than once.
 

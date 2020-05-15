@@ -18,8 +18,8 @@ import {
  *
  * It is a component that allows you to use Reaqtive main components without having to declare them one by one.
  * Of course does not allow the same flexibility as recreating a template manually.
- * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader
- *
+ * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader.
+ * It is suggested to use this component inside the RqtvApp
  */
 
 const RqtvStandardTemplate = props => {

@@ -7,7 +7,9 @@ Reaqtive aims to bring together the responsiveness and usability on mobile devic
 Reaqtive provides a library of ready to use [components](https://github.com/taan11/reaqtive/tree/master/packages/components) and a set of [utilities](https://github.com/taan11/reaqtive/tree/master/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
 
 ## Thanks to
+
 ![Eng Logo](/logo-eng.png)
+
 Developments are sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
 
 

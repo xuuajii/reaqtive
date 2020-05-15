@@ -1,6 +1,7 @@
 # **@reaqtive/components**
 
 This package helps creating guided analytics using Qlik APIs. It provides a set of reusable react components to speed up mash up developments.
+You can choose to use stand alone components and build your own navigation and routing functionalities or you can use [RqtvApp](#rqtvapp) and [RqtvPage](#rqtvpage).
 
 
 
@@ -722,6 +723,8 @@ __useTabs__ | `Boolean` | `false` | :x: | if true it uses the the tabs to displa
 
 
 ## APP
+Components described in this section are supposed to work together: it is suggested to use RqtvApp if you want to use the other components describe here.
+
 ### **RqtvApp**
 
 
@@ -782,12 +785,12 @@ __useRouter__ | `Boolean` | `true` | :x: | if true the applicatin will be wrappe
 
 RqtvPage
 
-It is a container based on the Route component of the React Router.
+It is a container based on the Route component of the React Router. It can't be used outside RqtvApp.
 It is a dummy component which provides a the RqtvPageContext and a QGenericObject with 2 experessions:
 qTitleExpr --> providing the qTitle result
 qConditionExpr --> providing the qCondition result
 RqtvPage also accept triggers which are fired when the page mounts.
-Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change.
+Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change, to force unmount add a key prop (it has to be unique among pages).
 
 
 **Example:** 
@@ -835,7 +838,8 @@ RqtvStandardTemplate
 
 It is a component that allows you to use Reaqtive main components without having to declare them one by one.
 Of course does not allow the same flexibility as recreating a template manually.
-It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader
+It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader.
+It is suggested to use this component inside the RqtvApp
 
 
 **Example:** 
@@ -886,3 +890,37 @@ __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 
 
 ## STYLES
+Styles are based on bootstrap classes and components.
+In reaqtive components plain boostrap classes have been used and they are scoped using the name of the Reaqtive components they are used into. For example the wrapper div of a RqtvListbox has rqtv-listbox class, the RqtvSideMenu a rqtv-side-menu class.
+You can customize the styles the components referring to these classes in your scss files.
+Moreover you can customize Reaqtive theme by including a theme file and changing theme variables values. You can add your theme creating an index.scss file and a theme.scss file. Below an example.
+
+*theme.scss*
+```sass
+...
+$primary: #5C88DA;
+$side-menu-field-list-border-color:rgba(0,0,0,0);
+$navbar-bg:#fff;
+$navbar-color:$primary;
+...
+```
+
+
+*index.scss*
+```sass
+// import files with this order otherwise Reaqtive theme will overwrite yours
+@import "./styles/theme.scss";
+@import "~@reaqtive/components/dist/index.scss";
+...
+```
+
+*index.js*
+```javascript
+...
+import './index.scss'
+...
+```
+
+You can find the complete list of Reaqtive theme variable [here](#https://github.com/taan11/reaqtive/blob/master/packages/components/src/lib/styles/theme.scss) and the complete list of Bootstrap variables [here](#https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss)
+
+

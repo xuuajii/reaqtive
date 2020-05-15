@@ -24,12 +24,12 @@ const useQConditionDef = (qConditionExpr) => useMemo(()=>{
 /**
  * RqtvPage
  *
- * It is a container based on the Route component of the React Router.
+ * It is a container based on the Route component of the React Router. It can't be used outside RqtvApp.
  * It is a dummy component which provides a the RqtvPageContext and a QGenericObject with 2 experessions:
  * qTitleExpr --> providing the qTitle result
  * qConditionExpr --> providing the qCondition result
  * RqtvPage also accept triggers which are fired when the page mounts.
- * Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change.
+ * Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change, to force unmount add a key prop (it has to be unique among pages).
  *
  */
 

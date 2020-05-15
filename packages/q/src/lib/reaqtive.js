@@ -47,6 +47,9 @@ const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
 
 /**
  * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
+ * Contexts allows you to interact with Qlik APIs. To have access to Qlik APIs you have to wrap your main component in a ```<Reaqtive>``` tag.
+ * Reaqtive allows to connect the same React app to multiple Qlik apps. If you use only the Engine APIs you just have render multiple ```<Reaqtive>``` components in your app remembering to set to false the qCapabilityApiRequired prop.
+ * Instead, if you want to use also the capability APIs you have to use the QShareCapabilityApi component to avoid to download AngularJS twice. You can find an example [here](#qsharecapabilityapi)
  * Provided contexts are:
  *- [QGlobal](#qglobal) </br>
  *- [QDoc](#qdoc) </br>
