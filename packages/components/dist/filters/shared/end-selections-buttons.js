@@ -16,7 +16,7 @@ const EndSelectionButtons = props => _react.default.createElement("div", {
   hidden: !props.isSelecting,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
+    lineNumber: 4
   },
   __self: void 0
 }, _react.default.createElement("button", {
@@ -25,7 +25,7 @@ const EndSelectionButtons = props => _react.default.createElement("div", {
   "data-q-accept": 0,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 9
+    lineNumber: 5
   },
   __self: void 0
 }, _react.default.createElement("span", {
@@ -34,7 +34,7 @@ const EndSelectionButtons = props => _react.default.createElement("div", {
   "aria-hidden": "true",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 6
   },
   __self: void 0
 })), _react.default.createElement("button", {
@@ -43,7 +43,7 @@ const EndSelectionButtons = props => _react.default.createElement("div", {
   "data-q-accept": 1,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 8
   },
   __self: void 0
 }, _react.default.createElement("span", {
@@ -52,7 +52,7 @@ const EndSelectionButtons = props => _react.default.createElement("div", {
   "data-q-accept": 1,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13
+    lineNumber: 9
   },
   __self: void 0
 })));

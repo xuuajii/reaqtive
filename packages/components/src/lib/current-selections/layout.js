@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect} from 'react'
 import RqtvCurrentSelectionsToolbar from './rqtv-current-selections-toolbar'
 import RqtvCurrentSelectionsModal from './rqtv-current-selections-modal'

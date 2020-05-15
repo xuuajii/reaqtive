@@ -43,20 +43,20 @@ const RqtvCurrentSelections = props => {
     hidden: props.hidden,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
     },
     __self: void 0
   }, _react.default.createElement(_q.QComponent, {
     qObjectDef: qCurrentSelectionsObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsObject.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 31
     },
     __self: void 0
   }, _react.default.createElement(_layout.default, {
@@ -68,7 +68,7 @@ const RqtvCurrentSelections = props => {
     customLoading: props.customLoading,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 32
     },
     __self: void 0
   }))));

@@ -19,9 +19,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _q = require("@reaqtive/q");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const RqtvListObject = props => {
   const rqtvListObject = (0, _useRqtvListObject.default)(props.qObjectHandler, props.qSelectionHandler, props.qLayoutHandler, props.quickSelectionMode, props.toggle);
   const qLayout = props.qLayoutHandler && props.qLayoutHandler.qLayout; //console.log(qLayout, props.qId)

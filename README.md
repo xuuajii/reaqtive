@@ -40,6 +40,7 @@ npm install @reaqtive/components
 Below you can find the code to create the simplest Reaqtive app. It is assumed that you have alredy created a [React app](https://create-react-app.dev/) and, if you are using CRA, that you have created the [setupProxy file](#how-to-use-reaqtive-with-create-react-app).
 The app shows a dropdown menu to select from one field and one visualization provided by Qlik capability APIs.
 The Reaqtive component handles the connection with the Qlik Sense server and it expects connections parameters to be provided in an object called qConfig.
+Notice that at the top of the page Reaqtive scss file has been imported (for details(https://github.com/taan11/reaqtive/tree/master/packages/components#styles)).
 
 
 
@@ -47,6 +48,8 @@ The Reaqtive component handles the connection with the Qlik Sense server and it 
 import React from 'react'
 import Reaqtive  from '@reaqtive/q'
 import {RqtvDropdownFilter, QViz, RqtvVizContainer} from '@reaqtive/components'
+
+import "@reaqtive/components/dist/index.scss";
 
 const qConfig = {                                 //For QS Desktop
     host: 'YOUR HOST ADDRESS',                        //localhost

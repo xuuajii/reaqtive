@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useContext, useMemo} from 'react'
 import PropTypes from 'prop-types'
 import {Button} from '@reaqtive/layout'

@@ -28,8 +28,8 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
  *
  * It is a component that allows you to use Reaqtive main components without having to declare them one by one.
  * Of course does not allow the same flexibility as recreating a template manually.
- * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader
- *
+ * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader.
+ * It is suggested to use this component inside the RqtvApp
  */
 const RqtvStandardTemplate = props => {
   const rqtvApp = (0, _react.useContext)(_index.RqtvAppContext);
@@ -70,7 +70,7 @@ const RqtvStandardTemplate = props => {
     showSideMenuToggle: props.useSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 38
     },
     __self: void 0
   }), _react.default.createElement(_index2.RqtvSideMenu, {
@@ -83,14 +83,14 @@ const RqtvStandardTemplate = props => {
     additionalTabs: props.sideMenuAdditionalTabs,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 46
     },
     __self: void 0
   }), _react.default.createElement(_index2.RqtvSideMenuMain, {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 55
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -98,20 +98,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 56
     },
     __self: void 0
   }, _react.default.createElement(_index2.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 60
     },
     __self: void 0
   }), props.usePageHeader && rqtvPage && _react.default.createElement(_index2.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 61
     },
     __self: void 0
   }), props.children))));

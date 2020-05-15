@@ -131,7 +131,7 @@ const RqtvVizContainer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 85
     },
     __self: void 0
   }, _react.default.createElement(_header.default, {
@@ -142,7 +142,7 @@ const RqtvVizContainer = props => {
     className: "".concat(props.containerClassName),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 86
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_toolbar.default, {
@@ -157,14 +157,14 @@ const RqtvVizContainer = props => {
     maximized: maximized,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 98
+      lineNumber: 94
     },
     __self: void 0
   })), _react.default.createElement("div", {
     className: "viz-container-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 110
+      lineNumber: 106
     },
     __self: void 0
   }, _react.default.cloneElement(activeChart, {

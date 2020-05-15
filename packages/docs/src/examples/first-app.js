@@ -2,6 +2,8 @@ import React from 'react'
 import Reaqtive  from '@reaqtive/q'
 import {RqtvDropdownFilter, QViz, RqtvVizContainer} from '@reaqtive/components'
 
+import "@reaqtive/components/dist/index.scss";
+
 const qConfig = {                                 //For QS Desktop
     host: '40.113.14.238',                        //localhost
     secure: true,                                 //false

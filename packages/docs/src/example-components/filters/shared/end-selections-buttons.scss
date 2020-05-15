@@ -1,0 +1,17 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+.end-selections-buttons{
+  display: flex;
+  justify-content: flex-end;
+  padding-left:1rem;
+  .icon-wrapper {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+    min-width: 25px;
+    background-color: transparent;
+    border: 0;
+  }
+}

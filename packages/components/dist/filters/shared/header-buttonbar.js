@@ -17,7 +17,7 @@ const HeaderButtonbar = props => _react.default.createElement("div", {
   className: "header-toolbar",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 9
+    lineNumber: 5
   },
   __self: void 0
 }, _react.default.createElement("div", {
@@ -25,7 +25,7 @@ const HeaderButtonbar = props => _react.default.createElement("div", {
   role: "group",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 6
   },
   __self: void 0
 }, _react.default.createElement("button", {
@@ -33,14 +33,14 @@ const HeaderButtonbar = props => _react.default.createElement("div", {
   onClick: () => props.clearSelections(),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 7
   },
   __self: void 0
 }, _react.default.createElement(_layout.Icon, {
   type: _layout.deleteForever,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 8
   },
   __self: void 0
 })), _react.default.createElement("button", {
@@ -48,14 +48,14 @@ const HeaderButtonbar = props => _react.default.createElement("div", {
   onClick: () => props.selectExcluded(),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 14
+    lineNumber: 10
   },
   __self: void 0
 }, _react.default.createElement(_layout.Icon, {
   type: _layout.swap,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 15
+    lineNumber: 11
   },
   __self: void 0
 }))));

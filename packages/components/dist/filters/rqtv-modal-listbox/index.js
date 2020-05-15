@@ -61,7 +61,7 @@ const RqtvModalListbox = props => {
   return _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 39
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvButton, {
@@ -72,7 +72,7 @@ const RqtvModalListbox = props => {
     style: props.buttonStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 40
     },
     __self: void 0
   }), _react.default.createElement(_layout.Modal, {
@@ -80,13 +80,13 @@ const RqtvModalListbox = props => {
     onClose: handleClose,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 47
     },
     __self: void 0
   }, _react.default.createElement(_layout.ModalDialog, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 48
     },
     __self: void 0
   }, _react.default.createElement(_layout.ModalHeader, {
@@ -95,13 +95,13 @@ const RqtvModalListbox = props => {
     showDismiss: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 49
     },
     __self: void 0
   }), _react.default.createElement(_layout.ModalBody, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 50
     },
     __self: void 0
   }, _react.default.createElement(_index2.default, Object.assign({}, props.listboxProps, {
@@ -111,7 +111,7 @@ const RqtvModalListbox = props => {
     onEndSelections: () => setShowModal(false),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 51
     },
     __self: void 0
   }))), _react.default.createElement(_layout.ModalFooter, {
@@ -120,7 +120,7 @@ const RqtvModalListbox = props => {
     close: handleClose,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 53
     },
     __self: void 0
   }, !(qFieldHandler.nxProperties && qFieldHandler.nxProperties.qOneAndOnlyOne === true) && _react.default.createElement("button", {
@@ -129,7 +129,7 @@ const RqtvModalListbox = props => {
     onClick: () => qFieldHandler.qField.clear(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 55
     },
     __self: void 0
   }, "Clear")))));

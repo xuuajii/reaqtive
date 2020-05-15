@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useRef, useEffect} from 'react'
 import PropTypes from 'prop-types'
 import { useScrollHandler } from '@reaqtive/q'

@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import  {useMemo} from 'react'
 import {normalizeExpression} from '../../helpers'
 const useMapPropsToDef = (props) => {

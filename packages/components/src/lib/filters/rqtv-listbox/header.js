@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react'
 import EndSelectionsButtons from '../shared/end-selections-buttons'
 import HeaderButtonbar from '../shared/header-buttonbar'

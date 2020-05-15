@@ -9,6 +9,7 @@ exports.default = void 0;
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+/*Select one value of one field*/
 const fieldSelectionTrigger = _propTypes.default.shape({
   type: 'fieldSelection',
   params: _propTypes.default.shape({
@@ -16,6 +17,8 @@ const fieldSelectionTrigger = _propTypes.default.shape({
     value: _propTypes.default.string
   })
 });
+/*Select multiple values of one field*/
+
 
 const fieldSelectionsTrigger = _propTypes.default.shape({
   type: 'fieldSelections',
@@ -28,6 +31,8 @@ const fieldSelectionsTrigger = _propTypes.default.shape({
     }))
   })
 });
+/*Clear one field*/
+
 
 const clearFieldTrigger = _propTypes.default.shape({
   type: 'clearField',

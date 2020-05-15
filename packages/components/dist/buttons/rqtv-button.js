@@ -25,7 +25,7 @@ const RqtvButton = props => {
     qObjectDef: qObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 9
     },
     __self: void 0
   }, qGenericObject => {
@@ -38,7 +38,7 @@ const RqtvButton = props => {
       onClick: props.onClick,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18
+        lineNumber: 14
       },
       __self: void 0
     }, label);

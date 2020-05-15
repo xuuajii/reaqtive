@@ -18,7 +18,7 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/q/src/lib/co
 /**
  * QShareCapabilityApi
  *
- * This component is needed when you wan to display in the same app Qlik Visualizations taken from 2 or more apps.
+ * This component is needed when you wan to display in the same React app Qlik Visualizations taken from 2 or more Qlik Sense apps.
  * It wraps the Reaqtive component and provides the QCapabilityAPI context to the components downstream.
  * This work around is needed to avoid to download QCapabilityAPI and AngularJS more than once.
  */

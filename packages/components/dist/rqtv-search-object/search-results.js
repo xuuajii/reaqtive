@@ -19,7 +19,7 @@ const SearchResults = props => {
       className: "list-group",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 9
       },
       __self: void 0
     }, _react.default.createElement("div", {
@@ -29,7 +29,7 @@ const SearchResults = props => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 10
       },
       __self: void 0
     }), searchResults.qSearchGroupArray.map((qSearchGroup, index) => _react.default.createElement(SearchGroup, {
@@ -41,7 +41,7 @@ const SearchResults = props => {
       clearSearch: props.clearSearch,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 16
+        lineNumber: 12
       },
       __self: void 0
     })), _react.default.createElement("div", {
@@ -51,7 +51,7 @@ const SearchResults = props => {
       },
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 25
+        lineNumber: 21
       },
       __self: void 0
     }));
@@ -68,7 +68,7 @@ const SearchResults = props => {
       itemHeight: props.singleFieldItemHeight,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 27
       },
       __self: void 0
     });
@@ -79,13 +79,13 @@ const SearchGroup = props => _react.default.createElement("li", {
   className: "list-group-item search-result-group",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 43
+    lineNumber: 39
   },
   __self: void 0
 }, _react.default.createElement("h6", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 44
+    lineNumber: 40
   },
   __self: void 0
 }, _react.default.createElement("span", {
@@ -94,21 +94,21 @@ const SearchGroup = props => _react.default.createElement("li", {
   "data-q-id": props.qId,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 45
+    lineNumber: 41
   },
   __self: void 0
 }, props.qFieldName)), _react.default.createElement("div", {
   className: "search-result-matches-container",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 49
+    lineNumber: 45
   },
   __self: void 0
 }, props.matches.map((match, index) => _react.default.createElement(_react.Fragment, {
   key: match.qText + index,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 51
+    lineNumber: 47
   },
   __self: void 0
 }, _react.default.createElement("span", {
@@ -116,13 +116,13 @@ const SearchGroup = props => _react.default.createElement("li", {
   onClick: (searchString, qId) => props.selectSearchResults(match.qText),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 52
+    lineNumber: 48
   },
   __self: void 0
 }, match.qText), _react.default.createElement("span", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 58
+    lineNumber: 54
   },
   __self: void 0
 }, index < props.matches.length - 1 ? ', ' : ' ')))));
@@ -132,7 +132,7 @@ const SingleSearchGroup = props => {
     className: "single-search-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 64
     },
     __self: void 0
   }, _react.default.createElement("h6", {
@@ -140,14 +140,14 @@ const SingleSearchGroup = props => {
     ref: props.titleEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 69
+      lineNumber: 65
     },
     __self: void 0
   }, props.qFieldName), _react.default.createElement("ul", {
     className: "list-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72
+      lineNumber: 68
     },
     __self: void 0
   }, props.matches.map(match => _react.default.createElement("li", {
@@ -159,7 +159,7 @@ const SingleSearchGroup = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 74
+      lineNumber: 70
     },
     __self: void 0
   }, match.qText))));

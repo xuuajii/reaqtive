@@ -24,7 +24,7 @@ var _rqtvAppError = _interopRequireDefault(require("./rqtv-app-error"));
 var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/loading/rqtv-app-renderer.js";
 
 //import {conditionalDelay} from '../../../helpers'
-//export default 
+//export default
 function conditionalDelay(delay) {
   return process.env.NODE_ENV === 'development' && process.env.REACT_APP_USE_LOCAL_AS_PROD === 'FALSE' ? 0 : delay;
 }
@@ -39,7 +39,7 @@ const RqtvAppRenderer = props => {
       height: 3,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 22
       },
       __self: void 0
     }),
@@ -47,13 +47,13 @@ const RqtvAppRenderer = props => {
       errorMessage: appLauncher.errorMessage,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 23
       },
       __self: void 0
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 19
     },
     __self: void 0
   }, props.children);

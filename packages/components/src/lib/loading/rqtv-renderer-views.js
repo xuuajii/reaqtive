@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useRef} from 'react'
 import {Button ,LuiIcon} from '@reaqtive/layout'
 

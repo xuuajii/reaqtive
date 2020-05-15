@@ -52,7 +52,7 @@ const RqtvNavbar = props => {
   const currentSelectionsCustomLoading = () => _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   });
@@ -61,28 +61,28 @@ const RqtvNavbar = props => {
     className: "".concat(fixedTop === true ? 'fixed-top' : '', " rqtv-navbar ").concat(navbarClassName),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement(_react.default.Fragment, null, _react.default.createElement("div", {
     className: "navbar-brand-container",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 36
     },
     __self: void 0
   }, showSideMenuToggle && _react.default.createElement(_layout.Button, {
     onClick: props.onToggleMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement(_layout.HamburgerMenu, {
     isOpen: props.sideMenuActive,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 39
     },
     __self: void 0
   })), _react.default.createElement(_layout.NavbarBrand, {
@@ -91,14 +91,14 @@ const RqtvNavbar = props => {
     imgStyle: brandImgStyle,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 42
     },
     __self: void 0
   }, title))), _react.default.createElement(_layout.NavbarNav, {
     neverCollapse: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 47
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvCurrentSelections, {
@@ -107,13 +107,13 @@ const RqtvNavbar = props => {
     customLoading: () => _react.default.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 52
+        lineNumber: 48
       },
       __self: void 0
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 48
     },
     __self: void 0
   }), props.showSearch && _react.default.createElement(_index.RqtvSearchObject, {
@@ -131,7 +131,7 @@ const RqtvNavbar = props => {
     resultsHeight: props.fixedTop ? '100%' : props.searchResultsHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 50
     },
     __self: void 0
   }))));

@@ -21,22 +21,13 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/q/src/lib/reaqtive.js";
 
-/**
- * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
- * Provided contexts are:
- *- [QGlobal](#qglobal) </br>
- *- [QDoc](#qdoc) </br>
- *- [QCapabilityApi](#qcapabilityapi) </br>
- *- [QApp](#qapp) </br>
- *
- */
 const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
   if (!appId) {
     return props => _react.default.createElement(_index.QGlobalProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 12
       },
       __self: void 0
     }, props.children);
@@ -47,14 +38,14 @@ const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 28
+        lineNumber: 18
       },
       __self: void 0
     }, _react.default.createElement(_index.QDocProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 19
       },
       __self: void 0
     }, props.children));
@@ -65,28 +56,28 @@ const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 36
+        lineNumber: 26
       },
       __self: void 0
     }, _react.default.createElement(_index.QCapabilityApiProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 37
+        lineNumber: 27
       },
       __self: void 0
     }, _react.default.createElement(_index.QDocProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 28
       },
       __self: void 0
     }, _react.default.createElement(_index.QAppProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 39
+        lineNumber: 29
       },
       __self: void 0
     }, props.children))));
@@ -97,26 +88,39 @@ const getContexts = (appId, qCapabilityApiRequired, qCapabilityApiShared) => {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 38
       },
       __self: void 0
     }, _react.default.createElement(_index.QDocProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 39
       },
       __self: void 0
     }, _react.default.createElement(_index.QAppProvider, {
       qConfig: props.qConfig,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 50
+        lineNumber: 40
       },
       __self: void 0
     }, props.children)));
   }
 };
+/**
+ * Reaqtive is the main component of the library. It provides Reaqtive contexts to its child or children.</br>
+ * Contexts allows you to interact with Qlik APIs. To have access to Qlik APIs you have to wrap your main component in a ```<Reaqtive>``` tag.
+ * Reaqtive allows to connect the same React app to multiple Qlik apps. If you use only the Engine APIs you just have render multiple ```<Reaqtive>``` components in your app remembering to set to false the qCapabilityApiRequired prop.
+ * Instead, if you want to use also the capability APIs you have to use the QShareCapabilityApi component to avoid to download AngularJS twice. You can find an example [here](#qsharecapabilityapi)
+ * Provided contexts are:
+ *- [QGlobal](#qglobal) </br>
+ *- [QDoc](#qdoc) </br>
+ *- [QCapabilityApi](#qcapabilityapi) </br>
+ *- [QApp](#qapp) </br>
+ *
+ */
+
 
 const Reaqtive = props => {
   const qConfig = props.qConfig,
@@ -129,7 +133,7 @@ const Reaqtive = props => {
   return _react.default.createElement(_layout.SystemProvider, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 65
+      lineNumber: 68
     },
     __self: void 0
   }, contexts(props));

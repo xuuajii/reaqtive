@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Icon, arrowCollapse, arrowExpand, image, pdf, excel} from '@reaqtive/layout'

@@ -85,14 +85,14 @@ const RqtvApp = props => {
   return _react.default.createElement(_reactRouterDom.HashRouter, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 43
     },
     __self: void 0
   }, _react.default.createElement(_rqtvAppContext.RqtvAppContextProvider, Object.assign({}, rqtvAppProps, {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 44
     },
     __self: void 0
   }), _react.default.createElement(_index.RqtvAppRenderer, {
@@ -100,13 +100,13 @@ const RqtvApp = props => {
     triggersDone: triggerState.qLoading === false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 45
     },
     __self: void 0
   }, props.children && props.children.length && props.useRouter === true ? _react.default.createElement(_reactRouterDom.Switch, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 47
     },
     __self: void 0
   }, props.children) : props.children)));

@@ -34,34 +34,34 @@ const CurrentSelectionsField = props => {
     className: "list-group-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 21
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "row no-gutters",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 22
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "col-8 selection-item-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 23
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "badge S",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   }, props.item.qField), _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 25
     },
     __self: void 0
   }, props.item.qSelectedFieldSelectionInfo.map((value, index) => _react.default.createElement("span", {
@@ -69,14 +69,14 @@ const CurrentSelectionsField = props => {
     className: "value",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }, "".concat(value.qName).concat(props.item.qSelectedFieldSelectionInfo.length - 1 !== index ? ', ' : ' '))))), _react.default.createElement("div", {
     className: "col-4 selection-item-toolbar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 33
     },
     __self: void 0
   }, _react.default.createElement("button", {
@@ -84,14 +84,14 @@ const CurrentSelectionsField = props => {
     onClick: editFieldSelections,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement(_layout.Icon, {
     type: _layout.pencil,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 35
     },
     __self: void 0
   })), qField && props.item.qOneAndOnlyOne !== true && _react.default.createElement("button", {
@@ -99,14 +99,14 @@ const CurrentSelectionsField = props => {
     onClick: clearFieldSlections,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement(_layout.Icon, {
     type: _layout.deleteForever,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 39
     },
     __self: void 0
   })))));

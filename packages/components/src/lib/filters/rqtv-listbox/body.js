@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react'
 import { ListGroup, ListGroupItem } from '@reaqtive/layout'
 import QScrollHandler from '../shared/q-scroll-handler'

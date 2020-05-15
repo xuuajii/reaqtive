@@ -32,7 +32,7 @@ const RqtvMultibox = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 16
     },
     __self: void 0
   }, props.fieldList.map(field => {
@@ -42,21 +42,21 @@ const RqtvMultibox = props => {
       key: fieldExpr,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 22
       },
       __self: void 0
     }, _react.default.createElement(_layout.CollapseHeader, {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 23
       },
       __self: void 0
     }, field.hasSelections === true && _react.default.createElement("span", {
       className: "selection-indicator",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 26
       },
       __self: void 0
     }), field.label || fieldExpr), _react.default.createElement(_layout.CollapseBody, {
@@ -64,7 +64,7 @@ const RqtvMultibox = props => {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 33
+        lineNumber: 29
       },
       __self: void 0
     }, _react.default.createElement(_index.RqtvListbox, {
@@ -73,7 +73,7 @@ const RqtvMultibox = props => {
       qLabelExpr: "'".concat(field.label || fieldExpr, "'"),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 34
+        lineNumber: 30
       },
       __self: void 0
     })));

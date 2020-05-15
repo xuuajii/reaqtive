@@ -38,12 +38,14 @@ const useQConditionDef = qConditionExpr => (0, _react.useMemo)(() => {
 /**
  * RqtvPage
  *
- * It is a container based on the Route component of the React Router.
+ * It is a container based on the Route component of the React Router. It can't be used outside RqtvApp.
  * It is a dummy component which provides a the RqtvPageContext and a QGenericObject with 2 experessions:
  * qTitleExpr --> providing the qTitle result
  * qConditionExpr --> providing the qCondition result
+ * When navigating among RqtvPages you can use query strings to select values in fields. Here an example of a query string: ?selections=Customer:Benedict;Zocalo&selections=Account:61099 . Place your query string at the end of the url you are navigating to.
  * RqtvPage also accept triggers which are fired when the page mounts.
- * Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change.
+ * Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change, to force unmount add a key prop (it has to be unique among pages).
+ *
  *
  */
 
@@ -55,7 +57,7 @@ const RqtvPage = props => {
     exact: props.exact,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement(_rqtvPageContext.RqtvPageProvider, {
@@ -65,14 +67,14 @@ const RqtvPage = props => {
     hasQueryString: location.search !== "" ? true : false,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 39
     },
     __self: void 0
   }, _react.default.createElement(RqtvPageConsumer, {
     fallbackPage: fallbackPage,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 47
+      lineNumber: 45
     },
     __self: void 0
   }, props.children)));
@@ -107,7 +109,7 @@ const RqtvPageConsumer = props => {
       to: fallbackPage ? fallbackPage : "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 74
+        lineNumber: 72
       },
       __self: void 0
     });

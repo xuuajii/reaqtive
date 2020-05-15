@@ -24,7 +24,7 @@ const PageList = props => {
     className: "list-group page-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 10
     },
     __self: void 0
   }, props.pages.map(page => _react.default.createElement(PageLink, {
@@ -32,7 +32,7 @@ const PageList = props => {
     page: page,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 11
     },
     __self: void 0
   })));
@@ -55,7 +55,7 @@ const PageLink = props => {
     exact: page.path === '/' ? true : exactActiveMatch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
     },
     __self: void 0
   }, _react.default.createElement("li", {
@@ -63,7 +63,7 @@ const PageLink = props => {
     onClick: handleClick,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   }, page.path === '/' ? _react.default.createElement(_layout.LuiIcon, {
@@ -73,7 +73,7 @@ const PageLink = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 32
     },
     __self: void 0
   }) : _react.default.createElement(_layout.LuiIcon, {
@@ -83,7 +83,7 @@ const PageLink = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 33
     },
     __self: void 0
   }), page.linkName));

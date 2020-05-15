@@ -32,7 +32,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     className: "rqtv-current-selections-toolbar ".concat(props.inModal ? 'in-modal' : ''),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 18
     },
     __self: void 0
   }, _react.default.createElement(_currentSelectionsButtons.SelectionsBack, {
@@ -42,7 +42,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     showLabel: !props.showModalToggler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 19
     },
     __self: void 0
   }), _react.default.createElement("div", {
@@ -50,7 +50,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     "data-toggle": "buttons",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 20
     },
     __self: void 0
   }, props.showModalToggler && _react.default.createElement("button", {
@@ -58,7 +58,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     onClick: props.openCurrentSelectionsModal,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 22
     },
     __self: void 0
   }, _react.default.createElement(_layout.Icon, {
@@ -69,7 +69,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 23
     },
     __self: void 0
   }), !isMinimized && _react.default.createElement("span", {
@@ -78,14 +78,14 @@ const RqtvCurrentSelectionsToolbar = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   }, "Current Selections"), _react.default.createElement("span", {
     className: "badge",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 25
     },
     __self: void 0
   }, props.qSelectionsCount)), _react.default.createElement(_currentSelectionsButtons.SelectionsClarAll, {
@@ -95,7 +95,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     showLabel: !props.showModalToggler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 28
     },
     __self: void 0
   })), _react.default.createElement(_currentSelectionsButtons.SelectionsForward, {
@@ -105,7 +105,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     showLabel: !props.showModalToggler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   })) : _react.default.createElement(_react.default.Fragment, null);

@@ -20,14 +20,14 @@ const SelectionsButton = props => {
     disabled: props.disabled,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 6
     },
     __self: void 0
   }, _react.default.createElement(_layout.LuiIcon, {
     iconType: props.iconType,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 7
     },
     __self: void 0
   }), props.showLabel && props.label);
@@ -39,7 +39,7 @@ const SelectionsBack = props => {
     label: "back",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 15
     },
     __self: void 0
   }));
@@ -53,7 +53,7 @@ const SelectionsForward = props => {
     label: "forward",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 21
     },
     __self: void 0
   }));
@@ -67,7 +67,7 @@ const SelectionsClarAll = props => {
     label: "clear all",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }));

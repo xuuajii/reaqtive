@@ -58,7 +58,7 @@ const RqtvButtonObjectProvider = props => {
     qObjectDef: qButtonDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 37
     },
     __self: void 0
   }, children.map(child => _react.default.cloneElement(child, (0, _objectSpread2.default)({}, layoutProps)))) : children.map(child => _react.default.cloneElement(child, (0, _objectSpread2.default)({}, layoutProps)));

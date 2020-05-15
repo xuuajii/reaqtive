@@ -20,14 +20,14 @@ const DropdownToolbar = props => _react.default.createElement("div", {
   ref: props.toolbarRef,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 6
   },
   __self: void 0
 }, _react.default.createElement("div", {
   className: "rqtv-search-container",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 7
   },
   __self: void 0
 }, props.showSearch && _react.default.createElement(_search.default, {
@@ -39,7 +39,7 @@ const DropdownToolbar = props => _react.default.createElement("div", {
   placeholder: props.placeholder,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13
+    lineNumber: 9
   },
   __self: void 0
 })), !props.quickSelectMode && _react.default.createElement(_endSelectionsButtons.default, {
@@ -47,7 +47,7 @@ const DropdownToolbar = props => _react.default.createElement("div", {
   isSelecting: props.isSelecting,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 24
+    lineNumber: 20
   },
   __self: void 0
 }));

@@ -18,13 +18,13 @@ const Search = props => _react.default.createElement("div", {
   ref: props.searchEl,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
+    lineNumber: 4
   },
   __self: void 0
 }, _react.default.createElement(_layout.SearchInput, Object.assign({}, props, {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
+    lineNumber: 4
   },
   __self: void 0
 })));

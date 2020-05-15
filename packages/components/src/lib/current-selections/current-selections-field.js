@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react'
 import {useQFieldHandler} from '@reaqtive/q'
 import {useIsMounted} from '@reaqtive/layout'

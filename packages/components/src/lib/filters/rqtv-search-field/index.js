@@ -1,6 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 import { QGenericObject } from '@reaqtive/q'

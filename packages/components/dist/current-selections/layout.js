@@ -60,7 +60,7 @@ const Layout = props => {
   return _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 36
     },
     __self: void 0
   }), _react.default.createElement(_rqtvCurrentSelectionsToolbar.default, {
@@ -76,7 +76,7 @@ const Layout = props => {
     alwaysShowToolbar: props.alwaysShowToolbar,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 37
     },
     __self: void 0
   }), props.useCurrentSelectionModal && _react.default.createElement(_rqtvCurrentSelectionsModal.default, {
@@ -94,7 +94,7 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 51
     },
     __self: void 0
   }));

@@ -4,9 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.containerStyle = void 0;
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const containerStyle = {
   position: 'fixed',
   height: '100%',

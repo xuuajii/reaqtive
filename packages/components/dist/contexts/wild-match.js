@@ -5,9 +5,6 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const wildMatch = (string, rule) => {
   // "."  => Find a single character, except newline or line terminator
   // ".*" => Matches any string that contains zero or more characters

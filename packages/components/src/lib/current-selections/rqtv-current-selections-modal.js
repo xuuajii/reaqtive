@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useRef, useMemo} from 'react'
 import {Modal,ModalDialog,ModalHeader,ModalBody,ModalFooter} from '@reaqtive/layout'
 import {Carousel, CarouselPanel} from '@reaqtive/layout'

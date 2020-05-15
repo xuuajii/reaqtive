@@ -45,19 +45,19 @@ const RqtvPageHeader = props => {
     className: "rqtv-page-header page-header navbar-expand-md ".concat(props.className),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 12
     },
     __self: void 0
   }, _react.default.createElement(_layout.NavbarBrand, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 13
     },
     __self: void 0
   }, _react.default.createElement("h3", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 14
     },
     __self: void 0
   }, title)), props.children);

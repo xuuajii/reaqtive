@@ -9,9 +9,6 @@ var _react = require("react");
 
 var _helpers = require("../../helpers");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useMapPropsToDef = props => {
   const qFieldExpr = (0, _helpers.normalizeExpression)(props.qFieldExpr);
   const qLabelExpr = props.qLabelExpr ? props.qLabelExpr : "\n    '".concat(props.qFieldExpr, " '&if(getSelectedCount(").concat(qFieldExpr, ")>0,\n      if(count(distinct ").concat(qFieldExpr, ")=1 and getSelectedCount(").concat(qFieldExpr, ")=1,\n        only(").concat(qFieldExpr, "),\n        getSelectedCount(").concat(qFieldExpr, ")&' selected'\n      )\n    )");

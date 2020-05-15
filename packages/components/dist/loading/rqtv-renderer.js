@@ -20,7 +20,7 @@ const RqtvRenderer = props => {
     isFixed: props.isFixed,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 10
     },
     __self: void 0
   });
@@ -29,7 +29,7 @@ const RqtvRenderer = props => {
     isFixed: props.isFixed,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 14
     },
     __self: void 0
   });
@@ -37,7 +37,7 @@ const RqtvRenderer = props => {
     isFixed: props.isFixed,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 18
     },
     __self: void 0
   }); //console.log(props)

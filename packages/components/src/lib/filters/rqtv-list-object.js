@@ -1,6 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 import React, {useState, useEffect, useMemo, useReducer, useContext} from 'react'
 import useRqtvListObject from './use-rqtv-list-object'
 import PropTypes from 'prop-types'

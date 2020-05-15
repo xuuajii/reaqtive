@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useContext} from 'react'
 import  RqtvRenderer from './rqtv-renderer'
 import {QDoc} from '@reaqtive/q'
@@ -12,7 +8,7 @@ import RqtvAppLoading from './rqtv-app-loading'
 import RqtvAppError from './rqtv-app-error'
 //import {conditionalDelay} from '../../../helpers'
 
-//export default 
+//export default
 function conditionalDelay(delay){
    return (process.env.NODE_ENV === 'development' && process.env.REACT_APP_USE_LOCAL_AS_PROD==='FALSE')?0:delay
 }

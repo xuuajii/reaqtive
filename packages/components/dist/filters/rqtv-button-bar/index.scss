@@ -1,13 +1,9 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 .rqtv-button-bar{
   .btn{
     font-size: 0.9rem;
     border:$list-group-border-width solid $list-group-border-color;
     .rqtv-btn{
-      font-weight: 500;      
+      font-weight: 500;
     }
   }
 }

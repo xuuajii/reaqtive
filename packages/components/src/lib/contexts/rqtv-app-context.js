@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useContext} from 'react';
 import { useLocation } from "react-router-dom";
 import _ from 'lodash'

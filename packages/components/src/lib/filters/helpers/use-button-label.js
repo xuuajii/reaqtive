@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import {useEffect, useState} from 'react'
 const useButtonLabel = (qLayout, includeFieldName) =>{
   const label = qLayout&&qLayout.label;

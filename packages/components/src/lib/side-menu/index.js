@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, { useContext } from 'react'
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types'

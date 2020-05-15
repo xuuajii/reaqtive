@@ -19,27 +19,27 @@ const RqtvAppError = props => _react.default.createElement("div", {
   style: _rqtvAppRendererStyle.containerStyle,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 9
+    lineNumber: 5
   },
   __self: void 0
 }, _react.default.createElement("div", {
   className: "alert alert-light",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 6
   },
   __self: void 0
 }, _react.default.createElement("div", {
   className: "d-flex flex-column align-items-center",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 7
   },
   __self: void 0
 }, _react.default.createElement("div", {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 8
   },
   __self: void 0
 }, _react.default.createElement(_layout.LuiIcon, {
@@ -51,7 +51,7 @@ const RqtvAppError = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 8
   },
   __self: void 0
 })), _react.default.createElement("div", {
@@ -61,7 +61,7 @@ const RqtvAppError = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 13
+    lineNumber: 9
   },
   __self: void 0
 }, "Ooops something went wrong connecting to the qlik engine"), _react.default.createElement("div", {
@@ -70,7 +70,7 @@ const RqtvAppError = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 14
+    lineNumber: 10
   },
   __self: void 0
 }, "(", props.errorMessage, ")"))));

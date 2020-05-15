@@ -1,6 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 import React, {useState, useMemo, useRef} from 'react'
 
 const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, quickSelectionMode=false, _toggle=true) => {

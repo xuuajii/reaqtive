@@ -108,7 +108,7 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     ref: qVizWrapperEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 80
     },
     __self: void 0
   }, qVizHandler.qViz !== null ? _react.default.createElement("div", {
@@ -119,13 +119,13 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 82
     },
     __self: void 0
   }) : _react.default.createElement(_index.RqtvSpinner, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 87
+      lineNumber: 83
     },
     __self: void 0
   }));

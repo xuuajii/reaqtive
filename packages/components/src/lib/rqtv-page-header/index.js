@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useContext} from 'react'
 import PropTypes from 'prop-types'
 import {RqtvPageContext} from '../contexts/rqtv-page-context'

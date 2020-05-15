@@ -36,7 +36,7 @@ const AnimatedNumber = props => {
     style: style,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 16
     },
     __self: void 0
   }, animatedProps.number.interpolate(x => "".concat(x.toFixed(0), "%")));
@@ -47,7 +47,7 @@ const RqtvAppLoading = props => {
     style: (0, _objectSpread2.default)({}, _rqtvAppRendererStyle.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 26
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -57,14 +57,14 @@ const RqtvAppLoading = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }, _react.default.createElement(AnimatedNumber, {
     number: props.value,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 28
     },
     __self: void 0
   })), _react.default.createElement(_layout.Progress, {
@@ -72,7 +72,7 @@ const RqtvAppLoading = props => {
     height: props.height,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   }));

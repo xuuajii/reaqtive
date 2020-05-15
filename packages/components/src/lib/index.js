@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import RqtvApp from './rqtv-app'
 import RqtvButton from './buttons/rqtv-button'
 import RqtvDropdownButton from './buttons/rqtv-dropdown-button'

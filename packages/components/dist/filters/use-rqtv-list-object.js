@@ -13,9 +13,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = _interopRequireWildcard(require("react"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, quickSelectionMode = false, _toggle = true) => {
   const qObject = qObjectHandler.qObject;
   const handleSelections = qSelectionHandler.handleSelections;

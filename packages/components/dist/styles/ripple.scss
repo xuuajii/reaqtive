@@ -1,8 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
-
 $ripple-bg-hover-darken-percentage: 5%!default;
 @function ripple-bg-hover-color($color, $amount: $ripple-bg-hover-darken-percentage) {
   //@debug $color;

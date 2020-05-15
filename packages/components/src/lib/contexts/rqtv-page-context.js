@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useMemo, useRef} from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom'

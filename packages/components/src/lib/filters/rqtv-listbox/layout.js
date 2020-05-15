@@ -1,6 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 import React, {useState, useEffect, useRef, useCallback} from 'react'
 import {useOutsideEventListener} from '@reaqtive/layout'
 import Header from './header'
