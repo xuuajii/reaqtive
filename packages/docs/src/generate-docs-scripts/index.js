@@ -224,8 +224,26 @@ const updateReaqtiveDocs = (metadata) => {
   //console.log(`${rootPath}/README.md`, reaqtiveDocs)
   fs.writeFile(`${rootPath}/README.md`, textWithExample, callback);
 }
+
+const updatePackagesFolderDocs = (reaqtiveModules) => {
+  const packagesPath=path.join(__dirname, `${reaqtiveModules.rootPath}/${reaqtiveModules.packagesPath}`);
+  const generateLink = (package) => `- [${package.name}](${reaqtiveModules.gitSite}/${package.path})${os.EOL}`
+  const packagesLinks = _.map(reaqtiveModules.packages, generateLink)
+  const markdown = `
+    # Reaqtive Packages
+    If you want to see Reaqtive documentation you should go [here](${reaqtiveModules.gitSite})
+    If you want to see the documentation of a specific package follow the links below:
+
+    ${packagesLinks}
+
+  `
+  const callback = ()=>console.log('generated package courtesy page')
+  fs.writeFile(`${packagesPath}/README.md`, markdown, callback);
+}
+
 const run = () => {
   updateReaqtiveDocs(reaqtiveModules)
+  updatePackagesFolderDocs(reaqtiveModules)
   updatePackageDocs(reaqtiveModules.packages.components, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
   updatePackageDocs(reaqtiveModules.packages.q, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
 }

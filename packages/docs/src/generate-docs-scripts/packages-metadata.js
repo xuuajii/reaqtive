@@ -1,5 +1,7 @@
+const gitSite = 'https://github.com/taan11/reaqtive/tree/master'
 const reaqtiveModules={
   name:'reaqtive',
+  gitSite:gitSite,
   rootPath:'../../../..',
   packagesPath:'packages',
   text:`
@@ -8,7 +10,7 @@ const reaqtiveModules={
 Reaqtive is a react library to help creating guided analytics for Qlik Sense, it allows you to easily interact with Qlik's Engine and capability APIs.
 The goal of the library is to provide a framework to develop guided analytics applications on top of Qlik Sense/QAP apps. Apps developed with Reaqtive are inteded to satisfy the needs and improve the user experience of those users who do not need self service BI functionalities, but only need to access and navigate standardized visualizations.
 Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense and the navigation functionalities provided by QlikView.
-Reaqtive provides a library of ready to use [components](https://github.com/taan11/reaqtive/tree/master/packages/components) and a set of [utilities](https://github.com/taan11/reaqtive/tree/master/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
+Reaqtive provides a library of ready to use [components](${gitSite}/packages/components) and a set of [utilities](${gitSite}/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
 If you are having troubles with Reaqtive check the [FAQ](#faq) section or raise an issue.
 
 
@@ -23,9 +25,9 @@ Developments are sponsored by [Engineering Ingegneria Informatica](https://www.e
 Everything is opt-in: Reaqtive provides a set of tools and developers can pick only what they need.
 There 4 ways to use Reaqtive:
 1. The most basic usage would be to wrap your React app or component with a Reaqtive tag: Reaqtive will provide the connections to the Qlik APIs and it will be up to you to get data and visualizations.
-2. You can use hooks and components provided by [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)
-3. You can add components and visualizations provided by @reaqtive/components [components](https://github.com/taan11/reaqtive/tree/master/packages/components)
-4. You can add routing and navigation by [RqtvApp] (https://github.com/taan11/reaqtive/tree/master/packages/components#app)
+2. You can use hooks and components provided by [@reaqtive/q](${gitSite}/packages/q)
+3. You can add components and visualizations provided by @reaqtive/components [components](${gitSite}/packages/components)
+4. You can add routing and navigation by [RqtvApp] (${gitSite}/packages/components#app)
 
 
 ## Before starting
@@ -51,8 +53,8 @@ ___EXAMPLE___
 
 If you want to use Reaqtive components and utilities follow the links below.
 
-- Create your analytics web app with [@reaqtive/components](https://github.com/taan11/reaqtive/tree/master/packages/q)
-- Connect your React app to Qlik with [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)
+- Create your analytics web app with [@reaqtive/components](${gitSite}/packages/q)
+- Connect your React app to Qlik with [@reaqtive/q](${gitSite}/packages/q)
 
 ### qConfig
 
@@ -205,7 +207,7 @@ You can choose to use stand alone components and build your own navigation and r
 npm install @reaqtive/components
 \`\`\`
 
-[@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
+[@reaqtive/q](${gitSite}/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](${gitSite}/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
 `,
       sections:[
         {
@@ -277,7 +279,8 @@ You can find the complete list of Reaqtive theme variable [here](#https://github
           docLib:'styles'
         }
       ]
-    }
+    },
+    layout:{}
   }
 }
 
