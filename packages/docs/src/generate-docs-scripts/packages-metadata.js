@@ -135,26 +135,27 @@ Below a list of links to tutorials you can watch to get started with the technol
 __Q__:Is it possible to connect to more than one Qlik App?
 
 __A__: Yes, if you want to use only the engine APIs remember to set to false the qCapabilityApiRequired of the Reaqtive components. If you need to use also the capablity APIs you must use the [QShareCapabilityApi](https://github.com/taan11/reaqtive/blob/master/packages/q/src/lib/components/q-share-capability-api.js) component
-
+##
 
 __Q__: While developing I can't connect to Qlik APIs because of CORS issues
 
 __A__: Remeber to create the setupProxy file as explained here (#how-to-use-reaqtive-with-create-react-app)
-
+##
 
 __Q__: While developing I can't connect to Qlik remote server
 
 __A__: Be sure to have an active session with Qlik Sense in the same browser and to start the development server in secure mode (HTTPS="true"). [Check this section](#how-to-use-reaqtive-with-create-react-app)
-
+##
 
 __Q__: How can I deploy my mash up to Qlik Sense Enterprise?
 
 __A__: Check [this section](#deploy-your-app-to-qlik-sense-enterprise)
-
+##
 
 __Q__: When I navigate to a page with condition using query string, I am always redirected to the fallback page
 
 __A__: Add a key property to your RqtvPages. This will force them to unmount when changing the url in your address bar
+##
 `,
   files:{
     example:`docs/src/examples/first-app.js`,
