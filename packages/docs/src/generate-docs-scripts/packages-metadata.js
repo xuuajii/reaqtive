@@ -31,7 +31,7 @@ There 4 ways to use Reaqtive:
 
 
 ## Before starting
-To use Reaqtive in your app app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install [git] (https://git-scm.com/downloads).
+To use Reaqtive in your app app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install [git](https://git-scm.com/downloads).
 You should be familiar with React, npm, Bootstrap and the javascript ecosystem in general.
 If you are not you can find useful info and tutorials at the [bottom of the page](#useful-resources).
 
