@@ -6,6 +6,20 @@ The goal of the library is to provide a framework to develop guided analytics ap
 Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense and the navigation functionalities provided by QlikView.
 Reaqtive provides a library of ready to use [components](https://github.com/taan11/reaqtive/tree/master/packages/components) and a set of [utilities](https://github.com/taan11/reaqtive/tree/master/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
 
+## Thanks to
+![Eng Logo](/logo-eng.png)
+Developments are sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
+
+
+## Philosophy
+Everything is opt-in: Reaqtive provides a set of tools and developers can pick only what they need.
+There 4 ways to use Reaqtive:
+1. The most basic usage would be to wrap your React app or component with a Reaqtive tag: Reaqtive will provide the connections to the Qlik APIs and it will be up to you to get data and visualizations.
+2. You can use hooks and components provided by [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)
+3. You can add components and visualizations provided by @reaqtive/components [components](https://github.com/taan11/reaqtive/tree/master/packages/components)
+4. You can add routing and navigation by [RqtvApp] (https://github.com/taan11/reaqtive/tree/master/packages/components#app)
+
+
 ## Before starting
 To use Reaqtive app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install git (https://git-scm.com/downloads).
 To use Reaqtive and the follow this brief guide, you should be familiar with React, npm, Bootstrap and the javascript ecosystem in general.
@@ -119,7 +133,7 @@ const qConfig = qEnvironments['DESKTOP'];//or qEnvironments['SERVER']
 module.exports = module.exports = qConfig.default || qConfig;
 ```
 
-## Usage with create react app
+## How to use Reaqtive with create react app
 
 To use Reaqtive with create-react-app you have to configure a proxy for the webpack development server in order to avoid CORS issues.
 To do that you have to install http-proxy-middleware, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it. For further info follow this [link](#https://create-react-app.dev/docs/proxying-api-requests-in-development).
@@ -188,5 +202,4 @@ Below a list of links to tutorials you can watch to get started with the technol
 - [Sass tutorial](https://www.youtube.com/watch?v=St5B7hnMLjg&list=PL4cUxeGkcC9iEwigam3gTjU_7IA3W2WZA)
 - [npm tutorial](https://www.youtube.com/watch?v=kQ1j0rEI7EI&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=20)
 
-## Thanks to
 
