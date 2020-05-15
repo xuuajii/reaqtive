@@ -2,26 +2,26 @@
 # **Reaqtive**
 
 Reaqtive is a react library to help creating guided analytics for Qlik Sense, it allows you to easily interact with Qlik's Engine and capability APIs.
-The goal of the library is to provide a framework to develop guided analytics applications on top of Qlik Sense/QAP apps. Apps developed with Reaqtive are inteded to satisfy the needs and improve the user experience of those users who do not need self service BI functionalities, but only need to access and navigate standardized visualizations.
-Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense and the navigation functionalities provided by QlikView.
-Reaqtive provides a library of ready to use [components](https://github.com/taan11/reaqtive/tree/master/packages/components) and a set of [utilities](https://github.com/taan11/reaqtive/tree/master/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
-If you are having troubles with Reaqtive check the [FAQ](#faq) section or raise an issue.
+The goal of the library is to provide a framework to develop guided analytics applications on top of Qlik Sense/QAP apps.
+Apps developed with Reaqtive are inteded improve experience of those users who do not need self service BI functionalities, but only need to navigate predefined visualizations.
+Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense with the navigation functionalities provided by QlikView.
+If you already tried Reaqtive and you are having troubles with Reaqtive check the [FAQ](#faq) section or raise an issue.
 
 
 ## Thanks to
 
-![Eng Logo](/logo-eng.png)
+![Eng Logo](/logo-eng.png|width=150)
 
 Developments are sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
 
 
-## Philosophy
+## Usage
 Everything is opt-in: Reaqtive provides a set of tools and developers can pick only what they need.
 There 4 ways to use Reaqtive:
 1. The most basic usage would be to wrap your React app or component with a Reaqtive tag: Reaqtive will provide the connections to the Qlik APIs and it will be up to you to get data and visualizations.
-2. You can use hooks and components provided by [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)
-3. You can add components and visualizations provided by @reaqtive/components [components](https://github.com/taan11/reaqtive/tree/master/packages/components)
-4. You can add routing and navigation by [RqtvApp] (https://github.com/taan11/reaqtive/tree/master/packages/components#app)
+2. You can use hooks and components included in [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q), which are ready to use interfaces to interact with the QIX Engine
+3. You can add layout components and visualizations provided by @reaqtive/components [components](https://github.com/taan11/reaqtive/tree/master/packages/components)
+4. You can add routing and navigation using [RqtvApp] (https://github.com/taan11/reaqtive/tree/master/packages/components#app)
 
 
 ## Before starting
