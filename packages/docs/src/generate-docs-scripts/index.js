@@ -227,7 +227,7 @@ const updateReaqtiveDocs = (metadata) => {
 
 const updatePackagesFolderDocs = (reaqtiveModules) => {
   const packagesPath=path.join(__dirname, `${reaqtiveModules.rootPath}/${reaqtiveModules.packagesPath}`);
-  const generateLink = (package) => `- [${package.name}](${reaqtiveModules.gitSite}/${package.path})`
+  const generateLink = (package) => `- [${package.name}](${reaqtiveModules.gitSite}/${reaqtiveModules.packagesPath}/${package.path})`
   const packagesLinks = _.map(reaqtiveModules.packages, generateLink)
   const markdown = `
 # Reaqtive Packages

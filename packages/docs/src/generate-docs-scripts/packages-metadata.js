@@ -280,7 +280,10 @@ You can find the complete list of Reaqtive theme variable [here](#https://github
         }
       ]
     },
-    layout:{}
+    layout:{
+      name:'@reaqtive/layout',
+      path:'layout'
+    }
   }
 }
 
