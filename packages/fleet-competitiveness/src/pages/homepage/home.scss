@@ -1,0 +1,46 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+@import '../../index.scss';
+
+.parallax {
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #main {
+    //min-height: 100%;
+    padding-top: 10px;
+    background-image: url("../../images/homepage/section1.jpg");
+
+    &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background: $overlay-color-primary;
+      }
+  }
+
+
+  
+#footer {
+  //min-height: 50%;
+  background-image: url("../../images/homepage/methodology.jpg");
+  color: #fff;
+    &:before{
+      content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(74, 74, 74, 0.75);
+    }
+}

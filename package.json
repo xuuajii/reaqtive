@@ -3,7 +3,7 @@
   "private": true,
   "devDependencies": {
     "lerna": "^3.19.0",
-    "concurrently":"5.0.2"
+    "concurrently": "5.0.2"
   },
   "publishConfig": {
     "access": "public"

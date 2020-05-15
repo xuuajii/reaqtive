@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 150 150" style="enable-background:new 0 0 150 150;" xml:space="preserve" width="150px" height="150px" class="">
+    <g><g>	
+    <path style="fill:#EFC75E" d="M 75, 75 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0" />
+    <path style="stroke:#D7B354;fill:#EFC75E;stroke-width:10" d="M 75, 75 m -60, 0 a 60,60 0 1,0 120,0 a 60,60 0 1,0 -120,0" />
+    </g></g> 
+</svg>

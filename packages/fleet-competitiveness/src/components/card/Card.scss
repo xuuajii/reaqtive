@@ -1,0 +1,134 @@
+//
+//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
+//
+
+//@import '../../index.scss';
+
+.rqtv-card{
+    min-height: 177.75px;
+    color: $card-color;
+    background-color: $card-bg;
+    box-shadow: $card-box-shadow;
+    padding:1 1 1 1 !important;
+    .card-header{
+      min-height: 177.75px;
+      border-bottom: 0;
+      padding-bottom:0;
+      background-color: $card-bg;
+    }
+    .table-responsive{
+      z-index: 100;
+      margin-top: -10px;
+    }
+    .table-sm{
+      font-size: 0.85rem;
+      tbody{
+        tr:hover{
+          background-color: #CCC;
+        }
+      }
+      th{
+        text-transform: uppercase;
+        border-top:0;
+        text-align: left;
+        font-size: 0.8rem;
+        &:nth-child(1n+3){
+        text-align: center;
+        }
+      }
+      td{
+        cursor: pointer;
+        vertical-align: middle;
+        overflow-x: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        &:nth-child(1n+3){
+        text-align: center;
+        }
+      }
+    }
+    .measure-table{
+      tbody{tr{
+        &:hover{
+          background-color:#FFF;
+        }
+        td{
+          cursor:default;
+        }
+      }}
+      td:nth-child(1n+3){
+        text-align: right;
+        padding-right: 1rem;
+      }
+    }
+}
+
+.card-img{
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(20%,transparent),color-stop(95%,#fff));
+    background: -webkit-linear-gradient(top,transparent 20%,#fff 95%);
+    background: linear-gradient(180deg,transparent 20%,#fff 95%);
+    width:auto !important;
+    max-width:100%;
+}
+
+.card-info{
+    position: absolute !important;
+    bottom: 10px;
+    background: linear-gradient(0deg, #ffffff57 0%, rgba(91, 136, 217, 0) 100%);
+    h4{
+      font-weight: bold;
+      width:100%;
+    }
+}
+
+.card-info-product{
+  position: absolute !important;
+  bottom: 0px;
+  background: linear-gradient(0deg, #ffffff94 30%, rgba(255, 255, 255, 0.1) 100%);
+  min-width: 100%;
+  /*left: 50%;
+  transform: translateX(-50%)*/
+  h4{
+    font-weight: bold;
+    min-width:100%;
+  }
+}
+
+.no-gutters{
+    position: relative;
+}
+
+.flex-item {
+    //background-color: #C5CAE9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.flex-item:not(:last-of-type) {
+      margin-right: 12px;
+    }
+  }
+
+  .card-vehicle-text{
+    max-width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: $labelColor;
+
+  }
+
+  .pickgradient{
+    position:relative;
+    display:inline-block;
+    &:after{
+      content:'';
+      position:absolute;
+      left:0; top:0;
+      width:100%; height:100%;
+      display:inline-block;
+      background: rgb(255,255,255);
+      background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(91,136,217,0) 100%);
+    }
+  }

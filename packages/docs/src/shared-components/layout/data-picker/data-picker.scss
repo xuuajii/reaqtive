@@ -1,0 +1,45 @@
+@import '../../../index.scss';
+
+
+.react-data-picker-custom{
+    z-index: 9999;
+  }
+
+.react-calendar {
+    box-shadow: $box-shadow;
+
+    button {
+        text-transform: capitalize;
+    }
+
+    abbr[title]{
+        text-decoration: none;
+        cursor: default;
+    }
+
+    button:focus{
+        outline: none;
+    }
+}
+
+.react-calendar__tile--hasActive,.react-calendar__tile--active{
+    background-color: $primary;
+    color: #fff;
+    //border-radius: 10px;
+    &:enabled:hover{
+        background-color: $primary-color-hover
+    }
+}
+
+.react-date-picker__button:enabled:hover .react-date-picker__button__icon{
+    stroke : $primary;
+}
+
+.react-calendar__navigation {
+    button:enabled{
+        &:focus,&:hover{
+            color: #5c88da;
+            background-color: transparent;
+        }
+    }
+}
