@@ -740,12 +740,13 @@ app info to be available everywhere inside your app.
 ```javascript
 import React from 'react'
 import {RqtvApp} from '@reaqtive/components'
-import {HomePage, FirstPage} from './rqtv-page'
+import {HomePage, FirstPage, SecondPage} from './rqtv-page'
 
 const MyRqtvApp = (props) => {
   return(
     <RqtvApp title="Example App">
         <FirstPage path="/first-page"/>
+        <SecondPage path="/second-page"/>
         <HomePage path="/" linkName="HOME"/>
     </RqtvApp>
   )
@@ -799,6 +800,7 @@ Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route ch
 ```javascript
 import React from 'react'
 import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 
 const HomePage = props =>
@@ -808,12 +810,42 @@ const HomePage = props =>
   </RqtvStandardTemplate>
 </RqtvPage>
 
-const FirstPage = props =>
+const FirstPage = props =>{
+  return(
+    <RqtvPage {...props}>
+      <MyFirstNestedPage/>
+    </RqtvPage>
+  )
+}
+
+
+const MyFirstNestedPage = props =>{
+  const { path, url } = useRouteMatch();
+  return(
+    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+      <RqtvPage
+        path={`${path}/with-condition`}
+        qConditionExpr={'=count(distinct Customer)=1'}
+        fallbackPage={`${path}`}
+      >
+        <div>this is a nested page with a condition</div>
+      </RqtvPage>
+      <RqtvPage path={`${path}`} exact={true}>
+        <div>this is a nested page with no condition</div>
+        <div>
+          <NavLink to={`${url}/with-condition/?selections=Customer:Benedict&selections=Account:61099`}><button>go to page with condition</button></NavLink>
+        </div>
+      </RqtvPage>
+    </RqtvStandardTemplate>
+  )
+}
+
+const SecondPage = props =>
 <RqtvPage {...props} qTitleExpr="'Revenue is: '&Sum([Sales Quantity]*[Sales Price])" exactActiveMatch={false}>
   <MyRqtvStandardTemplate/>
 </RqtvPage>
 
-export {HomePage, FirstPage}
+export {HomePage, FirstPage, SecondPage}
 
 ```
 **Props**: 
@@ -848,27 +880,12 @@ It is suggested to use this component inside the RqtvApp
 ```javascript
 import React from 'react'
 import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
-import {useRouteMatch, NavLink} from 'react-router-dom'
 
 
 const MyRqtvStandardTemplate = props => {
-  const { path, url } = useRouteMatch();
-
   return(
     <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
-      <RqtvPage
-        path={`${path}/with-condition`}
-        qConditionExpr={'=count(distinct Customer)=1'}
-        fallbackPage={`${path}`}
-      >
-        <div>this is a nested page with a condition</div>
-      </RqtvPage>
-      <RqtvPage path={`${path}`} exact={true}>
-        <div>this is a nested page with no condition</div>
-        <div>
-          <NavLink to={`${url}/with-condition/?selections=Customer:Benedict&selections=Account:61099'`}><button>go to page with condition</button></NavLink>
-        </div>
-      </RqtvPage>
+      <div>Standard Template Example</div>
     </RqtvStandardTemplate>
   )
 }
