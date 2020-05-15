@@ -28,8 +28,10 @@ const useQConditionDef = (qConditionExpr) => useMemo(()=>{
  * It is a dummy component which provides a the RqtvPageContext and a QGenericObject with 2 experessions:
  * qTitleExpr --> providing the qTitle result
  * qConditionExpr --> providing the qCondition result
+ * When navigating among RqtvPages you can use query strings to select values in fields. Here an example of a query string: ?selections=Customer:Benedict;Zocalo&selections=Account:61099 . Place your query string at the end of the url you are navigating to.
  * RqtvPage also accept triggers which are fired when the page mounts.
  * Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change, to force unmount add a key prop (it has to be unique among pages).
+ *
  *
  */
 

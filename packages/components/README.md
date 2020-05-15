@@ -18,6 +18,7 @@ npm install @reaqtive/components
 - [VISUALIZATIONS](#visualizations) </br>
 - [APP OBJECTS](#app-objects) </br>
 - [APP](#app) </br>
+- [TRIGGERS](#triggers) </br>
 - [STYLES](#styles) </br>
 
 ## FILTERS
@@ -789,6 +790,7 @@ It is a container based on the Route component of the React Router. It can't be 
 It is a dummy component which provides a the RqtvPageContext and a QGenericObject with 2 experessions:
 qTitleExpr --> providing the qTitle result
 qConditionExpr --> providing the qCondition result
+When navigating among RqtvPages you can use query strings to select values in fields. Here an example of a query string: ?selections=Customer:Benedict;Zocalo&selections=Account:61099 . Place your query string at the end of the url you are navigating to.
 RqtvPage also accept triggers which are fired when the page mounts.
 Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change, to force unmount add a key prop (it has to be unique among pages).
 
@@ -887,6 +889,46 @@ __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 
 <br></br>
 
+
+
+## TRIGGERS
+RqtvApp and RqtvPage accept arrays of triggers as props. They are fired before rendering the app or the page. This is still an experimental feature, but data structures are very unlikely to change. Below you can find the types of triggers you can use described as PropTypes
+
+```javascript
+
+/*Select one value of one field*/
+const fieldSelectionTrigger = PropTypes.shape({
+    type: 'fieldSelection',
+    params: PropTypes.shape({
+      fieldName:PropTypes.string,
+      value:PropTypes.string,
+    })
+  })
+
+/*Select multiple values of one field*/
+const fieldSelectionsTrigger = PropTypes.shape({
+  type: 'fieldSelections',
+  params: PropTypes.shape({
+    fieldName:PropTypes.string,
+    value:PropTypes.arrayOf(PropTypes.shape({
+      qText: PropTypes.string,
+      qIsNumeric: PropTypes.bool,
+      qNumber: PropTypes.number
+    })),
+  })
+})
+
+/*Clear one field*/
+const clearFieldTrigger =  PropTypes.shape({
+  type: 'clearField',
+  params: PropTypes.shape({
+    fieldName:PropTypes.string,
+  })
+})
+
+const triggerType = PropTypes.oneOf([clearFieldTrigger,fieldSelectionsTrigger,fieldSelectionTrigger])
+
+```
 
 
 ## STYLES

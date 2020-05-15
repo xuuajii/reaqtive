@@ -9,6 +9,8 @@ Reaqtive is a react library to help creating guided analytics for Qlik Sense, it
 The goal of the library is to provide a framework to develop guided analytics applications on top of Qlik Sense/QAP apps. Apps developed with Reaqtive are inteded to satisfy the needs and improve the user experience of those users who do not need self service BI functionalities, but only need to access and navigate standardized visualizations.
 Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense and the navigation functionalities provided by QlikView.
 Reaqtive provides a library of ready to use [components](https://github.com/taan11/reaqtive/tree/master/packages/components) and a set of [utilities](https://github.com/taan11/reaqtive/tree/master/packages/q) to interact with Qlik APIs, you can decide to use both or only the utilities.
+If you are having troubles with Reaqtive check the [FAQ](#faq) section or raise an issue.
+
 
 ## Thanks to
 
@@ -27,8 +29,8 @@ There 4 ways to use Reaqtive:
 
 
 ## Before starting
-To use Reaqtive app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install git (https://git-scm.com/downloads).
-To use Reaqtive and the follow this brief guide, you should be familiar with React, npm, Bootstrap and the javascript ecosystem in general.
+To use Reaqtive in your app app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install [git] (https://git-scm.com/downloads).
+You should be familiar with React, npm, Bootstrap and the javascript ecosystem in general.
 If you are not you can find useful info and tutorials at the [bottom of the page](#useful-resources).
 
 ## Installation
@@ -39,7 +41,8 @@ npm install @reaqtive/components
 
 ## First Reaqtive App
 
-Below you can find the code to create the simplest Reaqtive app. The app shows a dropdown menu to select from one field and one visualization provided by Qlik capability APIs.
+Below you can find the code to create the simplest Reaqtive app. It is assumed that you have alredy created a [React app](https://create-react-app.dev/) and, if you are using CRA, that you have created the [setupProxy file](#how-to-use-reaqtive-with-create-react-app).
+The app shows a dropdown menu to select from one field and one visualization provided by Qlik capability APIs.
 The Reaqtive component handles the connection with the Qlik Sense server and it expects connections parameters to be provided in an object called qConfig.
 
 
@@ -96,6 +99,16 @@ HTTPS="true" npm start
 
 [Here](#https://create-react-app.dev/docs/using-https-in-development) you can find more info about using a proxy with CRA.
 
+
+##Deploy your app to Qlik Sense Enterprise
+
+1 in the root folder of your project (the parent of the src folder) create a file called exactly \`\`\`.env.production\`\`\` and add this line: \`\`\`PUBLIC_URL = /extensions/your-app-name\`\`\`
+2 Open a command line tool in your root folder and run the command \`\`\`npm run build\`\`\` this will create a build folder which will contain all the files to be deployed
+3 Create a qExt file as explained [here] (https://help.qlik.com/en-US/sense-developer/June2019/Subsystems/Mashups/Content/Sense_Mashups/mashups-getting-started.htm) and place it in the build folder. The name property in this file must match the app name you enterd in .env.production
+4 zip the content of the build folder (not the folder itself: when opening the zip file you must see the content of the build folder not the build folder)
+5 upload the zip as an extension using the QMC
+
+
 ## Useful resources
 
 Below you can find the links to the official sites of the technologies used to develop Reaqtive.
@@ -115,7 +128,18 @@ Below a list of links to tutorials you can watch to get started with the technol
 - [Sass tutorial](https://www.youtube.com/watch?v=St5B7hnMLjg&list=PL4cUxeGkcC9iEwigam3gTjU_7IA3W2WZA)
 - [npm tutorial](https://www.youtube.com/watch?v=kQ1j0rEI7EI&list=PL4cUxeGkcC9gcy9lrvMJ75z9maRw4byYp&index=20)
 
+FAQs
 
+- It is possible to connect to more than one Qlik App?
+Yes, if you want to use only the engine APIs remember to set to false the qCapabilityApiRequired of the Reaqtive components. If you need to use also the capablity APIs you must use the [QShareCapabilityApi](https://github.com/taan11/reaqtive/blob/master/packages/q/src/lib/components/q-share-capability-api.js) component
+- While developing I can't connect to Qlik APIs because of CORS issues
+Remeber to create the setupProxy file as explained here (#how-to-use-reaqtive-with-create-react-app)
+- While developing I can't connect to Qlik remote server
+Be sure to have an active session with Qlik Sense in the same browser and to start the development server in secure mode (HTTPS="true"). [Check this section](#how-to-use-reaqtive-with-create-react-app)
+- How can I deploy my mash up to Qlik Sense Enterprise?
+Check [this section](#deploy-your-app-to-qlik-sense-enterprise)
+- When I navigate to a page with condition using query string I am alway redirected to the fallback page
+Add a key property to your RqtvPages. This will force them to unmount when changing the url in your address bar
 `,
   files:{
     example:`docs/src/examples/first-app.js`,
@@ -207,6 +231,12 @@ npm install @reaqtive/components
           intro:'Components described in this section are supposed to work together: it is suggested to use RqtvApp if you want to use the other components describe here.',
           paths:['rqtv-app.js', 'pages/*.js'],
           docLib:'reactDocgen'
+        },
+        {
+          title:'Triggers',
+          intro:'RqtvApp and RqtvPage accept arrays of triggers as props. They are fired before rendering the app or the page. This is still an experimental feature, but data structures are very unlikely to change. Below you can find the types of triggers you can use described as PropTypes',
+          paths:['custom-prop-types/trigger.js'],
+          docLib:'customDataType'
         },
         {
           title:'Styles',

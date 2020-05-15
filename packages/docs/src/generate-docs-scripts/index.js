@@ -96,6 +96,15 @@ const addHooksMetadata = (section, examplePath) => {
   return {...section, hooks:hooksWithSnippets}
 }
 
+const addCustomData = (section) => {
+  const snippet = fs.readFileSync(section.fileList[0], 'utf8')
+  const firstLinePos = snippet.indexOf(os.EOL)
+  const lastLinePos = snippet.lastIndexOf('export')
+
+  console.log(lastLinePos)
+  return {...section, snippet:'```javascript'+os.EOL+snippet.substr(0,lastLinePos).substr(firstLinePos + 1)+'```'+os.EOL}
+}
+
 const addSectionMetadata = (section, examplePath) => {
   let sectionWithMetadata
   switch(section.docLib){
@@ -107,6 +116,10 @@ const addSectionMetadata = (section, examplePath) => {
     break;
     case 'styles':
       sectionWithMetadata=(section)
+    break;
+    case 'customDataType':
+      sectionWithMetadata=addCustomData(section)
+    break;
     default:
     console.log(`no doc library found (${section.docLib}) for section ${section.name}`)
   }
@@ -167,7 +180,8 @@ const composeSection = (section) => {
   })
   :[]
   const sectionHooksMarkdown = section.hooks!==undefined?_.map(section.hooks, generateHookMarkDown):[];
-  return sectionTitle+os.EOL+sectionIntro+sectionComponentsMarkdown.join(os.EOL)+sectionHooksMarkdown.join(os.EOL)
+  const wholeSectionSnippet = section.snippet?section.snippet+os.EOL:''
+  return sectionTitle+os.EOL+sectionIntro+wholeSectionSnippet+sectionComponentsMarkdown.join(os.EOL)+sectionHooksMarkdown.join(os.EOL)
 }
 
 const addPackageIntro = (package, mergedSectionsMarkdown) => {

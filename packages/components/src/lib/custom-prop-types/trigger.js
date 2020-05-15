@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 
+/*Select one value of one field*/
 const fieldSelectionTrigger = PropTypes.shape({
     type: 'fieldSelection',
     params: PropTypes.shape({
@@ -8,6 +9,7 @@ const fieldSelectionTrigger = PropTypes.shape({
     })
   })
 
+/*Select multiple values of one field*/
 const fieldSelectionsTrigger = PropTypes.shape({
   type: 'fieldSelections',
   params: PropTypes.shape({
@@ -20,6 +22,7 @@ const fieldSelectionsTrigger = PropTypes.shape({
   })
 })
 
+/*Clear one field*/
 const clearFieldTrigger =  PropTypes.shape({
   type: 'clearField',
   params: PropTypes.shape({
