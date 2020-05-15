@@ -26,8 +26,8 @@ Everything is opt-in: Reaqtive provides a set of tools and developers can pick o
 There 4 ways to use Reaqtive:
 1. The most basic usage would be to wrap your React app or component with a Reaqtive tag: Reaqtive will provide the connections to the Qlik APIs and it will be up to you to get data and visualizations.
 2. You can use hooks and components included in [@reaqtive/q](${gitSite}/packages/q), which are ready to use interfaces to interact with the QIX Engine
-3. You can add layout components and visualizations provided by @reaqtive/components [components](${gitSite}/packages/components)
-4. You can add routing and navigation using [RqtvApp] (${gitSite}/packages/components#app)
+3. You can add layout components and visualizations provided by []@reaqtive/components](${gitSite}/packages/components)
+4. You can add routing and navigation using [RqtvApp](${gitSite}/packages/components#app)
 
 
 ## Before starting
@@ -54,7 +54,7 @@ ___EXAMPLE___
 
 If you want to use Reaqtive components and utilities follow the links below.
 
-- Create your analytics web app with [@reaqtive/components](${gitSite}/packages/q)
+- Create your analytics web app with [@reaqtive/components](${gitSite}/packages/components)
 - Connect your React app to Qlik with [@reaqtive/q](${gitSite}/packages/q)
 
 ### qConfig
