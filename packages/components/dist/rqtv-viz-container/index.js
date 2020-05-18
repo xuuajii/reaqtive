@@ -87,23 +87,20 @@ const RqtvVizContainer = props => {
 
   (0, _react.useEffect)(() => {
     activeChartRef.current && setShowToolbar(true);
-  }, [activeChartRef]);
-
-  const _useState7 = (0, _react.useState)(false),
-        _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
-        maximized = _useState8[0],
-        setMaximized = _useState8[1];
+  }, [activeChartRef.current]);
 
   const getChartHeight = () => 0.95 * ((vizContainerEl.current && vizContainerEl.current.offsetHeight) - (headerEl.current && headerEl.current.offsetHeight));
 
-  const _useState9 = (0, _react.useState)(getChartHeight()),
-        _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
-        chartHeight = _useState10[0],
-        setChartHeight = _useState10[1];
+  const _useState7 = (0, _react.useState)(getChartHeight()),
+        _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
+        chartHeight = _useState8[0],
+        setChartHeight = _useState8[1];
 
-  (0, _react.useEffect)(() => {
-    setChartHeight(getChartHeight());
-  }, [vizContainerEl.current, headerEl.current]);
+  const _useState9 = (0, _react.useState)(false),
+        _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
+        maximized = _useState10[0],
+        setMaximized = _useState10[1];
+
   (0, _react.useEffect)(() => {
     if (props.maximizeElRef && props.maximizeElRef.current) {
       props.maximizeElRef.current.style.display = maximized ? "block" // position:absolute; top:0; left:0; height:100%; width:100%; z-index:300; max-height:100%;`
@@ -131,7 +128,7 @@ const RqtvVizContainer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 84
     },
     __self: void 0
   }, _react.default.createElement(_header.default, {
@@ -142,7 +139,7 @@ const RqtvVizContainer = props => {
     className: "".concat(props.containerClassName),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 86
+      lineNumber: 85
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_toolbar.default, {
@@ -157,19 +154,19 @@ const RqtvVizContainer = props => {
     maximized: maximized,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 93
     },
     __self: void 0
   })), _react.default.createElement("div", {
     className: "viz-container-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 106
+      lineNumber: 105
     },
     __self: void 0
   }, _react.default.cloneElement(activeChart, {
     ref: activeChartRef,
-    height: isNaN(chartHeight) ? 0 : chartHeight
+    height: isNaN(getChartHeight()) ? 0 : getChartHeight()
   })));
 
   return maximized ? _reactDom.default.createPortal(vizContainer, props.maximizeElRef.current) : vizContainer;

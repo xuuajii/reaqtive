@@ -92,7 +92,9 @@ const RqtvPageConsumer = props => {
   const qCondition = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qCondition;
   return _react.default.createElement(RqtvPageContext.Provider, {
     value: {
-      triggerState,
+      triggerState: triggers === null ? (0, _objectSpread2.default)({}, triggerState, {
+        done: false
+      }) : triggerState,
       pageData: props.pageData,
       qTitle,
       qCondition,

@@ -72,6 +72,7 @@ const RqtvPage = props => {
     __self: void 0
   }, _react.default.createElement(RqtvPageConsumer, {
     fallbackPage: fallbackPage,
+    loadingComponent: props.loadingComponent,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 45
@@ -99,23 +100,26 @@ const RqtvPageConsumer = props => {
   (0, _react.useEffect)(() => {
     setTriggersDone(triggerState.done);
     return () => setTriggersDone(false);
-  }, [triggerState.done]);
-  (0, _react.useEffect)(() => {
-    qPageObjectHandler.set;
-  }, [location.pathname]);
+  }, [triggerState.done]); // useEffect(()=>{
+  //   qPageObjectHandler.set
+  // }, [location.pathname])
 
   if (qCondition === '0' && fallbackPage && triggersDone === true) {
     return _react.default.createElement(_reactRouterDom.Redirect, {
       to: fallbackPage ? fallbackPage : "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 72
+        lineNumber: 73
       },
       __self: void 0
     });
   }
 
-  return props.children;
+  if (triggersDone === true) {
+    return props.children;
+  } else {
+    return props.loadingComponent ? props.loadingComponent : _react.default.createElement(_react.default.Fragment, null);
+  }
 };
 
 RqtvPage.propTypes = {
@@ -159,7 +163,13 @@ RqtvPage.propTypes = {
    * shows the route only if the path match exactly with the addressbar. See the React Router docs for details
    *
    */
-  exact: _propTypes.default.bool
+  exact: _propTypes.default.bool,
+
+  /**
+   * the component displayed while triggers fired
+   *
+   */
+  loadingComponent: _propTypes.default.element
 };
 RqtvPage.defaultProps = {
   exact: false,

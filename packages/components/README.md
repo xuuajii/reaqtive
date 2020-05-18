@@ -802,11 +802,12 @@ import React from 'react'
 import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
-
+import MyRqtvContainerExample from './rqtv-viz-container'
 const HomePage = props =>
 <RqtvPage {...props} exact={true} qTitleExpr="'Homepage'">
   <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
     <div>Home Page</div>
+    <MyRqtvContainerExample/>
   </RqtvStandardTemplate>
 </RqtvPage>
 
@@ -829,11 +830,13 @@ const MyFirstNestedPage = props =>{
         fallbackPage={`${path}`}
       >
         <div>this is a nested page with a condition</div>
+        <MyRqtvContainerExample/>
       </RqtvPage>
       <RqtvPage path={`${path}`} exact={true}>
         <div>this is a nested page with no condition</div>
         <div>
           <NavLink to={`${url}/with-condition/?selections=Customer:Benedict&selections=Account:61099`}><button>go to page with condition</button></NavLink>
+          <MyRqtvContainerExample/>
         </div>
       </RqtvPage>
     </RqtvStandardTemplate>
@@ -855,6 +858,7 @@ export {HomePage, FirstPage, SecondPage}
 __exact__ | `Boolean` | `false` | :x: | shows the route only if the path match exactly with the addressbar. See the React Router docs for details
 __fallbackPage__ | `String` |  | :x: | the page the user is redicrected to when the qConditionExpr returns false (0)
 __linkName__ | `String` |  | :x: | the name of the page displayed in the side-menu of the app. If not set it will be equal to the path, replacing '-' with  ' '
+__loadingComponent__ | `ReactElement` |  | :x: | the component displayed while triggers fired
 __path__ | `String` |  | :white_check_mark: | the path to reach the page. See React Router for details
 __qConditionExpr__ | `String` | `""` | :x: | a qlik espression that returns a value, used in combination with the fallback page prop, it redirects when false
 __qTitleExpr__ | `String` | `"'My Reaqtive Page'"` | :x: | the expression that can be used to make the title dynamic as in Qlik Sense sheets

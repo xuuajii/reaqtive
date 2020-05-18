@@ -56,23 +56,29 @@ const useQVizHandler = (qApp, id, chartProps) => {
         setVizId = _useState4[1];
 
   (0, _react.useEffect)(() => {
-    if (chartProps && vizId === null) {
+    let isSubscribed = true;
+
+    if (chartProps && vizId === null && qVizHandler.qVizLoading === true) {
       //qVizHandler.qVizLoading===true && qVizHandler.qViz===null && qApp!==null && qApp !== undefined){
       qApp && qApp.visualization.create(chartProps.chartType, chartProps.chartColumns, chartProps.rest).then(qViz => {
-        setVizId(qViz.id);
+        isSubscribed && setVizId(qViz.id);
       }).catch(qErr => console.log('error setting chart props', qErr));
     }
 
     if (id && !chartProps) {
-      setVizId(id);
+      isSubscribed && setVizId(id);
     }
 
     if (vizId !== null && qVizHandler.qVizLoading === true) {
-      qApp && qApp.visualization.get(vizId).then(qViz => setQVizHandler({
-        qVizLoading: false,
-        qViz: qViz
-      })).catch(qErr => console.log('error retrieving qViz', vizId));
+      qApp && qApp.visualization.get(vizId).then(qViz => {
+        isSubscribed && setQVizHandler({
+          qVizLoading: false,
+          qViz: qViz
+        });
+      }).catch(qErr => console.log('error retrieving qViz', vizId));
     }
+
+    return () => isSubscribed = false;
   }, [qApp, chartProps, vizId, id, qVizHandler.qVizLoading]);
   (0, _react.useEffect)(() => {
     if (qVizHandler.qViz) {
