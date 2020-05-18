@@ -72,7 +72,7 @@ const RqtvPageConsumer = props => {
 
   return(
     <RqtvPageContext.Provider
-      value={{triggerState, pageData:props.pageData, qTitle, qCondition, qPageObjectHandler:qObjectHandler}}
+      value={{triggerState:triggers===null?{...triggerState,done:false}:triggerState, pageData:props.pageData, qTitle, qCondition, qPageObjectHandler:qObjectHandler}}
     >
       {
         props.children

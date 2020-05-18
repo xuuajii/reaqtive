@@ -55,14 +55,13 @@ const RqtvVizContainer = props => {
 
   useEffect(()=>{
     activeChartRef.current&&setShowToolbar(true)
-  }, [activeChartRef])
+  }, [activeChartRef.current])
 
-  const [maximized, setMaximized] = useState(false)
+
   const getChartHeight = () => 0.95*((vizContainerEl.current&&vizContainerEl.current.offsetHeight)-(headerEl.current&&headerEl.current.offsetHeight))
   const [chartHeight, setChartHeight] = useState(getChartHeight())
-  useEffect(()=>{
-    setChartHeight(getChartHeight())
-  }, [vizContainerEl.current,headerEl.current])
+
+  const [maximized, setMaximized] = useState(false)
   useEffect(()=>{
     if(props.maximizeElRef&&props.maximizeElRef.current){
       props.maximizeElRef.current.style.display=maximized
@@ -104,7 +103,7 @@ const RqtvVizContainer = props => {
       />}
     </RqtvVizContainerHeader>
     <div className="viz-container-body">
-      { React.cloneElement(activeChart, {ref:activeChartRef, height:isNaN(chartHeight)?0:chartHeight}) }
+      { React.cloneElement(activeChart, {ref:activeChartRef, height:isNaN(getChartHeight())?0:getChartHeight()}) }
     </div>
   </div>
   return maximized?ReactDOM.createPortal(vizContainer,props.maximizeElRef.current):vizContainer;

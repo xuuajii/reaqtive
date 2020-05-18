@@ -1,7 +1,7 @@
 //
 //Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
 //
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import React from 'react'
 
 /**
@@ -31,26 +31,31 @@ const useQVizHandler = (qApp, id, chartProps) => {
   const [vizId, setVizId] = useState(null)
 
   useEffect(()=>{
-    if(chartProps && vizId===null ){//qVizHandler.qVizLoading===true && qVizHandler.qViz===null && qApp!==null && qApp !== undefined){
+    let isSubscribed=true
+    if(chartProps && vizId===null && qVizHandler.qVizLoading===true){//qVizHandler.qVizLoading===true && qVizHandler.qViz===null && qApp!==null && qApp !== undefined){
       qApp&&qApp.visualization.create(
         chartProps.chartType,
         chartProps.chartColumns,
         chartProps.rest
       )
       .then(qViz => {
-        setVizId(qViz.id)
+        isSubscribed&&setVizId(qViz.id)
       })
       .catch(qErr => console.log('error setting chart props', qErr))
     }
     if(id && !(chartProps)){
-      setVizId(id)
+      isSubscribed&&setVizId(id)
     }
 
     if(vizId!==null && qVizHandler.qVizLoading===true){
+
       qApp&&qApp.visualization.get(vizId)
-      .then(qViz => setQVizHandler({qVizLoading:false, qViz:qViz}))
+      .then(qViz => {
+        isSubscribed&&setQVizHandler({qVizLoading:false, qViz:qViz})
+      })
       .catch(qErr => console.log('error retrieving qViz', vizId))
     }
+    return () => isSubscribed=false
   },[qApp, chartProps, vizId, id, qVizHandler.qVizLoading])
 
   useEffect(()=>{

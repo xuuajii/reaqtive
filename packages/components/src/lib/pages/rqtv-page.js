@@ -44,6 +44,7 @@ const RqtvPage = props => {
         >
           <RqtvPageConsumer
             fallbackPage={fallbackPage}
+            loadingComponent={props.loadingComponent}
           >
             {props.children}
           </RqtvPageConsumer>
@@ -64,14 +65,18 @@ const RqtvPageConsumer = props => {
   },[triggerState.done])
 
 
-  useEffect(()=>{
-    qPageObjectHandler.set
-  }, [location.pathname])
+  // useEffect(()=>{
+  //   qPageObjectHandler.set
+  // }, [location.pathname])
 
   if( qCondition==='0' && fallbackPage && triggersDone===true){
     return <Redirect to={fallbackPage?fallbackPage:""} />
   }
-  return  props.children
+  if(triggersDone===true){
+    return  props.children
+  }else{
+    return props.loadingComponent?props.loadingComponent:<></>
+  }
 }
 
 RqtvPage.propTypes = {
@@ -110,6 +115,11 @@ RqtvPage.propTypes = {
    *
    */
   exact:PropTypes.bool,
+  /**
+   * the component displayed while triggers fired
+   *
+   */
+  loadingComponent:PropTypes.element
 }
 
 RqtvPage.defaultProps = {
