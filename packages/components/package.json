@@ -1,6 +1,6 @@
 {
 	"name": "@reaqtive/components",
-	"version": "0.0.0-patch-2",
+	"version": "0.0.0-beta",
 	"description": "reaqtive components connected to qlik engine and capability APIs",
 	"keywords": [
 		"reaqtive",
@@ -8,13 +8,18 @@
 		"mashup"
 	],
 	"author": "paolo deregibus <paolo.deregibus@gmail.com>",
-	"homepage": "",
 	"license": "MIT",
 	"private": false,
+  "homepage": "https://github.com/xuuajii/reaqtive/tree/master/packages/components",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuuajii/reaqtive.git",
+    "directory": "packages/components"
+  },
 	"files": [
-		"/dist/*"
+		"dist/*"
 	],
-	"main": "/dist/index.js",
+	"main": "dist/index.js",
 	"directories": {
 		"lib": "lib",
 		"test": "__tests__"
@@ -79,8 +84,8 @@
 		"watch": "^1.0.2"
 	},
 	"dependencies": {
-		"@reaqtive/layout": "^0.0.0-patch-2",
-		"@reaqtive/q": "^0.0.0-patch-2",
+		"@reaqtive/layout": "^0.0.0-beta",
+		"@reaqtive/q": "^0.0.0-beta",
 		"airbnb-prop-types": "^2.15.0",
 		"bootstrap": "^4.4.1",
 		"lodash": "4.17.15",

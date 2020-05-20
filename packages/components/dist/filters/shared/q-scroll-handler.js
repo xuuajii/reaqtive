@@ -53,7 +53,7 @@ const QScrollHandler = props => {
         getDataPage = props.getDataPage;
   const itemQty = qDataPages.reduce((total, item) => total + item['qArea']['qHeight'], 0);
   const listItemHeight = Math.round(loadedElHeight / itemQty);
-  const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qDataPages[0].qArea, qSize, visibleHeight, listItemHeight, 0.2, getDataPage);
+  const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qDataPages[0].qArea, qSize, visibleHeight, listItemHeight, 0.5, getDataPage);
   const bodyElementRef = props.bodyEl !== undefined ? props.bodyEl : bodyEl;
   return _react.default.createElement("div", {
     style: (0, _objectSpread2.default)({

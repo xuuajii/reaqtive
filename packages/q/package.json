@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/q",
-  "version": "0.0.0-patch-2",
+  "version": "0.0.0-beta",
   "description": "interfaces vs qlik with no layout components",
   "keywords": [
     "qlik",
@@ -9,15 +9,20 @@
   ],
   "private": false,
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
-  "homepage": "",
   "license": "MIT",
-  "main": "/dist/index.js",
+  "homepage": "https://github.com/xuuajii/reaqtive/tree/master/packages/q",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuuajii/reaqtive.git",
+    "directory": "packages/q"
+  },
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "/dist/*"
+    "dist/*"
   ],
   "publishConfig": {
     "access": "public"
@@ -37,7 +42,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@reaqtive/layout": "^0.0.0-patch-2",
+    "@reaqtive/layout": "^0.0.0-beta",
     "airbnb-prop-types": "^2.15.0",
     "enigma.js": "^2.4.0",
     "http-proxy-middleware": "^1.0.3",

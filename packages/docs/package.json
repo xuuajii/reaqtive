@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/docs",
-  "version": "0.0.0-patch-2",
+  "version": "0.0.0-beta",
   "description": "docs and demo",
   "keywords": [
     "reaqtive",
@@ -10,8 +10,13 @@
     "mashup"
   ],
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
-  "homepage": "",
   "license": "MIT",
+  "homepage": "https://github.com/xuuajii/reaqtive/tree/master/packages/docs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuuajii/reaqtive.git",
+    "directory": "packages/docs"
+  },
   "private": true,
   "main": "src/index.js",
   "directories": {
@@ -45,9 +50,9 @@
     ]
   },
   "dependencies": {
-    "@reaqtive/components": "^0.0.0-patch-2",
-    "@reaqtive/layout": "^0.0.0-patch-2",
-    "@reaqtive/q": "^0.0.0-patch-2",
+    "@reaqtive/components": "^0.0.0-beta",
+    "@reaqtive/layout": "^0.0.0-beta",
+    "@reaqtive/q": "^0.0.0-beta",
     "airbnb-prop-types": "^2.15.0",
     "bootstrap": "^4.4.1",
     "enigma.js": "^2.4.0",
