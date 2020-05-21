@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/layout",
-  "version": "0.0.0-beta",
+  "version": "0.0.0-beta-prepublish",
   "description": "reaqtive layout components",
   "keywords": [
     "reaqtive",
@@ -11,7 +11,7 @@
   ],
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "homepage": "https://github.com/xuuajii/reaqtive/tree/master/packages/layout",
   "repository": {
     "type": "git",
