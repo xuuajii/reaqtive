@@ -1,11 +1,15 @@
 {
   "name": "@reaqtive/q",
   "version": "0.0.0-beta",
-  "description": "interfaces vs qlik with no layout components",
+  "description": "A react library to connect React to the QIX engine and to Qlik Capability APIs",
   "keywords": [
     "qlik",
     "react",
-    "mashup"
+    "mashup",
+    "mash up",
+    "analytics",
+    "data visualization",
+    "QIX"
   ],
   "private": false,
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",

@@ -1,11 +1,15 @@
 {
 	"name": "@reaqtive/components",
 	"version": "0.0.0-beta",
-	"description": "reaqtive components connected to qlik engine and capability APIs",
+	"description": "A react library to speed up the development of Qlik mash ups and data visualization apps",
 	"keywords": [
-		"reaqtive",
 		"qlik",
-		"mashup"
+    "react",
+		"mashup",
+    "mash up",
+    "analytics",
+    "data visualization",
+		"QIX"
 	],
 	"author": "paolo deregibus <paolo.deregibus@gmail.com>",
 	"license": "MIT",

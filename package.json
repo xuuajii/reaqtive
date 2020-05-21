@@ -1,6 +1,23 @@
 {
   "name": "reaqtive",
-  "private": true,
+  "private": false,
+  "description": "A react library to speed up the development of Qlik mash ups and data visualization apps",
+	"keywords": [
+		"qlik",
+    "react",
+		"mashup",
+    "mash up",
+    "analytics",
+    "data visualization",
+		"QIX"
+	],
+  "author": "paolo deregibus <paolo.deregibus@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/xuuajii/reaqtive/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuuajii/reaqtive.git"
+  },
   "devDependencies": {
     "lerna": "^3.19.0",
     "concurrently": "5.0.2"
