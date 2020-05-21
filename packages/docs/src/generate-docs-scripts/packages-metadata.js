@@ -11,7 +11,7 @@ Reaqtive is a react library to help creating guided analytics for Qlik Sense, it
 The goal of the library is to provide a framework to develop guided analytics applications on top of Qlik Sense/QAP apps.
 Apps developed with Reaqtive are inteded improve experience of those users who do not need self service BI functionalities, but only need to navigate predefined visualizations.
 Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense with the navigation functionalities provided by QlikView.
-All the examples are made using the \`\`\\Executive Dasboard.qvf\`\`\` which included in this repository.
+All the examples are made using the \`\`\`Executive Dasboard.qvf\`\`\` which included in this repository.
 If you already tried Reaqtive and you are having troubles with Reaqtive check the [FAQ](#faq) section or raise an issue.
 
 
