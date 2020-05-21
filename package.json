@@ -1,6 +1,7 @@
 {
   "name": "reaqtive",
   "private": false,
+  "version": "0.0.0-beta",
   "description": "A react library to speed up the development of Qlik mash ups and data visualization apps",
 	"keywords": [
 		"qlik",

@@ -4,22 +4,22 @@
 	"description": "A react library to speed up the development of Qlik mash ups and data visualization apps",
 	"keywords": [
 		"qlik",
-    "react",
+		"react",
 		"mashup",
-    "mash up",
-    "analytics",
-    "data visualization",
+		"mash up",
+		"analytics",
+		"data visualization",
 		"QIX"
 	],
 	"author": "paolo deregibus <paolo.deregibus@gmail.com>",
 	"license": "MIT",
 	"private": false,
-  "homepage": "https://github.com/xuuajii/reaqtive/tree/master/packages/components",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/xuuajii/reaqtive.git",
-    "directory": "packages/components"
-  },
+	"homepage": "https://github.com/xuuajii/reaqtive/tree/master/packages/components",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xuuajii/reaqtive.git",
+		"directory": "packages/components"
+	},
 	"files": [
 		"dist/*"
 	],
