@@ -10,9 +10,7 @@ If you already tried Reaqtive and you are having troubles with Reaqtive check th
 
 ## Thanks to
 
-<img src="/logo-eng.png" width="500">
-
-Developments are sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
+Reaqtive is sponsored by [Engineering Ingegneria Informatica](https://www.eng.it/).
 
 
 ## Usage
@@ -144,7 +142,7 @@ module.exports = module.exports = qConfig.default || qConfig;
 ## How to use Reaqtive with create react app
 
 To use Reaqtive with create-react-app you have to configure a proxy for the webpack development server in order to avoid CORS issues.
-To do that you have to install http-proxy-middleware, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it. For further info follow this [link](https://create-react-app.dev/docs/proxying-api-requests-in-development).
+To do that you have to ```npm install http-proxy-middleware```, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it. For further info follow this [link](https://create-react-app.dev/docs/proxying-api-requests-in-development).
 This is needed whether you want to connect to Qlik Sense Desktop or a remote Qlik Server.
 
 
@@ -198,7 +196,7 @@ HTTPS="true" npm start
 2. Open a command line tool in your root folder and run the command ```npm run build``` this will create a build folder which will contain all the files to be deployed
 3. Create a qExt file as explained [here](https://help.qlik.com/en-US/sense-developer/June2019/Subsystems/Mashups/Content/Sense_Mashups/mashups-getting-started.htm) and place it in the build folder. The name property in this file must match the app name you enterd in .env.production
 4. zip the content of the build folder (not the folder itself: when opening the zip file you must see the content of the build folder not the build folder)
-5. upload the zip as an extension using the QMC
+5. upload the zip as an extension using the QMC and navigate to ```https://your.qlik.server/extensions/your-rqtv-app-name/index.html```
 
 
 ## Useful resources
