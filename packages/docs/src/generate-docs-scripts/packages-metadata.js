@@ -1,4 +1,4 @@
-const gitSite = 'https://github.com/taan11/reaqtive/tree/master'
+const gitSite = 'https://github.com/xuuajii/reaqtive/tree/master'
 const reaqtiveModules={
   name:'reaqtive',
   gitSite:gitSite,
@@ -7,7 +7,7 @@ const reaqtiveModules={
   text:`
 # **Reaqtive**
 
-Reaqtive is a react library to help creating guided analytics for Qlik Sense, it allows you to easily interact with Qlik's Engine and capability APIs.
+Reaqtive is a react library to help creating guided analytics for Qlik Sense, it allows you to easily interact with Qlik's Engine and Capability APIs.
 The goal of the library is to provide a framework to develop guided analytics applications on top of Qlik Sense/QAP apps.
 Apps developed with Reaqtive are inteded improve experience of those users who do not need self service BI functionalities, but only need to navigate predefined visualizations.
 Reaqtive aims to bring together the responsiveness and usability on mobile devices provided by Qlik Sense with the navigation functionalities provided by QlikView.
@@ -31,7 +31,7 @@ There 4 ways to use Reaqtive:
 
 
 ## Before starting
-To use Reaqtive in your app app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install [git](https://git-scm.com/downloads).
+To use Reaqtive in your app you need to have [node.js](https://nodejs.org/) already installed on your machine and it is recommended to install [git](https://git-scm.com/downloads).
 You should be familiar with React, npm, Bootstrap and the javascript ecosystem in general.
 If you are not you can find useful info and tutorials at the [bottom of the page](#useful-resources).
 
@@ -44,7 +44,7 @@ npm install @reaqtive/components
 ## First Reaqtive App
 
 Below you can find the code to create the simplest Reaqtive app. It is assumed that you have alredy created a [React app](https://create-react-app.dev/) and, if you are using CRA, that you have created the [setupProxy file](#how-to-use-reaqtive-with-create-react-app).
-The app shows a dropdown menu to select from one field and one visualization provided by Qlik capability APIs.
+The app shows a dropdown menu to be used as a filter and one visualization provided by Qlik Capability APIs.
 The Reaqtive component handles the connection with the Qlik Sense server and it expects connections parameters to be provided in an object called qConfig.
 Notice that at the top of the page Reaqtive scss file has been imported (for [details](${gitSite}/packages/components#styles)).
 
@@ -59,7 +59,7 @@ If you want to use Reaqtive components and utilities follow the links below.
 
 ### qConfig
 
-It is the object used to provide Reaqtive the parameters to connect to Qlik APIs. The Reaqtive components which expect it as a prop, will handle the connection.
+It is the object used to provide Reaqtive the parameters to connect to Qlik APIs. It has to be passed as a prop to the Reaqtive component that will handle the connection.
 If you need to handle multiple environments you will need one qConfig object per environmet. You can save them in a file and use them as needed.
 Below an example of one file with 2 environments:
 
@@ -90,12 +90,12 @@ module.exports = module.exports = qConfig.default || qConfig;
 ## How to use Reaqtive with create react app
 
 To use Reaqtive with create-react-app you have to configure a proxy for the webpack development server in order to avoid CORS issues.
-To do that you have to install http-proxy-middleware, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it. For further info follow this [link](#https://create-react-app.dev/docs/proxying-api-requests-in-development).
+To do that you have to install http-proxy-middleware, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it. For further info follow this [link](https://create-react-app.dev/docs/proxying-api-requests-in-development).
 This is needed whether you want to connect to Qlik Sense Desktop or a remote Qlik Server.
 
 ___PROXY___
 
-To connect to a remote Qlik server for developing in your machine you need to start webpack dev server in secure mode. To do that launch the server with the following command:
+To connect to a remote Qlik server for developing on your local machine you need to start webpack dev server in secure mode. To do that launch the server with the following command:
 \`\`\`
 HTTPS="true" npm start
 \`\`\`
@@ -103,13 +103,13 @@ HTTPS="true" npm start
 [Here](#https://create-react-app.dev/docs/using-https-in-development) you can find more info about using a proxy with CRA.
 
 
-##Deploy your app to Qlik Sense Enterprise
+## Deploy your app to Qlik Sense Enterprise
 
-1 in the root folder of your project (the parent of the src folder) create a file called exactly \`\`\`.env.production\`\`\` and add this line: \`\`\`PUBLIC_URL = /extensions/your-app-name\`\`\`
-2 Open a command line tool in your root folder and run the command \`\`\`npm run build\`\`\` this will create a build folder which will contain all the files to be deployed
-3 Create a qExt file as explained [here] (https://help.qlik.com/en-US/sense-developer/June2019/Subsystems/Mashups/Content/Sense_Mashups/mashups-getting-started.htm) and place it in the build folder. The name property in this file must match the app name you enterd in .env.production
-4 zip the content of the build folder (not the folder itself: when opening the zip file you must see the content of the build folder not the build folder)
-5 upload the zip as an extension using the QMC
+1. in the root folder of your project (the parent of the src folder) create a file called exactly \`\`\`.env.production\`\`\` and add this line: \`\`\`PUBLIC_URL = /extensions/your-app-name\`\`\`
+2. Open a command line tool in your root folder and run the command \`\`\`npm run build\`\`\` this will create a build folder which will contain all the files to be deployed
+3. Create a qExt file as explained [here](https://help.qlik.com/en-US/sense-developer/June2019/Subsystems/Mashups/Content/Sense_Mashups/mashups-getting-started.htm) and place it in the build folder. The name property in this file must match the app name you enterd in .env.production
+4. zip the content of the build folder (not the folder itself: when opening the zip file you must see the content of the build folder not the build folder)
+5. upload the zip as an extension using the QMC
 
 
 ## Useful resources
@@ -120,9 +120,10 @@ Below you can find the links to the official sites of the technologies used to d
 - [Sass](https://sass-lang.com/)
 - [Bootstrap](https://getbootstrap.com/)
 - [npm](https://www.npmjs.com/)
+- [React Router](https://reacttraining.com/react-router/web/guides/quick-start)
 - [Create React App](https://create-react-app.dev/)
-- [node.js](https://nodejs.org)
 - [React Spring](https://www.react-spring.io/)
+- [node.js](https://nodejs.org)
 
 Below a list of links to tutorials you can watch to get started with the technologies mentioned above:
 
@@ -140,12 +141,12 @@ __A__: Yes, if you want to use only the engine APIs remember to set to false the
 
 __Q__: While developing I can't connect to Qlik APIs because of CORS issues
 
-__A__: Remeber to create the setupProxy file as explained here (#how-to-use-reaqtive-with-create-react-app)
+__A__: Remeber to create the setupProxy file as explained [here](#how-to-use-reaqtive-with-create-react-app)
 ##
 
 __Q__: While developing I can't connect to Qlik remote server
 
-__A__: Be sure to have an active session with Qlik Sense in the same browser and to start the development server in secure mode (HTTPS="true"). [Check this section](#how-to-use-reaqtive-with-create-react-app)
+__A__: Be sure to have an active session with Qlik Sense in the same browser and to start the development server in secure mode (HTTPS="true"). Check [this section](#how-to-use-reaqtive-with-create-react-app)
 ##
 
 __Q__: How can I deploy my mash up to Qlik Sense Enterprise?
@@ -156,6 +157,11 @@ __A__: Check [this section](#deploy-your-app-to-qlik-sense-enterprise)
 __Q__: When I navigate to a page with condition using query string, I am always redirected to the fallback page
 
 __A__: Add a key property to your RqtvPages. This will force them to unmount when changing the url in your address bar
+##
+
+__Q__: I can use the Engine API, but I can't see the objects provided by the Capability APIs
+
+__A__: You are likely to have started your React app in non secure mode: add HTTPS="true" before npm start.
 ##
 `,
   files:{
@@ -212,7 +218,7 @@ npm install @reaqtive/q
       intro:`# **@reaqtive/components**
 
 This package helps creating guided analytics using Qlik APIs. It provides a set of reusable react components to speed up mash up developments.
-You can choose to use stand alone components and build your own navigation and routing functionalities or you can use [RqtvApp](#rqtvapp) and [RqtvPage](#rqtvpage).
+You can choose to use stand alone components and build your own navigation and routing functionalities or you can use [RqtvApp](#rqtvapp) and [RqtvPage](#rqtvpage) for built-in page navigation functionalities.
 
 `,
       usage:`

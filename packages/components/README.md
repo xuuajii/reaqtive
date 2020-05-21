@@ -1,7 +1,7 @@
 # **@reaqtive/components**
 
 This package helps creating guided analytics using Qlik APIs. It provides a set of reusable react components to speed up mash up developments.
-You can choose to use stand alone components and build your own navigation and routing functionalities or you can use [RqtvApp](#rqtvapp) and [RqtvPage](#rqtvpage).
+You can choose to use stand alone components and build your own navigation and routing functionalities or you can use [RqtvApp](#rqtvapp) and [RqtvPage](#rqtvpage) for built-in page navigation functionalities.
 
 
 
@@ -11,7 +11,7 @@ You can choose to use stand alone components and build your own navigation and r
 npm install @reaqtive/components
 ```
 
-[@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](https://github.com/taan11/reaqtive/tree/master/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
+[@reaqtive/q](https://github.com/xuuajii/reaqtive/tree/master/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](https://github.com/xuuajii/reaqtive/tree/master/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
 
 ### PROVIDED FEATURES
 - [FILTERS](#filters) </br>
