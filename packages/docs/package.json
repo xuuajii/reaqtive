@@ -17,7 +17,7 @@
     "url": "https://github.com/xuuajii/reaqtive.git",
     "directory": "packages/docs"
   },
-  "private": false,
+  "private": true,
   "main": "src/index.js",
   "directories": {
     "lib": "src",

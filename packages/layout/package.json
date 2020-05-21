@@ -6,7 +6,8 @@
     "reaqtive",
     "react",
     "qlik",
-    "mashup"
+    "mashup",
+    "layout"
   ],
   "author": "paolo deregibus <paolo.deregibus@gmail.com>",
   "license": "MIT",
