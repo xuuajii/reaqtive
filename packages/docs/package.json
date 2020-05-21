@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/docs",
-  "version": "0.0.0-beta.1",
+  "version": "0.0.0-beta",
   "description": "docs and demo",
   "keywords": [
     "reaqtive",
@@ -50,9 +50,9 @@
     ]
   },
   "dependencies": {
-    "@reaqtive/components": "^0.0.0-beta.1",
-    "@reaqtive/layout": "^0.0.0-beta.1",
-    "@reaqtive/q": "^0.0.0-beta.1",
+    "@reaqtive/components": "^0.0.0-beta",
+    "@reaqtive/layout": "^0.0.0-beta",
+    "@reaqtive/q": "^0.0.0-beta",
     "airbnb-prop-types": "^2.15.0",
     "bootstrap": "^4.4.1",
     "enigma.js": "^2.4.0",
