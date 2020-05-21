@@ -13,9 +13,6 @@ var _react = require("react");
 
 var _lodash = _interopRequireDefault(require("lodash"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useQObjectHandler = (qDoc, qObjectDef) => {
   const qObjectDefRef = (0, _react.useRef)(qObjectDef);
 

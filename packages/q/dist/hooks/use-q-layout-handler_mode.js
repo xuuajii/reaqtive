@@ -15,9 +15,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _objectPatcher = require("../helpers/object-patcher");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 // import _ from 'lodash';
 const useQLayoutHandler = qObject => {
   const _useState = (0, _react.useState)(null),

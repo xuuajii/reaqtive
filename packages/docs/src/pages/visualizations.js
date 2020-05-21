@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useRef} from 'react'
 import {Link} from 'react-router-dom'
 import { RqtvVizContainer, QViz, RqtvMaximizePortalEl, RqtvPageHeader} from '@reaqtive/components'

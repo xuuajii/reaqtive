@@ -4,9 +4,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const sharedProps = {
   breakPoints: {
     xxl: 0.175,

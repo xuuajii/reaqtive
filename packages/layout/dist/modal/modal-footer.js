@@ -15,7 +15,7 @@ const ModalFooter = props => _react.default.createElement("div", {
   className: "modal-footer",
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
+    lineNumber: 4
   },
   __self: void 0
 }, props.showDismiss && _react.default.createElement("button", {
@@ -24,7 +24,7 @@ const ModalFooter = props => _react.default.createElement("div", {
   onClick: props.closeModal,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 6
   },
   __self: void 0
 }, props.dismissLabel), props.children);

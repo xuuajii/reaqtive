@@ -26,7 +26,7 @@ exports.SideMenuContext = SideMenuContext;
 const SystemConsumer = props => _react.default.createElement(_index.SystemProvider, {
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 12
+    lineNumber: 8
   },
   __self: void 0
 }, props.children);
@@ -69,7 +69,7 @@ const SideMenuContextProvider = props => {
   return _react.default.createElement(SystemConsumer, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 36
     },
     __self: void 0
   }, _react.default.createElement(SideMenuContext.Provider, {
@@ -81,7 +81,7 @@ const SideMenuContextProvider = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 37
     },
     __self: void 0
   }, props.children));

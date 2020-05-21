@@ -15,9 +15,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _system = require("../contexts/system");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useMediaQuery = query => {
   const system = (0, _react.useContext)(_system.System);
 

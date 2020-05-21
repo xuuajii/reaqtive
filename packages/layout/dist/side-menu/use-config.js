@@ -11,9 +11,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = require("react");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useConfig = (currentScreenType, options) => {
   //options=options?options:{breakPoints:{xxl:0.175,xl:0.2,lg:0.25,default:0.5}, alwaysStaticMain:false}
   //console.log(options)

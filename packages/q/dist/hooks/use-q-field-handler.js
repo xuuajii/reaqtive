@@ -13,9 +13,6 @@ var _react = require("react");
 
 var _index = require("../index");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
   const qDocHandler = (0, _react.useContext)(_index.QDoc);
   const qDoc = qDocHandler.qDoc;

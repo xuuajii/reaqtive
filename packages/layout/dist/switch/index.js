@@ -47,14 +47,14 @@ const Switch = props => {
     className: "switch-container ".concat(flexDirection),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "switch-label ".concat(props.labelPosition),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 28
     },
     __self: void 0
   }, props.label), _react.default.createElement(_reactSpring.animated.label, {
@@ -63,7 +63,7 @@ const Switch = props => {
     htmlFor: props.id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
     },
     __self: void 0
   }, _react.default.createElement("input", {
@@ -73,7 +73,7 @@ const Switch = props => {
     type: "checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 34
     },
     __self: void 0
   }), _react.default.createElement(_reactSpring.animated.span, {
@@ -81,7 +81,7 @@ const Switch = props => {
     style: buttonAnimation,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 40
     },
     __self: void 0
   })));

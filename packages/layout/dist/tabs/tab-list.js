@@ -54,7 +54,7 @@ const TabList = props => {
     ref: props.tabListEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }, children.map((child, index) => {
@@ -71,14 +71,14 @@ const TabList = props => {
     }, child.props, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 42
+        lineNumber: 38
       },
       __self: void 0
     }), child);
   }), _react.default.createElement(_index.TabIndicator, Object.assign({}, indicatorPlacement, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 41
     },
     __self: void 0
   })));

@@ -104,7 +104,7 @@ const QGlobalProvider = props => {
     value: qGlobalHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 59
+      lineNumber: 55
     },
     __self: void 0
   }, props.children);

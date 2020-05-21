@@ -15,9 +15,6 @@ var _react = require("react");
 
 var _index = require("../index");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const getQField = async (qDoc, qFieldName) => {
   try {
     const qField = await qDoc.getField(qFieldName);

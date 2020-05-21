@@ -17,9 +17,6 @@ var _qDoc = require("../contexts/q-doc");
 
 var _index = require("../hooks/index");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const QComponent = props => {
   const qDoc = (0, _react.useContext)(_qDoc.QDoc);
 

@@ -17,9 +17,6 @@ var _index = require("../index");
 
 var _helpers = require("../helpers/helpers");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const searchObjectDefReducer = (state, action) => {
   switch (action.type) {
     case 'search':

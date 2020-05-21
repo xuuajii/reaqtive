@@ -51,7 +51,7 @@ const Navbar = props => {
     ref: navbarEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {

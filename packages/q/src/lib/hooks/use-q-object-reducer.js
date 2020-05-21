@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import {useState, useEffect, useContext, useReducer} from 'react'
 import {useDeepCompareMemo} from '@reaqtive/layout'
 import {QDoc} from '../index'

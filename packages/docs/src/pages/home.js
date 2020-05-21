@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useRef, useContext} from 'react'
 import {RqtvPageHeader,Section} from '../example-components/index'
 import {NavLink} from 'react-router-dom'

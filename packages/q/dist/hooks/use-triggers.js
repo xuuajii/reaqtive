@@ -17,10 +17,6 @@ var _qDoc = require("../contexts/q-doc");
 
 var _layout = require("@reaqtive/layout");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 /**
  * @typedef {object} triggerState - the object returned by useQLayoutReducer
  * @property {boolean} qLoading - if true the the handler is still waiting for response from the qlik server

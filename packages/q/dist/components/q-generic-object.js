@@ -15,10 +15,6 @@ var _index = require("../index");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 /**
  * QGenericObject
  * Creates a generic object and provides qObject and qLayout to its clid.

@@ -30,7 +30,7 @@ const Tab = props => {
     className: "tab-icon ".concat(activeClass()),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 15
     },
     __self: void 0
   }, props.icon || props.label[0]);
@@ -39,7 +39,7 @@ const Tab = props => {
     onClick: handleClick,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 17
     },
     __self: void 0
   }, props.children) : _react.default.createElement("div", {
@@ -49,20 +49,20 @@ const Tab = props => {
     ref: activeTabEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 18
     },
     __self: void 0
   }, props.useIcons && _react.default.createElement(Icon, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   }), _react.default.createElement("span", {
     className: "tab-label",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 25
     },
     __self: void 0
   }, props.label));

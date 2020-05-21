@@ -36,14 +36,14 @@ const Accordion = props => {
     style: (0, _objectSpread2.default)({}, props.style),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 15
     },
     __self: void 0
   }, _react.default.createElement("ul", {
     className: "accordion-list list-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 16
     },
     __self: void 0
   }, props.children.map((child, index) => {
@@ -53,7 +53,7 @@ const Accordion = props => {
       className: "list-group-item",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 19
       },
       __self: void 0
     }, _react.default.cloneElement(child, {

@@ -1,6 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 import React, {useState, useEffect, useCallback, useRef, useMemo} from 'react'
 import {useQObjectReducer, useQLayoutReducer, QGenericObject, QListObject} from '@reaqtive/q'
 import { Button } from '@reaqtive/layout'

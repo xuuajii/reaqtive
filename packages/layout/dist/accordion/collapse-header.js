@@ -57,14 +57,14 @@ const CollapseHeader = props => {
     onClick: e => props.handleChange(e),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 18
     },
     __self: void 0
   }, _react.default.createElement(_reactSpring.animated.div, {
     style: titleAnimatedStyles,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 19
     },
     __self: void 0
   }, props.children), _react.default.createElement("div", {
@@ -76,7 +76,7 @@ const CollapseHeader = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 20
     },
     __self: void 0
   }, transitions.map(({
@@ -89,7 +89,7 @@ const CollapseHeader = props => {
     style: (0, _objectSpread2.default)({}, props),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 23
     },
     __self: void 0
   }, _react.default.createElement(_index.LuiIcon, {
@@ -97,7 +97,7 @@ const CollapseHeader = props => {
     iconType: 'close',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 23
     },
     __self: void 0
   })) : _react.default.createElement(_reactSpring.animated.span, {
@@ -106,7 +106,7 @@ const CollapseHeader = props => {
     style: (0, _objectSpread2.default)({}, props),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   }, _react.default.createElement(_index.LuiIcon, {
@@ -114,7 +114,7 @@ const CollapseHeader = props => {
     iconType: 'arrow-down',
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   })))));

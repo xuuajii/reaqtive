@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useContext} from 'react';
 import {QCapabilityApi, QCapabilityApiProvider} from './q-capability-api'
 import PropTypes from 'prop-types';

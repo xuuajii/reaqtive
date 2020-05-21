@@ -25,13 +25,13 @@ const SideMenuMain = props => {
   return _react.default.createElement(_index.SideMenuContextProvider, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 12
+      lineNumber: 8
     },
     __self: void 0
   }), _react.default.createElement(SideMenuMainLayout, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 9
     },
     __self: void 0
   })));
@@ -58,7 +58,7 @@ const SideMenuMainLayout = props => {
     }, animatedProps),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
     },
     __self: void 0
   }, children.map(child => {

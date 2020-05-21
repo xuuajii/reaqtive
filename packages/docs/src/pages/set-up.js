@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react'
 import {Section, Example} from '../example-components/index'
 import {RqtvPageHeader} from '@reaqtive/components'

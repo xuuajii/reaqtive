@@ -15,9 +15,6 @@ var _react = require("react");
 
 var _lodash = _interopRequireDefault(require("lodash"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useEnhancedFieldList = (qFieldList, qCurrentSelections) => {
   const _useState = (0, _react.useState)(qFieldList),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),

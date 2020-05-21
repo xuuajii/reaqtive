@@ -18,14 +18,14 @@ const ModalHeader = props => {
     className: "modal-header",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 6
     },
     __self: void 0
   }, _react.default.createElement("h5", {
     className: "modal-title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 7
     },
     __self: void 0
   }, props.title), props.showDismiss && _react.default.createElement("button", {
@@ -34,14 +34,14 @@ const ModalHeader = props => {
     onClick: props.closeModal,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 9
     },
     __self: void 0
   }, _react.default.createElement("span", {
     "aria-hidden": "true",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 10
     },
     __self: void 0
   }, "\xD7")));

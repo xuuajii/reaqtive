@@ -42,7 +42,7 @@ const Card = props => {
     className: "card ".concat(data.category === '-' ? '' : data.category),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   }, _react.default.createElement("img", {
@@ -51,14 +51,14 @@ const Card = props => {
     alt: "",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 25
     },
     __self: void 0
   }), _react.default.createElement("div", {
     className: "card-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 26
     },
     __self: void 0
   }, _react.default.createElement("h3", {
@@ -66,7 +66,7 @@ const Card = props => {
     title: data.title,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }, data.title), _react.default.createElement("div", {
@@ -76,7 +76,7 @@ const Card = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 28
     },
     __self: void 0
   }, data.data.map((item, i) => _react.default.createElement("div", {
@@ -84,14 +84,14 @@ const Card = props => {
     key: i,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "card-title",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 31
     },
     __self: void 0
   }, item.label), _react.default.createElement("div", {
@@ -101,7 +101,7 @@ const Card = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 32
     },
     __self: void 0
   }, (0, _format.default)(item.value, Math.abs(item.value) > 1000 ? '$ 0.0a' : '$ 0a', 'eu'))))), _react.default.createElement("button", {
@@ -109,21 +109,21 @@ const Card = props => {
     className: "btn fav ".concat(data.deltaPerc.color === '-' ? '' : data.deltaPerc.color),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "relative",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 43
+      lineNumber: 39
     },
     __self: void 0
   }, data.deltaPerc.value.replace('-', '').replace('+', ''), _react.default.createElement("div", {
     className: "triangle",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 41
     },
     __self: void 0
   }, _react.default.createElement(_index.Icon, {
@@ -131,7 +131,7 @@ const Card = props => {
     size: 24,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 42
     },
     __self: void 0
   }))))));

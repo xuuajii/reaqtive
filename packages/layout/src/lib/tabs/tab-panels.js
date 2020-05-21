@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React,{useState, useEffect} from 'react'
 import {Carousel, CarouselPanel} from '../index'
 const animationWrapperStyle={

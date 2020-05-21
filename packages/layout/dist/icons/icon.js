@@ -31,7 +31,7 @@ const Icon = props => {
       alt: "",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 13
+        lineNumber: 9
       },
       __self: void 0
     });
@@ -45,7 +45,7 @@ const Icon = props => {
       viewBox: "0 0 ".concat(viewBoxSize, " ").concat(viewBoxSize),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 19
+        lineNumber: 15
       },
       __self: void 0
     }, _react.default.createElement("path", {
@@ -53,7 +53,7 @@ const Icon = props => {
       d: path,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 20
+        lineNumber: 16
       },
       __self: void 0
     }));

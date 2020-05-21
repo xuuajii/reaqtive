@@ -87,7 +87,7 @@ const Modal = props => {
     className: "modal show ".concat(props.className ? props.className : ''),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 44
     },
     __self: void 0
   }, children.map(child => _react.default.cloneElement(child, {
@@ -96,7 +96,7 @@ const Modal = props => {
     show: open,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 54
     },
     __self: void 0
   })); // return(

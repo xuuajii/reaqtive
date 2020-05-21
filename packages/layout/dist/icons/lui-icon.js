@@ -18,7 +18,7 @@ const LuiIcon = props => _react.default.createElement("span", {
   style: (0, _objectSpread2.default)({}, props.style),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 7
+    lineNumber: 3
   },
   __self: void 0
 });

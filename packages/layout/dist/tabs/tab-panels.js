@@ -50,14 +50,14 @@ const TabPanels = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 20
     },
     __self: void 0
   }, props.animatedTabs ? _react.default.createElement(_index.Carousel, {
     index: activeTab,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 23
     },
     __self: void 0
   }, children.map((child, index) => {
@@ -72,7 +72,7 @@ const TabPanels = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 29
     },
     __self: void 0
   }, _react.default.cloneElement(child, {

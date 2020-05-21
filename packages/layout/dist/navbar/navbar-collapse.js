@@ -24,7 +24,7 @@ const NavbarCollapse = props => {
     className: "collapse navbar-collapse show ".concat(props.className),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 11
     },
     __self: void 0
   }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {
@@ -35,7 +35,7 @@ const NavbarCollapse = props => {
     autoHeight: props.autoHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 14
     },
     __self: void 0
   }, _react.default.Children.toArray(props.children).map(child => _react.default.cloneElement(child, {

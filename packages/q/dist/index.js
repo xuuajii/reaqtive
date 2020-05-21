@@ -49,8 +49,5 @@ Object.keys(_index3).forEach(function (key) {
 
 var _reaqtive = _interopRequireDefault(require("./reaqtive"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 var _default = _reaqtive.default;
 exports.default = _default;

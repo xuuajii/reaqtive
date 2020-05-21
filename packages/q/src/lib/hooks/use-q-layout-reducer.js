@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import {useState, useEffect, useReducer, useRef, useCallback} from 'react'
 import {getPatchedObject} from '../helpers/helpers'
 

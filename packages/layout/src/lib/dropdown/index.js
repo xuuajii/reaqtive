@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import {useOutsideEventListener} from '../index'
@@ -39,7 +35,7 @@ Dropdown.defaultProps = {
 const DropdownMenu = React.forwardRef((props, ref) => {
   return(
     <div className={`dropdown-menu ${props.show?'show':''} dropdown-menu-${props.align}`}
-      style={{...props.style, width:props.verticalNavbar?'100%':''}} 
+      style={{...props.style, width:props.verticalNavbar?'100%':''}}
       ref={ref}
     >
       <ul>

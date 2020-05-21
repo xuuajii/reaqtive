@@ -9,9 +9,6 @@ exports.default = void 0;
 
 var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectSpread"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const qConfigHelpers = {
   useProxy: qConfig => {
     if (process.env.NODE_ENV === 'development' && qConfig.port === 4848) {

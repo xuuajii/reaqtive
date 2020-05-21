@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useContext } from 'react'
 import {System, SystemProvider} from '../index'
 import useConfig from './use-config'

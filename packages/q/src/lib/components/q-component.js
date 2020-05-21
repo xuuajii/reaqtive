@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useContext, useState, useEffect} from 'react'
 import {QDoc} from '../contexts/q-doc'
 import {useQObjectHandler} from '../hooks/index'

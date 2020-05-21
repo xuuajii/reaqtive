@@ -1,6 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 import React, {useContext} from 'react'
 import {QGlobalProvider, QCapabilityApiProvider, QDocProvider, QAppProvider, QCapabilityApi } from './index'
 import {SystemProvider} from '@reaqtive/layout'

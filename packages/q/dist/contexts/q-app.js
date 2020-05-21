@@ -82,7 +82,7 @@ const QAppProvider = props => {
     value: qAppHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 48
     },
     __self: void 0
   }, props.children);

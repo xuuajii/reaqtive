@@ -23,7 +23,7 @@ const Progress = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 9
+    lineNumber: 6
   },
   __self: void 0
 }, _react.default.createElement("div", {
@@ -34,7 +34,7 @@ const Progress = props => _react.default.createElement("div", {
   }, props.style),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 10
+    lineNumber: 7
   },
   __self: void 0
 }, _react.default.createElement("div", {
@@ -45,7 +45,7 @@ const Progress = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 11
+    lineNumber: 8
   },
   __self: void 0
 })));

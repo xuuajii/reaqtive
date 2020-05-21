@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useState, useEffect, useRef, useContext} from 'react'
 import {useTransition, animated} from 'react-spring'
 import {System} from '../index'

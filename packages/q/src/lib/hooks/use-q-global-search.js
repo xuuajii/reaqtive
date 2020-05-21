@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import  {useEffect, useContext, useRef, useReducer} from 'react'
 import {QDoc} from '../index'
 import {getPatchedObject, replaceObjectProp} from '../helpers/helpers'

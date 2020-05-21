@@ -42,7 +42,7 @@ const Tabs = props => {
     ref: tabsEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 13
     },
     __self: void 0
   }, children.map(child => _react.default.cloneElement(child, {

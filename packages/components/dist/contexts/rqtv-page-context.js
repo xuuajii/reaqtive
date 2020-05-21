@@ -86,7 +86,7 @@ const RqtvPageConsumer = props => {
       }, qObjectDef.qInfo),
       qExtendsId: ''
     })); //}
-  }, [location.pathname, qObjectDef, qObjectHandler]);
+  }, [location.pathname, qConditionExpr, qTitleExpr,, qObjectHandler]);
   const triggerState = (0, _q.useTriggers)(triggers);
   const qTitle = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qTitle;
   const qCondition = qLayoutHandler.qLayout && qLayoutHandler.qLayout.qCondition;

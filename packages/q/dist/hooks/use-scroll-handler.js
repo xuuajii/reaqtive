@@ -13,9 +13,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = require("react");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const getFillersTop = (currentTop, itemHeight) => {
   return Math.max(0, currentTop * itemHeight);
 };

@@ -86,7 +86,7 @@ const SearchInput = props => {
     className: "rqtv-search-input-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 67
     },
     __self: void 0
   }, _react.default.createElement("input", {
@@ -98,7 +98,7 @@ const SearchInput = props => {
     onFocus: () => props.onFocus && props.onFocus(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 68
     },
     __self: void 0
   }), props.hideSearch && (!props.alwaysShowSearch || props.isSearching) && _react.default.createElement("button", {
@@ -106,14 +106,14 @@ const SearchInput = props => {
     onClick: hideSearch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 77
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "lui-icon lui-icon--small lui-icon--close",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 81
+      lineNumber: 78
     },
     __self: void 0
   })));

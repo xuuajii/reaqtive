@@ -16,7 +16,7 @@ const ModalBody = props => _react.default.createElement("div", {
   ref: props.modalBodyEl,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 8
+    lineNumber: 4
   },
   __self: void 0
 }, props.children);

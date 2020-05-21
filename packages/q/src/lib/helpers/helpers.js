@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import _ from 'lodash'
 
 function getPatchedObject(objectToBePatched, path, patch){

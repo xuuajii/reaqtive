@@ -107,14 +107,14 @@ const AnimatedCollapseDiv = props => {
       style: (0, _objectSpread2.default)({}, animatedProps),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 54
+        lineNumber: 50
       },
       __self: void 0
     }, _react.default.createElement("div", {
       ref: collapseEl,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 55
+        lineNumber: 51
       },
       __self: void 0
     }, props.children));

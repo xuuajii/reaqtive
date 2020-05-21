@@ -15,9 +15,6 @@ var _lodash = _interopRequireDefault(require("lodash"));
 
 var _helpers = require("../helpers/helpers");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useQLayoutHandler = (qObject, preventUpdate = false) => {
   const _useState = (0, _react.useState)(null),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),

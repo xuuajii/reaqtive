@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React, {useRef} from 'react'
 import { HashRouter  as Router, Switch, Route } from 'react-router-dom'
 import Home from './pages/home'

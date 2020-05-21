@@ -15,9 +15,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _index = require("../index");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const qBeginSelections = async qObject => {
   try {
     const result = qObject.beginSelections(['/qListObjectDef']);

@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 export {default as useQObjectHandler} from './use-q-object-handler'
 export {default as useQLayoutHandler} from './use-q-layout-handler'
 export {default as useQFieldHandler} from './use-q-field-handler'

@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import Accordion from './accordion'
 import Collapse from './collapse'
 import CollapseHeader from './collapse-header'

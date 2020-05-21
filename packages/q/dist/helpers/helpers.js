@@ -10,9 +10,6 @@ exports.replaceObjectProp = replaceObjectProp;
 
 var _lodash = _interopRequireDefault(require("lodash"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 function getPatchedObject(objectToBePatched, path, patch) {
   const pointSeparatedPath = path.split('/').join('.');
   const reducedPath = pointSeparatedPath.indexOf('qLayout') === 0 ? pointSeparatedPath.replace('qLayout.', '') : pointSeparatedPath;

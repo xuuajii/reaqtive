@@ -15,10 +15,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = _interopRequireWildcard(require("react"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 /**
  * @typedef {object} qVizHandler - the object returned by useQLayoutReducer
  * @property {boolean} qVizLoading - if true the the handler is still waiting for response from the qlik server

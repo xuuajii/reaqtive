@@ -27,7 +27,7 @@ const TabIndicator = props => {
     }, props, animatedProps),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 7
     },
     __self: void 0
   });

@@ -13,9 +13,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = require("react");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const usePagination = (currentDisplayArea, qSize, getScrollData) => {
   const lastPage = currentDisplayArea ? Math.ceil(qSize.qcy / currentDisplayArea.qHeight) : 0;
   const initialPage = currentDisplayArea ? Math.ceil(currentDisplayArea.qTop / currentDisplayArea.qHeight) + 1 : 0;

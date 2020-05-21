@@ -11,9 +11,6 @@ var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm
 
 var _react = require("react");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useOutsideEventListener = (ref, fn, add, events = ['mousedown', 'touchstart']) => {
   const _useState = (0, _react.useState)(null),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),

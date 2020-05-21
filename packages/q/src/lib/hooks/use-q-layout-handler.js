@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import { useState, useEffect, useRef, useCallback } from 'react';
 import _ from 'lodash';
 import {getPatchedObject} from '../helpers/helpers'

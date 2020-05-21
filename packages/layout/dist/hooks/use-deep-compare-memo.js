@@ -11,9 +11,6 @@ var _react = require("react");
 
 var _lodash = _interopRequireDefault(require("lodash"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useDeepCompareMemo = value => {
   const ref = (0, _react.useRef)();
 

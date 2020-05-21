@@ -43,7 +43,7 @@ const AccordionItem = (props, accordionHandler) => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 18
     },
     __self: void 0
   }, children.map(child => _react.default.cloneElement(child, {

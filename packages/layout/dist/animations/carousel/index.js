@@ -24,7 +24,7 @@ const CarouselPanel = props => {
     style: (0, _objectSpread2.default)({}, props.style),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 6
     },
     __self: void 0
   }, props.children);
@@ -100,7 +100,7 @@ const Carousel = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 30
     },
     __self: void 0
   }, transition.map(({
@@ -115,7 +115,7 @@ const Carousel = props => {
       style: props,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 34
       },
       __self: void 0
     }, child);

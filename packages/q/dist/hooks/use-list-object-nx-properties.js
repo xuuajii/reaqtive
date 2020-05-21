@@ -13,9 +13,6 @@ var _react = require("react");
 
 var _index = require("../index");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const useListObjectNxProperties = qObject => {
   const qDoc = (0, _react.useContext)(_index.QDoc);
 

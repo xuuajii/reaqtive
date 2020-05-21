@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import LuiIcon from './lui-icon'
 import Icon from './icon'
 export {LuiIcon, Icon}

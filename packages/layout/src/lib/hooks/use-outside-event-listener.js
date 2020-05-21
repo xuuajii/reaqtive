@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import {useState, useEffect} from 'react'
 
 const useOutsideEventListener = (ref, fn, add,events=['mousedown', 'touchstart']) =>{

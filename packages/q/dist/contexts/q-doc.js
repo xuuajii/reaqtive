@@ -79,7 +79,7 @@ const QDocProvider = props => {
     value: qDocHandler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 40
     },
     __self: void 0
   }, props.children);

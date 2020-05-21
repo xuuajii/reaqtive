@@ -19,10 +19,6 @@ var _useQVariableReducer = _interopRequireDefault(require("../hooks/use-q-variab
 
 var _useQLayoutReducer = _interopRequireDefault(require("../hooks/use-q-layout-reducer"));
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 /**
  * QVariable
  * It provides a variable and its layout to its child.

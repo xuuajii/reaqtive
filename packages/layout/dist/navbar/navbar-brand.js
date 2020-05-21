@@ -35,7 +35,7 @@ const NavbarBrand = props => {
     onClick: navigate,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 17
     },
     __self: void 0
   }, props.imgUrl && _react.default.createElement("img", {
@@ -44,7 +44,7 @@ const NavbarBrand = props => {
     alt: "Logo",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 19
     },
     __self: void 0
   }), props.children);

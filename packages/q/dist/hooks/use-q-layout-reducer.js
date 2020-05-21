@@ -15,9 +15,6 @@ var _react = require("react");
 
 var _helpers = require("../helpers/helpers");
 
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
 const getLayout = async (qObject, promiseId) => {
   try {
     const qLayout = await qObject.getLayout();

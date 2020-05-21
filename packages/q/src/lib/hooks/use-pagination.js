@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import {useState, useEffect} from 'react'
 
 const usePagination = (currentDisplayArea, qSize, getScrollData) => {
@@ -9,7 +5,7 @@ const usePagination = (currentDisplayArea, qSize, getScrollData) => {
   const initialPage = currentDisplayArea?Math.ceil(currentDisplayArea.qTop/currentDisplayArea.qHeight)+1:0;
   const [currentPage, setCurrentPage] = useState(initialPage);
   const newQTop = currentDisplayArea?(currentPage-1)*currentDisplayArea.qHeight:0
-  
+
   const newDisplayArea = {...currentDisplayArea, qTop:newQTop}
   useEffect(()=>{
     if(newQTop!==currentDisplayArea.qTop){

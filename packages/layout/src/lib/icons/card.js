@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import React from 'react';
 import { Icon } from '../../lib/index';
 import ph_italy from '../../img_placeholder_italy.png';

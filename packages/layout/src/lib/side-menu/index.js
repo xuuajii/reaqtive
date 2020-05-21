@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 import { SideMenuContext, SideMenuContextProvider} from './side-menu-context'
 import SideMenu from './side-menu'
 import SideMenuMain from './side-menu-main'

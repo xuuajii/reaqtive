@@ -34,28 +34,28 @@ const NavbarToggle = props => {
     style: (0, _objectSpread2.default)({}, defaultStyle, props.style),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 17
     },
     __self: void 0
   }, props.children ? props.children : props.bootstrapDefault ? _react.default.createElement("span", {
     class: "navbar-toggler-icon",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 21
     },
     __self: void 0
   }) : _react.default.createElement(_reactSpring.animated.div, {
     style: animatedProps,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 22
     },
     __self: void 0
   }, _react.default.createElement(_index.LuiIcon, {
     iconType: "triangle-bottom",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 26
+      lineNumber: 22
     },
     __self: void 0
   })));

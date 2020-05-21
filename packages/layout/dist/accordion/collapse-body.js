@@ -26,7 +26,7 @@ const CollapseBody = props => {
       show: props.isExpanded,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 15
+        lineNumber: 11
       },
       __self: void 0
     }, _react.default.cloneElement(props.children, {
@@ -42,7 +42,7 @@ const CollapseBody = props => {
     show: props.isExpanded,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 13
     },
     __self: void 0
   }, props.children);

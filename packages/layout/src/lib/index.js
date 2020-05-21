@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 // lui icons and font
 import './vendors/lui-icons/index.css';
 

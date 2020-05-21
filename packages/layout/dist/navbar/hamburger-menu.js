@@ -41,7 +41,7 @@ const HamburgerMenu = ({
     className: "hamburger-menu",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 24
     },
     __self: void 0
   }, _react.default.createElement(_reactSpring.animated.svg, {
@@ -51,7 +51,7 @@ const HamburgerMenu = ({
     xmlns: "http://www.w3.org/2000/svg",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 25
     },
     __self: void 0
   }, _react.default.createElement(_reactSpring.animated.rect, {
@@ -61,7 +61,7 @@ const HamburgerMenu = ({
     transform: top,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 26
     },
     __self: void 0
   }), _react.default.createElement(_reactSpring.animated.rect, {
@@ -72,7 +72,7 @@ const HamburgerMenu = ({
     opacity: opacity,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 27
     },
     __self: void 0
   }), _react.default.createElement(_reactSpring.animated.rect, {
@@ -82,7 +82,7 @@ const HamburgerMenu = ({
     transform: bottom,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 28
     },
     __self: void 0
   })));

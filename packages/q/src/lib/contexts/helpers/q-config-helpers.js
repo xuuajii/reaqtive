@@ -1,7 +1,3 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
-
 const qConfigHelpers = {
   useProxy: (qConfig)=> {
     if (process.env.NODE_ENV === 'development' && qConfig.port===4848) {

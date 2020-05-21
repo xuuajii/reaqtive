@@ -150,7 +150,7 @@ const QCapabilityApiProvider = props => {
     value: (0, _objectSpread2.default)({}, qCapabilityApiHandler, qCssHandler),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 92
+      lineNumber: 88
     },
     __self: void 0
   }, props.children);

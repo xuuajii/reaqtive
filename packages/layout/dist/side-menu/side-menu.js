@@ -29,13 +29,13 @@ const SideMenu = props => {
   return _react.default.createElement(_index.SideMenuContextProvider, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 14
+      lineNumber: 10
     },
     __self: void 0
   }), _react.default.createElement(SideMenuLayout, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 15
+      lineNumber: 11
     },
     __self: void 0
   })));
@@ -83,7 +83,7 @@ const SideMenuLayout = props => {
       className: "side-menu ".concat(sideMenuProps.className ? sideMenuProps.className : ''),
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 44
       },
       __self: void 0
     }, _react.default.createElement("div", {
@@ -91,7 +91,7 @@ const SideMenuLayout = props => {
       ref: sidemenuEl,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 49
+        lineNumber: 45
       },
       __self: void 0
     }, sidemenuChildren));
@@ -101,7 +101,7 @@ const SideMenuLayout = props => {
     onClick: sideMenuContext.closeSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 49
     },
     __self: void 0
   }));

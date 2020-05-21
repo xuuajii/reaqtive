@@ -1,11 +1,11 @@
-//
-//Copyright (c) 2019 by Paolo Deregibus. All Rights Reserved.
-//
+/**
+ * This code configure a proxy to solve CORS issues while developing on your local machine and connecting to Qlik APIs.
+ * It must be placed in 'src/setupProxy.js'
+ */
 
-//const proxy = require('http-proxy-middleware');
 const { createProxyMiddleware } = require('http-proxy-middleware');
 const qConfig = require('./q-config');
-//console.log(qConfig)
+
 const protocol = `http${((qConfig.secure === true) ? 's' : '')}`;
 const host = qConfig.host;
 const port = qConfig.port;

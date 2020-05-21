@@ -19,14 +19,14 @@ const ModalDialog = props => {
     role: "document",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 10
+      lineNumber: 6
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "modal-content",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 11
+      lineNumber: 7
     },
     __self: void 0
   }, children.map(child => _react.default.cloneElement(child, {
