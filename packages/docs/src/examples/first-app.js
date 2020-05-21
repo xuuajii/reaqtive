@@ -22,16 +22,16 @@ const FirstApp = props =>
       dropdownMenuItemStyle={{textTransform:'uppercase'}}
     />
     <QViz
-      id="Revenue By SubGroup"
-      title="Revenue By SubGroup"
+      id="Revenue By Product Group"
+      title="Revenue By Product Group"
       chartProps={{
         chartType:'barchart',
         rest: {
           qHyperCubeDef:{
             qDimensions:[{
               "qDef":{
-                "qFieldDefs": ["[Product Subgroup Desc]"],
-                 "qFieldLabels": ["Product Subgroup Desc"],
+                "qFieldDefs": ["[Product Group Desc]"],
+                 "qFieldLabels": ["Product Group Desc"],
                  //"qSortCriterias":[{qSort:1}],
                  "qReverseSort":true
                }

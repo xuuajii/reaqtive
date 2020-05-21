@@ -88,7 +88,7 @@ module.exports = module.exports = qConfig.default || qConfig;
 ## How to use Reaqtive with create react app
 
 To use Reaqtive with create-react-app you have to configure a proxy for the webpack development server in order to avoid CORS issues.
-To do that you have to \`\`\`npm install http-proxy-middleware\`\`\`, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it. For further info follow this [link](https://create-react-app.dev/docs/proxying-api-requests-in-development).
+To do that you have to \`\`\`npm install http-proxy-middleware\`\`\`, create a file called setupProxy.js in the src folder of your app and paste the following lines of code in it (notice that the qConfig object is imported from an external file). For further info follow this [link](https://create-react-app.dev/docs/proxying-api-requests-in-development).
 This is needed whether you want to connect to Qlik Sense Desktop or a remote Qlik Server.
 
 ___PROXY___

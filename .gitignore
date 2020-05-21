@@ -1,4 +1,5 @@
 *node_modules*
 lerna-debug.log
+*q-config*
 *packages/docs/build/*
 *packages/fleet-competitiveness/build/*
