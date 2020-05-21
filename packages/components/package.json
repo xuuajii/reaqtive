@@ -1,6 +1,6 @@
 {
 	"name": "@reaqtive/components",
-	"version": "0.0.0-beta",
+	"version": "0.0.0-beta.1",
 	"description": "A react library to speed up the development of Qlik mash ups and data visualization apps",
 	"keywords": [
 		"qlik",
@@ -88,8 +88,8 @@
 		"watch": "^1.0.2"
 	},
 	"dependencies": {
-		"@reaqtive/layout": "^0.0.0-beta",
-		"@reaqtive/q": "^0.0.0-beta",
+		"@reaqtive/layout": "^0.0.0-beta.1",
+		"@reaqtive/q": "^0.0.0-beta.1",
 		"airbnb-prop-types": "^2.15.0",
 		"bootstrap": "^4.4.1",
 		"lodash": "4.17.15",
