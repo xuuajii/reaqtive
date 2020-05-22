@@ -46,7 +46,7 @@ const RqtvCurrentSelections = props => {
       lineNumber: 29
     },
     __self: void 0
-  }, _react.default.createElement(_q.QComponent, {
+  }, _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qCurrentSelectionsObjectDef,
     __source: {
       fileName: _jsxFileName,

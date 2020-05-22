@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {QComponent} from '@reaqtive/q'
+import {QGenericObject} from '@reaqtive/q'
 import RqtvCurrentSelectionsObject from './rqtv-current-selections-object'
 import Layout from './layout'
 
@@ -27,7 +27,7 @@ const qCurrentSelectionsObjectDef = {
 const RqtvCurrentSelections = (props) => {
   return(
     <div className="rqtv-current-selections" hidden={props.hidden}>
-      <QComponent qObjectDef={qCurrentSelectionsObjectDef}>
+      <QGenericObject qObjectDef={qCurrentSelectionsObjectDef}>
         <RqtvCurrentSelectionsObject>
               <Layout
                 isResponsive={props.isResponsive}
@@ -38,7 +38,7 @@ const RqtvCurrentSelections = (props) => {
                 customLoading={props.customLoading}
               />
         </RqtvCurrentSelectionsObject>
-      </QComponent>
+      </QGenericObject>
     </div>
   )
 }
