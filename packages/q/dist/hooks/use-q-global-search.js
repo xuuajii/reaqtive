@@ -65,7 +65,7 @@ const initializeState = (fields, qItemCount, qMatchOffset, qMatchCount) => {
 const initialSearchState = {
   qLoading: true,
   qEngineError: false,
-  qErrorCounter: 0,
+  qErrorCounter: 5,
   qSearchResults: null
 };
 
@@ -80,11 +80,11 @@ const qSearchResultsReducer = (state, action) => {
 
     case 'error':
       const newErrorCounter = state.qErrorCounter + 1;
-      return state.maxErrorCounter >= state.qErrorCounter ? (0, _objectSpread2.default)({}, initialSearchState, {
+      return state.maxErrorCounter > state.qErrorCounter ? (0, _objectSpread2.default)({}, initialSearchState, {
         qErrorCounter: newErrorCounter
       }) : (0, _objectSpread2.default)({}, initialSearchState, {
         qLoading: false,
-        qError: true,
+        qEngineError: true,
         qErrorObject: action.qErrorObject,
         rqtvMessage: 'error getting searchresults'
       });
@@ -135,25 +135,24 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
       type: 'scroll'
     });
   }, [qItemOffSet]);
+  const search = (0, _react.useCallback)(async qSearchObjectDef => {
+    const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef);
+
+    if (res instanceof Error) {
+      dispatchResults({
+        qErrorObject: res,
+        type: 'error'
+      });
+    } else {
+      if (_lodash.default.isEqual(res.qSearchTerms, qSearchObjectDef.qTerms)) dispatchResults({
+        qSearchResults: res,
+        type: 'success'
+      });
+    }
+  }, [qDocHandler.qDoc]);
   (0, _react.useEffect)(() => {
-    const search = async () => {
-      const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef);
-
-      if (res instanceof Error) {
-        dispatchResults({
-          qErrorObject: res,
-          type: 'error'
-        });
-      } else {
-        if (_lodash.default.isEqual(res.qSearchTerms, qSearchObjectDef.qTerms)) dispatchResults({
-          qSearchResults: res,
-          type: 'success'
-        });
-      }
-    };
-
-    search();
-  }, [qSearchObjectDef]);
+    search(qSearchObjectDef);
+  }, [qSearchObjectDef, qSearchResults.qErrorCounter]);
 
   const selectSearchResults = (searchString, qId, callback) => {
     const selectSearchParams = (0, _helpers.replaceObjectProp)(qInitialSearchParams, 'qPage', 'qMatchIx', qId);
@@ -172,7 +171,8 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   };
 
   return (0, _objectSpread2.default)({}, qSearchResults, {
-    selectSearchResults
+    selectSearchResults,
+    search: () => search(qSearchObjectDef)
   });
 };
 

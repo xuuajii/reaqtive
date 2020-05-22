@@ -88,7 +88,7 @@ const RqtvSearch = props => {
     }
 
     const retry = () => {
-      qSearchResultsHandler.search(searchString)
+      qSearchResultsHandler.search()
     }
 
     const acceptSearchResult = (searchTerm=searchString) =>{
@@ -135,7 +135,7 @@ const RqtvSearch = props => {
             {searchString&&<RqtvRenderer
               loading={qSearchResultsHandler.qLoading}
               error={qSearchResultsHandler.qEngineError}
-              noData ={ qSearchResults&&qSearchResults.qSearchGroupArray.length===0}
+              noData ={ qSearchResults&&qSearchResults.qSearchGroupArray.length===0 || (qSearchResultsHandler.qLoading===false && !qSearchResults)}
               reload={retry}
             >
               <div

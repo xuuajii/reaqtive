@@ -1,4 +1,4 @@
-import  {useEffect, useContext, useRef, useReducer} from 'react'
+import  {useEffect, useContext, useRef, useReducer, useCallback} from 'react'
 import {QDoc} from '../index'
 import {getPatchedObject, replaceObjectProp} from '../helpers/helpers'
 import _ from 'lodash'
@@ -37,7 +37,7 @@ const initializeState = (fields, qItemCount, qMatchOffset, qMatchCount) => {
 const initialSearchState = {
   qLoading:true,
   qEngineError:false,
-  qErrorCounter:0,
+  qErrorCounter:5,
   qSearchResults:null
 }
 
@@ -48,7 +48,7 @@ const qSearchResultsReducer = (state, action) => {
     break;
     case 'error':
       const newErrorCounter = state.qErrorCounter + 1;
-      return state.maxErrorCounter>=state.qErrorCounter ? {...initialSearchState, qErrorCounter: newErrorCounter} : {...initialSearchState, qLoading:false, qError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting searchresults'};
+      return state.maxErrorCounter>state.qErrorCounter ? {...initialSearchState, qErrorCounter: newErrorCounter} : {...initialSearchState, qLoading:false, qEngineError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting searchresults'};
     break;
     default:
       console.log('error searching')
@@ -84,17 +84,18 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
     dispatchDef({qTerms:qItemOffSet, type:'scroll'})
   },[qItemOffSet])
 
-  useEffect(()=>{
-    const search = async () => {
-      const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef)
-      if(res instanceof Error){
-        dispatchResults({qErrorObject:res, type:'error'})
-      }else{
-        if(_.isEqual(res.qSearchTerms,qSearchObjectDef.qTerms)) dispatchResults({qSearchResults:res, type:'success'})
-      }
+  const search = useCallback(async (qSearchObjectDef) => {
+    const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef)
+    if(res instanceof Error){
+      dispatchResults({qErrorObject:res, type:'error'})
+    }else{
+      if(_.isEqual(res.qSearchTerms,qSearchObjectDef.qTerms)) dispatchResults({qSearchResults:res, type:'success'})
     }
-    search()
-  }, [qSearchObjectDef])
+  }, [qDocHandler.qDoc])
+
+  useEffect(()=>{
+    search(qSearchObjectDef)
+  }, [qSearchObjectDef, qSearchResults.qErrorCounter])
 
   const selectSearchResults = (searchString, qId, callback) => {
     const selectSearchParams = replaceObjectProp(qInitialSearchParams, 'qPage', 'qMatchIx', qId);
@@ -111,7 +112,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
     });
   }
 
-  return{ ...qSearchResults, selectSearchResults }
+  return{ ...qSearchResults, selectSearchResults, search:()=>search(qSearchObjectDef) }
 }
 
 export default useQGlobalSearch
