@@ -1,6 +1,7 @@
 import  {useEffect, useContext, useRef, useReducer} from 'react'
 import {QDoc} from '../index'
 import {getPatchedObject, replaceObjectProp} from '../helpers/helpers'
+import _ from 'lodash'
 
 const searchObjectDefReducer = (state, action) => {
   switch(action.type){
@@ -57,7 +58,7 @@ const qSearchResultsReducer = (state, action) => {
 
 const searchQDoc = async (qDoc, searchObjectDef) => {
   try{
-    const qSearchResults = qDoc.searchResults(searchObjectDef)
+    const qSearchResults = await qDoc.searchResults(searchObjectDef)
     return qSearchResults
   } catch(err){
     return err
@@ -74,7 +75,9 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   const [qSearchResults, dispatchResults] = useReducer(qSearchResultsReducer, initialSearchState)
   const currentOffset=useRef(0)
   useEffect(()=>{
-    dispatchDef({qTerms:searchString, type:'search'})
+    if(searchString){
+      dispatchDef({qTerms:searchString, type:'search'})
+    }
   },[searchString])
 
   useEffect(()=>{
@@ -84,9 +87,11 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   useEffect(()=>{
     const search = async () => {
       const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef)
-      return (res instanceof Error)
-        ?dispatchResults({qErrorObject:res, type:'error'})
-        :dispatchResults({qSearchResults:res, type:'success'})
+      if(res instanceof Error){
+        dispatchResults({qErrorObject:res, type:'error'})
+      }else{
+        if(_.isEqual(res.qSearchTerms,qSearchObjectDef.qTerms)) dispatchResults({qSearchResults:res, type:'success'})
+      }
     }
     search()
   }, [qSearchObjectDef])
@@ -102,7 +107,6 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
         }
       })
     .catch(qErr=>{
-      console.log('error accepting global search', qErr)
       setQEngineError({isError:true, errorMessage:qErr})
     });
   }

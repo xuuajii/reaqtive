@@ -1,11 +1,15 @@
 
 import React, {useState, useEffect, useRef} from 'react'
 import PropTypes from 'prop-types';
-
+import {useDebouncedCallback} from 'use-debounce'
 const SearchInput = (props) =>{
   const searchInputEl = useRef()
 
   const[searchString, setSearchString] = useState()
+
+  const [setSearchStringDebounced] = useDebouncedCallback((string)=>{
+    setSearchString(string)
+  }, 200)
 
   useEffect(()=>{
     if(props.focus===true){
@@ -32,7 +36,8 @@ const SearchInput = (props) =>{
       break;
       default:
         if(searchInputEl.current.value.length>0){
-          setSearchString(searchInputEl.current.value)
+          // setSearchString(searchInputEl.current.value)
+          setSearchStringDebounced(searchInputEl.current.value)
         } else {
           if(props.hideWhenDeleteString===true){
             props.clearSearchAction()

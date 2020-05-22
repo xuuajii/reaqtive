@@ -4,7 +4,10 @@ import React, {Fragment} from 'react'
 const SearchResults = props => {
   const {searchResults}=props
   //console.log(searchResults)
-  if(searchResults.qSearchGroupArray.length>1){
+  if(!searchResults){
+    return <></>
+  }
+  if(searchResults&&searchResults.qSearchGroupArray.length>1){
     return(
       <ul className="list-group">
         <div hidden={!props.scrollHandler.fillers.top} style={{height:props.scrollHandler.fillers.top}}></div>
@@ -22,7 +25,7 @@ const SearchResults = props => {
       </ul>
     )
   }
-  if(searchResults.qSearchGroupArray.length===1){
+  if(searchResults&&searchResults.qSearchGroupArray.length===1){
     const searchGroupItem = searchResults.qSearchGroupArray[0].qItems[0];
     return (<SingleSearchGroup
               qFieldName = {searchGroupItem.qIdentifier}

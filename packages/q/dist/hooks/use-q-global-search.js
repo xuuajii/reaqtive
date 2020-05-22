@@ -17,6 +17,8 @@ var _index = require("../index");
 
 var _helpers = require("../helpers/helpers");
 
+var _lodash = _interopRequireDefault(require("lodash"));
+
 const searchObjectDefReducer = (state, action) => {
   switch (action.type) {
     case 'search':
@@ -96,7 +98,7 @@ const qSearchResultsReducer = (state, action) => {
 
 const searchQDoc = async (qDoc, searchObjectDef) => {
   try {
-    const qSearchResults = qDoc.searchResults(searchObjectDef);
+    const qSearchResults = await qDoc.searchResults(searchObjectDef);
     return qSearchResults;
   } catch (err) {
     return err;
@@ -120,10 +122,12 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
 
   const currentOffset = (0, _react.useRef)(0);
   (0, _react.useEffect)(() => {
-    dispatchDef({
-      qTerms: searchString,
-      type: 'search'
-    });
+    if (searchString) {
+      dispatchDef({
+        qTerms: searchString,
+        type: 'search'
+      });
+    }
   }, [searchString]);
   (0, _react.useEffect)(() => {
     dispatchDef({
@@ -134,13 +138,18 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   (0, _react.useEffect)(() => {
     const search = async () => {
       const res = await searchQDoc(qDocHandler.qDoc, qSearchObjectDef);
-      return res instanceof Error ? dispatchResults({
-        qErrorObject: res,
-        type: 'error'
-      }) : dispatchResults({
-        qSearchResults: res,
-        type: 'success'
-      });
+
+      if (res instanceof Error) {
+        dispatchResults({
+          qErrorObject: res,
+          type: 'error'
+        });
+      } else {
+        if (_lodash.default.isEqual(res.qSearchTerms, qSearchObjectDef.qTerms)) dispatchResults({
+          qSearchResults: res,
+          type: 'success'
+        });
+      }
     };
 
     search();
@@ -155,7 +164,6 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
         callback();
       }
     }).catch(qErr => {
-      console.log('error accepting global search', qErr);
       setQEngineError({
         isError: true,
         errorMessage: qErr

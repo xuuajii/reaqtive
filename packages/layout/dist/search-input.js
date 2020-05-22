@@ -15,6 +15,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
+var _useDebounce = require("use-debounce");
+
 var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/search-input.js";
 
 const SearchInput = props => {
@@ -24,6 +26,12 @@ const SearchInput = props => {
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         searchString = _useState2[0],
         setSearchString = _useState2[1];
+
+  const _useDebouncedCallback = (0, _useDebounce.useDebouncedCallback)(string => {
+    setSearchString(string);
+  }, 200),
+        _useDebouncedCallback2 = (0, _slicedToArray2.default)(_useDebouncedCallback, 1),
+        setSearchStringDebounced = _useDebouncedCallback2[0];
 
   (0, _react.useEffect)(() => {
     if (props.focus === true) {
@@ -52,7 +60,8 @@ const SearchInput = props => {
 
       default:
         if (searchInputEl.current.value.length > 0) {
-          setSearchString(searchInputEl.current.value);
+          // setSearchString(searchInputEl.current.value)
+          setSearchStringDebounced(searchInputEl.current.value);
         } else {
           if (props.hideWhenDeleteString === true) {
             props.clearSearchAction();
@@ -86,7 +95,7 @@ const SearchInput = props => {
     className: "rqtv-search-input-group",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 67
+      lineNumber: 72
     },
     __self: void 0
   }, _react.default.createElement("input", {
@@ -98,7 +107,7 @@ const SearchInput = props => {
     onFocus: () => props.onFocus && props.onFocus(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 68
+      lineNumber: 73
     },
     __self: void 0
   }), props.hideSearch && (!props.alwaysShowSearch || props.isSearching) && _react.default.createElement("button", {
@@ -106,14 +115,14 @@ const SearchInput = props => {
     onClick: hideSearch,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 77
+      lineNumber: 82
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "lui-icon lui-icon--small lui-icon--close",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 78
+      lineNumber: 83
     },
     __self: void 0
   })));
