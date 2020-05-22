@@ -744,7 +744,7 @@ import {HomePage, FirstPage, SecondPage} from './rqtv-page'
 
 const MyRqtvApp = (props) => {
   return(
-    <RqtvApp title="Example App">
+    <RqtvApp title="Example App" >
         <FirstPage path="/first-page"/>
         <SecondPage path="/second-page"/>
         <HomePage path="/" linkName="HOME"/>
@@ -763,13 +763,16 @@ __brand__ | `String` |  | :x: | the brand of the app displayed in the navbar. An
 __brandStyle__ | `Object` |  | :x: | styles to be applied to the image container
 __brandUrl__ | `String` |  | :x: | the url to redirect to when clicking on the brand
 __hidePrefix__ | `String` | `'%'` | :x: | Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
+__neverToggleFieldsMatch__ | `Shape` |  | :x: | matching fields will have toggle set to false and quickSelectionMode set to true in when appearing in side menu and in current selections box.
+__neverToggleFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__neverToggleFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __pages__ | `Array[]<Shape>` |  | :x: | 
 __pages[].exactActiveMatch__ | `Boolean` |  | :x: | 
 __pages[].linkName__ | `String` |  | :x: | 
 __pages[].path__ | `PropTypes.path` |  | :x: | 
-__searchFieldMatch__ | `Shape` | `{method:'include', mask:['**']}` | :x: | fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
-__searchFieldMatch.mask__ | `Array[]<String>` |  | :x: | 
-__searchFieldMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
+__searchFieldsMatch__ | `Shape` | `{method:'exclude', mask:['**']}` | :x: | fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+__searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __sideMenuFieldsMatch__ | `Shape` | `{method:'include', mask:['**']}` | :x: | fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
 __sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
 __sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
@@ -799,7 +802,7 @@ Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route ch
 **Example:** 
 ```javascript
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage, RqtvDropdownFilter} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
@@ -814,7 +817,9 @@ const HomePage = props =>
 const FirstPage = props =>{
   return(
     <RqtvPage {...props}>
-      <MyFirstNestedPage/>
+      <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+        <MyFirstNestedPage/>
+      </RqtvStandardTemplate>
     </RqtvPage>
   )
 }
@@ -823,7 +828,7 @@ const FirstPage = props =>{
 const MyFirstNestedPage = props =>{
   const { path, url } = useRouteMatch();
   return(
-    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+    <>
       <RqtvPage
         path={`${path}/with-condition`}
         qConditionExpr={'=count(distinct Customer)=1'}
@@ -839,7 +844,7 @@ const MyFirstNestedPage = props =>{
           <MyRqtvContainerExample/>
         </div>
       </RqtvPage>
-    </RqtvStandardTemplate>
+    </>
   )
 }
 
