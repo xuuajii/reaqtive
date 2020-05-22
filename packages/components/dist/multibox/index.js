@@ -37,8 +37,8 @@ const RqtvMultibox = props => {
     __self: void 0
   }, props.fieldList.map(field => {
     const fieldExpr = typeof field === 'string' ? field : field.qFieldExpr;
-    const toggle = 'toggle' in field ? field.toggle : true;
-    const quickSelectionMode = 'quickSelectionMode' in field ? field.quickSelectionMode : false;
+    const toggle = typeof field === 'object' && 'toggle' in field ? field.toggle : true;
+    const quickSelectionMode = typeof field === 'object' && 'quickSelectionMode' in field ? field.quickSelectionMode : false;
     return _react.default.createElement(_layout.Collapse, {
       key: fieldExpr,
       __source: {

@@ -21,7 +21,7 @@ const Example = props =>
     <MyRqtvModalListbox/>
     <MyRqtvSearchField/>
     <MyRqtvListbox/>
-    <MyRqtvMultibox/>
+
     <MyRqtvContainerExample/>
     <MyRqtvCurrentSelections/>
     <MyRqtvSearchObject/>
