@@ -23,13 +23,17 @@ const RqtvCurrentSelectionsModal = props =>{
 
   const activFieldListbox = useMemo(
     () => {
-      return <RqtvListbox
-                title={activeField}
+      return activeField===''
+             ?<></>
+             :<RqtvListbox
+                title={activeField.qFieldExpr}
                 focus={false}
-                qFieldExpr={activeField}
+                qFieldExpr={activeField.qFieldExpr}
                 height={(modalBodyEl.current&&modalBodyEl.current.offsetHeight)*0.875}
-                showHeaderButtonbar={true}
+                showHeaderButtonbar={activeField.toggle}
                 alwaysShowSearch={true}
+                toggle={activeField.toggle}
+                quickSelectionMode={!activeField.toggle}
                 qId={'cs'}
               />
     },

@@ -40,6 +40,11 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
         handleSelections(async () => {
           try {
             await qObject.selectListObjectValues('/qListObjectDef', [value], toggle);
+
+            if (qIsOneAndOnlyOne || quickSelectionMode) {
+              rqtvListObject.abortListObjectSearch();
+            }
+
             callback && callback();
           } catch (err) {
             console.log(err);

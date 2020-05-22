@@ -63,6 +63,19 @@ const qCurrentSelectionsDef = {
   qFields: null
 };
 
+const markField = (field, method, maskArray) => {
+  const keep = method === 'include' ? true : false;
+  const match = maskArray.reduce((max, mask, index) => {
+    const matchResult = (0, _wildMatch.default)(field.qName, maskArray[index]) || max;
+    return keep ? matchResult : !matchResult;
+  }, false);
+  return (0, _objectSpread2.default)({}, field, {
+    match
+  });
+};
+
+const filterFieldList = (fieldList, matchParams) => fieldList && fieldList.map(field => markField(field, matchParams.method, matchParams.mask)).filter(field => field.match === true);
+
 const RqtvAppContextConsumer = props => {
   const theme = props.theme,
         brand = props.brand,
@@ -72,30 +85,18 @@ const RqtvAppContextConsumer = props => {
         hidePrefix = props.hidePrefix,
         pages = props.pages,
         sideMenuFieldsMatch = props.sideMenuFieldsMatch,
-        searchFieldMatch = props.searchFieldMatch;
+        searchFieldsMatch = props.searchFieldsMatch,
+        neverToggleFieldsMatch = props.neverToggleFieldsMatch;
   const qFieldListHandler = (0, _q.useQObjectReducer)(qFieldListDef);
   const qFieldListLayoutHandler = (0, _q.useQLayoutReducer)(qFieldListHandler);
   const qCurrentSelectionsHandler = (0, _q.useQObjectReducer)(qCurrentSelectionsDef);
   const qCurrentSelectionsLayoutHandler = (0, _q.useQLayoutReducer)(qCurrentSelectionsHandler);
   const qFieldList = qFieldListLayoutHandler.qLayout;
   const qCurrentSelections = qCurrentSelectionsLayoutHandler.qLayout;
-  const enhancedFieldList = (0, _q.useEnhancedFieldList)(qFieldList && qFieldList.qFieldList, qCurrentSelections);
-
-  const markField = (field, method, maskArray) => {
-    const keep = method === 'include' ? true : false;
-    const match = maskArray.reduce((max, mask, index) => {
-      const matchResult = (0, _wildMatch.default)(field.qName, maskArray[index]) || max;
-      return keep ? matchResult : !matchResult;
-    }, false);
-    return (0, _objectSpread2.default)({}, field, {
-      match
-    });
-  };
-
-  const filterFieldList = (fieldLsit, matchParams) => fieldLsit && fieldLsit.map(field => markField(field, matchParams.method, matchParams.mask)).filter(field => field.match === true);
-
+  const neverToggleFieldsList = (0, _react.useMemo)(() => filterFieldList(qFieldList && qFieldList.qFieldList.qItems, neverToggleFieldsMatch), [qFieldList]);
+  const enhancedFieldList = (0, _q.useEnhancedFieldList)(qFieldList && qFieldList.qFieldList, qCurrentSelections, neverToggleFieldsList);
   const sideMenuFieldList = filterFieldList(enhancedFieldList, sideMenuFieldsMatch);
-  const searchFieldList = filterFieldList(enhancedFieldList, searchFieldMatch);
+  const searchFieldList = filterFieldList(enhancedFieldList, searchFieldsMatch);
   /******************************************************/
   // handle layout settings (e.g. maximization) managed at app level
 
@@ -170,7 +171,7 @@ const RqtvAppContextConsumer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 103
+      lineNumber: 108
     },
     __self: void 0
   }, props.children);
@@ -180,7 +181,7 @@ const RqtvAppContextProvider = props => {
   return _react.default.createElement(RqtvAppContextConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 131
+      lineNumber: 136
     },
     __self: void 0
   }), props.children);
@@ -202,7 +203,11 @@ RqtvAppContextConsumer.propTypes = {
     method: _propTypes.default.oneOf(['include', 'exclude']),
     mask: _propTypes.default.arrayOf(_propTypes.default.string)
   }),
-  searchFieldMatch: _propTypes.default.shape({
+  searchFieldsMatch: _propTypes.default.shape({
+    method: _propTypes.default.oneOf(['include', 'exclude']),
+    mask: _propTypes.default.arrayOf(_propTypes.default.string)
+  }),
+  neverToggleFieldsMatch: _propTypes.default.shape({
     method: _propTypes.default.oneOf(['include', 'exclude']),
     mask: _propTypes.default.arrayOf(_propTypes.default.string)
   })
@@ -228,8 +233,12 @@ RqtvAppContextConsumer.defaultProps = {
     method: 'include',
     mask: ['**']
   },
-  searchFieldMatch: {
+  searchFieldsMatch: {
     method: 'include',
+    mask: ['**']
+  },
+  neverToggleFieldsMatch: {
+    method: 'exclude',
     mask: ['**']
   }
 };

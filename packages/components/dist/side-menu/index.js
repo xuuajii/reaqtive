@@ -140,7 +140,9 @@ const RqtvSideMenu = props => {
       return {
         qFieldExpr: field.qName,
         label: field.qName,
-        hasSelections: field.selectedCount > 0
+        hasSelections: field.selectedCount > 0,
+        toggle: !field.neverToggle,
+        quickSelectionMode: field.neverToggle
       };
     }),
     __source: {

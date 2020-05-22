@@ -1,13 +1,18 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {useQFieldHandler} from '@reaqtive/q'
 import {useIsMounted} from '@reaqtive/layout'
 import {Icon, deleteForever, pencil} from '@reaqtive/layout'
+import {RqtvAppContext} from '../index'
+
 
 const CurrentSelectionsField = props => {
   const isMounted = useIsMounted()
+  const appContext = useContext(RqtvAppContext)
+  //console.log(1, appContext)
   const editFieldSelections = () => {
     //console.log(props.item.qField)
-    (isMounted===true)&&props.setActiveField(props.item.qField)
+    const neverToggle = appContext.enhancedFieldList.filter((qField)=>qField.qName===props.item.qField)[0].neverToggle;
+    if (isMounted===true) props.setActiveField({qFieldExpr:props.item.qField, toggle:!neverToggle})
   }
 
   const qFieldHandler = useQFieldHandler(props.item.qField)

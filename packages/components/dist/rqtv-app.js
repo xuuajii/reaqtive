@@ -163,7 +163,16 @@ RqtvApp.propTypes = {
    * fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
    *
    */
-  searchFieldMatch: _propTypes.default.shape({
+  searchFieldsMatch: _propTypes.default.shape({
+    method: _propTypes.default.oneOf(['include', 'exclude']),
+    mask: _propTypes.default.arrayOf(_propTypes.default.string)
+  }),
+
+  /**
+   * matching fields will have toggle set to false and quickSelectionMode set to true in when appearing in side menu and in current selections box.
+   *
+   */
+  neverToggleFieldsMatch: _propTypes.default.shape({
     method: _propTypes.default.oneOf(['include', 'exclude']),
     mask: _propTypes.default.arrayOf(_propTypes.default.string)
   }),
@@ -192,8 +201,12 @@ RqtvApp.defaultProps = {
     method: 'include',
     mask: ['**']
   },
-  searchFieldMatch: {
+  searchFieldsMatch: {
     method: 'include',
+    mask: ['**']
+  },
+  searchFieldsMatch: {
+    method: 'exclude',
     mask: ['**']
   }
 };

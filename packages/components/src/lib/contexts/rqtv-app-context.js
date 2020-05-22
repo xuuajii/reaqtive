@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext, useMemo} from 'react';
 import { useLocation } from "react-router-dom";
 import _ from 'lodash'
 import PropTypes from 'prop-types';
@@ -37,31 +37,36 @@ const qCurrentSelectionsDef = {
   qFields: null
 }
 
+const markField = (field, method, maskArray) => {
+  const keep = method==='include'?true:false
+  const match = maskArray.reduce((max, mask, index)=>{
+    const matchResult = wildMatch(field.qName, maskArray[index])||max
+    return keep?matchResult:!matchResult
+  }, false)
+  return{...field, match}
+}
+
+const filterFieldList = (fieldList, matchParams) =>
+fieldList&&fieldList.map(field=>markField(field, matchParams.method, matchParams.mask)).filter(field=>field.match===true)
+
+
 const RqtvAppContextConsumer = (props) => {
-  const {theme, brand, title, brandUrl, brandStyle, hidePrefix, pages, sideMenuFieldsMatch, searchFieldMatch}=props
+  const {theme, brand, title, brandUrl, brandStyle, hidePrefix, pages, sideMenuFieldsMatch, searchFieldsMatch, neverToggleFieldsMatch}=props
 
   const qFieldListHandler = useQObjectReducer(qFieldListDef)
   const qFieldListLayoutHandler = useQLayoutReducer(qFieldListHandler)
   const qCurrentSelectionsHandler = useQObjectReducer(qCurrentSelectionsDef)
   const qCurrentSelectionsLayoutHandler = useQLayoutReducer(qCurrentSelectionsHandler)
+
   const qFieldList = qFieldListLayoutHandler.qLayout
   const qCurrentSelections = qCurrentSelectionsLayoutHandler.qLayout
-  const enhancedFieldList = useEnhancedFieldList(qFieldList&&qFieldList.qFieldList, qCurrentSelections)
 
-  const markField = (field, method, maskArray) => {
-    const keep = method==='include'?true:false
-    const match = maskArray.reduce((max, mask, index)=>{
-      const matchResult = wildMatch(field.qName, maskArray[index])||max
-      return keep?matchResult:!matchResult
-    }, false)
-    return{...field, match}
-  }
+  const neverToggleFieldsList = useMemo(()=>filterFieldList(qFieldList&&qFieldList.qFieldList.qItems, neverToggleFieldsMatch),[qFieldList])
 
-  const filterFieldList = (fieldLsit, matchParams) =>
-  fieldLsit&&fieldLsit.map(field=>markField(field, matchParams.method, matchParams.mask)).filter(field=>field.match===true)
-
+  const enhancedFieldList = useEnhancedFieldList(qFieldList&&qFieldList.qFieldList, qCurrentSelections, neverToggleFieldsList)
+  
   const sideMenuFieldList = filterFieldList(enhancedFieldList, sideMenuFieldsMatch)
-  const searchFieldList = filterFieldList(enhancedFieldList, searchFieldMatch)
+  const searchFieldList = filterFieldList(enhancedFieldList, searchFieldsMatch)
 
   /******************************************************/
   // handle layout settings (e.g. maximization) managed at app level
@@ -149,10 +154,14 @@ RqtvAppContextConsumer.propTypes={
     method:PropTypes.oneOf(['include', 'exclude']),
     mask:PropTypes.arrayOf(PropTypes.string)
   }),
-  searchFieldMatch:PropTypes.shape({
+  searchFieldsMatch:PropTypes.shape({
     method:PropTypes.oneOf(['include', 'exclude']),
     mask:PropTypes.arrayOf(PropTypes.string)
-  })
+  }),
+  neverToggleFieldsMatch:PropTypes.shape({
+    method:PropTypes.oneOf(['include', 'exclude']),
+    mask:PropTypes.arrayOf(PropTypes.string)
+  }),
 }
 
 RqtvAppContextConsumer.defaultProps={
@@ -172,7 +181,8 @@ RqtvAppContextConsumer.defaultProps={
   },
   hidePrefix:'%',
   sideMenuFieldsMatch:{method:'include', mask:['**']},
-  searchFieldMatch:{method:'include', mask:['**']}
+  searchFieldsMatch:{method:'include', mask:['**']},
+  neverToggleFieldsMatch:{method:'exclude', mask:['**']}
 }
 
 export {RqtvAppContext, RqtvAppContextProvider}

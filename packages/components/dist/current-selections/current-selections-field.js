@@ -1,26 +1,33 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _q = require("@reaqtive/q");
 
 var _layout = require("@reaqtive/layout");
 
+var _index = require("../index");
+
 var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/current-selections/current-selections-field.js";
 
 const CurrentSelectionsField = props => {
   const isMounted = (0, _layout.useIsMounted)();
+  const appContext = (0, _react.useContext)(_index.RqtvAppContext); //console.log(1, appContext)
 
   const editFieldSelections = () => {
     //console.log(props.item.qField)
-    isMounted === true && props.setActiveField(props.item.qField);
+    const neverToggle = appContext.enhancedFieldList.filter(qField => qField.qName === props.item.qField)[0].neverToggle;
+    if (isMounted === true) props.setActiveField({
+      qFieldExpr: props.item.qField,
+      toggle: !neverToggle
+    });
   };
 
   const qFieldHandler = (0, _q.useQFieldHandler)(props.item.qField);
@@ -34,34 +41,34 @@ const CurrentSelectionsField = props => {
     className: "list-group-item",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 21
+      lineNumber: 26
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "row no-gutters",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 27
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "col-8 selection-item-info",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 28
     },
     __self: void 0
   }, _react.default.createElement("div", {
     className: "badge S",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 29
     },
     __self: void 0
   }, props.item.qField), _react.default.createElement("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 30
     },
     __self: void 0
   }, props.item.qSelectedFieldSelectionInfo.map((value, index) => _react.default.createElement("span", {
@@ -69,14 +76,14 @@ const CurrentSelectionsField = props => {
     className: "value",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 32
     },
     __self: void 0
   }, "".concat(value.qName).concat(props.item.qSelectedFieldSelectionInfo.length - 1 !== index ? ', ' : ' '))))), _react.default.createElement("div", {
     className: "col-4 selection-item-toolbar",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 38
     },
     __self: void 0
   }, _react.default.createElement("button", {
@@ -84,14 +91,14 @@ const CurrentSelectionsField = props => {
     onClick: editFieldSelections,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 39
     },
     __self: void 0
   }, _react.default.createElement(_layout.Icon, {
     type: _layout.pencil,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 40
     },
     __self: void 0
   })), qField && props.item.qOneAndOnlyOne !== true && _react.default.createElement("button", {
@@ -99,14 +106,14 @@ const CurrentSelectionsField = props => {
     onClick: clearFieldSlections,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 43
     },
     __self: void 0
   }, _react.default.createElement(_layout.Icon, {
     type: _layout.deleteForever,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 44
     },
     __self: void 0
   })))));

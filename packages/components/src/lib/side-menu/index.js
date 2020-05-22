@@ -37,7 +37,7 @@ const RqtvSideMenu = props =>{
             </TabList>
           <TabPanels >
             {showPageList&&<TabPanel><PageList pages={pages}/></TabPanel>}
-            {showFieldList&&fieldList?<FieldList fieldList={fieldList.map(field=>{return{qFieldExpr:field.qName, label:field.qName, hasSelections:field.selectedCount>0}})}/>:<></>}
+            {showFieldList&&fieldList?<FieldList fieldList={fieldList.map(field=>{return{qFieldExpr:field.qName, label:field.qName, hasSelections:field.selectedCount>0, toggle:!(field.neverToggle), quickSelectionMode:(field.neverToggle)}})}/>:<></>}
             {props.additionalTabs&&props.additionalTabs.map(additionalTab=><TabPanel key={uuidv4()}>{additionalTab.tab}</TabPanel>)}
           </TabPanels>
         </Tabs>

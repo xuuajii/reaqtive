@@ -1,5 +1,5 @@
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage, RqtvDropdownFilter} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
@@ -14,7 +14,9 @@ const HomePage = props =>
 const FirstPage = props =>{
   return(
     <RqtvPage {...props}>
-      <MyFirstNestedPage/>
+      <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+        <MyFirstNestedPage/>
+      </RqtvStandardTemplate>
     </RqtvPage>
   )
 }
@@ -23,7 +25,7 @@ const FirstPage = props =>{
 const MyFirstNestedPage = props =>{
   const { path, url } = useRouteMatch();
   return(
-    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+    <>
       <RqtvPage
         path={`${path}/with-condition`}
         qConditionExpr={'=count(distinct Customer)=1'}
@@ -39,7 +41,7 @@ const MyFirstNestedPage = props =>{
           <MyRqtvContainerExample/>
         </div>
       </RqtvPage>
-    </RqtvStandardTemplate>
+    </>
   )
 }
 

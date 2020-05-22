@@ -17,7 +17,8 @@ const RqtvMultibox = props => {
       {props.fieldList.map(field=>
         {
           const fieldExpr =((typeof field)==='string')?field:field.qFieldExpr
-          // console.log(fieldExpr)
+          const toggle = ('toggle' in field)?field.toggle:true
+          const quickSelectionMode = ('quickSelectionMode' in field)?field.quickSelectionMode:false
           return(
           <Collapse key={fieldExpr}>
             <CollapseHeader
@@ -31,6 +32,8 @@ const RqtvMultibox = props => {
                 height={props.fieldHeight}
                 qFieldExpr={fieldExpr}
                 qLabelExpr={`'${field.label||fieldExpr}'`}
+                toggle={toggle}
+                quickSelectionMode={quickSelectionMode}
               />
             </CollapseBody>
           </Collapse>

@@ -36,27 +36,28 @@ const RqtvMultibox = props => {
     },
     __self: void 0
   }, props.fieldList.map(field => {
-    const fieldExpr = typeof field === 'string' ? field : field.qFieldExpr; // console.log(fieldExpr)
-
+    const fieldExpr = typeof field === 'string' ? field : field.qFieldExpr;
+    const toggle = 'toggle' in field ? field.toggle : true;
+    const quickSelectionMode = 'quickSelectionMode' in field ? field.quickSelectionMode : false;
     return _react.default.createElement(_layout.Collapse, {
       key: fieldExpr,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 23
       },
       __self: void 0
     }, _react.default.createElement(_layout.CollapseHeader, {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 24
       },
       __self: void 0
     }, field.hasSelections === true && _react.default.createElement("span", {
       className: "selection-indicator",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 26
+        lineNumber: 27
       },
       __self: void 0
     }), field.label || fieldExpr), _react.default.createElement(_layout.CollapseBody, {
@@ -64,16 +65,18 @@ const RqtvMultibox = props => {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 29
+        lineNumber: 30
       },
       __self: void 0
     }, _react.default.createElement(_index.RqtvListbox, {
       height: props.fieldHeight,
       qFieldExpr: fieldExpr,
       qLabelExpr: "'".concat(field.label || fieldExpr, "'"),
+      toggle: toggle,
+      quickSelectionMode: quickSelectionMode,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 31
       },
       __self: void 0
     })));
