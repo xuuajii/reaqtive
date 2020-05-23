@@ -94,12 +94,23 @@ This is needed whether you want to connect to Qlik Sense Desktop or a remote Qli
 
 ___PROXY___
 
-To connect to a remote Qlik server for developing on your local machine you need to start webpack dev server in secure mode. To do that launch the server with the following command:
+
+[Here](#https://create-react-app.dev/docs/using-https-in-development) you can find more info about using a proxy with CRA.
+
+## Development using a remote Qlik Server
+
+Before being able to connect to Qlik APIs from a remote server you have to enable your development server in the qmc.
+1. Click on the Virtual Proxy label of the qmc
+2. Double click on the virual proxy you want to connect to.
+3. Open the Advanced menu on the right and add localhost:3000 (or your development server address) to the Host white list (see the image below)
+4. Click apply (the virtual proxy will restart and if you are logged in on the same VP you will be kicked out)
+
+![Virtual Proxy Advanced Settings](virtual-proxy-settings.png)
+
+Once you have enabled your development server you need to start it in secure mode. To do that launch the server with the following command:
 \`\`\`
 HTTPS="true" npm start
 \`\`\`
-
-[Here](#https://create-react-app.dev/docs/using-https-in-development) you can find more info about using a proxy with CRA.
 
 
 ## Deploy your app to Qlik Sense Enterprise
