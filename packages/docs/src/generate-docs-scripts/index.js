@@ -185,8 +185,9 @@ const composeSection = (section) => {
 }
 
 const addPackageIntro = (package, mergedSectionsMarkdown) => {
-  const packageSummary = '### PROVIDED FEATURES'+os.EOL+package.sections.map(section =>
+  const packageSummary = mergedSectionsMarkdown&&'### PROVIDED FEATURES'+os.EOL+package.sections.map(section =>
     `- [${section.title.toUpperCase()}](#${_.kebabCase(section.title)}) </br>${os.EOL}`).reduce((accumulator,item)=>accumulator+item)
+
   return package.intro+os.EOL+package.usage+os.EOL+packageSummary+os.EOL+mergedSectionsMarkdown
 }
 
@@ -206,9 +207,9 @@ const updatePackageDocs = async (package, root) => {
   const packageSourcePath = path.join(__dirname, `${root}/${package.path}/${package.sourcePath}`);
   //console.log(packageSourcePath)
   const packageExamplesPath = path.join(__dirname, `${package.examplePath}`);
-  const sectionsWithFiles = package.sections.map(section=>addFileListToSection(packageSourcePath, section))
-  const sectionsWithComponents = sectionsWithFiles.map(section=>addSectionMetadata(section, packageExamplesPath))
-  const mergedSections = sectionsWithComponents.map(section=>composeSection(section)).join(os.EOL)
+  const sectionsWithFiles = package.sections&&package.sections.map(section=>addFileListToSection(packageSourcePath, section))
+  const sectionsWithComponents = sectionsWithFiles&&sectionsWithFiles.map(section=>addSectionMetadata(section, packageExamplesPath))
+  const mergedSections = sectionsWithComponents&&sectionsWithComponents.map(section=>composeSection(section)).join(os.EOL)
   const packageDocs = addPackageIntro(package, mergedSections)
   const callback = ()=> console.log(`done ${package.name} docs`)
   fs.writeFile(`${packagePath}/README.md`, packageDocs, callback);
@@ -246,6 +247,7 @@ const run = () => {
   updatePackagesFolderDocs(reaqtiveModules)
   updatePackageDocs(reaqtiveModules.packages.components, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
   updatePackageDocs(reaqtiveModules.packages.q, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
+  updatePackageDocs(reaqtiveModules.packages.layout, reaqtiveModules.rootPath+'/'+reaqtiveModules.packagesPath)
 }
 
 run()

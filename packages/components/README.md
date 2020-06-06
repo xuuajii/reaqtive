@@ -908,7 +908,13 @@ export default MyRqtvStandardTemplate
 ---- | :----: | :-------: | :--------: | -----------
 __containerClassName__ | `String` |  | :x: | the css classes of the container wrapping the page
 __containerStyle__ | `Object` |  | :x: | it allows to set the styles of the div conatining the page (the components you will develop)
+__searchFieldsMatch__ | `Shape` |  | :x: | fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+__searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __showSearch__ | `Boolean` | `true` | :x: | show/hide the search object in the navbar
+__sideMenuFieldsMatch__ | `Shape` |  | :x: | fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+__sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __useContainerFluid__ | `Boolean` | `true` | :x: | it lets you choose between a bootstrap container or container-fluid to wrap the page
 __usePageHeader__ | `Boolean` | `true` | :x: | show/hide the page header that would contain only the title of the page and can't be customized
 __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
@@ -921,6 +927,7 @@ __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 RqtvApp and RqtvPage accept arrays of triggers as props. They are fired before rendering the app or the page. This is still an experimental feature, but data structures are very unlikely to change. Below you can find the types of triggers you can use described as PropTypes
 
 ```javascript
+
 
 /*Select one value of one field*/
 const fieldSelectionTrigger = PropTypes.shape({

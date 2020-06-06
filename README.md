@@ -34,6 +34,35 @@ If you are not you can find useful info and tutorials at the [bottom of the page
 npm install @reaqtive/components
 ```
 
+
+## 10 steps set-up guide
+
+1. Downolad this [qvf](https://github.com/xuuajii/reaqtive/raw/master/Executive%20Dashboard.qvf) and copy it to C:\Users\ _%MyUserName%_ \Documents\Qlik\Sense\Apps
+2. Open a command line tool and cd to the directory where you want to start your project
+3. Run ```npx create-react-app my-reaqtive-app```
+4. Run ```cd my-reaqtive-app```
+5. Run ```npm install @reaqtive/components```
+6. Create a file named q-config.js in my-reaqtive-app/src, paste the following code into the q-config.js and save.
+``` javascript
+const qEnvironments = {
+  "DESKTOP": {
+    	host: 'localhost',
+    	secure: false,
+    	port: 4848,
+    	prefix: '',
+    	appId: 'Executive Dashboard.qvf'
+  	}
+}
+const qConfig = qEnvironments['DESKTOP']
+module.exports = module.exports = qConfig.default || qConfig
+```
+7. Run ```npm install http-proxy-middleware --save```
+8. Create a file named setupProxy.js in my-reaqtive-app/src folder and paste the code you can find [here](#how-to-use-reaqtive-with-create-react-app)
+9. Replace the content of app.js with the one displayed in the [next paragraph](#first-reaqtive-app) and save
+10. Run ```npm start```
+
+If something went wrong or if you want to connect to a remote server from your machine see the [FAQ](#faq)
+
 ## First Reaqtive App
 
 Below you can find the code to create the simplest Reaqtive app. It is assumed that you have alredy created a [React app](https://create-react-app.dev/) and, if you are using CRA, that you have created the [setupProxy file](#how-to-use-reaqtive-with-create-react-app).
@@ -184,7 +213,7 @@ module.exports = app => {
 
 
 
-[Here](#https://create-react-app.dev/docs/using-https-in-development) you can find more info about using a proxy with CRA.
+[Here](https://create-react-app.dev/docs/using-https-in-development) you can find more info about using a proxy with CRA.
 
 ## Development using a remote Qlik Server
 
