@@ -21,7 +21,7 @@ var _rqtvPageContext = require("../contexts/rqtv-page-context");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/pages/rqtv-page.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-page.js";
 
 const useQConditionDef = qConditionExpr => (0, _react.useMemo)(() => {
   return {

@@ -21,16 +21,8 @@ var _index = require("../contexts/index");
 
 var _index2 = require("../index");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/pages/rqtv-standard-template.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
 
-/**
- * RqtvStandardTemplate
- *
- * It is a component that allows you to use Reaqtive main components without having to declare them one by one.
- * Of course does not allow the same flexibility as recreating a template manually.
- * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader.
- * It is suggested to use this component inside the RqtvApp
- */
 const RqtvStandardTemplate = props => {
   const rqtvApp = (0, _react.useContext)(_index.RqtvAppContext);
   const rqtvPage = (0, _react.useContext)(_index.RqtvPageContext);
@@ -152,7 +144,25 @@ RqtvStandardTemplate.propTypes = {
    * show/hide the side menu
    *
    */
-  useSideMenu: _propTypes.default.bool
+  useSideMenu: _propTypes.default.bool,
+
+  /**
+   * fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  sideMenuFieldsMatch: _propTypes.default.shape({
+    method: _propTypes.default.oneOf(['include', 'exclude']),
+    mask: _propTypes.default.arrayOf(_propTypes.default.string)
+  }),
+
+  /**
+   * fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  searchFieldsMatch: _propTypes.default.shape({
+    method: _propTypes.default.oneOf(['include', 'exclude']),
+    mask: _propTypes.default.arrayOf(_propTypes.default.string)
+  })
 };
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid: true,

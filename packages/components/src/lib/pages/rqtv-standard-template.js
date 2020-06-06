@@ -97,7 +97,23 @@ RqtvStandardTemplate.propTypes = {
    * show/hide the side menu
    *
    */
-  useSideMenu:PropTypes.bool
+  useSideMenu:PropTypes.bool,
+  /**
+   * fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  sideMenuFieldsMatch:PropTypes.shape({
+    method:PropTypes.oneOf(['include', 'exclude']),
+    mask:PropTypes.arrayOf(PropTypes.string)
+  }),
+  /**
+   * fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
+   *
+   */
+  searchFieldsMatch:PropTypes.shape({
+    method:PropTypes.oneOf(['include', 'exclude']),
+    mask:PropTypes.arrayOf(PropTypes.string)
+  }),
 }
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid:true,

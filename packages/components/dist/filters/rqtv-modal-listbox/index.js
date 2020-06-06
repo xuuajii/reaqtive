@@ -27,7 +27,7 @@ var _q = require("@reaqtive/q");
 
 var _index2 = _interopRequireDefault(require("../rqtv-listbox/index"));
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/rqtv-modal-listbox/index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-modal-listbox\\index.js";
 
 /**
  * RqtvModalListbox

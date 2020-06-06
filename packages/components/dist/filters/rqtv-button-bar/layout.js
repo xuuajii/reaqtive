@@ -15,7 +15,7 @@ var _index = require("../../loading/index");
 
 var _index2 = require("../helpers/index");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/rqtv-button-bar/layout.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\layout.js";
 
 const Layout = props => {
   const rqtvListObject = props.rqtvListObject,

@@ -29,7 +29,7 @@ var _rqtvAppContext = require("../contexts/rqtv-app-context");
 
 var _pageList = _interopRequireDefault(require("./page-list"));
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/side-menu/index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\side-menu\\index.js";
 
 /**
  * RqtvSideMenu

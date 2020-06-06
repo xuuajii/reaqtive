@@ -27,15 +27,8 @@ var _index = require("./loading/index");
 
 var _index2 = require("./custom-prop-types/index.js");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/rqtv-app.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-app.js";
 
-/**
- * RqtvApp
- *
- * It provides routing using react router and a context that allows you to store
- * app info to be available everywhere inside your app.
- *
- */
 const RqtvApp = props => {
   const qCapabilityApiRequired = props.qCapabilityApiRequired,
         children = props.children,

@@ -23,16 +23,8 @@ var _rqtvSearch = _interopRequireDefault(require("./rqtv-search"));
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/rqtv-search-object/index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\rqtv-search-object\\index.js";
 
-/**
- * RqtvSearchObject
- *
- * It dispays a search object to search a single string in multiple fields.
- *
- * If rendered inside the rqtv-navbar it will have fixed position and search results will colver the underlying page
- *
- */
 const RqtvSearchObject = props => {
   const alwaysExpanded = props.alwaysExpanded,
         expandFrom = props.expandFrom,

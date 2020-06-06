@@ -15,7 +15,6 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _q = require("@reaqtive/q");
 
-//import withQComponent from './with-q-component'
 const RqtvCurrentSelectionsObject = props => {
   const qDocHandler = (0, _react.useContext)(_q.QDoc);
   const qDoc = qDocHandler.qDoc; //qSelectionsCount={qSelectionObject&&qSelectionObject.qSelections.length}

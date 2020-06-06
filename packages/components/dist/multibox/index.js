@@ -15,14 +15,8 @@ var _layout = require("@reaqtive/layout");
 
 var _index = require("../index");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/multibox/index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\multibox\\index.js";
 
-/**
- * RqtvMultibox
- *
- * It returns an accordion that shows a list of fields.
- * A listbox is displayed for the active field. One field at a time can be active.
- */
 const RqtvMultibox = props => {
   // console.log(props.fieldList)
   return _react.default.createElement(_layout.Accordion, {

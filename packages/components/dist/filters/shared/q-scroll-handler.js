@@ -21,7 +21,7 @@ var _q = require("@reaqtive/q");
 
 var _useDebounce = require("use-debounce");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/shared/q-scroll-handler.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\shared\\q-scroll-handler.js";
 
 const QScrollHandler = props => {
   const _useState = (0, _react.useState)({
