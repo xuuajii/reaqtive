@@ -343,9 +343,9 @@ You can find the complete list of Reaqtive theme variable [here](#https://github
     layout:{
       name:'@reaqtive/layout',
       path:'layout',
-      intro:`This is an experimental an undocumented section which is likely to change in the future. I you would like to use Reaqtive go to the [homepage](gitSite) or see the other packages:
-- ${gitSite}/q
-- ${gitSite}/components
+      intro:`This is an experimental an undocumented section which is likely to change in the future. I you would like to use Reaqtive go to the [homepage](${gitSite}) or see the other packages:
+- [@reaqtive/q](${gitSite}/packages/q)
+- [@reaqtive/components](${gitSite}/packages/components)
       `
     }
   }
