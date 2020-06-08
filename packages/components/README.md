@@ -996,6 +996,6 @@ import './index.scss'
 ...
 ```
 
-You can find the complete list of Reaqtive theme variable [here](#https://github.com/taan11/reaqtive/blob/master/packages/components/src/lib/styles/theme.scss) and the complete list of Bootstrap variables [here](#https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss)
+You can find the complete list of Reaqtive theme variable [here](https://github.com/xuuajii/reaqtive/blob/master/packages/components/src/lib/styles/theme.scss) and the complete list of Bootstrap variables [here](https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss)
 
 
