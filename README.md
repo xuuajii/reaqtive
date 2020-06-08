@@ -28,6 +28,8 @@ To use Reaqtive in your app you need to have [node.js](https://nodejs.org/) alre
 You should be familiar with React, npm, Bootstrap and the javascript ecosystem in general.
 If you are not you can find useful info and tutorials at the [bottom of the page](#useful-resources).
 
+You need to have access to Qlik APIs: you can install Qlik Sense Desktop to your machine or have access to remote a [Qlik APIs endpoint](#development-using-a-remote-qlik-server)
+
 ## Installation
 
 ```
