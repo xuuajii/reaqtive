@@ -15,8 +15,8 @@ import Layout from './layout'
  * You can customize its styles using css or using props.
  */
 const RqtvListbox = props =>{
-  const {qFieldExpr, qSortObject, qLabelExpr} = props
-  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject, qLabelExpr})
+  //const {qFieldExpr, qSortObject, qLabelExpr,qState} = props
+  const qObjectDef = useMapPropsToDef(props)
   return(
     <QGenericObject
       qObjectDef={qObjectDef}
@@ -72,6 +72,10 @@ RqtvListbox.propTypes={
     qExpression:PropTypes.shape({qv:PropTypes.string}),
     qSortByGreyness:PropTypes.number
   }),
+  /**
+   * state of the listbox
+  */
+  qState:PropTypes.string,
   /**
    * Show/hide listboxheader.
    */
@@ -133,6 +137,7 @@ RqtvListbox.defaultProps={
   showListboxDropdownMenu:true,
   alwaysShowSearch:false,
   qSortObject:{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 },
+  qState:"",
   height:500,
   focus:true,
   titleAction:()=>false,

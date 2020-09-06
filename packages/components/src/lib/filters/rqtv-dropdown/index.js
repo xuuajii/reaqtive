@@ -34,8 +34,9 @@ const RqtvDropdownFilter = props =>{
     setTimeout(()=>setJustHidden(false),500)
   }
 
-  const {qFieldExpr, qSortObject, qLabelExpr, showCaret, buttonStyle, buttonClassName} = props
-  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject, qLabelExpr})
+  //const {qFieldExpr, qSortObject, qLabelExpr, showCaret, buttonStyle, buttonClassName,qState} = props
+  const {showCaret, buttonStyle, buttonClassName, isNavItem} = props
+  const qObjectDef = useMapPropsToDef(props)
   const qButtonLabelExpr = props.qLabelExpr?props.qLabelExpr:qObjectDef.label.qStringExpression.qExpr
     return(
       <div className={`dropdown ${show ? 'show' : ''} rqtv-dropdown`} ref={dropdownEl}>
@@ -46,7 +47,7 @@ const RqtvDropdownFilter = props =>{
           showCaret={showCaret}
           style={buttonStyle}
           className={buttonClassName}
-          isNavItem={props.isNavItem}
+          isNavItem={isNavItem}
         />
         {show&&
           <QGenericObject qObjectDef={qObjectDef} quickSelectionMode={props.quickSelectionMode}>
@@ -105,6 +106,10 @@ RqtvDropdownFilter.propTypes={
     qSortByGreyness:PropTypes.number
   }),
   /**
+   * state of the listbox
+  */
+  qState:PropTypes.string,
+  /**
    * Show/hide the search input when the dropdown is open
    */
   showSearch:PropTypes.bool,
@@ -154,6 +159,7 @@ RqtvDropdownFilter.propTypes={
 RqtvDropdownFilter.defaultProps={
   align:'left',
   qSortObject:{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 },
+  qState:"",
   showSearch:true,
   dropdownMenuHeight:300,
   dropdownMenuWidth:265,

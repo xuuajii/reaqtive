@@ -16,8 +16,8 @@ import RqtvListObject from '../rqtv-list-object'
  */
 
 const RqtvButtonBar = props => {
-  const {qFieldExpr, qSortObject, qLabelExpr, qDataPageHeight, buttonsClassName, buttonsStyle} = props
-  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject, qLabelExpr, qDataPageHeight})
+  //const {qFieldExpr, qSortObject, qLabelExpr, qDataPageHeight, buttonsClassName, buttonsStyle, qState} = props
+  const qObjectDef = useMapPropsToDef(props)
   return(
     <QGenericObject qObjectDef={qObjectDef} quickSelectionMode={true} toggle={props.toggle}>
       <RqtvListObject {...props} >
@@ -67,6 +67,10 @@ RqtvButtonBar.propTypes={
      qSortByGreyness:PropTypes.number
    }),
   /**
+   * state of the listbox
+   */
+  qState:PropTypes.string,
+  /**
    * The bootstrap class to apply large (btn-lg), standard (btn) or small (btn-sm) size to a button.
    */
   buttonSize:PropTypes.string,
@@ -94,6 +98,7 @@ RqtvButtonBar.propTypes={
 
 RqtvButtonBar.defaultProps={
   qSortObject:{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 1, qSortByLoadOrder: 0, qSortByExpression: 0 },
+  qState:"",
   buttonSize:'btn-sm',
   qDataPageHeight:5,
   toggle:true,

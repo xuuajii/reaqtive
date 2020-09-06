@@ -15,8 +15,8 @@ import Layout from './layout'
  * You can customize style using props and css
  */
 const RqtvSearchField = props =>{
-  const {qFieldExpr, qSortObject} = props
-  const qObjectDef = useMapPropsToDef({qFieldExpr, qSortObject})
+  //const {qFieldExpr, qSortObject, qState, qObjectDef} = props
+  const qObjectDef = useMapPropsToDef(props)
   const [show, setShow] = useState()
   return(
     <div className={`dropdown ${true ? 'show' : ''} rqtv-dropdown`}>
@@ -69,6 +69,10 @@ RqtvSearchField.propTypes={
     qSortByGreyness:PropTypes.number
   }),
   /**
+   * state of the listbox
+  */
+  qState:PropTypes.string,
+  /**
    * Height of the dropdown when is open
    */
   dropdownMenuHeight:PropTypes.number,
@@ -98,6 +102,7 @@ RqtvSearchField.propTypes={
 RqtvSearchField.defaultProps={
   qSortObject:{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 },
   quickSelectionMode:false,
+  qState:"",
   dropdownMenuHeight:300,
   dropdownMenuWidth:265,
   hideHorizontalScrollbar:false,
