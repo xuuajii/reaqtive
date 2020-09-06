@@ -10,20 +10,22 @@ var _react = require("react");
 var _helpers = require("../../helpers");
 
 const useMapPropsToDef = props => {
-  const qFieldExpr = (0, _helpers.normalizeExpression)(props.qFieldExpr);
-  const qLabelExpr = props.qLabelExpr ? props.qLabelExpr : "\n    '".concat(props.qFieldExpr, " '&if(getSelectedCount(").concat(qFieldExpr, ")>0,\n      if(count(distinct ").concat(qFieldExpr, ")=1 and getSelectedCount(").concat(qFieldExpr, ")=1,\n        only(").concat(qFieldExpr, "),\n        getSelectedCount(").concat(qFieldExpr, ")&' selected'\n      )\n    )");
   const qId = props.qId,
         qDataPageHeight = props.qDataPageHeight;
   const qSortByState = props.qSortByState,
         qSortByNumeric = props.qSortByNumeric,
         qSortByAscii = props.qSortByAscii,
-        qSortByExpression = props.qSortByExpression;
+        qSortByExpression = props.qSortByExpression,
+        qState = props.qState;
+  const qFieldExpr = (0, _helpers.normalizeExpression)(props.qFieldExpr);
+  const qLabelExpr = props.qLabelExpr ? props.qLabelExpr : "\n    '".concat(props.qFieldExpr, " '&if(getSelectedCount(").concat(qFieldExpr, ",0,").concat(props.qState === "" ? "" : "'" + props.qState + "'", ")>0,\n      if(count({").concat(props.qState, "} distinct ").concat(qFieldExpr, ")=1 and getSelectedCount(").concat(qFieldExpr, ",0,").concat(props.qState === "" ? "" : "'" + props.qState + "'", ")=1,\n        only({").concat(props.qState, "} ").concat(qFieldExpr, "),\n        getSelectedCount(").concat(qFieldExpr, ",0,").concat(props.qState === "" ? "" : "'" + props.qState + "'", ")&' selected'\n      )\n    )");
   const qObjectDef = (0, _react.useMemo)(() => {
     return props.qObjectDef ? props.qObjectDef : {
       "qInfo": {
         "qType": "ListObject"
       },
       "qListObjectDef": {
+        "qStateName": props.qState,
         "qDef": props.qDimensionDef ? props.qDimensionDef : {
           "qFieldDefs": [qFieldExpr],
           "qFieldLabels": [props.qFieldExpr],

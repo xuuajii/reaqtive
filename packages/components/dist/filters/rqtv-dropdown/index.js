@@ -25,7 +25,7 @@ var _rqtvDropdownButton = _interopRequireDefault(require("../../buttons/rqtv-dro
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-dropdown\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/rqtv-dropdown/index.js";
 
 /**
  * RqtvDropdownFilter
@@ -63,26 +63,21 @@ const RqtvDropdownFilter = props => {
     setJustHidden(true);
     setShow(false);
     setTimeout(() => setJustHidden(false), 500);
-  };
+  }; //const {qFieldExpr, qSortObject, qLabelExpr, showCaret, buttonStyle, buttonClassName,qState} = props
 
-  const qFieldExpr = props.qFieldExpr,
-        qSortObject = props.qSortObject,
-        qLabelExpr = props.qLabelExpr,
-        showCaret = props.showCaret,
+
+  const showCaret = props.showCaret,
         buttonStyle = props.buttonStyle,
-        buttonClassName = props.buttonClassName;
-  const qObjectDef = (0, _index.useMapPropsToDef)({
-    qFieldExpr,
-    qSortObject,
-    qLabelExpr
-  });
+        buttonClassName = props.buttonClassName,
+        isNavItem = props.isNavItem;
+  const qObjectDef = (0, _index.useMapPropsToDef)(props);
   const qButtonLabelExpr = props.qLabelExpr ? props.qLabelExpr : qObjectDef.label.qStringExpression.qExpr;
   return _react.default.createElement("div", {
     className: "dropdown ".concat(show ? 'show' : '', " rqtv-dropdown"),
     ref: dropdownEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 42
     },
     __self: void 0
   }, _react.default.createElement(_rqtvDropdownButton.default, {
@@ -92,10 +87,10 @@ const RqtvDropdownFilter = props => {
     showCaret: showCaret,
     style: buttonStyle,
     className: buttonClassName,
-    isNavItem: props.isNavItem,
+    isNavItem: isNavItem,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 42
+      lineNumber: 43
     },
     __self: void 0
   }), show && _react.default.createElement(_q.QGenericObject, {
@@ -103,13 +98,13 @@ const RqtvDropdownFilter = props => {
     quickSelectionMode: props.quickSelectionMode,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 53
     },
     __self: void 0
   }, _react.default.createElement(_rqtvListObject.default, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: void 0
   }), _react.default.createElement(_layout.default, Object.assign({}, props, {
@@ -117,7 +112,7 @@ const RqtvDropdownFilter = props => {
     hideDropdownMenu: hideDropdownMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 55
     },
     __self: void 0
   })))));
@@ -178,6 +173,11 @@ RqtvDropdownFilter.propTypes = {
     }),
     qSortByGreyness: _propTypes.default.number
   }),
+
+  /**
+   * state of the listbox
+  */
+  qState: _propTypes.default.string,
 
   /**
    * Show/hide the search input when the dropdown is open
@@ -245,6 +245,7 @@ RqtvDropdownFilter.defaultProps = {
     qSortByLoadOrder: 0,
     qSortByExpression: 0
   },
+  qState: "",
   showSearch: true,
   dropdownMenuHeight: 300,
   dropdownMenuWidth: 265,

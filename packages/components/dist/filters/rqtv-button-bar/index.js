@@ -19,7 +19,7 @@ var _index = require("../helpers/index");
 
 var _rqtvListObject = _interopRequireDefault(require("../rqtv-list-object"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-button-bar\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/rqtv-button-bar/index.js";
 
 /**
  * RqtvButtonBar
@@ -31,18 +31,8 @@ var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\p
  * You can customize its styles using css or using props.
  */
 const RqtvButtonBar = props => {
-  const qFieldExpr = props.qFieldExpr,
-        qSortObject = props.qSortObject,
-        qLabelExpr = props.qLabelExpr,
-        qDataPageHeight = props.qDataPageHeight,
-        buttonsClassName = props.buttonsClassName,
-        buttonsStyle = props.buttonsStyle;
-  const qObjectDef = (0, _index.useMapPropsToDef)({
-    qFieldExpr,
-    qSortObject,
-    qLabelExpr,
-    qDataPageHeight
-  });
+  //const {qFieldExpr, qSortObject, qLabelExpr, qDataPageHeight, buttonsClassName, buttonsStyle, qState} = props
+  const qObjectDef = (0, _index.useMapPropsToDef)(props);
   return _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qObjectDef,
     quickSelectionMode: true,
@@ -117,6 +107,11 @@ RqtvButtonBar.propTypes = {
   }),
 
   /**
+   * state of the listbox
+   */
+  qState: _propTypes.default.string,
+
+  /**
    * The bootstrap class to apply large (btn-lg), standard (btn) or small (btn-sm) size to a button.
    */
   buttonSize: _propTypes.default.string,
@@ -155,6 +150,7 @@ RqtvButtonBar.defaultProps = {
     qSortByLoadOrder: 0,
     qSortByExpression: 0
   },
+  qState: "",
   buttonSize: 'btn-sm',
   qDataPageHeight: 5,
   toggle: true,

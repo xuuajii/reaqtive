@@ -29,8 +29,15 @@ var _layout = require("@reaqtive/layout");
 
 var _wildMatch = _interopRequireDefault(require("./wild-match"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-app-context.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/contexts/rqtv-app-context.js";
 
+/**
+ * RqtvAppContext
+ * It is a react context. It provides generic info about the app.
+ * It is provided by the RqtvApp component
+ * Beyond providing access to the props set in RqtvApp component, it provides access to the qFieldList, the qCurrentSelections
+ * and the enhancedFieldList objects and to the pages array. The pages array contatins one element for each first level page of the app.
+ */
 const RqtvAppContext = _react.default.createContext();
 
 exports.RqtvAppContext = RqtvAppContext;

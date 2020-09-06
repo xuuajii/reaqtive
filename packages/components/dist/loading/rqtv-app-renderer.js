@@ -21,7 +21,7 @@ var _rqtvAppLoading = _interopRequireDefault(require("./rqtv-app-loading"));
 
 var _rqtvAppError = _interopRequireDefault(require("./rqtv-app-error"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-app-renderer.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/loading/rqtv-app-renderer.js";
 
 //import {conditionalDelay} from '../../../helpers'
 //export default

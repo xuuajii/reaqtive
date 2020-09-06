@@ -23,8 +23,14 @@ var _index = require("../hooks/index");
 
 var _q = require("@reaqtive/q");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\contexts\\rqtv-page-context.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/contexts/rqtv-page-context.js";
 
+/**
+ * RqtvPageContext
+ * It is a react context. It provides generic info about the page.
+ * It is provided by the RqtvPage component
+ * It provides the page triggerState, the page title and teh page condition result
+ */
 const RqtvPageContext = _react.default.createContext();
 
 exports.RqtvPageContext = RqtvPageContext;

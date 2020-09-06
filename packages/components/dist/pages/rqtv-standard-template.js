@@ -21,8 +21,16 @@ var _index = require("../contexts/index");
 
 var _index2 = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\pages\\rqtv-standard-template.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/pages/rqtv-standard-template.js";
 
+/**
+ * RqtvStandardTemplate
+ *
+ * It is a component that allows you to use Reaqtive main components without having to declare them one by one.
+ * Of course does not allow the same flexibility as recreating a template manually.
+ * It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader.
+ * It is suggested to use this component inside the RqtvApp
+ */
 const RqtvStandardTemplate = props => {
   const rqtvApp = (0, _react.useContext)(_index.RqtvAppContext);
   const rqtvPage = (0, _react.useContext)(_index.RqtvPageContext);

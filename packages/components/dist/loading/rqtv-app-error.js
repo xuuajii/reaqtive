@@ -13,7 +13,7 @@ var _layout = require("@reaqtive/layout");
 
 var _rqtvAppRendererStyle = require("./rqtv-app-renderer-style");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\loading\\rqtv-app-error.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/loading/rqtv-app-error.js";
 
 const RqtvAppError = props => _react.default.createElement("div", {
   style: _rqtvAppRendererStyle.containerStyle,

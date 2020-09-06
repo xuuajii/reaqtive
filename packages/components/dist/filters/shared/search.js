@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _layout = require("@reaqtive/layout");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\shared\\search.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/shared/search.js";
 
 const Search = props => _react.default.createElement("div", {
   className: "search-container",

@@ -19,7 +19,7 @@ var _index = require("../helpers/index");
 
 var _layout = _interopRequireDefault(require("./layout"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-listbox\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/rqtv-listbox/index.js";
 
 /**
  * RqtvListbox
@@ -31,14 +31,8 @@ var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\p
  * You can customize its styles using css or using props.
  */
 const RqtvListbox = props => {
-  const qFieldExpr = props.qFieldExpr,
-        qSortObject = props.qSortObject,
-        qLabelExpr = props.qLabelExpr;
-  const qObjectDef = (0, _index.useMapPropsToDef)({
-    qFieldExpr,
-    qSortObject,
-    qLabelExpr
-  });
+  //const {qFieldExpr, qSortObject, qLabelExpr,qState} = props
+  const qObjectDef = (0, _index.useMapPropsToDef)(props);
   return _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qObjectDef,
     quickSelectionMode: props.quickSelectionMode,
@@ -115,6 +109,11 @@ RqtvListbox.propTypes = {
     }),
     qSortByGreyness: _propTypes.default.number
   }),
+
+  /**
+   * state of the listbox
+  */
+  qState: _propTypes.default.string,
 
   /**
    * Show/hide listboxheader.
@@ -195,6 +194,7 @@ RqtvListbox.defaultProps = {
     qSortByLoadOrder: 0,
     qSortByExpression: 0
   },
+  qState: "",
   height: 500,
   focus: true,
   titleAction: () => false,

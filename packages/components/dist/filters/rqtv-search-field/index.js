@@ -23,7 +23,7 @@ var _index = require("../helpers/index");
 
 var _layout = _interopRequireDefault(require("./layout"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\filters\\rqtv-search-field\\index.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/filters/rqtv-search-field/index.js";
 
 /**
  * RqtvSearchField
@@ -35,12 +35,8 @@ var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\p
  * You can customize style using props and css
  */
 const RqtvSearchField = props => {
-  const qFieldExpr = props.qFieldExpr,
-        qSortObject = props.qSortObject;
-  const qObjectDef = (0, _index.useMapPropsToDef)({
-    qFieldExpr,
-    qSortObject
-  });
+  //const {qFieldExpr, qSortObject, qState, qObjectDef} = props
+  const qObjectDef = (0, _index.useMapPropsToDef)(props);
 
   const _useState = (0, _react.useState)(),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
@@ -125,6 +121,11 @@ RqtvSearchField.propTypes = {
   }),
 
   /**
+   * state of the listbox
+  */
+  qState: _propTypes.default.string,
+
+  /**
    * Height of the dropdown when is open
    */
   dropdownMenuHeight: _propTypes.default.number,
@@ -165,6 +166,7 @@ RqtvSearchField.defaultProps = {
     qSortByExpression: 0
   },
   quickSelectionMode: false,
+  qState: "",
   dropdownMenuHeight: 300,
   dropdownMenuWidth: 265,
   hideHorizontalScrollbar: false,

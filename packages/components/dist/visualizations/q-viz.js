@@ -19,7 +19,18 @@ var _layout = require("@reaqtive/layout");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\components\\src\\lib\\visualizations\\q-viz.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/visualizations/q-viz.js";
+
+/**
+ * QViz
+ *
+ * It is a component that allows to retrieve Qlik visualizations.
+ * Qlik visualizations can be retrieved by id (if they already exists in the Qlik Sense app) or
+ * they can be created on the fly providing the properties to the engine.
+ * QViz also provide an imperative handle to inteact with Qlik visualizazion.
+ * To access the handle you have to provide a handle to the QViz component
+ *
+ */
 const QViz = (0, _react.forwardRef)((props, ref) => {
   const qAppHandler = (0, _react.useContext)(_q.QApp);
   const system = (0, _react.useContext)(_layout.System);
