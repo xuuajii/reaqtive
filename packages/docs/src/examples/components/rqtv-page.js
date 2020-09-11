@@ -48,7 +48,7 @@ const MyFirstNestedPage = props =>{
 const SecondPage = props =>
 <RqtvPage {...props} qTitleExpr="'Revenue is: '&Sum([Sales Quantity]*[Sales Price])" exactActiveMatch={false}>
 <RqtvDropdownFilter qFieldExpr='Customer'/>
-  <MyRqtvStandardTemplate/>
+  <MyRqtvStandardTemplate />
 </RqtvPage>
 
 export {HomePage, FirstPage, SecondPage}

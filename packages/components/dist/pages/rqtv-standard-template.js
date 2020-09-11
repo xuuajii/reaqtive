@@ -68,6 +68,7 @@ const RqtvStandardTemplate = props => {
     searchFieldsMatch: props.searchFieldsMatch,
     showSearch: props.showSearch,
     showSideMenuToggle: props.useSideMenu,
+    currentSelectionsBreakPoint: props.currentSelectionsBreakPoint,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 38
@@ -83,14 +84,14 @@ const RqtvStandardTemplate = props => {
     additionalTabs: props.sideMenuAdditionalTabs,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 46
+      lineNumber: 47
     },
     __self: void 0
   }), _react.default.createElement(_index2.RqtvSideMenuMain, {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -98,20 +99,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 57
     },
     __self: void 0
   }, _react.default.createElement(_index2.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 60
+      lineNumber: 61
     },
     __self: void 0
   }), props.usePageHeader && rqtvPage && _react.default.createElement(_index2.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 62
     },
     __self: void 0
   }), props.children))));
@@ -170,7 +171,12 @@ RqtvStandardTemplate.propTypes = {
   searchFieldsMatch: _propTypes.default.shape({
     method: _propTypes.default.oneOf(['include', 'exclude']),
     mask: _propTypes.default.arrayOf(_propTypes.default.string)
-  })
+  }),
+
+  /**
+   * screentype from which current selections are responsive
+   */
+  currentSelectionsBreakPoint: _propTypes.default.oneOf(['xl', 'lg', 'md', 'sm'])
 };
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid: true,

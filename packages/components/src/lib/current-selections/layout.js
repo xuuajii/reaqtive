@@ -45,6 +45,7 @@ const Layout = props => {
           isResponsive={props.isResponsive}
           showModalToggler={props.showModalToggler}
           alwaysShowToolbar={props.alwaysShowToolbar}
+          breakPoint={props.breakPoint}
         />
         {
           props.useCurrentSelectionModal&&

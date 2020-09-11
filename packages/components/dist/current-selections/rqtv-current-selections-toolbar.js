@@ -21,8 +21,9 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
 
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()
+  console.log(props.breakPoint);
   const system = (0, _react.useContext)(_layout.System);
-  const isMinimized = props.isResponsive && system.windowWidth <= system.breakPoints['lg']; //console.log(system.windowWidth, system.breakPoints['md'])
+  const isMinimized = props.isResponsive && system.windowWidth <= system.breakPoints[props.breakPoint]; //console.log(system.windowWidth, system.breakPoints['md'])
 
   const showBack = props.qBackCount > 0 && !isMinimized || props.inModal;
   const showForward = props.qForwardCount > 0 && !isMinimized || props.inModal;
@@ -32,7 +33,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     className: "rqtv-current-selections-toolbar ".concat(props.inModal ? 'in-modal' : ''),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 18
+      lineNumber: 19
     },
     __self: void 0
   }, _react.default.createElement(_currentSelectionsButtons.SelectionsBack, {
@@ -42,15 +43,15 @@ const RqtvCurrentSelectionsToolbar = props => {
     showLabel: !props.showModalToggler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 20
     },
     __self: void 0
   }), _react.default.createElement("div", {
-    className: "btn-group btn-group-toggle",
+    className: "btn-group btn-group-toggle ".concat(isMinimized ? 'minimized' : ''),
     "data-toggle": "buttons",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 20
+      lineNumber: 21
     },
     __self: void 0
   }, props.showModalToggler && _react.default.createElement("button", {
@@ -58,7 +59,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     onClick: props.openCurrentSelectionsModal,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 22
+      lineNumber: 23
     },
     __self: void 0
   }, _react.default.createElement(_layout.Icon, {
@@ -69,7 +70,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 23
+      lineNumber: 24
     },
     __self: void 0
   }), !isMinimized && _react.default.createElement("span", {
@@ -78,14 +79,14 @@ const RqtvCurrentSelectionsToolbar = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 24
+      lineNumber: 25
     },
     __self: void 0
   }, "Current Selections"), _react.default.createElement("span", {
     className: "badge",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 25
+      lineNumber: 26
     },
     __self: void 0
   }, props.qSelectionsCount)), _react.default.createElement(_currentSelectionsButtons.SelectionsClarAll, {
@@ -95,7 +96,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     showLabel: !props.showModalToggler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 29
     },
     __self: void 0
   })), _react.default.createElement(_currentSelectionsButtons.SelectionsForward, {
@@ -105,7 +106,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     showLabel: !props.showModalToggler,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 31
     },
     __self: void 0
   })) : _react.default.createElement(_react.default.Fragment, null);

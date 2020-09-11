@@ -6,8 +6,9 @@ import { Icon, currentSelections} from '@reaqtive/layout'
 
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()
+  console.log(props.breakPoint)
   const system = useContext(System)
-  const isMinimized = props.isResponsive&&system.windowWidth<=system.breakPoints['lg']
+  const isMinimized = props.isResponsive&&system.windowWidth<=system.breakPoints[props.breakPoint]
   //console.log(system.windowWidth, system.breakPoints['md'])
   const showBack = (props.qBackCount>0&&!isMinimized)||props.inModal
   const showForward = (props.qForwardCount>0&&!isMinimized)||props.inModal
@@ -17,7 +18,7 @@ const RqtvCurrentSelectionsToolbar = props => {
     show?
     <div className={`rqtv-current-selections-toolbar ${props.inModal?'in-modal':''}`}>
       <SelectionsBack disabled={!(props.qBackCount>0)} show={showBack} onClick={props.back} showLabel={!props.showModalToggler}/>
-        <div className="btn-group btn-group-toggle" data-toggle="buttons">
+        <div className={`btn-group btn-group-toggle ${isMinimized?'minimized':''}`} data-toggle="buttons">
           {props.showModalToggler&&
             <button className="btn" onClick={props.openCurrentSelectionsModal}>
             <Icon type={currentSelections} size={isMinimized?35:24} style={{marginBottom:'3px'}}/>

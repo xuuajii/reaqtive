@@ -39,6 +39,7 @@ const RqtvCurrentSelections = (props) => {
                 hidePrefix={props.hidePrefix}
                 alwayShowToolbar={props.alwayShowToolbar}
                 customLoading={props.customLoading}
+                breakPoint={props.breakPoint}
               />
         </RqtvCurrentSelectionsObject>
       </QGenericObject>
@@ -56,20 +57,30 @@ RqtvCurrentSelections.propTypes={
    */
   isResponsive:PropTypes.bool,
   /**
+   * screentype from which current selections are responsive
+   */
+  breakPoint:PropTypes.oneOf(['xl','lg', 'md', 'sm']),
+  /**
    * it allows to show/hide the modal toggler
    */
   showModalToggler:PropTypes.bool,
   /**
    * if true the current selection toolbar is always shown even if no selection history exists (0 current, selection 0 back-count and 0 forward count)
    */
-  alwaysShowToolbar:PropTypes.bool
+  alwaysShowToolbar:PropTypes.bool,
+  /**
+   * prefix of the fields to be hidden from current selections modal
+   */
+  hidePrefix:PropTypes.string
+
 }
 
 RqtvCurrentSelections.defaultProps={
   useCurrentSelectionModal:true,
   isResponsive:true,
   showModalToggler:true,
-  alwaysShowToolbar:false
+  alwaysShowToolbar:false,
+  breakPoint:'lg'
 }
 
 export default RqtvCurrentSelections

@@ -42,6 +42,7 @@ const RqtvStandardTemplate = props => {
         searchFieldsMatch = {props.searchFieldsMatch}
         showSearch={props.showSearch}
         showSideMenuToggle = {props.useSideMenu}
+        currentSelectionsBreakPoint={props.currentSelectionsBreakPoint}
       />
       <RqtvSideMenu
         isOpen={showSideMenu&&props.useSideMenu}
@@ -114,6 +115,10 @@ RqtvStandardTemplate.propTypes = {
     method:PropTypes.oneOf(['include', 'exclude']),
     mask:PropTypes.arrayOf(PropTypes.string)
   }),
+  /**
+   * screentype from which current selections are responsive
+   */
+  currentSelectionsBreakPoint:PropTypes.oneOf(['xl','lg', 'md', 'sm']),
 }
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid:true,

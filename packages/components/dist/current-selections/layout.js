@@ -74,6 +74,7 @@ const Layout = props => {
     isResponsive: props.isResponsive,
     showModalToggler: props.showModalToggler,
     alwaysShowToolbar: props.alwaysShowToolbar,
+    breakPoint: props.breakPoint,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 37
@@ -94,7 +95,7 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 51
+      lineNumber: 52
     },
     __self: void 0
   }));

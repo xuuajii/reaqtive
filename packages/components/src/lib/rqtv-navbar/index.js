@@ -45,7 +45,12 @@ const RqtvNavbar = props => {
           </div>
         </>
         <NavbarNav neverCollapse={true}>
-          <RqtvCurrentSelections hidden={!showCurrentSelections} hidePrefix={hidePrefix} customLoading={()=><div/>}/>
+          <RqtvCurrentSelections
+            hidden={!showCurrentSelections}
+            hidePrefix={hidePrefix}
+            customLoading={()=><div/>}
+            breakPoint={props.currentSelectionsBreakPoint}
+          />
           {props.showSearch&&
             <RqtvSearchObject
               fixedTop={props.fixedTop}

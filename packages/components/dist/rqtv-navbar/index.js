@@ -107,10 +107,11 @@ const RqtvNavbar = props => {
     customLoading: () => _react.default.createElement("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 48
+        lineNumber: 51
       },
       __self: void 0
     }),
+    breakPoint: props.currentSelectionsBreakPoint,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 48
@@ -131,7 +132,7 @@ const RqtvNavbar = props => {
     resultsHeight: props.fixedTop ? '100%' : props.searchResultsHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 50
+      lineNumber: 55
     },
     __self: void 0
   }))));
