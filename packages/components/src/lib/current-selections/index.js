@@ -1,6 +1,7 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import PropTypes from 'prop-types'
 import {QGenericObject} from '@reaqtive/q'
+import {RqtvAppContext} from '../index'
 import RqtvCurrentSelectionsObject from './rqtv-current-selections-object'
 import Layout from './layout'
 
@@ -25,6 +26,8 @@ const qCurrentSelectionsObjectDef = {
  */
 
 const RqtvCurrentSelections = (props) => {
+  const appData = useContext(RqtvAppContext)
+  const hidePrefix = props.hidePrefix?props.hidePrefix:appData.hidePrefix
   return(
     <div className="rqtv-current-selections" hidden={props.hidden}>
       <QGenericObject qObjectDef={qCurrentSelectionsObjectDef}>

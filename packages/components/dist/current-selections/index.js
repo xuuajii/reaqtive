@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
@@ -7,11 +9,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _q = require("@reaqtive/q");
+
+var _index = require("../index");
 
 var _rqtvCurrentSelectionsObject = _interopRequireDefault(require("./rqtv-current-selections-object"));
 
@@ -38,25 +42,27 @@ const qCurrentSelectionsObjectDef = {
  */
 
 const RqtvCurrentSelections = props => {
+  const appData = (0, _react.useContext)(_index.RqtvAppContext);
+  const hidePrefix = props.hidePrefix ? props.hidePrefix : appData.hidePrefix;
   return _react.default.createElement("div", {
     className: "rqtv-current-selections",
     hidden: props.hidden,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 32
     },
     __self: void 0
   }, _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qCurrentSelectionsObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 33
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsObject.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 31
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement(_layout.default, {
@@ -68,7 +74,7 @@ const RqtvCurrentSelections = props => {
     customLoading: props.customLoading,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 35
     },
     __self: void 0
   }))));
