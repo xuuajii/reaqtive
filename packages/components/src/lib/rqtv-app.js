@@ -60,7 +60,7 @@ RqtvApp.propTypes={
    * triggers to fire when opening the app (do not abuse triggers)
    *
    */
-  triggers:PropTypes.arrayOf(triggerType),
+  triggers:PropTypes.array,
   /**
    * the title of the app displayed in the navbar
    *
