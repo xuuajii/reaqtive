@@ -7,11 +7,13 @@ const useMapPropsToDef = (props) => {
   const {qSortByState, qSortByNumeric, qSortByAscii, qSortByExpression, qState} = props
 
   const qFieldExpr = normalizeExpression(props.qFieldExpr)
+  const stateSetModifier = qState!=='' && qState!== undefined?`{${qState}}`:''
+  const stateName = qState!=='' && qState!== undefined?`'${qState}'`:''
   const qLabelExpr = props.qLabelExpr?props.qLabelExpr:`
-    '${props.qFieldExpr} '&if(getSelectedCount(${qFieldExpr},0,${props.qState===""?"":"'"+props.qState+"'"})>0,
-      if(count({${props.qState}} distinct ${qFieldExpr})=1 and getSelectedCount(${qFieldExpr},0,${props.qState===""?"":"'"+props.qState+"'"})=1,
-        only({${props.qState}} ${qFieldExpr}),
-        getSelectedCount(${qFieldExpr},0,${props.qState===""?"":"'"+props.qState+"'"})&' selected'
+    '${props.qFieldExpr} '&if(getSelectedCount(${qFieldExpr},0,${stateName})>0,
+      if(count(${stateSetModifier} distinct ${qFieldExpr})=1 and getSelectedCount(${qFieldExpr},0,${stateName})=1,
+        only(${stateSetModifier} ${qFieldExpr}),
+        getSelectedCount(${qFieldExpr},0,${stateName})&' selected'
       )
     )`
 

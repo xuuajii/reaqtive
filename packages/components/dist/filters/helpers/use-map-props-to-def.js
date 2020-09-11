@@ -18,7 +18,9 @@ const useMapPropsToDef = props => {
         qSortByExpression = props.qSortByExpression,
         qState = props.qState;
   const qFieldExpr = (0, _helpers.normalizeExpression)(props.qFieldExpr);
-  const qLabelExpr = props.qLabelExpr ? props.qLabelExpr : "\n    '".concat(props.qFieldExpr, " '&if(getSelectedCount(").concat(qFieldExpr, ",0,").concat(props.qState === "" ? "" : "'" + props.qState + "'", ")>0,\n      if(count({").concat(props.qState, "} distinct ").concat(qFieldExpr, ")=1 and getSelectedCount(").concat(qFieldExpr, ",0,").concat(props.qState === "" ? "" : "'" + props.qState + "'", ")=1,\n        only({").concat(props.qState, "} ").concat(qFieldExpr, "),\n        getSelectedCount(").concat(qFieldExpr, ",0,").concat(props.qState === "" ? "" : "'" + props.qState + "'", ")&' selected'\n      )\n    )");
+  const stateSetModifier = qState !== '' && qState !== undefined ? "{".concat(qState, "}") : '';
+  const stateName = qState !== '' && qState !== undefined ? "'".concat(qState, "'") : '';
+  const qLabelExpr = props.qLabelExpr ? props.qLabelExpr : "\n    '".concat(props.qFieldExpr, " '&if(getSelectedCount(").concat(qFieldExpr, ",0,").concat(stateName, ")>0,\n      if(count(").concat(stateSetModifier, " distinct ").concat(qFieldExpr, ")=1 and getSelectedCount(").concat(qFieldExpr, ",0,").concat(stateName, ")=1,\n        only(").concat(stateSetModifier, " ").concat(qFieldExpr, "),\n        getSelectedCount(").concat(qFieldExpr, ",0,").concat(stateName, ")&' selected'\n      )\n    )");
   const qObjectDef = (0, _react.useMemo)(() => {
     return props.qObjectDef ? props.qObjectDef : {
       "qInfo": {
