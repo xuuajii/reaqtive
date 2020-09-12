@@ -22,7 +22,7 @@ const initializeState = (fields, qItemCount, qMatchOffset, qMatchCount) => {
   return{
     qOptions:{
     qSearchFields:fields,
-    qContext:'CONTEXT_CURRENT_SELECTIONS',
+    qContext:'CONTEXT_CLEARED',
     qCharEncoding:'CHAR_ENCODING_UTF8'
     },
     qTerms:[],
@@ -98,7 +98,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   }, [qSearchObjectDef, qSearchResults.qErrorCounter])
 
   const selectSearchResults = (searchString, qId, callback) => {
-    const selectSearchParams = replaceObjectProp(qInitialSearchParams, 'qPage', 'qMatchIx', qId);
+    const selectSearchParams = replaceObjectProp(initialSearchObjectDef, 'qPage', 'qMatchIx', qId);
     const patchedSelectSearchParams = getPatchedObject(selectSearchParams, 'qTerms', [searchString])
     // console.log(patchedSelectSearchParams)
     qDocHandler.qDoc.selectAssociations(patchedSelectSearchParams)
