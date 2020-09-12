@@ -6,7 +6,7 @@ import { Icon, currentSelections} from '@reaqtive/layout'
 
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()
-  console.log(props.breakPoint)
+
   const system = useContext(System)
   const isMinimized = props.isResponsive&&system.windowWidth<=system.breakPoints[props.breakPoint]
   //console.log(system.windowWidth, system.breakPoints['md'])

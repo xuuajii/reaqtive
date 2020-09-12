@@ -21,7 +21,6 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
 
 const RqtvCurrentSelectionsToolbar = props => {
   //console.log(props)()
-  console.log(props.breakPoint);
   const system = (0, _react.useContext)(_layout.System);
   const isMinimized = props.isResponsive && system.windowWidth <= system.breakPoints[props.breakPoint]; //console.log(system.windowWidth, system.breakPoints['md'])
 
