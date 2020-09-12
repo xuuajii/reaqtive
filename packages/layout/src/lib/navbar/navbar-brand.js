@@ -11,10 +11,16 @@ const defaultImgStyle = {
 
 const NavbarBrand = props => {
   const navigate = () => {
-    window.location=props.url
+    //window.location=props.url
+    if(typeof props.onClick==='function'){
+      props.onClick()
+    } else {
+      const isExternalUrl = props.url.match(/^(?:http|https):\/\//)?true:false
+      isExternalUrl?window.location=props.url:history.pushState(props.url, '', props.url)
+    }
   }
   return (
-    <a href="#section" className={`navbar-brand ${props.className?props.className:''}`} style={{...props.style}} onClick={navigate}>
+    <a href="#" className={`navbar-brand ${props.className?props.className:''}`} style={{...props.style}} onClick={navigate}>
     {(props.imgUrl)&&
       <img
         src={props.imgUrl}

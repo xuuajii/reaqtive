@@ -144,7 +144,13 @@ RqtvApp.propTypes = {
   brandStyle: _propTypes.default.object,
 
   /**
-   * if true the applicatin will be wrapped in react router and in a switch
+   * a function called when clicking on the navbar brand. If defined will prevent navigating to brandUrl
+   *
+   */
+  brandAction: _propTypes.default.func,
+
+  /**
+   * if true the application will be wrapped in react router and in a switch
    *
    */
   useRouter: _propTypes.default.bool,

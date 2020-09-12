@@ -82,9 +82,14 @@ RqtvApp.propTypes={
    */
   brandStyle:PropTypes.object,
   /**
-   * if true the applicatin will be wrapped in react router and in a switch
+   * a function called when clicking on the navbar brand. If defined will prevent navigating to brandUrl
    *
    */
+   brandAction:PropTypes.func,
+   /**
+    * if true the application will be wrapped in react router and in a switch
+    *
+    */
   useRouter:PropTypes.bool,
   /**
    * fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')

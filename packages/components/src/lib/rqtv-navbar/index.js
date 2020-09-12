@@ -21,6 +21,7 @@ const RqtvNavbar = props => {
   const brandUrl=props.brandUrl?props.brandUrl:rqtvApp.brandUrl
   const brandImgUrl=props.brandImgUrl?props.brandImgUrl:rqtvApp.brand
   const brandImgStyle=props.brandImgStyle?props.brandImgStyle:rqtvApp.brandStyle
+  const navbarBrandAction=props.navbarBrandAction?props.navbarBrandAction:rqtvApp.brandAction
   const [showCurrentSelections , setShowCurrentSelections] = useState(props.showCurrentSelections)
 
   const fieldList = searchFieldsMatch?rqtvApp.filterFieldList(rqtvApp.enhancedFieldList, searchFieldsMatch):rqtvApp.searchFieldList
@@ -39,7 +40,7 @@ const RqtvNavbar = props => {
               <HamburgerMenu isOpen={props.sideMenuActive}/>
             </Button>
           }
-            <NavbarBrand url={brandUrl} imgUrl={brandImgUrl} imgStyle={brandImgStyle}>
+            <NavbarBrand url={brandUrl} imgUrl={brandImgUrl} imgStyle={brandImgStyle} onClick={navbarBrandAction}>
               {title}
             </NavbarBrand>
           </div>
@@ -101,7 +102,8 @@ RqtvNavbar.propTypes={
   brandUrl:PropTypes.string,
   brandImgUrl:PropTypes.string,
   brandImgStyle:PropTypes.object,
-  searchResultsHeight:PropTypes.oneOfType([PropTypes.string,PropTypes.number])
+  searchResultsHeight:PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
+  navbarBrandAction:PropTypes.func
 }
 
 RqtvNavbar.defaultProps={

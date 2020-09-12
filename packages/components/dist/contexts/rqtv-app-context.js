@@ -82,6 +82,7 @@ const RqtvAppContextConsumer = props => {
         title = props.title,
         brandUrl = props.brandUrl,
         brandStyle = props.brandStyle,
+        brandAction = props.brandAction,
         hidePrefix = props.hidePrefix,
         pages = props.pages,
         sideMenuFieldsMatch = props.sideMenuFieldsMatch,
@@ -156,6 +157,7 @@ const RqtvAppContextConsumer = props => {
       title,
       brandUrl,
       brandStyle,
+      brandAction,
       hidePrefix,
       qFieldList,
       enhancedFieldList,
@@ -171,7 +173,7 @@ const RqtvAppContextConsumer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 108
+      lineNumber: 109
     },
     __self: void 0
   }, props.children);
@@ -181,7 +183,7 @@ const RqtvAppContextProvider = props => {
   return _react.default.createElement(RqtvAppContextConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 136
+      lineNumber: 138
     },
     __self: void 0
   }), props.children);

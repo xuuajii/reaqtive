@@ -25,17 +25,23 @@ const defaultImgStyle = {
 
 const NavbarBrand = props => {
   const navigate = () => {
-    window.location = props.url;
+    //window.location=props.url
+    if (typeof props.onClick === 'function') {
+      props.onClick();
+    } else {
+      const isExternalUrl = props.url.match(/^(?:http|https):\/\//) ? true : false;
+      isExternalUrl ? window.location = props.url : history.pushState(props.url, '', props.url);
+    }
   };
 
   return _react.default.createElement("a", {
-    href: "#section",
+    href: "#",
     className: "navbar-brand ".concat(props.className ? props.className : ''),
     style: (0, _objectSpread2.default)({}, props.style),
     onClick: navigate,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 17
+      lineNumber: 23
     },
     __self: void 0
   }, props.imgUrl && _react.default.createElement("img", {
@@ -44,7 +50,7 @@ const NavbarBrand = props => {
     alt: "Logo",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 19
+      lineNumber: 25
     },
     __self: void 0
   }), props.children);
