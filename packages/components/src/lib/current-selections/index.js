@@ -28,6 +28,7 @@ const qCurrentSelectionsObjectDef = {
 const RqtvCurrentSelections = (props) => {
   const appData = useContext(RqtvAppContext)
   const hidePrefix = props.hidePrefix?props.hidePrefix:appData.hidePrefix
+  const excludeHidden = props.excludeHidden?props.excludeHidden:appData.excludeHidden
   return(
     <div className="rqtv-current-selections" hidden={props.hidden}>
       <QGenericObject qObjectDef={qCurrentSelectionsObjectDef}>
@@ -36,7 +37,8 @@ const RqtvCurrentSelections = (props) => {
                 isResponsive={props.isResponsive}
                 showModalToggler={props.showModalToggler}
                 useCurrentSelectionModal={props.useCurrentSelectionModal}
-                hidePrefix={props.hidePrefix}
+                excludeHidden={excludeHidden}
+                hidePrefix={hidePrefix}
                 alwayShowToolbar={props.alwayShowToolbar}
                 customLoading={props.customLoading}
                 breakPoint={props.breakPoint}
@@ -71,7 +73,11 @@ RqtvCurrentSelections.propTypes={
   /**
    * prefix of the fields to be hidden from current selections modal
    */
-  hidePrefix:PropTypes.string
+  hidePrefix:PropTypes.string,
+  /**
+   * if true field hidden from current selections are not considered in selection count
+   */
+  excludeHidden:PropTypes.bool
 
 }
 

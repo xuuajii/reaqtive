@@ -44,38 +44,40 @@ const qCurrentSelectionsObjectDef = {
 const RqtvCurrentSelections = props => {
   const appData = (0, _react.useContext)(_index.RqtvAppContext);
   const hidePrefix = props.hidePrefix ? props.hidePrefix : appData.hidePrefix;
+  const excludeHidden = props.excludeHidden ? props.excludeHidden : appData.excludeHidden;
   return _react.default.createElement("div", {
     className: "rqtv-current-selections",
     hidden: props.hidden,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 33
     },
     __self: void 0
   }, _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qCurrentSelectionsObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 34
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsObject.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 35
     },
     __self: void 0
   }, _react.default.createElement(_layout.default, {
     isResponsive: props.isResponsive,
     showModalToggler: props.showModalToggler,
     useCurrentSelectionModal: props.useCurrentSelectionModal,
-    hidePrefix: props.hidePrefix,
+    excludeHidden: excludeHidden,
+    hidePrefix: hidePrefix,
     alwayShowToolbar: props.alwayShowToolbar,
     customLoading: props.customLoading,
     breakPoint: props.breakPoint,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 36
     },
     __self: void 0
   }))));
@@ -110,7 +112,12 @@ RqtvCurrentSelections.propTypes = {
   /**
    * prefix of the fields to be hidden from current selections modal
    */
-  hidePrefix: _propTypes.default.string
+  hidePrefix: _propTypes.default.string,
+
+  /**
+   * if true field hidden from current selections are not considered in selection count
+   */
+  excludeHidden: _propTypes.default.bool
 };
 RqtvCurrentSelections.defaultProps = {
   useCurrentSelectionModal: true,

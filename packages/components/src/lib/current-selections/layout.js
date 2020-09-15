@@ -9,6 +9,15 @@ const Layout = props => {
   const qLayoutHandler = props.qLayoutHandler
   const qLayout = qLayoutHandler&&qLayoutHandler.qLayout
   const qSelectionObject = qLayout&&qLayout.qSelectionObject
+
+  const [filteredSelections, setFilteredselections] = useState([])
+  //const isMounted = useIsMounted()
+  useEffect(()=>{
+    const hideSelections = (selectionField) => selectionField.qField.indexOf(props.hidePrefix)!==0;
+    const filteredArray = qSelectionObject?qSelectionObject.qSelections.filter(hideSelections):[]
+    qSelectionObject?setFilteredselections(filteredArray):setFilteredselections([])
+  }, [qSelectionObject, props.hidePrefix])
+
   // console.log(qSelectionObject)
   const closeCurrentSelectionsModal = () => {
     setCurrentSelectionModalOpen(false)
@@ -31,13 +40,12 @@ const Layout = props => {
     }
     setRendererProps(rendererProps)
   },[qLayoutHandler.qLoading, qLayoutHandler.qError])
-
   return(
     <RqtvRenderer {...rendererProps}>
         <RqtvCurrentSelectionsToolbar
           qBackCount={props.rqtvCurrentSelectionsObject.qBackCount}
           qForwardCount={props.rqtvCurrentSelectionsObject.qForwardCount}
-          qSelectionsCount={props.rqtvCurrentSelectionsObject.qSelectionsCount}
+          qSelectionsCount={props.excludeHidden?filteredSelections.length:props.rqtvCurrentSelectionsObject.qSelectionsCount}
           clearAll={props.rqtvCurrentSelectionsObject.clearAll}
           back={props.rqtvCurrentSelectionsObject.back}
           forward={props.rqtvCurrentSelectionsObject.forward}
@@ -52,7 +60,7 @@ const Layout = props => {
           <RqtvCurrentSelectionsModal
             open={currentSelectionModalOpen}
             close={closeCurrentSelectionsModal}
-            currentSelections={qSelectionObject&&qSelectionObject.qSelections||[]}
+            currentSelections={filteredSelections}
             hidePrefix={props.hidePrefix}
             toolbarProps={{
               qBackCount:props.rqtvCurrentSelectionsObject.qBackCount,

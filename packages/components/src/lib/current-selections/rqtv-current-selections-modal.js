@@ -13,13 +13,13 @@ const RqtvCurrentSelectionsModal = props =>{
 
   const [activeField, setActiveField] = useState('')
 
-  const [filteredSelections, setFilteredselections] = useState(props.currentSelections)
+  //const [filteredSelections, setFilteredselections] = useState(props.currentSelections)
   //const isMounted = useIsMounted()
-  useEffect(()=>{
-    const hideSelections = (selectionField) => selectionField.qField.indexOf(props.hidePrefix)!==0;
-    setFilteredselections(props.currentSelections.filter(hideSelections))
-    //console.log(filteredSelections)
-  }, [props.currentSelections, props.hidePrefix])
+  // useEffect(()=>{
+  //   const hideSelections = (selectionField) => selectionField.qField.indexOf(props.hidePrefix)!==0;
+  //   setFilteredselections(props.currentSelections.filter(hideSelections))
+  //   //console.log(filteredSelections)
+  // }, [props.currentSelections, props.hidePrefix])
 
   const activFieldListbox = useMemo(
     () => {
@@ -60,7 +60,7 @@ const RqtvCurrentSelectionsModal = props =>{
                 </CurrentSelectionsListbox>*/
             }
             <Carousel index={activeField===''?0:1}>
-              <CurrentSelectionsList currentSelections={filteredSelections} setActiveField={setActiveField}/>
+              <CurrentSelectionsList currentSelections={props.currentSelections} setActiveField={setActiveField}/>
               <CurrentSelectionsListbox backToFieldList={()=>setActiveField('')}>
                   {activFieldListbox}
                 </CurrentSelectionsListbox>

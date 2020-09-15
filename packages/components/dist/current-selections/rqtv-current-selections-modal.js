@@ -29,19 +29,15 @@ const RqtvCurrentSelectionsModal = props => {
   const _useState = (0, _react.useState)(''),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         activeField = _useState2[0],
-        setActiveField = _useState2[1];
+        setActiveField = _useState2[1]; //const [filteredSelections, setFilteredselections] = useState(props.currentSelections)
+  //const isMounted = useIsMounted()
+  // useEffect(()=>{
+  //   const hideSelections = (selectionField) => selectionField.qField.indexOf(props.hidePrefix)!==0;
+  //   setFilteredselections(props.currentSelections.filter(hideSelections))
+  //   //console.log(filteredSelections)
+  // }, [props.currentSelections, props.hidePrefix])
 
-  const _useState3 = (0, _react.useState)(props.currentSelections),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        filteredSelections = _useState4[0],
-        setFilteredselections = _useState4[1]; //const isMounted = useIsMounted()
 
-
-  (0, _react.useEffect)(() => {
-    const hideSelections = selectionField => selectionField.qField.indexOf(props.hidePrefix) !== 0;
-
-    setFilteredselections(props.currentSelections.filter(hideSelections)); //console.log(filteredSelections)
-  }, [props.currentSelections, props.hidePrefix]);
   const activFieldListbox = (0, _react.useMemo)(() => {
     return activeField === '' ? _react.default.createElement(_react.default.Fragment, null) : _react.default.createElement(_index.RqtvListbox, {
       title: activeField.qFieldExpr,
@@ -113,7 +109,7 @@ const RqtvCurrentSelectionsModal = props => {
     },
     __self: void 0
   }, _react.default.createElement(CurrentSelectionsList, {
-    currentSelections: filteredSelections,
+    currentSelections: props.currentSelections,
     setActiveField: setActiveField,
     __source: {
       fileName: _jsxFileName,

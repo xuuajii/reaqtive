@@ -30,7 +30,20 @@ const Layout = props => {
 
   const qLayoutHandler = props.qLayoutHandler;
   const qLayout = qLayoutHandler && qLayoutHandler.qLayout;
-  const qSelectionObject = qLayout && qLayout.qSelectionObject; // console.log(qSelectionObject)
+  const qSelectionObject = qLayout && qLayout.qSelectionObject;
+
+  const _useState3 = (0, _react.useState)([]),
+        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
+        filteredSelections = _useState4[0],
+        setFilteredselections = _useState4[1]; //const isMounted = useIsMounted()
+
+
+  (0, _react.useEffect)(() => {
+    const hideSelections = selectionField => selectionField.qField.indexOf(props.hidePrefix) !== 0;
+
+    const filteredArray = qSelectionObject ? qSelectionObject.qSelections.filter(hideSelections) : [];
+    qSelectionObject ? setFilteredselections(filteredArray) : setFilteredselections([]);
+  }, [qSelectionObject, props.hidePrefix]); // console.log(qSelectionObject)
 
   const closeCurrentSelectionsModal = () => {
     setCurrentSelectionModalOpen(false);
@@ -40,14 +53,14 @@ const Layout = props => {
     setCurrentSelectionModalOpen(true);
   };
 
-  const _useState3 = (0, _react.useState)({
+  const _useState5 = (0, _react.useState)({
     loading: qLayoutHandler.qLoading,
     error: qLayoutHandler.qError,
     reload: props.qObjectHandler.reloadObject
   }),
-        _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        rendererProps = _useState4[0],
-        setRendererProps = _useState4[1];
+        _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
+        rendererProps = _useState6[0],
+        setRendererProps = _useState6[1];
 
   (0, _react.useEffect)(() => {
     const rendererProps = {
@@ -60,13 +73,13 @@ const Layout = props => {
   return _react.default.createElement(_index.RqtvRenderer, Object.assign({}, rendererProps, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 44
     },
     __self: void 0
   }), _react.default.createElement(_rqtvCurrentSelectionsToolbar.default, {
     qBackCount: props.rqtvCurrentSelectionsObject.qBackCount,
     qForwardCount: props.rqtvCurrentSelectionsObject.qForwardCount,
-    qSelectionsCount: props.rqtvCurrentSelectionsObject.qSelectionsCount,
+    qSelectionsCount: props.excludeHidden ? filteredSelections.length : props.rqtvCurrentSelectionsObject.qSelectionsCount,
     clearAll: props.rqtvCurrentSelectionsObject.clearAll,
     back: props.rqtvCurrentSelectionsObject.back,
     forward: props.rqtvCurrentSelectionsObject.forward,
@@ -77,13 +90,13 @@ const Layout = props => {
     breakPoint: props.breakPoint,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 37
+      lineNumber: 45
     },
     __self: void 0
   }), props.useCurrentSelectionModal && _react.default.createElement(_rqtvCurrentSelectionsModal.default, {
     open: currentSelectionModalOpen,
     close: closeCurrentSelectionsModal,
-    currentSelections: qSelectionObject && qSelectionObject.qSelections || [],
+    currentSelections: filteredSelections,
     hidePrefix: props.hidePrefix,
     toolbarProps: {
       qBackCount: props.rqtvCurrentSelectionsObject.qBackCount,
@@ -95,7 +108,7 @@ const Layout = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 52
+      lineNumber: 60
     },
     __self: void 0
   }));

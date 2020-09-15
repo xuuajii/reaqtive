@@ -84,6 +84,7 @@ const RqtvAppContextConsumer = props => {
         brandStyle = props.brandStyle,
         brandAction = props.brandAction,
         hidePrefix = props.hidePrefix,
+        excludeHidden = props.excludeHidden,
         pages = props.pages,
         sideMenuFieldsMatch = props.sideMenuFieldsMatch,
         searchFieldsMatch = props.searchFieldsMatch,
@@ -159,6 +160,7 @@ const RqtvAppContextConsumer = props => {
       brandStyle,
       brandAction,
       hidePrefix,
+      excludeHidden,
       qFieldList,
       enhancedFieldList,
       qCurrentSelections,
@@ -183,7 +185,7 @@ const RqtvAppContextProvider = props => {
   return _react.default.createElement(RqtvAppContextConsumer, Object.assign({}, props, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 138
+      lineNumber: 139
     },
     __self: void 0
   }), props.children);
@@ -231,6 +233,7 @@ RqtvAppContextConsumer.defaultProps = {
     verticalAlign: 'top'
   },
   hidePrefix: '%',
+  excludeHidden: false,
   sideMenuFieldsMatch: {
     method: 'include',
     mask: ['**']

@@ -51,8 +51,8 @@ fieldList&&fieldList.map(field=>markField(field, matchParams.method, matchParams
 
 
 const RqtvAppContextConsumer = (props) => {
-  const {theme, brand, title, brandUrl, brandStyle, brandAction, hidePrefix, pages, sideMenuFieldsMatch, searchFieldsMatch,
-         neverToggleFieldsMatch}=props
+  const {theme, brand, title, brandUrl, brandStyle, brandAction, hidePrefix, excludeHidden,
+        pages, sideMenuFieldsMatch, searchFieldsMatch, neverToggleFieldsMatch}=props
 
   const qFieldListHandler = useQObjectReducer(qFieldListDef)
   const qFieldListLayoutHandler = useQLayoutReducer(qFieldListHandler)
@@ -115,6 +115,7 @@ const RqtvAppContextConsumer = (props) => {
           brandStyle,
           brandAction,
           hidePrefix,
+          excludeHidden,
           qFieldList,
           enhancedFieldList,
           qCurrentSelections,
@@ -182,6 +183,7 @@ RqtvAppContextConsumer.defaultProps={
     verticalAlign:'top',
   },
   hidePrefix:'%',
+  excludeHidden:false,
   sideMenuFieldsMatch:{method:'include', mask:['**']},
   searchFieldsMatch:{method:'include', mask:['**']},
   neverToggleFieldsMatch:{method:'exclude', mask:['**']}

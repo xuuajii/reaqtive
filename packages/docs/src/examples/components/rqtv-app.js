@@ -4,7 +4,7 @@ import {HomePage, FirstPage, SecondPage} from './rqtv-page'
 
 const MyRqtvApp = (props) => {
   return(
-    <RqtvApp title="Example App" brandUrl='/'>
+    <RqtvApp title="Example App" brandUrl='/' hidePrefix="Cust" >
         <FirstPage path="/first-page"/>
         <SecondPage path="/second-page"/>
         <HomePage path="/" linkName="HOME"/>
