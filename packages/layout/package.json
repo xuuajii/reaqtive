@@ -91,7 +91,7 @@
   },
   "dependencies": {
     "airbnb-prop-types": "^2.15.0",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.2",
     "node-sass": "^4.13.0",
     "react-spring": "^8.0.27",
     "use-debounce": "^3.3.0",

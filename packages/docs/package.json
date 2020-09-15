@@ -54,7 +54,7 @@
     "@reaqtive/layout": "^0.0.0-beta.4",
     "@reaqtive/q": "^0.0.0-beta.4",
     "airbnb-prop-types": "^2.15.0",
-    "bootstrap": "^4.4.1",
+    "bootstrap": "^4.5.2",
     "enigma.js": "^2.4.0",
     "glob": "^7.1.6",
     "node-sass": "^4.13.0",
