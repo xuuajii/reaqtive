@@ -6,5 +6,3 @@ If you want to see the documentation of a specific package follow the links belo
 - [@reaqtive/q](https://github.com/xuuajii/reaqtive/tree/master/packages/q)
 - [@reaqtive/components](https://github.com/xuuajii/reaqtive/tree/master/packages/components)
 - [@reaqtive/layout](https://github.com/xuuajii/reaqtive/tree/master/packages/layout)
-
-  

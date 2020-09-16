@@ -1,6 +1,6 @@
 # **@reaqtive/q**
 
-This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm).
+This package provides a set of hooks, contexts and components to interact with the [Qlik Engine APIs](https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/EngineAPI/Content/introducing-engine-API.htm) and the [Qlik Capability APIs](https://help.qlik.com/en-US/sense-developer/June2018/Subsystems/EngineAPI/Content/introducing-engine-API.htm). 
 Its purpose is to simplify the interaction with the engine and provide a set of tested APIs to easily retrieve data and interfaces from the engine.
 @reaqtive/q does not provide any layout components, it only allows you to interact with the Qlik engine. You can use it as a stand alone package and develop your layout components using its APIs, as described below.
 Depending on your needs and you can install @reaqtive/components instead. It provides a set of ready to use layout components to build data visualization apps on top o Qlik APIs, and depends on @reaqtive/q.
@@ -33,7 +33,7 @@ Provided contexts are:
 - [QApp](#qapp) </br>
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React from 'react'
 import Reaqtive from '@reaqtive/q'
@@ -49,7 +49,7 @@ const MyReaqtiveComponent = props => {
       prefix: '',                                   //''
       appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
-  
+
   return (
     <Reaqtive qConfig={qConfig}>
       {props.children}
@@ -73,7 +73,7 @@ const Wrapper = props => <div style={{marginBottom:'2rem'}}>{props.children}</di
 export default MyReaqtiveComponent
 
 ```
-**Props**: 
+**Props**:
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -103,7 +103,7 @@ qLoading: initially true, it is set to false when the promise to get the qGlobal
 https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/index.html
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React, {useContext} from 'react'
 import {QGlobal} from '@reaqtive/q'
@@ -141,7 +141,7 @@ qLoading: initially true, it is set to false when the promise to get the qDoc is
 https://help.qlik.com/en-US/sense-developer/February2019/APIs/EngineAPI/index.html
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React, {useContext} from 'react'
 import {QDoc} from '@reaqtive/q'
@@ -180,7 +180,7 @@ qlik: the qlik provided by the qlik Capability APIs. It is initially null and it
 qError: initially null it is set to true if one of the promises to load requireJS or the qlik object or the css fails
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React, {useContext} from 'react'
 import {QCapabilityApi} from '@reaqtive/q'
@@ -217,7 +217,7 @@ qApp: the app provided by the qlik Capability APIs. It is initially null and it 
 qError: initially null it is set to true if the promise to get the qApp returns an error
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React, {useContext} from 'react'
 import {QApp} from '@reaqtive/q'
@@ -258,7 +258,7 @@ QGenericObject must have one and only one child. The child can be a React elemen
 See the example below for details
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React from 'react'
 import {QGenericObject} from '@reaqtive/q'
@@ -338,7 +338,7 @@ const Layout = props => {
 export default MyQGenericObject
 
 ```
-**Props**: 
+**Props**:
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -360,7 +360,7 @@ It wraps the Reaqtive component and provides the QCapabilityAPI context to the c
 This work around is needed to avoid to download QCapabilityAPI and AngularJS more than once.
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React from 'react'
 import {QShareCapabilityApi, Reaqtive} from '@reaqtive/q'
@@ -372,7 +372,7 @@ const qConfig = {                                 //For QS Desktop
       prefix: '',                                   //''
   };
 const app1 = '8aa3a035-0689-4aab-a920-d6722509ed51'
-const app2 = '58d7234b-b31c-4f24-b1f8-2c7453e557fa' 
+const app2 = '58d7234b-b31c-4f24-b1f8-2c7453e557fa'
 
 const MySharedCapabilityApis = props =>
 <QShareCapabilityApi qConfig={qConfig}>
@@ -387,7 +387,7 @@ const MySharedCapabilityApis = props =>
 export default MySharedCapabilityApis
 
 ```
-**Props**: 
+**Props**:
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -414,7 +414,7 @@ QVariable must have one and only one child. The child can be a React element (ex
 See the example below for details
 
 
-**Example:** 
+**Example:**
 ```javascript
 import React from 'react'
 import {QVariable} from '@reaqtive/q'
@@ -464,7 +464,7 @@ const Layout = props =>
 export default MyQVariable
 
 ```
-**Props**: 
+**Props**:
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
