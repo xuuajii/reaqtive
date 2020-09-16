@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/q",
-  "version": "0.0.0-beta.5",
+  "version": "0.0.0-beta.6",
   "description": "A react library to connect React to the QIX engine and to Qlik Capability APIs",
   "keywords": [
     "qlik",
@@ -47,7 +47,7 @@
     "react-dom": "^16.12.0"
   },
   "dependencies": {
-    "@reaqtive/layout": "^0.0.0-beta.5",
+    "@reaqtive/layout": "^0.0.0-beta.6",
     "airbnb-prop-types": "^2.15.0",
     "enigma.js": "^2.4.0",
     "http-proxy-middleware": "^1.0.3",
