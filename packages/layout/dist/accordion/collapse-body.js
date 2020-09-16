@@ -11,7 +11,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _index = require("../index");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/accordion/collapse-body.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\accordion\\collapse-body.js";
 
 const CollapseBody = props => {
   const childType = props.children.type;

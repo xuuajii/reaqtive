@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/tabs/tab-indicator.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-indicator.js";
 
 const TabIndicator = props => {
   const animatedProps = (0, _reactSpring.useSpring)((0, _objectSpread2.default)({}, props)); //console.log(props)

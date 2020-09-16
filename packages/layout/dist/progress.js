@@ -13,7 +13,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/progress.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\progress.js";
 
 const Progress = props => _react.default.createElement("div", {
   style: {

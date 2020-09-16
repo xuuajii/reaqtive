@@ -19,7 +19,7 @@ var _reactSpring = require("react-spring");
 
 var _index = require("../index");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/accordion/collapse-header.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\accordion\\collapse-header.js";
 
 const CollapseHeader = props => {
   const animationWrapperEl = (0, _react.useRef)();

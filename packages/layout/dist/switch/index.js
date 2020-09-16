@@ -15,14 +15,17 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/switch/index.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\switch\\index.js";
 
 const Switch = props => {
-  const _useState = (0, _react.useState)(props.isOn),
+  const _useState = (0, _react.useState)(props.isOn || false),
         _useState2 = (0, _slicedToArray2.default)(_useState, 2),
         isOn = _useState2[0],
         setIsOn = _useState2[1];
 
+  (0, _react.useEffect)(() => {
+    setIsOn(props.isOn || false);
+  }, [props.isOn]);
   const labelAnimation = (0, _reactSpring.useSpring)({
     config: {
       duration: 10
@@ -38,8 +41,11 @@ const Switch = props => {
   });
 
   const toggle = e => {
-    typeof props.onChange === 'function' && props.onChange(e);
     setIsOn(!isOn);
+
+    if (typeof props.onChange === 'function') {
+      props.onChange(e);
+    }
   };
 
   const flexDirection = props.labelPosition === 'top' || props.labelPosition === 'bottom' ? 'flex-column' : 'flex-row';
@@ -47,14 +53,14 @@ const Switch = props => {
     className: "switch-container ".concat(flexDirection),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 31
     },
     __self: void 0
   }, _react.default.createElement("span", {
     className: "switch-label ".concat(props.labelPosition),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 28
+      lineNumber: 32
     },
     __self: void 0
   }, props.label), _react.default.createElement(_reactSpring.animated.label, {
@@ -63,7 +69,7 @@ const Switch = props => {
     htmlFor: props.id,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 29
+      lineNumber: 33
     },
     __self: void 0
   }, _react.default.createElement("input", {
@@ -73,7 +79,7 @@ const Switch = props => {
     type: "checkbox",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 38
     },
     __self: void 0
   }), _react.default.createElement(_reactSpring.animated.span, {
@@ -81,7 +87,7 @@ const Switch = props => {
     style: buttonAnimation,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 44
     },
     __self: void 0
   })));

@@ -15,7 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _index = require("../index");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/tabs/tab-panels.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-panels.js";
 const animationWrapperStyle = {
   position: 'relative',
   width: '100%',

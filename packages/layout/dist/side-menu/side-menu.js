@@ -23,7 +23,7 @@ var _index2 = require("../index");
 
 var _backdrop = _interopRequireDefault(require("../backdrop"));
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/side-menu/side-menu.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\side-menu\\side-menu.js";
 
 const SideMenu = props => {
   return _react.default.createElement(_index.SideMenuContextProvider, Object.assign({}, props, {

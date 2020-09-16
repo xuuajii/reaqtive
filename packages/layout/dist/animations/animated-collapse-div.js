@@ -17,7 +17,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactSpring = require("react-spring");
 
-var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/animations/animated-collapse-div.js";
+var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\animations\\animated-collapse-div.js";
 
 const AnimatedCollapseDiv = props => {
   const collapseEl = (0, _react.useRef)();
