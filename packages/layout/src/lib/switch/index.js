@@ -3,7 +3,9 @@ import { useSpring, animated } from "react-spring";
 
 const Switch = props => {
 
-  const [isOn, setIsOn] = useState(props.isOn)
+  const [isOn, setIsOn] = useState(props.isOn||false)
+
+  useEffect(()=>{setIsOn(props.isOn||false)},[props.isOn])
 
   const labelAnimation = useSpring({
     config:{duration:10},
@@ -17,8 +19,10 @@ const Switch = props => {
   });
 
   const toggle = (e) => {
-    (typeof props.onChange === 'function')&&props.onChange(e)
     setIsOn(!isOn)
+    if (typeof props.onChange === 'function'){
+      props.onChange(e)
+    }
   }
 
   const flexDirection = props.labelPosition==='top'||props.labelPosition==='bottom'?'flex-column':'flex-row'
