@@ -15,7 +15,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-panels.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/tabs/tab-panels.js";
 const animationWrapperStyle = {
   position: 'relative',
   width: '100%',
@@ -61,10 +61,10 @@ const TabPanels = props => {
     },
     __self: void 0
   }, children.map((child, index) => {
-    return _react.default.cloneElement(child, {
+    return _react.default.cloneElement(child, typeof child.type === 'function' ? {
       tabsEl,
       tabListEl
-    });
+    } : {});
   })) : children.map((child, index) => index === activeTab && _react.default.createElement("div", {
     key: index === activeTab && index,
     style: {
@@ -75,10 +75,10 @@ const TabPanels = props => {
       lineNumber: 29
     },
     __self: void 0
-  }, _react.default.cloneElement(child, {
+  }, _react.default.cloneElement(child, typeof child.type === 'function' ? {
     tabsEl,
     tabListEl
-  }))));
+  } : {}))));
 };
 
 var _default = TabPanels;

@@ -4,8 +4,9 @@ import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
 
 const MyRqtvStandardTemplate = props => {
   return(
-    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+    <RqtvStandardTemplate >
       <div>Standard Template Example</div>
+      {props.children}
     </RqtvStandardTemplate>
   )
 }

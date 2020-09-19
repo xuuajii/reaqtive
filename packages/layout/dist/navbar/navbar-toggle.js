@@ -17,7 +17,7 @@ var _reactSpring = require("react-spring");
 
 var _index = require("../index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\navbar\\navbar-toggle.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/navbar/navbar-toggle.js";
 const defaultStyle = {
   border: 0,
   outline: 'none'

@@ -21,9 +21,10 @@ var _index = require("./index");
 
 var _index2 = require("../contexts/index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\tabs\\tab-list.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/tabs/tab-list.js";
 
 const TabList = props => {
+  const useTabIndicator = props.useTabIndicator;
   const system = (0, _react.useContext)(_index2.System);
   const activeTabEl = (0, _react.useRef)();
 
@@ -47,14 +48,15 @@ const TabList = props => {
         setIndicatorPlacement = _useState2[1];
 
   (0, _react.useEffect)(() => {
-    updateIndicator();
-  }, [props.activeTab, system.windowWidth, tabsWidth]);
+    useTabIndicator && updateIndicator();
+  }, [props.activeTab, system.windowWidth, tabsWidth, useTabIndicator]);
   return _react.default.createElement("nav", {
-    className: "nav nav-tabs tab-list",
+    className: "nav nav-tabs tab-list ".concat(props.className),
+    style: props.style,
     ref: props.tabListEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 27
+      lineNumber: 28
     },
     __self: void 0
   }, children.map((child, index) => {
@@ -71,24 +73,30 @@ const TabList = props => {
     }, child.props, {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 38
+        lineNumber: 39
       },
       __self: void 0
     }), child);
-  }), _react.default.createElement(_index.TabIndicator, Object.assign({}, indicatorPlacement, {
+  }), useTabIndicator && _react.default.createElement(_index.TabIndicator, Object.assign({}, indicatorPlacement, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 42
     },
     __self: void 0
   })));
 };
 
 TabList.propTypes = {
-  useIcons: _propTypes.default.bool
+  className: _propTypes.default.string,
+  style: _propTypes.default.object,
+  useIcons: _propTypes.default.bool,
+  useTabIndicator: _propTypes.default.bool
 };
 TabList.defaultProps = {
-  useIcons: false
+  className: '',
+  style: {},
+  useIcons: false,
+  useTabIndicator: true
 };
 var _default = TabList;
 exports.default = _default;

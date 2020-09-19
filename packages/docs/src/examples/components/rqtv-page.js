@@ -1,8 +1,11 @@
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage, RqtvDropdownFilter} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
+import TabsExample from './tabs'
+
+
 const HomePage = props =>
 <RqtvPage {...props} exact={true} qTitleExpr="'Homepage'">
   <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
@@ -47,8 +50,9 @@ const MyFirstNestedPage = props =>{
 
 const SecondPage = props =>
 <RqtvPage {...props} qTitleExpr="'Revenue is: '&Sum([Sales Quantity]*[Sales Price])" exactActiveMatch={false}>
-<RqtvDropdownFilter qFieldExpr='Customer'/>
-  <MyRqtvStandardTemplate />
+  <MyRqtvStandardTemplate>
+    <TabsExample/>
+  </MyRqtvStandardTemplate>
 </RqtvPage>
 
 export {HomePage, FirstPage, SecondPage}

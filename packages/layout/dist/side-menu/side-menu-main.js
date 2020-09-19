@@ -19,7 +19,7 @@ var _reactSpring = require("react-spring");
 
 var _index = require("./index");
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\side-menu\\side-menu-main.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/side-menu/side-menu-main.js";
 
 const SideMenuMain = props => {
   return _react.default.createElement(_index.SideMenuContextProvider, Object.assign({}, props, {

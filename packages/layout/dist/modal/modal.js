@@ -19,7 +19,7 @@ var _index = require("../index");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _jsxFileName = "C:\\Users\\PDEREGIB\\Technology_Projects\\react\\reaqtive\\packages\\layout\\src\\lib\\modal\\modal.js";
+var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/modal/modal.js";
 
 const Modal = props => {
   const _useState = (0, _react.useState)(),
