@@ -4,6 +4,7 @@ import {TabIndicator, Tab} from './index'
 import {System} from '../contexts/index'
 
 const TabList = props=> {
+  const {useTabIndicator} = props
   const system = useContext(System)
   const activeTabEl = useRef();
   const children = React.Children.toArray(props.children)
@@ -20,11 +21,11 @@ const TabList = props=> {
 
   const [indicatorPlacement, setIndicatorPlacement] = useState()
   useEffect(()=>{
-    updateIndicator()
-  }, [props.activeTab, system.windowWidth, tabsWidth])
+    useTabIndicator&&updateIndicator()
+  }, [props.activeTab, system.windowWidth, tabsWidth, useTabIndicator])
 
   return(
-    <nav className="nav nav-tabs tab-list" ref={props.tabListEl}>
+    <nav className={`nav nav-tabs tab-list ${props.className}`} style={props.style} ref={props.tabListEl}>
       {
         children.map((child, index)=>{
           const additionalProps =  {
@@ -38,17 +39,23 @@ const TabList = props=> {
           :<Tab {...additionalProps} key={child.key} {...child.props}>{child}</Tab>
         })
       }
-      <TabIndicator {...indicatorPlacement}/>
+      {useTabIndicator&&<TabIndicator {...indicatorPlacement}/>}
     </nav>
   )
 }
 
 TabList.propTypes ={
-  useIcons:PropTypes.bool
+  className:PropTypes.string,
+  style:PropTypes.object,
+  useIcons:PropTypes.bool,
+  useTabIndicator:PropTypes.bool
 }
 
 TabList.defaultProps ={
-  useIcons:false
+  className:'',
+  style:{},
+  useIcons:false,
+  useTabIndicator:true
 }
 
 export default TabList

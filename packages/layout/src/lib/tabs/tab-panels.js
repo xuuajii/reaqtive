@@ -22,12 +22,15 @@ const TabPanels = props => {
          props.animatedTabs
         ?<Carousel index={activeTab}>
           {children.map((child,index)=>{
-            return React.cloneElement(child, {tabsEl, tabListEl})
-          })
-          }
+            return React.cloneElement(child, (typeof child.type==='function')?{tabsEl, tabListEl}:{})
+          })}
         </Carousel>
-        :children.map((child,index)=>index===activeTab&&<div key={index===activeTab&&index} style={{width:'100%'}}>{React.cloneElement(child, {tabsEl, tabListEl})}</div>)
-        }
+        :children.map((child,index)=>index===activeTab&&
+          <div key={index===activeTab&&index} style={{width:'100%'}}>
+            {React.cloneElement(child, (typeof child.type==='function')?{tabsEl, tabListEl}:{})}
+          </div>
+        )
+      }
     </div>
   )
 }

@@ -24,12 +24,16 @@ const Tabs = props =>{
 }
 
 Tabs.propTypes = {
+  className:PropTypes.string,
+  style:PropTypes.object,
   defaultActiveTab:PropTypes.number,
   onActiveTabChange:PropTypes.func,
   animatedTabs:PropTypes.bool
 }
 
 Tabs.defaultProps = {
+  className:'',
+  style:{},
   defaultActiveTab:0,
   onActiveTabChange:()=>true,
   animatedTabs:false

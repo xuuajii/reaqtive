@@ -27,11 +27,13 @@ const Tab = props => {
 }
 
 Tab.propTypes = {
-  className:PropTypes.string
+  className:PropTypes.string,
+  style:PropTypes.object,
 }
 
 Tab.defaultProps = {
-  className:''
+  className:'',
+  style:{},
 }
 
 
