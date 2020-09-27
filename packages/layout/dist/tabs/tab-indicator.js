@@ -22,8 +22,9 @@ const TabIndicator = props => {
     className: "tab-indicator",
     style: (0, _objectSpread2.default)({
       position: 'absolute',
-      height: 2,
-      borderRadius: '2rem'
+      height: 3,
+      borderRadius: '2rem',
+      bottom: -1
     }, props, animatedProps),
     __source: {
       fileName: _jsxFileName,

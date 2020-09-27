@@ -48,8 +48,10 @@ const RqtvSideMenu = props => {
   const rqtvApp = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
   const fieldList = sideMenuFieldsMatch ? rqtvApp && rqtvApp.filterFieldList(rqtvApp.enhancedFieldList, sideMenuFieldsMatch) : rqtvApp && rqtvApp.sideMenuFieldList;
   const pages = rqtvApp && rqtvApp.pages;
-  const showFieldList = fieldList && useFieldList;
-  const showPageList = usePageList && pages;
+  const showFieldList = Boolean(fieldList && useFieldList);
+  const showPageList = Boolean(usePageList && pages);
+  const tabsQty = 1 * showPageList + 1 * Number(showFieldList) + props.additionalTabs.length;
+  const tabFlexBasis = 1 / tabsQty;
   return _react.default.createElement(_layout.SideMenu, {
     className: "rqtv-side-menu",
     isOpen: props.isOpen,
@@ -57,7 +59,7 @@ const RqtvSideMenu = props => {
     alwaysShowBackdrop: alwaysShowBackdrop,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 30
+      lineNumber: 34
     },
     __self: void 0
   }, useTabs ? _react.default.createElement(_layout.Tabs, {
@@ -67,14 +69,14 @@ const RqtvSideMenu = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 32
+      lineNumber: 36
     },
     __self: void 0
   }, _react.default.createElement(_layout.TabList, {
     useIcons: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 37
     },
     __self: void 0
   }, showPageList && _react.default.createElement(_layout.Tab, {
@@ -83,13 +85,16 @@ const RqtvSideMenu = props => {
       iconType: "sheet",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 34
+        lineNumber: 38
       },
       __self: void 0
     }),
+    style: {
+      flexBasis: tabFlexBasis
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 38
     },
     __self: void 0
   }), showFieldList && _react.default.createElement(_layout.Tab, {
@@ -98,41 +103,47 @@ const RqtvSideMenu = props => {
       iconType: "field",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 35
+        lineNumber: 39
       },
       __self: void 0
     }),
+    style: {
+      flexBasis: tabFlexBasis
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 39
     },
     __self: void 0
   }), props.additionalTabs && props.additionalTabs.map(additionalTab => _react.default.createElement(_layout.Tab, {
     key: (0, _uuid.v4)(),
     label: additionalTab.label,
     icon: additionalTab.icon,
+    style: {
+      flexBasis: tabFlexBasis
+    },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 40
     },
     __self: void 0
   }))), _react.default.createElement(_layout.TabPanels, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 38
+      lineNumber: 42
     },
     __self: void 0
   }, showPageList && _react.default.createElement(TabPanel, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 43
     },
     __self: void 0
   }, _react.default.createElement(_pageList.default, {
     pages: pages,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 39
+      lineNumber: 43
     },
     __self: void 0
   })), showFieldList && fieldList ? _react.default.createElement(FieldList, {
@@ -147,14 +158,14 @@ const RqtvSideMenu = props => {
     }),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 40
+      lineNumber: 44
     },
     __self: void 0
   }) : _react.default.createElement(_react.default.Fragment, null), props.additionalTabs && props.additionalTabs.map(additionalTab => _react.default.createElement(TabPanel, {
     key: (0, _uuid.v4)(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 41
+      lineNumber: 45
     },
     __self: void 0
   }, additionalTab.tab)))) : props.children);
@@ -174,7 +185,7 @@ const FieldList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 61
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvMultibox, {
@@ -182,7 +193,7 @@ const FieldList = props => {
     fieldHeight: 400,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 58
+      lineNumber: 62
     },
     __self: void 0
   }));
@@ -234,5 +245,6 @@ RqtvSideMenu.defaultProps = {
   usePageList: false,
   useFieldList: false,
   useTabs: false,
-  alwaysShowBackdrop: false
+  alwaysShowBackdrop: false,
+  additionalTabs: []
 };

@@ -1,20 +1,66 @@
 .tabs{
-  overflow-x: hidden;
+  //overflow: hidden;
+  .tab-list-wrapper{
+    display: flex;
+    border-bottom:1px solid #CCC;
+    &.rqtv-shadow{
+      -webkit-box-shadow: 0px 3px 0px -3px rgba(0,0,0,0.18),0px 6px 2px -1px rgba(0,0,0,0.14),0px 4px 2px -1px rgba(0,0,0,0.12);
+      -moz-box-shadow: 0px 3px 0px -3px rgba(0,0,0,0.18),0px 6px 2px -1px rgba(0,0,0,0.14),0px 4px 2px -1px rgba(0,0,0,0.12);
+      box-shadow: 0px 3px 0px -3px rgba(0,0,0,0.18),0px 6px 2px -1px rgba(0,0,0,0.14),0px 4px 2px -1px rgba(0,0,0,0.12);
+      border-bottom:0px solid #CCC;
+    }
+    .btn-scroll{
+      color:$primary;
+      font-weight:bold;
+    }
+  }
+  .tab-label{
+    max-height: 3rem;
+    line-height: 1rem;
+    text-overflow: ellipsis;
+    display: block;
+  }
   .tab-list{
-    padding-bottom:0;
-    overflow: hidden;
+    display: flex;
+    overflow:auto;
+    scrollbar-width:none;
     flex-wrap: nowrap;
+    .nav-tabs{
+      display: flex;
+      flex-wrap: nowrap;
+      position: relative;
+      border-bottom: 0px;
+    }
     .tab{
       cursor: pointer;
       font-size: 1rem;
       border: 0;
+      padding:0.75rem 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      line-height: 1.25rem;
+      min-width:100px;
+      color:$primary;
+      border-radius: 0;
       :hover{
         border: 0;
+      }
+      .tab-label{
+        max-width: 100%;
+        overflow:hidden;
+        text-align: center;
+        max-height:28px;
+      }
+      &.unwrapped{
+        .tab-label{
+            white-space: nowrap;
+          }
       }
       .tab-icon{
         border-radius: 1rem;
         color:white;
-        background-color:#555555;
+        background-color:$secondary;
         height:2rem;
         width:2rem;
         text-align: center;
@@ -23,21 +69,17 @@
         text-transform: uppercase;
         margin: auto;
       }
-      .tab-label{
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
       .active{
-        background-color:$active-tab-color;
-        color:#555555;
+        background-color:$primary;
+        color:$secondary;
       }
     }
     .active{
       border: 0;
-      color:$active-tab-color;
+      font-weight: bold;
     }
   }
 }
 .tab-indicator{
-  background-color:$active-tab-color;
+  background-color:$primary;
 }

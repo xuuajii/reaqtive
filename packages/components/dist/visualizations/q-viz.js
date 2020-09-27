@@ -57,7 +57,7 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
 
   const exportExcel = () => {
     qVizRef && qVizRef.current.exportData({
-      format: 'CSV_T',
+      format: 'OOXML',
       state: 'A'
     }).then(function (link) {
       window.open(link);
