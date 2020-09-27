@@ -24,16 +24,20 @@ const RqtvSideMenu = props =>{
 
   const pages = rqtvApp&&rqtvApp.pages
 
-  const showFieldList = fieldList&&useFieldList
-  const showPageList = usePageList&&pages
+  const showFieldList = Boolean(fieldList&&useFieldList)
+  const showPageList = Boolean(usePageList&&pages)
+
+  const tabsQty = (1*showPageList)+(1*Number(showFieldList))+props.additionalTabs.length
+  const tabFlexBasis = (1/tabsQty)
+
   return(
     <SideMenu className={`rqtv-side-menu`} isOpen={props.isOpen} onClose={props.onClose} alwaysShowBackdrop={alwaysShowBackdrop}>
     {useTabs
       ?<Tabs animatedTabs={true} style={{height:'100%'}} >
           <TabList useIcons={true}>
-            {showPageList&&<Tab label="pages" icon={<LuiIcon iconType="sheet"/>}/>}
-            {showFieldList&&<Tab label="fields" icon={<LuiIcon iconType="field"/>}/>}
-            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><Tab  key={uuidv4()} label={additionalTab.label} icon={additionalTab.icon}/>)}
+            {showPageList&&<Tab label="pages" icon={<LuiIcon iconType="sheet"/>} style={{flexBasis:tabFlexBasis}}/>}
+            {showFieldList&&<Tab label="fields" icon={<LuiIcon iconType="field"/>} style={{flexBasis:tabFlexBasis}}/>}
+            {props.additionalTabs&&props.additionalTabs.map(additionalTab=><Tab  key={uuidv4()} label={additionalTab.label} icon={additionalTab.icon} style={{flexBasis:tabFlexBasis}}/>)}
             </TabList>
           <TabPanels >
             {showPageList&&<TabPanel><PageList pages={pages}/></TabPanel>}
@@ -101,7 +105,8 @@ RqtvSideMenu.defaultProps = {
   usePageList:false,
   useFieldList:false,
   useTabs:false,
-  alwaysShowBackdrop:false
+  alwaysShowBackdrop:false,
+  additionalTabs:[]
 }
 
 
