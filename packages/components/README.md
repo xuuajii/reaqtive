@@ -8,7 +8,7 @@ You can choose to use stand alone components and build your own navigation and r
 #### Installation
 
 ```
-npm install @reaqtive/components 
+npm install @reaqtive/components
 ```
 
 [@reaqtive/q](https://github.com/xuuajii/reaqtive/tree/master/packages/q) will be installed as well, since @reaqtive/components depends on it. [@reaqtive/q](https://github.com/xuuajii/reaqtive/tree/master/packages/q)  will help you interact with Qlik engine and Qlik Capability APIs
@@ -35,7 +35,7 @@ You can twek its behavuiour using props.
 You can customize its styles using css or using props.
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvButtonBar} from '@reaqtive/components'
@@ -48,7 +48,7 @@ const MyRqtvButtonBar = props =>
 export default MyRqtvButtonBar
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -60,14 +60,15 @@ __qDataPageHeight__ | `Number` | `5` | :x: | The number of records asked to the 
 __qFieldExpr__ | `String` |  | :white_check_mark: | The expression which will be used in the listbox. It can be a fieldname or a valid expression
 __qSortObject__ | `Shape` | `{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 1, qSortByLoadOrder: 0, qSortByExpression: 0 }` | :x: | An array that tells the engine how to sort listbox data. You can set only the relevant properties of the object to 1.
 __qSortObject.qExpression__ | `Shape` |  | :x: | Sort by expression.
-__qSortObject.qExpression.qv__ | `String` |  | :x: |
+__qSortObject.qExpression.qv__ | `String` |  | :x: | 
 __qSortObject.qSortByAscii__ | `Number` |  | :x: | Sorts the field by alphabetical order.
 __qSortObject.qSortByExpression__ | `Number` |  | :x: | Sorts the field by expression.
 __qSortObject.qSortByFrequency__ | `Number` |  | :x: | Sorts the field values by frequency (number of occurrences in the field).
-__qSortObject.qSortByGreyness__ | `Number` |  | :x: |
+__qSortObject.qSortByGreyness__ | `Number` |  | :x: | 
 __qSortObject.qSortByLoadOrder__ | `Number` |  | :x: | Sorts the field values by the initial load order.
 __qSortObject.qSortByNumeric__ | `Number` |  | :x: | Sorts the field values by numeric value.
 __qSortObject.qSortByState__ | `Number` |  | :x: | Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+__qState__ | `String` | `""` | :x: | state of the listbox
 __toggle__ | `Boolean` | `true` | :x: | if true uses toggle select
 
 <br></br>
@@ -87,7 +88,7 @@ You can twek its behavuiour using props.
 You can customize its styles using css or using props.
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvDropdownFilter} from '@reaqtive/components'
@@ -101,7 +102,7 @@ const MyRqtvDropdownFilter = props =>
 export default MyRqtvDropdownFilter
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -115,16 +116,17 @@ __dropdownMenuWidth__ | `Number` | `265` | :x: | Width of the dropdown when is o
 __hideHorizontalScrollbar__ | `Boolean` | `false` | :x: | Show/hide overflowX
 __qFieldExpr__ | `String` |  | :white_check_mark: | The expression which will be used in the listbox. It can be a fieldname or a valid expression
 __qFieldLabelExpr__ | `String` |  | :x: | The expression of the title used in the dropdown button (by default it shows the name of the field and the count distinct of that field or the selected value if there is only one selected value)
-__qSortObject__ | `Shape` | `{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 }` | :x: |
+__qSortObject__ | `Shape` | `{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 }` | :x: | 
 __qSortObject.qExpression__ | `Shape` |  | :x: | Sort by expression.
-__qSortObject.qExpression.qv__ | `String` |  | :x: |
+__qSortObject.qExpression.qv__ | `String` |  | :x: | 
 __qSortObject.qSortByAscii__ | `Number` |  | :x: | Sorts the field by alphabetical order.
 __qSortObject.qSortByExpression__ | `Number` |  | :x: | Sorts the field by expression.
 __qSortObject.qSortByFrequency__ | `Number` |  | :x: | Sorts the field values by frequency (number of occurrences in the field).
-__qSortObject.qSortByGreyness__ | `Number` |  | :x: |
+__qSortObject.qSortByGreyness__ | `Number` |  | :x: | 
 __qSortObject.qSortByLoadOrder__ | `Number` |  | :x: | Sorts the field values by the initial load order.
 __qSortObject.qSortByNumeric__ | `Number` |  | :x: | Sorts the field values by numeric value.
 __qSortObject.qSortByState__ | `Number` |  | :x: | Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+__qState__ | `String` | `""` | :x: | state of the listbox
 __quickSelectionMode__ | `Boolean` | `false` | :x: | if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply), if false it uses Qlik View selection behaviour (apply selections immediately)
 __showCaret__ | `Boolean` | `true` | :x: | Show/hide the caret in the dropdown button
 __showSearch__ | `Boolean` | `true` | :x: | Show/hide the search input when the dropdown is open
@@ -147,7 +149,7 @@ You can twek its behavuiour using props.
 You can customize its styles using css or using props.
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvListbox} from '@reaqtive/components'
@@ -165,7 +167,7 @@ const MyRqtvListbox = props => {
 export default MyRqtvListbox
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -179,14 +181,15 @@ __qFieldExpr__ | `String` |  | :white_check_mark: | The expression which will be
 __qFieldLabelExpr__ | `String` |  | :x: | The expression shown in the header of the listbox
 __qSortObject__ | `Shape` | `{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 }` | :x: | An array that tells the engine how to sort listbox data. You can set only the relevant properties of the object to 1.
 __qSortObject.qExpression__ | `Shape` |  | :x: | Sort by expression.
-__qSortObject.qExpression.qv__ | `String` |  | :x: |
+__qSortObject.qExpression.qv__ | `String` |  | :x: | 
 __qSortObject.qSortByAscii__ | `Number` |  | :x: | Sorts the field by alphabetical order.
 __qSortObject.qSortByExpression__ | `Number` |  | :x: | Sorts the field by expression.
 __qSortObject.qSortByFrequency__ | `Number` |  | :x: | Sorts the field values by frequency (number of occurrences in the field).
-__qSortObject.qSortByGreyness__ | `Number` |  | :x: |
+__qSortObject.qSortByGreyness__ | `Number` |  | :x: | 
 __qSortObject.qSortByLoadOrder__ | `Number` |  | :x: | Sorts the field values by the initial load order.
 __qSortObject.qSortByNumeric__ | `Number` |  | :x: | Sorts the field values by numeric value.
 __qSortObject.qSortByState__ | `Number` |  | :x: | Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+__qState__ | `String` | `""` | :x: | state of the listbox
 __quickSelectionMode__ | `Boolean` | `false` | :x: | if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply), if false it uses Qlik View selection behaviour (apply selections immediately)
 __showHeader__ | `Boolean` | `true` | :x: | Show/hide listboxheader.
 __showHeaderButtonbar__ | `Boolean` | `false` | :x: | Show/hide the buttons in listbox header (showHeader must be set to true to show the buttons)
@@ -208,7 +211,7 @@ It allows you to wrap a listbox inside a modal: the listbox will be hidden and a
 Clicking the button the listbox will appear inside a modal
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvModalListbox} from '@reaqtive/components'
@@ -224,7 +227,7 @@ const MyRqtvModalListbox = props =>
 export default MyRqtvModalListbox
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -250,7 +253,7 @@ You can tweak its behaviour using props
 You can customize style using props and css
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvSearchField} from '@reaqtive/components'
@@ -263,7 +266,7 @@ const MyRqtvSearchField = props =>
 export default MyRqtvSearchField
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -272,16 +275,17 @@ __dropdownMenuWidth__ | `Number` | `265` | :x: | Width of the dropdown when is o
 __hideHorizontalScrollbar__ | `Boolean` | `false` | :x: | Show/hide overflowX
 __placeholder__ | `String` | `'Search'` | :x: | The text shown in the input field when not searching
 __qFieldExpr__ | `String` |  | :white_check_mark: | The expression which will be used in the listbox. It can be a fieldname or a valid expression
-__qSortObject__ | `Shape` | `{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 }` | :x: |
+__qSortObject__ | `Shape` | `{ qSortByState: 1, qSortByFrequency: 0, qSortByNumeric: 0, qSortByAscii: 0, qSortByLoadOrder: 0, qSortByExpression: 0 }` | :x: | 
 __qSortObject.qExpression__ | `Shape` |  | :x: | Sort by expression.
-__qSortObject.qExpression.qv__ | `String` |  | :x: |
+__qSortObject.qExpression.qv__ | `String` |  | :x: | 
 __qSortObject.qSortByAscii__ | `Number` |  | :x: | Sorts the field by alphabetical order.
 __qSortObject.qSortByExpression__ | `Number` |  | :x: | Sorts the field by expression.
 __qSortObject.qSortByFrequency__ | `Number` |  | :x: | Sorts the field values by frequency (number of occurrences in the field).
-__qSortObject.qSortByGreyness__ | `Number` |  | :x: |
+__qSortObject.qSortByGreyness__ | `Number` |  | :x: | 
 __qSortObject.qSortByLoadOrder__ | `Number` |  | :x: | Sorts the field values by the initial load order.
 __qSortObject.qSortByNumeric__ | `Number` |  | :x: | Sorts the field values by numeric value.
 __qSortObject.qSortByState__ | `Number` |  | :x: | Sorts the field values according to their logical state (selected, optional, alternative or excluded).
+__qState__ | `String` | `""` | :x: | state of the listbox
 __quickSelectionMode__ | `Boolean` | `false` | :x: | if true uses Qlik Sense selection behaviour (begin selection and asks confirmation to apply), if false it uses Qlik View selection behaviour (apply selections immediately)
 __toggle__ | `Boolean` | `true` | :x: | if true uses toggle select
 
@@ -299,7 +303,7 @@ It returns an accordion that shows a list of fields.
 A listbox is displayed for the active field. One field at a time can be active.
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvMultibox} from '@reaqtive/components'
@@ -315,7 +319,7 @@ const MyRqtvMultibox = props => {
 export default MyRqtvMultibox
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -340,7 +344,7 @@ QViz also provide an imperative handle to inteact with Qlik visualizazion.
 To access the handle you have to provide a handle to the QViz component
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {QViz} from '@reaqtive/components'
@@ -398,7 +402,7 @@ const MyQVizOnTheFly = props =>{
 export default MyQVizExamples
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -421,7 +425,7 @@ it shows one child at a time and a dropdown menu to toggle the desired child.
 If its children provide exports methods it automatically shows export buttons
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React, {useState, useEffect, useRef} from 'react'
 import {RqtvVizContainer, QViz, RqtvMaximizePortalEl} from '@reaqtive/components'
@@ -490,15 +494,15 @@ const MyRqtvContainerExample = props => {
 export default MyRqtvContainerExample
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __className__ | `String` | `''` | :x: | Container css classes
 __containerClassName__ | `String` | `''` | :x: | Container header css classes
 __height__ | `Union<Number\|String>` | `300` | :x: | The height of the container pixels or % can be used
-__height<1>__ | `Number` |  | :x: |
-__height<2>__ | `String` |  | :x: |
+__height<1>__ | `Number` |  | :x: | 
+__height<2>__ | `String` |  | :x: | 
 __hideScrollWhenMaximized__ | `Boolean` | `true` | :x: | If true window scrollbar will be hidden when the container is maximized
 __showExportExcel__ | `Boolean` | `true` | :x: | Show/hide export to excel button
 __showExportImg__ | `Boolean` | `true` | :x: | Show/hide export to img button
@@ -521,7 +525,7 @@ It currently does not support alternate states. It always display the default st
 Styles can be customized via css (or scss)
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import  {RqtvCurrentSelections} from '@reaqtive/components'
@@ -538,11 +542,14 @@ const MyRqtvCurrentSelections = props =>
 export default MyRqtvCurrentSelections
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __alwaysShowToolbar__ | `Boolean` | `false` | :x: | if true the current selection toolbar is always shown even if no selection history exists (0 current, selection 0 back-count and 0 forward count)
+__breakPoint__ | `Enum('xl', 'lg', 'md', 'sm')` | `'lg'` | :x: | screentype from which current selections are responsive
+__excludeHidden__ | `Boolean` |  | :x: | if true field hidden from current selections are not considered in selection count
+__hidePrefix__ | `String` |  | :x: | prefix of the fields to be hidden from current selections modal
 __isResponsive__ | `Boolean` | `true` | :x: | when true it transform the toolbar into a fixed positioned floating button
 __showModalToggler__ | `Boolean` | `true` | :x: | it allows to show/hide the modal toggler
 __useCurrentSelectionModal__ | `Boolean` | `true` | :x: | it allows to turnoff the current selections box modal
@@ -562,7 +569,7 @@ It dispays a search object to search a single string in multiple fields.
 If rendered inside the rqtv-navbar it will have fixed position and search results will colver the underlying page
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvSearchObject} from '@reaqtive/components'
@@ -579,7 +586,7 @@ const MyRqtvSearchObject =  props =>
 export default MyRqtvSearchObject
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -589,8 +596,8 @@ __onClose__ | `Function` |  | :x: | function fired after hiding the search input
 __onOpen__ | `Function` |  | :x: | function fired after showing the search input. (not called if alwaysExpanded is true)
 __searchFields__ | `Array` |  | :x: | the fields of the data model to search against
 __width__ | `Union<String\|Number>` | `'100%'` | :x: | width of the component. It accept px or %
-__width<1>__ | `String` |  | :x: |
-__width<2>__ | `Number` |  | :x: |
+__width<1>__ | `String` |  | :x: | 
+__width<2>__ | `Number` |  | :x: | 
 
 <br></br>
 
@@ -607,7 +614,7 @@ It includes the [RqtvCurrentSelections](#rqtvcurrentselections) component and th
 It is based on bootstrap navbar, its styles can be customized using navbarClassName prop which will be passed to the navbar itself or via sass/css
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvNavbar} from '@reaqtive/components'
@@ -633,19 +640,20 @@ const MyRqtvNavbar = props => {
 export default MyRqtvNavbar
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
-__brandImgStyle__ | `Object` |  | :x: |
-__brandImgUrl__ | `String` |  | :x: |
-__brandUrl__ | `String` |  | :x: |
+__brandImgStyle__ | `Object` |  | :x: | 
+__brandImgUrl__ | `String` |  | :x: | 
+__brandUrl__ | `String` |  | :x: | 
 __fixedTop__ | `Boolean` | `true` | :x: | if true the navbar would be fix positioned at the top of the page
+__navbarBrandAction__ | `Function` |  | :x: | 
 __navbarClassName__ | `String` | `''` | :x: | css classes that will be passed to the navbar div
 __onToggleMenu__ | `Function` |  | :x: | function fired when clicking on the HamburgerMenu button
-__searchResultsHeight__ | `Union<String\|Number>` | `500` | :x: |
-__searchResultsHeight<1>__ | `String` |  | :x: |
-__searchResultsHeight<2>__ | `Number` |  | :x: |
+__searchResultsHeight__ | `Union<String\|Number>` | `500` | :x: | 
+__searchResultsHeight<1>__ | `String` |  | :x: | 
+__searchResultsHeight<2>__ | `Number` |  | :x: | 
 __showCurrentSelections__ | `Boolean` | `true` | :x: | show/hide the current selections toolbar
 __showSearch__ | `Boolean` | `true` | :x: | show/hide the global search-object
 __showSideMenuToggle__ | `Boolean` | `true` | :x: | show/hide hamburger menu
@@ -665,7 +673,7 @@ Default tabs are the list of pages of the app and a multibox with filters.
 The open/close state has to be managed in parent component
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React, {useState} from 'react'
 import {RqtvSideMenu, RqtvSideMenuMain} from '@reaqtive/components'
@@ -704,14 +712,14 @@ const MyRqtvSideMenu = props => {
 export default MyRqtvSideMenu
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
-__additionalTabs__ | `Array[]<Shape>` |  | :x: | additional tabs to display after pages and filters
-__additionalTabs[].icon__ | `ReactElement` |  | :x: |
-__additionalTabs[].label__ | `String` |  | :x: |
-__additionalTabs[].tab__ | `ReactElement` |  | :x: |
+__additionalTabs__ | `Array[]<Shape>` | `[]` | :x: | additional tabs to display after pages and filters
+__additionalTabs[].icon__ | `ReactElement` |  | :x: | 
+__additionalTabs[].label__ | `String` |  | :x: | 
+__additionalTabs[].tab__ | `ReactElement` |  | :x: | 
 __alwaysShowBackdrop__ | `Boolean` | `false` | :x: | if tru backdrop is always shown when RqtvSideMenu is open
 __isOpen__ | `Boolean` |  | :white_check_mark: | open/close the menu
 __onClose__ | `Function` |  | :white_check_mark: | function to set isOpen to false
@@ -736,7 +744,7 @@ It provides routing using react router and a context that allows you to store
 app info to be available everywhere inside your app.
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvApp} from '@reaqtive/components'
@@ -744,7 +752,7 @@ import {HomePage, FirstPage, SecondPage} from './rqtv-page'
 
 const MyRqtvApp = (props) => {
   return(
-    <RqtvApp title="Example App" >
+    <RqtvApp title="Example App" brandUrl='/' hidePrefix="Cust" >
         <FirstPage path="/first-page"/>
         <SecondPage path="/second-page"/>
         <HomePage path="/" linkName="HOME"/>
@@ -755,30 +763,31 @@ const MyRqtvApp = (props) => {
 export default MyRqtvApp
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __brand__ | `String` |  | :x: | the brand of the app displayed in the navbar. An image is expected: import it in the app and pass it as a prop
+__brandAction__ | `Function` |  | :x: | a function called when clicking on the navbar brand. If defined will prevent navigating to brandUrl
 __brandStyle__ | `Object` |  | :x: | styles to be applied to the image container
 __brandUrl__ | `String` |  | :x: | the url to redirect to when clicking on the brand
 __hidePrefix__ | `String` | `'%'` | :x: | Prefix to hide a field in current selections modal. Hidden fields will be considered in selectins count and in back, forward actions
 __neverToggleFieldsMatch__ | `Shape` |  | :x: | matching fields will have toggle set to false and quickSelectionMode set to true in when appearing in side menu and in current selections box.
-__neverToggleFieldsMatch.mask__ | `Array[]<String>` |  | :x: |
-__neverToggleFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: |
-__pages__ | `Array[]<Shape>` |  | :x: |
-__pages[].exactActiveMatch__ | `Boolean` |  | :x: |
-__pages[].linkName__ | `String` |  | :x: |
-__pages[].path__ | `PropTypes.path` |  | :x: |
+__neverToggleFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__neverToggleFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
+__pages__ | `Array[]<Shape>` |  | :x: | 
+__pages[].exactActiveMatch__ | `Boolean` |  | :x: | 
+__pages[].linkName__ | `String` |  | :x: | 
+__pages[].path__ | `PropTypes.path` |  | :x: | 
 __searchFieldsMatch__ | `Shape` | `{method:'exclude', mask:['**']}` | :x: | fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
-__searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: |
-__searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: |
+__searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __sideMenuFieldsMatch__ | `Shape` | `{method:'include', mask:['**']}` | :x: | fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
-__sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: |
-__sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: |
+__sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __title__ | `String` |  | :x: | the title of the app displayed in the navbar
-__triggers__ | `Array[]<triggerType>` | `[]` | :x: | triggers to fire when opening the app (do not abuse triggers)
-__useRouter__ | `Boolean` | `true` | :x: | if true the applicatin will be wrapped in react router and in a switch
+__triggers__ | `Array` | `[]` | :x: | triggers to fire when opening the app (do not abuse triggers)
+__useRouter__ | `Boolean` | `true` | :x: | if true the application will be wrapped in react router and in a switch
 
 <br></br>
 
@@ -799,13 +808,16 @@ RqtvPage also accept triggers which are fired when the page mounts.
 Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route change, to force unmount add a key prop (it has to be unique among pages).
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage, RqtvDropdownFilter} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
+import TabsExample from './tabs'
+
+
 const HomePage = props =>
 <RqtvPage {...props} exact={true} qTitleExpr="'Homepage'">
   <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
@@ -850,13 +862,15 @@ const MyFirstNestedPage = props =>{
 
 const SecondPage = props =>
 <RqtvPage {...props} qTitleExpr="'Revenue is: '&Sum([Sales Quantity]*[Sales Price])" exactActiveMatch={false}>
-  <MyRqtvStandardTemplate/>
+  <MyRqtvStandardTemplate>
+    <TabsExample/>
+  </MyRqtvStandardTemplate>
 </RqtvPage>
 
 export {HomePage, FirstPage, SecondPage}
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
@@ -885,7 +899,7 @@ It includes the RqtvSideMenu, the RqtvNavbar and the RqtvPageHeader.
 It is suggested to use this component inside the RqtvApp
 
 
-**Example:**
+**Example:** 
 ```javascript
 import React from 'react'
 import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
@@ -893,8 +907,9 @@ import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
 
 const MyRqtvStandardTemplate = props => {
   return(
-    <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+    <RqtvStandardTemplate >
       <div>Standard Template Example</div>
+      {props.children}
     </RqtvStandardTemplate>
   )
 }
@@ -902,19 +917,20 @@ const MyRqtvStandardTemplate = props => {
 export default MyRqtvStandardTemplate
 
 ```
-**Props**:
+**Props**: 
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __containerClassName__ | `String` |  | :x: | the css classes of the container wrapping the page
 __containerStyle__ | `Object` |  | :x: | it allows to set the styles of the div conatining the page (the components you will develop)
+__currentSelectionsBreakPoint__ | `Enum('xl', 'lg', 'md', 'sm')` |  | :x: | screentype from which current selections are responsive
 __searchFieldsMatch__ | `Shape` |  | :x: | fields to be used in the search object in the navbar. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
-__searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: |
-__searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: |
+__searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __showSearch__ | `Boolean` | `true` | :x: | show/hide the search object in the navbar
 __sideMenuFieldsMatch__ | `Shape` |  | :x: | fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
-__sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: |
-__sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: |
+__sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
+__sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __useContainerFluid__ | `Boolean` | `true` | :x: | it lets you choose between a bootstrap container or container-fluid to wrap the page
 __usePageHeader__ | `Boolean` | `true` | :x: | show/hide the page header that would contain only the title of the page and can't be customized
 __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
@@ -927,7 +943,6 @@ __useSideMenu__ | `Boolean` | `true` | :x: | show/hide the side menu
 RqtvApp and RqtvPage accept arrays of triggers as props. They are fired before rendering the app or the page. This is still an experimental feature, but data structures are very unlikely to change. Below you can find the types of triggers you can use described as PropTypes
 
 ```javascript
-
 
 /*Select one value of one field*/
 const fieldSelectionTrigger = PropTypes.shape({
@@ -997,3 +1012,5 @@ import './index.scss'
 ```
 
 You can find the complete list of Reaqtive theme variable [here](https://github.com/xuuajii/reaqtive/blob/master/packages/components/src/lib/styles/theme.scss) and the complete list of Bootstrap variables [here](https://github.com/twbs/bootstrap/blob/master/scss/_variables.scss)
+
+
