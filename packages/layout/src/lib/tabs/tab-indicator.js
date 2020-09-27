@@ -8,8 +8,9 @@ const TabIndicator = props =>{
   className="tab-indicator"
     style={{
       position:'absolute',
-      height:2,
+      height:3,
       borderRadius:'2rem',
+      bottom:-1,
       ...props,
       ...animatedProps
     }}

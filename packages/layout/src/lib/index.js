@@ -40,3 +40,5 @@ export * from './icons/index'
 export * from './contexts/index'
 
 export * from './hooks/index'
+
+export * from './utils/index'
