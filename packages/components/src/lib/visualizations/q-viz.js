@@ -42,7 +42,7 @@ const QViz = forwardRef((props, ref) => {
   }
 
   const exportExcel = () => {
-    qVizRef&&qVizRef.current.exportData({format:'CSV_T', state: 'A'}).then(function (link) {
+    qVizRef&&qVizRef.current.exportData({format:'OOXML', state: 'A'}).then(function (link) {
       window.open(link);
     });
   }
