@@ -35,7 +35,7 @@ const RqtvMultibox = props => {
       lineNumber: 16
     },
     __self: void 0
-  }, props.fieldList.map(field => {
+  }, props.fieldList && props.fieldList.map(field => {
     const fieldExpr = typeof field === 'string' ? field : field.qFieldExpr;
     const toggle = typeof field === 'object' && 'toggle' in field ? field.toggle : true;
     const quickSelectionMode = typeof field === 'object' && 'quickSelectionMode' in field ? field.quickSelectionMode : false;
@@ -69,6 +69,7 @@ const RqtvMultibox = props => {
       },
       __self: void 0
     }, _react.default.createElement(_index.RqtvListbox, {
+      qState: props.qState,
       height: props.fieldHeight,
       qFieldExpr: fieldExpr,
       qLabelExpr: "'".concat(field.label || fieldExpr, "'"),
@@ -92,7 +93,12 @@ RqtvMultibox.propTypes = {
   /**
    * The height of the listbox of the active field
    */
-  fieldHeight: _propTypes.default.number
+  fieldHeight: _propTypes.default.number,
+
+  /**
+   * The state of the multibox which will be passed to its listboxes
+   */
+  qState: _propTypes.default.string
 };
 RqtvMultibox.defaultProps = {
   fieldHeight: 300

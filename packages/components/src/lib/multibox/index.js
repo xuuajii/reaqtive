@@ -14,7 +14,7 @@ const RqtvMultibox = props => {
 
   return(
     <Accordion className="rqtv-multibox" style={{width:props.width}}>
-      {props.fieldList.map(field=>
+      {props.fieldList&&props.fieldList.map(field=>
         {
           const fieldExpr =((typeof field)==='string')?field:field.qFieldExpr
           const toggle = ((typeof field)==='object')&&('toggle' in field)?field.toggle:true
@@ -29,6 +29,7 @@ const RqtvMultibox = props => {
             </CollapseHeader>
             <CollapseBody height={props.fieldHeight} hideTitleWhenExpanded={true}>
               <RqtvListbox
+                qState={props.qState}
                 height={props.fieldHeight}
                 qFieldExpr={fieldExpr}
                 qLabelExpr={`'${field.label||fieldExpr}'`}
@@ -52,11 +53,15 @@ RqtvMultibox.propTypes = {
   /**
    * The height of the listbox of the active field
    */
-  fieldHeight:PropTypes.number
+  fieldHeight:PropTypes.number,
+  /**
+   * The state of the multibox which will be passed to its listboxes
+   */
+  qState:PropTypes.string
 }
 
 RqtvMultibox.defaultProps = {
-  fieldHeight:300
+  fieldHeight:300,
 }
 
 export default RqtvMultibox
