@@ -325,6 +325,7 @@ export default MyRqtvMultibox
 ---- | :----: | :-------: | :--------: | -----------
 __fieldHeight__ | `Number` | `300` | :x: | The height of the listbox of the active field
 __fieldList__ | `Array` |  | :white_check_mark: | An array of fieldnames which will be displayed in the multibox
+__qState__ | `String` |  | :x: | The state of the multibox which will be passed to its listboxes
 
 <br></br>
 
@@ -409,104 +410,6 @@ export default MyQVizExamples
 __chartProps__ | `Object` |  | :x: | the properties of the object to be created on the fly chartProps must be passed as: {'chartType':'string', 'columns':'array', 'rest':'object'} see this link for details https://help.qlik.com/en-US/sense-developer/February2019/Subsystems/APIs/Content/Sense_ClientAPIs/CapabilityAPIs/VisualizationAPI/VisualizationAPI.htm
 __id__ | `String` |  | :white_check_mark: | the id of the visualization to be retrieved and of the div that will contain it
 __showTitle__ | `Boolean` | `false` | :x: | show/hide the title in Qlik visualization
-
-<br></br>
-
-
-
-### **RqtvVizContainer**
-
-
-
-RqtvVizContainer
-
-It provides a container to a visualization. It accepts multiple children. In case i detects more tha one child,
-it shows one child at a time and a dropdown menu to toggle the desired child.
-If its children provide exports methods it automatically shows export buttons
-
-
-**Example:** 
-```javascript
-import React, {useState, useEffect, useRef} from 'react'
-import {RqtvVizContainer, QViz, RqtvMaximizePortalEl} from '@reaqtive/components'
-
-const MyRqtvContainer = props =>
-<RqtvVizContainer
-  height={'300px'}
-  showExportExcel={true}
-  showExportPdf={true}
-  showExportImg={true}
-  maximizeElRef={props.maximizeElRef}
-  onMaximize={props.onMaximize}
->
-  <QViz id="nRxXG" title="bar chart"/>
-</RqtvVizContainer>
-
-const MyMultiVizRqtvContainer = props =>
-<RqtvVizContainer
-  style={{height:'300', maxHeight:'300'}}
-  maximizeElRef={props.maximizeElRef}
-  onMaximize={props.onMaximize}
->
-  <QViz key="pDKRhr" id="pDKRhr" title="scatter chart"/>
-  <QViz key="nvqpV" id="nvqpV" title="line chart"/>
-</RqtvVizContainer>
-
-const MyRqtvContainerExample = props => {
-  const maximizeElRef = useRef()
-  /**
-    * HTML overflow is handled by RqtvApp if the RqtvMaximizePortalEl and RqtvVizContainer
-    * are inside it, otherwise you will have to handle it in your code, below an example
-    */
-
-  const [isMaximized, setIsMaximized] = useState(false)
-
-  useEffect(()=>{
-    const html = document.getElementsByTagName("html")[0];
-    const maximize = () => {
-      html.style.overflow ='hidden'
-      html.scrollTop=0
-    }
-    const minimize = () => {
-      html.style.overflow ='auto'
-    }
-    isMaximized?maximize():minimize()
-  }, [isMaximized])
-
-  const onMaximize = () => {
-    setIsMaximized(!isMaximized)
-  }
-
-  return(
-    <>
-      <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
-      <MyRqtvContainer
-        maximizeElRef={maximizeElRef}
-        onMaximize={onMaximize}
-      />
-      <MyMultiVizRqtvContainer
-        maximizeElRef={maximizeElRef}
-        onMaximize={onMaximize}
-      />
-    </>
-  )
-}
-export default MyRqtvContainerExample
-
-```
-**Props**: 
-
-  prop | type | default | required | description
----- | :----: | :-------: | :--------: | -----------
-__className__ | `String` | `''` | :x: | Container css classes
-__containerClassName__ | `String` | `''` | :x: | Container header css classes
-__height__ | `Union<Number\|String>` | `300` | :x: | The height of the container pixels or % can be used
-__height<1>__ | `Number` |  | :x: | 
-__height<2>__ | `String` |  | :x: | 
-__hideScrollWhenMaximized__ | `Boolean` | `true` | :x: | If true window scrollbar will be hidden when the container is maximized
-__showExportExcel__ | `Boolean` | `true` | :x: | Show/hide export to excel button
-__showExportImg__ | `Boolean` | `true` | :x: | Show/hide export to img button
-__showExportPdf__ | `Boolean` | `true` | :x: | Show/hide export to pdf button
 
 <br></br>
 
