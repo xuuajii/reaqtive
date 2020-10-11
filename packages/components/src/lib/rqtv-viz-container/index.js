@@ -17,7 +17,9 @@ import RqtvVizContainerHeader from './header'
 
 const RqtvVizContainer = props => {
   const rqtvAppContext = useContext(RqtvAppContext)
-  const vizRef = useRef()
+  const passedVizRef = props.vizRef
+  const selfVizRef = useRef()
+  const vizRef = passedVizRef?passedVizRef:selfVizRef
   const headerEl = useRef()
   const vizContainerEl = useRef()
   const hasOnlyOneChild = !(Array.isArray(props.children))
@@ -137,6 +139,13 @@ RqtvVizContainer.propTypes ={
    * Container header css classes
    */
   containerClassName:PropTypes.string,
+  /**
+   * Ref to the currently shown Viz
+   */
+  vizRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.object({ current: PropTypes.oneOfType([PropTypes.instanceOf(Element),PropTypes.func] })
+  ])
 }
 
 RqtvVizContainer.defaultProps={
