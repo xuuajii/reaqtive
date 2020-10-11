@@ -37,7 +37,7 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
  */
 const RqtvVizContainer = props => {
   const rqtvAppContext = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
-  const activeChartRef = (0, _react.useRef)();
+  const vizRef = (0, _react.useRef)();
   const headerEl = (0, _react.useRef)();
   const vizContainerEl = (0, _react.useRef)();
   const hasOnlyOneChild = !Array.isArray(props.children);
@@ -48,7 +48,7 @@ const RqtvVizContainer = props => {
       type: child.type,
       title: child.props.title || child.props.id
     };
-  }; //console.log(activeChartRef.current)
+  }; //console.log(vizRef.current)
 
 
   const items = !hasOnlyOneChild ? props.children.map(item => getItemFromChild(item)) : [getItemFromChild(props.children)];
@@ -60,24 +60,24 @@ const RqtvVizContainer = props => {
 
   const _useState3 = (0, _react.useState)(props.children[0] || props.children),
         _useState4 = (0, _slicedToArray2.default)(_useState3, 2),
-        activeChart = _useState4[0],
-        setActiveChart = _useState4[1];
+        activeViz = _useState4[0],
+        setActiveViz = _useState4[1];
 
   (0, _react.useEffect)(() => {
-    const filterChart = chart => {
-      if (chart.props.id === activeItem.id) {
-        return chart;
+    const filterViz = viz => {
+      if (viz.props.id === activeItem.id) {
+        return viz;
       }
     };
 
-    const chart = hasOnlyOneChild ? props.children : props.children.filter(filterChart)[0];
+    const viz = hasOnlyOneChild ? props.children : props.children.filter(filterViz)[0];
 
-    if (chart.id === null && Array.isArray(props.children)) {
-      //console.log(chart)
+    if (viz.id === null && Array.isArray(props.children)) {
+      //console.log(viz)
       console.error('if you want to show more than one viz inside a container each viz must have a non-null unique id prop');
     }
 
-    setActiveChart(chart);
+    setActiveViz(viz);
   }, [activeItem]);
 
   const _useState5 = (0, _react.useState)(false),
@@ -86,15 +86,15 @@ const RqtvVizContainer = props => {
         setShowToolbar = _useState6[1];
 
   (0, _react.useEffect)(() => {
-    activeChartRef.current && setShowToolbar(true);
-  }, [activeChartRef.current]);
+    vizRef.current && setShowToolbar(true);
+  }, [vizRef.current]);
 
-  const getChartHeight = () => 0.95 * ((vizContainerEl.current && vizContainerEl.current.offsetHeight) - (headerEl.current && headerEl.current.offsetHeight));
+  const getVizHeight = () => 0.95 * ((vizContainerEl.current && vizContainerEl.current.offsetHeight) - (headerEl.current && headerEl.current.offsetHeight));
 
-  const _useState7 = (0, _react.useState)(getChartHeight()),
+  const _useState7 = (0, _react.useState)(getVizHeight()),
         _useState8 = (0, _slicedToArray2.default)(_useState7, 2),
-        chartHeight = _useState8[0],
-        setChartHeight = _useState8[1];
+        vizHeight = _useState8[0],
+        setVizHeight = _useState8[1];
 
   const _useState9 = (0, _react.useState)(false),
         _useState10 = (0, _slicedToArray2.default)(_useState9, 2),
@@ -105,8 +105,8 @@ const RqtvVizContainer = props => {
     if (props.maximizeElRef && props.maximizeElRef.current) {
       props.maximizeElRef.current.style.display = maximized ? "block" // position:absolute; top:0; left:0; height:100%; width:100%; z-index:300; max-height:100%;`
       : 'none';
-      const updatedChartHeight = maximized ? props.maximizeElRef.current.offsetHeight - headerEl.current.offsetHeight : props.chartHeight;
-      setChartHeight(updatedChartHeight);
+      const updatedVizHeight = maximized ? props.maximizeElRef.current.offsetHeight - headerEl.current.offsetHeight : props.vizHeight;
+      setVizHeight(updatedVizHeight);
       props.hideScrollWhenMaximized && rqtvAppContext && rqtvAppContext.setIsMaximized(maximized);
     }
   }, [maximized]);
@@ -143,9 +143,9 @@ const RqtvVizContainer = props => {
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_toolbar.default, {
-    exportExcel: activeChartRef.current && activeChartRef.current.exportExcel,
-    exportImg: activeChartRef.current && activeChartRef.current.exportImg,
-    exportPdf: activeChartRef.current && activeChartRef.current.exportPdf,
+    exportExcel: vizRef.current && vizRef.current.exportExcel,
+    exportImg: vizRef.current && vizRef.current.exportImg,
+    exportPdf: vizRef.current && vizRef.current.exportPdf,
     showExportExcel: props.showExportExcel,
     showExportPdf: props.showExportPdf,
     showExportImg: props.showExportImg,
@@ -164,9 +164,9 @@ const RqtvVizContainer = props => {
       lineNumber: 105
     },
     __self: void 0
-  }, _react.default.cloneElement(activeChart, {
-    ref: activeChartRef,
-    height: isNaN(getChartHeight()) ? 0 : getChartHeight()
+  }, _react.default.cloneElement(activeViz, {
+    ref: vizRef,
+    height: isNaN(getVizHeight()) ? 0 : getVizHeight()
   })));
 
   return maximized ? _reactDom.default.createPortal(vizContainer, props.maximizeElRef.current) : vizContainer;

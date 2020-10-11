@@ -17,7 +17,7 @@ import RqtvVizContainerHeader from './header'
 
 const RqtvVizContainer = props => {
   const rqtvAppContext = useContext(RqtvAppContext)
-  const activeChartRef = useRef()
+  const vizRef = useRef()
   const headerEl = useRef()
   const vizContainerEl = useRef()
   const hasOnlyOneChild = !(Array.isArray(props.children))
@@ -29,24 +29,24 @@ const RqtvVizContainer = props => {
       title:child.props.title||child.props.id
     })
   }
-  //console.log(activeChartRef.current)
+  //console.log(vizRef.current)
   const items = !(hasOnlyOneChild)?props.children.map(item=>getItemFromChild(item)):[getItemFromChild(props.children)]
   const [activeItem, setActiveItem] = useState(items[0])
 
-  const [activeChart, setActiveChart] = useState(props.children[0]||props.children)
+  const [activeViz, setActiveViz] = useState(props.children[0]||props.children)
   useEffect(()=>{
 
-    const filterChart = (chart) => {
-      if(chart.props.id===activeItem.id){
-        return chart
+    const filterViz = (viz) => {
+      if(viz.props.id===activeItem.id){
+        return viz
       }
     }
-    const chart = hasOnlyOneChild?props.children:props.children.filter(filterChart)[0]
-    if (chart.id===null && Array.isArray(props.children)){
-      //console.log(chart)
+    const viz = hasOnlyOneChild?props.children:props.children.filter(filterViz)[0]
+    if (viz.id===null && Array.isArray(props.children)){
+      //console.log(viz)
       console.error('if you want to show more than one viz inside a container each viz must have a non-null unique id prop')
     }
-    setActiveChart(chart)
+    setActiveViz(viz)
 
   },[activeItem])
 
@@ -54,12 +54,12 @@ const RqtvVizContainer = props => {
   const [showToolbar, setShowToolbar] = useState(false)
 
   useEffect(()=>{
-    activeChartRef.current&&setShowToolbar(true)
-  }, [activeChartRef.current])
+    vizRef.current&&setShowToolbar(true)
+  }, [vizRef.current])
 
 
-  const getChartHeight = () => 0.95*((vizContainerEl.current&&vizContainerEl.current.offsetHeight)-(headerEl.current&&headerEl.current.offsetHeight))
-  const [chartHeight, setChartHeight] = useState(getChartHeight())
+  const getVizHeight = () => 0.95*((vizContainerEl.current&&vizContainerEl.current.offsetHeight)-(headerEl.current&&headerEl.current.offsetHeight))
+  const [vizHeight, setVizHeight] = useState(getVizHeight())
 
   const [maximized, setMaximized] = useState(false)
   useEffect(()=>{
@@ -67,8 +67,8 @@ const RqtvVizContainer = props => {
       props.maximizeElRef.current.style.display=maximized
       ?`block`// position:absolute; top:0; left:0; height:100%; width:100%; z-index:300; max-height:100%;`
       :'none';
-      const updatedChartHeight=maximized?props.maximizeElRef.current.offsetHeight-headerEl.current.offsetHeight:props.chartHeight
-      setChartHeight(updatedChartHeight)
+      const updatedVizHeight=maximized?props.maximizeElRef.current.offsetHeight-headerEl.current.offsetHeight:props.vizHeight
+      setVizHeight(updatedVizHeight)
       props.hideScrollWhenMaximized&&rqtvAppContext&&rqtvAppContext.setIsMaximized(maximized)
     }
   },[maximized])
@@ -91,9 +91,9 @@ const RqtvVizContainer = props => {
     >
       {showToolbar&&
         <RqtvVizContainerToolbar
-        exportExcel={activeChartRef.current&&activeChartRef.current.exportExcel}
-        exportImg={activeChartRef.current&&activeChartRef.current.exportImg}
-        exportPdf={activeChartRef.current&&activeChartRef.current.exportPdf}
+        exportExcel={vizRef.current&&vizRef.current.exportExcel}
+        exportImg={vizRef.current&&vizRef.current.exportImg}
+        exportPdf={vizRef.current&&vizRef.current.exportPdf}
         showExportExcel={props.showExportExcel}
         showExportPdf={props.showExportPdf}
         showExportImg={props.showExportImg}
@@ -103,7 +103,7 @@ const RqtvVizContainer = props => {
       />}
     </RqtvVizContainerHeader>
     <div className="viz-container-body">
-      { React.cloneElement(activeChart, {ref:activeChartRef, height:isNaN(getChartHeight())?0:getChartHeight()}) }
+      { React.cloneElement(activeViz, {ref:vizRef, height:isNaN(getVizHeight())?0:getVizHeight()}) }
     </div>
   </div>
   return maximized?ReactDOM.createPortal(vizContainer,props.maximizeElRef.current):vizContainer;
