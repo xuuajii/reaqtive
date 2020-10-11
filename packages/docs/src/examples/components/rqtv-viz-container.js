@@ -18,6 +18,7 @@ const MyMultiVizRqtvContainer = props =>
   style={{height:'300', maxHeight:'300'}}
   maximizeElRef={props.maximizeElRef}
   onMaximize={props.onMaximize}
+  vizRef={props.vizRef}
 >
   <QViz key="pDKRhr" id="pDKRhr" title="scatter chart"/>
   <QViz key="nvqpV" id="nvqpV" title="line chart"/>
@@ -25,6 +26,9 @@ const MyMultiVizRqtvContainer = props =>
 
 const MyRqtvContainerExample = props => {
   const maximizeElRef = useRef()
+  const vizRef = useRef()
+
+  const viz = vizRef.current&&vizRef.current.getQViz()
   /**
     * HTML overflow is handled by RqtvApp if the RqtvMaximizePortalEl and RqtvVizContainer
     * are inside it, otherwise you will have to handle it in your code, below an example
@@ -58,6 +62,7 @@ const MyRqtvContainerExample = props => {
       <MyMultiVizRqtvContainer
         maximizeElRef={maximizeElRef}
         onMaximize={onMaximize}
+        vizRef={vizRef}
       />
     </>
   )

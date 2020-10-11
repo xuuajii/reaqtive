@@ -37,7 +37,9 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
  */
 const RqtvVizContainer = props => {
   const rqtvAppContext = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
-  const vizRef = (0, _react.useRef)();
+  const passedVizRef = props.vizRef;
+  const selfVizRef = (0, _react.useRef)();
+  const vizRef = passedVizRef ? passedVizRef : selfVizRef;
   const headerEl = (0, _react.useRef)();
   const vizContainerEl = (0, _react.useRef)();
   const hasOnlyOneChild = !Array.isArray(props.children);
@@ -128,7 +130,7 @@ const RqtvVizContainer = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 84
+      lineNumber: 86
     },
     __self: void 0
   }, _react.default.createElement(_header.default, {
@@ -139,7 +141,7 @@ const RqtvVizContainer = props => {
     className: "".concat(props.containerClassName),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 85
+      lineNumber: 87
     },
     __self: void 0
   }, showToolbar && _react.default.createElement(_toolbar.default, {
@@ -154,14 +156,14 @@ const RqtvVizContainer = props => {
     maximized: maximized,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 95
     },
     __self: void 0
   })), _react.default.createElement("div", {
     className: "viz-container-body",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 105
+      lineNumber: 107
     },
     __self: void 0
   }, _react.default.cloneElement(activeViz, {
@@ -206,7 +208,8 @@ RqtvVizContainer.propTypes = {
   /**
    * Container header css classes
    */
-  containerClassName: _propTypes.default.string
+  containerClassName: _propTypes.default.string,
+  vizRef: _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.object])
 };
 RqtvVizContainer.defaultProps = {
   height: 300,
