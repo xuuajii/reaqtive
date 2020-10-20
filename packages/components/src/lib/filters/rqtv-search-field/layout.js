@@ -22,7 +22,7 @@ const Layout = props => {
     const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
     const dropdownMenuEl=useRef();
 
-    useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(0), props.show)
+    useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(props.clickAwayAccept), props.show)
 
     const layoutUpdater = useCallback(()=>{
       qArea&&rqtvListObject.getDataPage(qArea)

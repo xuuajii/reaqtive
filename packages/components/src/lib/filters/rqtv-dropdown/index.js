@@ -153,7 +153,11 @@ RqtvDropdownFilter.propTypes={
   /**
    * if true uses toggle select
    */
-  toggle:PropTypes.bool
+  toggle:PropTypes.bool,
+  /**
+   * if true selections are accepted when clicking away from the listbox in selection mode
+   */
+  clickAwayAccept:PropTypes.bool,
 }
 
 RqtvDropdownFilter.defaultProps={
@@ -170,6 +174,7 @@ RqtvDropdownFilter.defaultProps={
   dropdownMenuItemStyle:{},
   hideHorizontalScrollbar:false,
   quickSelectionMode:false,
-  toggle:true
+  toggle:true,
+  clickAwayAccept:false,
 }
 export default RqtvDropdownFilter

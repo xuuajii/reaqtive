@@ -35,7 +35,7 @@ const Layout = props => {
   },[showSearch,props.alwaysShowSearch])
   const bodyHeight= props.height-((headerHeight+searchHeight)||0)
 
-  useOutsideEventListener(listboxEl, ()=>endSelections(0), isSelecting)
+  useOutsideEventListener(listboxEl, ()=>endSelections(props.clickAwayAccept), isSelecting)
 
   const layoutUpdater = useCallback(()=>{
     qArea&&rqtvListObject.getDataPage(qArea)

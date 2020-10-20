@@ -21,7 +21,7 @@ const Layout = props => {
   const {setLayoutUpdater, applyQLayoutPatch} = props.qLayoutHandler
   const dropdownMenuEl=useRef();
 
-  useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(0), props.show)
+  useOutsideEventListener(dropdownMenuEl, ()=>endSelectionsAndHide(props.clickAwayAccept), props.show)
 
   const endSelectionsAndHide = (qAccept) => {
     endSelections(qAccept, props.hideDropdownMenu)
