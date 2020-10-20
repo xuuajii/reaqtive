@@ -1,19 +1,25 @@
-import React,{useContext} from 'react'
+import React,{useContext, useMemo} from 'react'
 import PropTypes from 'prop-types'
 import {QGenericObject} from '@reaqtive/q'
 import {RqtvAppContext} from '../index'
 import RqtvCurrentSelectionsObject from './rqtv-current-selections-object'
 import Layout from './layout'
 
-const qCurrentSelectionsObjectDef = {
-  "qInfo": {
-    "qId": "",
-    "qType": "SessionLists"
-  },
-  "qSelectionObjectDef": {} ,
-	qSelections: null,
-	qFields: null
-}
+const useQCurrentSelectionsObjectDef = (qState) => useMemo(()=>{
+  return (
+    {
+      "qInfo": {
+        "qId": "",
+        "qType": "SessionLists"
+      },
+      "qSelectionObjectDef": {
+        "qStateName":qState
+      } ,
+    	qSelections: null,
+    	qFields: null
+    }
+  )
+},[qState])
 
 /**
  * RqtvCurrentSelections
@@ -29,6 +35,7 @@ const RqtvCurrentSelections = (props) => {
   const appData = useContext(RqtvAppContext)
   const hidePrefix = props.hidePrefix?props.hidePrefix:appData.hidePrefix
   const excludeHidden = props.excludeHidden?props.excludeHidden:appData.excludeHidden
+  const qCurrentSelectionsObjectDef=useQCurrentSelectionsObjectDef(props.qState)
   return(
     <div className="rqtv-current-selections" hidden={props.hidden}>
       <QGenericObject qObjectDef={qCurrentSelectionsObjectDef}>
@@ -77,7 +84,11 @@ RqtvCurrentSelections.propTypes={
   /**
    * if true field hidden from current selections are not considered in selection count
    */
-  excludeHidden:PropTypes.bool
+  excludeHidden:PropTypes.bool,
+  /**
+    * the alternate state from which to display current selections
+    */
+  qState:PropTypes.string,
 
 }
 
@@ -86,7 +97,8 @@ RqtvCurrentSelections.defaultProps={
   isResponsive:true,
   showModalToggler:true,
   alwaysShowToolbar:false,
-  breakPoint:'lg'
+  breakPoint:'lg',
+  qState:''
 }
 
 export default RqtvCurrentSelections
