@@ -52,6 +52,7 @@ const RqtvStandardTemplate = props => {
         useTabs={true}
         sideMenuFieldsMatch = {props.sideMenuFieldsMatch}
         additionalTabs={props.sideMenuAdditionalTabs}
+        clickAwayAccept={props.sideMenuClickAwayAccept}
       />
       <RqtvSideMenuMain isOpen={showSideMenu}>
       <div
@@ -119,12 +120,17 @@ RqtvStandardTemplate.propTypes = {
    * screentype from which current selections are responsive
    */
   currentSelectionsBreakPoint:PropTypes.oneOf(['xl','lg', 'md', 'sm']),
+  /**
+   * if true selections are accepted when clicking away from an active listbox in selection mode in the side menu multibox
+   */
+  sideMenuClickAwayAccept:PropTypes.bool,
 }
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid:true,
   usePageHeader:true,
   showSearch:true,
-  useSideMenu:true
+  useSideMenu:true,
+  sideMenuClickAwayAccept:false
 }
 
 export default RqtvStandardTemplate

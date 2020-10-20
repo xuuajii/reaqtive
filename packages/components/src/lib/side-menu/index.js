@@ -17,7 +17,7 @@ import PageList from './page-list'
  *
  */
 const RqtvSideMenu = props =>{
-  const { sideMenuFieldsMatch, useFieldList, usePageList, useTabs, alwaysShowBackdrop } = props
+  const { sideMenuFieldsMatch, useFieldList, usePageList, useTabs, alwaysShowBackdrop, clickAwayAccept } = props
   const rqtvApp = useContext(RqtvAppContext)
 
   const fieldList = sideMenuFieldsMatch?rqtvApp&&rqtvApp.filterFieldList(rqtvApp.enhancedFieldList, sideMenuFieldsMatch):rqtvApp&&rqtvApp.sideMenuFieldList
@@ -41,7 +41,18 @@ const RqtvSideMenu = props =>{
             </TabList>
           <TabPanels >
             {showPageList&&<TabPanel><PageList pages={pages}/></TabPanel>}
-            {showFieldList&&fieldList?<FieldList fieldList={fieldList.map(field=>{return{qFieldExpr:field.qName, label:field.qName, hasSelections:field.selectedCount>0, toggle:!(field.neverToggle), quickSelectionMode:(field.neverToggle)}})}/>:<></>}
+            {showFieldList&&fieldList?
+              <FieldList fieldList={fieldList.map(field=>{
+                return({
+                  qFieldExpr:field.qName,
+                  label:field.qName,
+                  hasSelections:field.selectedCount>0,
+                  toggle:!(field.neverToggle),
+                  quickSelectionMode:(field.neverToggle),
+                })
+              })}
+              clickAwayAccept={clickAwayAccept}
+              />:<></>}
             {props.additionalTabs&&props.additionalTabs.map(additionalTab=><TabPanel key={uuidv4()}>{additionalTab.tab}</TabPanel>)}
           </TabPanels>
         </Tabs>
@@ -59,7 +70,7 @@ const FieldList = props => {
   const width = props.tabsEl.current.offsetHeight-props.tabListEl.current.offsetWidth;
   return (
     <div className="hide-scrollbar" style={{height:height}}>
-      <RqtvMultibox fieldList={props.fieldList} fieldHeight={400}/>
+      <RqtvMultibox fieldList={props.fieldList} fieldHeight={400} clickAwayAccept={props.clickAwayAccept}/>
     </div>
   )
 }
@@ -99,6 +110,10 @@ RqtvSideMenu.propTypes = {
     icon:PropTypes.element,
     tab:PropTypes.element
   })),
+  /**
+   * if true selections are accepted when clicking away from an active listbox in selection mode in the multibox
+   */
+  clickAwayAccept:PropTypes.bool,
 }
 
 RqtvSideMenu.defaultProps = {
@@ -106,7 +121,8 @@ RqtvSideMenu.defaultProps = {
   useFieldList:false,
   useTabs:false,
   alwaysShowBackdrop:false,
-  additionalTabs:[]
+  additionalTabs:[],
+  clickAwayAccept:false
 }
 
 

@@ -24,7 +24,6 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/s
  * A listbox is displayed for the active field. One field at a time can be active.
  */
 const RqtvMultibox = props => {
-  // console.log(props.fieldList)
   return _react.default.createElement(_layout.Accordion, {
     className: "rqtv-multibox",
     style: {
@@ -32,7 +31,7 @@ const RqtvMultibox = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 16
+      lineNumber: 15
     },
     __self: void 0
   }, props.fieldList && props.fieldList.map(field => {
@@ -43,21 +42,21 @@ const RqtvMultibox = props => {
       key: fieldExpr,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 22
       },
       __self: void 0
     }, _react.default.createElement(_layout.CollapseHeader, {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 24
+        lineNumber: 23
       },
       __self: void 0
     }, field.hasSelections === true && _react.default.createElement("span", {
       className: "selection-indicator",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 27
+        lineNumber: 26
       },
       __self: void 0
     }), field.label || fieldExpr), _react.default.createElement(_layout.CollapseBody, {
@@ -65,7 +64,7 @@ const RqtvMultibox = props => {
       hideTitleWhenExpanded: true,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 30
+        lineNumber: 29
       },
       __self: void 0
     }, _react.default.createElement(_index.RqtvListbox, {
@@ -75,9 +74,10 @@ const RqtvMultibox = props => {
       qLabelExpr: "'".concat(field.label || fieldExpr, "'"),
       toggle: toggle,
       quickSelectionMode: quickSelectionMode,
+      clickAwayAccept: props.clickAwayAccept,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 31
+        lineNumber: 30
       },
       __self: void 0
     })));
@@ -98,10 +98,16 @@ RqtvMultibox.propTypes = {
   /**
    * The state of the multibox which will be passed to its listboxes
    */
-  qState: _propTypes.default.string
+  qState: _propTypes.default.string,
+
+  /**
+   * if true selections are accepted when clicking away from an active listbox in selection mode
+   */
+  clickAwayAccept: _propTypes.default.bool
 };
 RqtvMultibox.defaultProps = {
-  fieldHeight: 300
+  fieldHeight: 300,
+  clickAwayAccept: false
 };
 var _default = RqtvMultibox;
 exports.default = _default;

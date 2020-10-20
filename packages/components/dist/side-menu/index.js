@@ -44,7 +44,8 @@ const RqtvSideMenu = props => {
         useFieldList = props.useFieldList,
         usePageList = props.usePageList,
         useTabs = props.useTabs,
-        alwaysShowBackdrop = props.alwaysShowBackdrop;
+        alwaysShowBackdrop = props.alwaysShowBackdrop,
+        clickAwayAccept = props.clickAwayAccept;
   const rqtvApp = (0, _react.useContext)(_rqtvAppContext.RqtvAppContext);
   const fieldList = sideMenuFieldsMatch ? rqtvApp && rqtvApp.filterFieldList(rqtvApp.enhancedFieldList, sideMenuFieldsMatch) : rqtvApp && rqtvApp.sideMenuFieldList;
   const pages = rqtvApp && rqtvApp.pages;
@@ -156,16 +157,17 @@ const RqtvSideMenu = props => {
         quickSelectionMode: field.neverToggle
       };
     }),
+    clickAwayAccept: clickAwayAccept,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 44
+      lineNumber: 45
     },
     __self: void 0
   }) : _react.default.createElement(_react.default.Fragment, null), props.additionalTabs && props.additionalTabs.map(additionalTab => _react.default.createElement(TabPanel, {
     key: (0, _uuid.v4)(),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 45
+      lineNumber: 56
     },
     __self: void 0
   }, additionalTab.tab)))) : props.children);
@@ -185,15 +187,16 @@ const FieldList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 72
     },
     __self: void 0
   }, _react.default.createElement(_index.RqtvMultibox, {
     fieldList: props.fieldList,
     fieldHeight: 400,
+    clickAwayAccept: props.clickAwayAccept,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 73
     },
     __self: void 0
   }));
@@ -239,12 +242,18 @@ RqtvSideMenu.propTypes = {
     label: _propTypes.default.string,
     icon: _propTypes.default.element,
     tab: _propTypes.default.element
-  }))
+  })),
+
+  /**
+   * if true selections are accepted when clicking away from an active listbox in selection mode in the multibox
+   */
+  clickAwayAccept: _propTypes.default.bool
 };
 RqtvSideMenu.defaultProps = {
   usePageList: false,
   useFieldList: false,
   useTabs: false,
   alwaysShowBackdrop: false,
-  additionalTabs: []
+  additionalTabs: [],
+  clickAwayAccept: false
 };

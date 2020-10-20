@@ -82,6 +82,7 @@ const RqtvStandardTemplate = props => {
     useTabs: true,
     sideMenuFieldsMatch: props.sideMenuFieldsMatch,
     additionalTabs: props.sideMenuAdditionalTabs,
+    clickAwayAccept: props.sideMenuClickAwayAccept,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 47
@@ -91,7 +92,7 @@ const RqtvStandardTemplate = props => {
     isOpen: showSideMenu,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 56
+      lineNumber: 57
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -99,20 +100,20 @@ const RqtvStandardTemplate = props => {
     style: (0, _objectSpread2.default)({}, props.containerStyle),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 57
+      lineNumber: 58
     },
     __self: void 0
   }, _react.default.createElement(_index2.RqtvRenderer, Object.assign({}, rendererProps, {
     isFixed: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 61
+      lineNumber: 62
     },
     __self: void 0
   }), props.usePageHeader && rqtvPage && _react.default.createElement(_index2.RqtvPageHeader, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 63
     },
     __self: void 0
   }), props.children))));
@@ -176,13 +177,19 @@ RqtvStandardTemplate.propTypes = {
   /**
    * screentype from which current selections are responsive
    */
-  currentSelectionsBreakPoint: _propTypes.default.oneOf(['xl', 'lg', 'md', 'sm'])
+  currentSelectionsBreakPoint: _propTypes.default.oneOf(['xl', 'lg', 'md', 'sm']),
+
+  /**
+   * if true selections are accepted when clicking away from an active listbox in selection mode in the side menu multibox
+   */
+  sideMenuClickAwayAccept: _propTypes.default.bool
 };
 RqtvStandardTemplate.defaultProps = {
   useContainerFluid: true,
   usePageHeader: true,
   showSearch: true,
-  useSideMenu: true
+  useSideMenu: true,
+  sideMenuClickAwayAccept: false
 };
 var _default = RqtvStandardTemplate;
 exports.default = _default;

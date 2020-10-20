@@ -10,8 +10,7 @@ import  {RqtvListbox} from '../index'
  * A listbox is displayed for the active field. One field at a time can be active.
  */
 const RqtvMultibox = props => {
-  // console.log(props.fieldList)
-
+  
   return(
     <Accordion className="rqtv-multibox" style={{width:props.width}}>
       {props.fieldList&&props.fieldList.map(field=>
@@ -35,6 +34,7 @@ const RqtvMultibox = props => {
                 qLabelExpr={`'${field.label||fieldExpr}'`}
                 toggle={toggle}
                 quickSelectionMode={quickSelectionMode}
+                clickAwayAccept={props.clickAwayAccept}
               />
             </CollapseBody>
           </Collapse>
@@ -57,11 +57,16 @@ RqtvMultibox.propTypes = {
   /**
    * The state of the multibox which will be passed to its listboxes
    */
-  qState:PropTypes.string
+  qState:PropTypes.string,
+  /**
+   * if true selections are accepted when clicking away from an active listbox in selection mode
+   */
+  clickAwayAccept:PropTypes.bool,
 }
 
 RqtvMultibox.defaultProps = {
   fieldHeight:300,
+  clickAwayAccept:false,
 }
 
 export default RqtvMultibox
