@@ -69,7 +69,6 @@ const RqtvCurrentSelectionsModal = props =>{
           </ModalBody>
           <ModalFooter showDismiss={false} dismissLabel="Cancel" close={props.close}>
             <RqtvCurrentSelectionsToolbar
-              className={"in-modal"}
               isResponsive={false}
               showModalToggler={false}
               inModal={true}

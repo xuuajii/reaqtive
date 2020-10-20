@@ -16,7 +16,7 @@ const RqtvCurrentSelectionsToolbar = props => {
   const show = (props.qBackCount>0||props.qForwardCount>0||props.qSelectionsCount>0)||props.alwaysShowToolbar
   return(
     show?
-    <div className={`rqtv-current-selections-toolbar ${props.inModal?'in-modal':''}`}>
+    <div className={`${props.inModal?'rqtv-current-selections-modal-toolbar':'rqtv-current-selections-toolbar'}`}>
       <SelectionsBack disabled={!(props.qBackCount>0)} show={showBack} onClick={props.back} showLabel={!props.showModalToggler}/>
         <div className={`btn-group btn-group-toggle ${isMinimized?'minimized':''}`} data-toggle="buttons">
           {props.showModalToggler&&
