@@ -60,7 +60,14 @@ const Body = props => {
       lineNumber: 14
     },
     __self: void 0
-  }, item[0].qText)))));
+  }, _react.default.createElement("span", {
+    title: item[0].qText,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 20
+    },
+    __self: void 0
+  }, item[0].qText))))));
 };
 
 var _default = Body;

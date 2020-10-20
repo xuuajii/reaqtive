@@ -33,7 +33,7 @@ const Body = props =>{
             onClick={()=>selectValue(item[0].qElemNumber, selectionCallback)}
             style={buttonsStyle}
           >
-            {item[0].qText}
+            <span title={item[0].qText}>{item[0].qText}</span>
           </Button>
         )
       }

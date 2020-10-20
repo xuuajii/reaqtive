@@ -17,7 +17,7 @@ const Body = props => {
               toggleMenu={()=>false}
               style={dropdownMenuItemStyle}
             >
-              {item[0].qText}
+              <span title={item[0].qText}>{item[0].qText}</span>
             </DropdownMenuItem>
           )
         }

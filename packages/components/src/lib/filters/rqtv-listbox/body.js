@@ -17,7 +17,7 @@ const Body = props => {
                 onClick={()=>selectValue(item[0].qElemNumber)}
                 style={itemStyle}
               >
-                {item[0].qText}
+                <span title={item[0].qText}>{item[0].qText}</span>
               </ListGroupItem>
             )
           }

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef, useContext,useCallback, useMemo } from 'react'
 import {useSpring, animated} from 'react-spring'
 import PropTypes from 'prop-types'
-import {RqtvSearchField} from '@reaqtive/components'
+import {RqtvButtonBar} from '@reaqtive/components'
 import {System, Button, Icon, chevronLeft, chevronRight, Tabs, TabList, Tab} from '@reaqtive/layout'
 import './tabs.scss'
 const TabsExample = props => {
@@ -16,7 +16,7 @@ const TabsExample = props => {
           <Tab label={"Tab 7 Lungo"}/>
         </TabList>
       </Tabs>
-      <RqtvSearchField qFieldExpr="Line Desc 1" qState="comparison" clickAwayAccept={true}/>
+      <RqtvButtonBar qFieldExpr="Line Desc 1" qState="comparison" clickAwayAccept={true}/>
     </div>
   )
 }

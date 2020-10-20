@@ -69,7 +69,14 @@ const Body = props => {
       lineNumber: 29
     },
     __self: void 0
-  }, item[0].qText)), pagination.currentPage < pagination.lastPage && _react.default.createElement(_layout.Button, {
+  }, _react.default.createElement("span", {
+    title: item[0].qText,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 36
+    },
+    __self: void 0
+  }, item[0].qText))), pagination.currentPage < pagination.lastPage && _react.default.createElement(_layout.Button, {
     type: "button",
     className: className,
     onClick: () => pagination.setCurrentPage(pagination.currentPage + 1),
