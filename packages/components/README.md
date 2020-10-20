@@ -109,6 +109,7 @@ export default MyRqtvDropdownFilter
 __align__ | `String` | `'left'` | :x: | It allows to align the dropdown menu to the left or to rhe right of the button
 __buttonClassName__ | `String` | `'primary text-light'` | :x: | className for the dropdown button
 __buttonStyle__ | `Object` | `{}` | :x: | style object to customize the dropdown button
+__clickAwayAccept__ | `Boolean` | `false` | :x: | if true selections are accepted when clicking away from the listbox in selection mode
 __dropdownMenuHeight__ | `Number` | `300` | :x: | Height of the dropdown when is open
 __dropdownMenuItemStyle__ | `Object` | `{}` | :x: | style object to customize the style of the dropdown menu items (it can be overwritten by selections color coding)
 __dropdownMenuStyle__ | `Object` | `{}` | :x: | style object to customize the dropdown menu
@@ -172,6 +173,7 @@ export default MyRqtvListbox
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __alwaysShowSearch__ | `Boolean` | `false` | :x: | if true the search input is alway shown
+__clickAwayAccept__ | `Boolean` | `false` | :x: | if true selections are accepted when clicking away from the listbox in selection mode
 __focus__ | `Boolean` | `true` | :x: | if true the search input is automatically focused when mounted
 __headerStyle__ | `Object` | `{}` | :x: | style object to customize listbox header
 __height__ | `Number` | `500` | :x: | the height of the listbox
@@ -270,6 +272,7 @@ export default MyRqtvSearchField
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
+__clickAwayAccept__ | `Boolean` | `false` | :x: | if true selections are accepted when clicking away from the listbox in selection mode
 __dropdownMenuHeight__ | `Number` | `300` | :x: | Height of the dropdown when is open
 __dropdownMenuWidth__ | `Number` | `265` | :x: | Width of the dropdown when is open
 __hideHorizontalScrollbar__ | `Boolean` | `false` | :x: | Show/hide overflowX
@@ -323,6 +326,7 @@ export default MyRqtvMultibox
 
   prop | type | default | required | description
 ---- | :----: | :-------: | :--------: | -----------
+__clickAwayAccept__ | `Boolean` | `false` | :x: | if true selections are accepted when clicking away from an active listbox in selection mode
 __fieldHeight__ | `Number` | `300` | :x: | The height of the listbox of the active field
 __fieldList__ | `Array` |  | :white_check_mark: | An array of fieldnames which will be displayed in the multibox
 __qState__ | `String` |  | :x: | The state of the multibox which will be passed to its listboxes
@@ -415,6 +419,115 @@ __showTitle__ | `Boolean` | `false` | :x: | show/hide the title in Qlik visualiz
 
 
 
+### **RqtvVizContainer**
+
+
+
+RqtvVizContainer
+
+It provides a container to a visualization. It accepts multiple children. In case i detects more tha one child,
+it shows one child at a time and a dropdown menu to toggle the desired child.
+If its children provide exports methods it automatically shows export buttons
+
+
+**Example:** 
+```javascript
+import React, {useState, useEffect, useRef} from 'react'
+import {RqtvVizContainer, QViz, RqtvMaximizePortalEl} from '@reaqtive/components'
+
+const MyRqtvContainer = props =>
+<RqtvVizContainer
+  height={'300px'}
+  showExportExcel={true}
+  showExportPdf={true}
+  showExportImg={true}
+  maximizeElRef={props.maximizeElRef}
+  onMaximize={props.onMaximize}
+>
+  <QViz id="nRxXG" title="bar chart"/>
+</RqtvVizContainer>
+
+const MyMultiVizRqtvContainer = props =>
+<RqtvVizContainer
+  style={{height:'300', maxHeight:'300'}}
+  maximizeElRef={props.maximizeElRef}
+  onMaximize={props.onMaximize}
+  vizRef={props.vizRef}
+>
+  <QViz key="pDKRhr" id="pDKRhr" title="scatter chart"/>
+  <QViz key="nvqpV" id="nvqpV" title="line chart"/>
+</RqtvVizContainer>
+
+const MyRqtvContainerExample = props => {
+  const maximizeElRef = useRef()
+  const vizRef = useRef()
+
+  const viz = vizRef.current&&vizRef.current.getQViz()
+  /**
+    * HTML overflow is handled by RqtvApp if the RqtvMaximizePortalEl and RqtvVizContainer
+    * are inside it, otherwise you will have to handle it in your code, below an example
+    */
+
+  const [isMaximized, setIsMaximized] = useState(false)
+
+  useEffect(()=>{
+    const html = document.getElementsByTagName("html")[0];
+    const maximize = () => {
+      html.style.overflow ='hidden'
+      html.scrollTop=0
+    }
+    const minimize = () => {
+      html.style.overflow ='auto'
+    }
+    isMaximized?maximize():minimize()
+  }, [isMaximized])
+
+  const onMaximize = () => {
+    setIsMaximized(!isMaximized)
+  }
+
+  return(
+    <>
+      <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
+      <MyRqtvContainer
+        maximizeElRef={maximizeElRef}
+        onMaximize={onMaximize}
+      />
+      <MyMultiVizRqtvContainer
+        maximizeElRef={maximizeElRef}
+        onMaximize={onMaximize}
+        vizRef={vizRef}
+      />
+    </>
+  )
+}
+export default MyRqtvContainerExample
+
+```
+**Props**: 
+
+  prop | type | default | required | description
+---- | :----: | :-------: | :--------: | -----------
+__className__ | `String` | `''` | :x: | Container css classes
+__containerClassName__ | `String` | `''` | :x: | Container header css classes
+__height__ | `Union<Number\|String>` | `300` | :x: | The height of the container pixels or % can be used
+__height<1>__ | `Number` |  | :x: | 
+__height<2>__ | `String` |  | :x: | 
+__hideScrollWhenMaximized__ | `Boolean` | `true` | :x: | If true window scrollbar will be hidden when the container is maximized
+__showExportExcel__ | `Boolean` | `true` | :x: | Show/hide export to excel button
+__showExportImg__ | `Boolean` | `true` | :x: | Show/hide export to img button
+__showExportPdf__ | `Boolean` | `true` | :x: | Show/hide export to pdf button
+__vizRef__ | `Union<Function\|Shape>` |  | :x: | Ref to the currently shown Viz
+__vizRef<1>__ | `Function` |  | :x: | 
+__vizRef<2>__ | `Shape` |  | :x: | 
+__vizRef<2>.current__ | `Union<ReactElement\|Function>` |  | :x: | 
+__vizRef<2>.current<1>__ | `ReactElement` |  | :x: | 
+__vizRef<2>.current<2>__ | `Function` |  | :x: | 
+
+<br></br>
+
+
+
 ## APP OBJECTS
 ### **RqtvCurrentSelections**
 
@@ -454,6 +567,7 @@ __breakPoint__ | `Enum('xl', 'lg', 'md', 'sm')` | `'lg'` | :x: | screentype from
 __excludeHidden__ | `Boolean` |  | :x: | if true field hidden from current selections are not considered in selection count
 __hidePrefix__ | `String` |  | :x: | prefix of the fields to be hidden from current selections modal
 __isResponsive__ | `Boolean` | `true` | :x: | when true it transform the toolbar into a fixed positioned floating button
+__qState__ | `String` | `''` | :x: | the alternate state from which to display current selections
 __showModalToggler__ | `Boolean` | `true` | :x: | it allows to show/hide the modal toggler
 __useCurrentSelectionModal__ | `Boolean` | `true` | :x: | it allows to turnoff the current selections box modal
 
@@ -624,6 +738,7 @@ __additionalTabs[].icon__ | `ReactElement` |  | :x: |
 __additionalTabs[].label__ | `String` |  | :x: | 
 __additionalTabs[].tab__ | `ReactElement` |  | :x: | 
 __alwaysShowBackdrop__ | `Boolean` | `false` | :x: | if tru backdrop is always shown when RqtvSideMenu is open
+__clickAwayAccept__ | `Boolean` | `false` | :x: | if true selections are accepted when clicking away from an active listbox in selection mode in the multibox
 __isOpen__ | `Boolean` |  | :white_check_mark: | open/close the menu
 __onClose__ | `Function` |  | :white_check_mark: | function to set isOpen to false
 __useFieldList__ | `Boolean` | `false` | :x: | show hide the multibox
@@ -810,7 +925,7 @@ import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
 
 const MyRqtvStandardTemplate = props => {
   return(
-    <RqtvStandardTemplate >
+    <RqtvStandardTemplate sideMenuClickAwayAccept={false}>
       <div>Standard Template Example</div>
       {props.children}
     </RqtvStandardTemplate>
@@ -831,6 +946,7 @@ __searchFieldsMatch__ | `Shape` |  | :x: | fields to be used in the search objec
 __searchFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
 __searchFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
 __showSearch__ | `Boolean` | `true` | :x: | show/hide the search object in the navbar
+__sideMenuClickAwayAccept__ | `Boolean` | `false` | :x: | if true selections are accepted when clicking away from an active listbox in selection mode in the side menu multibox
 __sideMenuFieldsMatch__ | `Shape` |  | :x: | fields to be displayed in the side menu. '*' can be used as a wildcard (e.g. 'Q*' will include consider all fields starting with 'Q')
 __sideMenuFieldsMatch.mask__ | `Array[]<String>` |  | :x: | 
 __sideMenuFieldsMatch.method__ | `Enum('include', 'exclude')` |  | :x: | 
