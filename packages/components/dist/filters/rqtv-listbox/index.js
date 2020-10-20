@@ -179,7 +179,12 @@ RqtvListbox.propTypes = {
   /**
    * if true uses toggle select
    */
-  toggle: _propTypes.default.bool
+  toggle: _propTypes.default.bool,
+
+  /**
+   * if true selections are accepted when clicking away from the listbox in selection mode
+   */
+  clickAwayAccept: _propTypes.default.bool
 };
 RqtvListbox.defaultProps = {
   showHeader: true,
@@ -203,7 +208,8 @@ RqtvListbox.defaultProps = {
   listStyle: {},
   itemStyle: {},
   quickSelectionMode: false,
-  toggle: true
+  toggle: true,
+  clickAwayAccept: false
 };
 var _default = RqtvListbox;
 exports.default = _default;

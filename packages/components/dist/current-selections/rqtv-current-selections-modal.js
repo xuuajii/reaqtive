@@ -133,7 +133,6 @@ const RqtvCurrentSelectionsModal = props => {
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsToolbar.default, Object.assign({
-    className: "in-modal",
     isResponsive: false,
     showModalToggler: false,
     inModal: true
@@ -152,7 +151,7 @@ const CurrentSelectionsList = props => {
     className: "list-group current-selections-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 89
+      lineNumber: 88
     },
     __self: void 0
   }, props.currentSelections.map((currentSelectionField, index) => _react.default.createElement(_currentSelectionsField.default, {
@@ -161,7 +160,7 @@ const CurrentSelectionsList = props => {
     setActiveField: props.setActiveField,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 91
+      lineNumber: 90
     },
     __self: void 0
   }))) : _react.default.createElement("div", {
@@ -172,7 +171,7 @@ const CurrentSelectionsList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 93
     },
     __self: void 0
   }, _react.default.createElement("h4", {
@@ -182,7 +181,7 @@ const CurrentSelectionsList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 94
     },
     __self: void 0
   }, _react.default.createElement(_layout.LuiIcon, {
@@ -190,7 +189,7 @@ const CurrentSelectionsList = props => {
     className: "lui-icon--large",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 96
+      lineNumber: 95
     },
     __self: void 0
   }), " No Selections"));
@@ -203,7 +202,7 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 103
+    lineNumber: 102
   },
   __self: void 0
 }, _react.default.createElement("div", {
@@ -212,7 +211,7 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 104
+    lineNumber: 103
   },
   __self: void 0
 }, _react.default.createElement("button", {
@@ -220,14 +219,14 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   onClick: () => props.backToFieldList(),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 105
+    lineNumber: 104
   },
   __self: void 0
 }, _react.default.createElement(_layout.Icon, {
   type: _layout.chevronLeft,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 106
+    lineNumber: 105
   },
   __self: void 0
 }))), _react.default.createElement("div", {
@@ -237,7 +236,7 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 109
+    lineNumber: 108
   },
   __self: void 0
 }, props.children));

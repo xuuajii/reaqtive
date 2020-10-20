@@ -50,7 +50,7 @@ const Layout = props => {
         setLayoutUpdater = _props$qLayoutHandler.setLayoutUpdater,
         applyQLayoutPatch = _props$qLayoutHandler.applyQLayoutPatch;
   const dropdownMenuEl = (0, _react.useRef)();
-  (0, _layout.useOutsideEventListener)(dropdownMenuEl, () => endSelectionsAndHide(0), props.show);
+  (0, _layout.useOutsideEventListener)(dropdownMenuEl, () => endSelectionsAndHide(props.clickAwayAccept), props.show);
   const layoutUpdater = (0, _react.useCallback)(() => {
     qArea && rqtvListObject.getDataPage(qArea);
   }, [qArea]);

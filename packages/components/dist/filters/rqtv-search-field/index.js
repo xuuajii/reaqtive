@@ -154,7 +154,12 @@ RqtvSearchField.propTypes = {
   /**
    * if true uses toggle select
    */
-  toggle: _propTypes.default.bool
+  toggle: _propTypes.default.bool,
+
+  /**
+   * if true selections are accepted when clicking away from the listbox in selection mode
+   */
+  clickAwayAccept: _propTypes.default.bool
 };
 RqtvSearchField.defaultProps = {
   qSortObject: {
@@ -171,7 +176,8 @@ RqtvSearchField.defaultProps = {
   dropdownMenuWidth: 265,
   hideHorizontalScrollbar: false,
   placeholder: 'Search',
-  toggle: true
+  toggle: true,
+  clickAwayAccept: false
 };
 var _default = RqtvSearchField;
 exports.default = _default;

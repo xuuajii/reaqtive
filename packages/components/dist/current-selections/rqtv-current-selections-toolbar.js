@@ -29,7 +29,7 @@ const RqtvCurrentSelectionsToolbar = props => {
   const showClearAll = props.qSelectionsCount > 0 && !isMinimized || props.inModal;
   const show = props.qBackCount > 0 || props.qForwardCount > 0 || props.qSelectionsCount > 0 || props.alwaysShowToolbar;
   return show ? _react.default.createElement("div", {
-    className: "rqtv-current-selections-toolbar ".concat(props.inModal ? 'in-modal' : ''),
+    className: "".concat(props.inModal ? 'rqtv-current-selections-modal-toolbar' : 'rqtv-current-selections-toolbar'),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 19

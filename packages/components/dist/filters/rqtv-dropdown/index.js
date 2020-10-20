@@ -233,7 +233,12 @@ RqtvDropdownFilter.propTypes = {
   /**
    * if true uses toggle select
    */
-  toggle: _propTypes.default.bool
+  toggle: _propTypes.default.bool,
+
+  /**
+   * if true selections are accepted when clicking away from the listbox in selection mode
+   */
+  clickAwayAccept: _propTypes.default.bool
 };
 RqtvDropdownFilter.defaultProps = {
   align: 'left',
@@ -256,7 +261,8 @@ RqtvDropdownFilter.defaultProps = {
   dropdownMenuItemStyle: {},
   hideHorizontalScrollbar: false,
   quickSelectionMode: false,
-  toggle: true
+  toggle: true,
+  clickAwayAccept: false
 };
 var _default = RqtvDropdownFilter;
 exports.default = _default;

@@ -75,7 +75,7 @@ const Layout = props => {
     seSearchHeight(searchEl.current && searchEl.current.getBoundingClientRect().height);
   }, [showSearch, props.alwaysShowSearch]);
   const bodyHeight = props.height - (headerHeight + searchHeight || 0);
-  (0, _layout.useOutsideEventListener)(listboxEl, () => endSelections(0), isSelecting);
+  (0, _layout.useOutsideEventListener)(listboxEl, () => endSelections(props.clickAwayAccept), isSelecting);
   const layoutUpdater = (0, _react.useCallback)(() => {
     qArea && rqtvListObject.getDataPage(qArea);
   }, [qArea]);

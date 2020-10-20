@@ -22,15 +22,20 @@ var _rqtvCurrentSelectionsObject = _interopRequireDefault(require("./rqtv-curren
 var _layout = _interopRequireDefault(require("./layout"));
 
 var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/components/src/lib/current-selections/index.js";
-const qCurrentSelectionsObjectDef = {
-  "qInfo": {
-    "qId": "",
-    "qType": "SessionLists"
-  },
-  "qSelectionObjectDef": {},
-  qSelections: null,
-  qFields: null
-};
+
+const useQCurrentSelectionsObjectDef = qState => (0, _react.useMemo)(() => {
+  return {
+    "qInfo": {
+      "qId": "",
+      "qType": "SessionLists"
+    },
+    "qSelectionObjectDef": {
+      "qStateName": qState
+    },
+    qSelections: null,
+    qFields: null
+  };
+}, [qState]);
 /**
  * RqtvCurrentSelections
  *
@@ -41,29 +46,31 @@ const qCurrentSelectionsObjectDef = {
  *
  */
 
+
 const RqtvCurrentSelections = props => {
   const appData = (0, _react.useContext)(_index.RqtvAppContext);
   const hidePrefix = props.hidePrefix ? props.hidePrefix : appData.hidePrefix;
   const excludeHidden = props.excludeHidden ? props.excludeHidden : appData.excludeHidden;
+  const qCurrentSelectionsObjectDef = useQCurrentSelectionsObjectDef(props.qState);
   return _react.default.createElement("div", {
     className: "rqtv-current-selections",
     hidden: props.hidden,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 33
+      lineNumber: 40
     },
     __self: void 0
   }, _react.default.createElement(_q.QGenericObject, {
     qObjectDef: qCurrentSelectionsObjectDef,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 34
+      lineNumber: 41
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsObject.default, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 35
+      lineNumber: 42
     },
     __self: void 0
   }, _react.default.createElement(_layout.default, {
@@ -77,7 +84,7 @@ const RqtvCurrentSelections = props => {
     breakPoint: props.breakPoint,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 36
+      lineNumber: 43
     },
     __self: void 0
   }))));
@@ -117,14 +124,20 @@ RqtvCurrentSelections.propTypes = {
   /**
    * if true field hidden from current selections are not considered in selection count
    */
-  excludeHidden: _propTypes.default.bool
+  excludeHidden: _propTypes.default.bool,
+
+  /**
+    * the alternate state from which to display current selections
+    */
+  qState: _propTypes.default.string
 };
 RqtvCurrentSelections.defaultProps = {
   useCurrentSelectionModal: true,
   isResponsive: true,
   showModalToggler: true,
   alwaysShowToolbar: false,
-  breakPoint: 'lg'
+  breakPoint: 'lg',
+  qState: ''
 };
 var _default = RqtvCurrentSelections;
 exports.default = _default;
