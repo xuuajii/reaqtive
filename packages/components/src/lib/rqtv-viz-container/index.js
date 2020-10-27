@@ -144,9 +144,10 @@ RqtvVizContainer.propTypes ={
    */
   vizRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({
+    PropTypes.object
+    /*({
         current: PropTypes.oneOfType([ PropTypes.element,PropTypes.func])
-      })
+      })*/
   ])
 }
 
