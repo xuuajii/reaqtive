@@ -213,9 +213,11 @@ RqtvVizContainer.propTypes = {
   /**
    * Ref to the currently shown Viz
    */
-  vizRef: _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.shape({
-    current: _propTypes.default.oneOfType([_propTypes.default.element, _propTypes.default.func])
-  })])
+  vizRef: _propTypes.default.oneOfType([_propTypes.default.func, _propTypes.default.object
+  /*({
+      current: PropTypes.oneOfType([ PropTypes.element,PropTypes.func])
+    })*/
+  ])
 };
 RqtvVizContainer.defaultProps = {
   height: 300,

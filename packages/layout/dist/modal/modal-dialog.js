@@ -9,14 +9,17 @@ exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
 var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/lib/modal/modal-dialog.js";
 
 const ModalDialog = props => {
   const children = _react.default.Children.toArray(props.children);
 
   return _react.default.createElement("div", {
-    className: "modal-dialog",
+    className: "modal-dialog ".concat(props.className),
     role: "document",
+    style: props.style,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6
@@ -36,3 +39,11 @@ const ModalDialog = props => {
 
 var _default = ModalDialog;
 exports.default = _default;
+ModalDialog.propTypes = {
+  className: _propTypes.default.string,
+  style: _propTypes.default.object
+};
+ModalDialog.defaultProps = {
+  className: '',
+  style: {}
+};

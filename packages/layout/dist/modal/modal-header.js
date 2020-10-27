@@ -15,7 +15,8 @@ var _jsxFileName = "/Users/paolo_d/Projects/React/reaqtive/packages/layout/src/l
 
 const ModalHeader = props => {
   return _react.default.createElement("div", {
-    className: "modal-header",
+    className: "modal-header ".concat(props.className),
+    style: props.style,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 6
