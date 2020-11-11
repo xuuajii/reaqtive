@@ -23,7 +23,7 @@ const RqtvModalListbox = props => {
   }
 
   const qFieldExpr= normalizeExpression(props.listboxProps.qFieldExpr)
-  const qFieldHandler = useQFieldHandler(props.listboxProps.qFieldExpr)
+  const qFieldHandler = useQFieldHandler(props.listboxProps.qFieldExpr, props.listboxProps.qState, props.listboxProps.alwaysOneSelected, props.listboxProps.defaultValue)
   const qField = qFieldHandler&&qFieldHandler.qField
 
   const defaultLabelExpr = `
@@ -48,7 +48,7 @@ const RqtvModalListbox = props => {
         <ModalDialog>
           <ModalHeader title=" " close={handleClose} showDismiss={true}/>
           <ModalBody>
-            <RqtvListbox {...props.listboxProps} height={300} alwaysShowSearch={props.alwaysShowSearch} qId={5} onEndSelections={()=>setShowModal(false)}/>
+            <RqtvListbox {...props.listboxProps} defaultValue={undefined} resetOnUnmount={false} height={300} alwaysShowSearch={props.alwaysShowSearch} qId={5} onEndSelections={()=>setShowModal(false)}/>
           </ModalBody>
           <ModalFooter showDismiss={true} dismissLabel="Cancel" close={handleClose}>
             { !(qFieldHandler.nxProperties&&qFieldHandler.nxProperties.qOneAndOnlyOne===true)&&
