@@ -517,12 +517,9 @@ __hideScrollWhenMaximized__ | `Boolean` | `true` | :x: | If true window scrollba
 __showExportExcel__ | `Boolean` | `true` | :x: | Show/hide export to excel button
 __showExportImg__ | `Boolean` | `true` | :x: | Show/hide export to img button
 __showExportPdf__ | `Boolean` | `true` | :x: | Show/hide export to pdf button
-__vizRef__ | `Union<Function\|Shape>` |  | :x: | Ref to the currently shown Viz
+__vizRef__ | `Union<Function\|Object>` |  | :x: | Ref to the currently shown Viz
 __vizRef<1>__ | `Function` |  | :x: | 
-__vizRef<2>__ | `Shape` |  | :x: | 
-__vizRef<2>.current__ | `Union<ReactElement\|Function>` |  | :x: | 
-__vizRef<2>.current<1>__ | `ReactElement` |  | :x: | 
-__vizRef<2>.current<2>__ | `Function` |  | :x: | 
+__vizRef<2>__ | `Object` |  | :x: | 
 
 <br></br>
 
@@ -770,7 +767,7 @@ import {HomePage, FirstPage, SecondPage} from './rqtv-page'
 
 const MyRqtvApp = (props) => {
   return(
-    <RqtvApp title="Example App" brandUrl='/' hidePrefix="Cust" >
+    <RqtvApp title="Example App" brandUrl='/' hidePrefix="Prod" >
         <FirstPage path="/first-page"/>
         <SecondPage path="/second-page"/>
         <HomePage path="/" linkName="HOME"/>
@@ -829,8 +826,9 @@ Like Routes RqtvPages can be nested. RqtvPage does not unMount when the route ch
 **Example:** 
 ```javascript
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvDropdownFilter,  RqtvListbox, RqtvModalListbox} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
+import {useQFieldReducer} from '@reaqtive/q'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
 import TabsExample from './tabs'
@@ -841,6 +839,8 @@ const HomePage = props =>
   <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
     <div>Home Page</div>
     <MyRqtvContainerExample/>
+    <RqtvCurrentSelections qState="comparison"/>
+    <RqtvListbox alwaysOneSelected={true} defaultValue={'Zocalo'} qFieldExpr={"Customer"} />
   </RqtvStandardTemplate>
 </RqtvPage>
 
@@ -848,6 +848,7 @@ const FirstPage = props =>{
   return(
     <RqtvPage {...props}>
       <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+        <RqtvListbox qFieldExpr="Customer" />
         <MyFirstNestedPage/>
       </RqtvStandardTemplate>
     </RqtvPage>
@@ -857,6 +858,7 @@ const FirstPage = props =>{
 
 const MyFirstNestedPage = props =>{
   const { path, url } = useRouteMatch();
+
   return(
     <>
       <RqtvPage

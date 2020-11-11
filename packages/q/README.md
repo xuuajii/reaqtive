@@ -47,9 +47,9 @@ const MyReaqtiveComponent = props => {
       secure: true,                                 //false
       port: 443,                                    //4848
       prefix: '',                                   //''
-      appId: '8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
+      appId: 'bc1566bc-6299-4d8b-8976-d5b60225ded8'//'8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
-  
+
   return (
     <Reaqtive qConfig={qConfig}>
       {props.children}
@@ -485,6 +485,7 @@ a hook to retrieve a field from qDoc. if provided a defaulta value it selecte th
 param | type | default value | required | description
 ---- | :----: | :-------: | :--------: | -----------
 __qFieldName__ | string | | :white_check_mark: | the name of the field
+__qState__ | string | | :x: | the the alternate state the field will be linked to
 __isAlwaysOneSelected__ | boolean | | :x: | flag to set isAlwaysOneSelected
 __defaultValue__ | string | | :x: | the defaultValue to be selected before setting isAlwaysOneSelected to true
 __resetOnUnmount__ | boolean | | :x: | if set to true it set isAlwaysOneSelected to false when unmount
