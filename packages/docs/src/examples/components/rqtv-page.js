@@ -1,5 +1,5 @@
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvDropdownFilter} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
@@ -11,6 +11,8 @@ const HomePage = props =>
   <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
     <div>Home Page</div>
     <MyRqtvContainerExample/>
+    <RqtvCurrentSelections qState="comparison"/>
+    <RqtvDropdownFilter qFieldExpr="Customer" qState="comparison"/>
   </RqtvStandardTemplate>
 </RqtvPage>
 
