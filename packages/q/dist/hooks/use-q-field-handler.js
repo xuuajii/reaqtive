@@ -13,7 +13,7 @@ var _react = require("react");
 
 var _index = require("../index");
 
-const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
+const useQFieldHandler = (qFieldName, qState, isAlwaysOneSelected, defaultValue) => {
   const qDocHandler = (0, _react.useContext)(_index.QDoc);
   const qDoc = qDocHandler.qDoc;
 
@@ -47,7 +47,7 @@ const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
     function selectDefaultAndSetNx(qField, defaultValue) {
       qField.select(defaultValue).then(qResult => qField.setNxProperties({
         "qOneAndOnlyOne": true
-      }).then(qResult => console.log(qResult)).catch(qErr => {
+      }).then(qResult).catch(qErr => {
         setQError({
           qError: true,
           rqtvMessage: "error setting ".concat(qFieldName, " alwaysOneSelected")
@@ -63,12 +63,14 @@ const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
     } //console.log(qFieldName)
 
 
-    qDoc && qFieldName && qFieldName.substring(0, 1) !== '=' && qDoc.getField(qFieldName).then(qField => {
+    qDoc && qFieldName && qFieldName.substring(0, 1) !== '=' && qDoc.getField(qFieldName, qState).then(qField => {
       setQField(qField);
       setQLoading(false);
 
       if (isAlwaysOneSelected) {
-        selectDefaultAndSetNx(qField, defaultValue);
+        qField.getNxProperties().then(res => {
+          if (!res.qOneAndOnlyOne) selectDefaultAndSetNx(qField, defaultValue);
+        });
       } else {
         setNxProperties({});
       }
@@ -79,7 +81,7 @@ const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
       });
       console.log('error getting qField', qErr);
     });
-  }, [qFieldName, isAlwaysOneSelected, defaultValue, qDoc]); //
+  }, [qFieldName, isAlwaysOneSelected, defaultValue, qDoc, qState]); //
 
   const _useState11 = (0, _react.useState)(true),
         _useState12 = (0, _slicedToArray2.default)(_useState11, 2),

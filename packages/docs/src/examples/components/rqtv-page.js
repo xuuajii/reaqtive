@@ -1,6 +1,7 @@
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvDropdownFilter} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvDropdownFilter,  RqtvListbox, RqtvModalListbox} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
+import {useQFieldReducer} from '@reaqtive/q'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
 import TabsExample from './tabs'
@@ -12,7 +13,7 @@ const HomePage = props =>
     <div>Home Page</div>
     <MyRqtvContainerExample/>
     <RqtvCurrentSelections qState="comparison"/>
-    <RqtvDropdownFilter qFieldExpr="Customer" qState="comparison"/>
+    <RqtvListbox alwaysOneSelected={true} defaultValue={'Zocalo'} qFieldExpr={"Customer"} />
   </RqtvStandardTemplate>
 </RqtvPage>
 
@@ -20,6 +21,7 @@ const FirstPage = props =>{
   return(
     <RqtvPage {...props}>
       <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Customer*', 'Account*']}}>
+        <RqtvListbox qFieldExpr="Customer" />
         <MyFirstNestedPage/>
       </RqtvStandardTemplate>
     </RqtvPage>
@@ -29,6 +31,7 @@ const FirstPage = props =>{
 
 const MyFirstNestedPage = props =>{
   const { path, url } = useRouteMatch();
+
   return(
     <>
       <RqtvPage

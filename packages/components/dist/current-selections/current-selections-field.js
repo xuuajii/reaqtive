@@ -28,9 +28,10 @@ const CurrentSelectionsField = props => {
       qFieldExpr: props.item.qField,
       toggle: !neverToggle
     });
-  };
+  }; //console.log(props.qState)
 
-  const qFieldHandler = (0, _q.useQFieldHandler)(props.item.qField);
+
+  const qFieldHandler = (0, _q.useQFieldHandler)(props.item.qField, props.qState);
   const qField = qFieldHandler.qField;
 
   const clearFieldSlections = () => {

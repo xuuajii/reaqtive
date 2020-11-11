@@ -112,6 +112,7 @@ const RqtvCurrentSelectionsModal = props => {
   }, _react.default.createElement(CurrentSelectionsList, {
     currentSelections: props.currentSelections,
     setActiveField: setActiveField,
+    qState: props.qState,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 64
@@ -159,6 +160,7 @@ const CurrentSelectionsList = props => {
     item: currentSelectionField,
     key: index,
     setActiveField: props.setActiveField,
+    qState: props.qState,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 91

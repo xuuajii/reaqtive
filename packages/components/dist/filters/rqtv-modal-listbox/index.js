@@ -49,7 +49,7 @@ const RqtvModalListbox = props => {
   };
 
   const qFieldExpr = (0, _helpers.normalizeExpression)(props.listboxProps.qFieldExpr);
-  const qFieldHandler = (0, _q.useQFieldHandler)(props.listboxProps.qFieldExpr);
+  const qFieldHandler = (0, _q.useQFieldHandler)(props.listboxProps.qFieldExpr, props.listboxProps.qState, props.listboxProps.alwaysOneSelected, props.listboxProps.defaultValue);
   const qField = qFieldHandler && qFieldHandler.qField;
   const defaultLabelExpr = "\n    '".concat(props.listboxProps.qFieldExpr, " '&\n    if(getSelectedCount(").concat(qFieldExpr, ")>0,\n      if(len(only(").concat(qFieldExpr, "))>0,only(").concat(qFieldExpr, "),getSelectedCount(").concat(qFieldExpr, ")&' selected'\n      )\n    )");
   const qLabelExpr = props.qLabelExpr ? props.qLabelExpr : defaultLabelExpr; //console.log(qLabelExpr);
@@ -105,6 +105,8 @@ const RqtvModalListbox = props => {
     },
     __self: void 0
   }, _react.default.createElement(_index2.default, Object.assign({}, props.listboxProps, {
+    defaultValue: undefined,
+    resetOnUnmount: false,
     height: 300,
     alwaysShowSearch: props.alwaysShowSearch,
     qId: 5,
