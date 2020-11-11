@@ -82,6 +82,7 @@ const RqtvCurrentSelections = props => {
     alwayShowToolbar: props.alwayShowToolbar,
     customLoading: props.customLoading,
     breakPoint: props.breakPoint,
+    qState: props.qState,
     __source: {
       fileName: _jsxFileName,
       lineNumber: 43

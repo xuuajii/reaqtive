@@ -49,6 +49,7 @@ const RqtvCurrentSelectionsModal = props => {
       toggle: activeField.toggle,
       quickSelectionMode: !activeField.toggle,
       qId: 'cs',
+      qState: props.qState,
       __source: {
         fileName: _jsxFileName,
         lineNumber: 28
@@ -66,7 +67,7 @@ const RqtvCurrentSelectionsModal = props => {
     className: "rqtv-current-selections-modal",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 48
+      lineNumber: 49
     },
     __self: void 0
   }, _react.default.createElement(_layout.Modal, {
@@ -77,13 +78,13 @@ const RqtvCurrentSelectionsModal = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 49
+      lineNumber: 50
     },
     __self: void 0
   }, _react.default.createElement(_layout.ModalDialog, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 53
+      lineNumber: 54
     },
     __self: void 0
   }, _react.default.createElement(_layout.ModalHeader, {
@@ -91,21 +92,21 @@ const RqtvCurrentSelectionsModal = props => {
     close: props.close,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 54
+      lineNumber: 55
     },
     __self: void 0
   }), _react.default.createElement(_layout.ModalBody, {
     modalBodyEl: modalBodyEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 55
+      lineNumber: 56
     },
     __self: void 0
   }, _react.default.createElement(_layout.Carousel, {
     index: activeField === '' ? 0 : 1,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 62
+      lineNumber: 63
     },
     __self: void 0
   }, _react.default.createElement(CurrentSelectionsList, {
@@ -113,14 +114,14 @@ const RqtvCurrentSelectionsModal = props => {
     setActiveField: setActiveField,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 63
+      lineNumber: 64
     },
     __self: void 0
   }), _react.default.createElement(CurrentSelectionsListbox, {
     backToFieldList: () => setActiveField(''),
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 64
+      lineNumber: 65
     },
     __self: void 0
   }, activFieldListbox))), _react.default.createElement(_layout.ModalFooter, {
@@ -129,7 +130,7 @@ const RqtvCurrentSelectionsModal = props => {
     close: props.close,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70
+      lineNumber: 71
     },
     __self: void 0
   }, _react.default.createElement(_rqtvCurrentSelectionsToolbar.default, Object.assign({
@@ -140,7 +141,7 @@ const RqtvCurrentSelectionsModal = props => {
     alwayShowToolbar: true,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71
+      lineNumber: 72
     },
     __self: void 0
   }))))));
@@ -151,7 +152,7 @@ const CurrentSelectionsList = props => {
     className: "list-group current-selections-list",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 88
+      lineNumber: 89
     },
     __self: void 0
   }, props.currentSelections.map((currentSelectionField, index) => _react.default.createElement(_currentSelectionsField.default, {
@@ -160,7 +161,7 @@ const CurrentSelectionsList = props => {
     setActiveField: props.setActiveField,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 90
+      lineNumber: 91
     },
     __self: void 0
   }))) : _react.default.createElement("div", {
@@ -171,7 +172,7 @@ const CurrentSelectionsList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 93
+      lineNumber: 94
     },
     __self: void 0
   }, _react.default.createElement("h4", {
@@ -181,7 +182,7 @@ const CurrentSelectionsList = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 94
+      lineNumber: 95
     },
     __self: void 0
   }, _react.default.createElement(_layout.LuiIcon, {
@@ -189,7 +190,7 @@ const CurrentSelectionsList = props => {
     className: "lui-icon--large",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 95
+      lineNumber: 96
     },
     __self: void 0
   }), " No Selections"));
@@ -202,7 +203,7 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 102
+    lineNumber: 103
   },
   __self: void 0
 }, _react.default.createElement("div", {
@@ -211,7 +212,7 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 103
+    lineNumber: 104
   },
   __self: void 0
 }, _react.default.createElement("button", {
@@ -219,14 +220,14 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   onClick: () => props.backToFieldList(),
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 104
+    lineNumber: 105
   },
   __self: void 0
 }, _react.default.createElement(_layout.Icon, {
   type: _layout.chevronLeft,
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 105
+    lineNumber: 106
   },
   __self: void 0
 }))), _react.default.createElement("div", {
@@ -236,7 +237,7 @@ const CurrentSelectionsListbox = props => _react.default.createElement("div", {
   },
   __source: {
     fileName: _jsxFileName,
-    lineNumber: 108
+    lineNumber: 109
   },
   __self: void 0
 }, props.children));

@@ -98,6 +98,7 @@ const Layout = props => {
     close: closeCurrentSelectionsModal,
     currentSelections: filteredSelections,
     hidePrefix: props.hidePrefix,
+    qState: props.qState,
     toolbarProps: {
       qBackCount: props.rqtvCurrentSelectionsObject.qBackCount,
       qForwardCount: props.rqtvCurrentSelectionsObject.qForwardCount,
