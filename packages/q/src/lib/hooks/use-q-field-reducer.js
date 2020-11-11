@@ -1,9 +1,9 @@
 import {useEffect, useReducer, useContext} from 'react'
 import {QDoc} from '../index'
 
-const getQField = async(qDoc, qFieldName) => {
+const getQField = async(qDoc, qFieldName, qState) => {
   try{
-    const qField = await qDoc.getField(qFieldName)
+    const qField = await qDoc.getField(qFieldName, qState)
     return qField
   } catch(err){
     return err
@@ -11,7 +11,7 @@ const getQField = async(qDoc, qFieldName) => {
 }
 
 const setAlwaysOneSelected = async (qField, defaultValue) => {
-  // console.log('setting alway 1 selected')
+  // console.log('setting always 1 selected')
   try{
     const defaultSelected = await qField.select(defaultValue)
     if(!(defaultSelected instanceof Error)){
@@ -76,13 +76,14 @@ const qFieldReducer = (state, action) => {
   *@description a hook to retrieve a field from qDoc. if provided a defaulta value it selecte the value when it mounts and set the field to always one selected if isAlwaysOneSelected is set to true
   *@kind hook
   *@param {string} qFieldName - the name of the field
+  *@param {string} [qState] - the the alternate state the field will be linked to
   *@param {boolean} [isAlwaysOneSelected=false] - flag to set isAlwaysOneSelected
   *@param {string} [defaultValue] - the defaultValue to be selected before setting isAlwaysOneSelected to true
   *@param {boolean} [resetOnUnmount] - if set to true it set isAlwaysOneSelected to false when unmount
   *@return {qfieldHandler} the handler of the qlik field
 */
 
-const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOnUnmount=true) => {
+const useQFieldReducer = (qFieldName, qState, isAlwaysOneSelected, defaultValue, resetOnUnmount=true) => {
   const qDocHandler = useContext(QDoc)
   const qDoc = qDocHandler.qDoc
   const [qPromiseHandler, dispatch] = useReducer(qFieldReducer, initialState);
@@ -90,24 +91,26 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
   useEffect(()=>{
     let isSubscribed=true
     const runEffect = async () => {
-      const result =await getQField(qDoc, qFieldName)
+      const result =await getQField(qDoc, qFieldName, qState)
       return (result instanceof Error)?dispatch({type:'error', qError:result}):(isSubscribed===true)&&dispatch({type:'successField', qField:result, isAlwaysOneSelected:isAlwaysOneSelected})
     }
     qDoc&&qFieldName&&runEffect()
     return ()=>isSubscribed=false
-  }, [qDoc, qFieldName])
+  }, [qDoc, qFieldName, qState])
 
-  useEffect(()=>{
-    return () => {
-      const onUnmount = async()=>{
-        const result = await removeAlwaysOneSelected(qField)
-      }
-      qField&&qField.removeAllListeners()
-      if(resetOnUnmount&&qField&&isAlwaysOneSelected===true){
-        onUnmount()
-      }
-    }
-  },[qField, qLoading, qError, errorCounter])
+  // 11/11/2020 --> Previous remove alwaysOneSelected on unMount which was runninng even if the component was not unMounted
+  // it can be removed if it no counter effects are found
+  // useEffect(()=>{
+  //   return () => {
+  //     const onUnmount = async()=>{
+  //       const result = await removeAlwaysOneSelected(qField)
+  //     }
+  //     qField&&qField.removeAllListeners()
+  //     if(resetOnUnmount===true&&qField&&isAlwaysOneSelected===true){
+  //       onUnmount()
+  //     }
+  //   }
+  // },[qField, qLoading, qError, errorCounter])
 
   useEffect(()=>{
     const runEffect = async() => {
@@ -117,6 +120,15 @@ const useQFieldReducer = (qFieldName, isAlwaysOneSelected, defaultValue, resetOn
       }
     }
     runEffect()
+    return () => {
+      const onUnmount = async()=>{
+        const result = await removeAlwaysOneSelected(qField)
+      }
+      qField&&qField.removeAllListeners()
+      if(resetOnUnmount===true&&qField&&isAlwaysOneSelected===true){
+        onUnmount()
+      }
+    }
   },[qField, isAlwaysOneSelected])
   return {...qPromiseHandler}
 }

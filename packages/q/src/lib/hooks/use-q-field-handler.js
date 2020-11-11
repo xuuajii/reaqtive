@@ -1,7 +1,7 @@
 import {useState, useEffect, useContext} from 'react'
 import {QDoc} from '../index'
 
-const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
+const useQFieldHandler = (qFieldName, qState, isAlwaysOneSelected, defaultValue) => {
   const qDocHandler = useContext(QDoc)
   const qDoc = qDocHandler.qDoc
   const [qLoading, setQLoading] = useState(true)
@@ -15,7 +15,7 @@ const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
     function selectDefaultAndSetNx(qField, defaultValue){
       qField.select(defaultValue)
       .then(qResult=>qField.setNxProperties({ "qOneAndOnlyOne": true })
-        .then(qResult=>console.log(qResult))
+        .then(qResult)
         .catch(qErr => {
           setQError({qError:true, rqtvMessage:`error setting ${qFieldName} alwaysOneSelected`})
           console.log(`error setting ${qFieldName} alwaysOneSelected`, qErr)
@@ -27,12 +27,14 @@ const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
       })
     }
     //console.log(qFieldName)
-    qDoc&&qFieldName&&qFieldName.substring(0,1)!=='='&&qDoc.getField(qFieldName)
+    qDoc&&qFieldName&&qFieldName.substring(0,1)!=='='&&qDoc.getField(qFieldName, qState)
     .then(qField=> {
       setQField(qField)
       setQLoading(false)
       if(isAlwaysOneSelected){
-        selectDefaultAndSetNx(qField, defaultValue)
+        qField.getNxProperties().then(res=>{
+          if(!res.qOneAndOnlyOne) selectDefaultAndSetNx(qField, defaultValue)
+        })        
       } else {
         setNxProperties({})
       }
@@ -41,7 +43,7 @@ const useQFieldHandler = (qFieldName, isAlwaysOneSelected, defaultValue) => {
       setQError({qError:true, rqtvMessage:`error getting qField${qFieldName} `})
       console.log('error getting qField', qErr)
     })
-  },[qFieldName, isAlwaysOneSelected, defaultValue, qDoc])
+  },[qFieldName, isAlwaysOneSelected, defaultValue, qDoc, qState])
 
   //
   const [isMounted, setIsMounted] = useState(true)
