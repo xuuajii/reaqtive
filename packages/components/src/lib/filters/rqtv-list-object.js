@@ -9,7 +9,7 @@ const RqtvListObject = props => {
   //console.log(qLayout, props.qId)
   const qDimensionInfo = qLayout&&qLayout.qListObject.qDimensionInfo
   const qFieldName = qLayout&&qDimensionInfo.qGroupFieldDefs[qLayout&&qDimensionInfo.qGroupPos]
-  const activeField = useQFieldReducer(qFieldName, props.alwaysOneSelected, props.defaultValue, props.resetOnUnmount)
+  const activeField = useQFieldReducer(qFieldName, props.qState, props.alwaysOneSelected, props.defaultValue, props.resetOnUnmount)
 
   const moreThanOneChild = Array.isArray(props.children)
   if (moreThanOneChild){
