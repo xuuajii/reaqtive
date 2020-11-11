@@ -14,8 +14,8 @@ const CurrentSelectionsField = props => {
     const neverToggle = appContext.enhancedFieldList.filter((qField)=>qField.qName===props.item.qField)[0].neverToggle;
     if (isMounted===true) props.setActiveField({qFieldExpr:props.item.qField, toggle:!neverToggle})
   }
-
-  const qFieldHandler = useQFieldHandler(props.item.qField)
+  //console.log(props.qState)
+  const qFieldHandler = useQFieldHandler(props.item.qField, props.qState)
   const qField = qFieldHandler.qField
 
   const clearFieldSlections = () => {

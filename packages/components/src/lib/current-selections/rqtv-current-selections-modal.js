@@ -61,7 +61,7 @@ const RqtvCurrentSelectionsModal = props =>{
                 </CurrentSelectionsListbox>*/
             }
             <Carousel index={activeField===''?0:1}>
-              <CurrentSelectionsList currentSelections={props.currentSelections} setActiveField={setActiveField}/>
+              <CurrentSelectionsList currentSelections={props.currentSelections} setActiveField={setActiveField} qState={props.qState}/>
               <CurrentSelectionsListbox backToFieldList={()=>setActiveField('')}>
                   {activFieldListbox}
                 </CurrentSelectionsListbox>
@@ -88,7 +88,7 @@ const CurrentSelectionsList = props =>{
     props.currentSelections.length>0
     ?<ul className="list-group current-selections-list">
       {props.currentSelections.map((currentSelectionField,index)=>
-        <CurrentSelectionsField item={currentSelectionField} key={index} setActiveField={props.setActiveField}/>
+        <CurrentSelectionsField item={currentSelectionField} key={index} setActiveField={props.setActiveField} qState={props.qState}/>
       )}
     </ul>
     :<div style={{textAlign:'center', minHeight:'80px', verticalAlign:'middle'}}>
