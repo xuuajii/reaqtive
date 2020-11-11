@@ -35,6 +35,7 @@ const RqtvCurrentSelectionsModal = props =>{
                 toggle={activeField.toggle}
                 quickSelectionMode={!activeField.toggle}
                 qId={'cs'}
+                qState={props.qState}
               />
     },
     [activeField]

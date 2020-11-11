@@ -49,6 +49,7 @@ const RqtvCurrentSelections = (props) => {
                 alwayShowToolbar={props.alwayShowToolbar}
                 customLoading={props.customLoading}
                 breakPoint={props.breakPoint}
+                qState={props.qState}
               />
         </RqtvCurrentSelectionsObject>
       </QGenericObject>
