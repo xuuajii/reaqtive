@@ -18,54 +18,50 @@ const getTop = (scrollPosition, listItemHeight, lastPossibleTop) => {
 
 const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListHeight, listItemHeight, buffer, getScrollData) => {
 
-  const qDisplayArea = useRef(currentDisplayArea)
-  const [fillers, setFillers] = useState({top:0,bottom:0,left:0,right:0})
-
   const listHeight = size.qcy*listItemHeight
-  const displayAreaHeight = currentDisplayArea.qHeight*listItemHeight;
+  const {qTop, qHeight, qLeft, qWidth} = currentDisplayArea
+  const pageStart = qTop
+  const pageEnd = qTop+qHeight
+  const visibleStart = Math.floor(scrollPosition.top/listItemHeight)
+  const visibleEnd = Math.ceil(visibleStart+(visibleListHeight/listItemHeight))
+  const bufferSize = 5//(buffer*qHeight)
+  const lastPossibleTop = size.qcy-qHeight
+  const displayStart = Math.min(Math.max(0,visibleStart-bufferSize), lastPossibleTop)
+  const displayEnd = Math.max(Math.min(visibleEnd+bufferSize, size.qcy),0)
+  const shouldFetchMore = (displayEnd>=pageEnd && displayStart<lastPossibleTop) || (displayStart>=lastPossibleTop && pageStart<lastPossibleTop)  // (visibleEnd+bufferSize>currentDisplayEnd && lastPossibleTop>visibleStart && qTop<lastPossibleTop)
+  const shouldFetchLess =  displayStart<pageStart && pageStart>0//(visibleStart-bufferSize<currentDisplayStart && currentDisplayStart>0 && qTop>0)
+  //console.log(shouldFetchLess,shouldFetchMore, displayEnd, pageEnd,displayStart,lastPossibleTop )
 
-  useEffect(()=>{
-    const topHeight=getFillersTop(currentDisplayArea.qTop, listItemHeight)
-    const bottomHeight=getFillersBottom(topHeight, displayAreaHeight, listHeight)
-    setFillers({
-      ...fillers,
-      top:topHeight,
-      bottom:bottomHeight
+  const [fillers, setFillers] = useState({
+      top:0,
+      bottom:0,
+      left:0,
+      right:0
     })
-  },[displayAreaHeight, listHeight, listItemHeight, currentDisplayArea])
 
-  const prevScroll=useRef({top:0,left:0})
   useEffect(()=>{
-    const bufferSize=buffer*currentDisplayArea.qHeight;
-    const lastPossibleTop = Math.ceil(size.qcy-(currentDisplayArea.qHeight))
-    const visibleStart = Math.max(0,getTop(scrollPosition.top, listItemHeight, lastPossibleTop))
-    const visibleListItems = visibleListHeight/listItemHeight
-    const visibleEnd = visibleStart+visibleListItems
-    const displayStart = currentDisplayArea.qTop
-    const displayEnd=currentDisplayArea.qTop+currentDisplayArea.qHeight
-    const shouldFetchLess = Math.max(0,visibleStart-bufferSize)<displayStart||(scrollPosition.top===0&&currentDisplayArea.qTop===0)
-    const shouldFecthMore = Math.min(visibleEnd+bufferSize)>displayEnd||(visibleStart>=lastPossibleTop&&currentDisplayArea.qTop!==lastPossibleTop)
-    const topHeight=getFillersTop(visibleStart, listItemHeight)
-    const bottomHeight=displayStart<lastPossibleTop?getFillersBottom(topHeight, displayAreaHeight, listHeight):0
-    if((shouldFecthMore && scrollPosition.top>prevScroll.current.top)){
-      qDisplayArea.current={...qDisplayArea.current, qTop:visibleStart}
-      getScrollData(qDisplayArea.current)
-      //prevScroll.current={top:Math.max(0,visibleStart)}
+    if(shouldFetchMore){
+      // console.log('more')
+      getScrollData({qTop:displayStart, qWidth:1,qHeight:30,qLeft:0})
     }
-    if(shouldFetchLess && scrollPosition.top<prevScroll.current.top){
-      qDisplayArea.current={...qDisplayArea.current, qTop:Math.max(0,visibleStart-bufferSize)}
-      getScrollData(qDisplayArea.current)
+    if(shouldFetchLess){
+      // console.log('less')
+      getScrollData({qTop:Math.max(0,displayStart-bufferSize), qWidth:1,qHeight:30,qLeft:0})
     }
-    prevScroll.current={...prevScroll.current,top:scrollPosition.top}
-  },[scrollPosition.top,currentDisplayArea,listItemHeight,visibleListHeight,buffer,displayAreaHeight,listHeight,size])
+  },[shouldFetchMore, shouldFetchLess, bufferSize, displayStart])
 
-  // useEffect(()=>{
-  //   console.log()
-  //   getScrollData(qDisplayArea.current)
-  // },[qDisplayArea.current])
-
-
-  return {qDisplayArea:qDisplayArea.current, fillers}
+  useEffect(()=>{
+    // console.log(qTop, qHeight, qLeft, qWidth)
+    setFillers({
+            top:qTop*listItemHeight,
+            bottom:listHeight-((qTop||0)+qHeight)*listItemHeight,
+            left:0,
+            right:0
+          })
+    //getScrollData({qTop:newDisplayStart, qHeight, qLeft, qWidth})
+  },[qTop, qHeight, qLeft, qWidth, listItemHeight, listHeight])
+  //const shouldFetchLess =  visibleStart+(buffer*pageHeight*listItemHeight)>displayEnd
+  return {fillers:fillers}
 }
 
 export default useScrollHandler
