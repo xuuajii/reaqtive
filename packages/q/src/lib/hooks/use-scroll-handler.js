@@ -24,8 +24,8 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
   const pageEnd = qTop+qHeight
   const visibleStart = Math.floor(scrollPosition.top/listItemHeight)
   const visibleEnd = Math.ceil(visibleStart+(visibleListHeight/listItemHeight))
-  const bufferSize = 5//(buffer*qHeight)
-  const lastPossibleTop = size.qcy-qHeight
+  const bufferSize = (buffer*qHeight)
+  const lastPossibleTop = Math.max(size.qcy-qHeight,0)
   const displayStart = Math.min(Math.max(0,visibleStart-bufferSize), lastPossibleTop)
   const displayEnd = Math.max(Math.min(visibleEnd+bufferSize, size.qcy),0)
   const shouldFetchMore = (displayEnd>=pageEnd && displayStart<lastPossibleTop) || (displayStart>=lastPossibleTop && pageStart<lastPossibleTop)  // (visibleEnd+bufferSize>currentDisplayEnd && lastPossibleTop>visibleStart && qTop<lastPossibleTop)
@@ -42,13 +42,13 @@ const useScrollHandler = (scrollPosition, currentDisplayArea, size, visibleListH
   useEffect(()=>{
     if(shouldFetchMore){
       // console.log('more')
-      getScrollData({qTop:displayStart, qWidth:1,qHeight:30,qLeft:0})
+      getScrollData({qTop:displayStart, qWidth:1, qHeight:qHeight, qLeft:0})
     }
     if(shouldFetchLess){
       // console.log('less')
-      getScrollData({qTop:Math.max(0,displayStart-bufferSize), qWidth:1,qHeight:30,qLeft:0})
+      getScrollData({qTop:Math.max(0,displayStart-bufferSize), qWidth:1, qHeight:qHeight, qLeft:0})
     }
-  },[shouldFetchMore, shouldFetchLess, bufferSize, displayStart])
+  },[shouldFetchMore, shouldFetchLess, bufferSize, displayStart,qHeight])
 
   useEffect(()=>{
     // console.log(qTop, qHeight, qLeft, qWidth)
