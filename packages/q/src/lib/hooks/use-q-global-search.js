@@ -50,6 +50,9 @@ const qSearchResultsReducer = (state, action) => {
       const newErrorCounter = state.qErrorCounter + 1;
       return state.maxErrorCounter>state.qErrorCounter ? {...initialSearchState, qErrorCounter: newErrorCounter} : {...initialSearchState, qLoading:false, qEngineError:true, qErrorObject:action.qErrorObject, rqtvMessage:'error getting searchresults'};
     break;
+    case 'new-search':
+      return  {...initialSearchState}
+    break;
     default:
       console.log('error searching')
       throw new Error();
@@ -75,6 +78,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   const [qSearchResults, dispatchResults] = useReducer(qSearchResultsReducer, initialSearchState)
   const currentOffset=useRef(0)
   useEffect(()=>{
+    dispatchResults({type:'new-search'})
     if(searchString){
       dispatchDef({qTerms:searchString, type:'search'})
     }
@@ -94,7 +98,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
   }, [qDocHandler.qDoc])
 
   useEffect(()=>{
-    search(qSearchObjectDef)
+    qSearchObjectDef.qTerms.length>0&&search(qSearchObjectDef)
   }, [qSearchObjectDef, qSearchResults.qErrorCounter])
 
   const selectSearchResults = (searchString, qId, callback) => {

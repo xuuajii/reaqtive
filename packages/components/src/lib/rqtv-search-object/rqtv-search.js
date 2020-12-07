@@ -40,8 +40,8 @@ const RqtvSearch = props => {
 
     const [searchString, setSearchString] = useState()
     const [showResults, setShowResults] = useState(false)
-    const [qArea, setQArea] = useState({qTop:0, qLeft:0, qHeight:10, qWidth:1})
-    const qSearchResultsHandler = useQGlobalSearch(props.searchFields, searchString, qArea.qTop, 10)
+    const [qArea, setQArea] = useState({qTop:0, qLeft:0, qHeight:20, qWidth:1})
+    const qSearchResultsHandler = useQGlobalSearch(props.searchFields, searchString, qArea.qTop, 20)
     const qSearchResults=qSearchResultsHandler.qSearchResults;
 
     const searchResultsEl = useRef()
@@ -52,7 +52,7 @@ const RqtvSearch = props => {
 
     const getScrollData = (qDisplayArea) => {
       //setSearchOffset(qDisplayArea.qTop)
-      setQArea({qTop:qDisplayArea.qTop, qLeft:0, qHeight:10, qWidth:1})
+      setQArea({qTop:qDisplayArea.qTop, qLeft:0, qHeight:20, qWidth:1})
       //searchResultsEl.current.scrollTop=scrollPosition.top;
     }
 
@@ -61,7 +61,7 @@ const RqtvSearch = props => {
       qArea,
       size,
       searchResultsEl.current&&searchResultsEl.current.clientHeight,
-      78,
+      86,
       0.2,
       getScrollData
      )
@@ -130,7 +130,13 @@ const RqtvSearch = props => {
             className={`dropdown-menu ${showResults?'show':''} search-results-container`}
             onScroll={(e)=>handleScroll(e.target)}
             ref={searchResultsEl}
-            style={dropdownMenuStyle}
+            //style={dropdownMenuStyle}
+            style={{
+              //height:searchResultsEl.current&&searchResultsEl.current.clientHeight,
+              //minHeight:searchResultsEl.current&&searchResultsEl.current.clientHeight,
+              //maxHeight:searchResultsEl.current&&searchResultsEl.current.clientHeight,
+              overflowY:'auto',
+              ...dropdownMenuStyle}}
           >
             {searchString&&<RqtvRenderer
               loading={qSearchResultsHandler.qLoading}

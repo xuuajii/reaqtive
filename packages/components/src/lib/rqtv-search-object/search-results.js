@@ -2,27 +2,29 @@ import React, {Fragment} from 'react'
 
 
 const SearchResults = props => {
-  const {searchResults}=props
+  const {searchResults,scrollHandler}=props
   //console.log(searchResults)
   if(!searchResults){
     return <></>
   }
   if(searchResults&&searchResults.qSearchGroupArray.length>1){
     return(
-      <ul className="list-group">
-        <div hidden={!props.scrollHandler.fillers.top} style={{height:props.scrollHandler.fillers.top}}></div>
-          {searchResults.qSearchGroupArray.map((qSearchGroup, index) =>
-            <SearchGroup
-              key={qSearchGroup.qId+index}
-              qFieldName = {qSearchGroup.qItems[0].qIdentifier}
-              matches = {qSearchGroup.qItems[0].qItemMatches}
-              selectSearchResults={props.selectSearchResults}
-              qId={qSearchGroup.qId}
-              clearSearch={props.clearSearch}
-            />
-          )}
-        <div hidden={!props.scrollHandler.fillers.bottom} style={{height:props.scrollHandler.fillers.bottom}}></div>
-      </ul>
+      <>
+      <div style={{maxHeight:scrollHandler.fillers.top||0,minHeight:scrollHandler.fillers.top||0, height:scrollHandler.fillers.top||0}}/>
+        <ul className="list-group">
+            {searchResults.qSearchGroupArray.map((qSearchGroup, index) =>
+              <SearchGroup
+                key={qSearchGroup.qId+index}
+                qFieldName = {qSearchGroup.qItems[0].qIdentifier}
+                matches = {qSearchGroup.qItems[0].qItemMatches}
+                selectSearchResults={props.selectSearchResults}
+                qId={qSearchGroup.qId}
+                clearSearch={props.clearSearch}
+              />
+            )}
+        </ul>
+      <div style={{maxHeight:scrollHandler.fillers.bottom||0, minHeight:scrollHandler.fillers.bottom||0, height:scrollHandler.fillers.bottom||0}}/>
+      </>
     )
   }
   if(searchResults&&searchResults.qSearchGroupArray.length===1){
