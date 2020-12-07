@@ -1,5 +1,5 @@
 import React from 'react'
-import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvDropdownFilter,  RqtvListbox, RqtvModalListbox} from '@reaqtive/components'
+import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvSearchField,  RqtvListbox, RqtvModalListbox} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
 import {useQFieldReducer} from '@reaqtive/q'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
@@ -13,7 +13,7 @@ const HomePage = props =>
     <div>Home Page</div>
     <MyRqtvContainerExample/>
     <RqtvCurrentSelections qState="comparison"/>
-    <RqtvListbox alwaysOneSelected={true} defaultValue={'Zocalo'} qFieldExpr={"Customer"} />
+    <RqtvListbox qFieldExpr={"Customer"} />
   </RqtvStandardTemplate>
 </RqtvPage>
 

@@ -90,6 +90,10 @@ const qSearchResultsReducer = (state, action) => {
       });
       break;
 
+    case 'new-search':
+      return (0, _objectSpread2.default)({}, initialSearchState);
+      break;
+
     default:
       console.log('error searching');
       throw new Error();
@@ -122,6 +126,10 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
 
   const currentOffset = (0, _react.useRef)(0);
   (0, _react.useEffect)(() => {
+    dispatchResults({
+      type: 'new-search'
+    });
+
     if (searchString) {
       dispatchDef({
         qTerms: searchString,
@@ -151,7 +159,7 @@ const useQGlobalSearch = (fields, searchString, qItemOffSet, qItemCount, qMatchO
     }
   }, [qDocHandler.qDoc]);
   (0, _react.useEffect)(() => {
-    search(qSearchObjectDef);
+    qSearchObjectDef.qTerms.length > 0 && search(qSearchObjectDef);
   }, [qSearchObjectDef, qSearchResults.qErrorCounter]);
 
   const selectSearchResults = (searchString, qId, callback) => {

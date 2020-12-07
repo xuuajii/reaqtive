@@ -86,14 +86,14 @@ const RqtvSearch = props => {
   const _useState5 = (0, _react.useState)({
     qTop: 0,
     qLeft: 0,
-    qHeight: 10,
+    qHeight: 20,
     qWidth: 1
   }),
         _useState6 = (0, _slicedToArray2.default)(_useState5, 2),
         qArea = _useState6[0],
         setQArea = _useState6[1];
 
-  const qSearchResultsHandler = (0, _q.useQGlobalSearch)(props.searchFields, searchString, qArea.qTop, 10);
+  const qSearchResultsHandler = (0, _q.useQGlobalSearch)(props.searchFields, searchString, qArea.qTop, 20);
   const qSearchResults = qSearchResultsHandler.qSearchResults;
   const searchResultsEl = (0, _react.useRef)();
   const containerEl = (0, _react.useRef)();
@@ -120,12 +120,12 @@ const RqtvSearch = props => {
     setQArea({
       qTop: qDisplayArea.qTop,
       qLeft: 0,
-      qHeight: 10,
+      qHeight: 20,
       qWidth: 1
     }); //searchResultsEl.current.scrollTop=scrollPosition.top;
   };
 
-  const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qArea, size, searchResultsEl.current && searchResultsEl.current.clientHeight, 78, 0.2, getScrollData);
+  const scrollHandler = (0, _q.useScrollHandler)(scrollPosition, qArea, size, searchResultsEl.current && searchResultsEl.current.clientHeight, 86, 0.2, getScrollData);
 
   const _useDebouncedCallback = (0, _useDebounce.useDebouncedCallback)( // function
   target => {
@@ -201,8 +201,14 @@ const RqtvSearch = props => {
   }), _react.default.createElement("div", {
     className: "dropdown-menu ".concat(showResults ? 'show' : '', " search-results-container"),
     onScroll: e => handleScroll(e.target),
-    ref: searchResultsEl,
-    style: dropdownMenuStyle,
+    ref: searchResultsEl //style={dropdownMenuStyle}
+    ,
+    style: (0, _objectSpread2.default)({
+      //height:searchResultsEl.current&&searchResultsEl.current.clientHeight,
+      //minHeight:searchResultsEl.current&&searchResultsEl.current.clientHeight,
+      //maxHeight:searchResultsEl.current&&searchResultsEl.current.clientHeight,
+      overflowY: 'auto'
+    }, dropdownMenuStyle),
     __source: {
       fileName: _jsxFileName,
       lineNumber: 129
@@ -215,7 +221,7 @@ const RqtvSearch = props => {
     reload: retry,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 135
+      lineNumber: 141
     },
     __self: void 0
   }, _react.default.createElement("div", {
@@ -226,7 +232,7 @@ const RqtvSearch = props => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 141
+      lineNumber: 147
     },
     __self: void 0
   }, showResults && _react.default.createElement(_searchResults.default, {
@@ -237,7 +243,7 @@ const RqtvSearch = props => {
     singleFieldItemHeight: singleFieldItemHeight,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 145
+      lineNumber: 151
     },
     __self: void 0
   }))))));
