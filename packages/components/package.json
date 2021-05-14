@@ -93,7 +93,7 @@
 		"@reaqtive/q": "^0.0.0-beta.15",
 		"airbnb-prop-types": "^2.15.0",
 		"bootstrap": "^4.5.2",
-		"lodash": "4.17.20",
+		"lodash": "4.17.21",
 		"node-sass": "^4.13.0",
 		"query-string": "^6.10.1",
 		"react-router-dom": "^5.1.2",
