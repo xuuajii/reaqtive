@@ -86,7 +86,7 @@ const qLayoutReducer = (state, action) => {
 */
 
 
-const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
+const useQLayoutReducer = (qObjectHandler, qSelectionHandler, isFocused) => {
   const _useReducer = (0, _react.useReducer)(qLayoutReducer, initialState),
         _useReducer2 = (0, _slicedToArray2.default)(_useReducer, 2),
         qPromiseHandler = _useReducer2[0],
@@ -153,12 +153,12 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
       }
     };
 
-    if (layoutProvider !== null && isSelecting === true && typeof layoutUpdater === 'function') {
+    if (layoutProvider !== null && (isSelecting === true || isFocused === true) && typeof layoutUpdater === 'function') {
       layoutUpdater();
     } else {
       layoutProvider !== null && standardUpdate();
     }
-  }, [layoutUpdater, isSelecting, layoutProvider]); // call for layout update when the engine recalculates the qObject
+  }, [layoutUpdater, isSelecting, layoutProvider, isFocused]); // call for layout update when the engine recalculates the qObject
 
   (0, _react.useEffect)(() => {
     let isSubscribed = true;

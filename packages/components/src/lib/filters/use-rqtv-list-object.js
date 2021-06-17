@@ -16,7 +16,7 @@ const useRqtvListObject = (qObjectHandler, qSelectionHandler, qLayoutHandler, qu
     isSearching:isSearching,
     waitingDataPage:waitingDataPage,
     selectValue: async (value, callback) => {
-      handleSelections(async() => {
+      handleSelections('/qListObjectDef', async() => {
         try{
           await qObject.selectListObjectValues('/qListObjectDef',[value], toggle)
           if(qIsOneAndOnlyOne||quickSelectionMode){

@@ -15,15 +15,16 @@ import PropTypes from 'prop-types'
  */
 const QGenericObject = props => {
   const {qObjectDef, quickSelectionMode} = props
+  const [isFocused, setIsFocused] = useState()
   const qObjectHandler = useQObjectReducer(qObjectDef)
   const qSelectionHandler = useQSelectionHandler(qObjectHandler.qObject)
-  const qLayoutHandler = useQLayoutReducer(qObjectHandler, qSelectionHandler)
+  const qLayoutHandler = useQLayoutReducer(qObjectHandler, qSelectionHandler, isFocused)
   const moreThanOneChild = Array.isArray(props.children)
   if (moreThanOneChild){
       throw "QGenericObject must have  only one child, wrap the content inside a React element";
   }
   return React.isValidElement(props.children)
-  ?React.cloneElement(props.children, {props, qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode})
+  ?React.cloneElement(props.children, {props, qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode, setIsFocused})
   :props.children({qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode})
 }
 

@@ -55,7 +55,7 @@ const qLayoutReducer = (state, action) => {
   *@param {qSelectionHandler} [qSelectionHandler]  - the handler that manages the selection state of the generic object, it is not needed if the qObject does not have a selection state to handle
   *@return {qLayoutHandler} the handler of the qLayout
 */
-const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
+const useQLayoutReducer = (qObjectHandler, qSelectionHandler, isFocused) => {
 
   const [qPromiseHandler, dispatch] = useReducer(qLayoutReducer, initialState);
   const {qLoading, qLayout, qErrorCounter, qError} = qPromiseHandler
@@ -91,12 +91,12 @@ const useQLayoutReducer = (qObjectHandler, qSelectionHandler) => {
         return result instanceof Error?dispatch({type:'error', qError:result}):dispatch({type:'success', qLayout:result})
       }
     }
-    if(layoutProvider!==null && isSelecting===true && (typeof layoutUpdater ==='function')){
+    if(layoutProvider!==null && (isSelecting===true||isFocused===true) && (typeof layoutUpdater ==='function')){
       layoutUpdater()
     } else {
       (layoutProvider!==null)&&standardUpdate()
     }
-  },[layoutUpdater, isSelecting, layoutProvider])
+  },[layoutUpdater, isSelecting, layoutProvider, isFocused])
 
   // call for layout update when the engine recalculates the qObject
   useEffect(()=>{

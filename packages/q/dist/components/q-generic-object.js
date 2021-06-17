@@ -1,13 +1,15 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/slicedToArray"));
 
 var _react = _interopRequireWildcard(require("react"));
 
@@ -29,9 +31,15 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 const QGenericObject = props => {
   const qObjectDef = props.qObjectDef,
         quickSelectionMode = props.quickSelectionMode;
+
+  const _useState = (0, _react.useState)(),
+        _useState2 = (0, _slicedToArray2.default)(_useState, 2),
+        isFocused = _useState2[0],
+        setIsFocused = _useState2[1];
+
   const qObjectHandler = (0, _index.useQObjectReducer)(qObjectDef);
   const qSelectionHandler = (0, _index.useQSelectionHandler)(qObjectHandler.qObject);
-  const qLayoutHandler = (0, _index.useQLayoutReducer)(qObjectHandler, qSelectionHandler);
+  const qLayoutHandler = (0, _index.useQLayoutReducer)(qObjectHandler, qSelectionHandler, isFocused);
   const moreThanOneChild = Array.isArray(props.children);
 
   if (moreThanOneChild) {
@@ -44,7 +52,8 @@ const QGenericObject = props => {
     qLayoutHandler,
     qSelectionHandler,
     qObjectDef,
-    quickSelectionMode
+    quickSelectionMode,
+    setIsFocused
   }) : props.children({
     qObjectHandler,
     qLayoutHandler,

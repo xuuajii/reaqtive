@@ -15,9 +15,9 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _index = require("../index");
 
-const qBeginSelections = async qObject => {
+const qBeginSelections = async (qObject, path) => {
   try {
-    const result = qObject.beginSelections(['/qListObjectDef']);
+    const result = qObject.beginSelections([path]);
     return result;
   } catch (err) {
     return err;
@@ -75,15 +75,15 @@ const useQSelectionHandler = qObject => {
   (0, _react.useEffect)(() => {
     return () => abortModal(qDoc, isSelecting);
   }, [qDoc, isSelecting]);
-  const beginSelections = (0, _react.useCallback)(callback => {
+  const beginSelections = (0, _react.useCallback)((path, callback) => {
     const fn = async () => {
       try {
-        const result = await qBeginSelections(qObject); //console.log('res',result)
+        const result = await qBeginSelections(qObject, path); //console.log('res',result)
       } catch (err) {
         console.log(err);
         setIsSelecting(false);
       } finally {
-        callback();
+        if (typeof callback === 'function') callback();
       }
     };
 
@@ -102,7 +102,7 @@ const useQSelectionHandler = qObject => {
     if (!(result instanceof Error)) {
       //console.log('end')
       setIsSelecting(false);
-      typeof callback === 'function' && callback();
+      if (typeof callback === 'function') callback();
     }
   }, [qObject]);
   /**
@@ -111,9 +111,9 @@ const useQSelectionHandler = qObject => {
     *@param {boolean} quickSelectionMode if true the generic object will use Qlik Sense like selections, otherwise QlikView like
   */
 
-  const handleSelections = (0, _react.useCallback)((callback, quickSelectionMode = false) => {
+  const handleSelections = (0, _react.useCallback)((path, callback, quickSelectionMode = false) => {
     if (quickSelectionMode === false && isSelecting === false) {
-      beginSelections(callback);
+      beginSelections(path, callback);
     } else {
       //console.log('else')
       callback();
