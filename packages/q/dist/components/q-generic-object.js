@@ -28,7 +28,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
  *
  * See the example below for details
  */
-const QGenericObject = props => {
+const QGenericObject = (props, ref) => {
   const qObjectDef = props.qObjectDef,
         quickSelectionMode = props.quickSelectionMode;
 
@@ -38,9 +38,15 @@ const QGenericObject = props => {
         setIsFocused = _useState2[1];
 
   const qObjectHandler = (0, _index.useQObjectReducer)(qObjectDef);
+  const qObject = qObjectHandler.qObject;
   const qSelectionHandler = (0, _index.useQSelectionHandler)(qObjectHandler.qObject);
   const qLayoutHandler = (0, _index.useQLayoutReducer)(qObjectHandler, qSelectionHandler, isFocused);
   const moreThanOneChild = Array.isArray(props.children);
+  (0, _react.useImperativeHandle)(ref, () => {
+    return {
+      getQObject: () => qObject
+    };
+  }, [qObject]);
 
   if (moreThanOneChild) {
     throw "QGenericObject must have  only one child, wrap the content inside a React element";
@@ -63,7 +69,8 @@ const QGenericObject = props => {
   });
 };
 
-QGenericObject.propTypes = {
+const QGenericObjectWithRef = (0, _react.forwardRef)(QGenericObject);
+QGenericObjectWithRef.propTypes = {
   /**
    * The definition of the qObject.
    * Check the following links for details
@@ -77,8 +84,8 @@ QGenericObject.propTypes = {
    */
   quickSelectionMode: _propTypes.default.bool
 };
-QGenericObject.defaultProps = {
+QGenericObjectWithRef.defaultProps = {
   quickSelectionMode: true
 };
-var _default = QGenericObject;
+var _default = QGenericObjectWithRef;
 exports.default = _default;

@@ -61,6 +61,10 @@ const QViz = forwardRef((props, ref) => {
     });
   }
 
+  const getQViz = () => {
+    return qVizRef&&qVizRef.current
+  }
+
   useImperativeHandle(ref, () => ({
     exportExcel: () => {
       exportExcel()
@@ -72,9 +76,9 @@ const QViz = forwardRef((props, ref) => {
       exportPdf()
     },
     getQViz: () => {
-      return qVizRef.current
+      return getQViz()
     }
-  }));
+  }),[qVizRef.current]);
 
   return(
     <div style={{height:props.height, width:'100%'}} ref={qVizWrapperEl}>

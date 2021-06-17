@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback, useRef} from 'react'
+import React, {useState, useEffect, useCallback, useRef, useImperativeHandle, forwardRef} from 'react'
 import {useQObjectReducer, useQLayoutReducer, useQSelectionHandler} from '../index'
 import PropTypes from 'prop-types'
 
@@ -13,13 +13,22 @@ import PropTypes from 'prop-types'
  *
  * See the example below for details
  */
-const QGenericObject = props => {
+
+const QGenericObject = (props, ref) => {
   const {qObjectDef, quickSelectionMode} = props
   const [isFocused, setIsFocused] = useState()
   const qObjectHandler = useQObjectReducer(qObjectDef)
+  const {qObject} = qObjectHandler
   const qSelectionHandler = useQSelectionHandler(qObjectHandler.qObject)
   const qLayoutHandler = useQLayoutReducer(qObjectHandler, qSelectionHandler, isFocused)
   const moreThanOneChild = Array.isArray(props.children)
+
+  useImperativeHandle(ref, () => {
+    return({
+      getQObject: () =>  qObject
+    })
+  },[qObject]);
+
   if (moreThanOneChild){
       throw "QGenericObject must have  only one child, wrap the content inside a React element";
   }
@@ -28,7 +37,9 @@ const QGenericObject = props => {
   :props.children({qObjectHandler, qLayoutHandler, qSelectionHandler,qObjectDef, quickSelectionMode})
 }
 
-QGenericObject.propTypes = {
+const QGenericObjectWithRef = forwardRef(QGenericObject)
+
+QGenericObjectWithRef.propTypes = {
   /**
    * The definition of the qObject.
    * Check the following links for details
@@ -42,8 +53,9 @@ QGenericObject.propTypes = {
   quickSelectionMode:PropTypes.bool
 }
 
-QGenericObject.defaultProps = {
+QGenericObjectWithRef.defaultProps = {
   quickSelectionMode:true
 }
 
-export default QGenericObject
+
+export default QGenericObjectWithRef

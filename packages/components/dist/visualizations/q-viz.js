@@ -86,6 +86,10 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     });
   };
 
+  const getQViz = () => {
+    return qVizRef && qVizRef.current;
+  };
+
   (0, _react.useImperativeHandle)(ref, () => ({
     exportExcel: () => {
       exportExcel();
@@ -97,9 +101,9 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
       exportPdf();
     },
     getQViz: () => {
-      return qVizRef.current;
+      return getQViz();
     }
-  }));
+  }), [qVizRef.current]);
   return _react.default.createElement("div", {
     style: {
       height: props.height,
@@ -108,7 +112,7 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     ref: qVizWrapperEl,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 80
+      lineNumber: 84
     },
     __self: void 0
   }, qVizHandler.qViz !== null ? _react.default.createElement("div", {
@@ -119,13 +123,13 @@ const QViz = (0, _react.forwardRef)((props, ref) => {
     },
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 82
+      lineNumber: 86
     },
     __self: void 0
   }) : _react.default.createElement(_index.RqtvSpinner, {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 83
+      lineNumber: 87
     },
     __self: void 0
   }));
