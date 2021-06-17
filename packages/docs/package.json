@@ -68,7 +68,7 @@
     "uuid": "^8.0.0"
   },
   "devDependencies": {
-    "http-proxy-middleware": "^1.0.3",
+    "http-proxy-middleware": "^1.0.6",
     "jsdoc": "^3.6.3",
     "jsdoc-to-markdown": "^5.0.3",
     "react-docgen": "^5.1.0",

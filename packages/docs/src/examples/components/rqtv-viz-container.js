@@ -29,6 +29,11 @@ const MyRqtvContainerExample = props => {
   const vizRef = useRef()
 
   const viz = vizRef.current&&vizRef.current.getQViz()
+
+  const onClick = () => {
+    const qViz = vizRef.current.getQViz()
+    console.log(qViz)
+  }
   /**
     * HTML overflow is handled by RqtvApp if the RqtvMaximizePortalEl and RqtvVizContainer
     * are inside it, otherwise you will have to handle it in your code, below an example
@@ -54,6 +59,7 @@ const MyRqtvContainerExample = props => {
 
   return(
     <>
+      <button onClick={onClick}>azz</button>
       <RqtvMaximizePortalEl maximizeElRef={maximizeElRef}/>
       <MyRqtvContainer
         maximizeElRef={maximizeElRef}

@@ -6,11 +6,11 @@ import {MyRqtvNavbar, MyRqtvListbox, MyRqtvDropdownFilter, MyRqtvButtonBar, MyRq
 const MyReaqtiveComponent = props => {
   // This qConfig allows to connect to on Qlik Sense Desktop and open the app called Executive Dashboard
   const qConfig = {                                 //For QS Desktop
-      host: '40.113.14.238',                        //localhost
+      host: 'localhost',                        //localhost
       secure: true,                                 //false
-      port: 443,                                    //4848
-      prefix: '',                                   //''
-      appId: 'bc1566bc-6299-4d8b-8976-d5b60225ded8'//'8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
+      port: 3000,                                    //4848
+      prefix: 'hdr',                                   //''
+      appId: '0abf830f-4dbb-4ad5-a844-87f01b42b360'//'8aa3a035-0689-4aab-a920-d6722509ed51' //your app file name (e.g. 'Executive dashboard.qvf')
   };
 
   return (

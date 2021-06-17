@@ -1,21 +1,47 @@
-import React from 'react'
-import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvSearchField,  RqtvListbox, RqtvModalListbox} from '@reaqtive/components'
+import React, {useRef, useEffect} from 'react'
+import {RqtvStandardTemplate, RqtvPage, RqtvCurrentSelections, RqtvSearchField,  RqtvListbox, RqtvModalListbox, RqtvDropdownFilter} from '@reaqtive/components'
 import {useRouteMatch, NavLink} from 'react-router-dom'
-import {useQFieldReducer} from '@reaqtive/q'
+import {useQFieldReducer, QGenericObject} from '@reaqtive/q'
 import MyRqtvStandardTemplate from './rqtv-standard-template'
 import MyRqtvContainerExample from './rqtv-viz-container'
 import TabsExample from './tabs'
 
+const qObjectDef = {
+  qInfo:{
+    qType:'listobject'
+  },
+    "qListObjectDef": {
+      "qDef": {
+          "qFieldDefs": [ "Customer" ],
+          "qFieldLabels": [ "Customer" ],
+        },
+    "qInitialDataFetch": [ {qTop:0,qLeft:0,qHeight:30,qWidth:1} ],
+  }
+}
 
-const HomePage = props =>
-<RqtvPage {...props} exact={true} qTitleExpr="'Homepage'">
+const HomePage = props =>{
+const qObjectHandleRef=useRef()
+const click = () => {
+  console.log(qObjectHandleRef.current.getQObject())
+}
+
+return(<RqtvPage {...props} exact={true} qTitleExpr="'Homepage'">
   <RqtvStandardTemplate sideMenuFieldsMatch={{method:'include', mask:['Product*']}}>
     <div>Home Page</div>
+    <button onClick={click}>Ciao</button>
+    <QGenericObject ref={qObjectHandleRef} qObjectDef={qObjectDef}>
+      {(qObject)=> {
+        return (<button>Ciao</button>)
+      }}
+    </QGenericObject>
+    <RqtvDropdownFilter qFieldExpr="Customer" quickSelectionMode={false}/>
+    <RqtvSearchField qFieldExpr="Customer" quickSelectionMode={true}/>
     <MyRqtvContainerExample/>
     <RqtvCurrentSelections qState="comparison"/>
     <RqtvListbox qFieldExpr={"Customer"} />
   </RqtvStandardTemplate>
-</RqtvPage>
+</RqtvPage>)
+}
 
 const FirstPage = props =>{
   return(
