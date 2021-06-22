@@ -79,7 +79,7 @@ const RqtvCurrentSelections = props => {
     useCurrentSelectionModal: props.useCurrentSelectionModal,
     excludeHidden: excludeHidden,
     hidePrefix: hidePrefix,
-    alwayShowToolbar: props.alwayShowToolbar,
+    alwaysShowToolbar: props.alwaysShowToolbar,
     customLoading: props.customLoading,
     breakPoint: props.breakPoint,
     qState: props.qState,
