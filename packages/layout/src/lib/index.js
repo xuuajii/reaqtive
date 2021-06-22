@@ -13,7 +13,7 @@ export * from './progress';
 export { default as SearchInput} from './search-input';
 export * from './search-input';
 
-export {default as Switch} from './switch/index'
+export {default as Switch} from './switch/index';
 
 export * from './accordion/index'
 
