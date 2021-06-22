@@ -1,6 +1,6 @@
 {
   "name": "@reaqtive/docs",
-  "version": "0.0.0-beta16",
+  "version": "0.0.0-beta.17",
   "description": "docs and demo",
   "keywords": [
     "reaqtive",
@@ -50,7 +50,7 @@
     ]
   },
   "dependencies": {
-    "@reaqtive/components": "^0.0.0-beta16",
+    "@reaqtive/components": "^0.0.0-beta.17",
     "@reaqtive/layout": "^0.0.0-beta16",
     "@reaqtive/q": "^0.0.0-beta16",
     "airbnb-prop-types": "^2.15.0",
