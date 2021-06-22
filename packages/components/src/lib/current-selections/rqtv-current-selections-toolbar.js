@@ -10,9 +10,9 @@ const RqtvCurrentSelectionsToolbar = props => {
   const system = useContext(System)
   const isMinimized = props.isResponsive&&system.windowWidth<=system.breakPoints[props.breakPoint]
   //console.log(system.windowWidth, system.breakPoints['md'])
-  const showBack = (props.qBackCount>0&&!isMinimized)||props.inModal
-  const showForward = (props.qForwardCount>0&&!isMinimized)||props.inModal
-  const showClearAll = (props.qSelectionsCount>0&&!isMinimized)||props.inModal
+  const showBack = (props.qBackCount>0&&!isMinimized)||props.inModal||props.alwaysShowToolbar
+  const showForward = (props.qForwardCount>0&&!isMinimized)||props.inModal||props.alwaysShowToolbar
+  const showClearAll = (props.qSelectionsCount>0&&!isMinimized)||props.inModal||props.alwaysShowToolbar
   const show = (props.qBackCount>0||props.qForwardCount>0||props.qSelectionsCount>0)||props.alwaysShowToolbar
   return(
     show?

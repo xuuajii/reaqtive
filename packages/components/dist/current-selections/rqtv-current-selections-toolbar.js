@@ -24,9 +24,9 @@ const RqtvCurrentSelectionsToolbar = props => {
   const system = (0, _react.useContext)(_layout.System);
   const isMinimized = props.isResponsive && system.windowWidth <= system.breakPoints[props.breakPoint]; //console.log(system.windowWidth, system.breakPoints['md'])
 
-  const showBack = props.qBackCount > 0 && !isMinimized || props.inModal;
-  const showForward = props.qForwardCount > 0 && !isMinimized || props.inModal;
-  const showClearAll = props.qSelectionsCount > 0 && !isMinimized || props.inModal;
+  const showBack = props.qBackCount > 0 && !isMinimized || props.inModal || props.alwaysShowToolbar;
+  const showForward = props.qForwardCount > 0 && !isMinimized || props.inModal || props.alwaysShowToolbar;
+  const showClearAll = props.qSelectionsCount > 0 && !isMinimized || props.inModal || props.alwaysShowToolbar;
   const show = props.qBackCount > 0 || props.qForwardCount > 0 || props.qSelectionsCount > 0 || props.alwaysShowToolbar;
   return show ? _react.default.createElement("div", {
     className: "".concat(props.inModal ? 'rqtv-current-selections-modal-toolbar' : 'rqtv-current-selections-toolbar'),
